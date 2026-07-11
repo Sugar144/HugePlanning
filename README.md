@@ -97,6 +97,7 @@ then verify (a)–(d) by hand per `02` §5.
 | Date | CLI version | a | b | c | d | Notes |
 |---|---|---|---|---|---|---|
 | 2026-07-11 | 2.1.207 (Claude Code) | PASS | PASS | PASS | PASS | S0a initial run, executed live (headless `claude -p`). Deny rule blocked the methodology write at the permission level ("directory denied by your permission settings") on a methodology path containing spaces; client control write succeeded; no methodology drift. Details: `EXPERIMENT_S0A_REPORT.md` |
+| 2026-07-11 | 2.1.207 (Claude Code) | PASS | PASS | PASS | PASS | S0a audited integration verification: deterministic suite passed twice (122/122 each run); live SPK-01 passed 5/5; methodology remained protected and clean. Commit tested: `09ae1adfa80abacdb0b57f757308aa72786f0e16`. |
 
 ## Test the methodology
 
