@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # new-client.sh — create a client repository from the methodology template
-# (02 §8, 03 §3). Copies templates/client-repo/, substitutes placeholders,
-# writes the methodology lock, git-inits with the initial commit, and prints
-# the G0 checklist. Never overwrites a non-empty target.
+# (02 §8, 03 §3). Builds the client in a staging directory: copies
+# templates/client-repo/, substitutes placeholders, writes the methodology
+# lock (full commit SHA), VALIDATES the result, then git-inits with the
+# initial commit and moves it to the target. A failure at any step leaves no
+# partial target behind. Never overwrites a non-empty target; refuses a dirty
+# methodology (the lock must record what is actually on disk — 02 §7).
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -65,9 +68,13 @@ METHOD_VERSION="$(head -n1 "$METHOD_DIR/VERSION" | tr -d '[:space:]')"
 if [[ ! "$METHOD_VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   echo "ERROR: methodology VERSION file is malformed: '$METHOD_VERSION'" >&2; exit 2
 fi
-METHOD_COMMIT="$(git -C "$METHOD_DIR" rev-parse --short=7 HEAD)"
+METHOD_COMMIT="$(git -C "$METHOD_DIR" rev-parse HEAD)"
 if [[ -n "$(git -C "$METHOD_DIR" status --porcelain)" ]]; then
-  echo "WARNING: methodology working tree is dirty — the lock records commit $METHOD_COMMIT, which may not match what is on disk. Commit methodology changes first for a faithful lock." >&2
+  echo "ERROR: methodology working tree is dirty — the lock would record commit ${METHOD_COMMIT:0:7}, which does not match what is on disk (02 §7):" >&2
+  git -C "$METHOD_DIR" status --short >&2
+  echo "Commit (or stash) the methodology changes yourself, then retry." >&2
+  echo "new-client.sh never cleans, stashes, or resets the methodology." >&2
+  exit 1
 fi
 if ! git -C "$METHOD_DIR" tag --points-at HEAD 2>/dev/null | grep -qx "$METHOD_VERSION"; then
   echo "WARNING: methodology HEAD is not at tag $METHOD_VERSION — lock records commit $METHOD_COMMIT instead of a released tag (02 §7 release procedure)." >&2
@@ -79,14 +86,22 @@ if command -v claude >/dev/null 2>&1; then
 fi
 TODAY="$(date +%F)"
 
-mkdir -p "$TARGET"
-TARGET="$(cd "$TARGET" && pwd)"
+# Stage the client next to the target: every step below happens in STAGING,
+# and only a fully validated, committed client is moved to TARGET. Any failure
+# removes the staging directory and leaves no partial target behind.
+PARENT="$(dirname "$TARGET")"
+mkdir -p "$PARENT"
+PARENT="$(cd "$PARENT" && pwd)"
+TARGET="$PARENT/$(basename "$TARGET")"
+STAGING="$(mktemp -d "$PARENT/.new-client-tmp.XXXXXX")"
+cleanup_staging() { if [[ -d "$STAGING" ]]; then rm -rf "$STAGING"; fi; }
+trap cleanup_staging EXIT
 
 echo "Creating client repository $PROJECT_ID at $TARGET"
-echo "  methodology: $METHOD_VERSION ($METHOD_COMMIT) at $METHOD_DIR"
+echo "  methodology: $METHOD_VERSION (${METHOD_COMMIT:0:7}) at $METHOD_DIR"
 
-cp -R "$TEMPLATE_DIR/." "$TARGET/"
-mv "$TARGET/gitignore" "$TARGET/.gitignore"
+cp -R "$TEMPLATE_DIR/." "$STAGING/"
+mv "$STAGING/gitignore" "$STAGING/.gitignore"
 
 # Placeholder substitution — pure bash (safe with any path characters).
 substitute_placeholders() {
@@ -102,25 +117,56 @@ substitute_placeholders() {
 }
 while IFS= read -r -d '' f; do
   if grep -Iq '{{' "$f" 2>/dev/null; then substitute_placeholders "$f"; fi
-done < <(find "$TARGET" -type f -print0)
+done < <(find "$STAGING" -type f -print0)
 
-if grep -RIl '{{' "$TARGET" >/dev/null 2>&1; then
-  echo "ERROR: unsubstituted placeholders remain:" >&2
-  grep -RIn '{{[A-Z_]*}}' "$TARGET" >&2 || true
+if grep -RIl '{{' "$STAGING" >/dev/null 2>&1; then
+  echo "ERROR: unsubstituted placeholders remain — no target created:" >&2
+  grep -RIn '{{[A-Z_]*}}' "$STAGING" >&2 || true
   exit 2
 fi
 
-# Git initialization + initial commit (03 §3).
-git -C "$TARGET" init --quiet --initial-branch=main
-git -C "$TARGET" add -A
-if ! git -C "$TARGET" commit --quiet -m "chore: initialize $PROJECT_ID from methodology $METHOD_VERSION"; then
-  echo "ERROR: initial commit failed. Ensure git identity is configured:" >&2
-  echo "  git config --global user.name 'Your Name'" >&2
-  echo "  git config --global user.email 'you@example.org'" >&2
+# Validate BEFORE the initial commit: an invalid client is never committed.
+if ! METHODOLOGY_DIR="$METHOD_DIR" "$SCRIPT_DIR/validate.sh" "$STAGING"; then
+  echo "ERROR: generated client fails validate.sh — no commit created, no target left behind." >&2
+  exit 1
+fi
+
+# Git initialization + initial commit (03 §3). When no git identity is
+# configured, the initial commit uses a command-local fallback identity;
+# the user's git configuration is never modified.
+git -C "$STAGING" init --quiet --initial-branch=main
+git -C "$STAGING" add -A
+GIT_ID_ARGS=()
+if ! git -C "$STAGING" config user.name >/dev/null 2>&1 || \
+   ! git -C "$STAGING" config user.email >/dev/null 2>&1; then
+  GIT_ID_ARGS=(-c "user.name=Methodology Bootstrap" -c "user.email=bootstrap@local.invalid")
+  echo "NOTE: no git identity configured — initial commit uses the fallback identity 'Methodology Bootstrap <bootstrap@local.invalid>' (your git config is untouched)."
+fi
+if ! git "${GIT_ID_ARGS[@]}" -C "$STAGING" commit --quiet \
+    -m "chore: initialize $PROJECT_ID from methodology $METHOD_VERSION"; then
+  echo "ERROR: initial commit failed — no target left behind." >&2
+  exit 2
+fi
+if [[ "$(git -C "$STAGING" rev-list --count HEAD)" != "1" ]]; then
+  echo "ERROR: expected exactly one initial commit — no target left behind." >&2
+  exit 2
+fi
+if [[ -n "$(git -C "$STAGING" status --porcelain)" ]]; then
+  echo "ERROR: generated client tree is not clean after the initial commit — no target left behind:" >&2
+  git -C "$STAGING" status --short >&2
   exit 2
 fi
 
-echo "Created: $TARGET (initial commit on 'main', lock at $METHOD_VERSION/$METHOD_COMMIT)"
+# Publish: move the finished client into place (target emptiness re-checked).
+if [[ -d "$TARGET" ]]; then
+  if ! rmdir "$TARGET" 2>/dev/null; then
+    echo "ERROR: target is no longer empty: $TARGET — nothing published, staging removed." >&2
+    exit 1
+  fi
+fi
+mv "$STAGING" "$TARGET"
+
+echo "Created: $TARGET (initial commit on 'main', lock at $METHOD_VERSION/${METHOD_COMMIT:0:7})"
 echo
 cat <<EOF
 G0 readiness checklist (03 §7) — tick every item, then record the gate:

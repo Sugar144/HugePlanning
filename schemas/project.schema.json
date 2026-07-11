@@ -86,14 +86,18 @@
     "approvals": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["g0_readiness", "g1_discovery_review", "g2_business_baseline", "g3_technical_baseline", "g7_client_acceptance", "g8_production_release"],
+      "required": ["g0_readiness", "g1_discovery_review", "g2_business_baseline", "g3_technical_baseline", "g4_task_ready", "g5_task_merge", "g6_staging_release", "g7_client_acceptance", "g8_production_release", "g9_change_approval"],
       "properties": {
         "g0_readiness": { "$ref": "#/$defs/approval" },
         "g1_discovery_review": { "$ref": "#/$defs/approval" },
         "g2_business_baseline": { "$ref": "#/$defs/approval" },
         "g3_technical_baseline": { "$ref": "#/$defs/approval" },
+        "g4_task_ready": { "$ref": "#/$defs/approval" },
+        "g5_task_merge": { "$ref": "#/$defs/approval" },
+        "g6_staging_release": { "$ref": "#/$defs/approval" },
         "g7_client_acceptance": { "$ref": "#/$defs/approval" },
-        "g8_production_release": { "$ref": "#/$defs/approval" }
+        "g8_production_release": { "$ref": "#/$defs/approval" },
+        "g9_change_approval": { "$ref": "#/$defs/approval" }
       }
     },
     "privacy": {
@@ -102,7 +106,7 @@
       "required": ["data_sensitivity", "pii_in_evidence", "retention_after_close_months", "deletion_contact"],
       "properties": {
         "data_sensitivity": { "enum": ["low", "medium", "high"] },
-        "pii_in_evidence": { "type": "string", "minLength": 1 },
+        "pii_in_evidence": { "const": "minimized" },
         "retention_after_close_months": { "type": "integer", "minimum": 0 },
         "deletion_contact": { "type": "string", "minLength": 1 }
       }
@@ -110,8 +114,9 @@
     "counters": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["FR", "NFR", "INT", "CON", "DAT", "CNT", "BR", "OBJ", "OQ", "CLAR", "EP", "US", "UC", "TASK", "ADR", "SPK", "TEST", "CR", "BUG", "REL", "INC"],
+      "required": ["OBJ", "FR", "NFR", "INT", "CON", "DAT", "CNT", "BR", "ASM", "OQ", "CLAR", "CTR", "EP", "US", "UC", "TASK", "BUG", "CR", "ADR", "SPK", "RSK", "TEST", "REL", "INC"],
       "properties": {
+        "OBJ": { "$ref": "#/$defs/counter" },
         "FR": { "$ref": "#/$defs/counter" },
         "NFR": { "$ref": "#/$defs/counter" },
         "INT": { "$ref": "#/$defs/counter" },
@@ -119,18 +124,20 @@
         "DAT": { "$ref": "#/$defs/counter" },
         "CNT": { "$ref": "#/$defs/counter" },
         "BR": { "$ref": "#/$defs/counter" },
-        "OBJ": { "$ref": "#/$defs/counter" },
+        "ASM": { "$ref": "#/$defs/counter" },
         "OQ": { "$ref": "#/$defs/counter" },
         "CLAR": { "$ref": "#/$defs/counter" },
+        "CTR": { "$ref": "#/$defs/counter" },
         "EP": { "$ref": "#/$defs/counter" },
         "US": { "$ref": "#/$defs/counter" },
         "UC": { "$ref": "#/$defs/counter" },
         "TASK": { "$ref": "#/$defs/counter" },
+        "BUG": { "$ref": "#/$defs/counter" },
+        "CR": { "$ref": "#/$defs/counter" },
         "ADR": { "$ref": "#/$defs/counter" },
         "SPK": { "$ref": "#/$defs/counter" },
+        "RSK": { "$ref": "#/$defs/counter" },
         "TEST": { "$ref": "#/$defs/counter" },
-        "CR": { "$ref": "#/$defs/counter" },
-        "BUG": { "$ref": "#/$defs/counter" },
         "REL": { "$ref": "#/$defs/counter" },
         "INC": { "$ref": "#/$defs/counter" }
       }
@@ -152,7 +159,7 @@
           "properties": {
             "date": { "$ref": "#/$defs/date" },
             "by": { "type": "string", "minLength": 1 },
-            "record": { "type": "string", "minLength": 1 }
+            "record": { "type": "string", "pattern": "^docs/handoffs/G[0-9]-[^/]+-[0-9]{2}\\.yaml$" }
           }
         }
       ]

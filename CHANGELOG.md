@@ -37,6 +37,29 @@ S0a — minimal runtime bootstrap (plan `13` S0a, decisions in `19`).
 - Reproducible test suite `tests/run-tests.sh` (schema fixtures, script
   contracts, scratch-client generation, paths with spaces).
 
+### Fixed (S0a integration audit — pre-release, same 0.1.0)
+
+- `project.schema.json`: counters completed to the full `06` §4 namespace
+  (added `ASM`, `CTR`, `RSK`); approvals completed to the ten lifecycle gates
+  G0–G9 (`01` §4.2, DEC-06: added `g4_task_ready`, `g5_task_merge`,
+  `g6_staging_release`, `g9_change_approval`); `pii_in_evidence` constrained
+  to `minimized`; approval `record` constrained to the canonical
+  `docs/handoffs/G<n>-<slug>-<seq>.yaml` path. Template and fixtures aligned.
+- `new-client.sh`: refuses a dirty methodology (was a warning); builds the
+  client in a staging directory and validates it **before** the initial
+  commit; a failure at any step leaves no partial target; the lock records
+  the full 40-char commit SHA; command-local git identity fallback
+  (`Methodology Bootstrap <bootstrap@local.invalid>`) when none is configured.
+- `start-agent.sh`: lock/checkout comparison accepts an abbreviated (≥7 hex)
+  or full lock commit as a prefix of HEAD.
+- `spk-01-smoke-check.sh`: check (a) accepts the sentinel or complete
+  semantic evidence (client project id + locked methodology version + exact
+  stub statement, read from the client repo); partial/unrelated output fails.
+- Test suite: closed-set contract checks (counters/gates), dirty-bootstrap
+  refusal, validate-before-commit, no-partial-target, no-identity fallback,
+  deterministic fake-runtime SPK oracle cases, and an end-of-suite
+  methodology-unchanged assertion.
+
 ### Notes
 
 - Release tag `v0.1.0` intentionally not created in this working copy

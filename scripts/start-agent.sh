@@ -84,10 +84,12 @@ LOCK_COMMIT="$("$PYTHON" "$SCRIPT_DIR/lib/read-yaml-value.py" \
   "$CLIENT_DIR/methodology.lock.yaml" methodology.commit)" || LOCK_COMMIT=""
 LOCK_VERSION="$("$PYTHON" "$SCRIPT_DIR/lib/read-yaml-value.py" \
   "$CLIENT_DIR/methodology.lock.yaml" methodology.version)" || LOCK_VERSION=""
-HEAD_COMMIT="$(git -C "$METHOD_DIR" rev-parse --short=7 HEAD)"
+HEAD_COMMIT="$(git -C "$METHOD_DIR" rev-parse HEAD)"
 CHECKOUT_VERSION="$(head -n1 "$METHOD_DIR/VERSION" | tr -d '[:space:]')"
-if [[ "$LOCK_COMMIT" != "$HEAD_COMMIT" || "$LOCK_VERSION" != "$CHECKOUT_VERSION" ]]; then
-  echo "WARNING: lock/checkout mismatch — lock pins $LOCK_VERSION ($LOCK_COMMIT), checkout is $CHECKOUT_VERSION ($HEAD_COMMIT)." >&2
+# The lock may pin an abbreviated (>=7 hex) or full 40-hex commit; it matches
+# when it is a prefix of the checkout HEAD.
+if [[ -z "$LOCK_COMMIT" || "$HEAD_COMMIT" != "$LOCK_COMMIT"* || "$LOCK_VERSION" != "$CHECKOUT_VERSION" ]]; then
+  echo "WARNING: lock/checkout mismatch — lock pins $LOCK_VERSION ($LOCK_COMMIT), checkout is $CHECKOUT_VERSION (${HEAD_COMMIT:0:7})." >&2
   echo "Use upgrade-lock.sh (later stage) or a git worktree of the locked tag (02 §7). Proceeding with the current checkout." >&2
 fi
 

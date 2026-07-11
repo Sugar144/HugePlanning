@@ -16,6 +16,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 METHOD_DIR="${METHODOLOGY_DIR:-$(dirname "$SCRIPT_DIR")}"
 CLAUDE_BIN="${CLAUDE_BIN:-claude}"
+PYTHON="${PYTHON:-python3}"
 TIMEOUT_S="${SPK01_TIMEOUT:-600}"
 
 usage() {
@@ -82,8 +83,39 @@ echo "  logs:        $LOG_DIR"
 echo
 
 # (a) agent resolution — the S0a client-discovery stub prints SPK01-AGENT-OK.
-run_check a agent.log "SPK01-AGENT-OK" --agent client-discovery \
-  -p "Follow your agent instructions now." || true
+# Sentinel generation is probabilistic, so the exact token is not the sole
+# oracle: complete semantic evidence (the ACTUAL client project id + the
+# ACTUAL locked methodology version + the stub's exact closing statement, all
+# read back from the client repo, never leaked into the prompt) also passes.
+# Partial or unrelated output fails.
+EXPECT_ID="$("$PYTHON" "$SCRIPT_DIR/lib/read-yaml-value.py" \
+  "$CLIENT_DIR/project.yaml" project.id)" || EXPECT_ID=""
+EXPECT_VERSION="$("$PYTHON" "$SCRIPT_DIR/lib/read-yaml-value.py" \
+  "$CLIENT_DIR/methodology.lock.yaml" methodology.version)" || EXPECT_VERSION=""
+STUB_STATEMENT="Discovery is not implemented until methodology S1. This is the S0a stub."
+AGENT_STATUS=0
+AGENT_OUT="$(cd "$CLIENT_DIR" && \
+  CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1 \
+  timeout "$TIMEOUT_S" "$CLAUDE_BIN" --add-dir "$METHOD_DIR" \
+    --output-format text --agent client-discovery \
+    -p "Follow your agent instructions now." 2>&1)" || AGENT_STATUS=$?
+printf '%s\n' "$AGENT_OUT" > "$LOG_DIR/agent.log"
+if [[ "$AGENT_STATUS" -ne 0 ]]; then
+  echo "FAIL (a): claude exited $AGENT_STATUS — log: $LOG_DIR/agent.log" >&2
+  FAIL=$((FAIL + 1))
+elif grep -q "SPK01-AGENT-OK" <<<"$AGENT_OUT"; then
+  echo "PASS (a): found SPK01-AGENT-OK"
+  PASS=$((PASS + 1))
+elif [[ -n "$EXPECT_ID" && -n "$EXPECT_VERSION" ]] \
+    && grep -qF -- "$EXPECT_ID" <<<"$AGENT_OUT" \
+    && grep -qF -- "$EXPECT_VERSION" <<<"$AGENT_OUT" \
+    && grep -qF -- "$STUB_STATEMENT" <<<"$AGENT_OUT"; then
+  echo "PASS (a): semantic evidence (project id + lock version + stub statement)"
+  PASS=$((PASS + 1))
+else
+  echo "FAIL (a): neither SPK01-AGENT-OK nor complete semantic evidence in output — log: $LOG_DIR/agent.log" >&2
+  FAIL=$((FAIL + 1))
+fi
 
 # (b) skill invocation — methodology-smoke-check prints SPK01-SKILL-OK <version>.
 run_check b skill.log "SPK01-SKILL-OK" \

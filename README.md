@@ -34,11 +34,18 @@ implemented stage: **S0a — minimal runtime bootstrap** (plan `13` S0a).
 scripts/new-client.sh ~/Clients/acme-web ACME-WEB
 ```
 
-Copies the template, substitutes placeholders (project id, methodology path,
-date), writes `methodology.lock.yaml` from the current checkout, git-inits
-with the initial commit, and prints the G0 checklist (`03` §7). It never
-overwrites a non-empty directory. Then: create the private GitHub repo, push,
-protect `main`, fill `engagement.md` and the `project.yaml` G0 fields.
+Builds the client in a staging directory: copies the template, substitutes
+placeholders (project id, methodology path, date), writes
+`methodology.lock.yaml` from the current checkout (full 40-char commit SHA),
+**validates the generated client before the initial commit**, then git-inits,
+commits, and moves it into place — a failure at any step leaves no partial
+target behind. It never overwrites a non-empty directory and **refuses a
+dirty methodology checkout** (the lock must record what is actually on disk).
+If no git identity is configured, the initial commit uses the command-local
+fallback identity `Methodology Bootstrap <bootstrap@local.invalid>` (your git
+config is never modified). Finally it prints the G0 checklist (`03` §7).
+Then: create the private GitHub repo, push, protect `main`, fill
+`engagement.md` and the `project.yaml` G0 fields.
 
 ## Launch a work session
 
@@ -74,8 +81,12 @@ scripts/spk-01-smoke-check.sh <client-dir>
 
 Checks live: (a) methodology agent resolution, (b) skill invocation,
 (c) CLAUDE.md + rules loading via the env var, (d) deny rules block
-methodology writes while client writes stay allowed. Record the result below
-and keep `claude_code_version` current in the client lock.
+methodology writes while client writes stay allowed. Check (a) passes on the
+`SPK01-AGENT-OK` sentinel **or** on complete semantic evidence (the actual
+client project id + the actual locked methodology version + the stub's exact
+closing statement, verified against the client repo, never leaked into the
+prompt); partial or unrelated output fails. Record the result below and keep
+`claude_code_version` current in the client lock.
 
 Manual fallback (no CLI): from the client dir run
 `CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1 claude --add-dir <methodology> --agent client-discovery`,

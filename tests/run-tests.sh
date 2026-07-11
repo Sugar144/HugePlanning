@@ -9,6 +9,10 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REAL_METHOD="$(dirname "$SCRIPT_DIR")"
 PYTHON="${PYTHON:-python3}"
 
+# Cleanliness contract (02 §6): the suite must leave the real methodology
+# exactly as it found it — asserted at the end (T13), not merely cleaned up.
+REAL_BEFORE="$(git -C "$REAL_METHOD" status --porcelain)"
+
 PASS=0; FAIL=0
 note() { printf '%s\n' "$*"; }
 t_pass() { PASS=$((PASS + 1)); note "  PASS: $*"; }
@@ -104,7 +108,7 @@ rm -rf "$FAKE/.git"
 git -C "$FAKE" init --quiet --initial-branch=main
 git -C "$FAKE" add -A
 git -C "$FAKE" commit --quiet -m "test: fake methodology snapshot"
-FAKE_HEAD="$(git -C "$FAKE" rev-parse --short=7 HEAD)"
+FAKE_HEAD="$(git -C "$FAKE" rev-parse HEAD)"
 
 CLIENT="$WORK/scratch client A"
 expect_ok "new-client.sh creates scratch client" \
@@ -126,6 +130,9 @@ LOCK_COMMIT="$("$PYTHON" "$FAKE/scripts/lib/read-yaml-value.py" "$CLIENT/methodo
 [[ "$LOCK_COMMIT" == "$FAKE_HEAD" ]] \
   && t_pass "lock records methodology HEAD ($FAKE_HEAD)" \
   || t_fail "lock commit '$LOCK_COMMIT' != methodology HEAD '$FAKE_HEAD'"
+[[ "$LOCK_COMMIT" =~ ^[0-9a-f]{40}$ ]] \
+  && t_pass "generated lock uses the full 40-char SHA" \
+  || t_fail "generated lock commit is not a full 40-char SHA: '$LOCK_COMMIT'"
 expect_ok "validate.sh PASSES on fresh client" "$FAKE/scripts/validate.sh" "$CLIENT"
 expect_out "validator reports S0a PASS" "validate.sh: PASS"
 
@@ -242,6 +249,173 @@ expect_fail "post-session methodology drift raises ALERT" \
   env CLAUDE_BIN="$DRIFT_STUB" "$SA" "$CLIENT" client-discovery
 expect_out "  alert message" "ALERT: methodology changed"
 rm -f "$FAKE/drift-file.tmp"
+
+note "== T9: closed-set contracts — counters (06 §4) and gates (01 §4.2, DEC-06) =="
+CONTRACT_PY="$WORK_BASE/contract-check.py"
+cat > "$CONTRACT_PY" <<'PYEOF'
+"""contract-check.py <schema.json> <client-project.yaml> <counters|gates> <canonical,csv>
+Asserts schema.required == schema.properties == generated-client keys == the
+canonical closed set. Exit 1 with a diff on any divergence."""
+import json, sys, yaml
+schema_path, instance_path, which, canon_csv = sys.argv[1:5]
+canon = set(canon_csv.split(","))
+key = "counters" if which == "counters" else "approvals"
+schema = json.load(open(schema_path, encoding="utf-8"))
+node = schema["properties"][key]
+instance = yaml.safe_load(open(instance_path, encoding="utf-8"))
+problems = []
+for name, got in (("schema.required", set(node.get("required", []))),
+                  ("schema.properties", set(node.get("properties", {}))),
+                  ("instance", set(instance[key]))):
+    if got != canon:
+        problems.append(f"{key} {name}: missing={sorted(canon - got)} extra={sorted(got - canon)}")
+if problems:
+    print("\n".join(problems), file=sys.stderr)
+    sys.exit(1)
+PYEOF
+CANON_COUNTERS="OBJ,FR,NFR,INT,CON,DAT,CNT,BR,ASM,OQ,CLAR,CTR,EP,US,UC,TASK,BUG,CR,ADR,SPK,RSK,TEST,REL,INC"
+CANON_GATES="g0_readiness,g1_discovery_review,g2_business_baseline,g3_technical_baseline,g4_task_ready,g5_task_merge,g6_staging_release,g7_client_acceptance,g8_production_release,g9_change_approval"
+expect_ok "counter namespace is exactly the 24-prefix set (06 §4)" \
+  "$PYTHON" "$CONTRACT_PY" "$REAL_METHOD/schemas/project.schema.json" \
+  "$CLIENT/project.yaml" counters "$CANON_COUNTERS"
+expect_ok "approvals are exactly the ten gates G0-G9 (01 §4.2)" \
+  "$PYTHON" "$CONTRACT_PY" "$REAL_METHOD/schemas/project.schema.json" \
+  "$CLIENT/project.yaml" gates "$CANON_GATES"
+
+note "== T10: new-client.sh refuses a dirty methodology (lock faithfulness, 02 §7) =="
+echo "test-dirty-line" >> "$FAKE/README.md"
+expect_fail "dirty methodology (tracked change) refused" \
+  "$FAKE/scripts/new-client.sh" "$WORK/dirty client A" DIRTY-A
+expect_out "  actionable" "dirty"
+[[ ! -e "$WORK/dirty client A" ]] && t_pass "no target left behind (tracked change)" \
+  || { t_fail "target created from dirty methodology (tracked change)"; rm -rf "$WORK/dirty client A"; }
+git -C "$FAKE" checkout --quiet -- README.md
+touch "$FAKE/untracked-dirty-marker.tmp"
+expect_fail "dirty methodology (untracked file) refused" \
+  "$FAKE/scripts/new-client.sh" "$WORK/dirty client B" DIRTY-B
+[[ ! -e "$WORK/dirty client B" ]] && t_pass "no target left behind (untracked file)" \
+  || { t_fail "target created from dirty methodology (untracked file)"; rm -rf "$WORK/dirty client B"; }
+rm -f "$FAKE/untracked-dirty-marker.tmp"
+
+note "== T11: safe bootstrap sequence (validate before commit; no partial targets) =="
+FAKE2="$WORK/method copy B"
+mkdir -p "$FAKE2"
+cp -R "$REAL_METHOD/." "$FAKE2/"
+rm -rf "$FAKE2/.git"
+sed -i 's/current_stage: onboarding/current_stage: development/' \
+  "$FAKE2/templates/client-repo/project.yaml"
+git -C "$FAKE2" init --quiet --initial-branch=main
+git -C "$FAKE2" add -A
+git -C "$FAKE2" commit --quiet -m "test: methodology snapshot with broken template"
+expect_fail "invalid generated client refused before any commit" \
+  "$FAKE2/scripts/new-client.sh" "$WORK/invalid client" BAD-TPL
+expect_out "  validator names the field" "current_stage"
+[[ ! -e "$WORK/invalid client" ]] && t_pass "validation failure leaves no target" \
+  || { t_fail "validation failure left a target behind"; rm -rf "$WORK/invalid client"; }
+STAGING_LEFT="$(find "$WORK" -maxdepth 1 -name '.new-client*' 2>/dev/null || true)"
+[[ -z "$STAGING_LEFT" ]] && t_pass "no staging residue after failure" \
+  || t_fail "staging residue left behind: $STAGING_LEFT"
+
+PRE="$WORK/pre existing"
+mkdir -p "$PRE"; echo keep > "$PRE/keep.txt"
+expect_fail "non-empty target refused" "$FAKE/scripts/new-client.sh" "$PRE" PRE-X
+[[ "$(cat "$PRE/keep.txt")" == "keep" && "$(ls -A "$PRE")" == "keep.txt" ]] \
+  && t_pass "existing target content untouched" || t_fail "existing target was damaged"
+
+EMPTYT="$WORK/empty target"
+mkdir -p "$EMPTYT"
+expect_ok "pre-existing EMPTY directory accepted as target" \
+  "$FAKE/scripts/new-client.sh" "$EMPTYT" EMPTY-OK
+[[ "$(git -C "$EMPTYT" rev-list --count HEAD 2>/dev/null)" == "1" ]] \
+  && t_pass "exactly one initial commit in empty-dir target" \
+  || t_fail "empty-dir target has no single initial commit"
+
+note "== T11b: bootstrap works without any git identity (fallback identity) =="
+NOHOME="$WORK_BASE/nohome"; mkdir -p "$NOHOME"
+# Overriding HOME hides pip --user site-packages from python; keep them
+# reachable so this test exercises the missing GIT identity, not a broken env.
+USER_SITE="$("$PYTHON" -c 'import site; print(site.getusersitepackages())' 2>/dev/null || true)"
+expect_ok "client created with no git identity configured" \
+  env -u GIT_AUTHOR_NAME -u GIT_AUTHOR_EMAIL -u GIT_COMMITTER_NAME -u GIT_COMMITTER_EMAIL \
+      HOME="$NOHOME" XDG_CONFIG_HOME="$NOHOME/xdg" \
+      GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null GIT_CONFIG_NOSYSTEM=1 \
+      PYTHONPATH="$USER_SITE${PYTHONPATH:+:$PYTHONPATH}" \
+  "$FAKE/scripts/new-client.sh" "$WORK/no id client" NO-ID
+if [[ -d "$WORK/no id client/.git" ]]; then
+  AUTHOR="$(git -C "$WORK/no id client" log -1 --format='%an <%ae>')"
+  [[ "$AUTHOR" == "Methodology Bootstrap <bootstrap@local.invalid>" ]] \
+    && t_pass "fallback identity on the initial commit ($AUTHOR)" \
+    || t_fail "unexpected initial-commit identity: '$AUTHOR'"
+else
+  t_fail "no-identity client was not created"
+fi
+CONFIGURED_EMAIL="$(git -C "$CLIENT" log -1 --format='%ae')"
+[[ "$CONFIGURED_EMAIL" != "bootstrap@local.invalid" ]] \
+  && t_pass "configured identity still used when present" \
+  || t_fail "fallback identity overrode the configured one"
+
+note "== T12: SPK-01 oracle robustness (deterministic fake runtime) =="
+FAKE_VERSION="$(head -n1 "$FAKE/VERSION" | tr -d '[:space:]')"
+make_fake_claude() { # $1 = path, $2 = agent-reply mode
+  local path="$1" mode="$2" agent_reply
+  case "$mode" in
+    sentinel)
+      agent_reply='echo "SPK01-AGENT-OK"; echo "Project TEST-CLIENT, stage onboarding, profile standard, methodology __VER__."' ;;
+    semantic)
+      agent_reply='echo "The client project id is TEST-CLIENT at stage onboarding, profile standard; the locked methodology version is __VER__."; echo "Discovery is not implemented until methodology S1. This is the S0a stub."' ;;
+    partial)
+      agent_reply='echo "The client project id is TEST-CLIENT at stage onboarding."; echo "Discovery is not implemented until methodology S1. This is the S0a stub."' ;;
+    unrelated)
+      agent_reply='echo "Hello! I am a helpful assistant. How can I help you today?"' ;;
+  esac
+  cat > "$path" <<FAKEEOF
+#!/usr/bin/env bash
+if [[ "\${1:-}" == "--version" ]]; then echo "0.0.0-fake"; exit 0; fi
+prompt=""; prev=""
+for a in "\$@"; do [[ "\$prev" == "-p" ]] && prompt="\$a"; prev="\$a"; done
+case "\$prompt" in
+  *"agent instructions"*) ${agent_reply//__VER__/$FAKE_VERSION} ;;
+  *"methodology-smoke-check"*) echo "SPK01-SKILL-OK $FAKE_VERSION" ;;
+  *"Two questions"*) printf 'SPK01-CLAUDEMD-OK\nSPK01-RULES-OK\n' ;;
+  *"Permissions test"*) : > spk01-client-write.txt; echo "client write ok; methodology write blocked by permission settings" ;;
+  *) echo "unhandled prompt" ;;
+esac
+exit 0
+FAKEEOF
+  chmod +x "$path"
+}
+spk_case() { # $1 = mode, $2 = expected exit (0|1), $3 = expected (a) line
+  local mode="$1" want_status="$2" want_line="$3" st=0
+  make_fake_claude "$WORK_BASE/fake-claude-$mode" "$mode"
+  OUT="$(CLAUDE_BIN="$WORK_BASE/fake-claude-$mode" SPK01_TIMEOUT=30 \
+    "$FAKE/scripts/spk-01-smoke-check.sh" "$CLIENT" 2>&1)" || st=$?
+  if [[ "$st" -eq "$want_status" ]]; then t_pass "spk $mode: exit $st"; else
+    t_fail "spk $mode: exit $st (wanted $want_status); output follows"; printf '%s\n' "$OUT" >&2; fi
+  expect_out "  spk $mode: check (a) verdict" "$want_line"
+}
+spk_case sentinel  0 "PASS (a)"
+spk_case semantic  0 "PASS (a)"
+spk_case partial   1 "FAIL (a)"
+spk_case unrelated 1 "FAIL (a)"
+ST=0
+OUT="$(CLAUDE_BIN="$WORK_BASE/no-such-claude-bin" \
+  "$FAKE/scripts/spk-01-smoke-check.sh" "$CLIENT" 2>&1)" || ST=$?
+[[ "$ST" -eq 2 ]] && t_pass "runtime unavailable is exit 2 (not a fake FAIL)" \
+  || t_fail "runtime-unavailable exit was $ST (wanted 2)"
+expect_out "  manual-procedure pointer" "manual"
+
+note "== T13: suite leaves the real methodology unchanged =="
+REAL_AFTER="$(git -C "$REAL_METHOD" status --porcelain)"
+if [[ "$REAL_BEFORE" == "$REAL_AFTER" ]]; then
+  t_pass "real methodology git status unchanged by the suite"
+else
+  t_fail "real methodology git status drifted during the suite:"
+  diff <(printf '%s\n' "$REAL_BEFORE") <(printf '%s\n' "$REAL_AFTER") >&2 || true
+fi
+BYTECODE="$(find "$REAL_METHOD/scripts" "$REAL_METHOD/tests" \
+  \( -name '__pycache__' -o -name '*.pyc' \) 2>/dev/null || true)"
+[[ -z "$BYTECODE" ]] && t_pass "no bytecode or cache residue in the methodology" \
+  || t_fail "bytecode residue left behind: $BYTECODE"
 
 echo
 echo "== RESULT: $PASS passed, $FAIL failed =="

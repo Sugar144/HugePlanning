@@ -26,8 +26,12 @@ approvals:
   g1_discovery_review: null
   g2_business_baseline: null
   g3_technical_baseline: null
+  g4_task_ready: null
+  g5_task_merge: null
+  g6_staging_release: null
   g7_client_acceptance: null
   g8_production_release: null
+  g9_change_approval: null
 
 privacy:
   data_sensitivity: low
@@ -36,8 +40,8 @@ privacy:
   deletion_contact: privacy@example.invalid
 
 counters:
-  { FR: 1, NFR: 1, INT: 1, CON: 1, DAT: 1, CNT: 1, BR: 1, OBJ: 1, OQ: 1, CLAR: 1,
-    EP: 1, US: 1, UC: 1, TASK: 1, ADR: 1, SPK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }
+  { FR: 1, NFR: 1, INT: 1, CON: 1, DAT: 1, CNT: 1, BR: 1, ASM: 1, OBJ: 1, OQ: 1, CLAR: 1, CTR: 1,
+    EP: 1, US: 1, UC: 1, TASK: 1, ADR: 1, SPK: 1, RSK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }
 
 extras:
   note: not part of the contract

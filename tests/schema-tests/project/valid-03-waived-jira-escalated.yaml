@@ -31,8 +31,12 @@ approvals:
   g1_discovery_review: {date: 2026-07-10, by: developer, record: "docs/handoffs/G1-discovery-review-01.yaml"}
   g2_business_baseline: null
   g3_technical_baseline: null
+  g4_task_ready: null
+  g5_task_merge: null
+  g6_staging_release: null
   g7_client_acceptance: null
   g8_production_release: null
+  g9_change_approval: null
 
 privacy:
   data_sensitivity: high
@@ -41,5 +45,5 @@ privacy:
   deletion_contact: privacy@example.invalid
 
 counters:
-  { FR: 12, NFR: 6, INT: 3, CON: 2, DAT: 3, CNT: 15, BR: 7, OBJ: 3, OQ: 9, CLAR: 4,
-    EP: 2, US: 5, UC: 1, TASK: 1, ADR: 2, SPK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }
+  { FR: 12, NFR: 6, INT: 3, CON: 2, DAT: 3, CNT: 15, BR: 7, ASM: 1, OBJ: 3, OQ: 9, CLAR: 4, CTR: 1,
+    EP: 2, US: 5, UC: 1, TASK: 1, ADR: 2, SPK: 1, RSK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }

@@ -1,4 +1,6 @@
-# expect-error: 'reason' is a required property
+# expect-error: 'ASM' is a required property
+# Adversarial (06 §4 closed set): the counter namespace without ASM is NOT a
+# valid project.yaml — the abbreviated 03 §4 example must not shrink the set.
 schema_version: 1.0.0
 project:
   id: BISTRO-LANDING
@@ -8,8 +10,8 @@ project:
   archetype: [static-landing]
   profile: lite
   profile_history:
-    - {value: lite, at: 2026-07-11, gate: G0, by: developer
-      }
+    - {value: lite, at: 2026-07-11, gate: G0, by: developer,
+       reason: "static landing, no auth/payments/sensitive data, no trigger"}
   status: active
   repository_visibility: private
 
@@ -39,6 +41,7 @@ privacy:
   retention_after_close_months: 24
   deletion_contact: privacy@example.invalid
 
-counters:
-  { FR: 1, NFR: 1, INT: 1, CON: 1, DAT: 1, CNT: 1, BR: 1, ASM: 1, OBJ: 1, OQ: 1, CLAR: 1, CTR: 1,
-    EP: 1, US: 1, UC: 1, TASK: 1, ADR: 1, SPK: 1, RSK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }
+counters:              # ASM deliberately missing (CTR/RSK present)
+  { OBJ: 1, FR: 1, NFR: 1, INT: 1, CON: 1, DAT: 1, CNT: 1, BR: 1, OQ: 1,
+    CLAR: 1, CTR: 1, EP: 1, US: 1, UC: 1, TASK: 1, BUG: 1, CR: 1, ADR: 1,
+    SPK: 1, RSK: 1, TEST: 1, REL: 1, INC: 1 }
