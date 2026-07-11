@@ -212,3 +212,14 @@ Three reviewer findings (all validated) plus consistency findings from the manda
 3. **Under-classification pressure** (choosing LITE to save work) — mitigated by trigger-based auto-upgrade, default-up rule, and the agent's duty to propose with evidence.
 4. **Stage-driven schema creation** could fragment conventions — mitigated by the S0a conventions rule (ID grammar, enums, `schema_version` policy fixed once).
 5. **Verification snapshots add a release-time step** — accepted; it replaces continuous matrix-status churn with one auditable record per release.
+
+## 5. Post-S0a maintenance decisions (2026-07-11, branch `chore/planning-assurance-organization`)
+
+Recorded after the `v0.1.0` release, from the verified S0a execution (experiment report + integration audit + operator evaluation). Append-only continuation of this log.
+
+### R2-34 — Proportional implementation-assurance loop (new file `22`)
+
+- **Validated?** Yes. S0a surfaced five verified lessons the plan did not encode: (F1) an example silently shrank closed normative sets (6 gates vs G0–G9; 21 counters vs the full namespace) and the generated schema inherited the example; (F2/F3) the material defects were refusal-path gaps (dirty-bootstrap warning instead of refusal; no validation before the initial client commit); (F4) a verification oracle produced a false negative (SPK sentinel) that naive process would have "fixed" as a product bug; (F5) one candidate's Skill fixture failed only under the real runtime while its own environment reported `UNVERIFIED`.
+- **Decision:** **ACCEPT.** New file `22_implementation_assurance_and_adversarial_validation.md` defines the stage-level assurance sequence (contract reconciliation → risk-based adversarial test design → implementation → bounded independent review → deterministic validation → real-runtime validation where relevant → failure classification → release evidence), the review policy (one principal implementer; no default subagents; ChatGPT-class models as targeted gate auditors only; parallel duplicate implementation demoted to an explicit experiment), the `CODE | TEST | CONTRACT | PROCESS | ENVIRONMENT` failure classes with the four runtime-result classes, proportionality factors, and the concise release-evidence set. A new file (rather than growing `13` or `10`) keeps one authority: `13` stays the roadmap/effort model, `10` stays client-product testing, `02` §10 stays methodology test layers — all three now reference `22` instead of restating process.
+- **Affected files:** new `22`; `00` (index, count 21→22 files, §5 loop pointer); `13` §2 (loop executes inside `22`); `15` (RSK-A14 pointer, new RSK-A16, validation-plan items 5–6); `10` §8 (cross-reference).
+- **Validation:** documentation-only change per `22` §6 (no runtime surface); deterministic suite re-run green; no live SPK-01 required.

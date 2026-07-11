@@ -2,7 +2,7 @@
 
 **System:** AI-assisted freelance web development operating system
 **Baseline:** `plan_director_sistema_freelance_web_asistido_por_ia.md` (v0.1, immutable — untouched)
-**This plan:** V2 ("robustness"), 2026-07-11, 21 files, implementation-ready. V1 preserved at tag `plan-v1.0`; V1 decision log in `16` (frozen); V2 decision log in `19`.
+**This plan:** V2 ("robustness"), 2026-07-11, 22 files, implementation-ready. V1 preserved at tag `plan-v1.0`; V1 decision log in `16` (frozen); V2 decision log in `19`.
 
 ---
 
@@ -44,6 +44,7 @@ Every project = **archetype × profile** (`21`):
 | 19 | `20_specification_completeness_matrix.md` | Generation-readiness of every element; no S0a blockers |
 | 20 | `15_risks_open_decisions_and_validation_plan.md` | Risk register, open decisions, deferred limitations |
 | 21 | `16_baseline_audit_and_decision_log.md` | V1 audit of the original baseline (historical, frozen) |
+| 22 | `22_implementation_assurance_and_adversarial_validation.md` | Stage-level assurance loop for building the methodology itself (S0a lessons; read with `13`) |
 
 ## 4. MVP definition (full: `13` §1)
 
@@ -59,7 +60,7 @@ S5 Jira (profile-conditional, before S8) · RES-06/07/08 legal research
 (during S2–S4, before first real client) · S9 automation (post-MVP)
 ```
 
-Every stage runs the AI-first loop: design contract → AI generation → integration → deterministic validation → **behavioural scenario** → human review → bounded correction (≤2 cycles) → release. Generation is cheap; **behavioural validation is the bottleneck and the planning basis** (R2-09).
+Every stage runs the AI-first loop (`13` §2), executed under the proportional assurance sequence of `22`: contract reconciliation → risk-based test design → implementation → bounded independent review (risk-justified) → deterministic validation → real-runtime validation where relevant → failure classification → release evidence. Generation is cheap; **behavioural validation is the bottleneck and the planning basis** (R2-09).
 
 | Scenario | Focused hours | Calendar (~8 fh/wk) |
 |---|---|---|

@@ -96,7 +96,7 @@ A test failing intermittently: quarantined (`quarantined: true` on its definitio
 
 ## 8. Methodology testing (product = the method; baseline §21 retained)
 
-Covered in `02` §10 (schema/script tests, interview scenarios, golden artifacts, regression cases). Additional golden checks tied to this file: scenario runs must produce matrix-mappable ACs (testability golden), and the "no invention" check (`07` §7). Design-session scenarios for `05`: a baseline with a hidden infeasibility (agent must catch at P1), a missing-client-fact case (must produce CLAR, not an invented answer).
+Covered in `02` §10 (schema/script tests, interview scenarios, golden artifacts, regression cases); the stage-level assurance process that builds and releases the methodology itself is `22` (this file governs client-product testing only). Additional golden checks tied to this file: scenario runs must produce matrix-mappable ACs (testability golden), and the "no invention" check (`07` §7). Design-session scenarios for `05`: a baseline with a hidden infeasibility (agent must catch at P1), a missing-client-fact case (must produce CLAR, not an invented answer).
 
 ## 9. Systemic learning loop (baseline §16.5 retained verbatim)
 
