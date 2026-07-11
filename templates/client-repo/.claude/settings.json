@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "deny": [
+      "Write(/{{METHOD_DIR}}/**)",
+      "Edit(/{{METHOD_DIR}}/**)"
+    ]
+  }
+}

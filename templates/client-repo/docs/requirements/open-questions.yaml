@@ -1,0 +1,7 @@
+# open-questions.yaml — ALWAYS present, created empty for every profile (R2-30).
+# Any agent may APPEND entries; answers/closures follow the owning stage's
+# procedure; nothing is ever deleted — terminal statuses only (06 §1a).
+# Full JSON schema lands at methodology stage S0b; entry shapes in 06 §7.3.
+schema_version: 1.0.0
+questions: []
+contradictions: []

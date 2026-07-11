@@ -1,0 +1,45 @@
+# Valid: waived Jira (object branch), profile escalated lite -> high-risk,
+# multiple archetypes, en-GB language tag.
+schema_version: 1.0.0
+project:
+  id: SHOP-2
+  name: Shop Two
+  client_display_name: Fictitious Shop Ltd
+  language: en-GB
+  archetype: [corporate-content-site, e-commerce]
+  profile: high-risk
+  profile_history:
+    - {value: lite, at: 2026-07-01, gate: G0, by: developer,
+       reason: "hypothesis: brochure site only"}
+    - {value: high-risk, at: 2026-07-10, gate: G1, by: developer,
+       reason: "payments trigger surfaced during discovery (auto-upgrade)"}
+  status: paused
+  repository_visibility: private
+
+workflow:
+  current_stage: specification
+  stage_status: blocked
+  stages_done: [onboarding, discovery]
+
+tracking:
+  jira:
+    waived:
+      reason: "tiny backlog, recorded per R2-06"
+
+approvals:
+  g0_readiness: {date: 2026-07-01, by: developer, record: "docs/handoffs/G0-readiness-01.yaml"}
+  g1_discovery_review: {date: 2026-07-10, by: developer, record: "docs/handoffs/G1-discovery-review-01.yaml"}
+  g2_business_baseline: null
+  g3_technical_baseline: null
+  g7_client_acceptance: null
+  g8_production_release: null
+
+privacy:
+  data_sensitivity: high
+  pii_in_evidence: minimized
+  retention_after_close_months: 36
+  deletion_contact: privacy@example.invalid
+
+counters:
+  { FR: 12, NFR: 6, INT: 3, CON: 2, DAT: 3, CNT: 15, BR: 7, OBJ: 3, OQ: 9, CLAR: 4,
+    EP: 2, US: 5, UC: 1, TASK: 1, ADR: 2, SPK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }

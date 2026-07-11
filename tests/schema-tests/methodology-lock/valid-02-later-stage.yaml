@@ -1,0 +1,14 @@
+# Valid: later-stage lock (02 §7 example shape): more schemas, full-length
+# commit hash, unknown CLI version recorded explicitly.
+schema_version: 1.0.0
+methodology:
+  repository: freelance-methodology
+  version: "v0.3.0"
+  commit: "4f2a9c1e8b0d2c4a6f8e0b1d3c5a7e9f1b3d5a7c"
+  applied_at: 2026-09-02
+  claude_code_version: "unknown"
+schemas:
+  project: 1.0.0
+  methodology-lock: 1.0.0
+  requirements: 1.1.0
+  delivery-backlog: 1.0.0

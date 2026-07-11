@@ -1,0 +1,19 @@
+# Raw sensitive evidence — LOCAL ONLY, never committed (R2-03, 03 §6).
+# Backed up only to the operator's encrypted backup location.
+evidence-raw/
+
+# Secrets — never in Git (03 §6). Keep .env.example (names only).
+.env
+.env.*
+!.env.example
+
+# Dependencies and build outputs
+node_modules/
+dist/
+build/
+out/
+.cache/
+
+# OS junk
+.DS_Store
+Thumbs.db

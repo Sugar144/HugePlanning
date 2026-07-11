@@ -1,0 +1,44 @@
+# project.yaml — project state (schema: project.schema.json 1.0.0, plan 03 §4)
+# G0 duties: set name, client_display_name, language, archetype + profile
+# hypothesis WITH rationale (21 §4), privacy fields. Free-hand edits elsewhere
+# are prohibited (06 §1a): stage/approvals change only via gate procedures,
+# counters only at ID allocation.
+schema_version: 1.0.0
+project:
+  id: {{PROJECT_ID}}
+  name: {{PROJECT_ID}}
+  client_display_name: "SET AT G0 - client display name"
+  language: es
+  archetype: [corporate-content-site]   # hypothesis — confirm/change at G0 (21 §1)
+  profile: standard                     # lite | standard | high-risk — hypothesis at G0 (21 §2-4)
+  profile_history:
+    - {value: standard, at: {{DATE}}, gate: G0, by: developer,
+       reason: "SET AT G0 - record the profile hypothesis rationale"}
+  status: active
+  repository_visibility: private
+
+workflow:
+  current_stage: onboarding
+  stage_status: in_progress
+  stages_done: []
+
+tracking:
+  jira: default        # none (LITE default) | default | waived: {reason: ...} (R2-06)
+
+approvals:             # latest gate records only; full history in docs/handoffs/
+  g0_readiness: null
+  g1_discovery_review: null
+  g2_business_baseline: null
+  g3_technical_baseline: null
+  g7_client_acceptance: null
+  g8_production_release: null
+
+privacy:               # DEC-10 defaults — review at G0
+  data_sensitivity: medium
+  pii_in_evidence: minimized
+  retention_after_close_months: 24
+  deletion_contact: "SET AT G0 - deletion request contact"
+
+counters:              # next free number per ID type (06 §4); single-writer
+  { FR: 1, NFR: 1, INT: 1, CON: 1, DAT: 1, CNT: 1, BR: 1, OBJ: 1, OQ: 1, CLAR: 1,
+    EP: 1, US: 1, UC: 1, TASK: 1, ADR: 1, SPK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }

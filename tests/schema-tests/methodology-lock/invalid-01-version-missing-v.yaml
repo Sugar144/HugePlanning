@@ -1,0 +1,11 @@
+# expect-error: at methodology/version
+schema_version: 1.0.0
+methodology:
+  repository: freelance-methodology
+  version: "0.1.0"
+  commit: "51e0bf3"
+  applied_at: 2026-07-11
+  claude_code_version: "2.1.207"
+schemas:
+  project: 1.0.0
+  methodology-lock: 1.0.0

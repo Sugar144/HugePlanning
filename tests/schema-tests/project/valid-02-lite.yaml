@@ -1,0 +1,40 @@
+# Valid: LITE landing page (no Jira — LITE default), fresh at onboarding.
+schema_version: 1.0.0
+project:
+  id: BISTRO-LANDING
+  name: Bistro Landing
+  client_display_name: Bistro Ficticio
+  language: es
+  archetype: [static-landing]
+  profile: lite
+  profile_history:
+    - {value: lite, at: 2026-07-11, gate: G0, by: developer,
+       reason: "static landing, no auth/payments/sensitive data, no trigger"}
+  status: active
+  repository_visibility: private
+
+workflow:
+  current_stage: onboarding
+  stage_status: in_progress
+  stages_done: []
+
+tracking:
+  jira: none
+
+approvals:
+  g0_readiness: null
+  g1_discovery_review: null
+  g2_business_baseline: null
+  g3_technical_baseline: null
+  g7_client_acceptance: null
+  g8_production_release: null
+
+privacy:
+  data_sensitivity: low
+  pii_in_evidence: minimized
+  retention_after_close_months: 24
+  deletion_contact: privacy@example.invalid
+
+counters:
+  { FR: 1, NFR: 1, INT: 1, CON: 1, DAT: 1, CNT: 1, BR: 1, OBJ: 1, OQ: 1, CLAR: 1,
+    EP: 1, US: 1, UC: 1, TASK: 1, ADR: 1, SPK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }

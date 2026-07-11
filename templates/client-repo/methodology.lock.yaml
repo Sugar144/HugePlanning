@@ -1,0 +1,13 @@
+# methodology.lock.yaml — pins the methodology version for this project (02 §7)
+# Written by new-client.sh; changed only by upgrade-lock.sh (upgrade is always
+# intentional). claude_code_version = CLI version at the last SPK-01 smoke check.
+schema_version: 1.0.0
+methodology:
+  repository: freelance-methodology
+  version: "{{METHODOLOGY_VERSION}}"
+  commit: "{{METHODOLOGY_COMMIT}}"
+  applied_at: {{DATE}}
+  claude_code_version: "{{CLAUDE_CODE_VERSION}}"
+schemas:
+  project: 1.0.0
+  methodology-lock: 1.0.0
