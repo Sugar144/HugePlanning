@@ -1,110 +1,118 @@
-# 00 — Final Plan Index
+# 00 — Final Plan Index (V2)
 
 **System:** AI-assisted freelance web development operating system
 **Baseline:** `plan_director_sistema_freelance_web_asistido_por_ia.md` (v0.1, immutable — untouched)
-**This plan:** v1.0, 2026-07-10, 17 files, implementation-ready
-**Status:** complete; consistency review passed (1 correction pass applied)
+**This plan:** V2 ("robustness"), 2026-07-11, 21 files, implementation-ready. V1 preserved at tag `plan-v1.0`; V1 decision log in `16` (frozen); V2 decision log in `19`.
 
 ---
 
-## 1. Executive summary
+## 1. Architecture summary
 
-This plan turns the baseline's high-level architecture into a definitive, implementation-ready design. The baseline's core is **retained**: one versioned methodology repository + one independent repository per client, connected via `--add-dir`; Git as the source of truth; Jira as an exported operational view; two specialist interviewer agents; human gates everywhere; manual-first with a designed automation path for every manual step.
+One versioned **methodology repository** (agents, skills, rules, knowledge, templates, schemas, scripts, tests) connected read-only via `--add-dir` — a **verified official mechanism** (`19` §0) — to one **independent repository per client** (evidence, canonical data, documents, code, releases). Git is canonical truth in four layers with explicit precedence (evidence → canonical data → human documents → operational views); raw sensitive evidence lives outside Git in `evidence-raw/` with sanitized, anchor-preserving evidence committed (R2-03). Two interviewer agents (client discovery; technical solution + UX) plus seven delivery-side agents work through ten human gates (G0–G9, records append-only in `docs/handoffs/`). Jira, where used, owns only in-flight workflow status (Model B). The methodology is versioned, locked per project, and tested like software.
 
-What this plan **adds** (full audit in `16`): complete behavioural architectures for both interviewers (state machines, coverage models, question-selection logic, completion criteria); a normalized artifact/ID/status system with schemas; ten explicit gates G0–G9; a bounded implementation loop with separated implementer/reviewer agents; a layered testing architecture including tests for the methodology itself; a provider-agnostic CI/CD and deployment design; operations, incident, change-control, and retention procedures; and a 9-stage roadmap (S0–S8 + S9 automation) reaching a lifecycle-complete MVP in roughly 3.5–4 months of part-time work. Twenty material decisions/deviations are logged with rationale (`16` §6, DEC-01…DEC-20).
+## 2. Process profile model (V2 core change)
 
-## 2. System map
+Every project = **archetype × profile** (`21`):
 
-```text
-Methodology repo (how) ──--add-dir──▶ Client repo (what) ──▶ GitHub (truth, CI)
-   agents · skills · rules ·             evidence · requirements ·   ├─▶ Jira (view)
-   knowledge · templates ·               docs · backlog · code ·     ├─▶ Staging
-   schemas · scripts · tests             tests · releases · ops      └─▶ Production
-                        YOU: orchestrator + gates G0–G9
-Lifecycle: onboarding → discovery → specification → technical_design → planning
-           → implementation → validation → release → operation (→ change loop)
-```
+- **Archetype** (8: static-landing, corporate-content-site, cms-content-site, forms-or-lead-generation, booking-system, e-commerce, authenticated-web-app, integration-heavy-web-app, migration-or-replatforming) — *what* is being built → activates interview topics, knowledge packs, decision categories.
+- **Profile** (`LITE | STANDARD | HIGH-RISK`) — *how much* assurance → activates gates, artifacts, reviewers, test layers, deployment/ops floors through the single requirement matrix (`21` §5).
+- Interaction: archetype decides whether a concern exists; profile decides how much assurance it gets; conflicts resolve stricter. Profile derives from **risk triggers** (payments, auth, sensitive data, migration, availability…), is hypothesized at G0, **confirmed at G1**, re-verified at G3, auto-upgraded on any trigger, downgraded only by explicit human decision with recorded reasoning. Agents propose, never select; ambiguity defaults up.
+- Result: a landing page carries ≈6–10 h of process overhead (`21` §7) while an e-commerce build gets full assurance — same repos, same evidence discipline, strict subset vs superset.
 
-## 3. Files and reading path
+## 3. Reading order and file inventory
 
-Read in this order (each file states purpose + baseline traceability at top):
+| Order | File | Contents |
+|---|---|---|
+| 1 | `19_revision_audit_and_change_log.md` | V2 decisions R2-01..25 + Claude Code verification — read first |
+| 2 | `01_architecture_and_operating_model.md` | System architecture, layers, stages, gates, authority |
+| 3 | `21_process_profiles_and_archetypes.md` | Archetypes, profiles, triggers, requirement matrix, LITE fast path |
+| 4 | `02_methodology_repository_design.md` | Methodology repo, versioning/lock, verified distribution, scripts, tests |
+| 5 | `03_client_repository_design.md` | Client repo, evidence split, project.yaml, privacy, G0 |
+| 6 | `04_client_discovery_interviewer_system.md` | Discovery interviewer (38 dimensions; sanitizing capture; trigger & content duties) |
+| 7 | `05_technical_solution_interviewer_system.md` | Technical/UX interviewer, decision backlog, ADRs, G3-V visual approval |
+| 8 | `06_artifact_and_information_architecture.md` | Artifact inventory/ownership, IDs, statuses, schemas (requirements v2, NFR, DAT, content) |
+| 9 | `07_requirements_and_specification_pipeline.md` | Normalization, audits, product backlog, content inventory, G1/G2 |
+| 10 | `08_backlog_jira_and_traceability.md` | Two backlogs, slicing, story/task DoR/DoD, Jira Model B, traceability |
+| 11 | `09_implementation_agent_workflow.md` | Task loop, context packages (retained), reviewers, worktree policy |
+| 12 | `10_testing_and_quality_architecture.md` | Test layers, definitions-only matrix, verification snapshots |
+| 13 | `11_git_github_ci_cd_and_deployment.md` | Branches, pipeline, adapters, releases, rollback |
+| 14 | `12_operations_change_management_and_maintenance.md` | Monitoring, incidents, CRs, maintenance tiers, retention/deletion |
+| 15 | `17_knowledge_architecture_and_authoring_standard.md` | Knowledge taxonomy, metadata, sourcing, retrieval, activation, per-file minimums |
+| 16 | `18_knowledge_research_and_evidence_plan.md` | Research backlog RES-01..10 (provisional vs research-mandatory) |
+| 17 | `13_mvp_scope_and_implementation_roadmap.md` | MVP, AI-first stages S0a–S9, scenarios, critical path, automation map |
+| 18 | `14_agent_skill_rule_and_knowledge_catalog.md` | Contracts: 9 agents, 18 skills, 8 rules, 19 knowledge files |
+| 19 | `20_specification_completeness_matrix.md` | Generation-readiness of every element; no S0a blockers |
+| 20 | `15_risks_open_decisions_and_validation_plan.md` | Risk register, open decisions, deferred limitations |
+| 21 | `16_baseline_audit_and_decision_log.md` | V1 audit of the original baseline (historical, frozen) |
 
-| File | Contents |
-|---|---|
-| `16_baseline_audit_and_decision_log.md` | Audit of the baseline; gaps; decision log DEC-01…20 — read first to understand every deviation |
-| `01_architecture_and_operating_model.md` | System architecture, authority model, information layers & precedence, stages, gates G0–G9, agent roster, session/cost model |
-| `02_methodology_repository_design.md` | Methodology repo structure, versioning + lock, read-only enforcement, `--add-dir` spike + fallback, scripts, methodology testing |
-| `03_client_repository_design.md` | Client repo structure, creation process, `project.yaml`, client `CLAUDE.md`, privacy/secrets, G0 checklist |
-| `04_client_discovery_interviewer_system.md` | **Priority subsystem.** Full behavioural architecture of the client interviewer (38 design dimensions, cross-indexed in its §15) |
-| `05_technical_solution_interviewer_system.md` | The developer-facing design interviewer: decision backlog, option analysis, ADRs, spikes, CLAR requests |
-| `06_artifact_and_information_architecture.md` | Artifact inventory, status models, ID grammar, schemas, templates, anti-duplication rules |
-| `07_requirements_and_specification_pipeline.md` | Evidence → normalized requirements → audits → PRD → estimation → client validation (G1/G2) |
-| `08_backlog_jira_and_traceability.md` | Decomposition rules, task DoR/DoD, Jira mapping/export, traceability model |
-| `09_implementation_agent_workflow.md` | Task loop: context packages, implementer + reviewers, bounded corrections, PRs, worktree policy |
-| `10_testing_and_quality_architecture.md` | Layered test strategy, test matrix, timing, adversarial-review relationship, security/a11y baselines |
-| `11_git_github_ci_cd_and_deployment.md` | Branches, protections, pipeline, environments, provider adapters, release manifests, rollback |
-| `12_operations_change_management_and_maintenance.md` | Monitoring, incidents, CR workflow (G9), dependency updates, retention/deletion |
-| `13_mvp_scope_and_implementation_roadmap.md` | MVP boundary, stages S0–S9 (objective/deliverables/tests/gates/effort each), critical path, automation map |
-| `14_agent_skill_rule_and_knowledge_catalog.md` | Contracts for all 9 agents, 17 skills, 8 rules, knowledge files; placement rules; coverage check |
-| `15_risks_open_decisions_and_validation_plan.md` | Risk register, the 5 genuinely open decisions, plan validation approach |
+## 4. MVP definition (full: `13` §1)
 
-## 4. Critical decisions (top 8 of 20 — full log in `16` §6)
+Take one real client from first conversation to a monitored production website with every lifecycle stage covered, at profile-appropriate weight, with manual gates and glue where automation isn't built. Acceptance = baseline §27's 15 criteria on the S8 pilot **plus** production deploy, rollback rehearsal, one CR end-to-end, profile confirmation + one trigger escalation, and a sanitized-evidence interview. Out: Jira REST sync, web UI/API runtime, agent orchestration, worktree parallelism, encrypted evidence platform.
 
-1. **DEC-01** `--add-dir` connection kept but verified by mandatory spike SPK-01 at S0, with a fully designed fallback (agent stubs in the client template).
-2. **DEC-02** Methodology read-only enforced from day one via permission deny rules, not just prose.
-3. **DEC-06** Ten explicit gates G0–G9, each with checklist, approver, and written record.
-4. **DEC-11** One source of truth per fact: artifact statuses live in artifacts; `project.yaml` holds only stage/approvals/config; dashboards are derived.
-5. **DEC-13** Two interview modes (live-assisted, import) — resolving how a non-technical client actually meets the system.
-6. **DEC-16** Estimation checkpoint at G2: scope is confronted with budget before technical design.
-7. **DEC-19** Baseline's METH backlog superseded by the S0–S9 roadmap.
-8. **DEC-20** Every agent loop is bounded (max 2 corrective cycles → human escalation).
-
-## 5. MVP definition (full: `13` §1)
-
-Take one real client from first conversation to a monitored production website with every lifecycle stage covered — manual gates and glue allowed, lifecycle gaps not. Acceptance = the baseline's 15 validity criteria (§27) demonstrated on a full pilot, plus a production deploy, a rehearsed rollback, and one change request handled end-to-end. Explicitly out: Jira REST sync, web UI/API runtime, orchestrated agent chaining, multi-tenancy.
-
-## 6. Implementation order and critical path
+## 5. Implementation sequence, critical path, AI-first scenarios
 
 ```text
-S0 Foundations → S1 Discovery interviewer → S2 Specification pipeline
-→ S3 Technical design pipeline → S4 Pilot (discovery→G3)
-→ S6 Implementation loop → S7 CI/CD + deployment + ops → S8 Full pilot = MVP
-   (S5 Jira export runs in parallel before S8; S9 automation is post-MVP)
+S0a bootstrap → S0b discovery infra → S1 interviewer → S2 specification
+→ S3 technical design → S4 pilot(front half) → S6 implementation loop
+→ S7 CI/CD+ops → S8 full pilot = MVP        [critical path]
+S5 Jira (profile-conditional, before S8) · RES-06/07/08 legal research
+(during S2–S4, before first real client) · S9 automation (post-MVP)
 ```
 
-Estimated ~3.5–4 months at ~2 focused days/week. First real client may start after S4 (discovery/specification are client-safe before delivery tooling exists).
+Every stage runs the AI-first loop: design contract → AI generation → integration → deterministic validation → **behavioural scenario** → human review → bounded correction (≤2 cycles) → release. Generation is cheap; **behavioural validation is the bottleneck and the planning basis** (R2-09).
 
-## 7. Open decisions (non-blocking — `15` §2)
+| Scenario | Focused hours | Calendar (~8 fh/wk) |
+|---|---|---|
+| Optimistic | ≈ 90 | ~6–7 weeks |
+| **Realistic (planning basis)** | ≈ 135 | **~9–11 weeks** |
+| Contingency | ≈ 225 | ~5–6 months |
 
-OD-1 first deployment adapter (decide at S7; default `static`) · OD-2 Jira vs GitHub Projects for solo MVP (decide at S5; default Jira per baseline) · OD-3 pilot subject (decide at S4; default serious fictitious client) · OD-4 test stack per archetype (per project at G3) · OD-5 client status reporting (first real client). **None block S0–S3.**
+Earliest revenue point: a real LITE client after S4 + S6 + S7-floor.
+
+## 6. Differences from V1 (summary — full log in `19`)
+
+1. **Adaptive process profiles** (`21`): V1 applied uniform weight; V2 scales everything by LITE/STANDARD/HIGH-RISK with trigger-based escalation. Jira becomes profile-scoped (LITE: none) — logged deviation from baseline B5.
+2. **AI-first roadmap** (`13`): effort re-decomposed around validation, not authoring; S0 split (S0a/S0b) + build-when-consumed schemas; three delivery scenarios.
+3. **Evidence privacy** (`03`/`04`): gitignored `evidence-raw/` + committed sanitized evidence with identical turn anchors and hash linkage; consent at M0; true-deletion path.
+4. **Verified distribution** (`02` §5, `19` §0): `--add-dir` agent/skill/rules loading confirmed against official docs; SPK-01 now a smoke check; fallbacks dormant.
+5. **Ownership & history fixes**: product backlog → backlog-refinement product mode (doc-generator is layer-3 only); append-only `docs/handoffs/`; task contexts retained permanently.
+6. **Requirements model v2** (`06` §7): `origin` provenance (defaults can't impersonate the client), structured measurable NFRs, `DAT-` data requirements, `approved_in` = baseline merge commit, single-writer ID allocation documented.
+7. **Backlog architecture** (`08`): two backlog contracts, vertical slicing (no 1-FR→1-story), separate story/task DoR/DoD, outcome-based task sizing, Git/Jira authority Model B by field class.
+8. **Testing** (`10`): matrix holds definitions only; execution evidence in CI runs + per-release verification snapshots.
+9. **UX & content** (`05` §8, `07` §9): profile-scaled UX deliverables with G3-V client visual approval; content-inventory artifact wired into story DoR, gates, and change control.
+10. **Knowledge system** (`17`/`18`): authoring standard (taxonomy, metadata, sourcing, retrieval, activation, testing) + per-file minimum specs + actionable research backlog; legal knowledge blocked from client use until primary-sourced.
+
+## 7. Open decisions (`15` §2)
+
+OD-1 first deployment adapter (S7; default static) · OD-3 pilot subject (S4; default fictitious) · OD-4 test stack per archetype (per project G3) · OD-5 client status reporting (first real client) · OD-6 LITE pilot vs first-real-LITE-client proof (S8; default the latter). **None block S0a–S3.** Documented deferred limitations: parallel ID allocation, Jira reconciliation automation, hook guard, encrypted evidence platform.
 
 ---
 
 ## Implementation starts here
 
-**First concrete task:** create the `freelance-methodology` repository skeleton and run spike SPK-01 (verify `--add-dir` agent/skill discovery) — S0, per `02` §2 and `02` §5.
+**First concrete task (S0a):** create the `freelance-methodology` repository skeleton with the conventions rule, and run the SPK-01 smoke check — per `02` §2/§5 and `13` S0a.
 
 **First ordered actions:**
 
-1. Create `~/Projects/freelance-methodology`, `git init`, add the directory tree from `02` §2 (empty stubs for agents/skills).
-2. Write `VERSION` (v0.1.0), `CHANGELOG.md`, `README.md` (launch + release instructions).
-3. Write methodology `CLAUDE.md` from the invariant list in `02` §4.1.
-4. Write the 5 always-on rules (`14` §4): evidence-policy, traceability, id-and-status-conventions, client-data-separation, change-control.
-5. Write the 13 JSON Schemas from the normative field sets in `06` §7 + valid/invalid fixtures in `tests/schema-tests/`.
-6. Implement `scripts/validate.sh` (schema validation + ID uniqueness + dangling refs) and make it pass on fixtures.
-7. Build `templates/client-repo/` per `03` §2, including `.claude/settings.json` deny rules and client `CLAUDE.md` (`03` §5).
-8. Implement `scripts/new-client.sh` and `scripts/check-methodology-clean.sh` (`02` §8).
-9. Implement `scripts/start-agent.sh` (launch + lock check + before/after methodology drift check).
-10. **Run SPK-01** (`02` §5): scratch client repo → verify agent/skill/CLAUDE.md discovery from `--add-dir` and write-deny enforcement; record verdict in README; activate Fallback A if needed.
-11. Add methodology CI (GitHub Actions: schema + script tests); create private GitHub repo; push.
-12. Implement `scripts/status.sh` (derived dashboard per DEC-11).
-13. Create a scratch client with `new-client.sh`, walk the full G0 checklist (`03` §7), fix friction.
-14. Tag methodology **v0.1.0** — S0 gate passed.
-15. Begin S1: write the `client-discovery` agent file from `04` §1 contract.
-16. Write skill `adaptive-interview-control` from `04` §7 (control loop, question rules) and `interview-evidence-capture` from `04` §6/§8 (persistence contract).
-17. Write skills `nfr-elicitation` + `process-elicitation` and knowledge `question-bank.md` (module topics + sufficiency checks per `04` §4–5).
-18. Write `interview-state.schema.json` usage into the agent (checkpoint/resume behaviour) and test pause/resume manually.
-19. Author 3 interview scenarios + golden checklists (`02` §10): clear client, contradictory client, non-technical client.
-20. Run and score the scenarios; iterate; tag v0.2.0 — S1 gate passed, proceed to S2 per `13`.
+1. Create `~/Projects/freelance-methodology`, `git init`, tree per `02` §2 (agents/skills as stubs).
+2. Write `VERSION` (v0.1.0), `CHANGELOG.md`, `README.md`.
+3. Write methodology `CLAUDE.md` (invariants, `02` §4.1).
+4. Write the 5 always-on rules + the **conventions rule** (ID grammar incl. DAT/CNT, status enums incl. `proposed_default`, `schema_version` policy) — fixes the namespace before any schema exists (R2-02).
+5. Generate `project.schema.json` (with profile fields) + `methodology-lock.schema.json` + fixtures.
+6. Build `templates/client-repo/` per `03` §2 (settings deny rules, client CLAUDE.md, `.gitignore` with `evidence-raw/`).
+7. Implement `new-client.sh`, `check-methodology-clean.sh`, `start-agent.sh` (env var + `--add-dir` flag + `--agent`).
+8. **Run SPK-01 smoke check** (`02` §5 a–d); record results + CLI version in README and lock template.
+9. Create private GitHub repo, push, add methodology CI (schema/script tests).
+10. Scratch client via `new-client.sh` → walk the G0 checklist (`03` §7) → tag **v0.1.0** (S0a gate).
+11. S0b: generate the four discovery schemas (interview-state, requirements v2, solution-context+triggers, open-questions) + handoff schema + valid/invalid fixtures.
+12. Implement `validate.sh` (profile-aware core) + `status.sh` v0; CI green → **v0.1.x** (S0b gate).
+13. S1: write the `client-discovery` agent from `04` §1.
+14. Generate skills: adaptive-interview-control, interview-evidence-capture (+sanitization), nfr-elicitation, process-elicitation.
+15. Generate provisional knowledge set per `17` §K (S1 files), with front matter + INDEX.
+16. Author the 6 interview scenarios + golden checklists (`02` §10 list incl. LITE, trigger-escalation, PII).
+17. Run scenarios; score; bounded corrections; verify pause/resume and sanitization.
+18. Tag **v0.2.0** (S1 gate) → proceed to S2 per `13`.
+19. In parallel with S2–S4: execute the RES-06/07/08 legal research batch (`18` §4).
+20. Continue S2 → S3 → S4 per `13`.
 
-**Unresolved decisions blocking implementation: none.** OD-1…OD-5 are all scheduled at later stages with safe defaults; S0 can start now.
+**Unresolved decisions blocking implementation: none.** S0a can start now.
