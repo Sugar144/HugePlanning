@@ -7,40 +7,40 @@
 
 ## 1. Artifact inventory (every artifact has a purpose and a consumer)
 
-**Ownership contract (R2-04, refined R2-31):** each canonical artifact has **one owner** (the role/mechanism accountable for its integrity and the only authority for its structure), a defined set of **authorized mutators** (with field-level authority where fields have different masters), **one mutation procedure** per controlled change, and **one approval authority** for controlled transitions. "Producer" in the table below names the owner. **The client never edits repository files:** client input arrives as evidence (email, call, delivered files) and an authorized role incorporates it with an evidence reference. §1a details the artifacts with more than one mutator.
+**Ownership contract (R2-04, refined R2-31):** each canonical artifact has **one owner** (the role/mechanism accountable for its integrity and the only authority for its structure), a defined set of **authorized mutators** (with field-level authority where fields have different masters), **one mutation procedure** per controlled change, and **one approval authority** for controlled transitions. The `Owner` column below names exactly one owner per artifact; **all authorized mutators, field-level authority, mutation procedures, and approval authorities live only in §1a**. **The client never edits repository files:** client input arrives as evidence (email, call, delivered files) and an authorized role incorporates it with an evidence reference.
 
-| Artifact | Layer | Format | Producer | Consumers | Lifecycle owner |
+| Artifact | Layer | Format | Owner | Consumers | Lifecycle owner |
 |---|---|---|---|---|---|
 | `evidence-raw/**` (gitignored) | 1-raw | any | you (capture) | you only (manual) | retention-controlled, deletable (R2-03) |
 | `transcript.md/.jsonl` (sanitized) | 1 | md/jsonl | client-discovery (evidence-capture skill) | auditor, you, future app | append-only |
 | `interview-state.json` | 1 | json | client-discovery | resume, completion check | interview |
 | `completion-report.md` | 3 | md | client-discovery | you (G1 input) | interview close |
-| `evidence/clarifications/` | 1 | md | you + agents | all downstream | append-only |
-| `evidence/confirmations/` | 1 | md | you | gates, audits | append-only |
+| `evidence/clarifications/` | 1 | md | you (§1a) | all downstream | append-only |
+| `evidence/confirmations/` | 1 | md | you (§1a) | gates, audits | append-only |
 | `engagement.md` | 2 | md | you | G0, ops | onboarding |
-| `requirements.yaml` | 2 | yaml | discovery→normalization | everything downstream | change control after G2 |
+| `requirements.yaml` | 2 | yaml | requirements-normalization skill (§1a) | everything downstream | change control after G2 |
 | `solution-context.yaml` | 2 | yaml | discovery | technical design, ops | change control after G2 |
-| `open-questions.yaml` | 2 | yaml | any agent | gates block on it | rolling |
+| `open-questions.yaml` | 2 | yaml | specification pipeline (§1a) | gates block on it | rolling |
 | `PRD.md` | 3 | md | doc-generator | client (via validation pkg), you | regenerated from layer 2 |
 | `validation-package.md` | 3/4 | md | doc-generator | client (G2) | per baseline round |
-| `content-inventory.yaml` (V2) | 2 | yaml | client-discovery (owner/seeder); statuses mutated per §1a | story DoR (`08`), G4/G7, ops | rolling until release |
+| `content-inventory.yaml` (V2) | 2 | yaml | client-discovery (§1a) | story DoR (`08`), G4/G7, ops | rolling until release |
 | `product-backlog.yaml` | 2 | yaml | **backlog-refinement skill, product mode (R2-04)** | technical design, estimation | superseded by delivery backlog |
 | `SDD.md` | 3 | md | technical architect | implementer, reviewers | change control after G3 |
 | `ADR-nnn.md` | 2 | md | technical architect | implementer, future you | immutable once accepted (supersede, don't edit) |
 | `data-model.md`, `api-contract.yaml` | 2 | md/OpenAPI | technical architect | implementer, contract tests | change control |
-| `delivery-backlog.yaml` | 2 | yaml | backlog-refinement | Jira export, implementation | rolling under change control |
+| `delivery-backlog.yaml` | 2 | yaml | backlog-refinement skill, delivery mode (§1a) | Jira export, implementation | rolling under change control |
 | `jira-map.yaml` | 4 | yaml | export-jira.sh | reconciliation | regenerable |
 | `test-strategy.md`, `test-matrix.yaml` (**definitions only, R2-07**) | 2/3 | md/yaml | test-planning | implementation, G6 | rolling |
 | `verification/REL-nnn-verification.yaml` (V2) | 2 | yaml | deployment-readiness-review (release-manager) | G6/G8, requirement `verified` derivation, audit | immutable per release (R2-07) |
-| `security-checklist.md` | 2 | md | technical architect (instantiates), risk-specialist (verifies) | G6/G8 | per release |
+| `security-checklist.md` | 2 | md | technical architect | risk-specialist (verification), G6/G8 | per release |
 | `traceability.yaml` | 2 | yaml | traceability-validation | audits, impact analysis | derived + validated (`08` §6) |
 | `docs/handoffs/G<n>-<slug>-<seq>.yaml` | 2 | yaml | **you at each gate, script-assisted (R2-04/05)** | next stage's precondition check, status.sh, audit | **append-only history; no pointer file — current state derived** |
 | `task-context/TASK-nnn.md` | 3 | md | task-context-package | implementer, reviewers, future audit/debug | **retained permanently; changes = commits on the task branch (R2-08)** |
 | `release manifest REL-nnn.yaml` | 2 | yaml | release-manager | deploy, rollback, audit | immutable |
 | `runbook.md`, `monitoring.md` | 3 | md | release-manager | operations | rolling |
-| `ops/incidents/INC-nnn.md`, `docs/changes/CR-nnn.md` | 2 | md | you + agents | change cycle | per event |
-| `project.yaml` | 2 | yaml | scripts + you | every session start | rolling |
-| `methodology.lock.yaml` | 2 | yaml | new-client/upgrade-lock | launcher, validate | upgrade-controlled |
+| `ops/incidents/INC-nnn.md`, `docs/changes/CR-nnn.md` | 2 | md | you (§1a) | change cycle | per event |
+| `project.yaml` | 2 | yaml | scripts (§1a) | every session start | rolling |
+| `methodology.lock.yaml` | 2 | yaml | scripts (`new-client.sh`/`upgrade-lock.sh`) | launcher, validate | upgrade-controlled |
 
 Anything not in this table is not an artifact of the system (no files "just in case" — mission anti-pattern).
 
