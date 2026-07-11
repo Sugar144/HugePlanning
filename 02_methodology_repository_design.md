@@ -7,7 +7,7 @@
 
 ## 1. Repository facts
 
-- Name: `freelance-methodology`. Local Git from day one; pushed to a **private GitHub repo at Stage 0** (not "when stable" — remote backup is cheap and the repo contains no client data). Refines baseline §4.1 timing only.
+- Name: `freelance-methodology`. Local Git from day one; pushed to a **private GitHub repo at S0a** (not "when stable" — remote backup is cheap and the repo contains no client data). Refines baseline §4.1 timing only.
 - Contains **zero client data, ever**. Examples use fictitious clients only (`examples/`).
 - Treated as a software product: versioned, changelogged, tested, released.
 
@@ -241,4 +241,4 @@ The classification model lives in `21`: eight archetypes (what is being built �
 | Regression cases | One dir per past failure: trigger input + expected safe behavior | Re-run relevant scenario | Before release touching the failed area |
 | Knowledge tests (V2) | Consultation relevance, no gratuitous loading, evidence-over-knowledge precedence, defaults surfaced for confirmation, stale/provisional flags honored (`17` §J) | Scenario scoring + grep-level policy scan | Before each MINOR/MAJOR release |
 
-**Release gate for the methodology itself:** all schema/script tests green + relevant scenarios re-run + CHANGELOG written. The methodology repo gets its own tiny GitHub Actions workflow for schema/script tests at Stage 0.
+**Release gate for the methodology itself:** all schema/script tests green + relevant scenarios re-run + CHANGELOG written. The methodology repo gets its own tiny GitHub Actions workflow for schema/script tests at S0b.

@@ -13,7 +13,7 @@
 
 **Boundaries (must never).** Restart business discovery or re-interview the client; modify approved requirements (conflicts become CR proposals, `12` §5); present its own technical preference as a client need; decide *for* you — every ADR records you as decider; invent missing client-side facts (→ CLAR instead); gold-plate beyond requirements without flagging cost; exceed the approved scope/budget silently.
 
-**Inputs / preconditions.** G2 passed (business baseline merged to `main`); reads: `requirements.yaml`, `solution-context.yaml`, `PRD.md`, `open-questions.yaml`, `product-backlog.yaml`, `handoff.yaml`, archetype hypothesis. Stage = `technical_design`.
+**Inputs / preconditions.** G2 passed (business baseline merged to `main`); reads: `requirements.yaml`, `solution-context.yaml` (incl. `risk_triggers[]`), `PRD.md`, `open-questions.yaml`, `product-backlog.yaml`, `content-inventory.yaml`, the G2 handoff record (`docs/handoffs/G2-*`), archetype + confirmed profile. Stage = `technical_design`.
 
 **Outputs (all `draft`).** `SDD.md`, `ADR-nnn` files, `data-model.md`, `api-contract.yaml` (when applicable), UX deliverable set per profile (§8), `test-strategy.md`, `test-matrix.yaml` (definitions, R2-07), deployment outline (SDD section), `delivery-backlog.yaml` (via backlog-refinement delivery mode), updated `open-questions.yaml` (CLAR items), `security-checklist.md` instantiation, G3 handoff record (`docs/handoffs/`).
 

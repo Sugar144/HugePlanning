@@ -128,7 +128,7 @@ Jira keys are additive labels, never replacements (baseline §15.1 retained).
 | `delivery/incident-report.template.md`, `change-request.template.md` | `12` |
 | YAML templates for every schema'd artifact | Pre-filled skeleton + inline field comments |
 
-## 7. Core schema definitions (normative field sets; full JSON Schema written at Stage 0 from these)
+## 7. Core schema definitions (normative field sets; full JSON Schemas generated stage-by-stage at first consumer, R2-02)
 
 ### 7.1 `requirements.yaml`
 
@@ -181,7 +181,7 @@ requirements:
     tolerance: "p75"
     origin: methodology_default
     status: approved            # confirmed by client at G2 (was proposed_default)
-    client_confirmation: interview:clarifications/CLAR-001
+    client_confirmation: clarification:CLAR-001   # evidence/clarifications/CLAR-001.md
     source_refs: [methodology:nfr-catalog#performance]
 
   - id: DAT-001                 # data requirement (V2, R2-10)

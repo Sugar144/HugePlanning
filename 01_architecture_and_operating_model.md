@@ -155,7 +155,7 @@ Everything else (audits, normalization, backlog refinement, UX outlining, Jira e
 
 1. **Every session starts** by reading `project.yaml` + `methodology.lock.yaml`, determining stage and next action (client `CLAUDE.md` mandates this, `03` §5).
 2. **Every session writes incrementally**: agents persist state to files at defined checkpoints (interview: each module close; implementation: each loop step). Chat memory is never the only copy of anything (baseline risk table, retained).
-3. **Interruption recovery:** relaunch the same agent; it re-hydrates from state files (`interview-state.json`, task status, `handoff.yaml`), not from transcript re-reading.
+3. **Interruption recovery:** relaunch the same agent; it re-hydrates from state files (`interview-state.json`, task status, latest `docs/handoffs/` record), not from transcript re-reading.
 4. **Commits as checkpoints:** work-in-progress commits on stage branches are normal and cheap; `main` stays baseline-only.
 
 ## 8. Cost and model policy (closes G-15)

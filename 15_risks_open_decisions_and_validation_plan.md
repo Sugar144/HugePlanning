@@ -47,7 +47,7 @@ Baseline §24's sixteen risks are **retained in full** with their mitigations, n
 ## 3. Validation plan for this plan
 
 1. **Structural self-check (done as Pass 5):** cross-file consistency review — gates, stages, statuses, IDs, paths, agent/skill names identical everywhere; every artifact has producer+consumer (`06` §1, `14` §6); every stage has entry/exit gates; every loop bounded (DEC-20).
-2. **SPK-01 (S0):** validates the load-bearing platform assumption before any content is written at volume.
+2. **SPK-01 smoke check (S0a):** confirms the verified distribution mechanism behaves as documented on the installed CLI version before any content is written at volume (mechanism itself verified, `19` §0).
 3. **Scenario validation (S1–S3):** the interviewers are validated against fictitious-client scenarios with golden artifacts *before* touching anything real — the plan's quality claims become test results.
 4. **Pilot validation (S4, S8):** the whole method demonstrated end-to-end; MVP acceptance = baseline §27 criteria + `13` §1 additions, evaluated literally against the checklists, with a friction log feeding v1.0.0.
-5. **Review cadence:** after S4 and after S8, re-read files `04`/`05`/`09` against observed behaviour and patch via methodology releases — the plan is versioned with the methodology from S0 onward (copy these files into `freelance-methodology/docs/plan/` at S0 so plan and method version together; this directory here remains the frozen origin).
+5. **Review cadence:** after S4 and after S8, re-read files `04`/`05`/`09` against observed behaviour and patch via methodology releases — the plan is versioned with the methodology from S0a onward (copy these files into `freelance-methodology/docs/plan/` at S0a so plan and method version together; this directory here remains the frozen origin).

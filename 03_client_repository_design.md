@@ -149,9 +149,9 @@ privacy:                      # DEC-10
   retention_after_close_months: 24
   deletion_contact: sugar144@uoc.edu
 
-counters:                     # next free number per ID type (06 §4)
-  { FR: 1, NFR: 1, INT: 1, CON: 1, BR: 1, OBJ: 1, OQ: 1, CLAR: 1, EP: 1,
-    US: 1, UC: 1, TASK: 1, ADR: 1, SPK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }
+counters:                     # next free number per ID type (06 §4); single-writer
+  { FR: 1, NFR: 1, INT: 1, CON: 1, DAT: 1, CNT: 1, BR: 1, OBJ: 1, OQ: 1, CLAR: 1,
+    EP: 1, US: 1, UC: 1, TASK: 1, ADR: 1, SPK: 1, TEST: 1, CR: 1, BUG: 1, REL: 1, INC: 1 }
 ```
 
 **What it deliberately does NOT contain (DEC-11):** per-artifact statuses (they live in each artifact), requirement counts, open-question counts. `status.sh` derives those live — one source of truth per fact.
