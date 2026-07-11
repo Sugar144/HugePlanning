@@ -15,15 +15,15 @@ Fields per item: Question · Priority · Target file · Risk if unverified · Pr
 
 | | RES-01 | RES-02 | RES-03 |
 |---|---|---|---|
-| Question | Which formal RE practices (elicitation, specification, validation) should tighten our interview/normalization method? | Current defensible web performance & a11y target values (LCP-class budgets, WCAG 2.2 AA specifics) for NFR floors | Current Claude Code behaviour relevant to the runtime (add-dir loading, --agent, permissions, hooks) on each CLI upgrade |
-| Priority | Medium | High | High (recurring) |
-| Target | shared/elicitation-techniques, requirements-taxonomy | shared/nfr-catalog | `02` §5 notes + tool knowledge |
-| Risk if unverified | Suboptimal method, not incorrect outputs | Wrong targets promised to clients | Broken launch mechanics after upgrade |
+| Question | Which formal RE practices should validate and improve our method: elicitation techniques, requirement quality criteria, requirement validation, NFR treatment, stakeholder & conflict handling, traceability, and interview completion criteria? | Current defensible web performance & a11y target values (LCP-class budgets, WCAG 2.2 AA specifics) for NFR floors | Current Claude Code behaviour relevant to the runtime (add-dir loading, --agent, permissions, hooks) on each CLI upgrade |
+| Priority | **High** — does **not** block S0–S3 generation and scenario validation (provisional content + behavioural testing proceed); **blocks the first real *paid* client-discovery interview** (R2-32) | High | High (recurring) |
+| Target | shared/elicitation-techniques, requirements-taxonomy, nfr-catalog (treatment), `04` completion criteria review | shared/nfr-catalog | `02` §5 notes + tool knowledge |
+| Risk if unverified | The core value proposition (interview → requirements quality) rests on unvalidated method for paying work | Wrong targets promised to clients | Broken launch mechanics after upgrade |
 | Primary | ISO/IEC/IEEE 29148; IREB CPRE syllabi | web.dev/Core Web Vitals docs; W3C WCAG 2.2 + Understanding docs | code.claude.com official docs |
 | Secondary | Reputable RE literature | reputable perf blogs | release notes, changelog |
 | Freshness / jurisdiction | any / — | ≤12 months / — | on CLI version change / — |
-| Evidence standard | cited framework mapping | every numeric target has a primary ref | quoted doc statements (as `19` §0) |
-| Completion | techniques file upgraded to secondary-sourced with mapping table | catalog targets primary-sourced | smoke check re-run + notes updated |
+| Evidence standard | cited framework mapping + explicit deltas applied to `04`/`07` or recorded as consciously-not-adopted | every numeric target has a primary ref | quoted doc statements (as `19` §0) |
+| Completion | techniques/taxonomy upgraded to secondary-sourced; completion-criteria & NFR-treatment review of `04`/`07` performed and dispositioned | catalog targets primary-sourced | smoke check re-run + notes updated |
 | Review | +12 months | +12 months | each upgrade |
 
 | | RES-04 | RES-05 | RES-06 |
@@ -64,7 +64,7 @@ Fields per item: Question · Priority · Target file · Risk if unverified · Pr
 
 ## 4. Sequencing relative to the roadmap
 
-- **Blocking nothing before S4:** all RES items.
-- **Pre-first-real-client (hard):** RES-06, RES-07; RES-08 if the client is obliged; RES-05 if HIGH-RISK.
+- **Blocking nothing before S4:** all RES items (provisional generation + scenario validation proceed regardless).
+- **Pre-first-real-client (hard):** RES-06, RES-07; **RES-01 before the first real *paid* discovery interview (R2-32)**; RES-08 if the client is obliged; RES-05 if HIGH-RISK.
 - **Stage-tied:** RES-04→S5 · RES-09→S7 · RES-03→every CLI upgrade.
-- Recommended batch: run RES-06/07/08 as one Research Mode session (~half a day) during S2–S3, while pipelines are being built.
+- Recommended batches: RES-06/07/08 as one Research Mode session (~half a day) during S2–S3; RES-01 as its own session (~half a day) during S2–S4, so its findings can still adjust the interviewer before the pilot hardens habits.

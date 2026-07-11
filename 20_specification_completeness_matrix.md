@@ -11,7 +11,7 @@ Everything at `PS` lists its missing details; nothing is `US`. **No unexplained 
 | Element | Spec | Missing details | T | S | E | F | DT | BT | Blk | Stage |
 |---|---|---|---|---|---|---|---|---|---|---|
 | client-discovery | FS (`04` full behavioural architecture) | — | agent-file template implicit in `02` §4.3 | — | control-loop + transitions in `04` | scenarios | — | Y (scenario suite) | Y→S1 | S1 |
-| technical-solution-architect | FS (`05`) | — | same | — | decision-item walkthrough `05` §12 | 2 design scenarios | — | Y | Y→S3 | S3 |
+| technical-solution-architect | FS (`05`; inputs profile-resolved per `05` §1 — LITE runs without PRD/product-backlog, R2-27) | — | same | — | decision-item walkthrough `05` §12; LITE = design-note session | 2 design scenarios (+ LITE fixture) | — | Y | Y→S3 | S3 |
 | requirements-auditor | SG (`07` §4, `14`) | severity thresholds tuned on fixtures (planned, not a gap) | — | — | findings format named, example generated at S2 | planted-defect fixtures | — | Y | N | S2 |
 | doc-generator | SG (`07` §7, `14`; scope narrowed R2-04) | — | — | — | — | non-invention fixture | Y (ID-citation check) | Y | N | S2 |
 | implementer | SG (`09` §4) | — | — | — | — | seeded-defect task | — | Y | N | S6 |
@@ -79,19 +79,19 @@ All **SG** for provisional generation per `17` §K, with research-mandatory flag
 | Script | Spec | Missing | DT | Blk | Stage |
 |---|---|---|---|---|---|
 | new-client.sh / start-agent.sh / check-methodology-clean.sh | FS (contracts `02` §8, verified flags `19` §0) | — | Y (scratch-repo test) | Y→S0a | S0a |
-| validate.sh (profile-aware, R2-21) | SG | grows per schema per stage (by design) | Y | Y→S0b | S0b+ |
+| validate.sh (progressive, R2-26; profile-aware, R2-21) | FS (`02` §8: S0a scope = project.yaml + lock + repo structure; extended per schema at each stage, never replaced) | — | Y | Y→**S0a** (G0 depends on its minimal scope) | S0a minimal; extended S0b+ |
 | status.sh (profile-aware, handoff-reading) | SG | — | Y | N | S0b |
 | export-jira.sh | SG | CSV quirks at S5 | Y | N | S5 |
 | upgrade-lock.sh | SG | — | Y | N | S4 |
 
 ## 8. Artifacts, fixtures, gates
 
-- **Artifacts (≈30):** every artifact in `06` §1 has producer + consumer + lifecycle after R2-04/05/07/18 fixes; examples exist in-plan for the expensive ones (project.yaml, lock, interview-state, requirement incl. NFR, CLAR/CTR, delivery task, handoff, ADR walkthrough, task context, test definition, verification snapshot, release manifest, statement classification). CR and incident records: **PS** — field lists in `12`, full example generated at S7 (non-blocking).
+- **Artifacts (≈30):** every artifact in `06` §1 has an owner + consumers + lifecycle after R2-04/05/07/18 fixes; the seven multi-mutator artifacts additionally carry the full ownership contract (owner / mutators with field-level authority / mutation procedure / approval authority — `06` §1a, R2-31). Examples exist in-plan for the expensive ones (project.yaml, lock, interview-state, requirement incl. NFR, CLAR/CTR, delivery task, handoff incl. visual_approval, ADR walkthrough, task context, test definition, verification snapshot, release manifest, statement classification). CR and incident records: **PS** — field lists in `12`, full example generated at S7 (non-blocking).
 - **Fixtures/scenarios (10):** 3 interview scenarios + LITE case + trigger-escalation case + PII case (S1); planted-defect evidence fixtures (S2); 2 design scenarios (S3); seeded-defect task (S6). All SG via `02` §10 scenario format + golden checklist structure; BT by definition.
-- **Gates (G0–G9 + G3-V):** FS — each has approver, entry criteria, checklist location, record location (`01` §4 + owning files); LITE combinations defined in `21` §5.
+- **Gates (G0–G9, with G3-V as a nested checkpoint inside G3, `01` §4.2b):** FS — each has approver, entry criteria, checklist location, record location (`01` §4 + owning files); G3 resolves through the profile matrix (G3-lite vs full package, R2-28); LITE compact workflows retain per-gate decisions and records (R2-29), validated by the `21` §7 dry-run.
 
 ## 9. Readiness summary
 
-- **S0a can start immediately:** all its elements (repo skeleton, conventions rule, 5 rules, 2 core schemas, 3 scripts, client template, smoke check) are SG or FS.
-- **Only hard blockers by stage:** S1 ← interviewer skills/scenarios (specified); first real client ← legal knowledge verification (`18` RES-06/07/08).
+- **S0a can start immediately:** all its elements (repo skeleton, conventions rule, 5 rules, 2 core schemas, **minimal `validate.sh`**, 3 launch/guard scripts, client template incl. empty `open-questions.yaml`, smoke check) are SG or FS — re-verified after the correction pass: G0 is satisfiable entirely with S0a deliverables (R2-26), and the LITE path executes end-to-end without any STANDARD-only artifact (`21` §7 dry-run).
+- **Only hard blockers by stage:** S1 ← interviewer skills/scenarios (specified); first real client ← legal knowledge verification (`18` RES-06/07/08); **first real *paid* discovery interview ← RES-01 (R2-32)**.
 - **Deliberately deferred specs (non-blocking, documented):** parallel ID allocation (`19` R2-10), Jira REST reconciliation (S9), hook-based methodology guard (S9), encrypted evidence platform (post-MVP).

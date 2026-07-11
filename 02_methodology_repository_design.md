@@ -79,7 +79,7 @@ freelance-methodology/
 │   ├── client-repo/               # ENTIRE client repository template (03 §2)
 │   ├── discovery/                 # PRD, requirements, solution-context, product-backlog,
 │   │                              # open-questions, content-inventory, handoff,
-│   │                              # validation-package (+ LITE combined variant)
+│   │                              # validation-package (+ LITE compact variant)
 │   ├── technical/                 # SDD, ADR, delivery-backlog, test-strategy,
 │   │                              # test-matrix, deployment-outline, ux-outline
 │   └── delivery/                  # task-context, PR body, release-manifest,
@@ -128,7 +128,7 @@ freelance-methodology/
 - Agents: 4 → 9 (DEC-12). Skills: 7 → 18 (V2 adds `ux-design-outline`, R2-17), all with named contracts in `14`.
 - Added `knowledge/legal/`, `templates/client-repo/` (the client template lives *inside* the methodology so it is versioned with it), `templates/delivery/`, 15 schemas (was 5; V2 adds content-inventory and verification-snapshot), unified launcher script, `upgrade-lock.sh`.
 - Renamed: `requirements-pack-generator` → `artifact-generation` (it generates all document packages, not only requirements).
-- V2: knowledge governed by the authoring standard (`17`); schemas created stage-by-stage (R2-02); scripts are profile-aware (R2-21).
+- V2: knowledge governed by the authoring standard (`17`); schemas created stage-by-stage (R2-02); scripts are profile-aware (R2-21); `validate.sh` is progressive — minimal at S0a (project.yaml, lock, structure), extended with each new schema (R2-26).
 
 ## 4. Content rules per mechanism
 
@@ -218,7 +218,7 @@ schemas:
 |---|---|
 | `new-client.sh <dir> <PROJECT-ID>` | Copies `templates/client-repo/`, substitutes placeholders (project id, methodology path, retention defaults), `git init`, initial commit, writes lock from current methodology tag, prints G0 checklist |
 | `start-agent.sh <client-dir> <agent> [--resume]` | Validates client repo + clean methodology + lock/checkout match → exports env var → launches `claude --add-dir … --agent …` → post-session methodology drift check + reminder to commit |
-| `validate.sh [client-dir]` | Validates every structured artifact against its locked schema version; checks ID uniqueness and dangling references; **profile-aware (R2-21): missing artifacts required by `21` §5 for the project's profile are errors, optional ones info**; exit non-zero on failure. Also runs in client CI |
+| `validate.sh [client-dir]` | **One progressive validator, extended stage-by-stage — never replaced by a second script.** S0a minimal scope: `project.yaml`, `methodology.lock.yaml`, required repository structure — enough for a scratch client to pass G0. From S0b: validates each structured artifact against its locked schema as that schema gains its first consumer; checks ID uniqueness and dangling references; **profile-aware (R2-21): missing artifacts required by `21` §5 for the project's profile are errors, optional ones info**; exit non-zero on failure. Also runs in client CI |
 | `status.sh [client-dir]` | Derives dashboard (DEC-11): stage, gate states (from latest `docs/handoffs/` per gate), artifact statuses read from artifacts, open questions/contradictions counts, requirement status histogram, profile + pending triggers; on LITE it renders the delivery-backlog task board (no Jira) |
 | `export-jira.sh <client-dir>` | delivery-backlog.yaml → Jira CSV/JSON + updates `jira-map.yaml` (`08` §5) |
 | `upgrade-lock.sh <client-dir> <version>` | §7 |
@@ -228,7 +228,7 @@ All scripts: bash, `set -euo pipefail`, no methodology content inside (baseline 
 
 ## 9. Web-project archetypes and process profiles (V2: governed by `21`)
 
-The classification model lives in `21`: eight archetypes (what is being built → topics, knowledge packs, decision categories) × three process profiles (`LITE | STANDARD | HIGH-RISK` → assurance floors via the `21` §5 requirement matrix). `knowledge/technical-solution/web-project-archetypes.md` is the knowledge-pack expression of the archetype dimension (per `17` §K.12) and holds no floors — floors live once, in the matrix. The discovery agent tags an archetype hypothesis and records risk triggers; profile confirmation happens at G1 (`21` §4). Critical interview topics remain archetype-independent (unchanged from V1).
+The classification model lives in `21`: nine archetypes (what is being built → topics, knowledge packs, decision categories) × three process profiles (`LITE | STANDARD | HIGH-RISK` → assurance floors via the `21` §5 requirement matrix). `knowledge/technical-solution/web-project-archetypes.md` is the knowledge-pack expression of the archetype dimension (per `17` §K.12) and holds no floors — floors live once, in the matrix. The discovery agent tags an archetype hypothesis and records risk triggers; profile confirmation happens at G1 (`21` §4). Critical interview topics remain archetype-independent (unchanged from V1).
 
 ## 10. Methodology testing (baseline §21 retained, concretized)
 

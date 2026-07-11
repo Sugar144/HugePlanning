@@ -44,17 +44,17 @@ Stage fields kept from V1 (objective, deliverables, tests, acceptance, deps, ris
 
 ### S0a — Minimal runtime bootstrap **[critical path]**
 - **Objective:** launchable methodology + client skeleton + verified-mechanism smoke check + conventions locked.
-- **Deliverables:** methodology repo on private GitHub: `CLAUDE.md`, 5 always-on rules, `VERSION/CHANGELOG`, **conventions rule (ID grammar, status enums, `schema_version` policy — fixes the namespace so later schemas can't drift, R2-02)**, `project.schema.json` + `methodology-lock.schema.json`, minimal client template (tree, settings deny rules, client CLAUDE.md, `.gitignore` incl. `evidence-raw/`), `new-client.sh`, `start-agent.sh`, `check-methodology-clean.sh`, SPK-01 smoke check executed and recorded.
-- **Tests:** script smoke on scratch repo; SPK-01 checklist (a–d, `02` §5); schema fixtures for the 2 schemas.
-- **Acceptance:** `new-client.sh` → G0-passable repo in <10 min; launch loads methodology agents/rules; deny rules verified live.
+- **Deliverables:** methodology repo on private GitHub: `CLAUDE.md`, 5 always-on rules, `VERSION/CHANGELOG`, **conventions rule (ID grammar, status enums, `schema_version` policy — fixes the namespace so later schemas can't drift, R2-02)**, `project.schema.json` + `methodology-lock.schema.json`, **minimal `validate.sh` (validates project.yaml, methodology.lock.yaml, and required repository structure — the same script is extended at every later stage, never replaced; R2-26)**, minimal client template (tree, settings deny rules, client CLAUDE.md, `.gitignore` incl. `evidence-raw/`), `new-client.sh`, `start-agent.sh`, `check-methodology-clean.sh`, SPK-01 smoke check executed and recorded.
+- **Tests:** script smoke on scratch repo; SPK-01 checklist (a–d, `02` §5); schema fixtures for the 2 schemas; minimal `validate.sh` green on template, red on broken fixtures.
+- **Acceptance:** `new-client.sh` → repo that **passes the full G0 checklist incl. minimal `validate.sh`** in <10 min; launch loads methodology agents/rules; deny rules verified live.
 - **Deps:** none. **Risks:** low (mechanism verified, R2-16). **Manual:** GitHub clicks. **Must not defer:** conventions rule; deny rules; lock.
 - **Effort:** SP 2 · G 1 · I 1 · DV 1 · BV 1 · C 1 · HA 0.5 ≈ **7–8 fh** (opt 5 / real 8 / cont 14).
 - **Gate:** methodology v0.1.0 tagged; scratch client passes G0.
 
 ### S0b — Discovery infrastructure **[critical path]**
 - **Objective:** everything the interviewer writes into, validated.
-- **Deliverables:** schemas: interview-state, requirements (v2 model: origin, NFR fields, DAT), solution-context (+risk_triggers), open-questions, handoff; valid+invalid fixtures; `validate.sh` (profile-aware core) + `status.sh` v0; methodology CI (schema/script tests); discovery templates (YAML skeletons).
-- **Acceptance:** `validate.sh` green on template + red on every invalid fixture; CI runs on push.
+- **Deliverables:** schemas: interview-state, requirements (v2 model: origin, NFR fields, DAT), solution-context (+risk_triggers), open-questions, handoff; valid+invalid fixtures; **`validate.sh` extended with these schemas + the profile-aware requirement matrix (same script from S0a — no second validator)**; `status.sh` v0; methodology CI (schema/script tests); discovery templates (YAML skeletons, incl. the always-present empty `open-questions.yaml`).
+- **Acceptance:** extended `validate.sh` green on template + red on every invalid fixture; CI runs on push.
 - **Deps:** S0a. **Effort:** SP 2 · G 1.5 · I 1 · DV 2 · BV — · C 1.5 · HA 0.5 ≈ **8–9 fh** (opt 5 / real 9 / cont 15).
 - **Gate:** v0.1.x; fixtures locked as the schema contract.
 
@@ -70,7 +70,7 @@ Stage fields kept from V1 (objective, deliverables, tests, acceptance, deps, ris
 
 ### S2 — Specification pipeline **[critical path]**
 - **Objective:** evidence → audited, client-approvable baseline (`07`), incl. product backlog (product mode) + content inventory + profile confirmation at G1.
-- **Deliverables:** requirements-normalization; requirements-auditor (5 audits + origin-integrity check); doc-generator (layer 3/4); backlog-refinement product mode; content-inventory schema+template; PRD/validation-package (+LITE combined variant)/clarification templates; G1/G2 checklists.
+- **Deliverables:** requirements-normalization; requirements-auditor (5 audits + origin-integrity check); doc-generator (layer 3/4); backlog-refinement product mode; content-inventory schema+template; PRD/validation-package (+LITE compact variant)/clarification templates; G1/G2 checklists (incl. the LITE compact-workflow variants with distinct gate records).
 - **Tests:** planted ambiguities/contradictions/inventions caught on fixture evidence; generated PRD cites only existing IDs; product backlog slices vertically (golden: a booking FR set → outcome stories, not renamed FRs); LITE fixture produces the 1-page brief.
 - **Acceptance:** scenario transcript → G2-ready package in ≤2 fix cycles, zero invention.
 - **Deps:** S1 outputs as fixtures. **Effort:** SP 2 · G 2 · I 1.5 · DV 1.5 · BV 5 · C 3 · HA 1 ≈ **16 fh** (opt 10 / real 16 / cont 27).

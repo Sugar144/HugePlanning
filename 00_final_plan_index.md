@@ -14,7 +14,7 @@ One versioned **methodology repository** (agents, skills, rules, knowledge, temp
 
 Every project = **archetype × profile** (`21`):
 
-- **Archetype** (8: static-landing, corporate-content-site, cms-content-site, forms-or-lead-generation, booking-system, e-commerce, authenticated-web-app, integration-heavy-web-app, migration-or-replatforming) — *what* is being built → activates interview topics, knowledge packs, decision categories.
+- **Archetype** (9: static-landing, corporate-content-site, cms-content-site, forms-or-lead-generation, booking-system, e-commerce, authenticated-web-app, integration-heavy-web-app, migration-or-replatforming) — *what* is being built → activates interview topics, knowledge packs, decision categories.
 - **Profile** (`LITE | STANDARD | HIGH-RISK`) — *how much* assurance → activates gates, artifacts, reviewers, test layers, deployment/ops floors through the single requirement matrix (`21` §5).
 - Interaction: archetype decides whether a concern exists; profile decides how much assurance it gets; conflicts resolve stricter. Profile derives from **risk triggers** (payments, auth, sensitive data, migration, availability…), is hypothesized at G0, **confirmed at G1**, re-verified at G3, auto-upgraded on any trigger, downgraded only by explicit human decision with recorded reasoning. Agents propose, never select; ambiguity defaults up.
 - Result: a landing page carries ≈6–10 h of process overhead (`21` §7) while an e-commerce build gets full assurance — same repos, same evidence discipline, strict subset vs superset.
@@ -99,20 +99,20 @@ OD-1 first deployment adapter (S7; default static) · OD-3 pilot subject (S4; de
 3. Write methodology `CLAUDE.md` (invariants, `02` §4.1).
 4. Write the 5 always-on rules + the **conventions rule** (ID grammar incl. DAT/CNT, status enums incl. `proposed_default`, `schema_version` policy) — fixes the namespace before any schema exists (R2-02).
 5. Generate `project.schema.json` (with profile fields) + `methodology-lock.schema.json` + fixtures.
-6. Build `templates/client-repo/` per `03` §2 (settings deny rules, client CLAUDE.md, `.gitignore` with `evidence-raw/`).
-7. Implement `new-client.sh`, `check-methodology-clean.sh`, `start-agent.sh` (env var + `--add-dir` flag + `--agent`).
-8. **Run SPK-01 smoke check** (`02` §5 a–d); record results + CLI version in README and lock template.
-9. Create private GitHub repo, push, add methodology CI (schema/script tests).
-10. Scratch client via `new-client.sh` → walk the G0 checklist (`03` §7) → tag **v0.1.0** (S0a gate).
-11. S0b: generate the four discovery schemas (interview-state, requirements v2, solution-context+triggers, open-questions) + handoff schema + valid/invalid fixtures.
-12. Implement `validate.sh` (profile-aware core) + `status.sh` v0; CI green → **v0.1.x** (S0b gate).
-13. S1: write the `client-discovery` agent from `04` §1.
-14. Generate skills: adaptive-interview-control, interview-evidence-capture (+sanitization), nfr-elicitation, process-elicitation.
-15. Generate provisional knowledge set per `17` §K (S1 files), with front matter + INDEX.
-16. Author the 6 interview scenarios + golden checklists (`02` §10 list incl. LITE, trigger-escalation, PII).
-17. Run scenarios; score; bounded corrections; verify pause/resume and sanitization.
-18. Tag **v0.2.0** (S1 gate) → proceed to S2 per `13`.
-19. In parallel with S2–S4: execute the RES-06/07/08 legal research batch (`18` §4).
+6. Implement **minimal `validate.sh`** (project.yaml, lock, repo structure — the single progressive validator, extended at each later stage; R2-26).
+7. Build `templates/client-repo/` per `03` §2 (settings deny rules, client CLAUDE.md, `.gitignore` with `evidence-raw/`, empty `open-questions.yaml`).
+8. Implement `new-client.sh`, `check-methodology-clean.sh`, `start-agent.sh` (env var + `--add-dir` flag + `--agent`).
+9. **Run SPK-01 smoke check** (`02` §5 a–d); record results + CLI version in README and lock template.
+10. Create private GitHub repo, push, add methodology CI (schema/script tests).
+11. Scratch client via `new-client.sh` → walk the full G0 checklist (`03` §7, incl. minimal `validate.sh` green) → tag **v0.1.0** (S0a gate).
+12. S0b: generate the four discovery schemas (interview-state, requirements v2, solution-context+triggers, open-questions) + handoff schema + valid/invalid fixtures.
+13. **Extend the same `validate.sh`** with the new schemas + profile-aware requirement matrix; implement `status.sh` v0; CI green → **v0.1.x** (S0b gate).
+14. S1: write the `client-discovery` agent from `04` §1.
+15. Generate skills: adaptive-interview-control, interview-evidence-capture (+sanitization), nfr-elicitation, process-elicitation.
+16. Generate provisional knowledge set per `17` §K (S1 files), with front matter + INDEX.
+17. Author the 6 interview scenarios + golden checklists (`02` §10 list incl. LITE, trigger-escalation, PII).
+18. Run scenarios; score; bounded corrections; verify pause/resume and sanitization.
+19. Tag **v0.2.0** (S1 gate) → proceed to S2 per `13`; in parallel with S2–S4, execute the RES-06/07/08 legal research batch and start RES-01 (`18` §4).
 20. Continue S2 → S3 → S4 per `13`.
 
 **Unresolved decisions blocking implementation: none.** S0a can start now.

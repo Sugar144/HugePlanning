@@ -1,7 +1,7 @@
 # 07 — Requirements and Specification Pipeline
 
 **Purpose:** the pipeline from raw interview evidence to an approved business baseline: normalization, audits, product backlog, content inventory, PRD generation, client validation, estimation checkpoint, and the G1/G2 gates.
-**Baseline traceability:** B12, B14, §12 steps 4–6; decisions DEC-05, DEC-08, DEC-15, DEC-16; closes G-11, G-12. **V2:** ownership fix — product backlog by backlog-refinement (R2-04); origins & structured NFRs (R2-10); profile confirmation at G1 (R2-01); content inventory (R2-18); LITE combined gates (R2-19).
+**Baseline traceability:** B12, B14, §12 steps 4–6; decisions DEC-05, DEC-08, DEC-15, DEC-16; closes G-11, G-12. **V2:** ownership fix — product backlog by backlog-refinement (R2-04); origins & structured NFRs (R2-10); profile confirmation at G1 (R2-01); content inventory (R2-18); LITE compact gate workflow with distinct records (R2-19/R2-29).
 
 ---
 
@@ -23,7 +23,7 @@ G2: business baseline → evidence/confirmations/ + docs/handoffs/G2-*.yaml
     → docs PR → merge to main (merge commit = approved_in)
 ```
 
-Everything runs on branch `docs/discovery-01`; G2 merges it (`11` §2). **LITE path (`21` §5):** G1+G2 combine — internal check, then one 1-page validation email; product backlog may be skipped (task list derives directly at G3-lite).
+Everything runs on branch `docs/discovery-01`; G2 merges it (`11` §2). **LITE path (`21` §5, §7):** G1 and G2 run as one **compact validation workflow** — the internal check (G1: `validate.sh` + compact audit checklist run by you, no separate auditor session) and the client's 1-page validation email (G2) remain **two decisions with two append-only handoff records**; product backlog may be skipped (task list derives directly at G3-lite); the brief is generated via the artifact-generation skill in the same session (no separate doc-generator session).
 
 ## 2. Requirements normalization (skill contract)
 
@@ -55,7 +55,7 @@ The NFR floor comes from the profile matrix (`21` §5), explained by the nfr-cat
 | Coverage | Every OBJ has ≥1 must FR; NFR floor present; every M-topic marked `sufficient` reflected in artifacts; every FR has ≥1 AC | Gap list |
 | Schema & traceability | `validate.sh` + dangling IDs, orphan ACs | Machine report |
 
-Auditor is a *different session/agent* than the producer (independence). Findings → fix cycle by normalization skill → re-audit only failed checks. Max 2 cycles, then G1 review decides (DEC-20).
+Auditor is a *different session/agent* than the producer (independence). Findings → fix cycle by normalization skill → re-audit only failed checks. Max 2 cycles, then G1 review decides (DEC-20). **LITE:** the independent auditor session is replaced by `validate.sh` + a compact audit checklist (ambiguity/contradiction/assumption spot checks) executed by you at G1 (`21` §5) — independence is preserved because you are not the producer.
 
 ## 5. G1 — internal review gate (you)
 

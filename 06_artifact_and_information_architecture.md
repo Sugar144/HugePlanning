@@ -7,7 +7,7 @@
 
 ## 1. Artifact inventory (every artifact has a purpose and a consumer)
 
-Ownership rule (R2-04): **exactly one producer per artifact**; consumers many; a producer's write scope never crosses layers it is barred from.
+**Ownership contract (R2-04, refined R2-31):** each canonical artifact has **one owner** (the role/mechanism accountable for its integrity and the only authority for its structure), a defined set of **authorized mutators** (with field-level authority where fields have different masters), **one mutation procedure** per controlled change, and **one approval authority** for controlled transitions. "Producer" in the table below names the owner. **The client never edits repository files:** client input arrives as evidence (email, call, delivered files) and an authorized role incorporates it with an evidence reference. §1a details the artifacts with more than one mutator.
 
 | Artifact | Layer | Format | Producer | Consumers | Lifecycle owner |
 |---|---|---|---|---|---|
@@ -23,7 +23,7 @@ Ownership rule (R2-04): **exactly one producer per artifact**; consumers many; a
 | `open-questions.yaml` | 2 | yaml | any agent | gates block on it | rolling |
 | `PRD.md` | 3 | md | doc-generator | client (via validation pkg), you | regenerated from layer 2 |
 | `validation-package.md` | 3/4 | md | doc-generator | client (G2) | per baseline round |
-| `content-inventory.yaml` (V2) | 2 | yaml | client-discovery seeds; you+client feed statuses | story DoR (`08`), G4/G7, ops | rolling until release |
+| `content-inventory.yaml` (V2) | 2 | yaml | client-discovery (owner/seeder); statuses mutated per §1a | story DoR (`08`), G4/G7, ops | rolling until release |
 | `product-backlog.yaml` | 2 | yaml | **backlog-refinement skill, product mode (R2-04)** | technical design, estimation | superseded by delivery backlog |
 | `SDD.md` | 3 | md | technical architect | implementer, reviewers | change control after G3 |
 | `ADR-nnn.md` | 2 | md | technical architect | implementer, future you | immutable once accepted (supersede, don't edit) |
@@ -43,6 +43,20 @@ Ownership rule (R2-04): **exactly one producer per artifact**; consumers many; a
 | `methodology.lock.yaml` | 2 | yaml | new-client/upgrade-lock | launcher, validate | upgrade-controlled |
 
 Anything not in this table is not an artifact of the system (no files "just in case" — mission anti-pattern).
+
+## 1a. Ownership detail — artifacts with multiple authorized mutators (R2-31)
+
+| Artifact | Owner | Authorized mutators (field-level authority) | Mutation procedure | Approval authority |
+|---|---|---|---|---|
+| `project.yaml` | scripts (structure) | `new-client.sh`/`upgrade-lock.sh` (creation, lock pointer); any agent (**counters only**, at ID allocation); you (**stage, approvals, profile, config** — only via gate procedures) | Gate procedure / script; free-hand edits prohibited | You at the owning gate |
+| `open-questions.yaml` | specification pipeline | Any agent may **append** new OQ/CLAR entries (append is always safe); the stage-owning role sets `answer`/status with an evidence ref; nobody deletes — terminal statuses only | Append freely; answer/close via the owning stage's procedure | You (blocking items: at the gate they block) |
+| `content-inventory.yaml` | client-discovery (seed) | client-discovery (seeding); you (**status transitions** when client content arrives, with evidence ref); backlog-refinement (`needed_by` links) | Status change requires the delivery evidence (file/email) recorded first | You; client sign-off for `placeholder_approved` at G7 |
+| `evidence/clarifications/`, `evidence/confirmations/` | you | **You only** — client input is transcribed/attached by you; agents read, never write | Append-only; one file per event | — (evidence, not approvals) |
+| `docs/changes/CR-nnn.md`, `ops/incidents/INC-nnn.md` | you | Agents may write **draft proposals** (marked `draft`); you create/finalize the record | CR: `12` §5; INC: `12` §3 | You at G9 (CR); you at INC close |
+| `requirements.yaml` | requirements-normalization skill | Normalization (pre-approval edits); after `approved`: **change control only** (supersede, never rewrite) | `07` §2 pre-baseline; `12` §5 post-baseline | Client at G2/G9 (scope); you at G1 |
+| `delivery-backlog.yaml` | backlog-refinement (delivery mode) | Refinement (content, after CR/baseline changes); task loop (**`status`, `branch`, `jira` fields only**, at defined lifecycle events `08` §4) | Content via refinement; status via task-loop events | You at G4/G5 |
+
+Everything else in §1 has exactly one mutator (its owner) and needs no field-level split.
 
 ## 2. Status models
 
@@ -115,10 +129,10 @@ Jira keys are additive labels, never replacements (baseline §15.1 retained).
 |---|---|
 | `client-repo/` | Whole repo skeleton (`03` §2) |
 | `discovery/PRD.template.md` | Sections: context & problem (OBJ refs) · objectives & metrics · users & stakeholders · scope & MVP (FR refs by phase) · exclusions · business rules (BR refs) · risks · open items. Client language |
-| `discovery/validation-package.template.md` | Plain-language G2 summary: what we understood, what we'll build first, what's excluded, assumptions to confirm (incl. `proposed_default` NFRs), content list + deadlines, estimate vs budget, questions; per-section confirm checkboxes. **LITE variant: 1-page combined G1+G2 brief (R2-19)** |
+| `discovery/validation-package.template.md` | Plain-language G2 summary: what we understood, what we'll build first, what's excluded, assumptions to confirm (incl. `proposed_default` NFRs), content list + deadlines, estimate vs budget, questions; per-section confirm checkboxes. **LITE variant: 1-page brief used in the compact G1+G2 validation workflow — distinct gate records retained (R2-19/R2-29)** |
 | `discovery/content-inventory.template.yaml` (V2) | §7.6 skeleton with field comments |
 | `discovery/clarification-request.template.md` | CLAR email/message shape (`05` §7) |
-| `technical/SDD.template.md` | Sections: overview & archetype · architecture & components · data model ref · API ref · UX flows · accessibility implementation · authN/Z & security · privacy · infrastructure & environments · deployment & rollback outline · observability · testing summary (ref) · risks · decision index (ADR refs) |
+| `technical/SDD.template.md` | Sections: overview & archetype · architecture & components · data model ref · API ref · UX flows · accessibility implementation · authN/Z & security · privacy · infrastructure & environments · deployment & rollback outline · observability · testing summary (ref) · risks · decision index (ADR refs). **LITE variant: design note (1–2 pages) — stack/hosting, sitemap/page structure, visual direction, applicable floors (`05` §1, `21` §5)** |
 | `technical/ADR.template.md` | MADR-style: context, options, decision, consequences, decider, driving REQs, overrides |
 | `technical/ux-outline.template.md` (V2) | Sitemap/IA, flows, wireframe descriptions, component & state inventory, visual direction — sectioned by profile depth (`05` §8) |
 | `delivery/task-context.template.md` | `09` §3 |
@@ -214,6 +228,8 @@ Sections: `domain{provider, ownership, access_status}` · `hosting` · `email` �
 
 ### 7.3 `open-questions.yaml`
 
+**Always present (R2-30):** the registry is created empty by the client template for **every** profile — agents never face a missing-file branch. The profile changes only its allowed depth and whether unresolved items block gates (`21` §5), never its existence.
+
 ```yaml
 questions:
   - id: CLAR-002
@@ -286,6 +302,9 @@ confirmation_ref: evidence/confirmations/2026-09-19-g2.md
 artifacts: { prd: docs/product/PRD.md, requirements: docs/requirements/requirements.yaml }
 quality: { critical_questions_remaining: 0, unresolved_contradictions: 0 }
 profile_check: { profile: standard, new_triggers: [] }
+# G3 records additionally carry the nested visual checkpoint (01 §4.2b):
+# visual_approval: { required: true, confirmed: 2026-09-25,
+#                    record: evidence/confirmations/2026-09-25-g3v.md }
 next_stage: technical_design
 ```
 

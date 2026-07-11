@@ -97,7 +97,7 @@ onboarding → discovery → specification → technical_design → planning
 | G0 | Project readiness | You | Repo from template, private, lock set, engagement record, access/privacy defaults (`03` §7) | commit + `project.yaml` |
 | G1 | Discovery package internal review | You | Audits clean (ambiguity, contradiction, assumption, NFR, schema); interview DoD met (`04` §12); **profile confirmed against risk triggers (`21` §4)** | `docs/handoffs/G1-*.yaml` |
 | G2 | Business baseline approval | Client | Validation package confirmed: scope, behavior, priorities, exclusions, assumptions, estimate vs budget (DEC-16) (`07` §8) | `evidence/confirmations/` + merge to `main` |
-| G3 | Technical baseline approval | You | SDD complete, ADRs recorded, test strategy, deployment outline, delivery backlog DoR-ready (`05` §9); **includes G3-V client visual approval for STANDARD/HIGH-RISK (R2-17, `05` §8)**; profile re-verified | `docs/handoffs/G3-*.yaml` + merge |
+| G3 | Technical baseline approval | You | **Per the profile matrix (`21` §5).** LITE = **G3-lite**: design note (stack/hosting, sitemap/page structure, visual direction, applicable NFR/test/deployment floors) + delivery task list DoR-ready. STANDARD/HIGH-RISK = full technical package (`05` §9: SDD, ADRs, UX deliverables, test strategy, deployment outline, delivery backlog). Includes the nested **G3-V** visual checkpoint where the profile requires it (§4.2b); profile re-verified | `docs/handoffs/G3-*.yaml` + merge |
 | G4 | Task ready (DoR) | You | Per task/batch: goal, linked REQs, ACs, dependencies, tests declared, scope bounded (`08` §7) | task status `ready` |
 | G5 | Task merge (DoD) | You | Tests green, spec + adversarial review resolved, traceability updated, PR approved (`09` §7) | merged PR |
 | G6 | Staging release | You | Integration/regression/a11y/security suites green, smoke on staging (`11` §6) | release branch + staging deploy record |
@@ -105,7 +105,11 @@ onboarding → discovery → specification → technical_design → planning
 | G8 | Production release | You | Release manifest, rollback plan, migrations rehearsed, monitoring armed (`11` §7) | tag + release manifest |
 | G9 | Change approval | You (+client if scope/€) | CR classified, impact analyzed, estimate accepted (`12` §5) | CR record |
 
-No gate is ever auto-approved. Every gate produces a written record in the client repo: an append-only handoff file in `docs/handoffs/` (R2-05) plus, for client gates, a confirmation in `evidence/confirmations/`. **Gate combinability is profile-scoped** (`21` §5): LITE combines G1+G2 and G6+G7+G8; STANDARD/HIGH-RISK combine nothing.
+No gate is ever auto-approved. Every gate produces a written record in the client repo: an append-only handoff file in `docs/handoffs/` (R2-05) plus, for client gates, a confirmation in `evidence/confirmations/`. **The lifecycle has exactly ten gates, G0–G9.** Gate *workflows* are profile-scoped (`21` §5): on LITE, G1+G2 run as one compact validation workflow and G6+G7+G8 as one compact release workflow — **each gate keeps its own decision, approver, and append-only record**; combining compresses ceremony, never decision identity. STANDARD/HIGH-RISK combine nothing.
+
+### 4.2b G3-V — nested visual-approval checkpoint (not an eleventh gate)
+
+G3-V is a **profile-dependent checkpoint inside G3**: it applies on STANDARD (wireframes + visual direction confirmation) and HIGH-RISK (formal design baseline); on LITE the visual direction is confirmed within G2 instead. **Approver: the client.** Record: confirmation in `evidence/confirmations/` + a `visual_approval` entry inside the G3 handoff record. Relationship to G3: where required, **G3 cannot close without G3-V** — it is a precondition of your G3 approval, not a separate lifecycle stage. Visual changes after G3-V are change requests (`12` §5); nothing visual that the client approved may be silently redesigned.
 
 ### 4.3 Stage × gate map
 
