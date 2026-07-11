@@ -36,7 +36,7 @@ deploy-prod.yml        on: tag v* + manual approval environment gate
                         → deploy(prod) → smoke → health watch (§7)
 ```
 
-Stack-specific steps (lint/test commands) are parameterized per project by a small `ci-config` block scaffolded from the archetype at technical design; the workflow *shape* is methodology-templated (`templates/client-repo/.github/workflows/`).
+Stack-specific steps (lint/test commands) are parameterized per project by a small `ci-config` block scaffolded from the archetype at technical design; the workflow *shape* is methodology-templated (`templates/client-repo/.github/workflows/`). **Profile floors (`21` §5):** LITE collapses to one workflow (build → deploy staging → smoke, manual-approved prod deploy); HIGH-RISK adds the nightly lane and migration-rehearsal job as required.
 
 ## 4. Environments
 
@@ -91,8 +91,11 @@ rollback:
   restore_point: backup-2026-10-20T06
   max_acceptable_downtime_min: 30
 approvals: {g6: 2026-10-18, g7: 2026-10-19, g8: 2026-10-20}
+verification: docs/releases/verification/REL-001-verification.yaml   # R2-07 (10 §4b)
 smoke: {staging: pass, production: pass}
 ```
+
+**Execution evidence (V2, R2-07):** the manifest references the release's verification snapshot; test pass/fail state lives there and in CI runs — never in `test-matrix.yaml` (definitions only, `10` §4).
 
 ## 8. Migrations & secrets policy
 

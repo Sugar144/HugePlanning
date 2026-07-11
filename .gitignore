@@ -1,0 +1,3 @@
+# transient local tool state
+.claude/*.tmp.*
+.claude/settings.local.json

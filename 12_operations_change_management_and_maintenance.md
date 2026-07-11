@@ -7,7 +7,7 @@
 
 ## 1. Operating stance
 
-`operation` is a stage, not an afterthought: the project stays governed by the same repo, gates, and traceability. Maintenance expectations were captured in discovery (M10) and priced; the engagement record states what response the client bought (best-effort vs response-time commitment) — incidents are handled against that, not against anxiety.
+`operation` is a stage, not an afterthought: the project stays governed by the same repo, gates, and traceability. Maintenance expectations were captured in discovery (M10), priced, and recorded in `engagement.md` as a **named billable tier** (R2-19) — e.g., `none` (handover only), `best-effort`, `committed` (response-time commitment, HIGH-RISK default). Incidents are handled against the purchased tier, not against anxiety; work beyond the tier is a CR. Operational floors (monitoring, maintenance window, retention) scale by profile (`21` §5).
 
 ## 2. Monitoring (MVP-minimal, per `ops/monitoring.md`)
 
@@ -51,7 +51,7 @@ requested_by, date
 → release via normal G6–G8
 ```
 
-Rules: no implementation before G9 (kills scope creep) · XS-class CRs may batch under one G9 email approval · agents may *propose* CRs (from `09` §8) but never enact them · a superseded requirement keeps its ID with `superseded_by:`.
+Rules: no implementation before G9 (kills scope creep) · XS-class CRs may batch under one G9 email approval · agents may *propose* CRs (from `09` §8) but never enact them · a superseded requirement keeps its ID with `superseded_by:` · **client content delays are CRs too (R2-18): when a content-inventory deadline passes, the schedule/scope impact is put to the client as a G9 decision (wait / placeholder-launch / descope), per the engagement's content clause — never silent waiting** · a CR that introduces a risk trigger (e.g., "add online payment") forces a profile upgrade proposal before estimation (`21` §4).
 
 ## 6. Dependency & platform updates
 
@@ -63,7 +63,7 @@ Docs update is part of task DoD (drift resistance is structural, not scheduled).
 
 ## 8. Retention, archival, deletion (DEC-10, closes G-20)
 
-Project close: final release manifest → client handover pack (credentials transfer, docs export if contracted) → `project.status: archived` → retention clock (`project.yaml`). At expiry: deletion runbook — remove repo (GitHub + local + backups inventory), provider data per contract, password-manager entries; record a deletion certificate note (kept, minimal, no client data). Early deletion on client request honored per GDPR; evidence layer is included in deletion scope.
+Project close: final release manifest → client handover pack (credentials transfer, docs export if contracted) → `project.status: archived` → retention clock (`project.yaml`). At expiry: deletion runbook — remove repo (GitHub + local clones + backups inventory), **`evidence-raw/` and its encrypted backups (R2-03 — the raw store makes true deletion of sensitive material possible without rewriting Git history)**, provider data per contract, password-manager entries; record a deletion certificate note (kept, minimal, no client data). Early deletion on client request honored per GDPR: raw evidence deleted outright; for committed sanitized evidence the minimization design means erasure requests are normally satisfiable without history rewriting — residual identifiers found in Git are a sanitization defect handled per its severity (worst case: repo re-creation from filtered history, documented in the runbook).
 
 ## 9. Systemic feedback into the methodology
 

@@ -49,6 +49,7 @@ freelance-methodology/
 │   │   ├── adversarial-code-review/
 │   │   ├── test-planning/
 │   │   ├── jira-export/
+│   │   ├── ux-design-outline/          # V2 (R2-17)
 │   │   └── deployment-readiness-review/
 │   ├── rules/
 │   │   ├── evidence-policy.md         # always loaded
@@ -77,26 +78,31 @@ freelance-methodology/
 ├── templates/                     # see 06 §6 for the full inventory
 │   ├── client-repo/               # ENTIRE client repository template (03 §2)
 │   ├── discovery/                 # PRD, requirements, solution-context, product-backlog,
-│   │                              # open-questions, handoff, validation-package
+│   │                              # open-questions, content-inventory, handoff,
+│   │                              # validation-package (+ LITE combined variant)
 │   ├── technical/                 # SDD, ADR, delivery-backlog, test-strategy,
-│   │                              # test-matrix, deployment-outline
+│   │                              # test-matrix, deployment-outline, ux-outline
 │   └── delivery/                  # task-context, PR body, release-manifest,
-│                                  # incident-report, change-request
+│                                  # verification-snapshot, incident-report, change-request
 │
 ├── schemas/                       # JSON Schema (draft 2020-12), one per structured artifact
-│   ├── project.schema.json
-│   ├── methodology-lock.schema.json
-│   ├── requirements.schema.json
-│   ├── solution-context.schema.json
-│   ├── open-questions.schema.json
-│   ├── product-backlog.schema.json
-│   ├── delivery-backlog.schema.json
-│   ├── handoff.schema.json
-│   ├── interview-state.schema.json
-│   ├── traceability.schema.json
-│   ├── test-matrix.schema.json
-│   ├── jira-map.schema.json
-│   └── release-manifest.schema.json
+│   │                              # created stage-by-stage at first consumer (R2-02);
+│   │                              # conventions (ID grammar, enums, schema_version) fixed at S0a
+│   ├── project.schema.json                # S0a
+│   ├── methodology-lock.schema.json       # S0a
+│   ├── interview-state.schema.json        # S0b
+│   ├── requirements.schema.json           # S0b
+│   ├── solution-context.schema.json       # S0b
+│   ├── open-questions.schema.json         # S0b
+│   ├── handoff.schema.json                # S0b
+│   ├── content-inventory.schema.json      # S2  (V2, R2-18)
+│   ├── product-backlog.schema.json        # S2
+│   ├── delivery-backlog.schema.json       # S3
+│   ├── test-matrix.schema.json            # S3  (definitions only, R2-07)
+│   ├── jira-map.schema.json               # S5
+│   ├── traceability.schema.json           # S6
+│   ├── release-manifest.schema.json       # S7
+│   └── verification-snapshot.schema.json  # S7  (V2, R2-07)
 │
 ├── scripts/                       # §8
 │   ├── new-client.sh
@@ -119,9 +125,10 @@ freelance-methodology/
 
 ## 3. What changed vs baseline §4.2 (traceable)
 
-- Agents: 4 → 9 (DEC-12). Skills: 7 → 17, all with named contracts in `14`.
-- Added `knowledge/legal/`, `templates/client-repo/` (the client template lives *inside* the methodology so it is versioned with it), `templates/delivery/`, 13 schemas (was 5), unified launcher script, `upgrade-lock.sh`.
+- Agents: 4 → 9 (DEC-12). Skills: 7 → 18 (V2 adds `ux-design-outline`, R2-17), all with named contracts in `14`.
+- Added `knowledge/legal/`, `templates/client-repo/` (the client template lives *inside* the methodology so it is versioned with it), `templates/delivery/`, 15 schemas (was 5; V2 adds content-inventory and verification-snapshot), unified launcher script, `upgrade-lock.sh`.
 - Renamed: `requirements-pack-generator` → `artifact-generation` (it generates all document packages, not only requirements).
+- V2: knowledge governed by the authoring standard (`17`); schemas created stage-by-stage (R2-02); scripts are profile-aware (R2-21).
 
 ## 4. Content rules per mechanism
 
@@ -143,16 +150,28 @@ Frontmatter: `name, description, model, tools (allowlist), skills (required)`. B
 
 ### 4.5 Knowledge
 
-Reference material only — no policies, no procedures. Every file listed in `INDEX.md` with a "consult when…" line so agents load selectively. `knowledge/legal/` files carry a mandatory header: *informational only, verify with a qualified professional*.
+Reference material only — no policies, no procedures. Authoring, metadata, sourcing, retrieval, activation, lifecycle, and testing are governed by the knowledge standard (`17`); the research backlog for content requiring external verification is `18`. `knowledge/legal/` files carry a mandatory header (*informational only, verify with a qualified professional*) and remain `provisional` until primary-sourced.
 
-## 5. Connection mechanism and fallback (DEC-01)
+## 5. Connection mechanism — VERIFIED (R2-16; evidence in `19` §0)
 
-**Primary (baseline):** `--add-dir` + `CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`, launched by `start-agent.sh`.
+**Primary mechanism, confirmed against official Claude Code docs (2026-07-11):**
 
-**Stage 0 spike SPK-01 (mandatory, ~0.5 day):** from a scratch client repo, verify: (a) `--agent client-discovery` resolves an agent defined in the added dir; (b) skills in the added dir are invocable; (c) added-dir `CLAUDE.md` and rules load with the env var; (d) writes to the added dir are blocked by deny rules (§6). Record results in methodology `README.md`.
+- `.claude/agents/` in `--add-dir` directories **is scanned** — methodology agents load alongside project subagents (verified).
+- `.claude/skills/` in `--add-dir` directories **is loaded automatically, with live reload** (verified).
+- Methodology `CLAUDE.md` and `.claude/rules/` load **only** with `CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1` (verified) — `start-agent.sh` always sets it.
+- `claude --agent <name>` selects the agent for the main session (verified).
 
-**Fallback A (if discovery fails):** the client template ships thin stubs in `client-repo/.claude/agents/*.md` — frontmatter only plus one line: *"Read and follow `$METHODOLOGY_DIR/.claude/agents/<name>.md`"*. Stubs are generated by `new-client.sh` from the locked version, so they stay pinned. Skills likewise stubbed or referenced by absolute path.
-**Fallback B (if `--add-dir` unusable entirely):** package the methodology as a Claude Code plugin pinned by version. Only pursued if A also fails.
+**Hard constraints propagated from verification:**
+1. The methodology must be passed via the `--add-dir` **flag** (or `/add-dir`). The `permissions.additionalDirectories` setting grants file access only and loads **no** agents/skills — never rely on it for distribution.
+2. Hooks and permission rules do **not** load from added directories; all enforcement config lives in the client repo's `.claude/settings.json` (already the design).
+3. Knowledge/templates/schemas need no discovery at all — they are plain files read by path from the added directory.
+
+**SPK-01 (downgraded to smoke check, S0a, ~1 h):** on the installed CLI version, from a scratch client repo confirm (a) agent resolution, (b) skill invocation, (c) CLAUDE.md/rules loading with the env var, (d) deny rules block methodology writes. Re-run on every Claude Code upgrade (CLI version recorded in the lock; RES-03 in `18`). Record results in methodology `README.md`.
+
+**Dormant fallbacks (unchanged in design, unneeded per verification):**
+- **A — materialized copies:** `new-client.sh` copies the locked version's agents/skills into the client `.claude/`; refreshed by `upgrade-lock.sh`.
+- **B — dynamic injection:** `start-agent.sh` builds a `--agents '<json>'` payload from methodology files (flag verified to exist).
+- **C — plugin packaging:** methodology as a version-pinned Claude Code plugin.
 
 ## 6. Read-only enforcement (DEC-02) — MVP, day one
 
@@ -167,6 +186,8 @@ Reference material only — no policies, no procedures. Every file listed in `IN
 2. `start-agent.sh` snapshots `git -C $METHOD_DIR status --porcelain` before/after and alerts on drift (baseline §19.1 retained).
 3. `check-methodology-clean.sh` runnable any time; also refuses to *launch* if the methodology has uncommitted changes (a dirty methodology means the locked commit is not what's actually loaded).
 4. Later (roadmap stage S9): PreToolUse hook rejecting any tool call targeting the methodology path — defense in depth, not a replacement.
+
+**Verified limitation (R2-16):** Edit/Write deny rules bind Claude's file tools and recognized Bash file commands, but **not arbitrary subprocesses** (a generated script that writes files itself). Consequently: the before/after `git status` check (item 2) is mandatory, never optional, and no client-session script may take the methodology path as a write target. OS-level sandboxing remains the eventual hard boundary.
 
 ## 7. Versioning, lock, and upgrades (baseline §7 retained + DEC-03)
 
@@ -197,17 +218,17 @@ schemas:
 |---|---|
 | `new-client.sh <dir> <PROJECT-ID>` | Copies `templates/client-repo/`, substitutes placeholders (project id, methodology path, retention defaults), `git init`, initial commit, writes lock from current methodology tag, prints G0 checklist |
 | `start-agent.sh <client-dir> <agent> [--resume]` | Validates client repo + clean methodology + lock/checkout match → exports env var → launches `claude --add-dir … --agent …` → post-session methodology drift check + reminder to commit |
-| `validate.sh [client-dir]` | Validates every structured artifact against its locked schema version; checks ID uniqueness and dangling references; exit non-zero on failure. Also runs in client CI |
-| `status.sh [client-dir]` | Derives dashboard (DEC-11): stage, gate states, artifact statuses read from artifacts, open questions/contradictions counts, requirement status histogram |
+| `validate.sh [client-dir]` | Validates every structured artifact against its locked schema version; checks ID uniqueness and dangling references; **profile-aware (R2-21): missing artifacts required by `21` §5 for the project's profile are errors, optional ones info**; exit non-zero on failure. Also runs in client CI |
+| `status.sh [client-dir]` | Derives dashboard (DEC-11): stage, gate states (from latest `docs/handoffs/` per gate), artifact statuses read from artifacts, open questions/contradictions counts, requirement status histogram, profile + pending triggers; on LITE it renders the delivery-backlog task board (no Jira) |
 | `export-jira.sh <client-dir>` | delivery-backlog.yaml → Jira CSV/JSON + updates `jira-map.yaml` (`08` §5) |
 | `upgrade-lock.sh <client-dir> <version>` | §7 |
 | `check-methodology-clean.sh` | §6 |
 
 All scripts: bash, `set -euo pipefail`, no methodology content inside (baseline §19 retained), each with `--help`.
 
-## 9. Web-project archetypes (supports "different web project types")
+## 9. Web-project archetypes and process profiles (V2: governed by `21`)
 
-`knowledge/technical-solution/web-project-archetypes.md` defines profiles that tune NFR defaults, test depth, and deployment adapters: `static-brochure`, `cms-content-site`, `booking-or-forms`, `e-commerce`, `web-app`. Each archetype lists: typical NFR floor, mandatory review triggers, default test matrix rows, candidate providers. The discovery agent tags the project with an archetype hypothesis (confirmed at G3); it never changes what the client is asked about ownership/data/budget, only depth defaults.
+The classification model lives in `21`: eight archetypes (what is being built → topics, knowledge packs, decision categories) × three process profiles (`LITE | STANDARD | HIGH-RISK` → assurance floors via the `21` §5 requirement matrix). `knowledge/technical-solution/web-project-archetypes.md` is the knowledge-pack expression of the archetype dimension (per `17` §K.12) and holds no floors — floors live once, in the matrix. The discovery agent tags an archetype hypothesis and records risk triggers; profile confirmation happens at G1 (`21` §4). Critical interview topics remain archetype-independent (unchanged from V1).
 
 ## 10. Methodology testing (baseline §21 retained, concretized)
 
@@ -215,8 +236,9 @@ All scripts: bash, `set -euo pipefail`, no methodology content inside (baseline 
 |---|---|---|---|
 | Schema tests | Each schema accepts valid fixtures, rejects invalid ones | `validate.sh` against `tests/schema-tests/` | Every methodology commit (CI) |
 | Script tests | Launcher/validators behave on a scratch repo | bats or plain bash asserts | Every methodology commit |
-| Interview scenarios | Fictitious clients (clear, contradictory, solution-proposing, non-technical, exception-omitting, scope-inflating, sensitive-data, mind-changing, "I don't know" — baseline §21.1 list verbatim) played against `client-discovery`; manual at MVP, scripted transcript-replay later | Human-driven session + checklist scoring | Before each MINOR/MAJOR release |
+| Interview scenarios | Fictitious clients (clear, contradictory, solution-proposing, non-technical, exception-omitting, scope-inflating, sensitive-data, mind-changing, "I don't know" — baseline §21.1 list verbatim; **V2 adds: a LITE client, a trigger-escalation client (starts LITE, reveals payments), and a PII-bearing transcript for sanitization checks — R2-23, R2-03**) played against `client-discovery`; manual at MVP, scripted transcript-replay later | Human-driven session + checklist scoring | Before each MINOR/MAJOR release |
 | Golden artifacts | Expected requirements/questions/contradictions per scenario; diff actual vs golden — judged on **coverage and non-invention**, not wording | Manual diff at MVP | Before each MINOR/MAJOR release |
 | Regression cases | One dir per past failure: trigger input + expected safe behavior | Re-run relevant scenario | Before release touching the failed area |
+| Knowledge tests (V2) | Consultation relevance, no gratuitous loading, evidence-over-knowledge precedence, defaults surfaced for confirmation, stale/provisional flags honored (`17` §J) | Scenario scoring + grep-level policy scan | Before each MINOR/MAJOR release |
 
 **Release gate for the methodology itself:** all schema/script tests green + relevant scenarios re-run + CHANGELOG written. The methodology repo gets its own tiny GitHub Actions workflow for schema/script tests at Stage 0.

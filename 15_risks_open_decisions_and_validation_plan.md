@@ -13,7 +13,7 @@ Baseline §24's sixteen risks are **retained in full** with their mitigations, n
 
 | ID | Risk | Impact | Mitigation | Residual |
 |---|---|---|---|---|
-| RSK-A1 | SPK-01 fails: `--add-dir` doesn't discover agents/skills | Operating model rework at S0 | Fallback A (stubs) fully designed, Fallback B (plugin) | Low — fallbacks preserve architecture |
+| RSK-A1 | ~~SPK-01 fails~~ **CLOSED (V2, R2-16):** `--add-dir` discovery verified against official docs (`19` §0); residual risk is behaviour drift across CLI upgrades | Launch mechanics break after upgrade | Smoke check re-run per upgrade (lock records CLI version, RES-03); fallbacks A/B/C dormant (`02` §5) | Low |
 | RSK-A2 | Interview quality plateaus below "senior architect" bar | Core value proposition weakens | Scenario+golden testing S1; question-bank iteration; the behavioural spec (`04`) is testable, not vibes | Medium — accept iteration |
 | RSK-A3 | Solo-operator bottleneck: every gate is you | Throughput ceiling; gate fatigue → rubber-stamping | Checklists split mechanical (scriptable) vs judgment; automation map `13` §5 | Medium — inherent to model |
 | RSK-A4 | Claude Code product changes break launch/discovery mechanics | Sessions fail after CLI update | Lock records CLI version; re-run SPK-01 on upgrade; runtime-neutral content (`01` §10) | Low |
@@ -23,18 +23,26 @@ Baseline §24's sixteen risks are **retained in full** with their mitigations, n
 | RSK-A8 | Estimation error on fixed budgets | Margin loss | DEC-16 checkpoint; T-shirt ranges not promises; CR discipline for scope moves | Medium — improves with history |
 | RSK-A9 | Reviewer agents rubber-stamp | False quality signal | Seeded-defect tests (S6); separate sessions; your G5 reviews the reviews | Medium |
 | RSK-A10 | GitHub Actions minutes/cost on private repos | CI throttling | Verify quota S7; nightly lane trims PR load; self-hosted runner as fallback | Low |
+| RSK-A11 (V2) | Profile branching complexity: conditional paths in checklists/scripts | Wrong floors applied | Single lookup matrix (`21` §5); profile-aware scripts; LITE + escalation scenarios in the test set | Low–Medium |
+| RSK-A12 (V2) | Under-classification pressure (LITE chosen to save work) | Missing assurance on risky work | Trigger-based auto-upgrade; default-up rule; agent proposes with evidence, never selects (`21` §4) | Medium |
+| RSK-A13 (V2) | Sanitization defect distorts or leaks evidence | Broken anchors or PII in Git | Alias-never-paraphrase rule; identical turn numbering + sha256 linkage; PII scenario in S1 tests; raw retained for dispute resolution | Low–Medium |
+| RSK-A14 (V2) | AI-generated methodology files look right but behave wrong | False confidence, defects surface late | Every stage gate requires behavioural validation, not file review (`13` §2); scenario-first acceptance; "generated ≠ correct" stated as stage principle | Medium |
+| RSK-A15 (V2) | Provisional (model-generated) knowledge used where sourced knowledge is required | Wrong legal/security guidance to clients | `status: provisional` machine-readable gate (`17` §B/E); legal files blocked from client use until primary-sourced; research backlog `18` | Medium until RES-06/07/08 done |
 
 ## 2. Open decisions (genuinely unresolved — with owner and resolve-by)
 
 | ID | Decision | Why open | Owner | Resolve by | Default if unresolved |
 |---|---|---|---|---|---|
 | OD-1 | First deployment provider adapter | Depends on first pilot/client archetype | You | S7 start | `static` adapter (cheapest to build/test) |
-| OD-2 | Jira vs lighter tracker (GitHub Projects) for solo MVP | Baseline mandates Jira; solo overhead is real; mission requires Jira publication | You | S5 start | Keep Jira (baseline); map/export design is tracker-agnostic either way |
+| OD-2 | ~~Jira vs lighter tracker~~ **RESOLVED (V2, R2-06):** Jira by profile — LITE none, STANDARD default yes (waivable), HIGH-RISK yes | — | — | — | — |
 | OD-3 | Pilot subject for S4/S8: serious fictitious client vs own project | Availability/opportunity | You | S4 start | Fictitious (fully controllable, reusable as example) |
 | OD-4 | Test stack per archetype (runner, E2E tool) | Stack chosen per project at technical design | You | Per project G3 | Vitest/Playwright-class defaults noted in test-strategy knowledge |
 | OD-5 | Client-facing status reporting (none / periodic email / generated page) | Depends on client expectations; not MVP-blocking | You | First real client G0 | Manual email at milestones |
+| OD-6 (V2) | Pilot profile mix: run S8 full pilot as STANDARD, plus a separate LITE mini-pilot? | LITE fast path deserves its own end-to-end proof but adds calendar time | You | S8 start | S8 = STANDARD pilot; first real LITE client serves as the LITE proof |
 
-**None of these block S0–S3.** Everything else that looked "open" in the baseline (§28's fourteen design decisions) is now resolved in files `04`–`11`.
+**None of these block S0–S3.** Everything else that looked "open" in the baseline (§28's fourteen design decisions) is now resolved in files `04`–`11` and `17`–`21`.
+
+**Documented deferred limitations (V2):** ID allocation assumes a single writer — counters in `project.yaml`, allocation at creation, collisions detected by `validate.sh`; parallel-branch allocation (reserved ranges or merge-time assignment) is deferred until worktrees activate (R2-10). Jira reconciliation automation and the hook-based methodology guard are S9. The encrypted evidence platform is post-MVP (local raw store + encrypted backups suffice for MVP, R2-03).
 
 ## 3. Validation plan for this plan
 

@@ -17,31 +17,40 @@
 client-project/
 ├── README.md                    # project one-pager + how to launch sessions
 ├── CLAUDE.md                    # project pointer file (§5)
-├── project.yaml                 # stage, approvals, config (§4)
+├── project.yaml                 # stage, approvals, profile, config (§4)
 ├── methodology.lock.yaml        # 02 §7
-├── .gitignore                   # node_modules, .env*, build outputs, OS junk
+├── .gitignore                   # evidence-raw/, node_modules, .env*, build outputs, OS junk
 ├── .env.example                 # names only, never values
 │
 ├── .claude/
 │   └── settings.json            # methodology write-deny (02 §6) + project permissions
 │
-├── evidence/                    # LAYER 1 — append-only
+├── evidence-raw/                # LAYER 1 RAW — GITIGNORED, local only (R2-03)
+│   │                            # recordings, original attachments/emails, unredacted
+│   │                            # transcripts when redaction occurred; backed up only
+│   │                            # to your encrypted backup location, never to Git remote
+│   └── (mirrors evidence/ structure)
+│
+├── evidence/                    # LAYER 1 SANITIZED — committed, append-only (R2-03)
 │   ├── interviews/
 │   │   └── client-discovery-01/
-│   │       ├── transcript.md            # human-readable, per-turn anchors (04 §8)
-│   │       ├── transcript.jsonl         # machine turns (future app; baseline §9.1)
+│   │       ├── transcript.md            # SANITIZED, same turn numbering as raw;
+│   │       │                            #   front matter: raw_ref + sha256 of raw (04 §8)
+│   │       ├── transcript.jsonl         # sanitized machine turns (future app)
 │   │       ├── interview-state.json     # state machine snapshot (04 §6)
 │   │       ├── completion-report.md     # DoD evaluation at close (04 §12)
-│   │       └── attachments/
+│   │       └── attachments/             # minimized/sanitized excerpts only
 │   ├── clarifications/          # CLAR-nnn question + answer records (DEC-08)
-│   ├── client-materials/        # files the client provides (minimized, see §6)
-│   └── confirmations/           # gate approvals: G2, G7, G9 records
+│   ├── client-materials/        # minimized excerpts + provenance index (see §6)
+│   └── confirmations/           # consent record (M0), gate approvals: G2, G7, G9
 │
 ├── docs/                        # LAYERS 2 & 3
 │   ├── product/
 │   │   ├── engagement.md        # onboarding record (DEC-15): parties, service,
-│   │   │                        #   commercial terms pointer, communication channel
+│   │   │                        #   commercial terms + maintenance tier pointer,
+│   │   │                        #   communication channel, content-deadline clause (R2-18/19)
 │   │   ├── PRD.md
+│   │   ├── content-inventory.yaml  # CNT-nnn content/asset readiness (R2-18, 07 §9)
 │   │   └── validation-package.md  # client-facing G2 summary (07 §8)
 │   ├── requirements/
 │   │   ├── requirements.yaml
@@ -64,12 +73,14 @@ client-project/
 │   │   └── security-checklist.md
 │   ├── traceability/
 │   │   └── traceability.yaml
-│   ├── task-context/            # TASK-nnn.md packages (09 §3), disposable
+│   ├── task-context/            # TASK-nnn.md packages (09 §3), retained permanently (R2-08)
 │   ├── changes/                 # CR-nnn.md change requests (12 §5)
-│   ├── handoff.yaml             # stage-transition readiness record (06 §5)
+│   ├── handoffs/                # append-only gate records (R2-05):
+│   │   └── G<n>-<slug>-<seq>.yaml   #   e.g. G2-business-baseline-01.yaml
 │   └── releases/
 │       ├── CHANGELOG.md
-│       └── manifests/REL-nnn.yaml
+│       ├── manifests/REL-nnn.yaml
+│       └── verification/REL-nnn-verification.yaml  # execution evidence (R2-07, 10 §4b)
 │
 ├── ops/
 │   ├── runbook.md               # deploy, rollback, incident quick actions (12)
@@ -108,7 +119,11 @@ project:
   name: Acme Web
   client_display_name: Acme S.L.
   language: es               # DEC-14: statements & client docs in this language
-  archetype: booking-or-forms   # hypothesis at discovery; confirmed at G3
+  archetype: [booking-system]   # 21 §1; hypothesis at discovery; confirmed at G3
+  profile: standard          # lite | standard | high-risk (21 §2–4)
+  profile_history:           # R2-01: every change logged; downgrades need reasoning
+    - {value: standard, at: 2026-09-02, gate: G0, by: developer,
+       reason: "booking + personal data, no HIGH-RISK trigger known"}
   status: active              # active | paused | archived
   repository_visibility: private
 
@@ -117,10 +132,14 @@ workflow:
   stage_status: in_progress
   stages_done: [onboarding]
 
-approvals:                    # gate records; value = null | {date, by, record}
-  g0_readiness:      {date: 2026-09-02, by: developer, record: "commit 1a2b3c"}
+tracking:
+  jira: default               # none (LITE default) | default | waived {reason} (R2-06)
+
+approvals:                    # latest gate records; full history in docs/handoffs/
+  g0_readiness:      {date: 2026-09-02, by: developer, record: "docs/handoffs/G0-readiness-01.yaml"}
+  g1_discovery_review: null
   g2_business_baseline: null
-  g3_technical_baseline: null
+  g3_technical_baseline: null   # includes G3-V visual approval where required
   g7_client_acceptance: null
   g8_production_release: null
 
@@ -146,18 +165,19 @@ This repository is the source of truth. The added methodology directory is
 READ-ONLY reference: never write there, never copy client data into it.
 
 ## Session start (always)
-1. Read `project.yaml` (stage, approvals, language) and `methodology.lock.yaml`.
-2. Run the stage's entry check before doing work (docs/handoff.yaml if present).
+1. Read `project.yaml` (stage, approvals, profile, language) and `methodology.lock.yaml`.
+2. Run the stage's entry check before doing work (latest gate record in docs/handoffs/).
 3. Never overwrite artifacts with status `approved` — use change control.
 4. Never write outside this repository.
 
 ## Canonical paths
-Evidence `evidence/` · PRD `docs/product/PRD.md` · Requirements
+Evidence `evidence/` (sanitized; never write to `evidence-raw/`) · PRD `docs/product/PRD.md`
+· Content inventory `docs/product/content-inventory.yaml` · Requirements
 `docs/requirements/requirements.yaml` · Context `docs/requirements/solution-context.yaml`
 · Questions `docs/requirements/open-questions.yaml` · Product backlog
 `docs/backlog/product-backlog.yaml` · SDD `docs/architecture/SDD.md` · Delivery
 backlog `docs/backlog/delivery-backlog.yaml` · Traceability
-`docs/traceability/traceability.yaml` · Releases `docs/releases/`
+`docs/traceability/traceability.yaml` · Gate records `docs/handoffs/` · Releases `docs/releases/`
 
 ## Project notes
 (project-specific constraints added as they arise — keep short)
@@ -165,19 +185,23 @@ backlog `docs/backlog/delivery-backlog.yaml` · Traceability
 
 No methodology duplication; pointers + invariants only.
 
-## 6. Privacy, secrets, access (DEC-10 + baseline §18 retained)
+## 6. Privacy, secrets, access (DEC-10 + baseline §18 retained; V2 raw/sanitized split R2-03)
 
+- **Two evidence stores:** `evidence-raw/` (gitignored, local): recordings, original attachments and email exports, unredacted transcripts when redaction occurred. `evidence/` (committed): sanitized transcripts (identical turn numbering, so all `#turn-nnn` anchors resolve), minimized excerpts, confirmations, clarification records. Sanitized files carry `raw_ref` + SHA-256 of their raw counterpart (integrity + stable linkage). What may never be committed: recordings, credentials, full customer datasets, unredacted personal data beyond what a requirement needs.
+- **Sanitization:** performed by the `interview-evidence-capture` skill at interview close (procedure in `04` §8): third-party names → roles, contact data removed, business facts kept verbatim. It removes/aliases identifiers only — it never paraphrases statements (evidence integrity).
+- **Raw access rule:** agents in later stages read sanitized evidence only; consulting raw evidence is a manual, you-only act (prevents PII leaking into generated artifacts). Backup of `evidence-raw/` only to your encrypted backup location.
+- **Consent:** recording/transcription consent obtained at interview M0, stored in `evidence/confirmations/`.
 - **Secrets:** never in Git. Local: `.env` (gitignored) + `.env.example` with names. CI/deploy: GitHub Actions secrets + provider secret stores (`11` §8). Client-provided credentials recorded *that they exist* in `solution-context.yaml` (`access_status`), stored in your password manager, never in the repo.
-- **PII minimization:** transcripts capture what was said, but attachments and examples are pruned to what requirements need; full customer datasets are never committed — a sample schema or synthetic sample is committed instead (evidence rule enforces this).
-- **Access:** repo private; collaborators only by engagement need; client gets read access only if contractually agreed.
-- **Retention:** on project close → `status: archived`, retention clock starts (`retention_after_close_months`); deletion runbook in `12` §8.
+- **Access:** repo private; collaborators only by engagement need; client gets read access only if contractually agreed. The client never needs to touch Git/Jira/Claude — all client touchpoints are email/call artifacts (R2-19 invariant).
+- **Retention:** on project close → `status: archived`, retention clock starts (`retention_after_close_months`); deletion runbook (`12` §8) covers **both** stores and backups.
 
 ## 7. G0 readiness gate — checklist (printed by `new-client.sh`)
 
 - [ ] Repo created from template, private, pushed, `main` protected
 - [ ] `methodology.lock.yaml` matches an existing methodology tag
-- [ ] `engagement.md` filled: client identity, contact, service scope sketch, commercial terms reference, agreed communication channel
-- [ ] `project.yaml`: language, sensitivity, retention set
+- [ ] `engagement.md` filled: client identity, contact, service scope sketch, commercial terms + maintenance tier reference, content-deadline clause, agreed communication channel
+- [ ] `project.yaml`: language, sensitivity, retention set; **archetype + profile hypothesis recorded with rationale (`21` §4)**
+- [ ] `.gitignore` covers `evidence-raw/`
 - [ ] `.claude/settings.json` deny rules point at the real methodology path
 - [ ] `validate.sh` passes on the fresh repo
 - [ ] Launch test: `start-agent.sh <dir> client-discovery` starts and loads methodology (then exit)

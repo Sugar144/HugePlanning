@@ -1,131 +1,145 @@
-# 13 — MVP Scope and Implementation Roadmap
+# 13 — MVP Scope and AI-First Implementation Roadmap
 
-**Purpose:** the MVP boundary, the ordered build sequence with gates/effort/risks per stage, the critical path, and the progressive-automation map.
-**Baseline traceability:** B27 (roadmap refined), B30 superseded (DEC-19); absorbs baseline §22, §26, §27.
+**Purpose:** the MVP boundary, the AI-first build sequence with per-stage effort decomposition and three delivery scenarios, the critical path, and the progressive-automation map.
+**Baseline traceability:** B27 refined, B30 superseded (DEC-19). **V2:** AI-first effort model (R2-09), S0 split + stage-driven infrastructure (R2-02), profile-aware scope (R2-01), verified distribution (R2-16).
 
 ---
 
 ## 1. MVP definition
 
-**The MVP is the capability to take one real client from first conversation to a monitored production website, with every lifecycle stage covered, using manual gates and manual glue where automation isn't built yet.**
+**The MVP is the capability to take one real client from first conversation to a monitored production website, with every lifecycle stage covered, using manual gates and manual glue where automation isn't built yet — at process weight matched to the project's profile (`21`).**
 
-In scope: methodology repo (versioned, locked, schema-validated) · client template + `new-client.sh` · working `client-discovery` agent (both modes) · specification pipeline with audits and G1/G2 · working `technical-solution-architect` with ADRs and delivery backlog · Jira export (CSV-level) · task loop with implementer + 2 reviewers + risk triggers · layered testing with test matrix · GitHub protections + CI (lint/type/test/build) · staging + production deploy via one provider adapter · release manifests + rehearsed rollback · monitoring minimal set · CR/BUG/incident workflows · retention policy.
+In scope: methodology repo (versioned, locked, schema-validated) · client template + `new-client.sh` · working `client-discovery` agent (both modes, profile-scaled, sanitizing evidence capture) · specification pipeline with audits, content inventory, and G1/G2 · working `technical-solution-architect` with ADRs, UX outlines + G3-V, delivery backlog · Jira export where the profile uses Jira · task loop with implementer + reviewers (merged pass on LITE) + risk triggers · layered testing with definitions-only matrix + release verification snapshots · GitHub protections + CI floors per profile · staging + production deploy via one provider adapter · release manifests + rehearsed rollback · monitoring floor · CR/BUG/incident workflows · retention + raw-evidence deletion.
 
-Out of MVP (deferred, baseline §25 + DEC list): Jira REST automation & reconciliation · hooks-based methodology guard · parallel worktrees · web UI / API runtime · orchestrated multi-agent chaining · additional provider adapters · transcript-replay scenario automation.
+Out of MVP (deferred): Jira REST automation & reconciliation · hooks-based methodology guard · parallel worktrees + parallel ID allocation · web UI / API runtime · orchestrated multi-agent chaining · additional provider adapters · transcript-replay scenario automation · encrypted evidence platform · domain packs.
 
-**MVP acceptance = baseline §27's 15 validity criteria, all demonstrated on the pilot (S8), plus:** a production deploy + rollback rehearsal + one CR handled end-to-end.
+**MVP acceptance = baseline §27's 15 validity criteria demonstrated on the pilot (S8), plus:** a production deploy, a rollback rehearsal, one CR end-to-end, **profile confirmation + one trigger-escalation exercised, and a sanitized-evidence interview**.
 
-## 2. Stage sequence
+## 2. AI-first delivery model (R2-09)
 
-Per-stage fields: Objective · Why now · Inputs · Deliverables · Files · Tests · Acceptance · Deps · Risks · Effort (XS–XL) · Stays manual · Must not defer · Gate.
-
----
-
-### S0 — Foundations (Effort: M)
-- **Objective:** methodology repo skeleton + client template + launch/validation tooling + the load-bearing spike.
-- **Why now:** everything else writes into these structures; SPK-01 de-risks the whole operating model first.
-- **Inputs:** this plan; empty repos.
-- **Deliverables:** `freelance-methodology` on private GitHub: `CLAUDE.md`, 5 always-on rules, `VERSION/CHANGELOG`, 13 schemas + fixtures, `templates/client-repo/` (03 §2 incl. settings deny rules, workflow shells), scripts (`new-client`, `start-agent`, `validate`, `status`, `check-methodology-clean`), methodology CI (schema/script tests), SPK-01 result recorded.
-- **Files:** per `02` §2 tree (agents/skills as empty stubs only).
-- **Tests:** schema fixtures valid+invalid; script smoke on scratch repo; SPK-01 checklist (a–d in `02` §5).
-- **Acceptance:** `new-client.sh` → G0-passable repo in <10 min; `validate.sh` green on template; SPK-01 verdict documented (fallback A activated if failed).
-- **Deps:** none. **Risks:** SPK-01 failure (mitigated: fallback designed); schema over-engineering (mitigate: only fields used by `04`–`08`).
-- **Manual:** GitHub repo creation, branch protection clicks. **Must not defer:** deny rules, lock mechanism, ID counters, SPK-01.
-- **Gate:** methodology v0.1.0 tagged; a fictitious client repo passes G0.
-
-### S1 — Discovery interviewer (Effort: L) **[critical path]**
-- **Objective:** working `client-discovery` per `04`.
-- **Why now:** the baseline's stated differential value; hardest agent; everything downstream consumes its output.
-- **Inputs:** S0; `04` in full.
-- **Deliverables:** agent file; skills `adaptive-interview-control`, `interview-evidence-capture`, `nfr-elicitation`, `process-elicitation`; knowledge: `question-bank`, `interview-strategies`, `requirements-taxonomy`, `nfr-catalog`, `elicitation-techniques`, `evidence-and-uncertainty`, `glossary`; `interview-state` schema live; 3 interview scenarios (clear / contradictory / non-technical) + golden artifacts.
-- **Tests:** scenario runs scored against golden checklists (coverage, classification, non-invention, contradiction catch, pause/resume mid-M7).
-- **Acceptance:** contradictory-client scenario → CTR registered and confronted; pause/resume works from state file; DoD refuses premature close; evidence anchors on every candidate.
-- **Deps:** S0. **Risks:** context bloat (keep skills lean, knowledge on-demand); scoring rubric subjectivity (fixed checklist per golden).
-- **Manual:** you play the fictitious client. **Must not defer:** state persistence contract; completion criteria enforcement.
-- **Gate:** all 3 scenarios pass; methodology v0.2.0.
-
-### S2 — Specification pipeline (Effort: M) **[critical path]**
-- **Objective:** interview evidence → audited, client-approvable baseline (`07`).
-- **Inputs:** S1 scenario outputs as fixtures.
-- **Deliverables:** `requirements-normalization` skill; `requirements-auditor` agent (5 audits); `doc-generator` agent; ambiguity/contradiction/assumption audit skills; PRD + validation-package + clarification templates; G1/G2 checklists operational.
-- **Tests:** golden: planted ambiguities/contradictions/inventions in fixture evidence must be caught; schema round-trip; generated PRD cites only existing IDs.
-- **Acceptance:** from a scenario transcript to G2-ready validation package with ≤2 fix cycles, no invention.
-- **Deps:** S1. **Risks:** audit noise (severity thresholds tuned on fixtures). **Manual:** estimation, G1/G2 themselves. **Must not defer:** non-invention golden test.
-- **Gate:** full discovery→validation-package run on fictitious client; v0.3.0.
-
-### S3 — Technical design pipeline (Effort: L) **[critical path]**
-- **Objective:** working `technical-solution-architect` per `05` + backlog generation.
-- **Deliverables:** agent; skills `architecture-option-analysis`, `backlog-refinement`, `test-planning`, `artifact-generation` (SDD/ADR assembly); knowledge: `architecture-decision-framework`, `web-project-archetypes`, `security-baseline`, `test-strategy`, `deployment-patterns`, `ux-design-framework`; SDD/ADR/delivery-backlog/test-matrix templates+schemas; design-session state file; 2 design scenarios (hidden infeasibility; missing-client-fact→CLAR).
-- **Tests:** scenario goldens (infeasibility caught at P1; CLAR generated, nothing invented; every approved REQ lands in coverage matrix).
-- **Acceptance:** G3-ready package from S2's fixture baseline; delivery backlog passes DoR sampling.
-- **Deps:** S2. **Risks:** decision-backlog sprawl (fixed category list caps it). **Manual:** all decisions (by design). **Must not defer:** requirement-coverage consolidation check.
-- **Gate:** v0.4.0.
-
-### S4 — Pilot: discovery → technical baseline (Effort: M) **[critical path]**
-- **Objective:** run S1–S3 for real on a serious fictitious client or own project (baseline §22 E4).
-- **Deliverables:** complete client repo through G3; friction log; methodology fixes (patch releases); `examples/fictitious-client/` populated (anonymized).
-- **Acceptance:** end-to-end without editing methodology mid-flight (fixes queue for release); metrics captured: duration, question count, fix cycles, artifact usefulness verdicts.
-- **Deps:** S3. **Risks:** self-leniency — use the gate checklists literally. **Gate:** G3 reached; friction log triaged; v0.5.0.
-
-### S5 — Backlog → Jira (Effort: S)
-- **Objective:** `08` operational: export, jira-map, G4 batch flow.
-- **Deliverables:** `export-jira.sh` (CSV), `jira-map` schema, Jira project conventions doc, `jira-export` skill (formatting).
-- **Acceptance:** pilot backlog visible in Jira with canonical IDs; re-export idempotent.
-- **Deps:** S4 backlog. **Risks:** CSV import field quirks (timebox; fall back to manual creation with map file — still MVP-valid). **Manual:** import click, key capture. **Gate:** pilot board live.
-
-### S6 — Implementation loop (Effort: L) **[critical path]**
-- **Objective:** `09` operational: context packages, implementer, spec+adversarial reviewers, risk triggers, PR/DoD flow.
-- **Deliverables:** 4 agents (implementer, spec-reviewer, adversarial-reviewer, risk-specialist-reviewer); skills `task-context-package`, `adversarial-code-review`; PR/task-context templates; `traceability-validation` skill live; branch/commit conventions enforced by convention doc + PR template.
-- **Tests:** run 3–5 pilot tasks end-to-end incl. one high-risk (forms/auth) triggering specialist review; one seeded-defect task (adversarial reviewer must catch a planted bug).
-- **Acceptance:** a story goes requirement→merged PR with all DoD boxes real; bounded fix cycles observed.
-- **Deps:** S5 (or S4 backlog directly if Jira lags). **Risks:** reviewer rubber-stamping (seeded-defect test guards). **Manual:** launching each session; G5. **Must not defer:** reviewer role separation; traceability update in DoD.
-- **Gate:** walking skeleton + first real story merged; v0.6.0.
-
-### S7 — CI/CD, staging, release, ops (Effort: L) **[critical path]**
-- **Objective:** `11` + `12` minimal set operational on the pilot.
-- **Deliverables:** workflow templates finalized (ci/nightly/deploy-staging/deploy-prod); first provider adapter (chosen by pilot archetype); smoke suite; release-manager agent + `deployment-readiness-review` skill; REL manifest flow; rollback rehearsed; monitoring set up; runbook.
-- **Tests:** pipeline green on pilot; staging deploy + smoke; prod-like deploy to a scratch target; rollback rehearsal executed.
-- **Acceptance:** tag → approved prod deploy → smoke → monitored; rollback demonstrated.
-- **Deps:** S6. **Risks:** provider quirks (adapter isolates); Actions minutes on private repo (verify quota). **Manual:** G6–G8 approvals, Jira release marking. **Must not defer:** rollback rehearsal, backup restore check.
-- **Gate:** pilot live on staging+prod targets; v0.7.0.
-
-### S8 — Full-cycle pilot & MVP acceptance (Effort: M) **[critical path]**
-- **Objective:** one continuous run: new client repo → discovery → … → production → 1 CR + 1 simulated SEV-2 incident.
-- **Acceptance:** baseline §27 criteria 1–15 all demonstrated + §1 additions; metrics + friction log; methodology v1.0.0 tagged.
-- **Gate:** **MVP declared complete.** Ready for the first real client.
-
-### S9 — Automation enhancements (Effort: ongoing, post-MVP)
-Pulled from the automation map (§5) strictly by observed friction (baseline §2.1). First candidates: Jira REST + key capture; PreToolUse methodology guard; session chaining for the review pipeline; scenario replay harness; status report auto-publish.
-
----
-
-## 3. Critical path & parallelism
+Every stage follows the same loop — and its acceptance is always behavioural, never "the files look right":
 
 ```text
-S0 → S1 → S2 → S3 → S4 → S6 → S7 → S8        (critical path)
-                     S5 (Jira) off-path: needed before S8, parallel to S6
+design contract (this plan, per 20's matrix)
+→ AI generation (Claude Code/Fable writes files, multi-file patches)
+→ integration (wire into repo, run scripts)
+→ deterministic validation (schemas, script tests, CI)
+→ behavioural scenario (fictitious-client runs, golden checklists)
+→ human review (you judge behaviour + spot-check content)
+→ bounded correction (findings back to generation; max 2 cycles per
+   defect class, then re-examine the design contract, not the output)
+→ release (methodology version tag)
 ```
 
-Rough calendar for one person at ~2 focused days/week: S0 1–1.5 wk · S1 2–3 wk · S2 1.5 wk · S3 2 wk · S4 1 wk · S5 0.5 wk · S6 2 wk · S7 2 wk · S8 1 wk ≈ **3.5–4 months to MVP**. First real client can start after S4 (discovery/spec are client-safe) while S6–S7 are finished — acceptable overlap if the client's timeline tolerates it.
+**Where AI compresses effort (≈70–90% saving):** repo skeletons, schemas + fixtures, templates, scripts, rule/agent/skill file drafting, knowledge first drafts, test scenario scripts, boilerplate CI, multi-file consistency patches.
+**Where it doesn't (≈0–30%):** behavioural scenario runs (you play the client — wall-clock human hours), interview-quality judgment, integration defects between generated parts, gate reviews, external research (18), real-client latency (content, approvals). **These dominate the critical path; plan around validation capacity, not generation capacity.**
 
-## 4. Work-class legend per stage
+Effort classes per stage below: **SP** spec/prompt prep · **G** AI generation · **I** integration · **DV** deterministic validation · **BV** behavioural validation · **C** correction cycles · **HA** human approval. Units = focused hours (fh) for you, the operator; generation wall-time is negligible at this scale.
 
-Foundation work: S0 · Interviewer MVP: S1 · Documentation pipeline: S2 · Technical design pipeline: S3 · Delivery pipeline: S5–S6 · Deployment pipeline: S7 · Automation enhancements: S9. (Mission's required distinction, mapped.)
+## 3. Stage sequence
 
-## 5. Progressive automation map (mission section M)
+Stage fields kept from V1 (objective, deliverables, tests, acceptance, deps, risks, manual, must-not-defer, gate) with the AI-first effort row added.
 
-| Manual step (MVP) | Owner | In → Out | Automation candidate | Trigger to automate | Implementation option | Risk of automating | Preconditions |
-|---|---|---|---|---|---|---|---|
-| Launching each agent session | You | stage → session | Session chaining script | >3 sessions/day routinely | `start-agent.sh` pipeline mode / Agent SDK | Wrong-stage runs | Stable stage checks in `project.yaml` |
-| Gate checklists (G0–G9) | You | artifacts → approval record | Checklist evaluators (mechanical items only) | Checklist fatigue / missed items | `validate.sh` extensions per gate | False confidence on judgment items | Split mechanical vs judgment items per checklist |
-| Estimation (G2) | You | backlog → estimate | Historical calibration aid | ≥5 completed projects | metrics store + comparison script | Anchoring on bad history | Consistent effort logging |
-| CLAR send/receive | You | OQ → evidence | Email templating + inbox capture | >2 clients concurrent | mail merge script / future app | Tone/PII errors | Client comms policy file |
-| Jira import & key capture | You | CSV → board + map | REST API + auto map-back | After S8, first friction | `export-jira.sh --api` | Divergence bugs | Stable field mapping from S5 |
-| Reviewer pipeline sequencing | You | merged code ← reviews | Scripted chain implementer→reviewers | Loop stable across ~10 tasks | headless `claude -p` per role | Rubber-stamp risk unobserved | Seeded-defect test in CI of methodology |
-| Traceability updates at merge | You/implementer | PR → traceability.yaml | Post-merge Action | Missed updates observed | GH Action + script | Silent wrong links | `validate.sh` traceability checks solid |
-| Status reporting | You | repo → report | `status.sh` output to client-friendly page | Client asks twice | scheduled Action → artifact | Leaking internals | Report template review |
-| Staging smoke walkthrough | You | deploy → verdict | Full E2E in nightly | Flake rate <2% | Playwright suite growth | Flaky blocks releases | Quarantine policy working |
-| Methodology upgrade per client | You | lock → new lock | `upgrade-lock.sh` batch mode | >3 active clients | script loop + report | Mass breakage | Migration notes discipline |
-| Monitoring checks | You | signals → action | Alert routing + weekly digest | First missed alert | uptime/Sentry webhooks | Alert fatigue | Severity policy (12 §3) |
+---
 
-Every automated step keeps its manual fallback (the MVP procedure remains documented in the runbook/skill and stays executable).
+### S0a — Minimal runtime bootstrap **[critical path]**
+- **Objective:** launchable methodology + client skeleton + verified-mechanism smoke check + conventions locked.
+- **Deliverables:** methodology repo on private GitHub: `CLAUDE.md`, 5 always-on rules, `VERSION/CHANGELOG`, **conventions rule (ID grammar, status enums, `schema_version` policy — fixes the namespace so later schemas can't drift, R2-02)**, `project.schema.json` + `methodology-lock.schema.json`, minimal client template (tree, settings deny rules, client CLAUDE.md, `.gitignore` incl. `evidence-raw/`), `new-client.sh`, `start-agent.sh`, `check-methodology-clean.sh`, SPK-01 smoke check executed and recorded.
+- **Tests:** script smoke on scratch repo; SPK-01 checklist (a–d, `02` §5); schema fixtures for the 2 schemas.
+- **Acceptance:** `new-client.sh` → G0-passable repo in <10 min; launch loads methodology agents/rules; deny rules verified live.
+- **Deps:** none. **Risks:** low (mechanism verified, R2-16). **Manual:** GitHub clicks. **Must not defer:** conventions rule; deny rules; lock.
+- **Effort:** SP 2 · G 1 · I 1 · DV 1 · BV 1 · C 1 · HA 0.5 ≈ **7–8 fh** (opt 5 / real 8 / cont 14).
+- **Gate:** methodology v0.1.0 tagged; scratch client passes G0.
+
+### S0b — Discovery infrastructure **[critical path]**
+- **Objective:** everything the interviewer writes into, validated.
+- **Deliverables:** schemas: interview-state, requirements (v2 model: origin, NFR fields, DAT), solution-context (+risk_triggers), open-questions, handoff; valid+invalid fixtures; `validate.sh` (profile-aware core) + `status.sh` v0; methodology CI (schema/script tests); discovery templates (YAML skeletons).
+- **Acceptance:** `validate.sh` green on template + red on every invalid fixture; CI runs on push.
+- **Deps:** S0a. **Effort:** SP 2 · G 1.5 · I 1 · DV 2 · BV — · C 1.5 · HA 0.5 ≈ **8–9 fh** (opt 5 / real 9 / cont 15).
+- **Gate:** v0.1.x; fixtures locked as the schema contract.
+
+### S1 — Discovery interviewer **[critical path — the validation-heavy stage]**
+- **Objective:** working `client-discovery` per `04` (both modes, sanitization, profile scaling, trigger duty, content seeding).
+- **Deliverables:** agent file; skills: adaptive-interview-control, interview-evidence-capture (+sanitization), nfr-elicitation, process-elicitation; knowledge (per `17` §K, provisional): question-bank, interview-strategies, requirements-taxonomy, nfr-catalog, elicitation-techniques, evidence-and-uncertainty, glossary, scope-and-mvp, technical-operational-context, process-elicitation; **6 scenarios** (clear / contradictory / non-technical / LITE / trigger-escalation / PII-bearing) + golden checklists.
+- **Tests (all behavioural):** scenario runs scored: coverage, classification (incl. `04` §3 example class), non-invention, contradiction catch, pause/resume mid-M7, sanitization correctness (PII case), LITE module floor respected, escalation flagged.
+- **Acceptance:** all 6 scenarios pass their goldens; DoD refuses premature close; state re-hydration works.
+- **Deps:** S0b. **Risks:** RSK-A2/A14 — behavioural quality needs iterations; budget 2 full correction cycles.
+- **Manual:** you play the client (~1–1.5 h per scenario run + scoring). **Must not defer:** persistence contract; sanitization pass; completion enforcement.
+- **Effort:** SP 3 · G 3 · I 2 · DV 1 · **BV 10–14** · C 4 · HA 1 ≈ **24–28 fh** (opt 16 / real 26 / cont 44).
+- **Gate:** v0.2.0.
+
+### S2 — Specification pipeline **[critical path]**
+- **Objective:** evidence → audited, client-approvable baseline (`07`), incl. product backlog (product mode) + content inventory + profile confirmation at G1.
+- **Deliverables:** requirements-normalization; requirements-auditor (5 audits + origin-integrity check); doc-generator (layer 3/4); backlog-refinement product mode; content-inventory schema+template; PRD/validation-package (+LITE combined variant)/clarification templates; G1/G2 checklists.
+- **Tests:** planted ambiguities/contradictions/inventions caught on fixture evidence; generated PRD cites only existing IDs; product backlog slices vertically (golden: a booking FR set → outcome stories, not renamed FRs); LITE fixture produces the 1-page brief.
+- **Acceptance:** scenario transcript → G2-ready package in ≤2 fix cycles, zero invention.
+- **Deps:** S1 outputs as fixtures. **Effort:** SP 2 · G 2 · I 1.5 · DV 1.5 · BV 5 · C 3 · HA 1 ≈ **16 fh** (opt 10 / real 16 / cont 27).
+- **Gate:** v0.3.0.
+
+### S3 — Technical design pipeline **[critical path]**
+- **Objective:** working `technical-solution-architect` per `05` + UX outlines + delivery backlog.
+- **Deliverables:** agent; skills: architecture-option-analysis, ux-design-outline, backlog-refinement delivery mode, test-planning, artifact-generation (SDD/ADR assembly); technical knowledge set (provisional per `17` §K); schemas: delivery-backlog, test-matrix (definitions-only); SDD/ADR/ux-outline templates; design-session state; 2 design scenarios (hidden infeasibility; missing-client-fact→CLAR).
+- **Tests:** infeasibility caught at P1; CLAR generated, nothing invented; every approved REQ lands in the coverage matrix; UX outline depth matches profile; G3-V package produced for the STANDARD fixture.
+- **Acceptance:** G3-ready package from S2's fixture baseline; delivery backlog passes DoR sampling with outcome-sized tasks (`08` §3).
+- **Deps:** S2. **Effort:** SP 2.5 · G 2.5 · I 1.5 · DV 1 · BV 6 · C 3 · HA 1 ≈ **17–18 fh** (opt 11 / real 18 / cont 30).
+- **Gate:** v0.4.0.
+
+### S4 — Pilot: discovery → technical baseline **[critical path]**
+- **Objective:** run S1–S3 for real on a serious fictitious client (STANDARD profile) — first uninterrupted end-to-end of the front half.
+- **Acceptance:** G3 reached without mid-flight methodology edits (fixes queue for release); metrics captured (duration, questions, fix cycles, artifact usefulness); friction log triaged; `examples/fictitious-client/` populated.
+- **Deps:** S3. **Effort:** mostly BV/HA ≈ **10–12 fh** (opt 8 / real 11 / cont 18). **Gate:** v0.5.0.
+- **Recommended parallel:** run the RES-06/07/08 research batch (`18` §4) during S2–S4 so legal knowledge is verified before any real client.
+
+### S5 — Backlog → Jira (profile-conditional)
+- **Objective:** `08` §4–5 operational for Jira-using profiles: export, jira-map, G4 batch flow.
+- **Acceptance:** pilot backlog on a board with canonical IDs; re-export idempotent; authority table exercised (status reconciliation at a fake PR event). LITE path needs none of this — `status.sh` board demonstrated instead.
+- **Deps:** S4. **Effort:** ≈ **5 fh** (opt 3 / real 5 / cont 9, incl. RES-04 quirks). Off critical path.
+
+### S6 — Implementation loop **[critical path]**
+- **Objective:** `09` operational: context packages, implementer, reviewers (incl. LITE merged pass), risk triggers, PR/DoD flow, traceability.
+- **Deliverables:** 4 agents; skills task-context-package, adversarial-code-review, traceability-validation; traceability schema; PR/task-context templates.
+- **Tests:** 3–5 pilot tasks end-to-end incl. one high-risk task triggering the specialist and **one seeded-defect task the adversarial reviewer must catch**; story DoD (E2E AC demonstration) exercised once.
+- **Acceptance:** a story goes requirement→merged PRs→demonstrated outcome with every DoD box real; bounded fix cycles observed.
+- **Deps:** S4 (S5 optional). **Effort:** SP 2 · G 2 · I 2 · DV 1.5 · BV 6 · C 3 · HA 1.5 ≈ **18 fh** (opt 11 / real 18 / cont 30).
+- **Gate:** walking skeleton + first real story merged; v0.6.0.
+
+### S7 — CI/CD, staging, release, ops **[critical path]**
+- **Objective:** `11` + `12` floors operational on the pilot: pipeline, first provider adapter, smoke suite, release-manager agent, verification snapshot, manifest, rollback rehearsal, monitoring, runbook.
+- **Deliverables:** + schemas: release-manifest, verification-snapshot, jira-map (if S5 done); deployment-readiness-review skill.
+- **Tests:** pipeline green; staging deploy + smoke; scratch prod-like deploy; **rollback rehearsal executed**; backup restore spot-check.
+- **Acceptance:** tag → approved prod deploy → smoke → monitored; verification snapshot generated for the release.
+- **Deps:** S6. **Risks:** provider quirks (RES-09), Actions quota. **Effort:** SP 2 · G 2.5 · I 3 · DV 2 · BV 4 · C 3 · HA 1.5 ≈ **18 fh** (opt 11 / real 18 / cont 32).
+- **Gate:** v0.7.0.
+
+### S8 — Full-cycle pilot & MVP acceptance **[critical path]**
+- **Objective:** one continuous run at STANDARD profile: new client repo → discovery → … → production → 1 CR + 1 simulated SEV-2 + 1 trigger-escalation exercise. (LITE proof per OD-6 default: first real LITE client.)
+- **Acceptance:** §1 MVP acceptance list, evaluated literally against checklists; friction log; **v1.0.0 tagged — MVP complete, ready for a real client.**
+- **Deps:** S7 (+S5 for the STANDARD pilot). **Effort:** ≈ **12–14 fh** (opt 9 / real 13 / cont 22).
+
+### S9 — Automation enhancements (post-MVP, friction-driven)
+First candidates unchanged from V1 (Jira REST + reconciliation, PreToolUse guard, review-pipeline chaining via `--agents`/headless, scenario replay harness, status publishing) — pulled strictly by the observed-friction rule via the automation map (§6).
+
+---
+
+## 4. Scenarios and critical path
+
+```text
+Critical path: S0a → S0b → S1 → S2 → S3 → S4 → S6 → S7 → S8
+Off-path:      S5 (Jira) before S8's STANDARD pilot; RES-06/07/08 before first real client
+```
+
+| Scenario | Focused hours | Calendar at ~8 fh/week | Assumes |
+|---|---|---|---|
+| **Optimistic** | ≈ 90 fh | **~6–7 weeks** | Generation mostly right first pass; ≤1 correction cycle per stage; scenarios pass early |
+| **Realistic** | ≈ 135 fh | **~9–11 weeks** | 2 correction cycles on interviewer/design stages; normal integration defects |
+| **Contingency** | ≈ 225 fh | **~5–6 months** | Interview quality needs a redesign iteration (`04` revision); a fallback mechanism activates; provider/Jira quirks; personal availability dips |
+
+Do not promise the optimistic case: it depends on first-generation output quality you cannot guarantee (RSK-A14). The realistic case is the planning basis. **A real LITE client becomes serviceable after S4 + S6 + S7-floor** (LITE needs no Jira and only the collapsed pipeline), which is the earliest revenue point.
+
+## 5. Work-class legend
+
+Foundation: S0a/S0b · Interviewer MVP: S1 · Documentation pipeline: S2 · Technical design pipeline: S3 · Delivery pipeline: S5–S6 · Deployment pipeline: S7 · Automation enhancements: S9.
+
+## 6. Progressive automation map
+
+Unchanged in structure from V1 (owner / in→out / candidate / trigger / option / risk / preconditions), with V2 deltas: Jira REST row is conditional on profiles that use Jira; add rows — **sanitization assist** (owner: you+skill; candidate: PII-pattern pre-scan script; trigger: >2 redaction misses; risk: false confidence; precondition: PII scenario suite), **profile trigger scan** (candidate: `validate.sh` rule flagging trigger keywords in solution-context vs profile; trigger: first missed escalation), **verification snapshot assembly** (candidate: script pulling CI run results into the snapshot; trigger: 2nd manual assembly). Every automated step keeps its manual fallback documented.
