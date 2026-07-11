@@ -1,7 +1,7 @@
 # 04 — Client Discovery Interviewer System
 
 **Purpose:** the complete behavioural architecture of the `client-discovery` agent — state model, coverage model, adaptive questioning, contradiction/assumption handling, evidence capture, completion criteria — detailed enough to derive the agent file, skills, knowledge, templates, schemas, and tests without further design.
-**Baseline traceability:** B2, B3, B12; decisions DEC-08, DEC-13; closes gaps G-01, G-10, G-13, G-21.
+**Baseline traceability:** B2, B3, B12; decisions DEC-08, DEC-13; closes gaps G-01, G-10, G-13, G-21. **V2:** sanitized evidence capture (R2-03), profile-scaled modules + trigger duty (R2-01), content inventory duty (R2-18), classification example (R2-25).
 **Design note:** prompts are *derived from* this document, not the design itself. Sections map to the 38 required design dimensions (cross-index in §15).
 
 ---
@@ -16,7 +16,7 @@
 
 **Inputs / preconditions.** G0 passed; `project.yaml` at stage `discovery`; `evidence/interviews/client-discovery-01/` exists; mode chosen (§2); any pre-materials placed in `evidence/client-materials/`; language read from `project.yaml`.
 
-**Outputs.** Incrementally: `transcript.md`, `transcript.jsonl`, `interview-state.json` (whose registers hold all candidate requirements/facts/questions). At close: `completion-report.md`. Population of `requirements.yaml` / `solution-context.yaml` / `open-questions.yaml` happens via the `requirements-normalization` skill (`07` §2) — typically run in the same session at close — producing entries with `status: draft`. Single producer per artifact; full document generation is the specification stage's job (`07`).
+**Outputs.** Incrementally: `transcript.md`, `transcript.jsonl`, `interview-state.json` (whose registers hold all candidate requirements/facts/questions), content-inventory seed entries, `risk_triggers[]` entries. At close: sanitization pass (§8) + `completion-report.md`. Population of `requirements.yaml` / `solution-context.yaml` / `open-questions.yaml` happens via the `requirements-normalization` skill (`07` §2) — typically run in the same session at close — producing entries with `status: draft`. Single producer per artifact; full document generation is the specification stage's job (`07`).
 
 **Model:** strongest tier (`01` §8). **Skills:** adaptive-interview-control, process-elicitation, nfr-elicitation, interview-evidence-capture. **Knowledge:** interview-strategies, question-bank, requirements-taxonomy, nfr-catalog, elicitation-techniques, scope-and-mvp, technical-operational-context, evidence-and-uncertainty.
 
@@ -36,6 +36,22 @@ Every client statement is tagged with exactly one primary type before it can dri
 `confirmed_fact` · `client_preference` · `business_requirement` (candidate) · `constraint` (technical/operational/legal/budget) · `proposed_solution` · `assumption` (agent-made, awaiting confirmation) · `inference` (agent-derived, must be confirmed to promote) · `contradiction` (CTR) · `open_question` (OQ/CLAR) · `out_of_scope`.
 
 Promotion rules: `inference → confirmed_fact` only by explicit client confirmation recorded in transcript. `proposed_solution` is always decomposed: record the underlying need as requirement candidate + the solution as `client_preference` ("Client suggests Instagram embed" → need: show recent work; preference: Instagram). `out_of_scope` is acknowledged, recorded, never silently dropped.
+
+**Worked classification example (R2-25)** — client says: *"Mi cuñado dice que lo hagamos con Wix, pero necesito que las reservas me lleguen al móvil, y bueno, casi nadie cancela, así que eso da igual."*
+
+```text
+"lo hagamos con Wix"          → proposed_solution → decompose: underlying need =
+                                 low-maintenance, affordable platform (candidate CON);
+                                 preference recorded: stakeholder (brother-in-law)
+                                 suggests Wix — stakeholder_preference, weight low
+"las reservas me lleguen al móvil" → business_requirement candidate (FR: booking
+                                 notification to owner's phone) — channel (SMS/
+                                 WhatsApp/email-on-phone?) = open_question
+"casi nadie cancela"          → inference risk: NOT "cancellations out of scope";
+                                 record as assumption ASM (cancellations are rare),
+                                 and probe: "when someone DOES cancel, what needs
+                                 to happen?" (exception hunting, M6)
+```
 
 ## 4. Coverage model
 
@@ -67,6 +83,10 @@ Each topic node: `{ id, module, importance: critical|high|normal|low, status: no
 | M12 | Summary & closure | Per-module confirmation summaries, next steps, closure |
 
 Modules are a *default trajectory*, not a script: the agent follows conversation energy (a client explaining pain points who drifts into business rules is followed, and coverage is updated wherever material lands). M0 and M12 are fixed; M11–M12 cannot start until completion criteria are near (§12).
+
+**Profile scaling (V2, R2-01):** module floors come from `21` §5 — LITE runs M0, M1–M3 compressed, M5, M7 (content focus), M8 (floor confirmation), M9, M10, M12, with M4/M6/M11 folded into M5/M12; STANDARD/HIGH-RISK run all modules, HIGH-RISK adds trigger-specific deep dives from the question bank. Critical topics (`§4`) remain profile-independent. **Trigger duty:** whenever an answer reveals a risk trigger (`21` §3) beyond the current profile hypothesis, the agent records it in `risk_triggers[]` (solution-context) and flags a proposed upgrade at the next module boundary — it never silently continues under the lighter profile.
+
+**Content inventory duty (V2, R2-18):** during M5/M7 the agent seeds `docs/product/content-inventory.yaml` — every page/asset the project needs, who provides it, and by when (owner defaults to client for copy/images/legal texts). Content responsibility is a critical topic: an interview cannot close with content ownership unassessed.
 
 ## 6. State model — `interview-state.json` (schema: `interview-state.schema.json`)
 
@@ -153,12 +173,15 @@ LOOP (per turn):
 CHECKPOINT: persist state per §6 contract.
 ```
 
-## 8. Evidence capture rules
+## 8. Evidence capture rules (V2: raw/sanitized split, R2-03)
 
 - Transcript turns numbered (`turn-nnn`), speaker-tagged, timestamped; relayed paraphrases marked `[relayed]`. `transcript.md` for humans; `transcript.jsonl` mirrored per turn (`{turn, speaker, text, ts, flags[]}`).
+- **During the interview** the working transcript is written normally. **At interview close (and at any pause)** the sanitization pass runs (part of this skill): third-party names → roles, contact data removed, business facts kept verbatim — remove/alias identifiers only, **never paraphrase statements**. If anything was redacted, the unredacted original moves to `evidence-raw/` and the committed transcript carries front matter `raw_ref` + SHA-256 of the raw file. Turn numbering is identical in both, so every anchor resolves in Git.
+- Recordings and original client files → `evidence-raw/` (gitignored); minimized excerpts + a provenance index → `evidence/client-materials/` (`03` §6).
+- **M0 additionally captures consent** to record/transcribe → `evidence/confirmations/consent-01.md`.
 - Every candidate requirement/fact/assumption carries `source_refs: [interview:client-discovery-01#turn-nnn]`. **No source ref → it cannot leave draft.**
-- Client files → `evidence/client-materials/` with a one-line provenance note in an index file; PII minimization per `03` §6.
 - Evidence is append-only: a client correcting themselves creates a new turn superseding the old one — the old turn is never edited (evidence-policy rule).
+- Later-stage agents read sanitized evidence only; raw consultation is a manual, you-only act (`03` §6).
 
 ## 9. Contradiction, assumption, uncertainty handling
 
@@ -184,7 +207,7 @@ CHECKPOINT: persist state per §6 contract.
 
 ## 12. Definition of Done (interview) + completion report
 
-The interview may close only when DoR (§11) holds **and**: OQs each have owner + impact + blocking flag; budget & timeline explicitly discussed (even if answer is a range or "flexible" — silence is not acceptable); ownership of domain/hosting/accounts established or OQ'd; data sensitivity assessed; client told the next steps (internal review → validation package → their approval). The agent then writes `completion-report.md`: coverage table, registers summary, DoR/DoD evaluation with any waivers, and recommended next actions. **The agent proposes closure; you accept it** (human approval point #1). It must *not* close merely because every module was visited (baseline requirement, retained verbatim).
+The interview may close only when DoR (§11) holds **and**: OQs each have owner + impact + blocking flag; budget & timeline explicitly discussed (even if answer is a range or "flexible" — silence is not acceptable); ownership of domain/hosting/accounts established or OQ'd; data sensitivity assessed; **content responsibility assessed and the content inventory seeded (R2-18); risk triggers reviewed against the profile hypothesis, with any proposed upgrade flagged (R2-01)**; client told the next steps (internal review → validation package → their approval). The agent then writes `completion-report.md`: coverage table, registers summary, DoR/DoD evaluation with any waivers, and recommended next actions. **The agent proposes closure; you accept it** (human approval point #1). It must *not* close merely because every module was visited (baseline requirement, retained verbatim).
 
 ## 13. Human approval points
 

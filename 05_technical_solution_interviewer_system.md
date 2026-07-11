@@ -1,7 +1,7 @@
 # 05 — Technical Solution Interviewer System
 
-**Purpose:** behavioural architecture of the `technical-solution-architect` agent — the interviewer that consumes the approved business baseline and interviews *you* (the developer) to produce the technical baseline: SDD, ADRs, data model, contracts, test strategy, deployment outline, delivery backlog.
-**Baseline traceability:** B3 (agent 2); closes gap G-02. Same design-dimension coverage as `04` (cross-index §13).
+**Purpose:** behavioural architecture of the `technical-solution-architect` agent — the interviewer that consumes the approved business baseline and interviews *you* (the developer) to produce the technical baseline: SDD, ADRs, data model, contracts, UX deliverables, test strategy, deployment outline, delivery backlog.
+**Baseline traceability:** B3 (agent 2); closes gap G-02. Same design-dimension coverage as `04` (cross-index §13). **V2:** UX/visual-approval workflow (R2-17), profile-scaled decision categories (R2-01), delivery backlog via backlog-refinement delivery mode (R2-04/11).
 
 ---
 
@@ -13,9 +13,11 @@
 
 **Boundaries (must never).** Restart business discovery or re-interview the client; modify approved requirements (conflicts become CR proposals, `12` §5); present its own technical preference as a client need; decide *for* you — every ADR records you as decider; invent missing client-side facts (→ CLAR instead); gold-plate beyond requirements without flagging cost; exceed the approved scope/budget silently.
 
-**Inputs / preconditions.** G2 passed (business baseline merged to `main`); reads: `requirements.yaml`, `solution-context.yaml`, `PRD.md`, `open-questions.yaml`, `product-backlog.yaml`, `handoff.yaml`, archetype hypothesis. Stage = `technical_design`.
+**Inputs / preconditions (profile-resolved — the agent derives its required-input set from `project.yaml.profile` via the matrix `21` §5).** G2 passed (business baseline merged to `main`). **Always-present core registries:** `requirements.yaml` · `solution-context.yaml` (incl. `risk_triggers[]`) · `open-questions.yaml` (always exists; **may be empty**) · `content-inventory.yaml` where the project has content obligations · the G2 handoff record (`docs/handoffs/G2-*`) · archetype + confirmed profile. **Profile-conditional (STANDARD/HIGH-RISK; absent on LITE, where the 1-page brief replaces them):** `PRD.md`, `product-backlog.yaml`. The agent must not fail or demand STANDARD-only artifacts on a LITE project. Stage = `technical_design`.
 
-**Outputs (all `draft`).** `SDD.md`, `ADR-nnn` files, `data-model.md`, `api-contract.yaml` (when applicable), `test-strategy.md`, `test-matrix.yaml` (initial rows), deployment outline (SDD section), `delivery-backlog.yaml`, updated `open-questions.yaml` (CLAR items), `security-checklist.md` instantiation, updated `handoff.yaml`.
+**LITE session semantics (G3-lite):** LITE **does** run a technical-solution-architect session — one short **internal** sitting (~45–60 min), with no client-facing meeting (the visual direction was already confirmed at G2). The decision backlog collapses to the matrix-mandated categories; output = `SDD.md` in its **design-note variant** (stack/hosting, sitemap/page structure, visual direction, applicable NFR/test/deployment floors) + the delivery task list. "No separate session" in earlier drafts meant *no separate client meeting*, never "no technical session".
+
+**Outputs (all `draft`).** `SDD.md`, `ADR-nnn` files, `data-model.md`, `api-contract.yaml` (when applicable), UX deliverable set per profile (§8), `test-strategy.md`, `test-matrix.yaml` (definitions, R2-07), deployment outline (SDD section), `delivery-backlog.yaml` (via backlog-refinement delivery mode), updated `open-questions.yaml` (CLAR items), `security-checklist.md` instantiation, G3 handoff record (`docs/handoffs/`).
 
 **Model:** strongest tier. **Skills:** architecture-option-analysis, backlog-refinement, test-planning, artifact-generation. **Knowledge:** architecture-decision-framework, web-project-archetypes, ux-design-framework, security-baseline, test-strategy, deployment-patterns, nfr-catalog.
 
@@ -34,7 +36,7 @@ The session is organized around an explicit, derived **decision backlog** — no
 | Sensitivity/legal flags | AuthN/AuthZ model, privacy implementation, consent, backups |
 | Budget/deadline | Delivery sequencing, phase cuts, simplicity forcing |
 
-Fixed decision categories (checklist — none may be silently skipped, but each may be resolved as `not_applicable` with justification): feasibility · stack · architecture & components · boundaries · data model · API contracts · integrations · UX flows & wireframe level · accessibility implementation · authN/authZ · security · privacy implementation · infrastructure & environments · deployment & rollback · observability · testing strategy · migration/content-load · technical risks · build-vs-buy · delivery sequencing.
+Fixed decision categories (checklist — none may be silently skipped, but each may be resolved as `not_applicable` with justification): feasibility · stack · architecture & components · boundaries · data model · API contracts · integrations · UX deliverables & approval level (§8) · accessibility implementation · authN/authZ · security · privacy implementation · infrastructure & environments · deployment & rollback · observability · testing strategy · migration/content-load · **content readiness plan (inventory deadlines vs delivery sequencing, R2-18)** · technical risks · build-vs-buy · delivery sequencing. Category *depth* scales by profile and archetype (`21` §5–6); `not_applicable` on LITE follows the matrix, not improvisation.
 
 Each item: `{ id: DI-nnn (session-local decision item; distinct from the plan's DEC-xx log), category, derived_from: [REQ ids], status: open|discussed|decided|spiked|deferred|clarification_needed, blocking: bool, adr: ADR-nnn|null }`.
 
@@ -94,14 +96,22 @@ Trigger: a blocking decision depends on an unverified capability (API limits, pl
 
 CLAR items are written into `open-questions.yaml` with `type: client_clarification`: precise question in client language, context ("we're deciding X"), impact if unanswered, blocked items, suggested channel (email/call), deadline. You send them (MVP: manually, template `templates/discovery/clarification-request`); answers are saved to `evidence/clarifications/CLAR-nnn.md` and referenced as evidence. Batch CLARs where possible — the client gets one tidy email, not a drip.
 
-## 8. UX flows (scope for a solo freelance system)
+## 8. UX/UI design and client visual approval (V2, R2-17)
 
-Per primary user goal (from US/UC set): flow outline (steps, decision points, error states) in SDD + low-fi wireframe *description* (regions, hierarchy, key states) — actual visual design happens during implementation against these. Accessibility implementation decisions (landmarks, focus order, form error patterns, contrast tokens) are recorded here, not left to implementation-time improvisation. Client-facing visual preferences (from discovery M-preferences) are inputs, not afterthoughts.
+UX work is a named deliverable set produced during this stage via the `ux-design-outline` skill, scaled by profile (`21` §5):
+
+| Profile | Deliverables | Client approval |
+|---|---|---|
+| LITE | Sitemap + page outlines + visual direction (reference sites / moodboard-lite) + responsive acceptance criteria | Visual direction rides in the G2 validation package |
+| STANDARD | + user flows (steps, decision points, error states), low-fi wireframe *descriptions* (regions, hierarchy, key states), component & state inventory | **G3-V:** client confirms wireframes + visual direction before UI implementation; recorded in `evidence/confirmations/` + the G3 handoff |
+| HIGH-RISK | + detailed flows incl. role/error/empty/loading states, interactive prototype where genuinely useful, accessibility design review | **G3-V formal design baseline:** approved artifact set becomes change-controlled |
+
+Rules: actual visual design happens during implementation *against* these approved artifacts. Accessibility implementation decisions (landmarks, focus order, form error patterns, contrast tokens) are recorded here, not improvised later. Client visual preferences from discovery are inputs, not afterthoughts. **Visual changes after G3-V are CRs** (`12` §5) — no silent redesign. UX artifacts map forward: each flow → story ACs covering its states; each state inventory row → test-matrix candidates (`08`, `10`). Producer stays the technical architect — a separate UX agent was evaluated and rejected (`19` R2-17): it would split one coherent design conversation.
 
 ## 9. Definition of Ready (to start) / Definition of Done (to close)
 
 **DoR:** G2 approved; no open critical OQs blocking design (blocking ones become the first CLAR batch); archetype hypothesis present.
-**DoD (G3 entry):** every decision item `decided | not_applicable | deferred-with-risk-note`; zero `clarification_needed` on blocking items; consolidation coverage matrix complete (every approved REQ maps to design element + test level); SDD sections complete (template `06` §6); ADRs recorded for all significant decisions; delivery backlog exists and passes DoR sampling (`08` §7); test strategy + initial test matrix exist; deployment outline names environments, adapter, rollback approach; estimate re-validated against budget (if breached → CR before G3). Agent writes a completion report; **you approve G3**; package merges to `main` via documentation PR.
+**DoD (G3 entry) — profile-resolved.** **STANDARD/HIGH-RISK:** every decision item `decided | not_applicable | deferred-with-risk-note`; zero `clarification_needed` on blocking items; consolidation coverage matrix complete (every approved REQ maps to design element + test level); SDD sections complete (template `06` §6); ADRs recorded for all significant decisions; **UX deliverables complete per profile and the nested G3-V client visual approval obtained where required (§8, `01` §4.2b)**; delivery backlog exists and passes DoR sampling (`08` §7); test strategy + test-matrix definitions exist; deployment outline names environments, adapter, rollback approach; estimate re-validated against budget (if breached → CR before G3); **profile re-verified against triggers surfaced during design (`21` §4)**. **LITE (G3-lite):** design-note SDD complete (stack/hosting, sitemap/page structure, visual direction, floors applied); delivery task list DoR-ready; no blocking open questions; profile re-verified. Either way: agent writes a completion report; **you approve G3** (record: `docs/handoffs/G3-*.yaml`); package merges to `main` via documentation PR.
 
 ## 10. Failure and escalation
 

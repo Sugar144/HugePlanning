@@ -20,8 +20,12 @@ G4: task `ready`
     then human escalation (DEC-20)
  9. clean full run: relevant suites green from scratch
 10. PR opened (template §6) → G5: your review → merge
-11. post-merge: traceability + task status + Jira updated; context package
-    disposable; CHANGELOG entry if user-visible
+11. post-merge: traceability + task status (+ Jira where used, `08` §4) updated;
+    CHANGELOG entry if user-visible. The context package is retained permanently
+    at docs/task-context/ (R2-08) — it is the auditable record of the scope the
+    implementer was given; changes to it during implementation are ordinary
+    commits on the task branch (scope-affecting ones also update the task per
+    change control)
 ```
 
 Each numbered step ends with a persisted status change on the task (session-crash recovery = read task status + branch state).
@@ -32,7 +36,7 @@ Implementer, spec-reviewer, and adversarial-reviewer run as separate agent sessi
 
 ## 3. Task context package (task-context-package skill)
 
-Generated, not hand-written; the implementer reads **only this + the code**, not the whole docs tree (context economy):
+Generated, not hand-written; the implementer reads **only this + the code**, not the whole docs tree (context economy). Retained permanently after merge (R2-08); the merged PR links it at its merge commit:
 
 ```markdown
 # TASK-031 — Booking request endpoint + validation
@@ -68,7 +72,7 @@ DoD checklist (08 §3) instantiated
 | adversarial-reviewer | How does this break? Edge cases, error paths, injection, race/idempotency, state corruption, misuse; tests it would add | Same format + proposed regression tests |
 | risk-specialist-reviewer | Domain-specific depth per trigger | Same + checklist evidence |
 
-**Trigger table (baseline §16.4 retained verbatim, operationalized):** text/content → visual+a11y check only · forms → UX/validation/a11y · auth → security+authz+integration · payments → security+idempotency+regression+**mandatory human review** · migrations → backup/rollback/integrity · config/CI → build+env review. High `data_sensitivity` (`03` §4) upgrades any form/data task to security review.
+**Trigger table (baseline §16.4 retained verbatim, operationalized):** text/content → visual+a11y check only · forms → UX/validation/a11y · auth → security+authz+integration · payments → security+idempotency+regression+**mandatory human review** · migrations → backup/rollback/integrity · config/CI → build+env review. High `data_sensitivity` (`03` §4) upgrades any form/data task to security review. **Profile scaling (`21` §5):** LITE runs one merged reviewer session (spec+adversarial contracts in a single pass); HIGH-RISK makes the specialist mandatory on all trigger-area tasks.
 
 Reviewers read: context package + diff + test run output. They do **not** rewrite code (findings only — corrections belong to the implementer, keeping accountability clean).
 
