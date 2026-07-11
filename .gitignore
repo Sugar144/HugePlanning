@@ -1,3 +1,7 @@
 # transient local tool state
 .claude/*.tmp.*
 .claude/settings.local.json
+
+# Python helper caches
+__pycache__/
+*.py[cod]

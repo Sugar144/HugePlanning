@@ -1,0 +1,9 @@
+schema_version: 1.0.0
+methodology:
+  repository: Sugar144/HugePlanning
+  version: v0.1.0
+  commit: 51e0bf3fd1740a0c5e4f317bdc4cc5c7207b4c8c
+  applied_at: 2026-07-11
+schemas:
+  project: 1.0.0
+  methodology-lock: 1.0.0

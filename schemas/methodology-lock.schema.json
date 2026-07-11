@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Sugar144/HugePlanning/blob/v0.1.0/schemas/methodology-lock.schema.json",
+  "title": "Freelance methodology lock",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "methodology", "schemas"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "methodology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "version", "commit", "applied_at", "claude_code_version"],
+      "properties": {
+        "repository": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "applied_at": {"type": "string", "format": "date"},
+        "claude_code_version": {"type": "string", "minLength": 1}
+      }
+    },
+    "schemas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project", "methodology-lock"],
+      "properties": {
+        "project": {"const": "1.0.0"},
+        "methodology-lock": {"const": "1.0.0"}
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "deny": [
+      "Write({{METHOD_DENY_ROOT_JSON}}/**)",
+      "Edit({{METHOD_DENY_ROOT_JSON}}/**)"
+    ]
+  }
+}

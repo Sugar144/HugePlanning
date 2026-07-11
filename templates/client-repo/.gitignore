@@ -1,0 +1,18 @@
+# Raw evidence is local-only and must never enter Git.
+evidence-raw/
+
+# Secrets.
+.env
+.env.*
+!.env.example
+
+# Dependencies and generated output.
+node_modules/
+dist/
+build/
+coverage/
+
+# Local/editor/OS state.
+.DS_Store
+Thumbs.db
+*.swp

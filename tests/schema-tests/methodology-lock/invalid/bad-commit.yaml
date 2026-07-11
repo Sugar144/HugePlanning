@@ -1,0 +1,10 @@
+schema_version: 1.0.0
+methodology:
+  repository: Sugar144/HugePlanning
+  version: v0.1.0
+  commit: not-a-commit
+  applied_at: 2026-07-11
+  claude_code_version: "unverified"
+schemas:
+  project: 1.0.0
+  methodology-lock: 1.0.0
