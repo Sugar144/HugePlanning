@@ -44,7 +44,10 @@ for s in "$REAL_METHOD"/scripts/*.sh "$SCRIPT_DIR/run-tests.sh"; do
   expect_ok "bash -n $(basename "$s")" bash -n "$s"
 done
 for p in "$REAL_METHOD"/scripts/lib/*.py; do
-  expect_ok "py-compile $(basename "$p")" "$PYTHON" -m py_compile "$p"
+  # ast.parse, not py_compile: a syntax check must not write __pycache__
+  # into the methodology tree (it would trip check-methodology-clean.sh)
+  expect_ok "py-syntax $(basename "$p")" "$PYTHON" -c \
+    'import ast, sys; ast.parse(open(sys.argv[1], encoding="utf-8").read(), sys.argv[1])' "$p"
 done
 if command -v shellcheck >/dev/null 2>&1; then
   for s in "$REAL_METHOD"/scripts/*.sh; do
