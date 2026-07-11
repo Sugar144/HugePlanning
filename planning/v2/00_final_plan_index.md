@@ -1,7 +1,7 @@
 # 00 — Final Plan Index (V2)
 
 **System:** AI-assisted freelance web development operating system
-**Baseline:** `plan_director_sistema_freelance_web_asistido_por_ia.md` (v0.1, immutable — untouched)
+**Baseline:** `planning/baseline/plan_director_sistema_freelance_web_asistido_por_ia.md` (v0.1, immutable — untouched)
 **This plan:** V2 ("robustness"), 2026-07-11, 22 files, implementation-ready. V1 preserved at tag `plan-v1.0`; V1 decision log in `16` (frozen); V2 decision log in `19`.
 
 ---

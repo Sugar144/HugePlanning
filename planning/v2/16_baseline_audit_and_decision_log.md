@@ -1,6 +1,6 @@
 # 16 — Baseline Audit and Decision Log
 
-**Baseline audited:** `plan_director_sistema_freelance_web_asistido_por_ia.md` (v0.1, 2026-07-10, Spanish). The baseline is immutable; this file records what the new plan retains, refines, removes, defers, and adds, with reasons. Every material deviation in files `01`–`15` traces back to a decision ID here (`DEC-xx`).
+**Baseline audited:** `planning/baseline/plan_director_sistema_freelance_web_asistido_por_ia.md` (v0.1, 2026-07-10, Spanish). The baseline is immutable; this file records what the new plan retains, refines, removes, defers, and adds, with reasons. Every material deviation in files `01`–`15` traces back to a decision ID here (`DEC-xx`).
 
 ---
 

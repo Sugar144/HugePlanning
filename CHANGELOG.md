@@ -2,10 +2,21 @@
 
 All notable changes to the `freelance-methodology` repository are documented
 here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
-Versioning: SemVer per `02_methodology_repository_design.md` §7 —
+Versioning: SemVer per `planning/v2/02_methodology_repository_design.md` §7 —
 PATCH: fixes, no contract change · MINOR: new skills/agents/knowledge,
 compatible schema additions · MAJOR: schema-breaking changes, artifact renames,
 behavioral contract changes.
+
+## [Unreleased]
+
+Documentation and repository organization only — no runtime change
+(assurance basis: plan `22` §6, decision R2-34/R2-35 in `19` §5).
+
+- New plan file `22_implementation_assurance_and_adversarial_validation.md`:
+  the proportional stage-level assurance loop distilled from S0a.
+- Planning corpus moved to `planning/` (`baseline/` + `v2/`); S0a experiment
+  report moved to `reports/experiments/s0a/`; navigation READMEs added.
+  Plan citations `NN §m` resolve per `planning/README.md`.
 
 ## [0.1.0] - 2026-07-11
 
