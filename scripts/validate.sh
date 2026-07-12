@@ -2,19 +2,19 @@
 # validate.sh — THE single progressive client-repository validator (R2-26).
 #
 # This script is extended at every methodology stage and is NEVER replaced by
-# a second validator. Current scope: S0a (enough for a scratch client to pass
-# G0): project.yaml, methodology.lock.yaml, required repository structure.
+# a second validator. Current scope: S0b — the S0a checks (required structure,
+# project.yaml, methodology.lock.yaml, gitignore, deny rules) plus the
+# discovery artifacts: schema validation for open-questions, requirements,
+# solution-context, interview-state files, and handoff records; ID/reference
+# integrity (06 §4); and the profile-aware requirement matrix v0 (R2-21,
+# discovery-stage rows only).
 #
-# ── How to extend at S0b and later (R2-26, 02 §8) ──────────────────────────
+# ── How to extend at S2 and later (R2-26, 02 §8) ────────────────────────────
 #  1. Add "artifact-path|schema-file" entries to SCHEMA_CHECKS as each schema
-#     gains its first consumer (S0b: interview-state, requirements,
-#     solution-context, open-questions, handoff).
-#  2. Replace the open-questions parse-only check with its real schema check.
-#  3. Add the profile-aware requirement matrix (21 §5, R2-21): artifacts
-#     required for the project's profile are ERRORS when missing; optional
-#     ones are INFO.
-#  4. Add ID uniqueness / dangling-reference checks across structured
-#     artifacts (06 §4).
+#     gains its first consumer (S2: content-inventory, product-backlog;
+#     S3: delivery-backlog, test-matrix; …).
+#  2. Extend the profile matrix section with the new stage's 21 §5 rows.
+#  3. Extend scripts/lib/check-ids.py with each new registry's IDs and links.
 # ────────────────────────────────────────────────────────────────────────────
 set -euo pipefail
 
@@ -110,12 +110,17 @@ if [[ -f "$CLIENT_DIR/.claude/settings.json" ]]; then
   fi
 fi
 
-# ── S0a §5: schema validation (schemas locked at S0a) ──────────────────────
+# ── §5: schema validation (S0a schemas + S0b discovery schemas) ────────────
 # Extend here: one "instance-path|schema-file" per schema at its first
 # consumer's stage (R2-26). Never remove entries; never fork this script.
+# Absent instances are skipped here — presence requirements live in the
+# profile-matrix section (§8), not in the schema checks.
 SCHEMA_CHECKS=(
   "project.yaml|project.schema.json"
   "methodology.lock.yaml|methodology-lock.schema.json"
+  "docs/requirements/open-questions.yaml|open-questions.schema.json"
+  "docs/requirements/requirements.yaml|requirements.schema.json"
+  "docs/requirements/solution-context.yaml|solution-context.schema.json"
 )
 for pair in "${SCHEMA_CHECKS[@]}"; do
   instance="${pair%%|*}"; schema="${pair##*|}"
@@ -132,27 +137,70 @@ for pair in "${SCHEMA_CHECKS[@]}"; do
   fi
 done
 
-# ── S0a §6: open-questions registry parses (full schema lands at S0b) ──────
-if [[ -f "$CLIENT_DIR/docs/requirements/open-questions.yaml" ]]; then
-  if "$PYTHON" "$SCRIPT_DIR/lib/schema-validate.py" --parse-only \
-      "$CLIENT_DIR/docs/requirements/open-questions.yaml"; then
-    ok "open-questions.yaml parses (schema check lands at S0b)"
+# ── S0b §6: per-instance schema checks with dynamic paths ───────────────────
+# Interview state files (one per interview directory, 04 §6).
+for state in "$CLIENT_DIR"/evidence/interviews/*/interview-state.json; do
+  [[ -f "$state" ]] || continue
+  rel="${state#"$CLIENT_DIR/"}"
+  if "$PYTHON" "$SCRIPT_DIR/lib/schema-validate.py" \
+      "$METHOD_DIR/schemas/interview-state.schema.json" "$state"; then
+    ok "$rel valid against interview-state.schema.json"
   else
-    error "docs/requirements/open-questions.yaml is not a YAML mapping"
+    error "$rel fails interview-state.schema.json (details above)"
   fi
+done
+# Gate handoff records (append-only, R2-05): every record must validate.
+for record in "$CLIENT_DIR"/docs/handoffs/*.yaml; do
+  [[ -f "$record" ]] || continue
+  rel="${record#"$CLIENT_DIR/"}"
+  if "$PYTHON" "$SCRIPT_DIR/lib/schema-validate.py" \
+      "$METHOD_DIR/schemas/handoff.schema.json" "$record"; then
+    ok "$rel valid against handoff.schema.json"
+  else
+    error "$rel fails handoff.schema.json (details above)"
+  fi
+done
+
+# ── S0b §7: ID and reference integrity (06 §4, 08 §6) ──────────────────────
+if OUT="$("$PYTHON" "$SCRIPT_DIR/lib/check-ids.py" "$CLIENT_DIR" 2>&1)"; then
+  ok "ID/reference integrity (uniqueness, counters, links, handoff names)"
+else
+  printf '%s\n' "$OUT" >&2
+  error "ID/reference integrity violations (06 §4) — details above"
 fi
 
-# ── S0a §7: profile visibility (matrix enforcement lands at S0b, R2-21) ────
-if [[ -f "$CLIENT_DIR/project.yaml" ]]; then
-  if profile="$("$PYTHON" "$SCRIPT_DIR/lib/read-yaml-value.py" \
-      "$CLIENT_DIR/project.yaml" project.profile 2>/dev/null)"; then
-    info "profile: $profile (S0a checks are profile-independent; matrix checks arrive at S0b)"
+# ── S0b §8: profile-aware requirement matrix v0 (R2-21; 21 §5) ──────────────
+# Discovery-stage rows only: once the project passes the G1 boundary (a G1
+# handoff record exists, or the stage moved beyond discovery), the discovery
+# registries must exist for every profile. Before that boundary their absence
+# is informational. Later stages add their own rows here.
+profile="$("$PYTHON" "$SCRIPT_DIR/lib/read-yaml-value.py" \
+    "$CLIENT_DIR/project.yaml" project.profile 2>/dev/null || echo unknown)"
+stage="$("$PYTHON" "$SCRIPT_DIR/lib/read-yaml-value.py" \
+    "$CLIENT_DIR/project.yaml" workflow.current_stage 2>/dev/null || echo unknown)"
+past_g1=0
+compgen -G "$CLIENT_DIR/docs/handoffs/G1-*.yaml" > /dev/null && past_g1=1
+case "$stage" in
+  specification|technical_design|planning|implementation|validation|release|operation) past_g1=1 ;;
+esac
+DISCOVERY_REQUIRED=(
+  "docs/requirements/requirements.yaml"
+  "docs/requirements/solution-context.yaml"
+)
+for f in "${DISCOVERY_REQUIRED[@]}"; do
+  if [[ -f "$CLIENT_DIR/$f" ]]; then
+    ok "matrix: $f present"
+  elif [[ "$past_g1" == 1 ]]; then
+    error "matrix: $f required for profile '$profile' past the G1 boundary (21 §5, R2-21)"
+  else
+    info "matrix: $f not present yet (not required before the G1 boundary)"
   fi
-fi
+done
+info "profile: $profile · stage: $stage (matrix v0 covers discovery rows; later stages extend it)"
 
 echo
 if [[ "$ERRORS" -gt 0 ]]; then
-  echo "validate.sh: FAIL — $ERRORS error(s) in $CLIENT_DIR (S0a scope)" >&2
+  echo "validate.sh: FAIL — $ERRORS error(s) in $CLIENT_DIR (S0b scope)" >&2
   exit 1
 fi
-echo "validate.sh: PASS — $CLIENT_DIR (S0a scope)"
+echo "validate.sh: PASS — $CLIENT_DIR (S0b scope)"

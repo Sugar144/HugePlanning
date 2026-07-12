@@ -185,6 +185,124 @@ B="$(break_client no-raw)"; rm -rf "$B/evidence-raw"
 expect_ok "missing evidence-raw/ is INFO only (clone case)" "$V" "$B"
 expect_out "  info emitted" "evidence-raw/ missing"
 
+note "== T15: validate.sh S0b discovery checks (green + red) =="
+D="$WORK/discovery client"
+rm -rf "$D"; cp -R "$CLIENT" "$D"
+cp "$SCRIPT_DIR/schema-tests/requirements/valid-02-drafts-and-defaults.yaml" \
+   "$D/docs/requirements/requirements.yaml"
+cp "$SCRIPT_DIR/schema-tests/solution-context/valid-02-filled.yaml" \
+   "$D/docs/requirements/solution-context.yaml"
+mkdir -p "$D/evidence/interviews/client-discovery-01"
+# .json extension with YAML content is fine: schema-validate.py parses YAML,
+# a strict superset of JSON, regardless of extension.
+cp "$SCRIPT_DIR/schema-tests/interview-state/valid-01-plan-example.yaml" \
+   "$D/evidence/interviews/client-discovery-01/interview-state.json"
+cp "$SCRIPT_DIR/schema-tests/handoff/valid-03-g0-minimal.yaml" \
+   "$D/docs/handoffs/G0-readiness-01.yaml"
+# Allocate the planted IDs (FR-001, NFR-003, CON-002) in the counters.
+sed -i 's/ FR: 1,/ FR: 2,/; s/NFR: 1,/NFR: 4,/; s/ CON: 1,/ CON: 3,/' "$D/project.yaml"
+expect_ok "valid planted discovery artifacts PASS" "$V" "$D"
+expect_out "  S0b scope reported" "S0b scope"
+expect_out "  interview-state checked" "interview-state.schema.json"
+expect_out "  handoff checked" "handoff.schema.json"
+
+expect_ok "pre-boundary absence of registries stays PASS" "$V" "$CLIENT"
+expect_out "  absence is INFO before G1" "not required before the G1 boundary"
+
+B="$(break_client s0b-dup-id)"
+sed -i 's/ FR: 2,/ FR: 3,/; s/NFR: 1,/NFR: 4,/; s/ CON: 1,/ CON: 3,/' "$B/project.yaml"
+cat > "$B/docs/requirements/requirements.yaml" <<'EOF'
+schema_version: 2.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Primera.
+    origin: client_evidence
+    status: draft
+    source_refs: ["interview:client-discovery-01#turn-10"]
+  - id: FR-001
+    type: functional
+    statement: Duplicada.
+    origin: client_evidence
+    status: draft
+    source_refs: ["interview:client-discovery-01#turn-11"]
+EOF
+expect_fail "duplicate requirement ID detected" "$V" "$B"
+expect_out "  names the id" "duplicate ID FR-001"
+
+B="$(break_client s0b-dangling)"
+sed -i 's/ FR: 1,/ FR: 2,/' "$B/project.yaml"
+cat > "$B/docs/requirements/requirements.yaml" <<'EOF'
+schema_version: 2.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Válida.
+    origin: client_evidence
+    status: draft
+    source_refs: ["interview:client-discovery-01#turn-10"]
+EOF
+cat > "$B/docs/requirements/open-questions.yaml" <<'EOF'
+schema_version: 1.0.0
+questions:
+  - id: OQ-001
+    type: internal
+    question: Bloquea un requisito inexistente.
+    owner: developer
+    status: open
+    blocks: [FR-099]
+contradictions: []
+EOF
+sed -i 's/ OQ: 1,/ OQ: 2,/' "$B/project.yaml"
+expect_fail "dangling blocks reference detected" "$V" "$B"
+expect_out "  names the ref" "dangling reference to FR-099"
+
+B="$(break_client s0b-counter)"
+cat > "$B/docs/requirements/requirements.yaml" <<'EOF'
+schema_version: 2.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Usada sin asignar el contador.
+    origin: client_evidence
+    status: draft
+    source_refs: ["interview:client-discovery-01#turn-10"]
+EOF
+expect_fail "counter collision detected (FR-001 used, counter FR=1)" "$V" "$B"
+expect_out "  cites the contract" "counter collision"
+
+B="$(break_client s0b-handoff-mismatch)"
+cp "$SCRIPT_DIR/schema-tests/handoff/valid-01-g2-example.yaml" \
+   "$B/docs/handoffs/G3-technical-baseline-01.yaml"
+expect_fail "handoff gate/filename mismatch detected" "$V" "$B"
+expect_out "  names the mismatch" "gate field"
+
+B="$(break_client s0b-handoff-name)"
+cp "$SCRIPT_DIR/schema-tests/handoff/valid-03-g0-minimal.yaml" \
+   "$B/docs/handoffs/g0_readiness.yaml"
+expect_fail "bad handoff filename detected" "$V" "$B"
+expect_out "  cites R2-05" "does not match"
+
+B="$(break_client s0b-post-g1-missing)"
+cat > "$B/docs/handoffs/G1-discovery-review-01.yaml" <<'EOF'
+schema_version: 2.0.0
+gate: G1
+sequence: 1
+date: 2026-09-10
+approved_by: developer
+result: approved
+commit: 9f1c2d3
+EOF
+expect_fail "missing registries past the G1 boundary" "$V" "$B"
+expect_out "  cites the matrix" "required for profile"
+
+B="$(break_client s0b-bad-state)"
+mkdir -p "$B/evidence/interviews/client-discovery-01"
+cp "$SCRIPT_DIR/schema-tests/interview-state/invalid-01-bad-phase.yaml" \
+   "$B/evidence/interviews/client-discovery-01/interview-state.json"
+expect_fail "invalid interview-state detected" "$V" "$B"
+expect_out "  names the artifact" "interview-state.schema.json"
+
 note "== T6: new-client.sh refusals =="
 expect_fail "refuses non-empty target" "$FAKE/scripts/new-client.sh" "$CLIENT" TEST-CLIENT
 expect_out "  actionable" "not empty"
