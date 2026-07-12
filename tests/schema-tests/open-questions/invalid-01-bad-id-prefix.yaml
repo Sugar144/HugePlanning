@@ -1,0 +1,10 @@
+# expect-error: at questions/0/id
+# Question IDs use the OQ/CLAR grammar only (06 §4).
+schema_version: 1.0.0
+questions:
+  - id: Q-001
+    type: internal
+    question: Uses a prefix outside the conventions grammar.
+    owner: developer
+    status: open
+contradictions: []

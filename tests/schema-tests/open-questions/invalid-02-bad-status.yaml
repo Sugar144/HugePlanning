@@ -1,0 +1,11 @@
+# expect-error: at questions/0/status
+# Question statuses come from the closed enum (06 §2): open → answered →
+# incorporated (+ expired, withdrawn).
+schema_version: 1.0.0
+questions:
+  - id: OQ-001
+    type: internal
+    question: Uses a status outside the enum.
+    owner: developer
+    status: pending
+contradictions: []
