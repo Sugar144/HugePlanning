@@ -28,8 +28,8 @@ Understanding or changing the method → `planning/README.md`, then
 |---|---|
 | `CLAUDE.md` | Methodology invariants (loaded into client sessions) |
 | `.claude/rules/` | 5 always-on rules incl. the conventions rule (ID grammar, status enums, `schema_version` policy) |
-| `.claude/agents/` | `client-discovery` (S0a stub; full contract at S1) |
-| `.claude/skills/` | `methodology-smoke-check` (SPK-01 fixture) |
+| `.claude/agents/` | `client-discovery` — the production discovery interviewer (plan `04` contract, S1) |
+| `.claude/skills/` | `adaptive-interview-control`, `interview-evidence-capture`, `nfr-elicitation`, `process-elicitation` (S1) · `methodology-smoke-check` (SPK-01 fixture) |
 | `schemas/` | S0a: `project`, `methodology-lock` · S0b: `open-questions`, `requirements` 2.0.0, `solution-context`, `interview-state`, `handoff` · internal: `product-*` (draft 2020-12, versioned `$id`s) |
 | `templates/` | `client-repo/` — complete client repository template (`03` §2) · `discovery/` — schema-valid artifact skeletons (S0b) |
 | `scripts/` | `new-client.sh`, `start-agent.sh`, `validate.sh` (progressive — never replaced), `status.sh` (derived dashboard, S0b), `check-methodology-clean.sh`, `spk-01-smoke-check.sh` |
@@ -100,11 +100,13 @@ scripts/spk-01-smoke-check.sh <client-dir>
 
 Checks live: (a) methodology agent resolution, (b) skill invocation,
 (c) CLAUDE.md + rules loading via the env var, (d) deny rules block
-methodology writes while client writes stay allowed. Check (a) passes on the
-`SPK01-AGENT-OK` sentinel **or** on complete semantic evidence (the actual
-client project id + the actual locked methodology version + the stub's exact
-closing statement, verified against the client repo, never leaked into the
-prompt); partial or unrelated output fails. Record the result below and keep
+methodology writes while client writes stay allowed. Check (a) passes on
+complete agent-entry evidence: the actual client project id + the actual
+locked methodology version (both verified against the client repo, never
+leaked into the prompt) together with one of the production agent's two
+mandated markers — the `client-discovery ready:` entry line or the exact
+precondition sentence `Discovery cannot start until the preconditions hold.`
+Partial or unrelated output fails. Record the result below and keep
 `claude_code_version` current in the client lock.
 
 Manual fallback (no CLI): from the client dir run

@@ -537,12 +537,12 @@ FAKE_VERSION="$(head -n1 "$FAKE/VERSION" | tr -d '[:space:]')"
 make_fake_claude() { # $1 = path, $2 = agent-reply mode
   local path="$1" mode="$2" agent_reply
   case "$mode" in
-    sentinel)
-      agent_reply='echo "SPK01-AGENT-OK"; echo "Project TEST-CLIENT, stage onboarding, profile standard, methodology __VER__."' ;;
-    semantic)
-      agent_reply='echo "The client project id is TEST-CLIENT at stage onboarding, profile standard; the locked methodology version is __VER__."; echo "Discovery is not implemented until methodology S1. This is the S0a stub."' ;;
+    ready)
+      agent_reply='echo "client-discovery ready: project TEST-CLIENT · stage onboarding · profile standard · methodology __VER__"; echo "Preconditions: G0 not passed; stage is onboarding."; echo "Discovery cannot start until the preconditions hold."' ;;
+    refusal)
+      agent_reply='echo "Session for project TEST-CLIENT, locked methodology __VER__. G0 has not been approved."; echo "Discovery cannot start until the preconditions hold."' ;;
     partial)
-      agent_reply='echo "The client project id is TEST-CLIENT at stage onboarding."; echo "Discovery is not implemented until methodology S1. This is the S0a stub."' ;;
+      agent_reply='echo "client-discovery ready: project TEST-CLIENT · stage onboarding"; echo "Discovery cannot start until the preconditions hold."' ;;
     unrelated)
       agent_reply='echo "Hello! I am a helpful assistant. How can I help you today?"' ;;
   esac
@@ -571,8 +571,12 @@ spk_case() { # $1 = mode, $2 = expected exit (0|1), $3 = expected (a) line
     t_fail "spk $mode: exit $st (wanted $want_status); output follows"; printf '%s\n' "$OUT" >&2; fi
   expect_out "  spk $mode: check (a) verdict" "$want_line"
 }
-spk_case sentinel  0 "PASS (a)"
-spk_case semantic  0 "PASS (a)"
+# 'ready' = mandated entry line (id+version+marker) · 'refusal' = no entry
+# line but id+version+mandated precondition sentence · 'partial' = marker
+# without the lock version · 'unrelated' = generic output. F4 discipline:
+# the oracle needs semantic evidence with either mandated marker.
+spk_case ready     0 "PASS (a)"
+spk_case refusal   0 "PASS (a)"
 spk_case partial   1 "FAIL (a)"
 spk_case unrelated 1 "FAIL (a)"
 ST=0
