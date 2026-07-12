@@ -1,0 +1,20 @@
+# Minimal valid product requirements: one functional (with AC), one constraint.
+schema_version: 1.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: interview-state.schema.json validates the plan 04 §6 state shape.
+    status: draft
+    stage: S0b
+    acceptance_criteria:
+      - id: FR-001-AC-01
+        text: A valid fixture matching plan 04 §6 passes schema validation.
+    source_refs: ["plan:04 §6"]
+  - id: CON-001
+    type: constraint
+    statement: No second validator script is ever created.
+    status: approved
+    stage: S0b
+    acceptance_criteria: []
+    source_refs: [decision:R2-26]
+    notes: Constraint items may carry empty acceptance criteria.

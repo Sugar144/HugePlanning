@@ -1,0 +1,12 @@
+# expect-error: 'source_refs' is a required property
+# Every product requirement must cite where it comes from.
+schema_version: 1.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Lacks any source reference.
+    status: draft
+    stage: S0b
+    acceptance_criteria:
+      - id: FR-001-AC-01
+        text: n/a

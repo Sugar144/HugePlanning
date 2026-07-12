@@ -20,6 +20,10 @@ Documentation and repository organization only — no runtime change
 - Historical Claude.ai prototype baseline preserved verbatim at
   `planning/history/claude-ai-prototypes/` with reuse assessment (R2-36) —
   historical prototype, not active runtime, not behaviorally validated.
+- Product-spec foundation (R2-37): `product/` (requirements, backlog, task
+  packets for in-flight stages) with methodology-internal schemas
+  `product-requirements` 1.0.0 + `product-backlog` 1.0.0, fixtures, and suite
+  block T14. Never client-facing: excluded from `validate.sh` and the lock.
 
 ## [0.1.0] - 2026-07-11
 

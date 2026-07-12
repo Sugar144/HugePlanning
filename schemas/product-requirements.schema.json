@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://freelance-methodology.invalid/schemas/product-requirements/1.0.0/product-requirements.schema.json",
+  "title": "product/requirements.yaml — methodology product requirements (R2-37)",
+  "description": "Requirements of the methodology repository itself (the product), scoped to stages S0b and S1 only. Methodology-internal: never listed in methodology.lock.yaml, never checked by validate.sh, never replicated into client repositories. Reuses the conventions-rule ID grammar and requirement status enums; deliberately excludes client-discovery semantics (origin, proposed_default, approved_in, evidence anchors). Schema version 1.0.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "requirements"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/requirement" }
+    }
+  },
+  "$defs": {
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "statement", "status", "stage", "acceptance_criteria", "source_refs"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^(FR|NFR|CON)-[0-9]{3}$" },
+        "type": { "enum": ["functional", "nonfunctional", "constraint"] },
+        "statement": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["draft", "under_review", "changes_requested", "approved", "implemented", "verified", "rejected", "superseded", "deprecated"] },
+        "stage": { "$ref": "#/$defs/stage" },
+        "acceptance_criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "text"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^(FR|NFR|CON)-[0-9]{3}-AC-[0-9]{2}$" },
+              "text": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^(plan|prototype|report|decision):.+$" }
+        },
+        "notes": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "functional" } }, "required": ["type"] },
+          "then": { "properties": { "acceptance_criteria": { "minItems": 1 } } }
+        }
+      ]
+    },
+    "stage": { "enum": ["S0b", "S1"] }
+  }
+}

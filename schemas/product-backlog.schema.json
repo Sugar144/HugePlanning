@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://freelance-methodology.invalid/schemas/product-backlog/1.0.0/product-backlog.schema.json",
+  "title": "product/backlog.yaml — methodology product backlog (R2-37)",
+  "description": "Backlog of the methodology repository itself (the product): epics and tasks implementing product/requirements.yaml, scoped to stages S0b and S1 only. Methodology-internal: never listed in methodology.lock.yaml, never checked by validate.sh, never replicated into client repositories. Reuses the conventions-rule ID grammar and task status enums. Counters allocate the next free number per prefix (single writer). Schema version 1.0.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "counters", "epics", "tasks"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "counters": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[A-Z]{2,5}$": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "epics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "stage"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^EP-[0-9]{3}$" },
+          "title": { "type": "string", "minLength": 1 },
+          "stage": { "enum": ["S0b", "S1"] }
+        }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/task" }
+    }
+  },
+  "$defs": {
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "epic", "title", "implements", "depends_on", "status"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^TASK-[0-9]{3}$" },
+        "epic": { "type": "string", "pattern": "^EP-[0-9]{3}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "implements": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^(FR|NFR|CON)-[0-9]{3}$" }
+        },
+        "depends_on": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^TASK-[0-9]{3}$" }
+        },
+        "status": { "enum": ["backlog", "ready", "in_progress", "in_review", "changes_requested", "approved", "merged", "verified", "done", "blocked", "cancelled"] },
+        "packet": { "type": "string", "pattern": "^product/tasks/TASK-[0-9]{3}\\.md$" },
+        "verified_by": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^(report|changelog|commit|tag|ci):.+$" }
+        },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

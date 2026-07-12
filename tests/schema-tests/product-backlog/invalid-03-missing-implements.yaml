@@ -1,0 +1,14 @@
+# expect-error: 'implements' is a required property
+# Every task must trace to at least one requirement (traceability rule).
+schema_version: 1.0.0
+counters: { TASK: 2, EP: 2 }
+epics:
+  - id: EP-001
+    title: S0b — discovery infrastructure
+    stage: S0b
+tasks:
+  - id: TASK-001
+    epic: EP-001
+    title: Orphan task with no requirement link.
+    depends_on: []
+    status: backlog

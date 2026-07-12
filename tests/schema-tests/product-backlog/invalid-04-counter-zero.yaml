@@ -1,0 +1,9 @@
+# expect-error: at counters/TASK
+# Counters are next-free-number allocators; the minimum is 1.
+schema_version: 1.0.0
+counters: { TASK: 0, EP: 2 }
+epics:
+  - id: EP-001
+    title: S0b — discovery infrastructure
+    stage: S0b
+tasks: []

@@ -1,0 +1,13 @@
+# Methodology product backlog — in-flight stages only (S0b, S1).
+# Contract: product/README.md · schema: schemas/product-backlog.schema.json
+# Validated by tests/run-tests.sh (T14). counters = next free number per prefix.
+schema_version: 1.0.0
+counters: { FR: 1, NFR: 2, CON: 3, EP: 3, TASK: 1 }
+epics:
+  - id: EP-001
+    title: S0b — discovery infrastructure (schemas, validator extension, status, templates, CI)
+    stage: S0b
+  - id: EP-002
+    title: S1 — client-discovery interviewer (agent, skills, knowledge, scenarios)
+    stage: S1
+tasks: []

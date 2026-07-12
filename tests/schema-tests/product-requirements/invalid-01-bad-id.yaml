@@ -1,0 +1,13 @@
+# expect-error: at requirements/0/id
+# ID must follow the conventions-rule grammar (FR|NFR|CON)-NNN.
+schema_version: 1.0.0
+requirements:
+  - id: REQ-001
+    type: functional
+    statement: Uses a prefix outside the product requirement grammar.
+    status: draft
+    stage: S0b
+    acceptance_criteria:
+      - id: FR-001-AC-01
+        text: n/a
+    source_refs: ["plan:06 §4"]
