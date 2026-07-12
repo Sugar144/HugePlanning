@@ -93,28 +93,28 @@ tasks:
     title: Ten S1 knowledge files (provisional) + INDEX activation tags
     implements: [FR-018]
     depends_on: [TASK-006]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-010.md
   - id: TASK-011
     epic: EP-002
     title: Skills — interview-evidence-capture + adaptive-interview-control
     implements: [FR-014, FR-015]
     depends_on: [TASK-010]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-011.md
   - id: TASK-012
     epic: EP-002
     title: Skills — nfr-elicitation + process-elicitation
     implements: [FR-016, FR-017]
     depends_on: [TASK-010]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-012.md
   - id: TASK-013
     epic: EP-002
     title: client-discovery agent (replaces stub) + SPK oracle update + close templates
     implements: [FR-013, FR-020, FR-021]
     depends_on: [TASK-011, TASK-012]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-013.md
   - id: TASK-014
     epic: EP-002
@@ -144,40 +144,40 @@ tasks:
     title: Scenario 01 clear — baseline coverage and classification (import mode)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: ready
     packet: product/tasks/TASK-016.md
   - id: TASK-017
     epic: EP-002
     title: Scenario 02 contradictory — CTR catch and resolution (live-assisted)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: ready
     packet: product/tasks/TASK-017.md
   - id: TASK-018
     epic: EP-002
     title: Scenario 03 non-technical — solution decomposition (import mode)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: ready
     packet: product/tasks/TASK-018.md
   - id: TASK-019
     epic: EP-002
     title: Scenario 04 LITE — module floor and single sitting (import mode)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: ready
     packet: product/tasks/TASK-019.md
   - id: TASK-020
     epic: EP-002
     title: Scenario 05 trigger-escalation — flagged profile upgrade (import mode)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: ready
     packet: product/tasks/TASK-020.md
   - id: TASK-021
     epic: EP-002
     title: Scenario 06 PII-bearing — sanitization correctness (live-assisted)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: ready
     packet: product/tasks/TASK-021.md

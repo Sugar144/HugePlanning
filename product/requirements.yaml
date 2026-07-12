@@ -304,7 +304,7 @@ requirements:
       boundaries list, profile-scaled module floors with the trigger duty,
       content-inventory seeding duty, DoD-gated closure that the operator
       accepts, and the failure/escalation states.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-013-AC-01
@@ -331,7 +331,7 @@ requirements:
       questions, the vagueness gate, the "I don't know" protocol, and the
       fatigue response ladder (fewer questions, options, labeled defaults,
       pause offer).
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-014-AC-01
@@ -358,7 +358,7 @@ requirements:
       (identifiers aliased or removed, never paraphrased; raw original moved
       to evidence-raw/ with raw_ref + SHA-256 stamped; identical turn
       numbering).
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-015-AC-01
@@ -382,7 +382,7 @@ requirements:
       nfr-catalog, records measurable anchors (metric/target/conditions), and
       enters missing profile-floor NFRs as proposed defaults — never silently
       imposed or omitted.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-016-AC-01
@@ -402,7 +402,7 @@ requirements:
       processes in M4/M5 as trigger/actors/steps/exceptions/outcome, hunting
       exceptions explicitly, and marks a process topic sufficient only when
       that frame is filled.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-017-AC-01
@@ -420,7 +420,7 @@ requirements:
       technical-operational-context, process-elicitation), each with the §B
       front matter, and knowledge/INDEX.md lists them with consult-when
       triggers and profile/archetype tags.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-018-AC-01
@@ -476,7 +476,7 @@ requirements:
       actually emits, and the deterministic fake-runtime oracle cases are
       updated in the same change — a planned TEST-class oracle correction, not
       a reaction to a red run.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-020-AC-01
@@ -491,7 +491,7 @@ requirements:
       Discovery close artifacts have templates: completion-report.md (coverage
       table, registers summary, DoR/DoD evaluation with waivers, recommended
       next actions per 04 §12) and the M0 consent confirmation record.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-021-AC-01
