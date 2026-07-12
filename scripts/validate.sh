@@ -27,7 +27,9 @@ usage() {
 Usage: validate.sh [client-dir]
 
 Validates a client repository against the methodology contracts.
-S0a scope: required structure, project.yaml, methodology.lock.yaml.
+S0b scope: required structure, project.yaml, methodology.lock.yaml, discovery
+artifact schemas (open-questions, requirements, solution-context,
+interview-state, handoffs), ID/reference integrity, profile matrix v0.
 client-dir defaults to the current working directory.
 
 Environment: METHODOLOGY_DIR overrides the methodology location (defaults to

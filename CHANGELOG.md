@@ -7,23 +7,71 @@ PATCH: fixes, no contract change · MINOR: new skills/agents/knowledge,
 compatible schema additions · MAJOR: schema-breaking changes, artifact renames,
 behavioral contract changes.
 
-## [Unreleased]
+## [0.2.0] - 2026-07-12
 
-Documentation and repository organization only — no runtime change
-(assurance basis: plan `22` §6, decision R2-34/R2-35 in `19` §5).
+S0b — discovery infrastructure (plan `13` S0b; decisions R2-36..38 in `19`
+§5). MINOR per `02` §7: new compatible schemas; version reconciliation
+recorded as R2-38 (plan `13`'s "v0.1.x" label superseded by the SemVer
+policy). Release evidence per `22` §7: deterministic suite **224 passed /
+0 failed**, run twice on the release commit; clean tree after the runs; no
+runtime-launch surface changed (no live SPK-01 required — `start-agent.sh`,
+deny rules, and agent/skill loading untouched); CI (first workflow) must show
+green on GitHub Actions for this commit — recorded as FR-011's verification.
+
+### Added
+
+- **Discovery schemas** (draft 2020-12, versioned `$id`s, valid+invalid
+  fixtures each): `open-questions` 1.0.0 (empty registry valid, R2-30),
+  `handoff` 2.0.0 (append-only gate records, G3-V nested block, R2-05),
+  `solution-context` 1.0.0 (facts value-or-unknown + `risk_triggers[]`,
+  R2-24), `interview-state` 1.0.0 (04 §6 persistence contract incl.
+  pause/resume and deferral discipline), `requirements` 2.0.0 (V2 model:
+  origin provenance, `proposed_default` restricted to methodology/legal
+  origins, structured NFRs with waiver alternative, DAT type, type↔prefix
+  enforcement — R2-10).
+- **`validate.sh` extended in place** (same script, R2-26): discovery schema
+  checks incl. per-interview state files and every handoff record;
+  ID/reference integrity via `scripts/lib/check-ids.py` (duplicates, AC
+  scoping, counter collisions, dangling refs, handoff filename identity);
+  profile-aware matrix v0 (discovery registries required past the G1
+  boundary, INFO before — R2-21).
+- **`status.sh` v0** + `scripts/lib/derive-status.py`: derived read-only
+  dashboard (stage, latest gate state per gate, requirement histogram, OQ/CTR
+  counts, pending risk triggers) — nothing stored (DEC-11).
+- **`templates/discovery/`**: schema-valid commented skeletons for
+  requirements, solution-context, interview-state, handoff.
+- **Client lock template** pins the five S0b schema versions.
+- **Methodology CI**: `.github/workflows/methodology-ci.yml` runs the suite
+  on every push/PR.
+- Test suite grown 122 → 224 checks (new fixture groups; T15 validator
+  red/green incl. 8 failure paths; T16 status dashboard incl. read-only
+  assertion; T17 template validity; T2 `$id` oracle generalized to any
+  SemVer — TEST-class fix).
+
+### Documentation (pre-release, same 0.2.0)
 
 - New plan file `22_implementation_assurance_and_adversarial_validation.md`:
-  the proportional stage-level assurance loop distilled from S0a.
+  the proportional stage-level assurance loop distilled from S0a (R2-34).
 - Planning corpus moved to `planning/` (`baseline/` + `v2/`); S0a experiment
   report moved to `reports/experiments/s0a/`; navigation READMEs added.
-  Plan citations `NN §m` resolve per `planning/README.md`.
+  Plan citations `NN §m` resolve per `planning/README.md` (R2-35).
 - Historical Claude.ai prototype baseline preserved verbatim at
   `planning/history/claude-ai-prototypes/` with reuse assessment (R2-36) —
   historical prototype, not active runtime, not behaviorally validated.
 - Product-spec foundation (R2-37): `product/` (requirements, backlog, task
-  packets for in-flight stages) with methodology-internal schemas
+  packets for in-flight stages S0b/S1) with methodology-internal schemas
   `product-requirements` 1.0.0 + `product-backlog` 1.0.0, fixtures, and suite
   block T14. Never client-facing: excluded from `validate.sh` and the lock.
+  S1 scenario validation split one-task-per-scenario by operator refinement.
+
+### Known limitations (carried)
+
+- Parallel-branch ID allocation, Jira reconciliation automation, hook-based
+  methodology guard, encrypted evidence platform: deferred as documented
+  (`15` §2).
+- Profile matrix v0 covers discovery-stage rows only; later stages extend it.
+- `check-ids.py` skips references whose registries land at later stages
+  (ADR, TASK, …) — they gain checks with their schemas (R2-02).
 
 ## [0.1.0] - 2026-07-11
 

@@ -166,7 +166,9 @@ expect_fail "invalid project.yaml (bad stage enum)" "$V" "$B"; expect_out "  nam
 B="$(break_client no-lock)"; rm "$B/methodology.lock.yaml"
 expect_fail "missing methodology.lock.yaml" "$V" "$B"
 
-B="$(break_client bad-lock)"; sed -i 's/version: "v0.1.0"/version: "0.1.0"/' "$B/methodology.lock.yaml"
+# Strip the leading v from whatever version the lock records (version-agnostic
+# mutation — a literal "v0.1.0" match silently became a no-op after a bump).
+B="$(break_client bad-lock)"; sed -i 's/^  version: "v/  version: "/' "$B/methodology.lock.yaml"
 expect_fail "invalid lock (version missing v)" "$V" "$B"; expect_out "  names the field" "methodology/version"
 
 B="$(break_client no-handoffs)"; rm -rf "$B/docs/handoffs"

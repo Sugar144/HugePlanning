@@ -246,3 +246,12 @@ Recorded after the `v0.1.0` release, from the verified S0a execution (experiment
 - **Reasoning:** smallest structure that gives traceable product work while reusing existing machinery (`schema-validate.py`, fixture conventions, suite pattern); the schema-enforced stage guard prevents the directory from growing into a second roadmap.
 - **Affected files:** new `product/**`, `schemas/product-requirements.schema.json`, `schemas/product-backlog.schema.json`, `tests/schema-tests/product-requirements/**`, `tests/schema-tests/product-backlog/**`; `tests/run-tests.sh` (T3 groups + T14); root `README.md` map row.
 - **Validation:** deterministic suite green (139 checks after the addition; all new invalid fixtures fail for their declared reasons); no client-facing runtime surface changed — no live SPK-01 required per `22` §6.
+
+### R2-38 — S0b version and requirements-schema-version reconciliation (2026-07-12)
+
+- **Validated?** Yes — two small contract conflicts found by S0b contract reconciliation (`22` §2):
+  1. `13` S0b and `00` action 13 label the S0b gate "v0.1.x", while `02` §7 (the normative versioning contract) classifies new compatible schemas as **MINOR**. Five new schemas cannot honestly be a PATCH.
+  2. `06` §7.1's example header shows `schema_version: 1.1.0` for requirements.yaml, while R2-10 states the requirements schema "bumps to 2.0.0 semantics at S0b".
+- **Decision:** **ACCEPT — the versioning policy wins on both counts.** S0b releases as **v0.2.0** (stage-gate version labels in `13`/`00` are illustrative, not normative; subsequent stage tags shift accordingly — S1 becomes v0.3.0). The requirements schema releases as **2.0.0** per R2-10; `06` §7.1's example header predates that decision and stays untouched (frozen example; the schema's `$id` and the lock template are the operative statements).
+- **Affected files:** this log; `VERSION`, `CHANGELOG.md`, tag `v0.2.0`; `schemas/requirements.schema.json` (`$id` 2.0.0); `templates/client-repo/methodology.lock.yaml` (`requirements: 2.0.0`). No planning file rewritten.
+- **Validation:** documentation/release-metadata decision; deterministic suite green; conflict recorded here rather than silently resolved (invariant 2).
