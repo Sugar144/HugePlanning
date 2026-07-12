@@ -464,8 +464,9 @@ requirements:
       - id: FR-019-AC-04
         text: Corrections are bounded (max 2 cycles per defect class, then the
           design contract is re-examined) and every failing check is classified
-          CODE/TEST/CONTRACT/PROCESS/ENVIRONMENT before any fix.
-    source_refs: ["plan:02 §10", "plan:13 §3", "plan:22 §5", decision:R2-23]
+          CODE/TEST/CONTRACT/DATA/OPERATOR/PROCESS/ENVIRONMENT (22 §5, R2-39)
+          before any fix.
+    source_refs: ["plan:02 §10", "plan:13 §3", "plan:22 §5", decision:R2-23, decision:R2-39]
 
   - id: FR-020
     type: functional
@@ -476,7 +477,7 @@ requirements:
       actually emits, and the deterministic fake-runtime oracle cases are
       updated in the same change — a planned TEST-class oracle correction, not
       a reaction to a red run.
-    status: implemented
+    status: verified
     stage: S1
     acceptance_criteria:
       - id: FR-020-AC-01

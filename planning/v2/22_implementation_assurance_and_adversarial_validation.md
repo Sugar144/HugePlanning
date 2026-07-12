@@ -51,15 +51,19 @@ Failure paths deserve at least the attention of happy paths — S0a's material d
 
 ## 5. Failure classification (step 7) and runtime-result classes
 
-Every failing check is classified **before** it is fixed; the class determines what gets changed:
+Every failing check is classified **before** it is fixed; the class determines what gets changed (seven classes since R2-39, which added `DATA` and `OPERATOR` when S1 scenario execution made them material; `SPEC`, where it appears in operator-side notes, normalizes to `CONTRACT`; records predating R2-39 used the original five classes, which map unchanged):
 
-| Class | Meaning | Fix target | S0a instance |
+| Class | Meaning | Fix target | Instance |
 |---|---|---|---|
-| `CODE` | Implementation wrong against an agreed contract | The implementation | committed `__pycache__` bytecode dirtying the tree |
-| `TEST` | The check itself is wrong or asserts the wrong thing | The test/oracle | fixture declaring a token jsonschema never emits |
-| `CONTRACT` | Sources of truth disagree; implementation followed the wrong one | The contract + reconciliation record | 6-gate schema vs normative G0–G9 (F1) |
-| `PROCESS` | Workflow allowed a preventable defect through | The process (this file, checklists) | validation not required before the initial client commit (F3) |
-| `ENVIRONMENT` | Harness/CLI/tooling limitation, not the product | Recorded limitation or compensating control | deny rules not binding subprocesses; drift guard as control |
+| `CODE` | Implementation wrong against an agreed contract | The implementation | committed `__pycache__` bytecode dirtying the tree (S0a) |
+| `TEST` | The check itself is wrong or asserts the wrong thing — incl. oracles, fixtures, golden checklists as scoring instruments | The test/oracle | fixture declaring a token jsonschema never emits (S0a) |
+| `CONTRACT` | Sources of truth disagree; implementation followed the wrong one (aka `SPEC`) | The contract + reconciliation record | 6-gate schema vs normative G0–G9 (F1, S0a) |
+| `DATA` | Scenario/input material malformed, incomplete, contaminated, or unsuitable for what the run must test (R2-39) | The scenario data / import material | an import transcript missing the planted material its golden scores |
+| `OPERATOR` | A human executed, relayed, or scored a sound procedure incorrectly during a run (R2-39) | Re-run the affected portion; correct the human step | persona fact volunteered unasked in a live sitting; golden item mis-scored |
+| `PROCESS` | The prescribed workflow itself allowed a preventable defect through | The process (this file, checklists) | validation not required before the initial client commit (F3, S0a) |
+| `ENVIRONMENT` | Harness/CLI/tooling limitation, not the product | Recorded limitation or compensating control | deny rules not binding subprocesses (S0a); CLI session limit mid-run (S1) |
+
+`OPERATOR` vs `PROCESS`: if the human erred following a sound procedure, it is `OPERATOR` (fix the execution, re-run); if the procedure itself permitted the defect, it is `PROCESS` (fix the procedure). Conflating them mis-targets the fix.
 
 **A failing oracle is never automatically a product failure.** S0a lesson F4: SPK-01's sentinel matching produced a false negative on a genuinely working session — a `TEST`-class defect; treating it as `CODE` would have "fixed" working behaviour. Runtime verification results therefore always distinguish four outcomes:
 

@@ -2,8 +2,8 @@
 
 Judged on **coverage and non-invention**, never wording (02 §10). Score each
 item pass/fail with a pointer into the produced artifacts; defects classified
-CODE/TEST/CONTRACT/PROCESS/ENVIRONMENT before any fix (22 §5). Record the run
-in `RESULT.md` next to this file.
+CODE/TEST/CONTRACT/DATA/OPERATOR/PROCESS/ENVIRONMENT before any fix (22 §5,
+R2-39). Record the run in `RESULT.md` next to this file.
 
 ## Import / gap analysis
 - [ ] Import material ingested into evidence with provenance; coverage
