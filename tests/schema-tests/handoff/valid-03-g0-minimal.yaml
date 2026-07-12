@@ -1,0 +1,9 @@
+# Minimal G0 readiness record (required fields only) — the first record every
+# client repo gets (21 §7 step 1).
+schema_version: 2.0.0
+gate: G0
+sequence: 1
+date: 2026-09-02
+approved_by: developer
+result: approved
+commit: 0a1b2c3

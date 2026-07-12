@@ -1,0 +1,9 @@
+# expect-error: at sequence
+# Sequences start at 1; a repeated gate pass appends the next number (R2-05).
+schema_version: 2.0.0
+gate: G2
+sequence: 0
+date: 2026-09-19
+approved_by: client
+result: approved
+commit: 9f1c2d3

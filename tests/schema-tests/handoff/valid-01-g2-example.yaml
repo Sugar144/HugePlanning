@@ -1,0 +1,13 @@
+# The plan 06 §7.5 example record (G2 business baseline). Fictitious client.
+schema_version: 2.0.0
+gate: G2
+sequence: 1
+date: 2026-09-19
+approved_by: client
+result: approved
+commit: 9f1c2d3
+confirmation_ref: evidence/confirmations/2026-09-19-g2.md
+artifacts: { prd: docs/product/PRD.md, requirements: docs/requirements/requirements.yaml }
+quality: { critical_questions_remaining: 0, unresolved_contradictions: 0 }
+profile_check: { profile: standard, new_triggers: [] }
+next_stage: technical_design

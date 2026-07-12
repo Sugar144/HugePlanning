@@ -72,7 +72,9 @@ with open(sys.argv[1], encoding="utf-8") as fh:
 cls = jsonschema.validators.validator_for(schema)
 cls.check_schema(schema)
 assert "2020-12" in schema.get("$schema", ""), "must declare draft 2020-12"
-assert "$id" in schema and "/1." in schema["$id"], "$id must embed the version"
+import re
+assert "$id" in schema and re.search(r"/[0-9]+\.[0-9]+\.[0-9]+/", schema["$id"]), \
+    "$id must embed the version"
 PYEOF
 done
 
@@ -83,9 +85,10 @@ declare -A SCHEMA_FOR=(
   [product-requirements]="product-requirements.schema.json"
   [product-backlog]="product-backlog.schema.json"
   [open-questions]="open-questions.schema.json"
+  [handoff]="handoff.schema.json"
 )
 for group in project methodology-lock product-requirements product-backlog \
-             open-questions; do
+             open-questions handoff; do
   schema="$REAL_METHOD/schemas/${SCHEMA_FOR[$group]}"
   for f in "$SCRIPT_DIR/schema-tests/$group"/valid-*.yaml; do
     expect_ok "valid fixture $(basename "$f")" \

@@ -1,0 +1,9 @@
+# expect-error: 'commit' is a required property
+# Every gate decision anchors to the exact commit it approved (change-control
+# rule: approvals are commitments anchored to specific content).
+schema_version: 2.0.0
+gate: G2
+sequence: 1
+date: 2026-09-19
+approved_by: client
+result: approved
