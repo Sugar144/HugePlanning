@@ -281,3 +281,221 @@ requirements:
           S0b entries with their released versions, and the lock passes its
           schema.
     source_refs: ["plan:02 §7", "plan:13 §3"]
+
+  # ── S1 boundary ───────────────────────────────────────────────────────────
+  - id: CON-003
+    type: constraint
+    statement: >-
+      S1 produces layer-1 evidence and draft layer-2 registers only. The
+      interviewer never generates PRDs or client-facing documents (S2, plan
+      07), never makes or records technical decisions (S3, plan 05), and never
+      sets any status beyond draft.
+    status: approved
+    stage: S1
+    acceptance_criteria: []
+    source_refs: ["plan:04 §1", "plan:13 §3"]
+
+  # ── S1 discovery interviewer ──────────────────────────────────────────────
+  - id: FR-013
+    type: functional
+    statement: >-
+      The client-discovery agent file implements the full plan 04 §1 contract,
+      replacing the S0a stub: both modes (live-assisted, import), the
+      boundaries list, profile-scaled module floors with the trigger duty,
+      content-inventory seeding duty, DoD-gated closure that the operator
+      accepts, and the failure/escalation states.
+    status: approved
+    stage: S1
+    acceptance_criteria:
+      - id: FR-013-AC-01
+        text: Agent frontmatter and body follow the 02 §4.3 content rules
+          (identity/authority/boundaries/completion only — procedures live in
+          skills, which the agent references).
+      - id: FR-013-AC-02
+        text: The agent proposes closure only when the 04 §12 DoD holds, and
+          demonstrably refuses to close when a critical topic is not sufficient
+          (scenario-verified).
+      - id: FR-013-AC-03
+        text: On a revealed risk trigger the agent records it in risk_triggers[]
+          and flags a proposed profile upgrade at the next module boundary —
+          never silently continues (scenario-verified).
+    source_refs: ["plan:04 §1", "plan:04 §12", "plan:14 §2", decision:R2-01]
+
+  - id: FR-014
+    type: functional
+    statement: >-
+      The adaptive-interview-control skill implements the plan 04 §7.3 control
+      loop with the conversational craft adapted from the historical
+      prototypes: exactly one question per turn, module-boundary progress
+      statements and playback summaries, explain-and-return on concept
+      questions, the vagueness gate, the "I don't know" protocol, and the
+      fatigue response ladder (fewer questions, options, labeled defaults,
+      pause offer).
+    status: approved
+    stage: S1
+    acceptance_criteria:
+      - id: FR-014-AC-01
+        text: Scenario transcripts show one question per turn, playback at each
+          module close with explicit confirmation, and correct queue re-scoring
+          after interrupts (04 §7.1 overrides).
+      - id: FR-014-AC-02
+        text: Fatigue signals in a scenario produce the documented ladder, and
+          any default offered under fatigue is recorded as ASM/proposed-default
+          material — never as a client statement.
+      - id: FR-014-AC-03
+        text: Progress is communicated at module boundaries in client language;
+          no fixed block-count mechanics are exposed (modules are adaptive).
+    source_refs: ["plan:04 §7", "prototype:business-discovery-interviewer#core-behavior", "prototype:PROJECT_INSTRUCTIONS#fatigue-handling", decision:R2-36]
+
+  - id: FR-015
+    type: functional
+    statement: >-
+      The interview-evidence-capture skill implements the plan 04 §6
+      persistence contract and the 04 §8 evidence rules: numbered speaker-
+      tagged transcript turns (md + jsonl), state persisted at module
+      transitions/registrations/every-10-turns/pause, resume from state plus
+      last transcript page only, and the close/pause sanitization pass
+      (identifiers aliased or removed, never paraphrased; raw original moved
+      to evidence-raw/ with raw_ref + SHA-256 stamped; identical turn
+      numbering).
+    status: approved
+    stage: S1
+    acceptance_criteria:
+      - id: FR-015-AC-01
+        text: A mid-M7 pause/resume scenario re-hydrates from
+          interview-state.json and continues with the queued question — without
+          re-reading the whole transcript.
+      - id: FR-015-AC-02
+        text: The PII scenario produces a sanitized transcript whose turn
+          numbering matches the raw counterpart, with raw_ref + SHA-256 front
+          matter, third-party names aliased to roles, and zero paraphrase
+          (statement text verbatim apart from removed identifiers).
+      - id: FR-015-AC-03
+        text: Every candidate requirement/fact/assumption in the state carries
+          source_refs anchors that resolve to existing turns.
+    source_refs: ["plan:04 §6", "plan:04 §8", decision:R2-03]
+
+  - id: FR-016
+    type: functional
+    statement: >-
+      The nfr-elicitation skill runs M8 with client-language probes from the
+      nfr-catalog, records measurable anchors (metric/target/conditions), and
+      enters missing profile-floor NFRs as proposed defaults — never silently
+      imposed or omitted.
+    status: approved
+    stage: S1
+    acceptance_criteria:
+      - id: FR-016-AC-01
+        text: Scenario output shows consequence-framed questions (no jargon)
+          and at least one vague quality statement concretized to a measurable
+          anchor or explicitly recorded as low-precision preference.
+      - id: FR-016-AC-02
+        text: Floor NFRs absent from client statements appear as
+          methodology-default proposals flagged for confirmation (R2-10 origin
+          discipline).
+    source_refs: ["plan:04 §5", "plan:07 §3", "plan:14 §3", decision:R2-10]
+
+  - id: FR-017
+    type: functional
+    statement: >-
+      The process-elicitation skill reconstructs current and future business
+      processes in M4/M5 as trigger/actors/steps/exceptions/outcome, hunting
+      exceptions explicitly, and marks a process topic sufficient only when
+      that frame is filled.
+    status: approved
+    stage: S1
+    acceptance_criteria:
+      - id: FR-017-AC-01
+        text: A scenario process answer missing its exception paths triggers
+          "what happens when…" probes before the topic can reach sufficient.
+    source_refs: ["plan:04 §4", "plan:14 §3", "plan:17 §K.8"]
+
+  - id: FR-018
+    type: functional
+    statement: >-
+      The ten S1 knowledge files exist as status-provisional content per the
+      17 §K minimum specs (question-bank, interview-strategies,
+      requirements-taxonomy, nfr-catalog, elicitation-techniques,
+      evidence-and-uncertainty, glossary, scope-and-mvp,
+      technical-operational-context, process-elicitation), each with the §B
+      front matter, and knowledge/INDEX.md lists them with consult-when
+      triggers and profile/archetype tags.
+    status: approved
+    stage: S1
+    acceptance_criteria:
+      - id: FR-018-AC-01
+        text: Every file carries the audited front-matter subset (id, type,
+          status provisional, source_quality, consult_when, used_by) and stays
+          within the authoring pattern (no policy "must never" phrasing, no
+          numbered procedures — checked by the 17 §J grep-level scan).
+      - id: FR-018-AC-02
+        text: scope-and-mvp incorporates the prototype complexity-multiplier
+          list and reduction strategies as secondary-source content with
+          prototype-prefixed source refs.
+      - id: FR-018-AC-03
+        text: question-bank covers every 04 §5 module with at least 3 seeds per
+          topic, sufficiency checks, risk keywords, and one anti-example
+          (leading form) per module.
+    source_refs: ["plan:17 §K", "plan:14 §5", "prototype:mvp-scope-reducer#references", decision:R2-36]
+
+  - id: FR-019
+    type: functional
+    statement: >-
+      The six behavioural scenarios (clear / contradictory / non-technical /
+      LITE / trigger-escalation / PII-bearing) exist under
+      tests/interview-scenarios/ with golden checklists under
+      tests/golden-artifacts/, and an executed S1 validation run passes all
+      six goldens — judged on coverage and non-invention, never wording.
+    status: approved
+    stage: S1
+    acceptance_criteria:
+      - id: FR-019-AC-01
+        text: Each golden checklist scores coverage, classification (incl. the
+          04 §3 worked-example class), non-invention, contradiction catch and
+          in-interview resolution, and DoD refusal of premature close.
+      - id: FR-019-AC-02
+        text: The LITE scenario respects the 21 §5 module floor; the
+          trigger-escalation scenario produces the flagged upgrade proposal;
+          the PII scenario passes the FR-015 sanitization checks.
+      - id: FR-019-AC-03
+        text: Scenario execution protocol — contradictory and PII run
+          live-assisted (operator plays the client); the other four run in
+          import mode from pre-scripted transcripts for repeatability.
+      - id: FR-019-AC-04
+        text: Corrections are bounded (max 2 cycles per defect class, then the
+          design contract is re-examined) and every failing check is classified
+          CODE/TEST/CONTRACT/PROCESS/ENVIRONMENT before any fix.
+    source_refs: ["plan:02 §10", "plan:13 §3", "plan:22 §5", decision:R2-23]
+
+  - id: FR-020
+    type: functional
+    statement: >-
+      spk-01-smoke-check.sh check (a) is updated for the production agent: the
+      oracle's semantic-evidence expectation (currently the S0a stub's exact
+      closing statement) is replaced with evidence the production agent
+      actually emits, and the deterministic fake-runtime oracle cases are
+      updated in the same change — a planned TEST-class oracle correction, not
+      a reaction to a red run.
+    status: approved
+    stage: S1
+    acceptance_criteria:
+      - id: FR-020-AC-01
+        text: The fake-runtime oracle cases (sentinel, semantic, partial,
+          unrelated) stay green against the production agent's expected output,
+          and a live SPK-01 run passes 5/5 before the S1 tag.
+    source_refs: ["plan:22 §5", decision:R2-16, "report:reports/experiments/s0a/EXPERIMENT_S0A_REPORT.md"]
+
+  - id: FR-021
+    type: functional
+    statement: >-
+      Discovery close artifacts have templates: completion-report.md (coverage
+      table, registers summary, DoR/DoD evaluation with waivers, recommended
+      next actions per 04 §12) and the M0 consent confirmation record.
+    status: approved
+    stage: S1
+    acceptance_criteria:
+      - id: FR-021-AC-01
+        text: The completion-report template contains every 04 §12 section and
+          is produced by the agent at scenario close; the consent record
+          template is referenced by M0 in the interview flow.
+    source_refs: ["plan:04 §12", "plan:04 §8", "plan:06 §6"]

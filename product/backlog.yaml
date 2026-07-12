@@ -2,7 +2,7 @@
 # Contract: product/README.md · schema: schemas/product-backlog.schema.json
 # Validated by tests/run-tests.sh (T14). counters = next free number per prefix.
 schema_version: 1.0.0
-counters: { FR: 13, NFR: 2, CON: 3, EP: 3, TASK: 10 }
+counters: { FR: 22, NFR: 2, CON: 4, EP: 3, TASK: 16 }
 epics:
   - id: EP-001
     title: S0b — discovery infrastructure (schemas, validator extension, status, templates, CI)
@@ -76,3 +76,48 @@ tasks:
     depends_on: [TASK-006]
     status: backlog
     packet: product/tasks/TASK-009.md
+
+  # S1 — staged so knowledge/skills are mergeable behind the unchanged stub
+  # if usage ends mid-stage (agent replacement is the last runtime switch).
+  - id: TASK-010
+    epic: EP-002
+    title: Ten S1 knowledge files (provisional) + INDEX activation tags
+    implements: [FR-018]
+    depends_on: [TASK-006]
+    status: backlog
+    packet: product/tasks/TASK-010.md
+  - id: TASK-011
+    epic: EP-002
+    title: Skills — interview-evidence-capture + adaptive-interview-control
+    implements: [FR-014, FR-015]
+    depends_on: [TASK-010]
+    status: backlog
+    packet: product/tasks/TASK-011.md
+  - id: TASK-012
+    epic: EP-002
+    title: Skills — nfr-elicitation + process-elicitation
+    implements: [FR-016, FR-017]
+    depends_on: [TASK-010]
+    status: backlog
+    packet: product/tasks/TASK-012.md
+  - id: TASK-013
+    epic: EP-002
+    title: client-discovery agent (replaces stub) + SPK oracle update + close templates
+    implements: [FR-013, FR-020, FR-021]
+    depends_on: [TASK-011, TASK-012]
+    status: backlog
+    packet: product/tasks/TASK-013.md
+  - id: TASK-014
+    epic: EP-002
+    title: Author six interview scenarios + golden checklists
+    implements: [FR-019]
+    depends_on: [TASK-013]
+    status: backlog
+    packet: product/tasks/TASK-014.md
+  - id: TASK-015
+    epic: EP-002
+    title: Execute scenario validation, bounded corrections, live SPK-01, S1 release
+    implements: [FR-019, FR-020]
+    depends_on: [TASK-014]
+    status: backlog
+    packet: product/tasks/TASK-015.md
