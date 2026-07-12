@@ -303,6 +303,23 @@ cp "$SCRIPT_DIR/schema-tests/interview-state/invalid-01-bad-phase.yaml" \
 expect_fail "invalid interview-state detected" "$V" "$B"
 expect_out "  names the artifact" "interview-state.schema.json"
 
+note "== T16: status.sh v0 — derived read-only dashboard =="
+S="$FAKE/scripts/status.sh"
+BEFORE_STATE="$(git -C "$D" status --porcelain)"
+expect_ok "status.sh runs on planted discovery client" "$S" "$D"
+expect_out "  derives latest gate state" "G0: approved (seq 1"
+expect_out "  reports unrecorded gates" "G1: no record"
+expect_out "  requirement histogram" "draft: 2"
+expect_out "  question/contradiction counts" "contradictions: 0 open of 0"
+expect_out "  pending trigger surfaced" "PENDING"
+AFTER_STATE="$(git -C "$D" status --porcelain)"
+[[ "$BEFORE_STATE" == "$AFTER_STATE" ]] \
+  && t_pass "status.sh wrote nothing (read-only contract)" \
+  || t_fail "status.sh modified the client tree"
+expect_ok "status.sh runs on a bare fresh client" "$S" "$CLIENT"
+expect_out "  absent registries render, not error" "requirements: none recorded"
+expect_fail "status.sh rejects a missing directory" "$S" "$WORK/does not exist"
+
 note "== T6: new-client.sh refusals =="
 expect_fail "refuses non-empty target" "$FAKE/scripts/new-client.sh" "$CLIENT" TEST-CLIENT
 expect_out "  actionable" "not empty"
