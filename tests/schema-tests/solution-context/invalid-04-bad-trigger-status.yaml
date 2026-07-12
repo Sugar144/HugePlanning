@@ -1,0 +1,8 @@
+# expect-error: at risk_triggers/0/status
+# Trigger lifecycle is proposed → confirmed | refuted (21 §4); nothing else.
+schema_version: 1.0.0
+risk_triggers:
+  - trigger: online payments requested
+    evidence_ref: interview:client-discovery-01#turn-58
+    profile_implication: high-risk
+    status: ignored

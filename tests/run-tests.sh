@@ -86,9 +86,10 @@ declare -A SCHEMA_FOR=(
   [product-backlog]="product-backlog.schema.json"
   [open-questions]="open-questions.schema.json"
   [handoff]="handoff.schema.json"
+  [solution-context]="solution-context.schema.json"
 )
 for group in project methodology-lock product-requirements product-backlog \
-             open-questions handoff; do
+             open-questions handoff solution-context; do
   schema="$REAL_METHOD/schemas/${SCHEMA_FOR[$group]}"
   for f in "$SCRIPT_DIR/schema-tests/$group"/valid-*.yaml; do
     expect_ok "valid fixture $(basename "$f")" \

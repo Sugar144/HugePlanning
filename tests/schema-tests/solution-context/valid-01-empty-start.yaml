@@ -1,0 +1,3 @@
+# Discovery just started: nothing known yet beyond the empty trigger register.
+schema_version: 1.0.0
+risk_triggers: []

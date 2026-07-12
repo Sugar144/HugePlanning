@@ -1,0 +1,6 @@
+# expect-error: at (root)
+# Facts, never decisions (baseline §9.4): there is no home for a chosen stack
+# or architecture here — additionalProperties is closed.
+schema_version: 1.0.0
+chosen_stack: "Next.js + Supabase"
+risk_triggers: []

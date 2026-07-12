@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://freelance-methodology.invalid/schemas/solution-context/1.0.0/solution-context.schema.json",
+  "title": "solution-context.yaml — technical-operational facts (06 §7.2)",
+  "description": "Facts, never decisions (baseline §9.4): domain/hosting/email/existing systems/accounts/usage/data/operational/legal flags, each leaf value-or-unknown with source_refs, plus the machine-readable risk_triggers[] register (R2-24) feeding profile confirmation (21 §4). No field in this schema may hold a technology choice or architecture decision — those are ADRs (S3). Schema version 1.0.0 (S0b).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "risk_triggers"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "domain": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provider": { "$ref": "#/$defs/fact" },
+        "ownership": { "$ref": "#/$defs/fact" },
+        "access_status": { "$ref": "#/$defs/fact" }
+      }
+    },
+    "hosting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "current": { "$ref": "#/$defs/fact" },
+        "ownership": { "$ref": "#/$defs/fact" },
+        "access_status": { "$ref": "#/$defs/fact" }
+      }
+    },
+    "email": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provider": { "$ref": "#/$defs/fact" },
+        "addresses_in_use": { "$ref": "#/$defs/fact" },
+        "access_status": { "$ref": "#/$defs/fact" }
+      }
+    },
+    "existing_systems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "purpose"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "purpose": { "type": "string", "minLength": 1 },
+          "integration_required": { "$ref": "#/$defs/fact" },
+          "access_status": { "$ref": "#/$defs/fact" },
+          "source_refs": { "$ref": "#/$defs/refs" }
+        }
+      }
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["service"],
+        "properties": {
+          "service": { "type": "string", "minLength": 1 },
+          "ownership": { "$ref": "#/$defs/fact" },
+          "access_status": { "$ref": "#/$defs/fact" },
+          "source_refs": { "$ref": "#/$defs/refs" }
+        }
+      }
+    },
+    "expected_usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "monthly_visitors": { "$ref": "#/$defs/fact" },
+        "peak_events": { "$ref": "#/$defs/fact" },
+        "simultaneous_admins": { "$ref": "#/$defs/fact" }
+      }
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entities_mentioned": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "sensitivity": { "$ref": "#/$defs/fact" },
+        "personal_data_types": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "retention_expectations": { "$ref": "#/$defs/fact" },
+        "source_refs": { "$ref": "#/$defs/refs" }
+      }
+    },
+    "operational": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "maintainer_after_delivery": { "$ref": "#/$defs/fact" },
+        "content_editors": { "$ref": "#/$defs/fact" },
+        "technical_skill_level": { "$ref": "#/$defs/fact" }
+      }
+    },
+    "legal_flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["flag"],
+        "properties": {
+          "flag": { "type": "string", "minLength": 1 },
+          "source_refs": { "$ref": "#/$defs/refs" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "risk_triggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["trigger", "evidence_ref", "profile_implication", "status"],
+        "properties": {
+          "trigger": { "type": "string", "minLength": 1 },
+          "evidence_ref": { "type": "string", "minLength": 1 },
+          "profile_implication": { "enum": ["standard", "high-risk"] },
+          "status": { "enum": ["proposed", "confirmed", "refuted"] },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value"],
+      "properties": {
+        "value": {
+          "anyOf": [
+            { "const": "unknown" },
+            { "type": "string", "minLength": 1 },
+            { "type": "number" },
+            { "type": "boolean" }
+          ]
+        },
+        "source_refs": { "$ref": "#/$defs/refs" }
+      }
+    },
+    "refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}
