@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://freelance-methodology.invalid/schemas/interview-state/1.0.0/interview-state.schema.json",
+  "title": "interview-state.json — discovery interview state machine snapshot (04 §6)",
+  "description": "The interviewer's persistence contract: session, phase, per-topic coverage, question queue, registers (contradictions/assumptions/open questions/scope flags), budget with fatigue signals, completion check, resume hints. Written at every module transition, every registration, every 10 turns, and on pause; resume re-hydrates from this file plus the last transcript page only. Schema version 1.0.0 (S0b).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "session", "phase", "current_module", "coverage", "question_queue", "registers", "budget", "completion_check"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "mode", "started_at", "turns", "status"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^client-discovery-[0-9]{2}$" },
+        "mode": { "enum": ["live-assisted", "import"] },
+        "started_at": { "type": "string", "format": "date-time", "minLength": 1 },
+        "turns": { "type": "integer", "minimum": 0 },
+        "status": { "enum": ["in_progress", "paused", "closed", "aborted"] },
+        "abort_reason": { "type": "string" },
+        "sittings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["started_at"],
+            "properties": {
+              "started_at": { "type": "string", "minLength": 1 },
+              "ended_at": { "type": "string" },
+              "turns": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "phase": { "enum": ["setup", "elicitation", "consolidation", "confirmation", "closed", "paused", "aborted"] },
+    "current_module": { "type": "string", "pattern": "^M([0-9]|1[0-2])$" },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "module", "importance", "status", "confidence"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)*$" },
+          "module": { "type": "string", "pattern": "^M([0-9]|1[0-2])$" },
+          "importance": { "enum": ["critical", "high", "normal", "low"] },
+          "status": { "enum": ["not_started", "touched", "partial", "sufficient", "deferred", "not_applicable", "blocked"] },
+          "confidence": { "enum": ["low", "medium", "high"] },
+          "evidence_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "notes": { "type": "string" },
+          "deferral": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["reason", "owner", "approved_by_operator"],
+            "properties": {
+              "reason": { "type": "string", "minLength": 1 },
+              "owner": { "type": "string", "minLength": 1 },
+              "risk_note": { "type": "string" },
+              "approved_by_operator": { "type": "boolean" }
+            }
+          },
+          "na_justification": { "type": "string" }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "status": { "const": "deferred" } }, "required": ["status"] },
+            "then": { "required": ["deferral"] }
+          },
+          {
+            "if": { "properties": { "status": { "const": "not_applicable" } }, "required": ["status"] },
+            "then": { "required": ["na_justification"] }
+          }
+        ]
+      }
+    },
+    "question_queue": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["qid", "topic", "kind"],
+        "properties": {
+          "qid": { "type": "string", "pattern": "^q-[0-9]{3}$" },
+          "topic": { "type": "string", "minLength": 1 },
+          "kind": { "enum": ["seed", "probe", "follow_up", "confirm", "interrupt"] },
+          "score": { "type": "number" },
+          "text_hint": { "type": "string" }
+        }
+      }
+    },
+    "registers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contradictions", "assumptions", "open_questions", "scope_flags"],
+      "properties": {
+        "contradictions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "between", "topic", "severity", "status"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^CTR-[0-9]{3}$" },
+              "between": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 1 } },
+              "topic": { "type": "string", "minLength": 1 },
+              "severity": { "enum": ["critical", "minor"] },
+              "status": { "enum": ["open", "resolved", "accepted_as_tension"] },
+              "resolution_ref": { "type": "string" }
+            }
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "text", "status"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^ASM-[0-9]{3}$" },
+              "text": { "type": "string", "minLength": 1 },
+              "basis": { "type": "string" },
+              "status": { "enum": ["unconfirmed", "confirmed", "invalidated"] }
+            }
+          }
+        },
+        "open_questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "topic", "owner"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^(OQ|CLAR)-[0-9]{3}$" },
+              "topic": { "type": "string", "minLength": 1 },
+              "owner": { "type": "string", "minLength": 1 },
+              "blocking": { "type": "boolean" }
+            }
+          }
+        },
+        "scope_flags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["turn", "note", "handled"],
+            "properties": {
+              "turn": { "type": "integer", "minimum": 1 },
+              "note": { "type": "string", "minLength": 1 },
+              "handled": { "enum": ["pending", "parked_out_of_scope", "accepted_in_scope", "moved_to_later_phase"] }
+            }
+          }
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["elapsed_min", "soft_limit_min", "fatigue_signals"],
+      "properties": {
+        "elapsed_min": { "type": "number", "minimum": 0 },
+        "soft_limit_min": { "type": "number", "minimum": 0 },
+        "fatigue_signals": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "completion_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["last_run_turn", "result"],
+      "properties": {
+        "last_run_turn": {
+          "anyOf": [ { "type": "null" }, { "type": "integer", "minimum": 0 } ]
+        },
+        "result": { "enum": ["not_run", "not_ready", "ready"] },
+        "failing": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "resume_hints": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "session": { "properties": { "status": { "const": "paused" } }, "required": ["status"] } } },
+      "then": { "required": ["resume_hints"], "properties": { "resume_hints": { "minLength": 1 } } }
+    }
+  ]
+}

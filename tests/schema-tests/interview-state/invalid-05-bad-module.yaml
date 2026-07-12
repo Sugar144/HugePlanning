@@ -1,0 +1,16 @@
+# expect-error: at current_module
+# Modules are M0–M12 (04 §5); there is no M13.
+schema_version: 1.0.0
+session:
+  id: client-discovery-01
+  mode: live-assisted
+  started_at: "2026-09-05T10:00:00Z"
+  turns: 5
+  status: in_progress
+phase: elicitation
+current_module: M13
+coverage: []
+question_queue: []
+registers: { contradictions: [], assumptions: [], open_questions: [], scope_flags: [] }
+budget: { elapsed_min: 10, soft_limit_min: 90, fatigue_signals: 0 }
+completion_check: { last_run_turn: null, result: not_run }

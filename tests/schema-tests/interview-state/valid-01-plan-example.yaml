@@ -1,0 +1,50 @@
+# The plan 04 §6 example state document (mid-M7, in progress). Fictitious.
+schema_version: 1.0.0
+session:
+  id: client-discovery-01
+  mode: live-assisted
+  started_at: "2026-09-05T10:00:00Z"
+  turns: 47
+  status: in_progress
+phase: elicitation
+current_module: M7
+coverage:
+  - id: data.sensitivity
+    module: M7
+    importance: critical
+    status: partial
+    confidence: low
+    evidence_refs: [turn-41, turn-43]
+question_queue:
+  - qid: q-088
+    topic: data.sensitivity
+    kind: probe
+    score: 8.1
+    text_hint: what personal data do booking records hold
+registers:
+  contradictions:
+    - id: CTR-002
+      between: [turn-12, turn-38]
+      topic: scope.mvp
+      severity: critical
+      status: open
+  assumptions:
+    - id: ASM-004
+      text: single physical location
+      basis: turn-9
+      status: unconfirmed
+  open_questions:
+    - id: OQ-003
+      topic: legal.cookies
+      owner: developer
+      blocking: false
+  scope_flags:
+    - turn: 33
+      note: mentioned future mobile app
+      handled: parked_out_of_scope
+budget: { elapsed_min: 55, soft_limit_min: 90, fatigue_signals: 1 }
+completion_check:
+  last_run_turn: 45
+  result: not_ready
+  failing: ["critical topics partial: 3", "CTR-002 open"]
+resume_hints: "Mid-M7; client fetching list of existing tools; next: data sensitivity probe."

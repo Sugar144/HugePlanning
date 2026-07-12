@@ -1,0 +1,17 @@
+# expect-error: 'resume_hints' is a required property
+# Pause always produces the resume plan (04 §10) — a paused session without
+# resume hints cannot re-hydrate.
+schema_version: 1.0.0
+session:
+  id: client-discovery-01
+  mode: live-assisted
+  started_at: "2026-09-05T10:00:00Z"
+  turns: 30
+  status: paused
+phase: paused
+current_module: M7
+coverage: []
+question_queue: []
+registers: { contradictions: [], assumptions: [], open_questions: [], scope_flags: [] }
+budget: { elapsed_min: 60, soft_limit_min: 90, fatigue_signals: 2 }
+completion_check: { last_run_turn: 28, result: not_ready }
