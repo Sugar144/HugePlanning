@@ -1,0 +1,22 @@
+# expect-error: 'deferral' is a required property
+# A deferred topic needs reason + owner + operator approval — deferral is
+# never self-granted (04 §4).
+schema_version: 1.0.0
+session:
+  id: client-discovery-01
+  mode: live-assisted
+  started_at: "2026-09-05T10:00:00Z"
+  turns: 20
+  status: in_progress
+phase: elicitation
+current_module: M9
+coverage:
+  - id: hosting.ownership
+    module: M9
+    importance: critical
+    status: deferred
+    confidence: low
+question_queue: []
+registers: { contradictions: [], assumptions: [], open_questions: [], scope_flags: [] }
+budget: { elapsed_min: 30, soft_limit_min: 90, fatigue_signals: 0 }
+completion_check: { last_run_turn: null, result: not_run }

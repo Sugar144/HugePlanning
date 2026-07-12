@@ -1,0 +1,46 @@
+# Paused state with resume hints, an approved deferral, and an N/A topic —
+# the pause/resume contract shape (04 §10) is fully representable.
+schema_version: 1.0.0
+session:
+  id: client-discovery-01
+  mode: import
+  started_at: "2026-09-05T10:00:00Z"
+  turns: 62
+  status: paused
+  sittings:
+    - { started_at: "2026-09-05T10:00:00Z", ended_at: "2026-09-05T11:20:00Z", turns: 62 }
+phase: paused
+current_module: M9
+coverage:
+  - id: hosting.ownership
+    module: M9
+    importance: critical
+    status: deferred
+    confidence: low
+    deferral:
+      reason: client must ask their previous agency for account details
+      owner: client
+      risk_note: blocks launch checklist if unresolved by G3
+      approved_by_operator: true
+  - id: users.roles
+    module: M3
+    importance: high
+    status: not_applicable
+    confidence: high
+    na_justification: no user accounts in scope — visitor-only site
+question_queue: []
+registers:
+  contradictions: []
+  assumptions: []
+  open_questions:
+    - id: OQ-001
+      topic: hosting.ownership
+      owner: client
+      blocking: true
+  scope_flags: []
+budget: { elapsed_min: 80, soft_limit_min: 90, fatigue_signals: 2 }
+completion_check:
+  last_run_turn: 60
+  result: not_ready
+  failing: ["hosting.ownership deferred, blocking OQ-001 open"]
+resume_hints: "Paused at M9 boundary; resume with hosting access once client hears from agency."

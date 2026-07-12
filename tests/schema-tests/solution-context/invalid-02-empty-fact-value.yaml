@@ -1,0 +1,6 @@
+# expect-error: at domain/provider/value
+# A fact leaf is a real value or the explicit string "unknown" — never empty.
+schema_version: 1.0.0
+domain:
+  provider: { value: "" }
+risk_triggers: []

@@ -18,64 +18,73 @@ tasks:
     title: open-questions.schema.json 1.0.0 + fixtures
     implements: [FR-001]
     depends_on: []
-    status: ready
+    status: done
     packet: product/tasks/TASK-001.md
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
   - id: TASK-002
     epic: EP-001
     title: handoff.schema.json 2.0.0 + fixtures
     implements: [FR-002]
     depends_on: []
-    status: ready
+    status: done
     packet: product/tasks/TASK-002.md
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
   - id: TASK-003
     epic: EP-001
     title: solution-context.schema.json 1.0.0 (+risk_triggers) + fixtures
     implements: [FR-003]
     depends_on: []
-    status: ready
+    status: done
     packet: product/tasks/TASK-003.md
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
   - id: TASK-004
     epic: EP-001
     title: interview-state.schema.json 1.0.0 + fixtures
     implements: [FR-004]
     depends_on: []
-    status: ready
+    status: done
     packet: product/tasks/TASK-004.md
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
   - id: TASK-005
     epic: EP-001
     title: requirements.schema.json 2.0.0 (V2 model) + fixtures
     implements: [FR-005]
     depends_on: []
-    status: ready
+    status: done
     packet: product/tasks/TASK-005.md
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
   - id: TASK-006
     epic: EP-001
     title: Extend validate.sh — schema checks, ID/dangling checks, profile matrix v0
     implements: [FR-006, FR-007, FR-008]
     depends_on: [TASK-001, TASK-002, TASK-003, TASK-004, TASK-005]
-    status: backlog
+    status: done
     packet: product/tasks/TASK-006.md
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
   - id: TASK-007
     epic: EP-001
     title: status.sh v0 — derived read-only dashboard
     implements: [FR-009]
     depends_on: [TASK-002]
-    status: backlog
+    status: done
     packet: product/tasks/TASK-007.md
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
   - id: TASK-008
     epic: EP-001
     title: templates/discovery/ skeletons + lock template schema listing
     implements: [FR-010, FR-012]
     depends_on: [TASK-001, TASK-002, TASK-003, TASK-004, TASK-005]
-    status: backlog
+    status: done
     packet: product/tasks/TASK-008.md
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
   - id: TASK-009
     epic: EP-001
     title: Methodology CI workflow running the deterministic suite
     implements: [FR-011]
     depends_on: [TASK-006]
-    status: backlog
+    status: done
     packet: product/tasks/TASK-009.md
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
 
   # S1 — staged so knowledge/skills are mergeable behind the unchanged stub
   # if usage ends mid-stage (agent replacement is the last runtime switch).

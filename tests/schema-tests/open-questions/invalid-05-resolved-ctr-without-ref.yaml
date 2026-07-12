@@ -1,0 +1,10 @@
+# expect-error: 'resolution_ref' is a required property
+# No CTR is closed without a recorded basis (07 §6).
+schema_version: 1.0.0
+questions: []
+contradictions:
+  - id: CTR-001
+    between: ["interview:client-discovery-01#turn-12", "interview:client-discovery-01#turn-38"]
+    topic: scope.mvp
+    severity: critical
+    status: resolved

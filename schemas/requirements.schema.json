@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://freelance-methodology.invalid/schemas/requirements/2.0.0/requirements.schema.json",
+  "title": "requirements.yaml — client requirements registry, V2 model (06 §7.1, R2-10)",
+  "description": "Objectives, typed requirements with origin provenance (a default can never impersonate the client), structured NFR fields, data requirements (DAT), scoped acceptance criteria, business rules, and the assumptions register. Schema version 2.0.0 (S0b; 2.x = the V2 requirements model, breaking vs the V1 draft — R2-10).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version"],
+  "properties": {
+    "schema_version": { "const": "2.0.0" },
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "statement", "source_refs"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^OBJ-[0-9]{3}$" },
+          "statement": { "type": "string", "minLength": 1 },
+          "metric": { "type": "string" },
+          "status": { "$ref": "#/$defs/req_status" },
+          "source_refs": { "$ref": "#/$defs/refs_required" }
+        }
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/requirement" }
+    },
+    "business_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "statement", "source_refs", "status"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^BR-[0-9]{3}$" },
+          "statement": { "type": "string", "minLength": 1 },
+          "status": { "$ref": "#/$defs/req_status" },
+          "source_refs": { "$ref": "#/$defs/refs_required" }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "statement", "status"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^ASM-[0-9]{3}$" },
+          "statement": { "type": "string", "minLength": 1 },
+          "basis": { "type": "string" },
+          "status": { "enum": ["unconfirmed", "confirmed", "invalidated"] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "statement", "origin", "status", "source_refs"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^(FR|NFR|INT|CON|DAT)-[0-9]{3}$" },
+        "type": { "enum": ["functional", "nonfunctional", "integration", "constraint", "data"] },
+        "category": { "type": "string" },
+        "statement": { "type": "string", "minLength": 1 },
+        "rationale": { "anyOf": [ { "type": "null" }, { "type": "string" } ] },
+        "origin": { "$ref": "#/$defs/origin" },
+        "status": { "$ref": "#/$defs/req_status" },
+        "priority": { "enum": ["must", "should", "could", "wont"] },
+        "risk": { "enum": ["low", "medium", "high"] },
+        "objectives": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^OBJ-[0-9]{3}$" }
+        },
+        "source_refs": { "$ref": "#/$defs/refs_required" },
+        "acceptance_criteria": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/acceptance_criterion" }
+        },
+        "business_rules": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^BR-[0-9]{3}$" }
+        },
+        "depends_on": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^(FR|NFR|INT|CON|DAT)-[0-9]{3}$" }
+        },
+        "conflicts_with": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^(FR|NFR|INT|CON|DAT)-[0-9]{3}$" }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^ASM-[0-9]{3}$" }
+        },
+        "approved_in": {
+          "anyOf": [ { "type": "null" }, { "type": "string", "pattern": "^[0-9a-f]{7,40}$" } ]
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tests": {
+              "type": "array",
+              "items": { "type": "string", "pattern": "^TEST-[0-9]{3}$" }
+            }
+          }
+        },
+        "metric": { "type": "string", "minLength": 1 },
+        "target": { "type": "string", "minLength": 1 },
+        "conditions": { "type": "string" },
+        "measurement": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "method": { "type": "string", "minLength": 1 },
+            "environment": { "type": "string", "minLength": 1 }
+          }
+        },
+        "verification_level": { "type": "string", "minLength": 1 },
+        "tolerance": { "type": "string" },
+        "waiver": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["by", "reason"],
+          "properties": {
+            "by": { "type": "string", "minLength": 1 },
+            "reason": { "type": "string", "minLength": 1 }
+          }
+        },
+        "client_confirmation": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "functional" } }, "required": ["type"] },
+          "then": { "properties": { "id": { "pattern": "^FR-[0-9]{3}$" } } }
+        },
+        {
+          "if": { "properties": { "type": { "const": "nonfunctional" } }, "required": ["type"] },
+          "then": {
+            "properties": { "id": { "pattern": "^NFR-[0-9]{3}$" } },
+            "anyOf": [
+              { "required": ["metric", "target"] },
+              { "required": ["waiver"] }
+            ]
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "integration" } }, "required": ["type"] },
+          "then": { "properties": { "id": { "pattern": "^INT-[0-9]{3}$" } } }
+        },
+        {
+          "if": { "properties": { "type": { "const": "constraint" } }, "required": ["type"] },
+          "then": { "properties": { "id": { "pattern": "^CON-[0-9]{3}$" } } }
+        },
+        {
+          "if": { "properties": { "type": { "const": "data" } }, "required": ["type"] },
+          "then": { "properties": { "id": { "pattern": "^DAT-[0-9]{3}$" } } }
+        },
+        {
+          "if": { "properties": { "status": { "const": "proposed_default" } }, "required": ["status"] },
+          "then": { "properties": { "origin": { "enum": ["methodology_default", "legal_or_regulatory"] } } }
+        }
+      ]
+    },
+    "acceptance_criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^(FR|NFR|INT|CON|DAT)-[0-9]{3}-AC-[0-9]{2}$" },
+        "given": { "type": "string", "minLength": 1 },
+        "when": { "type": "string", "minLength": 1 },
+        "then": { "type": "string", "minLength": 1 },
+        "text": { "type": "string", "minLength": 1 }
+      },
+      "anyOf": [
+        { "required": ["given", "when", "then"] },
+        { "required": ["text"] }
+      ]
+    },
+    "origin": { "enum": ["client_evidence", "stakeholder_preference", "methodology_default", "legal_or_regulatory", "technical_derived"] },
+    "req_status": { "enum": ["draft", "under_review", "changes_requested", "approved", "implemented", "verified", "rejected", "superseded", "deprecated", "proposed_default"] },
+    "refs_required": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

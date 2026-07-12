@@ -1,0 +1,17 @@
+# G3 record with the nested G3-V visual checkpoint (01 §4.2b, R2-17).
+schema_version: 2.0.0
+gate: G3
+sequence: 2
+date: 2026-09-25
+approved_by: developer
+result: approved_with_observations
+observations: Component inventory approved; hero imagery pending CNT-007.
+commit: 4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b
+confirmation_ref: evidence/confirmations/2026-09-25-g3.md
+artifacts: { sdd: docs/architecture/SDD.md, delivery_backlog: docs/backlog/delivery-backlog.yaml }
+profile_check: { profile: standard, new_triggers: [] }
+visual_approval:
+  required: true
+  confirmed: 2026-09-25
+  record: evidence/confirmations/2026-09-25-g3v.md
+next_stage: planning

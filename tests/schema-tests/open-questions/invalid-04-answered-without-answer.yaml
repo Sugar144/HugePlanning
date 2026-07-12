@@ -1,0 +1,12 @@
+# expect-error: at questions/0
+# An answered question must carry its answer (evidence discipline: the answer
+# is recorded, not implied).
+schema_version: 1.0.0
+questions:
+  - id: CLAR-001
+    type: client_clarification
+    question: Marked answered but the answer is missing.
+    owner: client
+    status: answered
+    answer: null
+contradictions: []

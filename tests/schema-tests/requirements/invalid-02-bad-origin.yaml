@@ -1,0 +1,11 @@
+# expect-error: at requirements/0/origin
+# Origins are the closed R2-10 enum; "business_rule" was explicitly rejected
+# as an origin.
+schema_version: 2.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Origen fuera del enum.
+    origin: business_rule
+    status: draft
+    source_refs: ["interview:client-discovery-01#turn-10"]

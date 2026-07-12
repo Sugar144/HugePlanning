@@ -1,0 +1,54 @@
+# solution-context.yaml skeleton — technical-operational FACTS (06 §7.2).
+# Copy to docs/requirements/solution-context.yaml. Facts, never decisions
+# (baseline §9.4): technology choices belong in ADRs at technical design.
+# Every leaf is { value: <fact> | unknown, source_refs: [...] } — record
+# "unknown" explicitly rather than omitting what was not learned.
+# This template is itself schema-valid (solution-context.schema.json 1.0.0).
+schema_version: 1.0.0
+
+domain:
+  provider: { value: unknown }
+  ownership: { value: unknown }          # who controls the registrar account
+  access_status: { value: unknown }      # credentials exist? located? (03 §6: never the credentials themselves)
+hosting:
+  current: { value: unknown }
+  ownership: { value: unknown }
+  access_status: { value: unknown }
+email:
+  provider: { value: unknown }
+  addresses_in_use: { value: unknown }
+  access_status: { value: unknown }
+existing_systems: []
+  # - name: Excel booking sheet
+  #   purpose: manual reservation log
+  #   integration_required: { value: unknown }
+  #   access_status: { value: unknown }
+accounts: []
+  # - service: Google Business Profile
+  #   ownership: { value: unknown }
+  #   access_status: { value: unknown }
+expected_usage:
+  monthly_visitors: { value: unknown }
+  peak_events: { value: unknown }
+  simultaneous_admins: { value: unknown }
+data:
+  entities_mentioned: []
+  sensitivity: { value: unknown }        # drives review triggers (10 §5)
+  personal_data_types: []
+  retention_expectations: { value: unknown }
+operational:
+  maintainer_after_delivery: { value: unknown }
+  content_editors: { value: unknown }
+  technical_skill_level: { value: unknown }
+legal_flags: []
+  # - flag: cookie consent needed if analytics added
+  #   source_refs: ["interview:client-discovery-01#turn-72"]
+
+# Machine-readable input to profile confirmation at G1 (R2-24, 21 §4).
+# The agent APPENDS a trigger the moment evidence reveals it and flags a
+# proposed upgrade at the next module boundary — never silently continues.
+risk_triggers: []
+  # - trigger: online payments requested for deposits
+  #   evidence_ref: interview:client-discovery-01#turn-58
+  #   profile_implication: high-risk     # standard | high-risk (21 §3)
+  #   status: proposed                   # proposed → confirmed | refuted (you decide)

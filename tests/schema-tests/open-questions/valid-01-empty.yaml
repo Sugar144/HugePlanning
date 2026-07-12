@@ -1,0 +1,4 @@
+# The always-present empty registry as the client template ships it (R2-30).
+schema_version: 1.0.0
+questions: []
+contradictions: []

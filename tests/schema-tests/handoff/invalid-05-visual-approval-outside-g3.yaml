@@ -1,0 +1,12 @@
+# expect-error: at gate
+# visual_approval is the nested G3-V checkpoint — it exists only inside G3
+# records (01 §4.2b, R2-17: no new gate number).
+schema_version: 2.0.0
+gate: G2
+sequence: 1
+date: 2026-09-19
+approved_by: client
+result: approved
+commit: 9f1c2d3
+visual_approval:
+  required: true

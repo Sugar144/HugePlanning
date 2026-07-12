@@ -1,0 +1,9 @@
+# expect-error: at gate
+# Gates are G0–G9 only (01 §4.2, DEC-06).
+schema_version: 2.0.0
+gate: G10
+sequence: 1
+date: 2026-09-19
+approved_by: developer
+result: approved
+commit: 9f1c2d3

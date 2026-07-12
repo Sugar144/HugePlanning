@@ -1,0 +1,28 @@
+# Methodology CI (02 §10, S0b): the deterministic suite on every push/PR.
+# No secrets, no client data, no live CLI — the suite is fully offline.
+name: methodology-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  deterministic-suite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install suite dependencies
+        run: python3 -m pip install pyyaml jsonschema
+
+      - name: Configure git identity for scratch repos
+        run: |
+          git config --global user.name "methodology-ci"
+          git config --global user.email "ci@local.invalid"
+
+      - name: Run deterministic test suite
+        run: tests/run-tests.sh

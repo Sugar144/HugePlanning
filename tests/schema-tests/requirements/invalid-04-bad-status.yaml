@@ -1,0 +1,10 @@
+# expect-error: at requirements/0/status
+# Requirement statuses are the closed 06 §2 enum.
+schema_version: 2.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Estado fuera del enum.
+    origin: client_evidence
+    status: in_progress
+    source_refs: ["interview:client-discovery-01#turn-10"]

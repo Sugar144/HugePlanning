@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://freelance-methodology.invalid/schemas/handoff/2.0.0/handoff.schema.json",
+  "title": "docs/handoffs/G<n>-<slug>-<seq>.yaml — gate handoff record (06 §7.5)",
+  "description": "One append-only record per gate event (R2-05): decision, approver, commit, confirmation evidence, artifact paths, quality gate counters, profile check. Repeat gate passes append the next sequence — records are never edited. Schema version 2.0.0 (S0b; 2.x because R2-05 replaced the single-file 1.x handoff model).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "gate", "sequence", "date", "approved_by", "result", "commit"],
+  "properties": {
+    "schema_version": { "const": "2.0.0" },
+    "gate": { "type": "string", "pattern": "^G[0-9]$" },
+    "sequence": { "type": "integer", "minimum": 1 },
+    "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "approved_by": { "type": "string", "minLength": 1 },
+    "result": { "enum": ["approved", "approved_with_observations", "rejected"] },
+    "commit": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+    "confirmation_ref": { "type": "string", "minLength": 1 },
+    "artifacts": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z][a-z0-9_]*$": { "type": "string", "minLength": 1 }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "critical_questions_remaining": { "type": "integer", "minimum": 0 },
+        "unresolved_contradictions": { "type": "integer", "minimum": 0 },
+        "notes": { "type": "string" }
+      }
+    },
+    "profile_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile"],
+      "properties": {
+        "profile": { "enum": ["lite", "standard", "high-risk"] },
+        "new_triggers": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "visual_approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "confirmed": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "record": { "type": "string", "minLength": 1 }
+      }
+    },
+    "next_stage": { "enum": ["onboarding", "discovery", "specification", "technical_design", "planning", "implementation", "validation", "release", "operation"] },
+    "observations": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "visual_approval": { "type": "object" } }, "required": ["visual_approval"] },
+      "then": { "properties": { "gate": { "const": "G3" } } }
+    }
+  ]
+}

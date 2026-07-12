@@ -1,0 +1,12 @@
+# expect-error: at requirements/0/origin
+# proposed_default is reserved for methodology/legal items — a client-evidence
+# requirement can never enter as a default (R2-10: defaults cannot impersonate
+# the client, and vice versa).
+schema_version: 2.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Cliente citado pero estado de default propuesto.
+    origin: client_evidence
+    status: proposed_default
+    source_refs: ["interview:client-discovery-01#turn-10"]

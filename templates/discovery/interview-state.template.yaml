@@ -1,0 +1,48 @@
+# interview-state skeleton — the interviewer's persistence contract (04 §6).
+# The runtime artifact is evidence/interviews/<session>/interview-state.json
+# (JSON); this commented YAML documents the same shape (YAML ⊃ JSON).
+# Persisted at every module transition, every register entry, every 10 turns,
+# and on pause; resume re-hydrates from this file + the last transcript page
+# only. This template is itself schema-valid (interview-state.schema.json 1.0.0).
+schema_version: 1.0.0
+
+session:
+  id: client-discovery-01        # one evidence dir per interview; sittings logged inside
+  mode: live-assisted            # live-assisted | import (04 §2)
+  started_at: "2026-01-01T10:00:00Z"
+  turns: 0
+  status: in_progress            # in_progress | paused | closed | aborted
+
+phase: setup                     # setup → elicitation → consolidation → confirmation → closed | paused | aborted
+current_module: M0               # M0–M12 (04 §5); LITE floor folds M4/M6/M11 (21 §5)
+
+coverage: []
+  # One node per topic (04 §4). deferred requires the deferral record
+  # (reason/owner/operator approval); not_applicable requires na_justification.
+  # - id: data.sensitivity
+  #   module: M7
+  #   importance: critical       # critical topics are archetype-independent
+  #   status: not_started        # not_started|touched|partial|sufficient|deferred|not_applicable|blocked
+  #   confidence: low
+  #   evidence_refs: []
+
+question_queue: []
+  # - { qid: q-001, topic: business.problem, kind: seed, score: 9.0,
+  #     text_hint: what is going wrong today }
+
+registers:
+  contradictions: []             # CTR-nnn: between [2+ anchors], severity, status
+  assumptions: []                # ASM-nnn: text, basis anchor, unconfirmed until evidence
+  open_questions: []             # OQ/CLAR-nnn: topic, owner, blocking
+  scope_flags: []                # mid-interview scope expansions, dispositioned at M10
+
+budget:
+  elapsed_min: 0
+  soft_limit_min: 90             # LITE single-sitting target 60–90 min (21 §5)
+  fatigue_signals: 0             # drives the fatigue response ladder
+
+completion_check:
+  last_run_turn: null
+  result: not_run                # not_run | not_ready | ready — DoD gate (04 §12)
+
+resume_hints: ""                 # mandatory content when paused (04 §10)

@@ -1,0 +1,46 @@
+# Filled context per 06 §7.2: facts with value|unknown + source_refs, a
+# revealed payments trigger. Fictitious client.
+schema_version: 1.0.0
+domain:
+  provider: { value: "IONOS", source_refs: ["interview:client-discovery-01#turn-61"] }
+  ownership: { value: "client (personal account)", source_refs: ["interview:client-discovery-01#turn-61"] }
+  access_status: { value: unknown }
+hosting:
+  current: { value: "shared hosting bundled with domain", source_refs: ["interview:client-discovery-01#turn-62"] }
+  ownership: { value: unknown }
+  access_status: { value: unknown }
+email:
+  provider: { value: "IONOS mail", source_refs: ["interview:client-discovery-01#turn-63"] }
+  addresses_in_use: { value: "info@ + personal gmail forwarding", source_refs: ["interview:client-discovery-01#turn-63"] }
+  access_status: { value: "client will locate credentials", source_refs: ["interview:client-discovery-01#turn-64"] }
+existing_systems:
+  - name: Excel booking sheet
+    purpose: manual reservation log
+    integration_required: { value: "historical import only", source_refs: ["interview:client-discovery-01#turn-52"] }
+    access_status: { value: "file received", source_refs: ["interview:client-discovery-01#turn-53"] }
+accounts:
+  - service: Google Business Profile
+    ownership: { value: "client", source_refs: ["interview:client-discovery-01#turn-66"] }
+    access_status: { value: unknown }
+expected_usage:
+  monthly_visitors: { value: unknown }
+  peak_events: { value: "local festival weekend", source_refs: ["interview:client-discovery-01#turn-44"] }
+  simultaneous_admins: { value: 1, source_refs: ["interview:client-discovery-01#turn-45"] }
+data:
+  entities_mentioned: [booking, customer, table]
+  sensitivity: { value: "contact data only", source_refs: ["interview:client-discovery-01#turn-41"] }
+  personal_data_types: [name, phone]
+  retention_expectations: { value: unknown }
+operational:
+  maintainer_after_delivery: { value: "developer, best-effort tier", source_refs: ["interview:client-discovery-01#turn-70"] }
+  content_editors: { value: "owner updates menu monthly", source_refs: ["interview:client-discovery-01#turn-71"] }
+  technical_skill_level: { value: "low", source_refs: ["interview:client-discovery-01#turn-71"] }
+legal_flags:
+  - flag: cookie consent needed if analytics added
+    source_refs: ["interview:client-discovery-01#turn-72"]
+risk_triggers:
+  - trigger: online payments requested for deposits
+    evidence_ref: interview:client-discovery-01#turn-58
+    profile_implication: high-risk
+    status: proposed
+    notes: revealed in M5; upgrade proposal flagged at module boundary

@@ -1,0 +1,8 @@
+# expect-error: 'evidence_ref' is a required property
+# Triggers are recorded WITH evidence — the machine-readable input to profile
+# confirmation (R2-24, 21 §4); agents propose with evidence, never select.
+schema_version: 1.0.0
+risk_triggers:
+  - trigger: online payments requested
+    profile_implication: high-risk
+    status: proposed

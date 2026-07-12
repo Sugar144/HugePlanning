@@ -1,0 +1,11 @@
+# expect-error: at requirements/0/id
+# The ID prefix must match the declared type (data → DAT-, 06 §4 / R2-10).
+schema_version: 2.0.0
+requirements:
+  - id: FR-009
+    type: data
+    category: migration
+    statement: Requisito de datos con prefijo funcional.
+    origin: client_evidence
+    status: draft
+    source_refs: ["interview:client-discovery-01#turn-52"]

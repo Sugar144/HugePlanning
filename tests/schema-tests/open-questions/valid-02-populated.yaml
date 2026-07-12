@@ -1,0 +1,42 @@
+# Populated registry: the 06 §7.3 example shapes (CLAR + resolved CTR),
+# plus an internal OQ and an answered CLAR. Fictitious client material.
+schema_version: 1.0.0
+questions:
+  - id: CLAR-002
+    type: client_clarification
+    question: ¿Es aceptable un coste mensual de ~9 € por el sistema de reservas?
+    context: Decisión de arquitectura ADR-003
+    impact: bloquea elección de proveedor de reservas
+    blocks: [ADR-003, TASK-014]
+    owner: client
+    channel: email
+    deadline: 2026-09-20
+    status: open
+    answer: null
+  - id: OQ-003
+    type: internal
+    question: Cookie-consent depth required for the analytics setup?
+    topic: legal.cookies
+    owner: developer
+    blocking: false
+    status: open
+    answer: null
+  - id: CLAR-001
+    type: client_clarification
+    question: ¿Confirmas el objetivo de carga <= 2.5 s en móvil?
+    owner: client
+    status: answered
+    answer: Sí, confirmado por email.
+    answer_ref: evidence/clarifications/CLAR-001.md
+contradictions:
+  - id: CTR-002
+    between: ["interview:client-discovery-01#turn-12", "interview:client-discovery-01#turn-38"]
+    topic: scope.mvp
+    severity: critical
+    status: resolved
+    resolution_ref: interview:client-discovery-01#turn-39
+  - id: CTR-003
+    between: ["interview:client-discovery-01#turn-15", "evidence/client-materials/pricing-sheet.md"]
+    topic: pricing.rules
+    severity: minor
+    status: open

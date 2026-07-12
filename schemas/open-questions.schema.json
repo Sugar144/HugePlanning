@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://freelance-methodology.invalid/schemas/open-questions/1.0.0/open-questions.schema.json",
+  "title": "open-questions.yaml — open questions, clarifications, contradictions (06 §7.3)",
+  "description": "The always-present registry (R2-30): OQ/CLAR question entries and CTR contradiction entries. Created empty for every profile; agents may append; nothing is deleted — terminal statuses only (06 §1a). Schema version 1.0.0 (S0b).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "questions", "contradictions"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "questions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/question" }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/contradiction" }
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "question", "owner", "status"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^(OQ|CLAR)-[0-9]{3}$" },
+        "type": { "enum": ["internal", "client_clarification"] },
+        "question": { "type": "string", "minLength": 1 },
+        "context": { "type": "string" },
+        "impact": { "type": "string" },
+        "blocks": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[A-Z]+-[0-9]{3}(-(AC|T)-[0-9]{2})?$" }
+        },
+        "blocking": { "type": "boolean" },
+        "owner": { "type": "string", "minLength": 1 },
+        "channel": { "type": "string" },
+        "deadline": { "$ref": "#/$defs/date" },
+        "topic": { "type": "string" },
+        "status": { "enum": ["open", "answered", "incorporated", "expired", "withdrawn"] },
+        "answer": {
+          "oneOf": [ { "type": "null" }, { "type": "string", "minLength": 1 } ]
+        },
+        "answer_ref": { "$ref": "#/$defs/evidence_ref" },
+        "source_refs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidence_ref" }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "enum": ["answered", "incorporated"] } }, "required": ["status"] },
+          "then": { "required": ["answer"], "properties": { "answer": { "type": "string", "minLength": 1 } } }
+        }
+      ]
+    },
+    "contradiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "between", "topic", "severity", "status"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^CTR-[0-9]{3}$" },
+        "between": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "topic": { "type": "string", "minLength": 1 },
+        "severity": { "enum": ["critical", "minor"] },
+        "status": { "enum": ["open", "resolved", "accepted_as_tension"] },
+        "resolution_ref": { "$ref": "#/$defs/evidence_ref" },
+        "owner": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "resolved" } }, "required": ["status"] },
+          "then": { "required": ["resolution_ref"] }
+        }
+      ]
+    },
+    "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "evidence_ref": { "type": "string", "minLength": 1 }
+  }
+}

@@ -4,8 +4,8 @@ The versioned methodology repository for the AI-assisted freelance web
 development operating system, plus the planning corpus that specifies it.
 
 Current methodology version: see `VERSION` · changes: `CHANGELOG.md` ·
-implemented stage: **S0a — minimal runtime bootstrap** (plan `13` S0a,
-released as `v0.1.0`).
+implemented stage: **S0b — discovery infrastructure** (plan `13` S0b,
+released as `v0.2.0`; S0a bootstrap was `v0.1.0`).
 
 ## Repository map
 
@@ -30,9 +30,9 @@ Understanding or changing the method → `planning/README.md`, then
 | `.claude/rules/` | 5 always-on rules incl. the conventions rule (ID grammar, status enums, `schema_version` policy) |
 | `.claude/agents/` | `client-discovery` (S0a stub; full contract at S1) |
 | `.claude/skills/` | `methodology-smoke-check` (SPK-01 fixture) |
-| `schemas/` | `project.schema.json`, `methodology-lock.schema.json` (draft 2020-12) |
-| `templates/client-repo/` | Complete client repository template (`03` §2) |
-| `scripts/` | `new-client.sh`, `start-agent.sh`, `validate.sh` (progressive — never replaced), `check-methodology-clean.sh`, `spk-01-smoke-check.sh` |
+| `schemas/` | S0a: `project`, `methodology-lock` · S0b: `open-questions`, `requirements` 2.0.0, `solution-context`, `interview-state`, `handoff` · internal: `product-*` (draft 2020-12, versioned `$id`s) |
+| `templates/` | `client-repo/` — complete client repository template (`03` §2) · `discovery/` — schema-valid artifact skeletons (S0b) |
+| `scripts/` | `new-client.sh`, `start-agent.sh`, `validate.sh` (progressive — never replaced), `status.sh` (derived dashboard, S0b), `check-methodology-clean.sh`, `spk-01-smoke-check.sh` |
 | `tests/` | `run-tests.sh` + schema fixtures |
 | `knowledge/INDEX.md` | Knowledge index (files land at S1) |
 
@@ -81,10 +81,14 @@ changed during the session. Append `--resume` to continue a session, or
 scripts/validate.sh ~/Clients/acme-web
 ```
 
-**The single progressive validator (R2-26).** S0a scope: required structure,
-`project.yaml`, `methodology.lock.yaml`, `.gitignore` covering
-`evidence-raw/`, methodology deny rules. Extended in place at S0b+ (per-schema
-checks, profile matrix); never replaced by a second validator. Exit 0 = pass.
+**The single progressive validator (R2-26).** S0b scope: the S0a checks
+(required structure, `project.yaml`, `methodology.lock.yaml`, `.gitignore`
+covering `evidence-raw/`, methodology deny rules) plus discovery artifact
+schema validation (open-questions, requirements, solution-context,
+interview-state files, handoff records), ID/reference integrity (`06` §4),
+and the profile-aware matrix v0 (discovery registries required past the G1
+boundary — R2-21). Extended in place at S2+; never replaced by a second
+validator. Exit 0 = pass.
 
 ## SPK-01 launch smoke check (`02` §5)
 

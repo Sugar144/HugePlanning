@@ -1,0 +1,9 @@
+# expect-error: 'source_refs' is a required property
+# No source ref → the requirement cannot exist (07 §2 rule 6).
+schema_version: 2.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Sin procedencia.
+    origin: client_evidence
+    status: draft

@@ -1,0 +1,29 @@
+# Gate handoff record skeleton (06 §7.5, R2-05).
+# Save as docs/handoffs/G<n>-<slug>-<seq>.yaml — the filename carries the
+# record's identity (gate + sequence must match the fields below). Records
+# are APPEND-ONLY: a repeated gate pass gets the next sequence number; an
+# existing record is never edited (change-control rule).
+# This template is itself schema-valid (handoff.schema.json 2.0.0).
+schema_version: 2.0.0
+
+gate: G1                          # G0–G9 (01 §4.2)
+sequence: 1                       # 1, 2, … per gate
+date: 2026-01-01
+approved_by: developer            # who decided (client for G2/G7)
+result: approved                  # approved | approved_with_observations | rejected
+commit: 0123abc                   # the exact commit the decision approved —
+                                  #   for G2 this equals approved_in (R2-10)
+confirmation_ref: evidence/confirmations/2026-01-01-g1.md   # written evidence of the decision
+artifacts:                        # paths the gate examined (no content duplication, 06 §5)
+  requirements: docs/requirements/requirements.yaml
+quality:                          # gate counters (G1/G2)
+  critical_questions_remaining: 0
+  unresolved_contradictions: 0
+profile_check:                    # profile confirmation duty (21 §4)
+  profile: standard
+  new_triggers: []
+# visual_approval:                # G3 records only — the nested G3-V checkpoint
+#   required: true
+#   confirmed: 2026-01-15
+#   record: evidence/confirmations/2026-01-15-g3v.md
+next_stage: specification         # stage the pass unlocks (01 §4.1)
