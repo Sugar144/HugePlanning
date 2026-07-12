@@ -652,6 +652,48 @@ if errors:
     sys.exit(1)
 PYEOF
 
+note "== T18: knowledge files — front matter, INDEX, authoring-policy scan (17 §B/§F/§J) =="
+expect_ok "knowledge front matter + INDEX consistency" \
+  "$PYTHON" - "$REAL_METHOD" <<'PYEOF'
+import os, re, sys
+root = os.path.join(sys.argv[1], "knowledge")
+errors = []
+required_keys = ("id:", "title:", "type:", "status:", "version:",
+                 "source_quality:", "consult_when:", "used_by:")
+index = open(os.path.join(root, "INDEX.md"), encoding="utf-8").read()
+files = []
+for dirpath, _, names in os.walk(root):
+    for name in names:
+        if name.endswith(".md") and name != "INDEX.md":
+            files.append(os.path.join(dirpath, name))
+if len(files) < 10:
+    errors.append(f"expected >= 10 knowledge files, found {len(files)}")
+for path in files:
+    rel = os.path.relpath(path, root)
+    text = open(path, encoding="utf-8").read()
+    m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+    if not m:
+        errors.append(f"{rel}: missing front matter"); continue
+    fm = m.group(1)
+    for key in required_keys:
+        if not re.search(rf"^{re.escape(key)}", fm, re.M):
+            errors.append(f"{rel}: front matter missing '{key}'")
+    kid = re.search(r"^id: (kn-[a-z0-9-]+)$", fm, re.M)
+    if not kid:
+        errors.append(f"{rel}: id missing or not kn- prefixed")
+    elif f"`{kid.group(1)}`" not in index:
+        errors.append(f"{rel}: id {kid.group(1)} not listed in INDEX.md")
+    if not re.search(r"^status: provisional$", fm, re.M):
+        errors.append(f"{rel}: status is not provisional (S1 files start provisional)")
+    # 17 §J item 6: critical policy phrasing does not live in knowledge.
+    body = text[m.end():]
+    if re.search(r"must never", body, re.I):
+        errors.append(f"{rel}: contains 'must never' policy phrasing (17 §G/§J)")
+for e in errors:
+    print(f"KNOWLEDGE-ERROR: {e}", file=sys.stderr)
+sys.exit(1 if errors else 0)
+PYEOF
+
 note "== T13: suite leaves the real methodology unchanged =="
 REAL_AFTER="$(git -C "$REAL_METHOD" status --porcelain)"
 if [[ "$REAL_BEFORE" == "$REAL_AFTER" ]]; then
