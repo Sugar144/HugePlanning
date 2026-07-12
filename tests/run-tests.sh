@@ -698,6 +698,22 @@ for e in errors:
 sys.exit(1 if errors else 0)
 PYEOF
 
+note "== T19: interview scenarios paired with goldens (FR-019 deterministic floor) =="
+SCEN_COUNT=0
+for sdir in "$REAL_METHOD"/tests/interview-scenarios/*/; do
+  sname="$(basename "$sdir")"
+  SCEN_COUNT=$((SCEN_COUNT + 1))
+  [[ -f "$sdir/scenario.md" ]] \
+    && t_pass "scenario $sname has scenario.md" \
+    || t_fail "scenario $sname missing scenario.md"
+  [[ -f "$REAL_METHOD/tests/golden-artifacts/$sname/golden-checklist.md" ]] \
+    && t_pass "scenario $sname has its golden checklist" \
+    || t_fail "scenario $sname missing golden-artifacts/$sname/golden-checklist.md"
+done
+[[ "$SCEN_COUNT" -ge 6 ]] \
+  && t_pass "the six 02 §10 scenarios exist ($SCEN_COUNT found)" \
+  || t_fail "expected >= 6 scenarios, found $SCEN_COUNT"
+
 note "== T13: suite leaves the real methodology unchanged =="
 REAL_AFTER="$(git -C "$REAL_METHOD" status --porcelain)"
 if [[ "$REAL_BEFORE" == "$REAL_AFTER" ]]; then
