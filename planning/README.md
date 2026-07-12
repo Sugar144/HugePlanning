@@ -10,9 +10,14 @@ planning/
 │               — the original V1 baseline (v0.1, Spanish). IMMUTABLE:
 │               audited in v2/16, never edited. V1 plan preserved at
 │               tag `plan-v1.0`.
-└── v2/         the current plan ("V2 robustness"), 22 numbered files.
-                Start at 00_final_plan_index.md — it holds the reading
-                order and the file inventory.
+├── v2/         the current plan ("V2 robustness"), 22 numbered files.
+│               Start at 00_final_plan_index.md — it holds the reading
+│               order and the file inventory.
+└── history/    claude-ai-prototypes/ — the pre-V2 Claude.ai prototype
+                skills and project instructions, preserved verbatim
+                (R2-36). Historical prototype: not active runtime, not
+                behaviorally validated. See its README for the reuse
+                assessment feeding S0b/S1.
 ```
 
 ## How to resolve plan references

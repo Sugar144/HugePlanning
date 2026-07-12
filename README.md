@@ -14,6 +14,7 @@ released as `v0.1.0`).
 | **Released methodology runtime** | `CLAUDE.md`, `.claude/`, `schemas/`, `scripts/`, `templates/`, `tests/`, `knowledge/` | What client sessions actually load and run — versioned (`VERSION`), tagged, tested. Detailed below |
 | **Current planning corpus** | `planning/v2/` | The V2 plan, 22 numbered files. Plan citations like `02 §6` resolve here — see `planning/README.md` |
 | **Immutable baseline** | `planning/baseline/` | The original V1 plan document (frozen, audited in plan `16`) |
+| **Historical prototypes** | `planning/history/` | Pre-V2 Claude.ai prototype skills — historical, not active runtime, not behaviorally validated (R2-36) |
 | **Experiment reports** | `reports/experiments/` | Evaluation records (e.g. the S0a bootstrap experiment) — evidence, not canonical method |
 
 **Where to start reading:** operating the runtime → stay in this README.

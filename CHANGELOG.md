@@ -17,6 +17,9 @@ Documentation and repository organization only — no runtime change
 - Planning corpus moved to `planning/` (`baseline/` + `v2/`); S0a experiment
   report moved to `reports/experiments/s0a/`; navigation READMEs added.
   Plan citations `NN §m` resolve per `planning/README.md`.
+- Historical Claude.ai prototype baseline preserved verbatim at
+  `planning/history/claude-ai-prototypes/` with reuse assessment (R2-36) —
+  historical prototype, not active runtime, not behaviorally validated.
 
 ## [0.1.0] - 2026-07-11
 
