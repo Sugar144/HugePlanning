@@ -12,6 +12,7 @@ released as `v0.1.0`).
 | Area | Path | What it is |
 |---|---|---|
 | **Released methodology runtime** | `CLAUDE.md`, `.claude/`, `schemas/`, `scripts/`, `templates/`, `tests/`, `knowledge/` | What client sessions actually load and run — versioned (`VERSION`), tagged, tested. Detailed below |
+| **Product spec (this repo's own work)** | `product/` | Requirements, backlog, and task packets for the in-flight methodology stages (S0b/S1) — methodology-internal, suite-validated (R2-37) |
 | **Current planning corpus** | `planning/v2/` | The V2 plan, 22 numbered files. Plan citations like `02 §6` resolve here — see `planning/README.md` |
 | **Immutable baseline** | `planning/baseline/` | The original V1 plan document (frozen, audited in plan `16`) |
 | **Historical prototypes** | `planning/history/` | Pre-V2 Claude.ai prototype skills — historical, not active runtime, not behaviorally validated (R2-36) |

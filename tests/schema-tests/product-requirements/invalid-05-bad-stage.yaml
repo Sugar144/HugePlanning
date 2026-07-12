@@ -1,0 +1,13 @@
+# expect-error: at requirements/0/stage
+# Scope guard: only in-flight stages (S0b, S1) may be specified here (R2-37).
+schema_version: 1.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Attempts to specify a distant stage ahead of time.
+    status: draft
+    stage: S2
+    acceptance_criteria:
+      - id: FR-001-AC-01
+        text: n/a
+    source_refs: ["plan:13 §3"]

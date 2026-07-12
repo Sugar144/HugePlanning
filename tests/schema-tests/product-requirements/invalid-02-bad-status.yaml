@@ -1,0 +1,13 @@
+# expect-error: at requirements/0/status
+# Status values come from the conventions-rule requirement enum only.
+schema_version: 1.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Uses a status outside the closed enum.
+    status: open
+    stage: S0b
+    acceptance_criteria:
+      - id: FR-001-AC-01
+        text: n/a
+    source_refs: ["plan:06 §2"]

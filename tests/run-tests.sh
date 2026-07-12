@@ -77,8 +77,13 @@ PYEOF
 done
 
 note "== T3: schema fixtures (valid pass, invalid fail for the intended reason) =="
-declare -A SCHEMA_FOR=( [project]="project.schema.json" [methodology-lock]="methodology-lock.schema.json" )
-for group in project methodology-lock; do
+declare -A SCHEMA_FOR=(
+  [project]="project.schema.json"
+  [methodology-lock]="methodology-lock.schema.json"
+  [product-requirements]="product-requirements.schema.json"
+  [product-backlog]="product-backlog.schema.json"
+)
+for group in project methodology-lock product-requirements product-backlog; do
   schema="$REAL_METHOD/schemas/${SCHEMA_FOR[$group]}"
   for f in "$SCRIPT_DIR/schema-tests/$group"/valid-*.yaml; do
     expect_ok "valid fixture $(basename "$f")" \
@@ -403,6 +408,76 @@ OUT="$(CLAUDE_BIN="$WORK_BASE/no-such-claude-bin" \
 [[ "$ST" -eq 2 ]] && t_pass "runtime unavailable is exit 2 (not a fake FAIL)" \
   || t_fail "runtime-unavailable exit was $ST (wanted 2)"
 expect_out "  manual-procedure pointer" "manual"
+
+note "== T14: product spec — live instances valid + link integrity (R2-37) =="
+# product/ is methodology-internal (never validate.sh, never the client lock);
+# its live instances are validated here, in the suite, against their schemas.
+expect_ok "product/requirements.yaml valid against its schema" \
+  "$PYTHON" "$REAL_METHOD/scripts/lib/schema-validate.py" \
+  "$REAL_METHOD/schemas/product-requirements.schema.json" \
+  "$REAL_METHOD/product/requirements.yaml"
+expect_ok "product/backlog.yaml valid against its schema" \
+  "$PYTHON" "$REAL_METHOD/scripts/lib/schema-validate.py" \
+  "$REAL_METHOD/schemas/product-backlog.schema.json" \
+  "$REAL_METHOD/product/backlog.yaml"
+expect_ok "product spec link integrity (IDs unique, links resolve, counters ahead)" \
+  "$PYTHON" - "$REAL_METHOD/product/requirements.yaml" "$REAL_METHOD/product/backlog.yaml" <<'PYEOF'
+import re, sys
+import yaml
+
+with open(sys.argv[1], encoding="utf-8") as fh:
+    reqs = yaml.safe_load(fh)
+with open(sys.argv[2], encoding="utf-8") as fh:
+    bl = yaml.safe_load(fh)
+
+errors = []
+req_ids = [r["id"] for r in reqs["requirements"]]
+if len(req_ids) != len(set(req_ids)):
+    errors.append("duplicate requirement IDs")
+for r in reqs["requirements"]:
+    ac_ids = [a["id"] for a in r.get("acceptance_criteria", [])]
+    if len(ac_ids) != len(set(ac_ids)):
+        errors.append(f"{r['id']}: duplicate AC IDs")
+    for a in ac_ids:
+        if not a.startswith(r["id"] + "-AC-"):
+            errors.append(f"{r['id']}: AC '{a}' not scoped to its parent")
+
+epic_ids = [e["id"] for e in bl["epics"]]
+task_ids = [t["id"] for t in bl["tasks"]]
+if len(epic_ids) != len(set(epic_ids)):
+    errors.append("duplicate epic IDs")
+if len(task_ids) != len(set(task_ids)):
+    errors.append("duplicate task IDs")
+for t in bl["tasks"]:
+    if t["epic"] not in epic_ids:
+        errors.append(f"{t['id']}: epic '{t['epic']}' does not exist")
+    for ref in t["implements"]:
+        if ref not in req_ids:
+            errors.append(f"{t['id']}: implements dangling requirement '{ref}'")
+    for dep in t.get("depends_on", []):
+        if dep not in task_ids:
+            errors.append(f"{t['id']}: depends_on dangling task '{dep}'")
+        if dep == t["id"]:
+            errors.append(f"{t['id']}: depends on itself")
+
+used = {}
+for ident in req_ids + epic_ids + task_ids:
+    prefix, num = ident.rsplit("-", 1)
+    used[prefix] = max(used.get(prefix, 0), int(num))
+counters = bl["counters"]
+for prefix, high in used.items():
+    if prefix not in counters:
+        errors.append(f"counter missing for used prefix '{prefix}'")
+    elif counters[prefix] <= high:
+        errors.append(
+            f"counter {prefix}={counters[prefix]} not ahead of highest used {high}")
+
+if errors:
+    print("PRODUCT-SPEC INTEGRITY FAILURES:", file=sys.stderr)
+    for e in errors:
+        print(f"  - {e}", file=sys.stderr)
+    sys.exit(1)
+PYEOF
 
 note "== T13: suite leaves the real methodology unchanged =="
 REAL_AFTER="$(git -C "$REAL_METHOD" status --porcelain)"

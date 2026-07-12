@@ -1,0 +1,11 @@
+# expect-error: at requirements/0/acceptance_criteria
+# Functional requirements need at least one acceptance criterion.
+schema_version: 1.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: Functional requirement with no acceptance criteria.
+    status: draft
+    stage: S0b
+    acceptance_criteria: []
+    source_refs: ["plan:06 §8"]

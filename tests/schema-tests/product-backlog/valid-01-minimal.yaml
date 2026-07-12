@@ -1,0 +1,16 @@
+# Minimal valid product backlog: counters, one epic, one task with links.
+schema_version: 1.0.0
+counters: { FR: 2, EP: 2, TASK: 2 }
+epics:
+  - id: EP-001
+    title: S0b — discovery infrastructure
+    stage: S0b
+tasks:
+  - id: TASK-001
+    epic: EP-001
+    title: Generate open-questions.schema.json + fixtures
+    implements: [FR-001]
+    depends_on: []
+    status: backlog
+    packet: product/tasks/TASK-001.md
+    verified_by: ["changelog:v0.2.0"]

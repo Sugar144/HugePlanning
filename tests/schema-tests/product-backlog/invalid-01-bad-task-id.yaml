@@ -1,0 +1,15 @@
+# expect-error: at tasks/0/id
+# Task IDs follow the conventions-rule grammar TASK-NNN.
+schema_version: 1.0.0
+counters: { TASK: 2, EP: 2 }
+epics:
+  - id: EP-001
+    title: S0b — discovery infrastructure
+    stage: S0b
+tasks:
+  - id: T-fe-01
+    epic: EP-001
+    title: Uses the historical prototype task-ID style, not the conventions grammar.
+    implements: [FR-001]
+    depends_on: []
+    status: backlog
