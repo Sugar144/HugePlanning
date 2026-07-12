@@ -31,6 +31,8 @@ design contract (this plan, per 20's matrix)
 → release (methodology version tag)
 ```
 
+The loop executes inside the **proportional assurance sequence of `22`** (S0a-verified): the design-contract step includes contract reconciliation (closed normative sets vs examples/schemas/templates/scripts — examples never silently shrink a closed set); tests are derived from material failure risks before generation; implementation is one principal implementer with bounded independent review only where risk justifies it; every failing check is classified (`CODE | TEST | CONTRACT | PROCESS | ENVIRONMENT`) before it is fixed, and runtime results distinguish fake-runtime, live-runtime, inconclusive-environment, and genuine failure; each release records the concise evidence set (`22` §7). Depth scales with the `22` §6 factors — a documentation-only change does not inherit the bootstrap-stage process.
+
 **Where AI compresses effort (≈70–90% saving):** repo skeletons, schemas + fixtures, templates, scripts, rule/agent/skill file drafting, knowledge first drafts, test scenario scripts, boilerplate CI, multi-file consistency patches.
 **Where it doesn't (≈0–30%):** behavioural scenario runs (you play the client — wall-clock human hours), interview-quality judgment, integration defects between generated parts, gate reviews, external research (18), real-client latency (content, approvals). **These dominate the critical path; plan around validation capacity, not generation capacity.**
 

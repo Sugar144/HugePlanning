@@ -1,11 +1,24 @@
 # freelance-methodology (HugePlanning)
 
 The versioned methodology repository for the AI-assisted freelance web
-development operating system, **plus** the V2 plan that specifies it (the
-numbered `NN_*.md` files at the root — start at `00_final_plan_index.md`).
+development operating system, plus the planning corpus that specifies it.
 
 Current methodology version: see `VERSION` · changes: `CHANGELOG.md` ·
-implemented stage: **S0a — minimal runtime bootstrap** (plan `13` S0a).
+implemented stage: **S0a — minimal runtime bootstrap** (plan `13` S0a,
+released as `v0.1.0`).
+
+## Repository map
+
+| Area | Path | What it is |
+|---|---|---|
+| **Released methodology runtime** | `CLAUDE.md`, `.claude/`, `schemas/`, `scripts/`, `templates/`, `tests/`, `knowledge/` | What client sessions actually load and run — versioned (`VERSION`), tagged, tested. Detailed below |
+| **Current planning corpus** | `planning/v2/` | The V2 plan, 22 numbered files. Plan citations like `02 §6` resolve here — see `planning/README.md` |
+| **Immutable baseline** | `planning/baseline/` | The original V1 plan document (frozen, audited in plan `16`) |
+| **Experiment reports** | `reports/experiments/` | Evaluation records (e.g. the S0a bootstrap experiment) — evidence, not canonical method |
+
+**Where to start reading:** operating the runtime → stay in this README.
+Understanding or changing the method → `planning/README.md`, then
+`planning/v2/00_final_plan_index.md` for the reading order.
 
 ## What is here (runtime)
 
@@ -96,7 +109,7 @@ then verify (a)–(d) by hand per `02` §5.
 
 | Date | CLI version | a | b | c | d | Notes |
 |---|---|---|---|---|---|---|
-| 2026-07-11 | 2.1.207 (Claude Code) | PASS | PASS | PASS | PASS | S0a initial run, executed live (headless `claude -p`). Deny rule blocked the methodology write at the permission level ("directory denied by your permission settings") on a methodology path containing spaces; client control write succeeded; no methodology drift. Details: `EXPERIMENT_S0A_REPORT.md` |
+| 2026-07-11 | 2.1.207 (Claude Code) | PASS | PASS | PASS | PASS | S0a initial run, executed live (headless `claude -p`). Deny rule blocked the methodology write at the permission level ("directory denied by your permission settings") on a methodology path containing spaces; client control write succeeded; no methodology drift. Details: `reports/experiments/s0a/EXPERIMENT_S0A_REPORT.md` |
 | 2026-07-11 | 2.1.207 (Claude Code) | PASS | PASS | PASS | PASS | S0a audited integration verification: deterministic suite passed twice (122/122 each run); live SPK-01 passed 5/5; methodology remained protected and clean. Commit tested: `09ae1adfa80abacdb0b57f757308aa72786f0e16`. |
 
 ## Test the methodology

@@ -2,7 +2,7 @@
 
 This directory is the **methodology repository**: it defines *how* work is done.
 It is loaded read-only into client sessions via `--add-dir`. It contains zero
-client data, ever. (Full design: `02_methodology_repository_design.md`.)
+client data, ever. (Full design: `planning/v2/02_methodology_repository_design.md`.)
 
 ## Invariants (never violated)
 
