@@ -2,7 +2,7 @@
 # Contract: product/README.md · schema: schemas/product-backlog.schema.json
 # Validated by tests/run-tests.sh (T14). counters = next free number per prefix.
 schema_version: 1.0.0
-counters: { FR: 22, NFR: 2, CON: 4, EP: 3, TASK: 16 }
+counters: { FR: 22, NFR: 2, CON: 4, EP: 3, TASK: 22 }
 epics:
   - id: EP-001
     title: S0b — discovery infrastructure (schemas, validator extension, status, templates, CI)
@@ -112,12 +112,63 @@ tasks:
     title: Author six interview scenarios + golden checklists
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: cancelled
     packet: product/tasks/TASK-014.md
+    notes: >-
+      Split into one task per behavioural scenario (TASK-016..TASK-021) by
+      operator refinement, 2026-07-12 — each scenario has a distinct golden
+      checklist, execution protocol, failure mode, and evidence result. ID
+      retained, never reused.
   - id: TASK-015
     epic: EP-002
-    title: Execute scenario validation, bounded corrections, live SPK-01, S1 release
+    title: Aggregate scenario results, bounded corrections, live SPK-01, S1 release
     implements: [FR-019, FR-020]
-    depends_on: [TASK-014]
+    depends_on: [TASK-016, TASK-017, TASK-018, TASK-019, TASK-020, TASK-021]
     status: backlog
     packet: product/tasks/TASK-015.md
+
+  # One task per behavioural scenario (operator refinement, 2026-07-12):
+  # each authors AND executes its scenario against the golden checklist and
+  # records its own evidence result. Protocol per FR-019-AC-03.
+  - id: TASK-016
+    epic: EP-002
+    title: Scenario 01 clear — baseline coverage and classification (import mode)
+    implements: [FR-019]
+    depends_on: [TASK-013]
+    status: backlog
+    packet: product/tasks/TASK-016.md
+  - id: TASK-017
+    epic: EP-002
+    title: Scenario 02 contradictory — CTR catch and resolution (live-assisted)
+    implements: [FR-019]
+    depends_on: [TASK-013]
+    status: backlog
+    packet: product/tasks/TASK-017.md
+  - id: TASK-018
+    epic: EP-002
+    title: Scenario 03 non-technical — solution decomposition (import mode)
+    implements: [FR-019]
+    depends_on: [TASK-013]
+    status: backlog
+    packet: product/tasks/TASK-018.md
+  - id: TASK-019
+    epic: EP-002
+    title: Scenario 04 LITE — module floor and single sitting (import mode)
+    implements: [FR-019]
+    depends_on: [TASK-013]
+    status: backlog
+    packet: product/tasks/TASK-019.md
+  - id: TASK-020
+    epic: EP-002
+    title: Scenario 05 trigger-escalation — flagged profile upgrade (import mode)
+    implements: [FR-019]
+    depends_on: [TASK-013]
+    status: backlog
+    packet: product/tasks/TASK-020.md
+  - id: TASK-021
+    epic: EP-002
+    title: Scenario 06 PII-bearing — sanitization correctness (live-assisted)
+    implements: [FR-019]
+    depends_on: [TASK-013]
+    status: backlog
+    packet: product/tasks/TASK-021.md

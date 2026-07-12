@@ -1,5 +1,12 @@
 # TASK-014 — Author six interview scenarios + golden checklists
 
+> **CANCELLED (2026-07-12, operator refinement).** Split into one task per
+> behavioural scenario — TASK-016..TASK-021 — because each scenario carries a
+> distinct golden checklist, execution protocol, failure mode, and evidence
+> result. This packet is retained as the split's source material; the ID is
+> never reused. The scenario outlines below moved into the per-scenario
+> packets.
+
 Epic: EP-002 (S1) · Implements: FR-019 · Depends on: TASK-013
 
 ## Goal
