@@ -1,0 +1,13 @@
+# expect-error: at requirements/0/acceptance_criteria/0/id
+# AC IDs are scoped children: <PARENT>-AC-<nn> (06 §4).
+schema_version: 2.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    statement: AC con id fuera de la gramática.
+    origin: client_evidence
+    status: draft
+    source_refs: ["interview:client-discovery-01#turn-10"]
+    acceptance_criteria:
+      - id: AC-1
+        text: forma inválida

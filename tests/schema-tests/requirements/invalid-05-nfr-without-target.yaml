@@ -1,0 +1,12 @@
+# expect-error: at requirements/0
+# "Fast" is not a requirement: an NFR carries metric+target or an explicit
+# waiver with sign-off (R2-10, 07 §2 rule 8).
+schema_version: 2.0.0
+requirements:
+  - id: NFR-001
+    type: nonfunctional
+    category: performance
+    statement: La web debe ser rápida.
+    origin: client_evidence
+    status: draft
+    source_refs: ["interview:client-discovery-01#turn-22"]

@@ -1,0 +1,31 @@
+# Early normalization output: draft FR with checklist AC (06 §8 plain form),
+# a proposed_default legal item, and a waived NFR (07 §2 rule 8).
+schema_version: 2.0.0
+requirements:
+  - id: FR-001
+    type: functional
+    category: content
+    statement: El visitante puede ver el menú actualizado.
+    origin: client_evidence
+    status: draft
+    priority: must
+    risk: low
+    source_refs: ["interview:client-discovery-01#turn-18"]
+    acceptance_criteria:
+      - id: FR-001-AC-01
+        text: El menú publicado coincide con el documento entregado por el cliente.
+  - id: CON-002
+    type: constraint
+    category: legal
+    statement: El sitio muestra aviso legal y política de privacidad conformes.
+    origin: legal_or_regulatory
+    status: proposed_default
+    source_refs: ["methodology:gdpr-basics#website-obligations"]
+  - id: NFR-003
+    type: nonfunctional
+    category: performance
+    statement: Rendimiento no cuantificado por decisión del operador.
+    origin: methodology_default
+    status: draft
+    waiver: { by: developer, reason: "static one-pager; floor covered by build checks" }
+    source_refs: ["methodology:nfr-catalog#performance"]

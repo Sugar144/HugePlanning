@@ -1,0 +1,68 @@
+# The full plan 06 §7.1 example: booking FR with G/W/T ACs, structured NFR
+# (methodology default confirmed at G2), DAT migration requirement, business
+# rule, assumption. Fictitious client (schema_version 2.0.0 per R2-10).
+schema_version: 2.0.0
+objectives:
+  - id: OBJ-001
+    statement: Reducir la gestión manual de reservas.
+    metric: "≥80% de reservas sin intervención manual a los 3 meses"
+    source_refs: ["interview:client-discovery-01#turn-14"]
+requirements:
+  - id: FR-004
+    type: functional
+    category: booking
+    statement: El visitante puede solicitar una reserva indicando fecha, hora y nº de personas.
+    rationale: null
+    origin: client_evidence
+    status: approved
+    priority: must
+    risk: high
+    objectives: [OBJ-001]
+    source_refs: ["interview:client-discovery-01#turn-24"]
+    acceptance_criteria:
+      - id: FR-004-AC-01
+        given: fecha con plazas libres
+        when: el visitante envía el formulario
+        then: la reserva queda registrada como pendiente y el cliente recibe aviso
+    business_rules: [BR-002]
+    depends_on: []
+    conflicts_with: []
+    assumptions: [ASM-002]
+    approved_in: 9f1c2d3
+    verification: { tests: [TEST-011, TEST-012] }
+  - id: NFR-002
+    type: nonfunctional
+    category: performance
+    statement: Las páginas públicas cargan rápido en móvil.
+    metric: LCP
+    target: "<= 2.5 s"
+    conditions: "4G, gama media, caché fría"
+    measurement: { method: "Lighthouse móvil", environment: staging }
+    verification_level: pre-release
+    tolerance: "p75"
+    origin: methodology_default
+    status: approved
+    client_confirmation: "clarification:CLAR-001"
+    source_refs: ["methodology:nfr-catalog#performance"]
+  - id: DAT-001
+    type: data
+    category: migration
+    statement: Las 340 reservas históricas del Excel actual deben importarse sin pérdida.
+    origin: client_evidence
+    status: approved
+    source_refs: ["interview:client-discovery-01#turn-52"]
+    acceptance_criteria:
+      - id: DAT-001-AC-01
+        given: el Excel actual
+        when: se ejecuta la importación
+        then: recuento y campos clave coinciden 1:1 con un informe de verificación
+business_rules:
+  - id: BR-002
+    statement: No se aceptan reservas con menos de 12 h de antelación.
+    source_refs: ["interview:client-discovery-01#turn-31"]
+    status: approved
+assumptions:
+  - id: ASM-002
+    statement: Una única ubicación física.
+    basis: "interview:client-discovery-01#turn-9"
+    status: confirmed
