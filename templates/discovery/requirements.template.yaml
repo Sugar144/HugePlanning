@@ -1,0 +1,54 @@
+# requirements.yaml skeleton — client requirements registry (06 §7.1, R2-10).
+# Copy to docs/requirements/requirements.yaml and replace the example entries.
+# Populated by the requirements-normalization skill (07 §2); IDs allocated
+# from project.yaml counters at creation, never renumbered (06 §4).
+# This template is itself schema-valid (requirements.schema.json 2.0.0).
+schema_version: 2.0.0
+
+objectives:
+  # One entry per business objective; metric optional but recommended (07 §2).
+  - id: OBJ-001
+    statement: Example objective in client language.        # client language (DEC-14)
+    metric: "measurable success signal, if the client gave one"
+    source_refs: ["interview:client-discovery-01#turn-01"]  # anchors MUST resolve
+
+requirements:
+  # type ∈ functional|nonfunctional|integration|constraint|data — the ID
+  # prefix must match (FR/NFR/INT/CON/DAT). origin is provenance (R2-10):
+  # client_evidence | stakeholder_preference | methodology_default |
+  # legal_or_regulatory | technical_derived. Defaults and legal items enter
+  # as status proposed_default until the client confirms them at G2.
+  - id: FR-001
+    type: functional
+    category: example                # project taxonomy; migration is a category, not a type
+    statement: One verifiable obligation, atomic, testable wording (07 §2).
+    origin: client_evidence
+    status: draft                    # 06 §2 lifecycle; agents write draft only
+    priority: must                   # MoSCoW; every must traces to an OBJ
+    risk: low                        # high = money, auth, personal data, legal, core flow
+    objectives: [OBJ-001]
+    source_refs: ["interview:client-discovery-01#turn-02"]
+    acceptance_criteria:
+      # Given/When/Then for behaviour; plain `text:` checklist otherwise (06 §8).
+      - id: FR-001-AC-01
+        given: a precondition
+        when: an action happens
+        then: the observable result
+    business_rules: []               # BR-nnn refs
+    depends_on: []                   # requirement refs
+    conflicts_with: []
+    assumptions: []                  # ASM-nnn refs
+    approved_in: null                # G2 baseline merge commit — set at approval, immutable
+
+business_rules:
+  - id: BR-001
+    statement: A rule that parameterizes requirements — not itself an FR (07 §2).
+    status: draft
+    source_refs: ["interview:client-discovery-01#turn-03"]
+
+assumptions:
+  # Anything the agent bridged to keep moving; unconfirmed until evidence.
+  - id: ASM-001
+    statement: Example assumption awaiting confirmation.
+    basis: "interview:client-discovery-01#turn-04"
+    status: unconfirmed              # unconfirmed | confirmed | invalidated

@@ -320,6 +320,33 @@ expect_ok "status.sh runs on a bare fresh client" "$S" "$CLIENT"
 expect_out "  absent registries render, not error" "requirements: none recorded"
 expect_fail "status.sh rejects a missing directory" "$S" "$WORK/does not exist"
 
+note "== T17: discovery templates are themselves schema-valid (FR-010) =="
+declare -A TEMPLATE_SCHEMA=(
+  [requirements.template.yaml]="requirements.schema.json"
+  [solution-context.template.yaml]="solution-context.schema.json"
+  [interview-state.template.yaml]="interview-state.schema.json"
+  [handoff.template.yaml]="handoff.schema.json"
+)
+for tmpl in "${!TEMPLATE_SCHEMA[@]}"; do
+  expect_ok "template $tmpl passes its schema" \
+    "$PYTHON" "$REAL_METHOD/scripts/lib/schema-validate.py" \
+    "$REAL_METHOD/schemas/${TEMPLATE_SCHEMA[$tmpl]}" \
+    "$REAL_METHOD/templates/discovery/$tmpl"
+done
+# The client template's registry and lock stay valid with the S0b entries.
+expect_ok "client template open-questions.yaml passes its schema" \
+  "$PYTHON" "$REAL_METHOD/scripts/lib/schema-validate.py" \
+  "$REAL_METHOD/schemas/open-questions.schema.json" \
+  "$REAL_METHOD/templates/client-repo/docs/requirements/open-questions.yaml"
+LOCK_SCHEMAS="$(grep -A8 '^schemas:' "$CLIENT/methodology.lock.yaml")"
+for name in open-questions requirements solution-context interview-state handoff; do
+  if grep -q "^  $name:" <<<"$LOCK_SCHEMAS"; then
+    t_pass "generated lock pins $name"
+  else
+    t_fail "generated lock missing S0b schema entry: $name"
+  fi
+done
+
 note "== T6: new-client.sh refusals =="
 expect_fail "refuses non-empty target" "$FAKE/scripts/new-client.sh" "$CLIENT" TEST-CLIENT
 expect_out "  actionable" "not empty"

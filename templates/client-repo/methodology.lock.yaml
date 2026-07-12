@@ -11,3 +11,8 @@ methodology:
 schemas:
   project: 1.0.0
   methodology-lock: 1.0.0
+  open-questions: 1.0.0
+  requirements: 2.0.0
+  solution-context: 1.0.0
+  interview-state: 1.0.0
+  handoff: 2.0.0
