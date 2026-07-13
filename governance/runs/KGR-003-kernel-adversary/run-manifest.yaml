@@ -1,0 +1,49 @@
+run:
+  id: KGR-003
+  role: Kernel Adversary
+  status: NOT_STARTED
+  started_at: null
+  completed_at: null
+
+execution:
+  platform: 'ChatGPT (intended by prompt)'
+  model: unknown
+  reasoning_mode: 'Sol High recommended by prompt; not executed'
+  prompt_id: unknown
+  prompt_version: '0.1'
+  prompt_path: governance/runs/KGR-003-kernel-adversary/prompt/03-kernel-adversary-prompt-sol-high-v0.1.md
+
+inputs:
+  artifacts:
+    - governance/runs/KGR-003-kernel-adversary/inputs/00-kernel-design-basis.md
+    - governance/runs/KGR-003-kernel-adversary/inputs/01-kernel-admission-analysis.md
+    - governance/runs/KGR-003-kernel-adversary/inputs/02-kernel-v0.1-draft.md
+    - governance/runs/KGR-003-kernel-adversary/inputs/03-kernel-clauses.yaml
+    - governance/runs/KGR-003-kernel-adversary/inputs/04-designer-open-questions.md
+    - governance/runs/KGR-003-kernel-adversary/inputs/05-lower-layer-routing.md
+    - governance/runs/KGR-003-kernel-adversary/inputs/06-kernel-adversary-handoff.md
+  package_sha256: 13affe3d2227f7a22eafa97e122a356b1185a0762ee293e3b0468c7717e0037c
+
+outputs:
+  artifacts: []
+  package_sha256: null
+
+result:
+  handoff_status: NOT_STARTED
+  authority_status: PROPOSED_NOT_RATIFIED
+  limitations:
+    - No execution, findings package, independent evaluation, or result exists.
+
+human_interventions:
+  decisions: []
+  corrections: []
+
+provenance:
+  source_files:
+    - governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/03-kernel-adversary-prompt-sol-high-v0.1.md
+    - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1.zip
+    - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/
+  reconstructed: true
+  notes:
+    - This manifest registers a planned run only.
+    - Input and prompt copies are byte-exact; no normalization was performed.

@@ -1,0 +1,657 @@
+registry:
+  version: '0.1'
+  generated_for: GOV-0
+  base_commit: 3246b6849d370c8098ce53caa28fa6dd3c34846d
+  notes:
+    - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
+    - Exact duplicate source names are aliases, not additional authority.
+
+artifacts:
+  - id: GOV-PKG-001
+    title: Governance Bootstrap Prompt Pack
+    version: '0.1'
+    status: PRESERVED
+    authority: supporting_source_package
+    path: governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1.zip
+    source_path: _governance_inbox/hugeplanning-governance-bootstrap-prompt-pack-v0.1.zip
+    source_sha256: 09233fdfab6907337a15d469a6eed6b4b5088a1d6c4f2c7ec3a3224691efab7b
+    produced_by: unknown
+    artifact_type: archive
+    language: mixed
+    canonicality: raw_source
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/
+    notes:
+      - ZIP and seven extracted members are preserved; extracted members are byte-exact.
+
+  - id: GOV-PKG-002
+    title: Governance Codex Bootstrap Package
+    version: '0.2'
+    status: PRESERVED
+    authority: GOV-0_execution_support
+    path: governance/sources/raw/packages/hugeplanning-governance-codex-bootstrap-v0.2.zip
+    source_path: _governance_inbox/hugeplanning-governance-codex-bootstrap-v0.2.zip
+    source_sha256: 499d6d6a8b44db4684c615c8eadaf67518056b52ec5765cf603edaa1fb8e6468
+    produced_by: unknown
+    artifact_type: archive
+    language: English
+    canonicality: raw_source
+    supersedes: GOV-PKG-001
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-governance-codex-bootstrap-v0.2/
+    notes:
+      - Supersession applies only to the GOV-0 bootstrap contract, not the role prompts in GOV-PKG-001.
+
+  - id: GOV-PKG-003
+    title: HugePlanning Kernel Intake Package
+    version: '0.1'
+    status: READY_WITH_NON_BLOCKING_QUESTIONS
+    authority: kernel_design_input_package
+    path: governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1.zip
+    source_path: _governance_inbox/hugeplanning-kernel-intake-v0.1.zip
+    source_sha256: ab9762c3b1ae9b926fb2b8595e6b9b6778958f83ae79c3937bb837e57f7593db
+    produced_by: KGR-001
+    artifact_type: raw_package
+    language: English
+    canonicality: raw_source
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/
+    notes:
+      - ZIP and eight extracted artifacts match byte-for-byte.
+
+  - id: GOV-PKG-004
+    title: HugePlanning Kernel Designer Package
+    version: '0.1'
+    status: READY_FOR_ADVERSARIAL_REVIEW
+    authority: proposed_not_ratified
+    path: governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1.zip
+    source_path: _governance_inbox/hugeplanning-kernel-designer-package-v0.1.zip
+    source_sha256: 13affe3d2227f7a22eafa97e122a356b1185a0762ee293e3b0468c7717e0037c
+    produced_by: KGR-002
+    artifact_type: raw_package
+    language: English
+    canonicality: raw_source
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/
+    notes:
+      - ZIP and seven extracted artifacts match byte-for-byte.
+
+  - id: GOV-PROMPT-001
+    title: Kernel Intake Interviewer Canonical Prompt
+    version: '0.1'
+    status: HISTORICAL_RECONSTRUCTED_SOURCE
+    authority: execution_contract_source
+    path: governance/runs/KGR-001-intake/prompt/01-kernel-intake-interviewer-prompt-canonical-v0.1.md
+    source_path: _governance_inbox/hugeplanning-governance-bootstrap-prompt-pack-v0.1/01-kernel-intake-interviewer-prompt-canonical-v0.1.md
+    source_sha256: 0500378df9b6986b0afae3e2679a99a8361aa105ee3aa79d13c227312f717195
+    produced_by: unknown
+    artifact_type: role_prompt
+    language: mixed
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/01-kernel-intake-interviewer-prompt-canonical-v0.1.md
+    notes:
+      - Exact copy of supplied source; that source explicitly marks a reconstructed completion after incomplete recovery.
+
+  - id: GOV-PROMPT-002
+    title: Kernel Designer Prompt — Sol High
+    version: '0.1'
+    status: EXACT_HISTORICAL_PROMPT
+    authority: execution_contract_source
+    path: governance/runs/KGR-002-kernel-designer/prompt/02-kernel-designer-prompt-sol-high-v0.1.md
+    source_path: _governance_inbox/hugeplanning-governance-bootstrap-prompt-pack-v0.1/02-kernel-designer-prompt-sol-high-v0.1.md
+    source_sha256: c82127c9bac88fe7fe1f20e0c672deddbc155684ce5314683d1047a086da0455
+    produced_by: unknown
+    artifact_type: role_prompt
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/02-kernel-designer-prompt-sol-high-v0.1.md
+    notes: []
+
+  - id: GOV-PROMPT-003
+    title: Kernel Adversary Prompt — Sol High
+    version: '0.1'
+    status: READY_NOT_EXECUTED
+    authority: planned_execution_contract
+    path: governance/runs/KGR-003-kernel-adversary/prompt/03-kernel-adversary-prompt-sol-high-v0.1.md
+    source_path: _governance_inbox/hugeplanning-governance-bootstrap-prompt-pack-v0.1/03-kernel-adversary-prompt-sol-high-v0.1.md
+    source_sha256: ef3c6834f9c1bad35d3d25c198b063e4a97fd8a2da3926d9843cf1605a1a3e61
+    produced_by: unknown
+    artifact_type: role_prompt
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/03-kernel-adversary-prompt-sol-high-v0.1.md
+    notes:
+      - Prompt existence is not execution evidence.
+
+  - id: GOV-PROMPT-004
+    title: Governance Bootstrap Codex Prompt
+    version: '0.1'
+    status: SUPERSEDED
+    authority: historical_execution_contract
+    path: governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/05-governance-bootstrap-codex-prompt-v0.1.md
+    source_path: _governance_inbox/hugeplanning-governance-bootstrap-prompt-pack-v0.1/05-governance-bootstrap-codex-prompt-v0.1.md
+    source_sha256: 7dd969de5d655639498bef9f17f6baf24112aa2507152024b36cb2e0647a2505
+    produced_by: unknown
+    artifact_type: role_prompt
+    language: English
+    canonicality: raw_source
+    supersedes: null
+    aliases: []
+    notes:
+      - Superseded for GOV-0 by GOV-PROMPT-005; preserved without rewriting.
+
+  - id: GOV-PROMPT-005
+    title: Governance Bootstrap Codex Execution Contract
+    version: '0.2'
+    status: EXECUTED_FOR_GOV_0
+    authority: current_GOV-0_execution_contract
+    path: governance/sources/raw/prompts/hugeplanning-governance-bootstrap-codex-prompt-v0.2.md
+    source_path: _governance_inbox/hugeplanning-governance-bootstrap-codex-prompt-v0.2.md
+    source_sha256: 643bceedc48422e9e9659731dba35720a0c903df962670f25dbbce2d73a7282b
+    produced_by: unknown
+    artifact_type: role_prompt
+    language: English
+    canonicality: raw_source
+    supersedes: GOV-PROMPT-004
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-governance-codex-bootstrap-v0.2/hugeplanning-governance-bootstrap-codex-prompt-v0.2.md
+    notes:
+      - Standalone source and ZIP member are byte-identical.
+
+  - id: GOV-SUP-001
+    title: Governance Role Prompts Index
+    version: '0.1'
+    status: PRESERVED
+    authority: supporting_process_record
+    path: governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/04-governance-role-prompts-index-v0.1.md
+    source_path: _governance_inbox/hugeplanning-governance-bootstrap-prompt-pack-v0.1/04-governance-role-prompts-index-v0.1.md
+    source_sha256: f7748b5a8f7967be3a48bf6d0d6d8ec73306a7c6889e31b54b48b8c408a7ff33
+    produced_by: unknown
+    artifact_type: process_decision
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes:
+      - Supports the distinction between completed and planned runs.
+
+  - id: GOV-SUP-002
+    title: Governance Worktree Setup — fish
+    version: '0.1'
+    status: PRESERVED
+    authority: supporting_process_note
+    path: governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/00-worktree-setup-fish.md
+    source_path: _governance_inbox/hugeplanning-governance-bootstrap-prompt-pack-v0.1/00-worktree-setup-fish.md
+    source_sha256: f408a89130cd0558c7ec6291cd9a2080990f5d69912d722c76f296d6d4fc2d96
+    produced_by: unknown
+    artifact_type: process_note
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes: []
+
+  - id: GOV-SUP-003
+    title: GOV-0 Codex Setup
+    version: '0.2'
+    status: PRESERVED
+    authority: supporting_process_note
+    path: governance/sources/raw/packages/hugeplanning-governance-codex-bootstrap-v0.2/hugeplanning-governance-codex-setup-v0.2.md
+    source_path: _governance_inbox/hugeplanning-governance-codex-bootstrap-v0.2/hugeplanning-governance-codex-setup-v0.2.md
+    source_sha256: 809b33a303aa39a23e9067d6e873b139896c3e5cc86e000a997685d58531d82b
+    produced_by: unknown
+    artifact_type: process_note
+    language: English
+    canonicality: supporting
+    supersedes: GOV-SUP-002
+    aliases: []
+    notes: []
+
+  - id: GOV-SUP-004
+    title: Temporary GOV-0 Codex Override Source
+    version: '0.2'
+    status: ARCHIVED_SOURCE_NOT_ACTIVE
+    authority: historical_task_instruction
+    path: governance/sources/raw/packages/hugeplanning-governance-codex-bootstrap-v0.2/HugePlanning-GOV0-AGENTS.override.md
+    source_path: 'zip:hugeplanning-governance-codex-bootstrap-v0.2.zip#HugePlanning-GOV0-AGENTS.override.md'
+    source_sha256: 01bc87f37501906b1138d8e6a69eb90f90e554857376b921d3c08df8ec306d0b
+    produced_by: unknown
+    artifact_type: task_instruction_source
+    language: English
+    canonicality: raw_source
+    supersedes: null
+    aliases:
+      - AGENTS.override.md (temporary root copy removed before commit)
+    notes:
+      - The archived source does not apply as a persistent repository instruction.
+
+  - id: GOV-SUP-005
+    title: Governance Prompt Pack Manifest
+    version: '0.1'
+    status: PRESERVED
+    authority: supporting_checksum_record
+    path: governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/MANIFEST.md
+    source_path: _governance_inbox/hugeplanning-governance-bootstrap-prompt-pack-v0.1/MANIFEST.md
+    source_sha256: 922a2fdab518283bfb73205c66b32cde1ab776795526ba445e95120fe892d02b
+    produced_by: unknown
+    artifact_type: package_manifest
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes: []
+
+  - id: GOV-CHK-001
+    title: Kernel Intake Checkpoint
+    version: '0.1'
+    status: COMPLETED
+    authority: historical_run_checkpoint
+    path: governance/sources/raw/checkpoints/hugeplanning-kernel-intake-checkpoint-v0.1(22).md
+    source_path: _governance_inbox/hugeplanning-kernel-intake-checkpoint-v0.1(22).md
+    source_sha256: 1492d77faa9826c02eba76ec6544b863253efb02e2e33c45bfd806eb5640f444
+    produced_by: KGR-001
+    artifact_type: intake_checkpoint
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes:
+      - Supports completion date and handoff status; does not imply ratification or enforceability.
+
+  - id: GOV-RES-001
+    title: Methodology for Developing the HugePlanning Kernel with AI
+    version: '0.1'
+    status: PRESERVED
+    authority: supporting_research_or_process_guide
+    path: governance/sources/raw/research/metodologia_desarrollo_kernel_hugeplanning_con_ia.md
+    source_path: _governance_inbox/metodologia_desarrollo_kernel_hugeplanning_con_ia.md
+    source_sha256: 54f106f01ea143573648233f9ca89d7900a98c5bfe70b564528d93eccab82530
+    produced_by: unknown
+    artifact_type: research
+    language: Spanish
+    canonicality: raw_source
+    supersedes: null
+    aliases: []
+    notes:
+      - Direct linkage to a historical run is unverified.
+
+  - id: GOV-RES-002
+    title: HugePlanning Metaengineering Master Plan
+    version: '0.1'
+    status: PRESERVED
+    authority: supporting_research_or_process_guide
+    path: governance/sources/raw/research/plan_maestro_metaingenieria_hugeplanning.md
+    source_path: _governance_inbox/plan_maestro_metaingenieria_hugeplanning.md
+    source_sha256: 821459e349d7b2bfa3f338dfcfba9509d4fb54adcb86607b8994f29d00238c98
+    produced_by: unknown
+    artifact_type: research
+    language: Spanish
+    canonicality: raw_source
+    supersedes: null
+    aliases: []
+    notes:
+      - Does not replace the repository V2 product roadmap or this governance roadmap.
+
+  - id: GOV-RES-003
+    title: AI-Native Metaengineering Principles for HugePlanning
+    version: '0.1'
+    status: PRESERVED
+    authority: supporting_research
+    path: governance/sources/raw/research/principios_metaingenieria_ai_native_hugeplanning.md
+    source_path: _governance_inbox/principios_metaingenieria_ai_native_hugeplanning.md
+    source_sha256: 89384b6d77870257244d2c6a513e9915f86a2f2c5081472e9361e72ed4a1b585
+    produced_by: unknown
+    artifact_type: research
+    language: Spanish
+    canonicality: raw_source
+    supersedes: null
+    aliases: []
+    notes:
+      - Direct linkage to a historical run is unverified.
+
+  - id: KIP-00
+    title: HugePlanning Kernel Mandate
+    version: 0.1.0
+    status: READY_WITH_NON_BLOCKING_QUESTIONS
+    authority: HUMAN_DECISION_design_input_not_kernel
+    path: governance/runs/KGR-001-intake/outputs/00-kernel-mandate.md
+    source_path: _governance_inbox/hugeplanning-kernel-intake-v0.1/00-kernel-mandate.md
+    source_sha256: f09e9b16595ce3b90d654d3df662e92e0518c13a6db89fcc74b85e5238723a01
+    produced_by: KGR-001
+    artifact_type: kernel-design-input
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/00-kernel-mandate.md
+      - governance/runs/KGR-002-kernel-designer/inputs/00-kernel-mandate.md
+    notes:
+      - Exact copies; no normalization.
+
+  - id: KIP-01
+    title: HugePlanning System Context
+    version: 0.1.0
+    status: READY_WITH_NON_BLOCKING_QUESTIONS
+    authority: kernel_design_input_not_kernel
+    path: governance/runs/KGR-001-intake/outputs/01-system-context.md
+    source_path: _governance_inbox/hugeplanning-kernel-intake-v0.1/01-system-context.md
+    source_sha256: e0a87f291297b660e93d382bacf08ceb9fb78fd0362aebe27c6257b6b98fd12a
+    produced_by: KGR-001
+    artifact_type: kernel-design-input
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/01-system-context.md
+      - governance/runs/KGR-002-kernel-designer/inputs/01-system-context.md
+    notes:
+      - Exact copies; no normalization.
+
+  - id: KIP-02
+    title: HugePlanning Known Hazards
+    version: 0.1.0
+    status: READY_WITH_NON_BLOCKING_QUESTIONS
+    authority: kernel_design_input_not_kernel
+    path: governance/runs/KGR-001-intake/outputs/02-known-hazards.md
+    source_path: _governance_inbox/hugeplanning-kernel-intake-v0.1/02-known-hazards.md
+    source_sha256: f3811f4897e705b2fcc7b16797981d4d3eea5b00fc81c8389db7a6a1bdd7bb11
+    produced_by: KGR-001
+    artifact_type: kernel-design-input
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/02-known-hazards.md
+      - governance/runs/KGR-002-kernel-designer/inputs/02-known-hazards.md
+    notes:
+      - Exact copies; no normalization.
+
+  - id: KIP-03
+    title: HugePlanning Authority and Effects Model
+    version: 0.1.0
+    status: READY_WITH_NON_BLOCKING_QUESTIONS
+    authority: kernel_design_input_not_ratified_kernel
+    path: governance/runs/KGR-001-intake/outputs/03-authority-and-effects.yaml
+    source_path: _governance_inbox/hugeplanning-kernel-intake-v0.1/03-authority-and-effects.yaml
+    source_sha256: 7579cae03fe70e6e8c897c4627c6d2e48118e65f6ef9314450384cecb769a2a8
+    produced_by: KGR-001
+    artifact_type: kernel-design-input
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/03-authority-and-effects.yaml
+      - governance/runs/KGR-002-kernel-designer/inputs/03-authority-and-effects.yaml
+    notes:
+      - Exact copies; no normalization.
+
+  - id: KIP-04
+    title: HugePlanning Criticality Model
+    version: 0.1.0
+    status: READY_WITH_NON_BLOCKING_QUESTIONS
+    authority: kernel_design_input_not_kernel
+    path: governance/runs/KGR-001-intake/outputs/04-criticality-model.md
+    source_path: _governance_inbox/hugeplanning-kernel-intake-v0.1/04-criticality-model.md
+    source_sha256: aba8993106999b328e98e81657472850552611cc14442c024f06d18b483fa384
+    produced_by: KGR-001
+    artifact_type: kernel-design-input
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/04-criticality-model.md
+      - governance/runs/KGR-002-kernel-designer/inputs/04-criticality-model.md
+    notes:
+      - Exact copies; no normalization.
+
+  - id: KIP-05
+    title: HugePlanning Reference Scenarios
+    version: 0.1.0
+    status: READY_WITH_NON_BLOCKING_QUESTIONS
+    authority: kernel_design_input_not_kernel
+    path: governance/runs/KGR-001-intake/outputs/05-reference-scenarios.md
+    source_path: _governance_inbox/hugeplanning-kernel-intake-v0.1/05-reference-scenarios.md
+    source_sha256: 40ef0ff0cf0d214cbcc431955f9e9a342cbda8fa8bb6e11433e32cd926c38f56
+    produced_by: KGR-001
+    artifact_type: kernel-design-input
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/05-reference-scenarios.md
+      - governance/runs/KGR-002-kernel-designer/inputs/05-reference-scenarios.md
+    notes:
+      - Scenario catalog was not executed as part of Intake.
+
+  - id: KIP-06
+    title: HugePlanning Open Questions and Assumptions
+    version: 0.1.0
+    status: READY_WITH_NON_BLOCKING_QUESTIONS
+    authority: kernel_design_input_not_kernel
+    path: governance/runs/KGR-001-intake/outputs/06-open-questions.md
+    source_path: _governance_inbox/hugeplanning-kernel-intake-v0.1/06-open-questions.md
+    source_sha256: effe649fbbe8930434ad7163825ceb99b597474627b6d0e53b43599e2c98b92a
+    produced_by: KGR-001
+    artifact_type: kernel-design-input
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/06-open-questions.md
+      - governance/runs/KGR-002-kernel-designer/inputs/06-open-questions.md
+    notes:
+      - Questions remain routed to downstream owners.
+
+  - id: KIP-07
+    title: HugePlanning Kernel Intake Summary
+    version: 0.1.0
+    status: READY_WITH_NON_BLOCKING_QUESTIONS
+    authority: kernel_design_handoff_not_kernel
+    path: governance/runs/KGR-001-intake/outputs/07-intake-summary.md
+    source_path: _governance_inbox/hugeplanning-kernel-intake-v0.1/07-intake-summary.md
+    source_sha256: c5d473634bece727488bfe6318e6b2889440fbc9a918ee29ea434119a5f0a459
+    produced_by: KGR-001
+    artifact_type: kernel-design-handoff
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/07-intake-summary.md
+      - governance/runs/KGR-002-kernel-designer/inputs/07-intake-summary.md
+      - 'historical received filename reported by Designer: 07-intake-summary(1).md'
+    notes:
+      - Filename discrepancy is recorded in OPEN_IMPORT_QUESTIONS.md.
+
+  - id: KD-00
+    title: HugePlanning Kernel Design Basis
+    version: 0.1.0-designer
+    status: READY_FOR_ADVERSARIAL_REVIEW
+    authority: proposed_design_support
+    path: governance/runs/KGR-002-kernel-designer/outputs/00-kernel-design-basis.md
+    source_path: _governance_inbox/hugeplanning-kernel-designer-package-v0.1/00-kernel-design-basis.md
+    source_sha256: 25e24014e12cbb9799ba34cab45b6995a47e54f1dd5544551f5c3b3ae59beda6
+    produced_by: KGR-002
+    artifact_type: designer_output
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/00-kernel-design-basis.md
+      - governance/runs/KGR-003-kernel-adversary/inputs/00-kernel-design-basis.md
+    notes:
+      - Exact copies; no normalization.
+
+  - id: KD-01
+    title: HugePlanning Kernel Admission Analysis
+    version: 0.1.0-designer
+    status: COMPLETE_FOR_ADVERSARIAL_REVIEW
+    authority: proposed_design_support
+    path: governance/runs/KGR-002-kernel-designer/outputs/01-kernel-admission-analysis.md
+    source_path: _governance_inbox/hugeplanning-kernel-designer-package-v0.1/01-kernel-admission-analysis.md
+    source_sha256: 669d2012da1f0e7a8de221b02c0b0aabf7d48aba52840f263f8118aaf0aaa271
+    produced_by: KGR-002
+    artifact_type: designer_output
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/01-kernel-admission-analysis.md
+      - governance/runs/KGR-003-kernel-adversary/inputs/01-kernel-admission-analysis.md
+    notes:
+      - Exact copies; no normalization.
+
+  - id: KD-02
+    title: HugePlanning Kernel v0.1 Draft
+    version: 0.1.0-proposed
+    status: PROPOSED_NOT_RATIFIED
+    authority: pending_human_ratification
+    path: governance/kernel/proposed/0.1.0/02-kernel-v0.1-draft.md
+    source_path: _governance_inbox/hugeplanning-kernel-designer-package-v0.1/02-kernel-v0.1-draft.md
+    source_sha256: cbd1bce2edb9a369b9de3f6b2466709d9c00c2952c69030424cca3f73ecb463d
+    produced_by: KGR-002
+    artifact_type: proposed_kernel_markdown
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/02-kernel-v0.1-draft.md
+      - governance/runs/KGR-002-kernel-designer/outputs/02-kernel-v0.1-draft.md
+      - governance/runs/KGR-003-kernel-adversary/inputs/02-kernel-v0.1-draft.md
+    notes:
+      - Exact copy; no normalization, adversarial validation, enforcement, or ratification.
+
+  - id: hugeplanning-meta-kernel
+    title: HugePlanning Kernel Clauses
+    version: 0.1.0-proposed
+    status: PROPOSED_NOT_RATIFIED
+    authority: pending_human_ratification
+    path: governance/kernel/proposed/0.1.0/03-kernel-clauses.yaml
+    source_path: _governance_inbox/hugeplanning-kernel-designer-package-v0.1/03-kernel-clauses.yaml
+    source_sha256: bcf5816162396ff4a99d3a42d20c1705ec2c80fe2dcd55976c9c31e2acdd053a
+    produced_by: KGR-002
+    artifact_type: proposed_kernel_yaml
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/03-kernel-clauses.yaml
+      - governance/runs/KGR-002-kernel-designer/outputs/03-kernel-clauses.yaml
+      - governance/runs/KGR-003-kernel-adversary/inputs/03-kernel-clauses.yaml
+    notes:
+      - Uses the kernel ID defined inside the source; exact copy with ratified, enforceable, and operational all false.
+
+  - id: KD-04
+    title: HugePlanning Designer Open Questions
+    version: 0.1.0-designer
+    status: OPEN_NONBLOCKING_ITEMS
+    authority: proposed_design_support
+    path: governance/runs/KGR-002-kernel-designer/outputs/04-designer-open-questions.md
+    source_path: _governance_inbox/hugeplanning-kernel-designer-package-v0.1/04-designer-open-questions.md
+    source_sha256: 668f91b8145b4a186d2844f922b79e7bea42efd1ea387240d6862693a626b414
+    produced_by: KGR-002
+    artifact_type: designer_output
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/04-designer-open-questions.md
+      - governance/runs/KGR-003-kernel-adversary/inputs/04-designer-open-questions.md
+    notes: []
+
+  - id: KD-05
+    title: HugePlanning Lower-Layer Routing
+    version: 0.1.0-designer
+    status: COMPLETE_FOR_ADVERSARIAL_REVIEW
+    authority: proposed_design_support
+    path: governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+    source_path: _governance_inbox/hugeplanning-kernel-designer-package-v0.1/05-lower-layer-routing.md
+    source_sha256: 2278109a40f431b0883642aecd5b216072e03b6cd85d5f917a1b589ad243bd4d
+    produced_by: KGR-002
+    artifact_type: lower_layer_routing
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/05-lower-layer-routing.md
+      - governance/runs/KGR-003-kernel-adversary/inputs/05-lower-layer-routing.md
+    notes:
+      - Routing does not authorize implementation or imply mechanisms exist.
+
+  - id: KD-06
+    title: HugePlanning Kernel Adversary Handoff
+    version: 0.1.0-designer
+    status: READY_FOR_INDEPENDENT_ADVERSARIAL_REVIEW
+    authority: proposed_design_handoff
+    path: governance/runs/KGR-002-kernel-designer/outputs/06-kernel-adversary-handoff.md
+    source_path: _governance_inbox/hugeplanning-kernel-designer-package-v0.1/06-kernel-adversary-handoff.md
+    source_sha256: 046137abc39532d01063765b1e39e547054ebe750fd12f84e8226eb5c1bc8a13
+    produced_by: KGR-002
+    artifact_type: designer_handoff
+    language: English
+    canonicality: canonical_candidate
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/06-kernel-adversary-handoff.md
+      - governance/runs/KGR-003-kernel-adversary/inputs/06-kernel-adversary-handoff.md
+    notes:
+      - Handoff readiness is not an Adversary result.
+
+  - id: KGR-001
+    title: Kernel Intake Interviewer Run Manifest
+    version: '0.1'
+    status: COMPLETED
+    authority: reconstructed_run_record
+    path: governance/runs/KGR-001-intake/run-manifest.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: GOV-0
+    artifact_type: run_manifest
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes:
+      - Repository-level run ID; reconstruction limitations are explicit.
+
+  - id: KGR-002
+    title: Kernel Designer Run Manifest
+    version: '0.1'
+    status: COMPLETED
+    authority: reconstructed_run_record
+    path: governance/runs/KGR-002-kernel-designer/run-manifest.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: GOV-0
+    artifact_type: run_manifest
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes:
+      - Repository-level run ID; actual model setting is unverified.
+
+  - id: KGR-003
+    title: Kernel Adversary Run Manifest
+    version: '0.1'
+    status: NOT_STARTED
+    authority: planned_run_record
+    path: governance/runs/KGR-003-kernel-adversary/run-manifest.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: GOV-0
+    artifact_type: run_manifest
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes:
+      - No output or execution is claimed.

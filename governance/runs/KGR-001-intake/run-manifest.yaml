@@ -1,0 +1,53 @@
+run:
+  id: KGR-001
+  role: Kernel Intake Interviewer
+  status: COMPLETED
+  started_at: null
+  completed_at: '2026-07-13'
+
+execution:
+  platform: unknown
+  model: unknown
+  reasoning_mode: unknown
+  prompt_id: unknown
+  prompt_version: '0.1'
+  prompt_path: governance/runs/KGR-001-intake/prompt/01-kernel-intake-interviewer-prompt-canonical-v0.1.md
+
+inputs:
+  artifacts: []
+  package_sha256: null
+
+outputs:
+  artifacts:
+    - governance/runs/KGR-001-intake/outputs/00-kernel-mandate.md
+    - governance/runs/KGR-001-intake/outputs/01-system-context.md
+    - governance/runs/KGR-001-intake/outputs/02-known-hazards.md
+    - governance/runs/KGR-001-intake/outputs/03-authority-and-effects.yaml
+    - governance/runs/KGR-001-intake/outputs/04-criticality-model.md
+    - governance/runs/KGR-001-intake/outputs/05-reference-scenarios.md
+    - governance/runs/KGR-001-intake/outputs/06-open-questions.md
+    - governance/runs/KGR-001-intake/outputs/07-intake-summary.md
+  package_sha256: ab9762c3b1ae9b926fb2b8595e6b9b6778958f83ae79c3937bb837e57f7593db
+
+result:
+  handoff_status: READY_WITH_NON_BLOCKING_QUESTIONS
+  authority_status: DESIGN_INPUT_NOT_RATIFIED_KERNEL
+  limitations:
+    - No execution transcript or separate input package was supplied.
+    - The available prompt explicitly contains a reconstructed completion after an incomplete recoverable source.
+    - Platform, model, reasoning mode, start time, and interaction count are unknown.
+
+human_interventions:
+  decisions: []
+  corrections: []
+
+provenance:
+  source_files:
+    - governance/sources/raw/checkpoints/hugeplanning-kernel-intake-checkpoint-v0.1(22).md
+    - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1.zip
+    - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/
+    - governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/01-kernel-intake-interviewer-prompt-canonical-v0.1.md
+  reconstructed: true
+  notes:
+    - Run status and completion date are supported by the final checkpoint and artifact metadata.
+    - Output copies are byte-exact; no normalization was performed.
