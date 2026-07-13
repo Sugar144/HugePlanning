@@ -1,0 +1,179 @@
+metadata:
+  status: PLANNING_SCAFFOLD_ONLY
+  kernel_version: 0.1.0-proposed
+  kernel_status: PROPOSED_NOT_RATIFIED
+  current_runtime_adoption: NOT_ASSESSED
+  source_clause_file: governance/kernel/proposed/0.1.0/03-kernel-clauses.yaml
+  lower_layer_routing: governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+  notes:
+    - Candidate surfaces are traceability hypotheses, not requirements or enforcement design.
+    - Lower-layer routing remains controlling for the Designer package and must be preserved in later analysis.
+
+projections:
+  - governance_source: K-001
+    title: Constitutional Sovereignty and Governed Amendment
+    status: PROPOSED_NOT_RATIFIED
+    obligations:
+      - Reserve ratification, amendment, constitutional authority transfer, fundamental scope changes, protection reductions, and specified high-consequence risk acceptance to competent human constitutional authority.
+      - Keep amendments explicit, versioned, impact-assessed, independently challenged, considered for enforcement and migration, and humanly ratified before authority is acquired.
+      - Prevent ordinary policy, contracts, implementation, emergencies, or system outputs from enacting constitutional change.
+    candidate_projection_surfaces:
+      - CLAUDE.md
+      - .claude/rules
+      - product task contracts
+      - schemas
+      - tests
+      - CI or repository protections
+      - human gates
+    current_adoption_status: NOT_ASSESSED
+    source_refs:
+      - governance/kernel/proposed/0.1.0/03-kernel-clauses.yaml#K-001
+      - governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+    notes:
+      - Designer routes amendment workflow details to policy, standard, procedure, enforcement analysis, and human authority.
+
+  - governance_source: K-002
+    title: Bounded Authority and Effects
+    status: PROPOSED_NOT_RATIFIED
+    obligations:
+      - Require explicit, current, competent, and bounded authorization for state-changing actions.
+      - Prevent actors from expanding or reusing materially stale authorization, increasing their own permissions, or lowering their own criticality.
+      - Keep unknown, unclassified, or unauthorized state change blocked while permitted safe read-only investigation may continue.
+    candidate_projection_surfaces:
+      - CLAUDE.md
+      - .claude/rules
+      - .claude/agents
+      - .claude/skills
+      - product task contracts
+      - schemas
+      - scripts
+      - tests
+      - CI or repository protections
+      - human gates
+    current_adoption_status: NOT_ASSESSED
+    source_refs:
+      - governance/kernel/proposed/0.1.0/03-kernel-clauses.yaml#K-002
+      - governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+    notes:
+      - Exact permissions, matrices, action fields, and stop conditions are routed below the Kernel.
+
+  - governance_source: K-003
+    title: Functional Independence and Non-Self-Certification
+    status: PROPOSED_NOT_RATIFIED
+    obligations:
+      - Keep proposal, decision, authorization, execution, validation, exception approval, acceptance, and ratification distinguishable and proportionally separated.
+      - Prevent materially interested executors from unilaterally weakening criteria, lowering criticality, approving their exception, providing decisive independent evaluation, accepting critical work, or ratifying their proposal.
+      - Assess independence across context, criteria, evidence, methods, tools, incentives, and authority rather than names alone.
+    candidate_projection_surfaces:
+      - .claude/rules
+      - .claude/agents
+      - .claude/skills
+      - product task contracts
+      - schemas
+      - tests
+      - CI or repository protections
+      - human gates
+    current_adoption_status: NOT_ASSESSED
+    source_refs:
+      - governance/kernel/proposed/0.1.0/03-kernel-clauses.yaml#K-003
+      - governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+    notes:
+      - Detailed separation and acceptance routing belong to policy and evaluation standards.
+
+  - governance_source: K-004
+    title: Canonical Intent, Provenance, and Epistemic Integrity
+    status: PROPOSED_NOT_RATIFIED
+    obligations:
+      - Give governed intent, decisions, requirements, criteria, evidence, assumptions, and state identifiable canonical authority and provenance.
+      - Keep facts, decisions, proposals, assumptions, inferences, questions, gaps, and validation results distinct.
+      - Preserve conflicts, explicit supersession, source evidence, and historical honesty without fabricated retrospective compliance.
+    candidate_projection_surfaces:
+      - CLAUDE.md
+      - .claude/rules
+      - .claude/agents
+      - .claude/skills
+      - product task contracts
+      - schemas
+      - scripts
+      - tests
+      - human gates
+    current_adoption_status: NOT_ASSESSED
+    source_refs:
+      - governance/kernel/proposed/0.1.0/03-kernel-clauses.yaml#K-004
+      - governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+    notes:
+      - Fields, conflict resolution, migration, and source preservation are routed to standards, policy, procedure, and repository audit.
+
+  - governance_source: K-005
+    title: Evidence-Grounded State and Acceptance
+    status: PROPOSED_NOT_RATIFIED
+    obligations:
+      - Support material claims and state transitions with evidence sufficient for the claim, criticality, uncertainty, and authority.
+      - Prevent artifact existence, creator assertion, structural validity alone, or absence of detected failure from proving purpose satisfaction.
+      - Keep inconclusive, missing, contradictory, limitation, residual-risk, and acceptance states honest and authority-bound.
+    candidate_projection_surfaces:
+      - CLAUDE.md
+      - .claude/rules
+      - .claude/agents
+      - .claude/skills
+      - product task contracts
+      - schemas
+      - scripts
+      - tests
+      - CI or repository protections
+      - human gates
+    current_adoption_status: NOT_ASSESSED
+    source_refs:
+      - governance/kernel/proposed/0.1.0/03-kernel-clauses.yaml#K-005
+      - governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+    notes:
+      - Evidence sufficiency, state vocabulary, and acceptance ownership are routed to policy, standards, evaluation, and enforcement.
+
+  - governance_source: K-006
+    title: Proportional Governance and Justified Complexity
+    status: PROPOSED_NOT_RATIFIED
+    obligations:
+      - Scale controls to actual, cumulative, uncertain, and potentially external effects.
+      - Aggregate related actions and prevent fragmentation used to evade stronger controls.
+      - Use the higher reasonable provisional level under material uncertainty and require governance burden to justify protective value over a simpler adequate alternative.
+    candidate_projection_surfaces:
+      - CLAUDE.md
+      - .claude/rules
+      - .claude/agents
+      - .claude/skills
+      - product task contracts
+      - schemas
+      - scripts
+      - tests
+      - human gates
+    current_adoption_status: NOT_ASSESSED
+    source_refs:
+      - governance/kernel/proposed/0.1.0/03-kernel-clauses.yaml#K-006
+      - governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+    notes:
+      - Classifiers, thresholds, cadence, cost measures, and simplification mechanisms are routed below the Kernel.
+
+  - governance_source: K-007
+    title: Safe Stopping, Observability, Continuity, and Recovery
+    status: PROPOSED_NOT_RATIFIED
+    obligations:
+      - Stop, pause, or block state-changing work before further effect when required authority, inputs, classification, context, evidence, control capacity, or recovery basis is materially absent or compromised.
+      - Allow only authorized read-only investigation that does not increase disputed effect.
+      - Externalize reconstructable state and evidence, ground recovery claims in evidence, and preserve/classify/contain ambiguous or failed residual state.
+    candidate_projection_surfaces:
+      - CLAUDE.md
+      - .claude/rules
+      - .claude/agents
+      - .claude/skills
+      - product task contracts
+      - schemas
+      - scripts
+      - tests
+      - CI or repository protections
+      - human gates
+    current_adoption_status: NOT_ASSESSED
+    source_refs:
+      - governance/kernel/proposed/0.1.0/03-kernel-clauses.yaml#K-007
+      - governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+    notes:
+      - Exact stop rules, checkpoints, observability fields, retention, recovery, and incident procedures are routed below the Kernel.

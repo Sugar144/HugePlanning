@@ -1,0 +1,61 @@
+run:
+  id: KGR-002
+  role: Kernel Designer
+  status: COMPLETED
+  started_at: null
+  completed_at: '2026-07-13'
+
+execution:
+  platform: 'ChatGPT (specified by prompt; execution log unavailable)'
+  model: unknown
+  reasoning_mode: 'Sol High recommended by prompt; actual setting unverified'
+  prompt_id: unknown
+  prompt_version: '0.1'
+  prompt_path: governance/runs/KGR-002-kernel-designer/prompt/02-kernel-designer-prompt-sol-high-v0.1.md
+
+inputs:
+  artifacts:
+    - governance/runs/KGR-002-kernel-designer/inputs/00-kernel-mandate.md
+    - governance/runs/KGR-002-kernel-designer/inputs/01-system-context.md
+    - governance/runs/KGR-002-kernel-designer/inputs/02-known-hazards.md
+    - governance/runs/KGR-002-kernel-designer/inputs/03-authority-and-effects.yaml
+    - governance/runs/KGR-002-kernel-designer/inputs/04-criticality-model.md
+    - governance/runs/KGR-002-kernel-designer/inputs/05-reference-scenarios.md
+    - governance/runs/KGR-002-kernel-designer/inputs/06-open-questions.md
+    - governance/runs/KGR-002-kernel-designer/inputs/07-intake-summary.md
+  package_sha256: ab9762c3b1ae9b926fb2b8595e6b9b6778958f83ae79c3937bb837e57f7593db
+
+outputs:
+  artifacts:
+    - governance/runs/KGR-002-kernel-designer/outputs/00-kernel-design-basis.md
+    - governance/runs/KGR-002-kernel-designer/outputs/01-kernel-admission-analysis.md
+    - governance/runs/KGR-002-kernel-designer/outputs/02-kernel-v0.1-draft.md
+    - governance/runs/KGR-002-kernel-designer/outputs/03-kernel-clauses.yaml
+    - governance/runs/KGR-002-kernel-designer/outputs/04-designer-open-questions.md
+    - governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+    - governance/runs/KGR-002-kernel-designer/outputs/06-kernel-adversary-handoff.md
+  package_sha256: 13affe3d2227f7a22eafa97e122a356b1185a0762ee293e3b0468c7717e0037c
+
+result:
+  handoff_status: READY_FOR_ADVERSARIAL_REVIEW
+  authority_status: PROPOSED_NOT_RATIFIED
+  limitations:
+    - No independent adversarial review has occurred.
+    - No enforcement analysis or implementation has occurred.
+    - Actual execution model, reasoning setting, start time, and interaction count are unverified.
+
+human_interventions:
+  decisions: []
+  corrections: []
+
+provenance:
+  source_files:
+    - governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/02-kernel-designer-prompt-sol-high-v0.1.md
+    - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1.zip
+    - governance/sources/raw/packages/hugeplanning-kernel-intake-v0.1/
+    - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1.zip
+    - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/
+  reconstructed: true
+  notes:
+    - Completion date and result are supported by output metadata and handoff artifacts.
+    - Input and output copies are byte-exact; no normalization was performed.

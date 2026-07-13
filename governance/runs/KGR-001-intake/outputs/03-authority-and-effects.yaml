@@ -1,0 +1,317 @@
+artifact:
+  id: KIP-03
+  title: HugePlanning Authority and Effects Model
+  version: 0.1.0
+  date: '2026-07-13'
+  status: READY_WITH_NON_BLOCKING_QUESTIONS
+  type: kernel-design-input
+  normative_status: design_input_not_ratified_kernel
+labels:
+- FACT
+- HUMAN_DECISION
+- PROPOSAL
+- ASSUMPTION
+- OPEN_QUESTION
+- EVIDENCE_GAP
+authority_hierarchy:
+  status: HUMAN_DECISION
+  order_high_to_low:
+  - ratified_kernel
+  - explicit_current_human_decisions
+  - current_policies
+  - stage_and_task_contracts
+  - canonical_repository_documentation
+  - agent_and_skill_instructions
+  - local_execution_interpretation
+  rule: A lower layer may refine but must not contradict a higher layer. The kernel may be changed only by formal
+    amendment.
+semantic_distinctions:
+  proposal: Presents an option without selecting or authorizing it.
+  decision: Selects an option.
+  authorization: Grants permission within explicit scope and conditions.
+  execution: Performs an action.
+  validation: Checks properties of a result.
+  acceptance: Confirms that a contract is sufficiently satisfied.
+  ratification: Grants constitutional legitimacy.
+roles:
+  human_project_owner_ratification_owner:
+    may:
+    - define purpose and preferences
+    - ratify and amend the kernel
+    - accept serious critical or constitutional residual risk
+    - authorize fundamental scope and architecture changes
+    - declare Kernel v0.1 operational
+    - delegate noncritical acceptance explicitly
+    may_not:
+    - silently override a ratified kernel through an ordinary instruction
+    - erase required evidence to obtain acceptance
+  human_operator:
+    may:
+    - operate tools and environments
+    - authorize bounded execution when delegated
+    - pause stop or recover execution
+    may_not:
+    - ratify constitutional changes unless holding that authority
+  kernel_intake_interviewer:
+    may:
+    - collect clarify structure and validate intake information
+    - classify facts decisions proposals assumptions and open questions
+    - declare the intake package ready or blocked
+    may_not:
+    - draft final kernel clauses as ratified text
+    - implement enforcement
+    - ratify the kernel
+  kernel_designer:
+    may:
+    - propose kernel structure and clauses
+    - apply the kernel admission test
+    - lower candidates to policies or standards
+    may_not:
+    - ratify its own design
+    - ignore recorded human decisions
+  kernel_adversary:
+    may:
+    - search for loopholes contradictions bypasses and perverse incentives
+    - challenge assumptions and enforcement claims
+    may_not:
+    - silently rewrite the design under review
+    - ratify the result
+  enforcement_engineer:
+    may:
+    - map proposed clauses to prevention detection evidence stopping and recovery mechanisms
+    - identify unenforceable or excessively costly clauses
+    may_not:
+    - weaken constitutional meaning to simplify implementation
+    - ratify the kernel
+  planner_architect:
+    may:
+    - classify work and propose contracts profiles and validation
+    - propose scope changes
+    may_not:
+    - authorize itself beyond delegated limits
+  implementer:
+    may:
+    - execute within a bounded authorized contract
+    - make local implementation decisions that do not change committed outcomes or risk
+    - run authorized checks
+    - report READY_FOR_EVALUATION BLOCKED or FAILED
+    - challenge an assigned profile or criticality classification with evidence
+    may_not:
+    - expand material scope
+    - increase its permissions
+    - change kernel policies or mandatory acceptance criteria
+    - weaken tests to pass
+    - hide defects
+    - approve its own critical work
+    - perform unauthorized external effects
+    - lower its own criticality classification
+  independent_evaluator:
+    may:
+    - inspect evidence and sources directly
+    - run tests scenarios and alternative methods
+    - issue PASS FAIL INCONCLUSIVE or BLOCKED
+    - classify defects and recommend outcomes
+    may_not:
+    - silently change evaluation criteria
+    - fix and approve the same critical result in one function
+    - accept serious critical or constitutional risk
+    - ratify the kernel
+  learning_curator:
+    may:
+    - analyze repeated defects experiments retrospectives and releases
+    - propose crystallization into tests procedures policies skills or architecture
+    - identify obsolete or conflicting learning
+    may_not:
+    - amend the kernel
+    - promote one anecdote automatically into a global rule
+    - approve its own proposal
+    - overwrite source evidence
+  deterministic_control_plane:
+    may:
+    - enforce objective schemas state transitions permissions budgets and gates
+    - expose observable budget and context signals
+    - stop or pause execution according to authorized rules
+    may_not:
+    - invent hidden provider quota information
+    - make unencoded constitutional judgments
+human_only_authority:
+- kernel ratification and amendment
+- change to authority hierarchy
+- increase to maximum autonomy or permissions
+- reduction of constitutional validation or security controls
+- acceptance of serious critical or constitutional residual risk
+- fundamental purpose scope or architecture changes
+- critical or hard-to-reverse external actions
+- constitutional or high-criticality exceptions
+- high-criticality releases
+- transfer of ratification authority
+significant_action_model:
+  fields:
+  - actor
+  - target
+  - effect
+  - scope
+  - reversibility
+  - blast_radius
+  - observability
+  - externality
+  - authorization
+  - validation
+  - rollback
+  derivation_preference: Derive fields automatically from contracts Git CI schemas permissions and workflow state
+    where possible.
+action_families:
+- read_search_analyze
+- propose_plan_draft
+- create_or_modify_canonical_artifacts
+- modify_code_configuration_schemas_or_scripts
+- create_or_modify_tests_evaluators_or_acceptance_criteria
+- create_or_modify_agents_skills_prompts_workflows_or_loops
+- change_tools_permissions_credentials_or_autonomy
+- create_branch_commit_pull_request_merge_tag_or_release
+- execute_test_evaluation_build_or_experiment
+- access_or_modify_external_systems_or_accounts
+- deploy_to_staging_or_production
+- process_personal_confidential_or_regulated_data
+- delete_artifacts_evidence_history_or_backups
+- modify_kernel_policy_authority_or_ratification
+- consume_significant_token_financial_compute_or_storage_budget
+effect_scales:
+  reversibility:
+    R0: No state change.
+    R1: Simple local reversal.
+    R2: Reversible with meaningful restoration cost.
+    R3: Difficult or incomplete reversal.
+    R4: Irreversible or constitutional.
+  blast_radius:
+    B0: No propagation.
+    B1: Local artifact task or isolated branch.
+    B2: Subsystem workflow agent skill or stage.
+    B3: Whole project or limited external effect.
+    B4: Systemic multi-project shared-infrastructure broad-credential or authority effect.
+  detectability:
+    D0: Immediate automatic detection before effect.
+    D1: Routine validation detection.
+    D2: Directed semantic adversarial or specialist evaluation.
+    D3: Late detection after propagation.
+    D4: Opaque until incident audit or external information.
+  criticality:
+    C0: Informational; no state change.
+    C1: Local and easily reversible.
+    C2: Propagating across artifacts decisions agents or later work.
+    C3: Sensitive or externally consequential.
+    C4: Constitutional.
+  uncertainty_rule: Use the higher reasonable provisional level until evidence supports reduction.
+scope_change_rule:
+  local_decision_allowed_when:
+  - committed outcome is unchanged
+  - acceptance criteria are unchanged
+  - affected assets and systems remain within contract
+  - permissions and criticality are unchanged
+  - external impact is unchanged
+  material_change_requires:
+  - change proposal
+  - affected work blocked
+  - impact review
+  - competent authorization
+  - updated contract
+instruction_conflict_rule:
+- Check applicability scope version and validity.
+- Higher authority prevails.
+- A newer same-level instruction supersedes an older one only when replacement is explicit or demonstrable.
+- A specific rule may refine but not contradict a higher rule.
+- Unresolved same-level conflict results in BLOCKED.
+- Record and escalate to the competent authority.
+mandatory_stop_conditions:
+- missing canonical input
+- equal-authority conflicting instructions
+- requested action outside scope or permissions
+- criticality cannot be classified confidently
+- unexpected security privacy financial legal or external risk
+- repeated failed validation without progress
+- token time cost compute tool-call or iteration budget exhausted
+- context incomplete corrupt stale or mixed
+- continuation would require changing the actor's own criteria
+- irreversible effect lacks specific authorization
+- state-changing action is unclassified
+acceptance_ownership:
+  C0_C1: Authorized automatic gate or delegated acceptance when all required checks pass.
+  C2: Delegated evaluator or release reviewer.
+  C3: Human owner with independent evidence and recommendation.
+  C4: Formal human ratification.
+  exception: Owner of the higher rule; never the benefiting executor.
+external_sensitive_controls:
+- isolation staging or simulation
+- least privilege and bounded credentials
+- explicit authorization
+- bounded objective scope and cost
+- dry run where possible
+- precondition validation
+- idempotency or replay protection
+- observability and result logging
+- rollback compensation or incident plan
+- human gate for high criticality
+unknown_action_rule:
+  read_only_investigation: allowed
+  state_change: blocked_until_classified_and_authorized
+standing_authorization:
+  reuse_allowed_only_if:
+  - objective remains equivalent
+  - scope remains equivalent
+  - actor or profile remains authorized
+  - permissions remain equivalent
+  - assets and criticality remain equivalent
+  - contract and validation conditions remain current
+  - validity period has not expired
+  silence_is_approval: false
+automerge_candidate:
+  status: accepted_in_principle_not_enabled_by_this_package
+  minimum_conditions:
+  - C1 or otherwise explicitly low criticality
+  - authorized paths and assets
+  - local and reversible effect
+  - no kernel policy permission evaluation or fundamental architecture change
+  - all mandatory checks pass
+  - no blocking findings
+  - traceability and rollback exist
+  - branch protections and CI are non-bypassable
+  - post-merge audit is possible
+emergency:
+  may:
+  - suspend automation
+  - revoke permissions
+  - isolate components
+  - revert to a known safe version
+  - stop releases or agents
+  does_not_automatically_allow:
+  - kernel amendment
+  - permanent control weakening
+  - evidence deletion
+  - indefinite risk acceptance
+temporary_exception:
+  requires:
+  - explicit scope
+  - rationale and risk
+  - competent authority
+  - compensating controls
+  - expiration or review condition
+  - retrospective review
+  - record of actual effects
+  self_approval_by_benefiting_executor: false
+observability_minimum:
+- execution and task identity
+- actor profile and authorization
+- initial version or state
+- affected assets
+- actual changes or effects
+- validations and results
+- final state
+- failures blocks and escalations
+- references to commits CI runs and canonical artifacts
+rollback_expectations:
+  R0: No rollback required.
+  R1: Immediate or automatic reversal.
+  R2: Documented and testable restoration procedure.
+  R3: Backup recovery plan prior authorization and rehearsal when reasonable.
+  R4: Specific human authorization alternatives analysis and explicit risk acceptance.
+  rule: Claims of reversibility require evidence. Rollback failure is an incident.
