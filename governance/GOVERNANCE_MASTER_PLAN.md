@@ -9,9 +9,9 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 | GOV-0 Repository and history bootstrap | `COMPLETED` |
 | GOV-1 Kernel intake | `COMPLETED` — imported/reconstructed |
 | GOV-2 Kernel design | `COMPLETED` — imported/reconstructed |
-| GOV-3 Independent adversarial review | `READY_TO_START` |
-| GOV-4 Designer revision and adversarial closure | `PLANNED` |
-| GOV-5 Enforcement analysis and derived governance requirements | `PLANNED` |
+| GOV-3 Independent adversarial review | `COMPLETED` — `DESIGNER_REVISION_REQUIRED` |
+| GOV-4 Designer revision and adversarial closure | `READY_TO_START` |
+| GOV-5 Enforcement analysis and derived governance requirements | `PLANNED` — not ready to start |
 | GOV-6 Human ratification | `PLANNED` |
 | GOV-7 Minimum executable governance bootstrap | `PLANNED` |
 | GOV-8 Honest S0a–S1 adoption and regularization | `PLANNED` |
@@ -63,7 +63,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: independent Kernel Adversary; owner resolves genuine constitutional choices.
 - Entry conditions: GOV-0 human review complete; Designer package unchanged and still proposed.
 - Completion gate: a complete, registered findings package with honest result and limitations.
-- Current status: `READY_TO_START`; GOV-0 review is complete and KGR-003 itself remains `NOT_STARTED`.
+- Current status: `COMPLETED`; KGR-003 completed on 2026-07-14 with `DESIGNER_REVISION_REQUIRED`, comprising 1 CRITICAL, 7 HIGH, 5 MEDIUM, 1 LOW, and 1 OBSERVATION finding. No owner decision is currently required. The seven-clause architecture may be preserved, but the existing clauses require material revision. Repository inspection was not performed and scenarios were constitutional thought experiments, not executable test evidence.
 - Dependencies: GOV-0 and GOV-2.
 - Explicit non-goals: defending the design, silently rewriting clauses, enforcement design, repository modification, or ratification.
 
@@ -75,7 +75,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: Kernel Designer and independent Adversary; Ratification Owner decides reserved questions.
 - Entry conditions: GOV-3 completed with actionable findings.
 - Completion gate: no unresolved finding that blocks enforcement analysis; all semantic changes trace to findings or owner decisions.
-- Current status: `PLANNED`.
+- Current status: `READY_TO_START`; no owner decision blocks revision. Exact next action: Return the KGR-003 package to the Kernel Designer for revision, then perform a targeted adversarial closure review before Enforcement Engineering.
 - Dependencies: GOV-3.
 - Explicit non-goals: ratification by revision, silent finding dismissal, full policy suite, or runtime implementation.
 
@@ -87,7 +87,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: Enforcement Engineer with relevant evaluators/specialists; human owner retains risk authority.
 - Entry conditions: GOV-4 closure permits enforcement analysis.
 - Completion gate: every proposed clause has an honest feasibility/coverage assessment and unresolved owner decisions are explicit.
-- Current status: `PLANNED`.
+- Current status: `PLANNED` and not ready to start; the Enforcement Engineering gate remains closed until GOV-4 completes Designer revision and targeted adversarial closure.
 - Dependencies: GOV-4.
 - Explicit non-goals: claiming enforceability, implementing every control, or silently changing constitutional meaning.
 

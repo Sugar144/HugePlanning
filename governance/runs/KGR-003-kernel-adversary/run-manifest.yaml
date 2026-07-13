@@ -1,14 +1,14 @@
 run:
   id: KGR-003
   role: Kernel Adversary
-  status: NOT_STARTED
+  status: COMPLETED
   started_at: null
-  completed_at: null
+  completed_at: '2026-07-14'
 
 execution:
-  platform: 'ChatGPT (intended by prompt)'
+  platform: ChatGPT
   model: unknown
-  reasoning_mode: 'Sol High recommended by prompt; not executed'
+  reasoning_mode: unknown
   prompt_id: unknown
   prompt_version: '0.1'
   prompt_path: governance/runs/KGR-003-kernel-adversary/prompt/03-kernel-adversary-prompt-sol-high-v0.1.md
@@ -25,14 +25,38 @@ inputs:
   package_sha256: 13affe3d2227f7a22eafa97e122a356b1185a0762ee293e3b0468c7717e0037c
 
 outputs:
-  artifacts: []
-  package_sha256: null
+  artifacts:
+    - governance/runs/KGR-003-kernel-adversary/outputs/00-adversarial-review-basis.md
+    - governance/runs/KGR-003-kernel-adversary/outputs/01-adversarial-findings.md
+    - governance/runs/KGR-003-kernel-adversary/outputs/02-adversarial-scenarios.md
+    - governance/runs/KGR-003-kernel-adversary/outputs/03-revision-directives.md
+    - governance/runs/KGR-003-kernel-adversary/outputs/04-owner-decision-register.md
+    - governance/runs/KGR-003-kernel-adversary/outputs/05-enforcement-concerns.md
+    - governance/runs/KGR-003-kernel-adversary/outputs/06-adversarial-summary-and-handoff.md
+  package_sha256: 5ed44a54bf3dad2dd905bc117c1f7690fbede1d263143f713755c1970fbbdbb3
+  artifact_sha256:
+    governance/runs/KGR-003-kernel-adversary/outputs/00-adversarial-review-basis.md: 5085b382ad6b7b33567ff07b049af447b6888dcaa69cf69bdfcb9140dbeeef9d
+    governance/runs/KGR-003-kernel-adversary/outputs/01-adversarial-findings.md: 6bce1ec9d22ad68441980da2e22549787f0693c7fbee151978bc74129c64134b
+    governance/runs/KGR-003-kernel-adversary/outputs/02-adversarial-scenarios.md: 29fec90c532423a2579ed810b618b65141feb73ef276660c4c59b9bb4ef6de1c
+    governance/runs/KGR-003-kernel-adversary/outputs/03-revision-directives.md: 2cdbf4196a95112654f64606c0d52a68f6a3b7db5ee0219d48eaac20aee29669
+    governance/runs/KGR-003-kernel-adversary/outputs/04-owner-decision-register.md: e8333eca71a0a6a5a2560c27ce3e45e7e8df5fda9a5516173a1cd1c8c2a1bbb3
+    governance/runs/KGR-003-kernel-adversary/outputs/05-enforcement-concerns.md: d663f7228f259e126fdfb659152972b857e0fbcf314d0f490e71c8e66cad005c
+    governance/runs/KGR-003-kernel-adversary/outputs/06-adversarial-summary-and-handoff.md: d4917152a39d878f20b84d0885dbf1bf10045615a0eb1c210f6e6bd6677fa495
 
 result:
-  handoff_status: NOT_STARTED
+  handoff_status: DESIGNER_REVISION_REQUIRED
   authority_status: PROPOSED_NOT_RATIFIED
+  owner_decisions_required: []
+  repository_inspection: NOT_PERFORMED
+  scenario_work: CONSTITUTIONAL_THOUGHT_EXPERIMENTS_NOT_EXECUTABLE_TEST_EVIDENCE
+  executable_enforcement_evidence: NONE
+  seven_clause_architecture: MAY_BE_PRESERVED
+  ready_for_enforcement_engineering: false
   limitations:
-    - No execution, findings package, independent evaluation, or result exists.
+    - No repository inspection was performed during the isolated adversarial analysis.
+    - Scenario work consists of constitutional thought experiments, not executable test evidence.
+    - No executable enforcement evidence exists and no enforcement design or implementation occurred.
+    - Exact model identity, reasoning setting, start time, completion time, interaction count, and token counts are not independently recorded.
 
 human_interventions:
   decisions: []
@@ -43,7 +67,18 @@ provenance:
     - governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/03-kernel-adversary-prompt-sol-high-v0.1.md
     - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1.zip
     - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/
-  reconstructed: true
-  notes:
-    - This manifest registers a planned run only.
-    - Input and prompt copies are byte-exact; no normalization was performed.
+    - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip
+    - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/
+  artifact_custody:
+    status: EXACT_BYTE_CUSTODY
+    supplied_archive_path: /home/sugar/Downloads/hugeplanning-kernel-adversary-v0.1.zip
+    preserved_archive_path: governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip
+    archive_sha256: 5ed44a54bf3dad2dd905bc117c1f7690fbede1d263143f713755c1970fbbdbb3
+    extracted_members_byte_exact: true
+    run_outputs_byte_exact: true
+  post_run_metadata:
+    status: RECONSTRUCTED_FROM_SUPPLIED_ARTIFACTS
+    reconstructed: true
+    notes:
+      - Completion date, platform, result, authority boundary, and limitations are recorded from supplied artifact metadata and the final handoff.
+      - Exact artifact custody is not reconstructed; it is verified byte-for-byte against the supplied archive.
