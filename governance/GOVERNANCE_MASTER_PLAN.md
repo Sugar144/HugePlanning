@@ -6,10 +6,10 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 
 | Phase | Status |
 |---|---|
-| GOV-0 Repository and history bootstrap | `READY_FOR_HUMAN_REVIEW` |
+| GOV-0 Repository and history bootstrap | `COMPLETED` |
 | GOV-1 Kernel intake | `COMPLETED` — imported/reconstructed |
 | GOV-2 Kernel design | `COMPLETED` — imported/reconstructed |
-| GOV-3 Independent adversarial review | `READY_TO_START` after GOV-0 human review |
+| GOV-3 Independent adversarial review | `READY_TO_START` |
 | GOV-4 Designer revision and adversarial closure | `PLANNED` |
 | GOV-5 Enforcement analysis and derived governance requirements | `PLANNED` |
 | GOV-6 Human ratification | `PLANNED` |
@@ -26,8 +26,8 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: Governance Repository Bootstrap Organizer; human owner reviews the result.
 - Entry conditions: correct branch/worktree; no tracked changes outside allowed scope; core Intake and Designer packages present.
 - Completion gate: deterministic validation passes, only `governance/**` is committed, and the temporary override is absent.
-- Current status: `READY_FOR_HUMAN_REVIEW`.
-- Execution history: GOV-0 was `IN_PROGRESS` while the bootstrap execution assembled and validated the repository artifacts. Commit `71d2663fcef5c2cb05ef29f3bfe03e315fec5966` moved the repository handoff to `READY_FOR_HUMAN_REVIEW`; human review and acceptance remain pending.
+- Current status: `COMPLETED`.
+- Execution history: GOV-0 was `IN_PROGRESS` while the bootstrap execution assembled and validated the repository artifacts. Commit `71d2663fcef5c2cb05ef29f3bfe03e315fec5966` moved the repository handoff to `READY_FOR_HUMAN_REVIEW`. The Project Owner reviewed and accepted bootstrap head `4dfe8e8fb2fc4f5a6b1e857c64112886789242d8`; PR #3 was merged into `main` as merge commit `538523eed50a0f36fd51b99c3701e354ebd85146`. This acceptance completes GOV-0 but does not ratify the proposed Kernel.
 - Dependencies: repository base commit `3246b6849d370c8098ce53caa28fa6dd3c34846d`; supplied source packages.
 - Explicit non-goals: Kernel design or reinterpretation, Adversary execution, enforcement, policy, ratification, runtime changes, or S1 audit.
 
@@ -63,7 +63,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: independent Kernel Adversary; owner resolves genuine constitutional choices.
 - Entry conditions: GOV-0 human review complete; Designer package unchanged and still proposed.
 - Completion gate: a complete, registered findings package with honest result and limitations.
-- Current status: `READY_TO_START` after GOV-0 review; KGR-003 itself is `NOT_STARTED`.
+- Current status: `READY_TO_START`; GOV-0 review is complete and KGR-003 itself remains `NOT_STARTED`.
 - Dependencies: GOV-0 and GOV-2.
 - Explicit non-goals: defending the design, silently rewriting clauses, enforcement design, repository modification, or ratification.
 
