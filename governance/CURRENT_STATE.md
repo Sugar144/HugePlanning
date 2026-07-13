@@ -8,10 +8,12 @@
 | GOV-3 status | `COMPLETED` |
 | GOV-3 result | `DESIGNER_REVISION_REQUIRED` |
 | KGR-003 status | `COMPLETED` |
-| Next exact execution | Return the KGR-003 package to the Kernel Designer for revision, then perform a targeted adversarial closure review before Enforcement Engineering. |
+| KGR-004 status | `NOT_STARTED`; execution contract and formal inputs are `READY_FOR_EXECUTION` |
+| KGR-004 mode | `ADVERSARIAL_REVISION` under protocol `0.1.0` |
+| Next exact execution | Execute the versioned KGR-004 ADVERSARIAL_REVISION protocol with the formal baseline and KGR-003 review package. |
 | Kernel status | `PROPOSED_NOT_RATIFIED` |
 | Adversary status | KGR-003 `COMPLETED`; targeted closure review remains required after Designer revision |
-| GOV-4 status | `READY_TO_START`; substantive revision has not begun |
+| GOV-4 status | `READY_TO_START`; KGR-004 is prepared but substantive revision has not begun |
 | GOV-5 status | `PLANNED`; not ready to start |
 | Enforcement Engineering gate | `CLOSED` pending Designer revision and targeted adversarial closure |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED`; no executable enforcement evidence exists |
@@ -20,7 +22,13 @@
 | Architecture disposition | The seven-clause architecture may be preserved; the existing clauses require material revision |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
 | Known blockers | No owner decision blocks revision; the unresolved CRITICAL and HIGH findings block Enforcement Engineering |
-| Exact next action | Return the KGR-003 package to the Kernel Designer for revision, then perform a targeted adversarial closure review before Enforcement Engineering. |
+| Exact next action | Execute the versioned KGR-004 ADVERSARIAL_REVISION protocol with the formal baseline and KGR-003 review package. |
+
+## GOV-4 preparation
+
+KGR-004 now has an independently versioned `ADVERSARIAL_REVISION` protocol, an exact run prompt snapshot, a machine-readable input envelope, and 14 byte-identical input aliases: seven KGR-002 baseline artifacts plus seven KGR-003 review artifacts. Decision `GOV-DEC-013` records that `INITIAL_DESIGN` and `ADVERSARIAL_REVISION` are distinct formal workflows and that chat continuity is not durable provenance.
+
+Preparation is not execution. KGR-004 remains `NOT_STARTED`, no KGR-004 Designer output exists, the v0.1 proposal is unchanged, and targeted adversarial closure remains a later independent step within GOV-4.
 
 ## GOV-3 completion
 
@@ -32,7 +40,7 @@ This review outcome completes GOV-3 and opens GOV-4 for Designer revision. It is
 
 The Project Owner reviewed and accepted the GOV-0 bootstrap at head `4dfe8e8fb2fc4f5a6b1e857c64112886789242d8`. PR #3 was merged into `main` as merge commit `538523eed50a0f36fd51b99c3701e354ebd85146`.
 
-Decision `GOV-DEC-012` remains the single record of GOV-0 acceptance and GOV-3 readiness. KGR-003 produced no new owner decision, so no additional decision-log entry is warranted.
+Decision `GOV-DEC-012` remains the record of GOV-0 acceptance and GOV-3 readiness. KGR-003 produced no constitutional owner decision. Decision `GOV-DEC-013` is a later governance-process decision about versioned Designer modes and formal revision provenance; it does not alter the Kernel.
 
 ## Boundary
 

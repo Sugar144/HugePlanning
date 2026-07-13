@@ -70,14 +70,14 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 ## GOV-4 — Designer revision and adversarial closure
 
 - Purpose: address adversarial findings and establish whether constitutional design is ready for enforcement analysis.
-- Authoritative inputs: proposed Kernel, KGR-003 findings, and explicit owner decisions.
-- Required outputs: traceable revisions, disposition of each finding, updated proposal/package, and closure recommendation.
+- Authoritative inputs: the KGR-004 input envelope, seven byte-identical KGR-002 baseline artifacts, seven byte-identical KGR-003 review artifacts, the versioned `ADVERSARIAL_REVISION` protocol, and any explicit owner decisions recorded during execution.
+- Required outputs: eight KGR-004 artifacts comprising a complete proposed v0.2 package, disposition of every KGR-003 finding, updated routing and open items, and a targeted-closure handoff; followed by independent targeted adversarial closure.
 - Role/owner: Kernel Designer and independent Adversary; Ratification Owner decides reserved questions.
 - Entry conditions: GOV-3 completed with actionable findings.
-- Completion gate: no unresolved finding that blocks enforcement analysis; all semantic changes trace to findings or owner decisions.
-- Current status: `READY_TO_START`; no owner decision blocks revision. Exact next action: Return the KGR-003 package to the Kernel Designer for revision, then perform a targeted adversarial closure review before Enforcement Engineering.
+- Completion gate: no unresolved finding that blocks enforcement analysis; all semantic changes trace to findings, owner decisions, verified source corrections, or documented regression prevention.
+- Current status: `READY_TO_START`; KGR-004 is `NOT_STARTED` and its execution contract and formal input package are `READY_FOR_EXECUTION`. No owner decision blocks revision. Exact next action: Execute the versioned KGR-004 ADVERSARIAL_REVISION protocol with the formal baseline and KGR-003 review package.
 - Dependencies: GOV-3.
-- Explicit non-goals: ratification by revision, silent finding dismissal, full policy suite, or runtime implementation.
+- Explicit non-goals: repeating Intake, ratification by revision, silent finding dismissal, Designer self-closure, Enforcement Engineering before targeted closure, a full policy suite, or runtime implementation.
 
 ## GOV-5 — Enforcement analysis and derived governance requirements
 

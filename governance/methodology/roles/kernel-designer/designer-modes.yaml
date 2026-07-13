@@ -1,0 +1,32 @@
+role:
+  id: kernel-designer
+  name: Kernel Designer
+
+modes:
+  - id: INITIAL_DESIGN
+    input_type: KERNEL_INTAKE_PACKAGE
+    workflow: KD-D0_TO_KD-D4
+    status: HISTORICAL_EXECUTED_PROTOCOL
+    historical_prompt:
+      path: governance/runs/KGR-002-kernel-designer/prompt/02-kernel-designer-prompt-sol-high-v0.1.md
+      executed_by:
+        - KGR-002
+    notes:
+      - The historical prompt remains immutable.
+      - It is not rewritten into the new methodology structure.
+
+  - id: ADVERSARIAL_REVISION
+    input_type: KERNEL_ADVERSARY_PACKAGE
+    workflow: KD-R0_TO_KD-R5
+    status: READY_FOR_EXECUTION
+    protocol_version: 0.1.0
+    canonical_protocol:
+      path: governance/methodology/roles/kernel-designer/protocols/adversarial-revision/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
+    intended_run:
+      - KGR-004
+
+  - id: CLOSURE_REMEDIATION
+    status: PLANNED_NOT_INSTANTIATED
+
+  - id: KERNEL_AMENDMENT
+    status: PLANNED_NOT_INSTANTIATED

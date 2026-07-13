@@ -121,3 +121,13 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Source: Project Owner post-merge state-transition instruction; PR #3 and merge commit `538523eed50a0f36fd51b99c3701e354ebd85146`.
 - Consequences: GOV-0, GOV-1, and GOV-2 are `COMPLETED`; GOV-3 may begin only through a separate execution of the recorded KGR-003 prompt and seven unchanged inputs. This acceptance is not Kernel ratification, does not start human ratification, and does not design or implement enforcement.
 - Supersedes: none
+
+## GOV-DEC-013 — Versioned Kernel Designer input modes and revision provenance
+
+- Date: 2026-07-14
+- Status: ACTIVE
+- Statement: Kernel Designer executions must select an explicit input mode: a Kernel Intake package starts `INITIAL_DESIGN`, while a Kernel Adversary package starts `ADVERSARIAL_REVISION`. The workflow must be selected by formal run inputs rather than inferred from informal chat context.
+- Rationale: Initial design and adversarial revision have materially different inputs, responsibilities, gates, and outputs. Durable, inspectable provenance requires each workflow to have its own versioned protocol and formal package identity; chat memory alone is insufficient.
+- Source: Project Owner KGR-004 preparation instruction dated 2026-07-14.
+- Consequences: Each materially different Designer workflow receives an independently versioned protocol. Historical executed prompts remain immutable. A new loop preserves the earlier run and its contract, creates a new run record, and records all formal inputs without overwriting or retroactively modifying prior execution history. KGR-004 therefore uses `ADVERSARIAL_REVISION` and preserves the exact KGR-002 prompt and proposal. This is a governance-process and provenance decision, not Kernel ratification, constitutional authority, independent validation, Enforcement Engineering authorization, or adoption.
+- Supersedes: none

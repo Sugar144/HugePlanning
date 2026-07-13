@@ -1,0 +1,122 @@
+run:
+  id: KGR-004
+  role: Kernel Designer
+  mode: ADVERSARIAL_REVISION
+  status: NOT_STARTED
+  preparation_status: READY_FOR_EXECUTION
+  phase: GOV-4
+  started_at: null
+  completed_at: null
+
+execution:
+  platform:
+    intended: ChatGPT
+    actual: NOT_EXECUTED
+  model:
+    intended: Sol
+    actual: NOT_EXECUTED
+  reasoning_mode:
+    intended: High
+    actual: NOT_EXECUTED
+  prompt:
+    id: GOV-PROMPT-006
+    version: 0.1.0
+    protocol_id: GOV-PROTOCOL-001
+    canonical_path: governance/methodology/roles/kernel-designer/protocols/adversarial-revision/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
+    path: governance/runs/KGR-004-kernel-designer-revision/prompt/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
+    sha256: 19049554b9caaf98badef7d823fdefdee7afb49b8fcfab727cfe83230b205c61
+    snapshot_matches_canonical: true
+  execution_evidence: NONE
+  historical_designer_chat_resumption: NOT_CLAIMED
+
+inputs:
+  envelope:
+    id: KGR-004-INPUT
+    path: governance/runs/KGR-004-kernel-designer-revision/input-envelope.yaml
+    sha256: d6f4ff2d5d5cbc222a5573052dd5cae64cabecfd8845f9476aa0a392b79e3a82
+  baseline_run: KGR-002
+  adversarial_run: KGR-003
+  custody: BYTE_IDENTICAL_ALIASES_NOT_NEW_AUTHORITATIVE_ARTIFACTS
+  artifacts:
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/00-kernel-design-basis.md
+      source_path: governance/runs/KGR-002-kernel-designer/outputs/00-kernel-design-basis.md
+      sha256: 25e24014e12cbb9799ba34cab45b6995a47e54f1dd5544551f5c3b3ae59beda6
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/01-kernel-admission-analysis.md
+      source_path: governance/runs/KGR-002-kernel-designer/outputs/01-kernel-admission-analysis.md
+      sha256: 669d2012da1f0e7a8de221b02c0b0aabf7d48aba52840f263f8118aaf0aaa271
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/02-kernel-v0.1-draft.md
+      source_path: governance/runs/KGR-002-kernel-designer/outputs/02-kernel-v0.1-draft.md
+      sha256: cbd1bce2edb9a369b9de3f6b2466709d9c00c2952c69030424cca3f73ecb463d
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/03-kernel-clauses.yaml
+      source_path: governance/runs/KGR-002-kernel-designer/outputs/03-kernel-clauses.yaml
+      sha256: bcf5816162396ff4a99d3a42d20c1705ec2c80fe2dcd55976c9c31e2acdd053a
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/04-designer-open-questions.md
+      source_path: governance/runs/KGR-002-kernel-designer/outputs/04-designer-open-questions.md
+      sha256: 668f91b8145b4a186d2844f922b79e7bea42efd1ea387240d6862693a626b414
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/05-lower-layer-routing.md
+      source_path: governance/runs/KGR-002-kernel-designer/outputs/05-lower-layer-routing.md
+      sha256: 2278109a40f431b0883642aecd5b216072e03b6cd85d5f917a1b589ad243bd4d
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/06-kernel-adversary-handoff.md
+      source_path: governance/runs/KGR-002-kernel-designer/outputs/06-kernel-adversary-handoff.md
+      sha256: 046137abc39532d01063765b1e39e547054ebe750fd12f84e8226eb5c1bc8a13
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/00-adversarial-review-basis.md
+      source_path: governance/runs/KGR-003-kernel-adversary/outputs/00-adversarial-review-basis.md
+      sha256: 5085b382ad6b7b33567ff07b049af447b6888dcaa69cf69bdfcb9140dbeeef9d
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/01-adversarial-findings.md
+      source_path: governance/runs/KGR-003-kernel-adversary/outputs/01-adversarial-findings.md
+      sha256: 6bce1ec9d22ad68441980da2e22549787f0693c7fbee151978bc74129c64134b
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/02-adversarial-scenarios.md
+      source_path: governance/runs/KGR-003-kernel-adversary/outputs/02-adversarial-scenarios.md
+      sha256: 29fec90c532423a2579ed810b618b65141feb73ef276660c4c59b9bb4ef6de1c
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/03-revision-directives.md
+      source_path: governance/runs/KGR-003-kernel-adversary/outputs/03-revision-directives.md
+      sha256: 2cdbf4196a95112654f64606c0d52a68f6a3b7db5ee0219d48eaac20aee29669
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/04-owner-decision-register.md
+      source_path: governance/runs/KGR-003-kernel-adversary/outputs/04-owner-decision-register.md
+      sha256: e8333eca71a0a6a5a2560c27ce3e45e7e8df5fda9a5516173a1cd1c8c2a1bbb3
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/05-enforcement-concerns.md
+      source_path: governance/runs/KGR-003-kernel-adversary/outputs/05-enforcement-concerns.md
+      sha256: d663f7228f259e126fdfb659152972b857e0fbcf314d0f490e71c8e66cad005c
+    - path: governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/06-adversarial-summary-and-handoff.md
+      source_path: governance/runs/KGR-003-kernel-adversary/outputs/06-adversarial-summary-and-handoff.md
+      sha256: d4917152a39d878f20b84d0885dbf1bf10045615a0eb1c210f6e6bd6677fa495
+
+target:
+  expected_kernel_version: 0.2.0-proposed
+  expected_next_gate: TARGETED_ADVERSARIAL_CLOSURE
+  kernel_status: PROPOSED_NOT_RATIFIED
+  enforcement_gate: CLOSED
+  human_ratification: NOT_STARTED
+
+outputs:
+  status: ABSENT_NOT_EXECUTED
+  artifacts: []
+  expected:
+    - governance/runs/KGR-004-kernel-designer-revision/outputs/00-kernel-design-basis-v0.2.md
+    - governance/runs/KGR-004-kernel-designer-revision/outputs/01-kernel-admission-analysis-v0.2.md
+    - governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md
+    - governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml
+    - governance/runs/KGR-004-kernel-designer-revision/outputs/04-designer-open-questions-v0.2.md
+    - governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md
+    - governance/runs/KGR-004-kernel-designer-revision/outputs/06-targeted-adversarial-closure-handoff.md
+    - governance/runs/KGR-004-kernel-designer-revision/outputs/07-finding-disposition-register.yaml
+
+result:
+  status: NOT_AVAILABLE_NOT_EXECUTED
+  handoff_status: null
+  authority_status: PROPOSED_NOT_RATIFIED
+
+human_interventions:
+  during_kgr_004: NONE
+  decisions: []
+  corrections: []
+
+provenance:
+  preparation_decision: GOV-DEC-013
+  formal_inputs_complete: true
+  execution_started: false
+  notes:
+    - Contract preparation is not Designer execution evidence.
+    - No claim is made that the historical Designer chat has resumed.
+    - The 14 run inputs are byte-identical aliases of existing KGR-002 and KGR-003 artifacts and do not receive new authoritative artifact identities.
+    - The prompt snapshot is byte-identical to the canonical protocol at preparation time.

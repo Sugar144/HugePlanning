@@ -1,6 +1,6 @@
 registry:
-  version: '0.2'
-  generated_for: GOV-3_COMPLETION
+  version: '0.3'
+  generated_for: GOV-4_KGR-004_PREPARATION
   base_commit: 3246b6849d370c8098ce53caa28fa6dd3c34846d
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
@@ -185,6 +185,78 @@ artifacts:
       - governance/sources/raw/packages/hugeplanning-governance-codex-bootstrap-v0.2/hugeplanning-governance-bootstrap-codex-prompt-v0.2.md
     notes:
       - Standalone source and ZIP member are byte-identical.
+
+  - id: GOV-PROMPT-006
+    title: KGR-004 Kernel Designer Adversarial Revision Prompt Snapshot
+    version: 0.1.0
+    status: READY_FOR_EXECUTION
+    authority: planned_execution_contract_not_execution_evidence
+    path: governance/runs/KGR-004-kernel-designer-revision/prompt/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
+    source_path: governance/methodology/roles/kernel-designer/protocols/adversarial-revision/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
+    source_sha256: 19049554b9caaf98badef7d823fdefdee7afb49b8fcfab727cfe83230b205c61
+    produced_by: GOV-4_PREPARATION
+    artifact_type: run_prompt_snapshot
+    language: English
+    canonicality: exact_run_snapshot
+    supersedes: null
+    aliases: []
+    notes:
+      - Byte-identical to GOV-PROTOCOL-001 at preparation time.
+      - Prompt existence is not KGR-004 execution evidence and does not replace the historical KGR-002 prompt.
+
+  - id: GOV-METHOD-001
+    title: Kernel Designer Mode Registry
+    version: 0.1.0
+    status: ACTIVE_FOR_FUTURE_EXECUTIONS
+    authority: governance_methodology_not_execution_evidence
+    path: governance/methodology/roles/kernel-designer/designer-modes.yaml
+    source_path: null
+    source_sha256: c0d1ff187fb94dbbc13be53ec39e2f73a706e5808c6433912014d5fa2c6c4c45
+    produced_by: GOV-4_PREPARATION
+    artifact_type: role_mode_registry
+    language: English
+    canonicality: canonical_methodology
+    supersedes: null
+    aliases: []
+    notes:
+      - Distinguishes INITIAL_DESIGN from ADVERSARIAL_REVISION without rewriting historical contracts.
+      - Planned modes have no instantiated protocol.
+
+  - id: GOV-PROTOCOL-001
+    title: Kernel Designer Adversarial Revision Protocol
+    version: 0.1.0
+    status: READY_FOR_EXECUTION
+    authority: reusable_execution_protocol_not_execution_evidence
+    path: governance/methodology/roles/kernel-designer/protocols/adversarial-revision/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
+    source_path: null
+    source_sha256: 19049554b9caaf98badef7d823fdefdee7afb49b8fcfab727cfe83230b205c61
+    produced_by: GOV-4_PREPARATION
+    artifact_type: role_execution_protocol
+    language: English
+    canonicality: canonical_methodology
+    supersedes: null
+    aliases: []
+    notes:
+      - Defines the KD-R0 through KD-R5 ADVERSARIAL_REVISION workflow.
+      - It does not supersede or modify GOV-PROMPT-002.
+
+  - id: GOV-INPUT-001
+    title: KGR-004 Adversarial Revision Input Envelope
+    version: 0.1.0
+    status: READY_FOR_EXECUTION
+    authority: formal_run_input_routing_and_provenance_record
+    path: governance/runs/KGR-004-kernel-designer-revision/input-envelope.yaml
+    source_path: null
+    source_sha256: d6f4ff2d5d5cbc222a5573052dd5cae64cabecfd8845f9476aa0a392b79e3a82
+    produced_by: GOV-4_PREPARATION
+    artifact_type: input_envelope
+    language: English
+    canonicality: exact_run_input
+    supersedes: null
+    aliases: []
+    notes:
+      - Routes KGR-004 to ADVERSARIAL_REVISION and records hashes for 14 existing-artifact aliases.
+      - It does not grant new authority to the baseline or adversarial-review artifacts.
 
   - id: GOV-SUP-001
     title: Governance Role Prompts Index
@@ -506,6 +578,7 @@ artifacts:
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/00-kernel-design-basis.md
       - governance/runs/KGR-003-kernel-adversary/inputs/00-kernel-design-basis.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/00-kernel-design-basis.md
     notes:
       - Exact copies; no normalization.
 
@@ -525,6 +598,7 @@ artifacts:
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/01-kernel-admission-analysis.md
       - governance/runs/KGR-003-kernel-adversary/inputs/01-kernel-admission-analysis.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/01-kernel-admission-analysis.md
     notes:
       - Exact copies; no normalization.
 
@@ -545,6 +619,7 @@ artifacts:
       - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/02-kernel-v0.1-draft.md
       - governance/runs/KGR-002-kernel-designer/outputs/02-kernel-v0.1-draft.md
       - governance/runs/KGR-003-kernel-adversary/inputs/02-kernel-v0.1-draft.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/02-kernel-v0.1-draft.md
     notes:
       - Exact copy; no normalization, adversarial validation, enforcement, or ratification.
 
@@ -565,6 +640,7 @@ artifacts:
       - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/03-kernel-clauses.yaml
       - governance/runs/KGR-002-kernel-designer/outputs/03-kernel-clauses.yaml
       - governance/runs/KGR-003-kernel-adversary/inputs/03-kernel-clauses.yaml
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/03-kernel-clauses.yaml
     notes:
       - Uses the kernel ID defined inside the source; exact copy with ratified, enforceable, and operational all false.
 
@@ -584,6 +660,7 @@ artifacts:
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/04-designer-open-questions.md
       - governance/runs/KGR-003-kernel-adversary/inputs/04-designer-open-questions.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/04-designer-open-questions.md
     notes: []
 
   - id: KD-05
@@ -602,6 +679,7 @@ artifacts:
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/05-lower-layer-routing.md
       - governance/runs/KGR-003-kernel-adversary/inputs/05-lower-layer-routing.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/05-lower-layer-routing.md
     notes:
       - Routing does not authorize implementation or imply mechanisms exist.
 
@@ -621,6 +699,7 @@ artifacts:
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/06-kernel-adversary-handoff.md
       - governance/runs/KGR-003-kernel-adversary/inputs/06-kernel-adversary-handoff.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/baseline/06-kernel-adversary-handoff.md
     notes:
       - Handoff readiness is not an Adversary result.
 
@@ -639,6 +718,7 @@ artifacts:
     supersedes: null
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/00-adversarial-review-basis.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/00-adversarial-review-basis.md
     notes:
       - Exact byte copy; records the analysis basis and limitations, including that repository inspection was not performed.
 
@@ -657,6 +737,7 @@ artifacts:
     supersedes: null
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/01-adversarial-findings.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/01-adversarial-findings.md
     notes:
       - Exact byte copy; registers 1 CRITICAL, 7 HIGH, 5 MEDIUM, 1 LOW, and 1 OBSERVATION finding.
       - Findings are an independent review result, not a human constitutional decision.
@@ -676,6 +757,7 @@ artifacts:
     supersedes: null
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/02-adversarial-scenarios.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/02-adversarial-scenarios.md
     notes:
       - Exact byte copy; scenarios are constitutional thought experiments, not executable test evidence.
 
@@ -694,6 +776,7 @@ artifacts:
     supersedes: null
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/03-revision-directives.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/03-revision-directives.md
     notes:
       - Exact byte copy; directives route work to the Designer but do not themselves revise the proposed Kernel.
 
@@ -712,6 +795,7 @@ artifacts:
     supersedes: null
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/04-owner-decision-register.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/04-owner-decision-register.md
     notes:
       - Exact byte copy; the register contains no owner decision required now and is not itself a human decision.
 
@@ -730,6 +814,7 @@ artifacts:
     supersedes: null
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/05-enforcement-concerns.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/05-enforcement-concerns.md
     notes:
       - Exact byte copy; concerns do not constitute enforcement design, implementation, or executable evidence.
 
@@ -748,6 +833,7 @@ artifacts:
     supersedes: null
     aliases:
       - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/06-adversarial-summary-and-handoff.md
+      - governance/runs/KGR-004-kernel-designer-revision/inputs/adversarial-review/06-adversarial-summary-and-handoff.md
     notes:
       - Exact byte copy; returns the package to the Designer and keeps the Enforcement Engineering gate closed.
       - The seven-clause architecture may be preserved, but existing clauses require material revision and targeted closure review.
@@ -803,3 +889,21 @@ artifacts:
     notes:
       - Registers exact artifact custody and reconstructed post-run metadata separately.
       - Result is DESIGNER_REVISION_REQUIRED; no owner decision is currently required and the Kernel remains PROPOSED_NOT_RATIFIED.
+
+  - id: KGR-004
+    title: Kernel Designer Adversarial Revision Run Manifest
+    version: 0.1.0
+    status: NOT_STARTED
+    authority: prepared_run_record_not_execution_evidence
+    path: governance/runs/KGR-004-kernel-designer-revision/run-manifest.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: GOV-4_PREPARATION
+    artifact_type: run_manifest
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes:
+      - Execution contract and formal inputs are READY_FOR_EXECUTION; the Designer has not run.
+      - No KGR-004 outputs, execution evidence, ratification, targeted closure, or Enforcement Engineering exist.

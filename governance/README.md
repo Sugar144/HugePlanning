@@ -1,6 +1,6 @@
 # HugePlanning Governance
 
-This area preserves and organizes the governance-kernel history for HugePlanning. It contains immutable raw sources, reconstructed run records, candidate normative artifacts, provenance controls, and governance-specific adoption planning.
+This area preserves and organizes the governance-kernel history for HugePlanning. It contains immutable raw sources, reusable governance methodology, reconstructed and prepared run records, candidate normative artifacts, provenance controls, and governance-specific adoption planning.
 
 Start with:
 
@@ -8,12 +8,15 @@ Start with:
 2. `GOVERNANCE_MASTER_PLAN.md` for phase gates and dependencies.
 3. The applicable `runs/*/run-manifest.yaml`.
 4. `ARTIFACT_REGISTRY.yaml` and `SOURCE_CHECKSUMS.sha256` for provenance.
+5. `methodology/` for current reusable role and protocol contracts.
 
 ## Authority and status
 
 Raw sources show what was received. Run directories reconstruct what a function used and produced. Canonical candidates provide stable review paths without increasing authority. A prompt is an execution contract, not proof that execution occurred. A proposed artifact is not ratified merely because it is complete or reviewable.
 
-The current Kernel is `PROPOSED_NOT_RATIFIED`. KGR-001 Intake, KGR-002 Designer, and KGR-003 Adversary are recorded as completed from supplied evidence. KGR-003 returned `DESIGNER_REVISION_REQUIRED`; GOV-4 Designer revision and targeted adversarial closure is `READY_TO_START`, while Enforcement Engineering remains gated. No policy package, enforcement system, ratification record, or operational governance system exists yet.
+The current Kernel is `PROPOSED_NOT_RATIFIED`. KGR-001 Intake, KGR-002 Designer, and KGR-003 Adversary are recorded as completed from supplied evidence. KGR-003 returned `DESIGNER_REVISION_REQUIRED`; GOV-4 Designer revision and targeted adversarial closure is `READY_TO_START`. KGR-004 is `NOT_STARTED` with its versioned `ADVERSARIAL_REVISION` protocol and formal input package `READY_FOR_EXECUTION`. Enforcement Engineering remains gated. No KGR-004 output, policy package, enforcement system, ratification record, or operational governance system exists yet.
+
+Methodology describes how governance work is performed; `runs/` records actual executions and honest non-executed preparation. A methodology artifact or prompt is not execution evidence. Every run preserves the exact contract and formal inputs it uses. Historical prompts remain in their original run records and are not silently replaced by current methodology.
 
 ## Relationship to the repository
 
@@ -24,6 +27,7 @@ Governance has not been projected into runtime. Runtime or planning changes requ
 ## Content classes
 
 - `sources/raw/`: byte-exact, checksum-protected imports; never edit in place.
+- `methodology/`: reusable role boundaries, mode registries, versioned protocols, rubrics, and interaction methods; not execution evidence.
 - `runs/`: prompts, inputs, outputs, and honest execution manifests.
 - `kernel/proposed/`: stable candidate copies for review; no ratified authority.
 - top-level controls: current state, registry, decisions, roadmap, import record, and future adoption traceability.
