@@ -111,3 +111,13 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Source: KIP-07 §11 and §13; GOV-0 execution contract §11.
 - Consequences: GOV-9 depends on GOV-6 through GOV-8 and does not authorize S2 now.
 - Supersedes: none
+
+## GOV-DEC-012 — GOV-0 acceptance and GOV-3 readiness
+
+- Date: 2026-07-14
+- Status: ACTIVE
+- Statement: The Project Owner accepts the reviewed GOV-0 repository bootstrap, completing GOV-0 and making GOV-3 `READY_TO_START` while KGR-003 remains `NOT_STARTED`.
+- Rationale: GOV-0 bootstrap head `4dfe8e8fb2fc4f5a6b1e857c64112886789242d8` completed human review and was merged through PR #3 into `main` as merge commit `538523eed50a0f36fd51b99c3701e354ebd85146`.
+- Source: Project Owner post-merge state-transition instruction; PR #3 and merge commit `538523eed50a0f36fd51b99c3701e354ebd85146`.
+- Consequences: GOV-0, GOV-1, and GOV-2 are `COMPLETED`; GOV-3 may begin only through a separate execution of the recorded KGR-003 prompt and seven unchanged inputs. This acceptance is not Kernel ratification, does not start human ratification, and does not design or implement enforcement.
+- Supersedes: none

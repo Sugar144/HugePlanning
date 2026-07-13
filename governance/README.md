@@ -13,7 +13,7 @@ Start with:
 
 Raw sources show what was received. Run directories reconstruct what a function used and produced. Canonical candidates provide stable review paths without increasing authority. A prompt is an execution contract, not proof that execution occurred. A proposed artifact is not ratified merely because it is complete or reviewable.
 
-The current Kernel is `PROPOSED_NOT_RATIFIED`. KGR-001 Intake and KGR-002 Designer are recorded as completed from supplied evidence. KGR-003 Adversary is `NOT_STARTED`. No policy package, enforcement system, ratification record, or operational governance system exists yet.
+The current Kernel is `PROPOSED_NOT_RATIFIED`. KGR-001 Intake, KGR-002 Designer, and KGR-003 Adversary are recorded as completed from supplied evidence. KGR-003 returned `DESIGNER_REVISION_REQUIRED`; GOV-4 Designer revision and targeted adversarial closure is `READY_TO_START`, while Enforcement Engineering remains gated. No policy package, enforcement system, ratification record, or operational governance system exists yet.
 
 ## Relationship to the repository
 

@@ -1,6 +1,6 @@
 registry:
-  version: '0.1'
-  generated_for: GOV-0
+  version: '0.2'
+  generated_for: GOV-3_COMPLETION
   base_commit: 3246b6849d370c8098ce53caa28fa6dd3c34846d
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
@@ -78,6 +78,25 @@ artifacts:
       - governance/sources/raw/packages/hugeplanning-kernel-designer-package-v0.1/
     notes:
       - ZIP and seven extracted artifacts match byte-for-byte.
+
+  - id: GOV-PKG-005
+    title: HugePlanning Kernel Adversary Package
+    version: '0.1'
+    status: DESIGNER_REVISION_REQUIRED
+    authority: independent_review_output_not_constitutional_authority
+    path: governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip
+    source_path: /home/sugar/Downloads/hugeplanning-kernel-adversary-v0.1.zip
+    source_sha256: 5ed44a54bf3dad2dd905bc117c1f7690fbede1d263143f713755c1970fbbdbb3
+    produced_by: KGR-003
+    artifact_type: raw_package
+    language: English
+    canonicality: raw_source
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/
+    notes:
+      - ZIP and eight extracted members match byte-for-byte; seven members are exact run outputs and MANIFEST.txt is supporting package metadata.
+      - The review outcome has no constitutional authority and does not ratify or revise the proposed Kernel.
 
   - id: GOV-PROMPT-001
     title: Kernel Intake Interviewer Canonical Prompt
@@ -605,6 +624,134 @@ artifacts:
     notes:
       - Handoff readiness is not an Adversary result.
 
+  - id: KA-00
+    title: HugePlanning Adversarial Review Basis
+    version: 0.1.0-adversarial
+    status: READY_FOR_ADVERSARIAL_ANALYSIS
+    authority: supporting_adversarial_analysis_not_constitutional_authority
+    path: governance/runs/KGR-003-kernel-adversary/outputs/00-adversarial-review-basis.md
+    source_path: 'zip:governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip#hugeplanning-kernel-adversary-v0.1/00-adversarial-review-basis.md'
+    source_sha256: 5085b382ad6b7b33567ff07b049af447b6888dcaa69cf69bdfcb9140dbeeef9d
+    produced_by: KGR-003
+    artifact_type: adversarial_review_basis
+    language: English
+    canonicality: exact_run_output
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/00-adversarial-review-basis.md
+    notes:
+      - Exact byte copy; records the analysis basis and limitations, including that repository inspection was not performed.
+
+  - id: KA-01
+    title: HugePlanning Adversarial Findings
+    version: 0.1.0-adversarial
+    status: DESIGNER_REVISION_REQUIRED
+    authority: independent_review_output_not_constitutional_authority
+    path: governance/runs/KGR-003-kernel-adversary/outputs/01-adversarial-findings.md
+    source_path: 'zip:governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip#hugeplanning-kernel-adversary-v0.1/01-adversarial-findings.md'
+    source_sha256: 6bce1ec9d22ad68441980da2e22549787f0693c7fbee151978bc74129c64134b
+    produced_by: KGR-003
+    artifact_type: adversarial_findings
+    language: English
+    canonicality: exact_run_output
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/01-adversarial-findings.md
+    notes:
+      - Exact byte copy; registers 1 CRITICAL, 7 HIGH, 5 MEDIUM, 1 LOW, and 1 OBSERVATION finding.
+      - Findings are an independent review result, not a human constitutional decision.
+
+  - id: KA-02
+    title: HugePlanning Adversarial Scenarios
+    version: 0.1.0-adversarial
+    status: COMPLETE_FOR_DESIGNER_REVISION
+    authority: supporting_adversarial_analysis_not_constitutional_authority
+    path: governance/runs/KGR-003-kernel-adversary/outputs/02-adversarial-scenarios.md
+    source_path: 'zip:governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip#hugeplanning-kernel-adversary-v0.1/02-adversarial-scenarios.md'
+    source_sha256: 29fec90c532423a2579ed810b618b65141feb73ef276660c4c59b9bb4ef6de1c
+    produced_by: KGR-003
+    artifact_type: adversarial_scenarios
+    language: English
+    canonicality: exact_run_output
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/02-adversarial-scenarios.md
+    notes:
+      - Exact byte copy; scenarios are constitutional thought experiments, not executable test evidence.
+
+  - id: KA-03
+    title: HugePlanning Kernel Revision Directives
+    version: 0.1.0-adversarial
+    status: DESIGNER_REVISION_REQUIRED
+    authority: adversarial_recommendation_not_constitutional_authority
+    path: governance/runs/KGR-003-kernel-adversary/outputs/03-revision-directives.md
+    source_path: 'zip:governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip#hugeplanning-kernel-adversary-v0.1/03-revision-directives.md'
+    source_sha256: 2cdbf4196a95112654f64606c0d52a68f6a3b7db5ee0219d48eaac20aee29669
+    produced_by: KGR-003
+    artifact_type: revision_directives
+    language: English
+    canonicality: exact_run_output
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/03-revision-directives.md
+    notes:
+      - Exact byte copy; directives route work to the Designer but do not themselves revise the proposed Kernel.
+
+  - id: KA-04
+    title: HugePlanning Owner Decision Register
+    version: 0.1.0-adversarial
+    status: NO_OWNER_DECISION_REQUIRED
+    authority: review_routing_record_not_human_decision
+    path: governance/runs/KGR-003-kernel-adversary/outputs/04-owner-decision-register.md
+    source_path: 'zip:governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip#hugeplanning-kernel-adversary-v0.1/04-owner-decision-register.md'
+    source_sha256: e8333eca71a0a6a5a2560c27ce3e45e7e8df5fda9a5516173a1cd1c8c2a1bbb3
+    produced_by: KGR-003
+    artifact_type: owner_decision_register
+    language: English
+    canonicality: exact_run_output
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/04-owner-decision-register.md
+    notes:
+      - Exact byte copy; the register contains no owner decision required now and is not itself a human decision.
+
+  - id: KA-05
+    title: HugePlanning Enforcement Concerns
+    version: 0.1.0-adversarial
+    status: ROUTED_AFTER_DESIGNER_REVISION
+    authority: supporting_review_not_enforcement_design
+    path: governance/runs/KGR-003-kernel-adversary/outputs/05-enforcement-concerns.md
+    source_path: 'zip:governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip#hugeplanning-kernel-adversary-v0.1/05-enforcement-concerns.md'
+    source_sha256: d663f7228f259e126fdfb659152972b857e0fbcf314d0f490e71c8e66cad005c
+    produced_by: KGR-003
+    artifact_type: enforcement_concerns
+    language: English
+    canonicality: exact_run_output
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/05-enforcement-concerns.md
+    notes:
+      - Exact byte copy; concerns do not constitute enforcement design, implementation, or executable evidence.
+
+  - id: KA-06
+    title: HugePlanning Adversarial Summary and Handoff
+    version: 0.1.0-adversarial
+    status: DESIGNER_REVISION_REQUIRED
+    authority: independent_review_handoff_not_constitutional_authority
+    path: governance/runs/KGR-003-kernel-adversary/outputs/06-adversarial-summary-and-handoff.md
+    source_path: 'zip:governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1.zip#hugeplanning-kernel-adversary-v0.1/06-adversarial-summary-and-handoff.md'
+    source_sha256: d4917152a39d878f20b84d0885dbf1bf10045615a0eb1c210f6e6bd6677fa495
+    produced_by: KGR-003
+    artifact_type: adversarial_handoff
+    language: English
+    canonicality: exact_run_output
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/hugeplanning-kernel-adversary-v0.1/06-adversarial-summary-and-handoff.md
+    notes:
+      - Exact byte copy; returns the package to the Designer and keeps the Enforcement Engineering gate closed.
+      - The seven-clause architecture may be preserved, but existing clauses require material revision and targeted closure review.
+
   - id: KGR-001
     title: Kernel Intake Interviewer Run Manifest
     version: '0.1'
@@ -642,16 +789,17 @@ artifacts:
   - id: KGR-003
     title: Kernel Adversary Run Manifest
     version: '0.1'
-    status: NOT_STARTED
-    authority: planned_run_record
+    status: COMPLETED
+    authority: completed_run_record_not_constitutional_authority
     path: governance/runs/KGR-003-kernel-adversary/run-manifest.yaml
     source_path: null
     source_sha256: null
-    produced_by: GOV-0
+    produced_by: GOV-3
     artifact_type: run_manifest
     language: English
     canonicality: supporting
     supersedes: null
     aliases: []
     notes:
-      - No output or execution is claimed.
+      - Registers exact artifact custody and reconstructed post-run metadata separately.
+      - Result is DESIGNER_REVISION_REQUIRED; no owner decision is currently required and the Kernel remains PROPOSED_NOT_RATIFIED.

@@ -1,0 +1,7 @@
+00-adversarial-review-basis.md	5792 bytes
+01-adversarial-findings.md	46796 bytes
+02-adversarial-scenarios.md	17111 bytes
+03-revision-directives.md	11953 bytes
+04-owner-decision-register.md	2606 bytes
+05-enforcement-concerns.md	7059 bytes
+06-adversarial-summary-and-handoff.md	5113 bytes
