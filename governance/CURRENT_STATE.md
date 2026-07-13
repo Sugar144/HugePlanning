@@ -2,7 +2,7 @@
 
 | Question | Current answer |
 |---|---|
-| Current governance phase | GOV-0 complete locally and ready for human review |
+| Current governance phase | GOV-0 — `READY_FOR_HUMAN_REVIEW` |
 | Last completed governance function | KGR-002 Kernel Designer; imported and reconstructed, not independently validated |
 | Next exact execution | KGR-003 Kernel Adversary, after human review of GOV-0 |
 | Kernel status | `PROPOSED_NOT_RATIFIED` |
