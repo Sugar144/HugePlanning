@@ -84,11 +84,20 @@ def run(root):
 
 
 try:
+    prompt_root = repo / "governance/prompts"
+    authoritative_prompts = sorted(
+        path for path in prompt_root.rglob("*.md") if path.name != "README.md"
+    )
+    expected_prompt_count = len(authoritative_prompts)
     actual = subprocess.run(
         [sys.executable, "governance/tools/validate_prompts.py", "--root", str(repo)],
         cwd=repo, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
     )
-    check(actual.returncode == 0 and '"prompts":2' in actual.stdout, "1 repository prompt front matter and exact text", actual.stderr)
+    check(
+        actual.returncode == 0 and f'"prompts":{expected_prompt_count}' in actual.stdout,
+        "1 repository prompt front matter and exact authoritative inventory",
+        actual.stderr,
+    )
 
     duplicate = make_root("duplicate")
     write_record(duplicate)

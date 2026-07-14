@@ -39,9 +39,9 @@ Understanding or changing the method → `planning/README.md`, then
 ## Prerequisites
 
 - bash ≥ 4, git, Claude Code CLI (`claude`)
-- python3 with `pyyaml` and `jsonschema`
-  (Arch: `pacman -S python-yaml python-jsonschema`, or
-  `python3 -m pip install --user --break-system-packages pyyaml jsonschema`)
+- python3 with `pyyaml`, `jsonschema`, `pytest`, and `hypothesis`
+  (Arch: `pacman -S python-yaml python-jsonschema python-pytest python-hypothesis`, or
+  `python3 -m pip install --user --break-system-packages pyyaml jsonschema pytest hypothesis`)
 
 ## Create a client project
 

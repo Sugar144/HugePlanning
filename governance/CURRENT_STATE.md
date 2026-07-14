@@ -22,7 +22,7 @@
 | Owner decisions required | None |
 | Architecture disposition | KGR-004 preserves the seven-clause architecture with revised semantics; independent targeted closure is still required |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Instruction, learning, prompt-custody, and Controller-tooling foundation | Phases 1 and 2 plus the bounded Phase 2.0.1 prompt-custody recursion correction are locally implemented pending Project Owner review; Phase 2 is not operational and no real transition exists; five learning records are `CORRECTED`, not `VALIDATED` |
+| Instruction, learning, prompt-custody, and Controller-tooling foundation | Phases 1, 2, 2.0.1, and the Phase 2.1 Controller testing hardening are locally implemented pending Project Owner review; Controller tooling is not operational and no real transition exists; five learning records are `CORRECTED`, not `VALIDATED` |
 | Known blockers | No constitutional owner decision is currently required. KGR-005 execution has not yet been authorized or performed. |
 | Exact next action | Review the bounded Phase 2.0.1 publication-authorization recursion delta, then explicitly authorize commit and push if accepted; KGR-005 remains `NOT_STARTED` and any execution or real Controller transition requires separate authorization. |
 
@@ -43,6 +43,8 @@ The tools validate declared structure, package custody, identity, counters, guar
 Material prompt custody foundations are locally implemented pending Project Owner review. `HP-PROMPT-001` preserves the exact executed Phase 2 prompt and its original authorization boundary; `HP-FAIL-004-E001` records the interruption and recovery near miss. Custody is orchestration evidence, not execution proof, constitutional authority, ratification, or Enforcement Engineering authorization. The future testing proposal `HP-MPROP-001` is backlog-only and requires separate Phase 2.1 implementation authorization.
 
 The bounded Phase 2.0.1 correction defines `OWNER_PUBLICATION_AUTHORIZATION` as non-prompt publication evidence only for explicit Project Owner authority over an already reviewed immutable candidate, with no new implementation scope and only named atomic stage, commit, or push actions. PR, merge, release, execution, ratification, risk acceptance, and further modification remain separately unauthorized. `HP-FAIL-005` records the discovered recursion as a distinct corrected-but-not-validated learning record. No publication action has occurred.
+
+Phase 2.1 locally hardens the deterministic Controller test foundation with pytest, bounded Hypothesis properties, and one `RuleBasedStateMachine`. All twenty canonical transition fixtures remain unchanged and individually identifiable. The prior unittest evidence remains under pytest compatibility coverage. Generated examples are exploration, not exhaustive proof. No material Controller defect was found, no learning record was manufactured, no production Controller/loop/protocol/schema/package semantics changed, and no real transition or KGR-005 execution occurred.
 
 ## GOV-4 closure-loop preparation
 
@@ -82,6 +84,11 @@ phase_2_controller_tooling_foundation:
   controller_status: IMPLEMENTED_LOCALLY_NOT_OPERATIONAL
   real_controller_transitions_applied: 0
   kgr_005_execution: NOT_STARTED
+
+phase_2_1_controller_testing_hardening:
+  status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+  canonical_transition_fixtures: 20
+  production_semantics_changed: false
 
 kernel:
   version: 0.2.0-proposed

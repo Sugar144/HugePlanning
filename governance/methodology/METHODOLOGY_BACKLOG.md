@@ -15,7 +15,7 @@ This is the canonical non-authoritative register for material prospective method
 proposal:
   id: HP-MPROP-001
   title: Controller testing hardening with standard frameworks
-  status: OWNER_APPROVED_FOR_FUTURE_PHASE
+  status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
   target_phase: PHASE_2_1
   scheduled_after: PHASE_2_COMMITTED_AND_PUSHED
   scheduled_before: KGR_005_EXECUTION
@@ -55,7 +55,7 @@ proposal:
     - No custom general-purpose testing framework.
 ```
 
-This proposal records future sequencing only. It does not install or implement pytest, Hypothesis, Promptfoo, TLA+, TLC, or Schemathesis; change the current Controller or test framework; authorize Phase 2.1; or authorize KGR-005 execution.
+Phase 2.1 locally implements the approved pytest and Hypothesis scope pending Project Owner review. This status does not mean accepted, operational, or exhaustive; it does not implement Promptfoo, TLA+, TLC, or Schemathesis, change Controller semantics, authorize KGR-005 execution, or apply a real Controller transition.
 
 ## HP-MPROP-002 — Extract reusable governance workflows into versioned skills
 
@@ -93,3 +93,57 @@ proposal:
 ```
 
 This proposal does not create or install a skill, authorize Phase 2.2 implementation, execute a governance run, or cross any human authorization gate.
+
+## HP-MPROP-003 — Extract deterministic review-bundle generation
+
+```yaml
+proposal:
+  id: HP-MPROP-003
+  title: Extract deterministic review-bundle generation
+  status: OWNER_APPROVED_FOR_FUTURE_PHASE
+  priority: HIGH
+  evidence:
+    - Codex repeatedly generated temporary review-bundle scripts.
+    - Phase 2.1 generated `/tmp/build_phase_2_1_bundle.py`.
+  proposed_tool: governance/tools/build_review_bundle.py
+  proposed_skill: governance-review-packager
+  goals:
+    - deterministic changed-file inventory
+    - unified diff capture
+    - configurable validation execution
+    - SHA-256 manifest generation
+    - safe bounded review transport
+    - lower repeated token use
+  non_goals:
+    - publication authority
+    - automatic commit or push
+    - hardcoded phase-specific paths
+```
+
+## HP-MPROP-004 — Agent session supervision and workflow mining
+
+```yaml
+proposal:
+  id: HP-MPROP-004
+  title: Agent session supervision and workflow mining
+  status: OWNER_APPROVED_FOR_FUTURE_PHASE
+  proposed_skill: agent-session-reviewer
+  trigger:
+    - material implementation closure
+    - formal run closure or interruption
+    - material failure or near miss
+    - creation of temporary scripts or repeated workflows
+  goals:
+    - inspect observable session traces
+    - identify reusable tools, skills, tests, and controls
+    - detect prompt and process defects
+    - preserve only material findings
+    - avoid manufacturing lessons
+  non_goals:
+    - access to hidden model reasoning
+    - retention of every trivial interaction
+    - treating transcripts as validated repository truth
+    - automatic acceptance or repository modification
+```
+
+Both proposals require separate future implementation authorization. They do not create the proposed tool or skills, grant publication authority, authorize repository modification, or treat observable session traces as validated truth.

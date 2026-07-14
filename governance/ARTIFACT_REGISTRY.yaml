@@ -376,8 +376,11 @@ artifacts:
     supersedes: null
     aliases: []
     notes:
-      - HP-MPROP-001 is owner-approved for a separately authorized future Phase 2.1 after Phase 2 is committed and pushed and before KGR-005 execution.
+      - HP-MPROP-001 is implemented locally for Phase 2.1 pending Project Owner review under the separately preserved HP-PROMPT-003 authorization.
       - HP-MPROP-002 is owner-approved for a separately authorized future Phase 2.2 after Phase 2.1 and before repeated future governance runs; it creates no skill or execution authority.
+      - HP-MPROP-003 is owner-approved for a separately authorized future deterministic review-bundle generator and possible governance-review-packager skill; no tool or skill is implemented.
+      - HP-MPROP-004 is owner-approved for separately authorized future agent-session supervision and workflow mining limited to observable traces; no skill or supervision process is implemented.
+      - HP-MPROP-003 and HP-MPROP-004 each require separate future implementation authorization.
       - Backlog approval is not implementation authorization, implemented state, execution evidence, constitutional authority, ratification, or Enforcement Engineering authorization.
       - Superseded proposals remain preserved and marked rather than deleted.
 
@@ -468,6 +471,8 @@ artifacts:
       - governance/schemas/governance-validation-record.schema.json
       - governance/schemas/protocols/
       - governance/tests/run-controller-tests.sh
+      - governance/tests/controller/
+      - governance/tests/test_controller.py
       - governance/tests/fixtures/transitions/
       - governance/tests/fixtures/loop-mutations/
       - governance/tests/fixtures/packages/
@@ -476,6 +481,7 @@ artifacts:
       - Implements local read-only validation and dry-run transition simulation; a write requires both `--apply` and an explicit authorization reference and is limited to one immutable Controller record path.
       - No real Controller transition or GOV-VAL record exists, KGR-005 remains NOT_STARTED, and the Controller is implemented locally but not operational.
       - The tooling does not launch an LLM, decide constitutional substance, mutate the Kernel or state documents, create KGR-006, open Enforcement Engineering, or ratify the Kernel.
+      - Phase 2.1 adds pytest, bounded Hypothesis properties, and an independent-model state machine without changing Controller, loop, protocol, schema, or package semantics.
 
   - id: GOV-REVIEW-001
     title: Phase 1 Governance Tooling and Learning Architecture Report
@@ -533,6 +539,24 @@ artifacts:
     notes:
       - Provides concise scope, review inventory, authority boundary, and proportional validation evidence for the bounded correction.
       - Does not authorize staging, commit, push, PR, KGR-005 execution, a Controller transition, or Phase 2.1.
+
+  - id: GOV-REVIEW-004
+    title: Phase 2.1 Controller Testing Hardening Implementation Report
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+    authority: local_implementation_and_validation_evidence_not_publication_or_execution_authority
+    path: governance/reviews/phase-2-1-controller-testing-hardening/implementation-report-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_1_CONTROLLER_TESTING_HARDENING
+    artifact_type: implementation_validation_report
+    language: English
+    canonicality: preserved_implementation_evidence
+    supersedes: null
+    aliases: []
+    notes:
+      - Records the bounded pytest, Hypothesis, canonical-fixture, state-machine, dependency, and validation implementation evidence.
+      - Does not authorize staging, commit, push, PR, KGR-005 execution, a Controller transition, acceptance, or operation.
 
   - id: GOV-PROTOCOL-001
     title: Kernel Designer Adversarial Revision Protocol

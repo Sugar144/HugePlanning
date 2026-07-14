@@ -17,7 +17,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install suite dependencies
-        run: python3 -m pip install pyyaml jsonschema
+        run: python3 -m pip install pyyaml jsonschema pytest hypothesis
 
       - name: Configure git identity for scratch repos
         run: |
@@ -26,3 +26,6 @@ jobs:
 
       - name: Run deterministic test suite
         run: tests/run-tests.sh
+
+      - name: Run Controller test suite
+        run: governance/tests/run-controller-tests.sh
