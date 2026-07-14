@@ -1,0 +1,20 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: null
+  record_id: HP-FAIL-001
+  date: 2026-07-14
+  event_type: RISK_ACCEPTANCE
+  status_from: OPEN
+  status_to: ACCEPTED_RISK
+  summary: Invalid risk acceptance.
+  rationale: The fixture intentionally omits preserved owner evidence.
+  evidence_refs:
+    - type: OWNER_STATEMENT
+      locator: missing-owner-evidence
+      anchor: null
+      sha256: null
+      availability: NOT_PRESERVED
+      note: Missing owner evidence is explicit.
+  owner_decision_ref: null
+  accepted_risk: null
+  supersedes: null

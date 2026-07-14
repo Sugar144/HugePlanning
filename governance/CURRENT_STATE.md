@@ -22,8 +22,17 @@
 | Owner decisions required | None |
 | Architecture disposition | KGR-004 preserves the seven-clause architecture with revised semantics; independent targeted closure is still required |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
+| Instruction and learning foundation | Phase 1 locally implemented pending Project Owner review; four GOV-4 learning records are `CORRECTED`, not `VALIDATED` |
 | Known blockers | No constitutional owner decision is currently required. KGR-005 execution has not yet been authorized or performed. |
-| Exact next action | After the preparation commit is reviewed and published, launch KGR-005 in a separate isolated Kernel Adversary chat. |
+| Exact next action | Review the Phase 1 implementation report and review bundle; KGR-005 remains the next governance execution and requires separate authorization. |
+
+## Phase 1 instruction and professional-learning foundation
+
+The Project Owner authorized local implementation of the approved Phase 1 instruction and professional-learning architecture. Repository-wide and governance-scoped instructions, the canonical project operating contract, failure/event schemas, four initial GOV-4 learning records, deterministic `validate`, `record`, `event`, and `index` tooling, and bounded tests are locally implemented pending review.
+
+The proposed architecture report and original local implementation report are preserved under `governance/reviews/phase-1-instructions-learning/` with original-source provenance and hashes. The review ZIP remains an external temporary transport/review artifact and is not imported into repository custody.
+
+This foundation does not implement a Controller, closure-loop runtime, or Enforcement Engineering. It does not execute KGR-005, change GOV-4 status, consume a loop counter, close an adversarial finding, ratify the Kernel, or begin human ratification. The initial records are `CORRECTED`, not `VALIDATED`; preventive controls require demonstrated use after review and future evidence.
 
 ## GOV-4 closure-loop preparation
 
@@ -52,6 +61,11 @@ KGR-005:
   status: NOT_STARTED
   preparation_status: COMPLETED
   readiness: READY_FOR_EXECUTION
+
+phase_1_instruction_and_learning_foundation:
+  status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+  initial_learning_records: 4
+  controller_implemented: false
 
 kernel:
   version: 0.2.0-proposed

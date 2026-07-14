@@ -1,0 +1,97 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-002
+  date: 2026-07-14
+  recorded_on: 2026-07-14
+  title: Formal package and execution identity semantics were initially incomplete
+  context:
+    phase: GOV-4
+    run: KGR-005
+    component: Formal Run Package Identity
+    branch: governance/kernel-designer-revision-v0.1
+    commit: null
+    environment: KGR-005 preparation design
+  primary_classification: PROCESS_DEFECT
+  classification:
+    - NEAR_MISS
+    - PROCESS_DEFECT
+    - TOOLING_GAP
+  severity: HIGH
+  status: CORRECTED
+  expected_behavior: Formal package contracts should distinguish repository custody, transport identity, isolated execution, and repository import while binding prompt, envelope, control, and members exactly.
+  observed_behavior: Earlier semantics confused repository paths with transport members, did not separate three validation contexts, conflated package conflict with completed execution, and incompletely bound prompt and envelope identity.
+  impact: A validator or operator could have rejected valid isolated inputs, accepted mismatched identity, or incorrectly consumed a run after a pre-substantive package conflict.
+  detection_method: Cross-contract review of the KGR-005 envelope, prompt snapshot, transport package, and loop non-completion rules.
+  root_cause:
+    immediate: One path field and one validation concept were used for materially different custody and transport responsibilities.
+    systemic: Preparation, isolated execution, and repository import were not originally modeled as distinct validation contexts.
+    contributing_factors:
+      - Output schemas remained embedded in prose.
+      - No stage-aware deterministic package validator existed.
+  response:
+    containment: KGR-005 remained NOT_STARTED while the prompt, envelope, and loop semantics were corrected and hash-bound.
+    correction: The prepared KGR-005 contracts now separate repository path, package member, pre-substantive conflict, execution, and import responsibilities and bind prompt/envelope identities.
+    prevention:
+      - Require typed custody, source, and transport-member identities.
+      - Build a stage-aware package validator in a later authorized phase.
+      - Treat package conflict as non-completion unless valid execution evidence exists.
+    accountable_owner: Project Owner
+    validation_required:
+      - Test preparation, isolated-input, output, and import validation contexts independently.
+      - Test prompt/envelope mismatch and non-consuming package-conflict cases.
+  learning:
+    reusable_lesson: Formal packages require separate custody, transport, execution, and import identities with exact stage-specific validation.
+    candidate_system_changes:
+      - SCRIPT
+      - VALIDATION
+      - SCHEMA
+      - TEST
+      - PROTOCOL
+    applicable_future_phases:
+      - GOV-4
+      - Controller implementation
+      - Future formal governance runs
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: null
+    deterministic_rework_count: null
+    package_rebuild_count: null
+    measurement_quality: UNAVAILABLE
+    basis: No historic token, run, time, correction-cycle, or rebuild measurements were preserved; future package tooling should emit exact validation facts.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/runs/KGR-005-kernel-adversary-targeted-closure/input-envelope.yaml
+      anchor: null
+      sha256: null
+      availability: PRESERVED
+      note: Corrected envelope and member identity evidence; not execution evidence.
+    - type: RUN_ARTIFACT
+      locator: KGR-005:prompt/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+      anchor: null
+      sha256: null
+      availability: PRESERVED
+      note: Corrected stage, conflict, prompt/envelope binding, and output contract.
+  related_records:
+    - HP-FAIL-001
+  subfindings:
+    - title: Repository paths confused with transport members
+      description: Repository provenance paths and ZIP member identities were not treated as different typed fields.
+      evidence_refs: []
+    - title: Validation contexts not separated
+      description: Preparation, isolated execution, and repository import did not initially have distinct path and evidence responsibilities.
+      evidence_refs: []
+    - title: Package conflict conflated with completed execution
+      description: A pre-substantive identity conflict risked being treated as a completed, counter-consuming result.
+      evidence_refs: []
+    - title: Incomplete prompt and envelope binding
+      description: Prompt identity, envelope metadata, control snapshot, and transport membership were not completely cross-bound.
+      evidence_refs: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

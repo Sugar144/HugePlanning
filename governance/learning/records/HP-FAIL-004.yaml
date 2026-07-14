@@ -1,0 +1,115 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-004
+  date: 2026-07-14
+  recorded_on: 2026-07-14
+  title: Formal learning and analysis artifacts were dispersed across non-canonical surfaces
+  context:
+    phase: GOV-4
+    run: null
+    component: Durable Learning and Formal Analysis Output
+    branch: governance/kernel-designer-revision-v0.1
+    commit: null
+    environment: Governance architecture analysis and prior sessions
+  primary_classification: PROCESS_DEFECT
+  classification:
+    - NEAR_MISS
+    - PROCESS_DEFECT
+    - TOOLING_GAP
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: Material lessons and formal reusable analyses should be written to declared durable artifacts with canonical paths, formats, status, required sections, and validation contracts.
+  observed_behavior: Reusable learning remained in temporary logs and parking-lot material, no canonical indexed records existed, and the architecture analysis was initially emitted only in the Codex session because its prompt omitted an output-artifact contract.
+  impact: Reusable evidence could be lost, overlooked, duplicated, or unavailable for review, implementation, comparison, and versioning.
+  detection_method: The Project Owner required the architecture analysis to be materialized in a corrective second step and then authorized this canonical Phase 1 learning system.
+  root_cause:
+    immediate: The formal analysis prompt did not require a filename, path, format, status, required sections, or validation requirements.
+    systemic: No canonical record system connected material learning, deterministic indexing, and formal artifact output contracts.
+    contributing_factors:
+      - Operational chronology was used as the only durable learning surface.
+      - Parking-lot files mixed prospective ideas with observed lessons.
+  response:
+    containment: The architecture report was materialized as a named local artifact and hash-verified before Phase 1 implementation.
+    correction: Phase 1 adds structured base records, append-only events, deterministic indexing, and a mandatory formal-analysis output-artifact rule in the canonical operating contract.
+    prevention:
+      - Require an exact output artifact contract before every reusable formal analysis.
+      - Triage material observations into canonical learning records rather than session-only logs.
+      - Validate generated indexes against record and event source truth.
+    accountable_owner: Project Owner
+    validation_required:
+      - Verify all four base records and generated index with manage_learning.py.
+      - Test generated-view drift and byte-identical regeneration.
+      - Review future formal prompts for complete output-artifact declarations before execution.
+  learning:
+    reusable_lesson: Declare and validate a durable output artifact before formal analysis, and store material learning in canonical indexed records.
+    candidate_system_changes:
+      - SCRIPT
+      - VALIDATION
+      - SCHEMA
+      - TEST
+      - AGENTS_INSTRUCTION
+      - WORKFLOW_PATTERN
+      - DOCUMENTATION
+    applicable_future_phases:
+      - GOV-4
+      - All formal analyses
+      - All governance implementation phases
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: null
+    deterministic_rework_count: null
+    package_rebuild_count: null
+    measurement_quality: PARTIAL
+    basis: The corrective materialization step and verified artifact hash are known; historic tokens, model runs, time, correction cycles, deterministic rework, and monetary cost were not preserved.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/reviews/phase-1-instructions-learning/architecture-report-v0.1.0.md
+      anchor: Full architecture report
+      sha256: bd4451f4407197f292b19c948ee90587cf77b9217ed86ea19c98c38ff29959e1
+      availability: PRESERVED
+      note: Repository-custodied copy of the hash-verified original architecture report.
+    - type: REPOSITORY_PATH
+      locator: governance/methodology/project-operating-contract.md
+      anchor: Formal execution, orchestration, and output contract
+      sha256: null
+      availability: PRESERVED
+      note: Prospective correction requiring exact formal output artifact declarations.
+    - type: REPOSITORY_PATH
+      locator: governance/learning/README.md
+      anchor: null
+      sha256: null
+      availability: PRESERVED
+      note: Canonical learning record-class and triage contract.
+  related_records:
+    - HP-FAIL-003
+  subfindings:
+    - title: Reusable learning existed only in temporary surfaces
+      description: Session logs and parking-lot files carried reusable lessons without canonical causal records.
+      evidence_refs: []
+    - title: No canonical record or deterministic index
+      description: Material learning lacked individual schema-validated records and a reproducible human-readable index.
+      evidence_refs: []
+    - title: Formal architecture analysis initially remained session-only
+      description: The initial architecture result was emitted in the Codex session instead of a declared durable artifact.
+      evidence_refs: []
+    - title: Prompt omitted the output artifact contract
+      description: Filename, path, format, status, required sections, and validation requirements were not declared before analysis.
+      evidence_refs: []
+    - title: Corrective second-step materialization
+      description: The architecture report had to be written and hash-verified after the analysis was already produced.
+      evidence_refs:
+        - type: REPOSITORY_PATH
+          locator: governance/reviews/phase-1-instructions-learning/architecture-report-v0.1.0.md
+          anchor: null
+          sha256: bd4451f4407197f292b19c948ee90587cf77b9217ed86ea19c98c38ff29959e1
+          availability: PRESERVED
+          note: Verified original source now preserved in repository custody.
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

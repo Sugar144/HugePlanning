@@ -1,0 +1,60 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-900
+  date: 2026-07-14
+  recorded_on: 2026-07-14
+  title: Valid learning fixture
+  context:
+    phase: TEST
+    run: null
+    component: Learning fixture
+    branch: test
+    commit: null
+    environment: null
+  primary_classification: FAILURE
+  classification: [FAILURE, NEAR_MISS, AMBIGUITY, PROCESS_DEFECT, TOOLING_GAP, COST_WASTE, OWNER_CORRECTION]
+  severity: LOW
+  status: OPEN
+  expected_behavior: The fixture validates.
+  observed_behavior: The fixture contains every classification enum.
+  impact: Test-only impact.
+  detection_method: Deterministic fixture validation.
+  root_cause:
+    immediate: Test condition.
+    systemic: Test systemic cause.
+    contributing_factors: []
+  response:
+    containment: NOT_REQUIRED because this is a synthetic fixture.
+    correction: Validate the fixture.
+    prevention: [Keep fixture coverage.]
+    accountable_owner: Test runner
+    validation_required: [Schema validation passes.]
+  learning:
+    reusable_lesson: One fixture can prove every closed classification enum is accepted.
+    candidate_system_changes: [TEST]
+    applicable_future_phases: [TEST]
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: null
+    deterministic_rework_count: null
+    package_rebuild_count: null
+    measurement_quality: UNAVAILABLE
+    basis: Synthetic fixture has no historic metrics and fabricates none.
+  evidence_refs:
+    - type: OWNER_STATEMENT
+      locator: synthetic-test-statement
+      anchor: null
+      sha256: null
+      availability: NOT_PRESERVED
+      note: Explicitly tests NOT_PRESERVED evidence.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

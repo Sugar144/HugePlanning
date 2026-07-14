@@ -1,7 +1,7 @@
 registry:
-  version: '0.5'
-  generated_for: GOV-4_KGR-005_TARGETED_CLOSURE_PREPARATION
-  base_commit: 3246b6849d370c8098ce53caa28fa6dd3c34846d
+  version: '0.6'
+  generated_for: PHASE_1_INSTRUCTIONS_AND_PROFESSIONAL_LEARNING_FOUNDATION
+  base_commit: c41fbbf2bc6d2c54d609dbadd52b429e43f77a15
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -302,6 +302,109 @@ artifacts:
     notes:
       - Preserves FULL_ADVERSARIAL_REVIEW as KGR-003 history and activates TARGETED_CLOSURE for future execution.
       - Does not modify the historical KGR-003 prompt.
+
+  - id: GOV-METHOD-003
+    title: Project Operating Contract
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+    authority: governance_operating_method_not_execution_or_constitutional_authority
+    path: governance/methodology/project-operating-contract.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_1_INSTRUCTIONS_AND_PROFESSIONAL_LEARNING_FOUNDATION
+    artifact_type: canonical_operating_contract
+    language: English
+    canonicality: canonical_methodology
+    supersedes: null
+    aliases:
+      - AGENTS.md
+      - governance/AGENTS.md
+    notes:
+      - Defines authority, status, record, deterministic-routing, output-artifact, immutability, traceability, handoff, and anti-recursion semantics.
+      - Instruction files apply concise behavior rules; this contract does not prove execution, validation, acceptance, ratification, or operation.
+
+  - id: GOV-SUP-006
+    title: Professional Failure and Learning Record System
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+    authority: professional_learning_evidence_not_decision_run_or_incident_authority
+    path: governance/learning/README.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_1_INSTRUCTIONS_AND_PROFESSIONAL_LEARNING_FOUNDATION
+    artifact_type: learning_record_system
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/learning/records/
+      - governance/learning/events/
+      - governance/learning/FAILURE_AND_LESSONS_INDEX.md
+      - governance/learning/summaries/lessons-by-category.md
+      - governance/schemas/failure-record.schema.json
+      - governance/schemas/failure-record-event.schema.json
+    notes:
+      - Four initial GOV-4 records are CORRECTED but not VALIDATED; unavailable historic metrics and evidence remain explicit.
+      - Base records and append-only events are source truth; the Markdown index is a deterministic generated view.
+
+  - id: GOV-TOOL-001
+    title: Deterministic Learning Record Manager
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+    authority: deterministic_validation_and_recording_tool_no_governance_decision_authority
+    path: governance/tools/manage_learning.py
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_1_INSTRUCTIONS_AND_PROFESSIONAL_LEARNING_FOUNDATION
+    artifact_type: offline_deterministic_tool
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/tests/run-learning-tests.sh
+      - governance/tests/fixtures/learning/
+    notes:
+      - Implements only validate, record, event, and index; summarize and closure-loop Controller behavior remain outside Phase 1.
+      - Dry-run is default, writes require --apply, and no network, LLM, Git mutation, or automated risk decision is performed.
+
+  - id: GOV-REVIEW-001
+    title: Phase 1 Governance Tooling and Learning Architecture Report
+    version: 0.1.0
+    status: PRESERVED_PROPOSED_ARCHITECTURE
+    authority: proposed_architecture_and_design_evidence_not_execution_or_constitutional_authority
+    path: governance/reviews/phase-1-instructions-learning/architecture-report-v0.1.0.md
+    source_path: /home/sugar/Downloads/HugePlanning-governance-tooling-learning-instructions-architecture-v0.1.0.md
+    source_sha256: bd4451f4407197f292b19c948ee90587cf77b9217ed86ea19c98c38ff29959e1
+    produced_by: HP-ARCH-GOV-TOOLING-001
+    artifact_type: architecture_review_report
+    language: English
+    canonicality: preserved_design_evidence
+    supersedes: null
+    aliases: []
+    notes:
+      - The repository copy is byte-identical to the verified original external source.
+      - Repository copy SHA-256: bd4451f4407197f292b19c948ee90587cf77b9217ed86ea19c98c38ff29959e1.
+      - Records proposed architecture and design evidence later narrowed and authorized for Phase 1; it is not execution evidence, constitutional authority, ratification, or Enforcement Engineering authorization.
+
+  - id: GOV-REVIEW-002
+    title: Phase 1 Instructions and Learning Implementation Report
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+    authority: local_implementation_and_validation_evidence_not_execution_or_constitutional_authority
+    path: governance/reviews/phase-1-instructions-learning/implementation-report-v0.1.0.md
+    source_path: /home/sugar/Downloads/HugePlanning-phase-1-instructions-learning-implementation-report-v0.1.0.md
+    source_sha256: fc73cf4d5ad633d7022f6d715bfeba50e70e20b0f6070f8c411cb852dc1fedac
+    produced_by: PHASE_1_INSTRUCTIONS_AND_PROFESSIONAL_LEARNING_FOUNDATION
+    artifact_type: implementation_validation_report
+    language: English
+    canonicality: preserved_implementation_evidence
+    supersedes: null
+    aliases: []
+    notes:
+      - Preserves the substantive original report with only custody metadata and the now-resolved external-only architecture reference updated.
+      - Original source SHA-256 is recorded in `source_sha256`; repository custody copy SHA-256 is 8a94cd9728e826a58335353af5b9b29b4f30be739e937d53eeb8d4889da422f5.
+      - The original local source path is later reused for the regenerated final report; the recorded source hash, not mutable external path contents, identifies the imported source.
+      - Records local implementation and validation evidence pending commit; it is not KGR execution evidence, constitutional authority, ratification, or Enforcement Engineering authorization.
 
   - id: GOV-PROTOCOL-001
     title: Kernel Designer Adversarial Revision Protocol

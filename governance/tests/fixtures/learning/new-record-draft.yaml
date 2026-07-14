@@ -1,0 +1,60 @@
+failure_record:
+  schema_version: 0.1.0
+  id: null
+  date: 2026-07-14
+  recorded_on: 2026-07-14
+  title: Applied fixture record
+  context:
+    phase: TEST
+    run: null
+    component: Learning tool
+    branch: test
+    commit: null
+    environment: null
+  primary_classification: PROCESS_DEFECT
+  classification: [PROCESS_DEFECT]
+  severity: LOW
+  status: OPEN
+  expected_behavior: Dry-run writes nothing and apply creates one record.
+  observed_behavior: The fixture exercises record allocation.
+  impact: Test-only impact.
+  detection_method: Filesystem inventory.
+  root_cause:
+    immediate: Synthetic test input.
+    systemic: Synthetic allocation cause.
+    contributing_factors: []
+  response:
+    containment: NOT_REQUIRED because this is synthetic.
+    correction: Exercise the CLI.
+    prevention: [Keep allocation tests.]
+    accountable_owner: Test runner
+    validation_required: [Expected file exists only after apply.]
+  learning:
+    reusable_lesson: Dry-run and apply behavior must remain distinguishable and deterministic.
+    candidate_system_changes: [TEST]
+    applicable_future_phases: [TEST]
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: null
+    deterministic_rework_count: null
+    package_rebuild_count: null
+    measurement_quality: UNAVAILABLE
+    basis: All historical values are unavailable and remain null.
+  evidence_refs:
+    - type: OWNER_STATEMENT
+      locator: synthetic-draft
+      anchor: null
+      sha256: null
+      availability: NOT_PRESERVED
+      note: Synthetic evidence limitation.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

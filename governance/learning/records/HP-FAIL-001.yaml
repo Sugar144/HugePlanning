@@ -1,0 +1,116 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-001
+  date: 2026-07-14
+  recorded_on: 2026-07-14
+  title: Closure-loop control contract was initially under-specified
+  context:
+    phase: GOV-4
+    run: null
+    component: Kernel Design Closure Loop
+    branch: governance/kernel-designer-revision-v0.1
+    commit: null
+    environment: Codex governance design and preparation sessions
+  primary_classification: PROCESS_DEFECT
+  classification:
+    - NEAR_MISS
+    - AMBIGUITY
+    - PROCESS_DEFECT
+    - OWNER_CORRECTION
+  severity: HIGH
+  status: CORRECTED
+  expected_behavior: The closure loop should have defined closed persistent states, role-separated exits, exact counters, guard semantics, and Controller boundaries before KGR-005 preparation.
+  observed_behavior: Earlier loop proposals left material state, exit, counter, guard, and authority semantics incomplete, and initially treated known ambiguities as non-blocking.
+  impact: The ambiguity could have produced incorrect routing, counter consumption, role-authority conflation, or premature preparation; the Project Owner stopped commit authorization before an unauthorized mutation occurred.
+  detection_method: Project Owner review challenged the proposed control semantics and withdrew commit authorization until the active-state exits and ambiguities were corrected.
+  root_cause:
+    immediate: Natural-language orchestration was treated as sufficiently executable before its state and authority contracts were closed.
+    systemic: The process lacked a mandatory static control-contract review before formal-run preparation.
+    contributing_factors:
+      - State, event, counter, guard, and authority rules were reviewed across dispersed prose.
+      - No deterministic closure-loop validator existed.
+  response:
+    containment: Commit authorization was withdrawn and KGR-005 remained NOT_STARTED while the contract was corrected.
+    correction: GOV-LOOP-001 v0.1.0 now records closed states, role-specific matrices, counters, guards, non-completion semantics, and Controller boundaries.
+    prevention:
+      - Require versioned closed transition contracts before preparing dependent runs.
+      - Add deterministic loop-contract validation in a later authorized phase.
+      - Preserve owner corrections and authorization withdrawals as structured learning.
+    accountable_owner: Project Owner
+    validation_required:
+      - Validate the future loop validator against positive and negative transition fixtures.
+      - Demonstrate that active-state exits, counter increments, and guards replay deterministically.
+  learning:
+    reusable_lesson: A governance loop must be a closed, role-separated transition contract before any run is prepared against it.
+    candidate_system_changes:
+      - VALIDATION
+      - TEST
+      - PROTOCOL
+      - AGENTS_INSTRUCTION
+      - WORKFLOW_PATTERN
+    applicable_future_phases:
+      - GOV-4
+      - Controller implementation
+      - Future bounded governance loops
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: null
+    deterministic_rework_count: null
+    package_rebuild_count: null
+    measurement_quality: UNAVAILABLE
+    basis: Historic token, model-run, time, and correction-cycle measurements were not preserved; future controls must record them when available.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/methodology/loops/kernel-design-closure/kernel-design-closure-loop-v0.1.0.yaml
+      anchor: null
+      sha256: null
+      availability: PRESERVED
+      note: Corrected versioned closure-loop contract; it proves the correction, not every intermediate conversation defect.
+    - type: DECISION
+      locator: GOV-DEC-014
+      anchor: null
+      sha256: null
+      availability: PRESERVED
+      note: Durable decision defining the bounded, role-separated loop methodology.
+    - type: OWNER_STATEMENT
+      locator: GOV-4-owner-correction-and-authorization-withdrawal
+      anchor: null
+      sha256: null
+      availability: NOT_PRESERVED
+      note: "Factual paraphrase supplied by the Project Owner: commit authorization was withdrawn until active-state exits and control ambiguities were corrected; no completed unauthorized mutation is asserted."
+  related_records:
+    - HP-FAIL-002
+  subfindings:
+    - title: Under-specified persistent-state model
+      description: Earlier proposals did not close the complete durable state vocabulary and its transitions.
+      evidence_refs: []
+    - title: Missing Designer remediation exits
+      description: Designer remediation outcomes did not initially route every required terminal or pause condition.
+      evidence_refs: []
+    - title: Ambiguous counter and guard semantics
+      description: Counter timing, non-consuming attempts, run limits, and cross-run guard evaluation were not exact.
+      evidence_refs: []
+    - title: Adversary and Controller responsibility conflation
+      description: Substantive Adversary judgment and deterministic Controller validation/routing were not cleanly separated.
+      evidence_refs: []
+    - title: Premature non-blocking treatment
+      description: Known control ambiguities were initially treated as non-blocking despite their effect on execution routing.
+      evidence_refs: []
+    - title: Project Owner authorization withdrawal
+      description: The Project Owner withdrew commit authorization pending correction; this was a near miss and owner correction, not an unauthorized committed mutation.
+      evidence_refs:
+        - type: OWNER_STATEMENT
+          locator: GOV-4-owner-correction-and-authorization-withdrawal
+          anchor: null
+          sha256: null
+          availability: NOT_PRESERVED
+          note: Concise factual paraphrase; no conversation transcript or verbatim quote is repository-preserved.
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

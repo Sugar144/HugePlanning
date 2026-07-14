@@ -168,3 +168,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
   Only Controller-validated completed runs consume the explicit `completed_targeted_closure_runs` and `completed_designer_remediation_runs` counters. Package-conflicted, paused, interrupted, or invalid attempts without a valid completed run consume no iteration or formal output set. The Adversary applies one ordered substantive-result matrix and reports exactly one result; the deterministic Loop Controller validates import, increments counters, evaluates limits and cross-run guards, and records the transition. `CLOSURE_CONFIRMED` records only configured independent adversarial closure and is not ratification or adoption.
 - Authority boundary: This decision is governance methodology only. It does not revise the Kernel, close KGR-003 findings, execute targeted closure, authorize Enforcement Engineering, or ratify or adopt the Kernel.
 - Supersedes: none
+
+## GOV-DEC-015 — Phase 1 instruction and professional-learning foundation
+
+- Date: 2026-07-14
+- Status: ACTIVE
+- Statement: Adopt the approved reduced Phase 1 governance tooling architecture for local implementation of a durable instruction hierarchy, canonical operating contract, professional failure-and-learning records, minimal deterministic learning tooling, and four initial GOV-4 learning records.
+- Rationale: Durable learning, honest metrics, deterministic record validation, and explicit operating boundaries are required before later Controller implementation. The Project Owner explicitly authorized local repository modifications, tests, validation, and review artifacts for this bounded phase.
+- Source: Project Owner Phase 1 implementation authorization dated 2026-07-14 and repository-custodied architecture report `governance/reviews/phase-1-instructions-learning/architecture-report-v0.1.0.md` (`HP-ARCH-GOV-TOOLING-001` v0.1.0), original source SHA-256 `bd4451f4407197f292b19c948ee90587cf77b9217ed86ea19c98c38ff29959e1`.
+- Consequences: Root and governance instructions reference a canonical operating contract; material failures use schema-validated base records and append-only events; deterministic learning commands are dry-run first; historic evidence and missing metrics are not reconstructed; the initial four records are `CORRECTED` pending preventive-control validation. Automatic category summarization and CI integration are deferred.
+- Authority boundary: This decision does not execute KGR-005, advance GOV-4, implement the Controller or closure-loop runtime, open Enforcement Engineering, accept risk, ratify or adopt the Kernel, begin human ratification, or authorize commit, push, PR, merge, tag, release, deployment, or publication.
+- Supersedes: none
