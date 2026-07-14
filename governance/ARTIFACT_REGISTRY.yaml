@@ -1,6 +1,6 @@
 registry:
-  version: '0.3'
-  generated_for: GOV-4_KGR-004_PREPARATION
+  version: '0.4'
+  generated_for: GOV-4_KGR-004_DESIGNER_REVISION_COMPLETION
   base_commit: 3246b6849d370c8098ce53caa28fa6dd3c34846d
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
@@ -98,6 +98,27 @@ artifacts:
       - ZIP and eight extracted members match byte-for-byte; seven members are exact run outputs and MANIFEST.txt is supporting package metadata.
       - The review outcome has no constitutional authority and does not ratify or revise the proposed Kernel.
 
+  - id: GOV-PKG-006
+    title: HugePlanning KGR-004 Kernel Designer Revision Package
+    version: 0.2.0-proposed
+    status: READY_FOR_TARGETED_ADVERSARIAL_CLOSURE
+    authority: designer_revision_output_not_independent_closure_or_constitutional_authority
+    path: governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip
+    source_path: /home/sugar/Downloads/HugePlanning-KGR-004-v0.2-proposed.zip
+    source_sha256: c2d17e5f0dfad2ae2d73ee633d6c436e40eb50ebc2c05924b1b402953cd42c70
+    produced_by: KGR-004
+    artifact_type: raw_package
+    language: English
+    canonicality: raw_source
+    supersedes: GOV-PKG-004
+    aliases:
+      - governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed/
+    notes:
+      - ZIP and eight extracted members match byte-for-byte and passed independent path-safety, UTF-8, and exact-member validation.
+      - Supersession applies only to the current Designer proposal under review; the KGR-002 package and v0.1 proposal remain preserved.
+      - Baseline run KGR-002; review run KGR-003; revision run KGR-004; next review mode TARGETED_CLOSURE.
+      - The package was imported after execution; the exact execution transcript is not preserved and the outputs are not independent closure evidence.
+
   - id: GOV-PROMPT-001
     title: Kernel Intake Interviewer Canonical Prompt
     version: '0.1'
@@ -189,8 +210,8 @@ artifacts:
   - id: GOV-PROMPT-006
     title: KGR-004 Kernel Designer Adversarial Revision Prompt Snapshot
     version: 0.1.0
-    status: READY_FOR_EXECUTION
-    authority: planned_execution_contract_not_execution_evidence
+    status: MATCHED_BY_IMPORTED_KGR_004_OUTPUTS
+    authority: execution_contract_snapshot_not_execution_transcript
     path: governance/runs/KGR-004-kernel-designer-revision/prompt/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
     source_path: governance/methodology/roles/kernel-designer/protocols/adversarial-revision/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
     source_sha256: 19049554b9caaf98badef7d823fdefdee7afb49b8fcfab727cfe83230b205c61
@@ -202,7 +223,8 @@ artifacts:
     aliases: []
     notes:
       - Byte-identical to GOV-PROTOCOL-001 at preparation time.
-      - Prompt existence is not KGR-004 execution evidence and does not replace the historical KGR-002 prompt.
+      - Imported KGR-004 outputs identify this prompt, protocol 0.1.0, and run KGR-004; the exact execution transcript remains unavailable.
+      - This prompt does not replace the historical KGR-002 prompt.
 
   - id: GOV-METHOD-001
     title: Kernel Designer Mode Registry
@@ -225,7 +247,7 @@ artifacts:
   - id: GOV-PROTOCOL-001
     title: Kernel Designer Adversarial Revision Protocol
     version: 0.1.0
-    status: READY_FOR_EXECUTION
+    status: ACTIVE_EXECUTED_FOR_KGR_004
     authority: reusable_execution_protocol_not_execution_evidence
     path: governance/methodology/roles/kernel-designer/protocols/adversarial-revision/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
     source_path: null
@@ -238,12 +260,13 @@ artifacts:
     aliases: []
     notes:
       - Defines the KD-R0 through KD-R5 ADVERSARIAL_REVISION workflow.
+      - Imported KGR-004 outputs identify and match this protocol; this does not preserve the exact execution transcript.
       - It does not supersede or modify GOV-PROMPT-002.
 
   - id: GOV-INPUT-001
     title: KGR-004 Adversarial Revision Input Envelope
     version: 0.1.0
-    status: READY_FOR_EXECUTION
+    status: USED_BY_COMPLETED_KGR_004
     authority: formal_run_input_routing_and_provenance_record
     path: governance/runs/KGR-004-kernel-designer-revision/input-envelope.yaml
     source_path: null
@@ -256,6 +279,7 @@ artifacts:
     aliases: []
     notes:
       - Routes KGR-004 to ADVERSARIAL_REVISION and records hashes for 14 existing-artifact aliases.
+      - All 14 hashes were independently verified against the preserved run inputs and the imported output package claims.
       - It does not grant new authority to the baseline or adversarial-review artifacts.
 
   - id: GOV-SUP-001
@@ -838,6 +862,154 @@ artifacts:
       - Exact byte copy; returns the package to the Designer and keeps the Enforcement Engineering gate closed.
       - The seven-clause architecture may be preserved, but existing clauses require material revision and targeted closure review.
 
+  - id: KD-R00
+    title: HugePlanning Kernel Design Basis v0.2
+    version: 0.2.0-designer-revision
+    status: READY_FOR_TARGETED_ADVERSARIAL_CLOSURE
+    authority: proposed_design_support_not_independent_closure
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/00-kernel-design-basis-v0.2.md
+    source_path: 'zip:governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip#HugePlanning-KGR-004-v0.2-proposed/00-kernel-design-basis-v0.2.md'
+    source_sha256: 114659b02efbd983afbdde37e66520a0a8d02d224b6bdf718c4f056ce12d81a5
+    produced_by: KGR-004
+    artifact_type: designer_revision_output
+    language: English
+    canonicality: exact_run_output
+    supersedes: KD-00
+    aliases:
+      - governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed/00-kernel-design-basis-v0.2.md
+    notes:
+      - Exact byte copy; independently verified against the 14 formal input hashes.
+      - Baseline KGR-002 / 0.1.0-proposed; review KGR-003; revision KGR-004 / 0.2.0-proposed; next review mode TARGETED_CLOSURE.
+
+  - id: KD-R01
+    title: HugePlanning Kernel Admission Analysis v0.2
+    version: 0.2.0-designer-revision
+    status: COMPLETE_FOR_TARGETED_CLOSURE
+    authority: proposed_design_support_not_independent_closure
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/01-kernel-admission-analysis-v0.2.md
+    source_path: 'zip:governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip#HugePlanning-KGR-004-v0.2-proposed/01-kernel-admission-analysis-v0.2.md'
+    source_sha256: f3154923a7aefee165fac387f617c343c2294751722e8bd27eb6e1b84576642e
+    produced_by: KGR-004
+    artifact_type: designer_revision_output
+    language: English
+    canonicality: exact_run_output
+    supersedes: KD-01
+    aliases:
+      - governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed/01-kernel-admission-analysis-v0.2.md
+    notes:
+      - Exact byte copy; Designer admission analysis does not constitute independent closure.
+
+  - id: KD-R02
+    title: HugePlanning Kernel v0.2 Draft
+    version: 0.2.0-proposed
+    status: PROPOSED_NOT_RATIFIED
+    authority: pending_human_ratification
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md
+    source_path: 'zip:governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip#HugePlanning-KGR-004-v0.2-proposed/02-kernel-v0.2-draft.md'
+    source_sha256: 0dba205609e0b3c2df2fdfa6ee5b393174a9bffb1b12c5a24a2eecd4820b8545
+    produced_by: KGR-004
+    artifact_type: proposed_kernel_markdown
+    language: English
+    canonicality: exact_run_output_current_proposal_under_review
+    supersedes: KD-02
+    aliases:
+      - governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed/02-kernel-v0.2-draft.md
+    notes:
+      - Exact byte copy; supersedes v0.1 only as the current proposal under review and does not erase or rewrite it.
+      - Not ratified, independently closed, enforceable, adopted, operational, compliant, or mature.
+
+  - id: KD-R03
+    title: HugePlanning Kernel Clauses v0.2
+    version: 0.2.0-proposed
+    status: PROPOSED_NOT_RATIFIED
+    authority: pending_human_ratification
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml
+    source_path: 'zip:governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip#HugePlanning-KGR-004-v0.2-proposed/03-kernel-clauses-v0.2.yaml'
+    source_sha256: 0b48212543b54eb775e4bd5e6688dae3ff19eabb11f89ee4750b11faf7dd2ca1
+    produced_by: KGR-004
+    artifact_type: proposed_kernel_yaml
+    language: English
+    canonicality: exact_run_output_current_proposal_under_review
+    supersedes: hugeplanning-meta-kernel
+    aliases:
+      - governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed/03-kernel-clauses-v0.2.yaml
+    notes:
+      - Exact byte copy; strict YAML parsing and independent semantic comparison with KD-R02 passed.
+      - Uses the preserved internal Kernel ID while the repository registry assigns this versioned artifact ID.
+
+  - id: KD-R04
+    title: HugePlanning Designer Open Questions v0.2
+    version: 0.2.0-designer-revision
+    status: OPEN_NONBLOCKING_FOR_TARGETED_CLOSURE
+    authority: proposed_design_support_not_independent_closure
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/04-designer-open-questions-v0.2.md
+    source_path: 'zip:governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip#HugePlanning-KGR-004-v0.2-proposed/04-designer-open-questions-v0.2.md'
+    source_sha256: 184e4345b390f9f91256565c508ebff8b80bfd0e7109d5e89614187cb79a85d4
+    produced_by: KGR-004
+    artifact_type: designer_revision_output
+    language: English
+    canonicality: exact_run_output
+    supersedes: KD-04
+    aliases:
+      - governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed/04-designer-open-questions-v0.2.md
+    notes:
+      - Exact byte copy; records no owner decision required and keeps downstream implementation questions routed.
+
+  - id: KD-R05
+    title: HugePlanning Lower-Layer Routing v0.2
+    version: 0.2.0-designer-revision
+    status: COMPLETE_FOR_TARGETED_CLOSURE
+    authority: proposed_lower_layer_routing_not_implementation_authority
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md
+    source_path: 'zip:governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip#HugePlanning-KGR-004-v0.2-proposed/05-lower-layer-routing-v0.2.md'
+    source_sha256: 6f62a56a56c57ba07a07125bd75fbcfe5a51db34f024f7f4ecdaec3ff2c1afee
+    produced_by: KGR-004
+    artifact_type: lower_layer_routing
+    language: English
+    canonicality: exact_run_output
+    supersedes: KD-05
+    aliases:
+      - governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed/05-lower-layer-routing-v0.2.md
+    notes:
+      - Exact byte copy; routing does not assert that any control exists or authorize Enforcement Engineering.
+
+  - id: KD-R06
+    title: HugePlanning Targeted Adversarial Closure Handoff
+    version: 0.2.0-designer-revision
+    status: READY_FOR_TARGETED_ADVERSARIAL_CLOSURE
+    authority: designer_handoff_not_independent_closure_evidence
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/06-targeted-adversarial-closure-handoff.md
+    source_path: 'zip:governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip#HugePlanning-KGR-004-v0.2-proposed/06-targeted-adversarial-closure-handoff.md'
+    source_sha256: a0ca01b5ac39827ad8725a7d3acdac5220564ef4f8e29b239ae6cfb454049f65
+    produced_by: KGR-004
+    artifact_type: designer_targeted_closure_handoff
+    language: English
+    canonicality: exact_run_output
+    supersedes: KD-06
+    aliases:
+      - governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed/06-targeted-adversarial-closure-handoff.md
+    notes:
+      - Exact byte copy; next review mode is TARGETED_CLOSURE and the Enforcement Engineering gate remains closed.
+
+  - id: KD-R07
+    title: KGR-004 Finding Disposition Register
+    version: 0.2.0-designer-revision
+    status: COMPLETE_FOR_TARGETED_CLOSURE
+    authority: designer_disposition_not_independent_closure
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/07-finding-disposition-register.yaml
+    source_path: 'zip:governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip#HugePlanning-KGR-004-v0.2-proposed/07-finding-disposition-register.yaml'
+    source_sha256: c1b1aad7312c795131573d89a6c402e115ddb206abfb3a97a1d3d1687c4eacbd
+    produced_by: KGR-004
+    artifact_type: finding_disposition_register
+    language: English
+    canonicality: exact_run_output
+    supersedes: null
+    aliases:
+      - governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed/07-finding-disposition-register.yaml
+    notes:
+      - Exact byte copy; strict YAML parsing passed and all KA-F-001 through KA-F-015 IDs and KGR-003 severities were independently verified.
+      - Contains 14 RESOLVED and 1 ROUTED disposition; KA-F-015 is the routed finding and no owner decision is required.
+
   - id: KGR-001
     title: Kernel Intake Interviewer Run Manifest
     version: '0.1'
@@ -893,17 +1065,18 @@ artifacts:
   - id: KGR-004
     title: Kernel Designer Adversarial Revision Run Manifest
     version: 0.1.0
-    status: NOT_STARTED
-    authority: prepared_run_record_not_execution_evidence
+    status: COMPLETED
+    authority: completed_designer_revision_record_not_independent_closure
     path: governance/runs/KGR-004-kernel-designer-revision/run-manifest.yaml
     source_path: null
     source_sha256: null
-    produced_by: GOV-4_PREPARATION
+    produced_by: GOV-4
     artifact_type: run_manifest
     language: English
     canonicality: supporting
     supersedes: null
     aliases: []
     notes:
-      - Execution contract and formal inputs are READY_FOR_EXECUTION; the Designer has not run.
-      - No KGR-004 outputs, execution evidence, ratification, targeted closure, or Enforcement Engineering exist.
+      - Result is READY_FOR_TARGETED_ADVERSARIAL_CLOSURE; the current proposal is 0.2.0-proposed and no owner decision is required.
+      - Exact execution transcript, model identity, reasoning setting, timestamps, token usage, interaction count, and chat-session identity are unavailable or unverified.
+      - No targeted closure, ratification, or Enforcement Engineering occurred.

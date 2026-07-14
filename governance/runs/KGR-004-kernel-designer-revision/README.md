@@ -1,21 +1,22 @@
 # KGR-004 — Kernel Designer Adversarial Revision
 
-Execution status: `NOT_STARTED`
-Preparation status: `READY_FOR_EXECUTION`
+Execution status: `COMPLETED`
+Result: `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE`
 Mode: `ADVERSARIAL_REVISION`
 Kernel: `PROPOSED_NOT_RATIFIED`
+Kernel version: `0.2.0-proposed`
 
 ## Purpose and provenance
 
-KGR-004 is prepared to revise the complete KGR-002 `0.1.0-proposed` baseline against the independent KGR-003 result `DESIGNER_REVISION_REQUIRED`. The formal input is the machine-readable input envelope plus seven byte-exact KGR-002 output aliases and seven byte-exact KGR-003 output aliases.
+KGR-004 revised the complete KGR-002 `0.1.0-proposed` baseline against the independent KGR-003 result `DESIGNER_REVISION_REQUIRED`. The formal input was the machine-readable input envelope plus seven byte-exact KGR-002 output aliases and seven byte-exact KGR-003 output aliases. All 14 hashes claimed by the output package were independently checked against the envelope and preserved files.
 
-This is a new run because adversarial revision is materially different from initial constitutional design. It uses workflow `KD-R0` through `KD-R5`, produces a proposed `0.2.0-proposed` package, and must disposition every KGR-003 finding. The historical KGR-002 prompt remains immutable because it is evidence of the contract actually used for `INITIAL_DESIGN`; this run preserves a separate, versioned prompt snapshot.
+The imported package contains exactly the eight required outputs. It records 15 dispositions: 14 `RESOLVED` and one `ROUTED`, with `KA-F-015` as the routed provider-capability observation. No owner decision is required. The Markdown and YAML Kernel representations were independently parsed and compared for semantic alignment.
 
-The run may execute in the original Designer chat for continuity or in a fresh isolated Designer chat, but chat memory is not formal provenance. The input envelope and attached artifacts control routing and identity.
+The exact ZIP and its eight extracted members are preserved under `governance/sources/raw/packages/`. The run outputs are byte-identical to those members. The package was imported after execution; the exact execution transcript is not preserved. Exact model identity, reasoning setting, execution timestamps, token usage, interaction count, and chat-session identity are `UNKNOWN` or `UNVERIFIED`.
 
-## Expected outputs
+## Outputs
 
-If no blocker prevents package completion, execution must produce exactly:
+The completed run produced exactly:
 
 1. `00-kernel-design-basis-v0.2.md`
 2. `01-kernel-admission-analysis-v0.2.md`
@@ -26,8 +27,8 @@ If no blocker prevents package completion, execution must produce exactly:
 7. `06-targeted-adversarial-closure-handoff.md`
 8. `07-finding-disposition-register.yaml`
 
-The expected next gate is `TARGETED_ADVERSARIAL_CLOSURE`. Independent closure must occur before Enforcement Engineering can be considered.
+The next gate is independent `TARGETED_ADVERSARIAL_CLOSURE`. These outputs remain Designer work product and are not independent closure evidence. The Enforcement Engineering gate remains `CLOSED`.
 
-## Non-goals
+## Authority boundary
 
-Preparation does not execute the Designer, revise or overwrite the v0.1 proposal, create KGR-004 outputs, perform adversarial closure, begin Enforcement Engineering, ratify the Kernel, or authorize runtime adoption. No claim of validation, enforceability, compliance, operation, or maturity follows from this run structure.
+KGR-004 did not overwrite the v0.1 proposal, perform targeted adversarial closure, begin Enforcement Engineering, ratify the Kernel, or authorize runtime adoption. No claim of enforceability, compliance, operation, or maturity follows from Designer completion. A later duplicate attempt that stopped at `BLOCKED_BY_PACKAGE_CONFLICT` was not imported and did not replace this package.

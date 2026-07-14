@@ -10,7 +10,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 | GOV-1 Kernel intake | `COMPLETED` — imported/reconstructed |
 | GOV-2 Kernel design | `COMPLETED` — imported/reconstructed |
 | GOV-3 Independent adversarial review | `COMPLETED` — `DESIGNER_REVISION_REQUIRED` |
-| GOV-4 Designer revision and adversarial closure | `READY_TO_START` |
+| GOV-4 Designer revision and adversarial closure | `IN_PROGRESS` — Designer revision completed; targeted closure next |
 | GOV-5 Enforcement analysis and derived governance requirements | `PLANNED` — not ready to start |
 | GOV-6 Human ratification | `PLANNED` |
 | GOV-7 Minimum executable governance bootstrap | `PLANNED` |
@@ -75,7 +75,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: Kernel Designer and independent Adversary; Ratification Owner decides reserved questions.
 - Entry conditions: GOV-3 completed with actionable findings.
 - Completion gate: no unresolved finding that blocks enforcement analysis; all semantic changes trace to findings, owner decisions, verified source corrections, or documented regression prevention.
-- Current status: `READY_TO_START`; KGR-004 is `NOT_STARTED` and its execution contract and formal input package are `READY_FOR_EXECUTION`. No owner decision blocks revision. Exact next action: Execute the versioned KGR-004 ADVERSARIAL_REVISION protocol with the formal baseline and KGR-003 review package.
+- Current status: `IN_PROGRESS`. KGR-004 Designer revision is `COMPLETED` with `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE`, producing the complete `0.2.0-proposed` package and dispositions of 14 `RESOLVED` plus 1 `ROUTED` (`KA-F-015`). No owner decision is required. Independent targeted adversarial closure has not occurred and is the next substage; GOV-4 remains incomplete and the Enforcement Engineering gate remains closed.
 - Dependencies: GOV-3.
 - Explicit non-goals: repeating Intake, ratification by revision, silent finding dismissal, Designer self-closure, Enforcement Engineering before targeted closure, a full policy suite, or runtime implementation.
 

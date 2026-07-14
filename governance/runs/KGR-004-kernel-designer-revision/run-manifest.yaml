@@ -2,22 +2,23 @@ run:
   id: KGR-004
   role: Kernel Designer
   mode: ADVERSARIAL_REVISION
-  status: NOT_STARTED
-  preparation_status: READY_FOR_EXECUTION
+  status: COMPLETED
+  preparation_status: COMPLETED
   phase: GOV-4
-  started_at: null
-  completed_at: null
+  started_at: UNKNOWN
+  completed_at: UNKNOWN
+  output_artifact_date: '2026-07-14'
 
 execution:
   platform:
     intended: ChatGPT
-    actual: NOT_EXECUTED
+    actual: UNVERIFIED
   model:
     intended: Sol
-    actual: NOT_EXECUTED
+    actual: UNKNOWN
   reasoning_mode:
     intended: High
-    actual: NOT_EXECUTED
+    actual: UNKNOWN
   prompt:
     id: GOV-PROMPT-006
     version: 0.1.0
@@ -26,8 +27,16 @@ execution:
     path: governance/runs/KGR-004-kernel-designer-revision/prompt/04-kernel-designer-adversarial-revision-prompt-sol-high-v0.1.0.md
     sha256: 19049554b9caaf98badef7d823fdefdee7afb49b8fcfab727cfe83230b205c61
     snapshot_matches_canonical: true
-  execution_evidence: NONE
-  historical_designer_chat_resumption: NOT_CLAIMED
+    output_identity_match: VERIFIED
+  execution_evidence:
+    exact_output_package_preserved: true
+    formal_protocol_and_input_identity_in_outputs: VERIFIED
+    exact_transcript: NOT_PRESERVED
+    exact_session_identity: UNVERIFIED
+    interaction_count: UNKNOWN
+    token_usage: UNKNOWN
+    hidden_reasoning: NOT_AVAILABLE_NOT_EVIDENCE
+  historical_designer_chat_resumption: UNVERIFIED
 
 inputs:
   envelope:
@@ -89,9 +98,15 @@ target:
   human_ratification: NOT_STARTED
 
 outputs:
-  status: ABSENT_NOT_EXECUTED
-  artifacts: []
-  expected:
+  status: IMPORTED_EXACT_AFTER_EXECUTION
+  package:
+    supplied_path: /home/sugar/Downloads/HugePlanning-KGR-004-v0.2-proposed.zip
+    preserved_path: governance/sources/raw/packages/HugePlanning-KGR-004-v0.2-proposed.zip
+    sha256: c2d17e5f0dfad2ae2d73ee633d6c436e40eb50ebc2c05924b1b402953cd42c70
+    path_safety: VERIFIED
+    utf8_readability: VERIFIED
+    exact_members: VERIFIED
+  artifacts:
     - governance/runs/KGR-004-kernel-designer-revision/outputs/00-kernel-design-basis-v0.2.md
     - governance/runs/KGR-004-kernel-designer-revision/outputs/01-kernel-admission-analysis-v0.2.md
     - governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md
@@ -100,23 +115,55 @@ outputs:
     - governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md
     - governance/runs/KGR-004-kernel-designer-revision/outputs/06-targeted-adversarial-closure-handoff.md
     - governance/runs/KGR-004-kernel-designer-revision/outputs/07-finding-disposition-register.yaml
+  artifact_sha256:
+    governance/runs/KGR-004-kernel-designer-revision/outputs/00-kernel-design-basis-v0.2.md: 114659b02efbd983afbdde37e66520a0a8d02d224b6bdf718c4f056ce12d81a5
+    governance/runs/KGR-004-kernel-designer-revision/outputs/01-kernel-admission-analysis-v0.2.md: f3154923a7aefee165fac387f617c343c2294751722e8bd27eb6e1b84576642e
+    governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md: 0dba205609e0b3c2df2fdfa6ee5b393174a9bffb1b12c5a24a2eecd4820b8545
+    governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml: 0b48212543b54eb775e4bd5e6688dae3ff19eabb11f89ee4750b11faf7dd2ca1
+    governance/runs/KGR-004-kernel-designer-revision/outputs/04-designer-open-questions-v0.2.md: 184e4345b390f9f91256565c508ebff8b80bfd0e7109d5e89614187cb79a85d4
+    governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md: 6f62a56a56c57ba07a07125bd75fbcfe5a51db34f024f7f4ecdaec3ff2c1afee
+    governance/runs/KGR-004-kernel-designer-revision/outputs/06-targeted-adversarial-closure-handoff.md: a0ca01b5ac39827ad8725a7d3acdac5220564ef4f8e29b239ae6cfb454049f65
+    governance/runs/KGR-004-kernel-designer-revision/outputs/07-finding-disposition-register.yaml: c1b1aad7312c795131573d89a6c402e115ddb206abfb3a97a1d3d1687c4eacbd
 
 result:
-  status: NOT_AVAILABLE_NOT_EXECUTED
-  handoff_status: null
+  status: READY_FOR_TARGETED_ADVERSARIAL_CLOSURE
+  handoff_status: READY_FOR_TARGETED_ADVERSARIAL_CLOSURE
   authority_status: PROPOSED_NOT_RATIFIED
+  kernel_version: 0.2.0-proposed
+  finding_count: 15
+  dispositions:
+    RESOLVED: 14
+    ROUTED: 1
+  routed_finding: KA-F-015
+  owner_decisions_required: []
+  markdown_yaml_semantic_alignment: VERIFIED
+  ready_for_enforcement_engineering: false
+  targeted_adversarial_closure_performed: false
+  limitations:
+    - The exact execution transcript is not preserved.
+    - Exact model identity, reasoning setting, timestamps, token usage, interaction count, and chat-session identity are unknown or unverified.
+    - The outputs are Designer work product and do not constitute independent targeted-closure evidence.
+    - No repository, provider, runtime, or enforcement mechanism was inspected during the isolated Designer execution.
 
 human_interventions:
-  during_kgr_004: NONE
+  during_kgr_004: NONE_RECORDED_IN_OUTPUTS_TRANSCRIPT_UNAVAILABLE
   decisions: []
   corrections: []
 
 provenance:
   preparation_decision: GOV-DEC-013
   formal_inputs_complete: true
-  execution_started: false
+  execution_started: true
+  imported_after_execution: true
+  input_hashes_independently_verified: 14
+  raw_package_custody: EXACT_BYTE_CUSTODY
+  extracted_members_byte_exact: true
+  run_outputs_byte_exact: true
   notes:
-    - Contract preparation is not Designer execution evidence.
-    - No claim is made that the historical Designer chat has resumed.
+    - The outputs identify and match GOV-PROMPT-006, protocol 0.1.0, run KGR-004, and the formal KGR-004 input package.
+    - The package was imported after the isolated Designer execution; the exact execution transcript is not preserved.
+    - No claim is made about the identity of the chat session or whether a historical Designer chat was resumed.
     - The 14 run inputs are byte-identical aliases of existing KGR-002 and KGR-003 artifacts and do not receive new authoritative artifact identities.
     - The prompt snapshot is byte-identical to the canonical protocol at preparation time.
+    - The outputs remain Designer work product and are not independent targeted-closure evidence.
+    - A later duplicate attempt that stopped at BLOCKED_BY_PACKAGE_CONFLICT was not imported and did not replace this valid v0.2 package.

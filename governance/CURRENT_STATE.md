@@ -2,33 +2,36 @@
 
 | Question | Current answer |
 |---|---|
-| Current governance phase | GOV-4 — `READY_TO_START` |
-| Last completed governance function | KGR-003 Kernel Adversary — `COMPLETED` with `DESIGNER_REVISION_REQUIRED` |
+| Current governance phase | GOV-4 — `IN_PROGRESS`; Designer revision complete, targeted closure next |
+| Last completed governance function | KGR-004 Kernel Designer adversarial revision — `COMPLETED` |
 | Completed phases | GOV-0, GOV-1, GOV-2, and GOV-3 — `COMPLETED` |
 | GOV-3 status | `COMPLETED` |
 | GOV-3 result | `DESIGNER_REVISION_REQUIRED` |
 | KGR-003 status | `COMPLETED` |
-| KGR-004 status | `NOT_STARTED`; execution contract and formal inputs are `READY_FOR_EXECUTION` |
+| KGR-004 status | `COMPLETED` — `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE` |
 | KGR-004 mode | `ADVERSARIAL_REVISION` under protocol `0.1.0` |
-| Next exact execution | Execute the versioned KGR-004 ADVERSARIAL_REVISION protocol with the formal baseline and KGR-003 review package. |
+| Current proposed Kernel | `0.2.0-proposed`; v0.1 remains preserved as the predecessor proposal |
+| Next exact execution | Prepare and run independent targeted adversarial closure against the exact KGR-004 package. |
 | Kernel status | `PROPOSED_NOT_RATIFIED` |
-| Adversary status | KGR-003 `COMPLETED`; targeted closure review remains required after Designer revision |
-| GOV-4 status | `READY_TO_START`; KGR-004 is prepared but substantive revision has not begun |
+| Adversary status | KGR-003 `COMPLETED`; independent targeted closure has not occurred |
+| GOV-4 status | `IN_PROGRESS`; Designer-revision substage `COMPLETED`, targeted-closure substage is next |
 | GOV-5 status | `PLANNED`; not ready to start |
 | Enforcement Engineering gate | `CLOSED` pending Designer revision and targeted adversarial closure |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED`; no executable enforcement evidence exists |
 | Ratification status | `NOT_STARTED` |
-| Owner decisions required by KGR-003 | None |
-| Architecture disposition | The seven-clause architecture may be preserved; the existing clauses require material revision |
+| Owner decisions required | None |
+| Architecture disposition | KGR-004 preserves the seven-clause architecture with revised semantics; independent targeted closure is still required |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | No owner decision blocks revision; the unresolved CRITICAL and HIGH findings block Enforcement Engineering |
-| Exact next action | Execute the versioned KGR-004 ADVERSARIAL_REVISION protocol with the formal baseline and KGR-003 review package. |
+| Known blockers | No owner decision is required; independent targeted closure is still required before Enforcement Engineering |
+| Exact next action | Prepare independent targeted adversarial closure against the exact KGR-004 outputs without beginning Enforcement Engineering. |
 
-## GOV-4 preparation
+## GOV-4 Designer revision
 
-KGR-004 now has an independently versioned `ADVERSARIAL_REVISION` protocol, an exact run prompt snapshot, a machine-readable input envelope, and 14 byte-identical input aliases: seven KGR-002 baseline artifacts plus seven KGR-003 review artifacts. Decision `GOV-DEC-013` records that `INITIAL_DESIGN` and `ADVERSARIAL_REVISION` are distinct formal workflows and that chat continuity is not durable provenance.
+KGR-004 completed with `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE`. Its exact ZIP and eight outputs are preserved byte-for-byte. The package identifies `GOV-PROMPT-006`, protocol `0.1.0`, run `KGR-004`, and the formal input package; all 14 input hashes were independently verified. The disposition register contains all 15 KGR-003 findings with original severities: 14 are `RESOLVED` and `KA-F-015` is `ROUTED`. No owner decision is required.
 
-Preparation is not execution. KGR-004 remains `NOT_STARTED`, no KGR-004 Designer output exists, the v0.1 proposal is unchanged, and targeted adversarial closure remains a later independent step within GOV-4.
+The current proposal under review is `0.2.0-proposed`; it does not erase or rewrite the preserved v0.1 proposal. The exact execution transcript is not preserved, and exact model identity, reasoning setting, timestamps, token usage, interaction count, and chat-session identity are unknown or unverified. The outputs remain Designer work product, not independent targeted-closure evidence.
+
+GOV-4 is not complete. Independent targeted adversarial closure is the next substage. The Enforcement Engineering gate remains closed, human ratification remains not started, and no adoption, operation, compliance, or maturity claim has been made.
 
 ## GOV-3 completion
 
