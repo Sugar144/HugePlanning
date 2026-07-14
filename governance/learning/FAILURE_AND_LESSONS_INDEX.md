@@ -1,7 +1,7 @@
 # Failure and Lessons Index
 
 > GENERATED FILE — source of truth: `records/` plus append-only `events/`.
-> Tool version: `0.1.0`. Deterministic input digest: `d9068b8d01d4bfe7726210844604d125fa2ea0f49d3c8e6dca4a795423e10d50`.
+> Tool version: `0.1.0`. Deterministic input digest: `340f280d4ddd8fdcee0437978f2d4ef1f8f9d5918e67c5615d5a74a6ea3add1c`.
 > Manual edits will be overwritten by `--apply` or rejected as generated-view drift.
 
 | ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |

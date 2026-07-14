@@ -1,0 +1,30 @@
+fixture_set: GOV-LOOP-001_STATIC_MUTATIONS_0.1.0
+synthetic_test_evidence: true
+mutations:
+  - {id: state-count, path: states, operation: remove_last, expected_diagnostic: STATE_SET_MISMATCH}
+  - {id: undeclared-state, path: transitions.0.to, value: UNDECLARED, expected_diagnostic: UNDECLARED_STATE_REFERENCE}
+  - {id: active-exit, path: transitions, operation: remove_targeted_sources, expected_diagnostic: ACTIVE_STATE_WITHOUT_EXIT}
+  - {id: attempt-type, path: attempt_events.0.outcome, value: UNKNOWN, expected_diagnostic: ATTEMPT_EVENT_PROFILE_MISMATCH}
+  - {id: noncompletion-type, path: non_completion_events.0.event, value: UNKNOWN, expected_diagnostic: NON_COMPLETION_PROFILE_MISMATCH}
+  - {id: adversary-matrix, path: result_decision_matrix.substantive.0.priority, value: 9, expected_diagnostic: ADVERSARY_MATRIX_MISMATCH}
+  - {id: final-exclusivity, path: result_decision_matrix.exactly_one_substantive_result_required, value: false, expected_diagnostic: FINAL_RESULT_EXCLUSIVITY_MISSING}
+  - {id: designer-self-closure, path: designer_remediation_controller_mapping.designer_may_emit_closure_confirmed, value: true, expected_diagnostic: DESIGNER_SELF_CLOSURE}
+  - {id: closure-requirement, path: closure_confirmed_requires.package_validation, value: FAILED, expected_diagnostic: CLOSURE_REQUIREMENTS_MISMATCH}
+  - {id: initial-counter, path: counters.completed_targeted_closure_runs, value: 1, expected_diagnostic: INITIAL_COUNTERS_NOT_ZERO}
+  - {id: targeted-increment, path: increment_rules.targeted_closure.increment_on_valid_completed_results, operation: remove_last, expected_diagnostic: TARGETED_INCREMENT_RULE_MISMATCH}
+  - {id: designer-increment, path: increment_rules.designer_remediation.increment_on_valid_completed_results, operation: remove_last, expected_diagnostic: DESIGNER_INCREMENT_RULE_MISMATCH}
+  - {id: closure-limit, path: limits.maximum_targeted_closure_runs, value: 4, expected_diagnostic: TARGETED_LIMIT_MISMATCH}
+  - {id: remediation-limit, path: limits.maximum_designer_remediation_runs, value: 3, expected_diagnostic: DESIGNER_LIMIT_MISMATCH}
+  - {id: run-sequence, path: controller_post_import_logic.maximum_valid_sequence.4.run, value: KGR-010, expected_diagnostic: RUN_SEQUENCE_MISMATCH}
+  - {id: package-conflict-counter, path: increment_rules.do_not_increment_for, operation: remove_package_conflict, expected_diagnostic: NON_CONSUMING_EVENT_MISSING}
+  - {id: invalid-output-counter, path: increment_rules.do_not_increment_for, operation: remove_invalid_output, expected_diagnostic: NON_CONSUMING_EVENT_MISSING}
+  - {id: invalid-import-counter, path: increment_rules.do_not_increment_for, operation: remove_invalid_import, expected_diagnostic: NON_CONSUMING_EVENT_MISSING}
+  - {id: signature, path: blocking_finding_signature.hash.representation, value: UPPERCASE, expected_diagnostic: SIGNATURE_RULE_MISMATCH}
+  - {id: no-progress, path: no_progress_guard.transition, value: READY_FOR_TARGETED_CLOSURE, expected_diagnostic: NO_PROGRESS_GUARD_MISMATCH}
+  - {id: reappearance, path: finding_reappearance_guard.threshold, value: 3, expected_diagnostic: REAPPEARANCE_GUARD_MISMATCH}
+  - {id: owner-reentry, path: reentry_rules.owner_decision_required.prerequisite, value: none, expected_diagnostic: OWNER_REENTRY_MISMATCH}
+  - {id: research-reentry, path: reentry_rules.research_required.prerequisite, value: none, expected_diagnostic: RESEARCH_REENTRY_MISMATCH}
+  - {id: redesign-exit, path: reentry_rules.structural_redesign_required.exits_bounded_loop, value: false, expected_diagnostic: REDESIGN_EXIT_MISSING}
+  - {id: renewed-adversary, path: controller_import_rules.only_ready_for_targeted_closure_permits_next_adversary_run_preparation, value: false, expected_diagnostic: ADVERSARY_PREPARATION_GUARD_MISSING}
+  - {id: artifact-resolution, path: artifact_resolution.immutable_history, value: false, expected_diagnostic: ARTIFACT_RESOLUTION_MISMATCH}
+  - {id: unknown-version, path: loop.version, value: 9.9.9, expected_diagnostic: UNSUPPORTED_LOOP_VERSION}

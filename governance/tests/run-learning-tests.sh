@@ -63,12 +63,28 @@ def seed(root, draft=None):
 
 
 try:
+    repository_result = subprocess.run(
+        [sys.executable, str(source_tool), "validate"],
+        cwd=repo, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+    )
+    check(repository_result.returncode == 0 and '"events":1' in repository_result.stdout, "1 repository HP-FAIL-004 event schema and numbering", repository_result.stderr)
+    repository_event = yaml.safe_load((repo / "governance/learning/events/HP-FAIL-004/HP-FAIL-004-E001.yaml").read_text())["failure_record_event"]
+    repository_index = (repo / "governance/learning/FAILURE_AND_LESSONS_INDEX.md").read_text()
+    check(
+        repository_event["event_type"] == "CORRECTION"
+        and repository_event["status_from"] is None
+        and repository_event["status_to"] is None
+        and "HP-FAIL-004" in repository_index
+        and "CORRECTED" in next(line for line in repository_index.splitlines() if "HP-FAIL-004" in line),
+        "2 HP-FAIL-004 remains CORRECTED in generated index",
+    )
+
     base = make_env("base")
     result = run(base, "validate", "--record", fixtures / "valid-base-record.yaml")
-    check(result.returncode == 0, "1 valid base record", result.stderr)
+    check(result.returncode == 0, "3 valid base record", result.stderr)
     data = yaml.safe_load((fixtures / "valid-base-record.yaml").read_text())
     expected_classes = {"FAILURE", "NEAR_MISS", "AMBIGUITY", "PROCESS_DEFECT", "TOOLING_GAP", "COST_WASTE", "OWNER_CORRECTION"}
-    check(set(data["failure_record"]["classification"]) == expected_classes, "2 every classification enum")
+    check(set(data["failure_record"]["classification"]) == expected_classes, "4 every classification enum")
 
     result = run(base, "validate", "--record", fixtures / "missing-required-field.yaml")
     check(result.returncode == 1 and "schema validation failed" in result.stderr, "3 missing required field")

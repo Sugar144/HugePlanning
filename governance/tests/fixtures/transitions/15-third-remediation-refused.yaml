@@ -1,0 +1,16 @@
+fixture_id: "15"
+synthetic_test_evidence: true
+input_state: DESIGNER_REMEDIATION_IN_PROGRESS
+source_run: KGR-008
+source_role: designer
+source_mode: CLOSURE_REMEDIATION
+input_result: READY_FOR_TARGETED_CLOSURE
+counters_before: {completed_targeted_closure_runs: 2, completed_designer_remediation_runs: 2}
+history: []
+expected_validity: INVALID
+expected_counters_after: {completed_targeted_closure_runs: 2, completed_designer_remediation_runs: 3}
+expected_transition: READY_FOR_TARGETED_CLOSURE
+expected_next_role: Kernel Adversary
+expected_next_mode: TARGETED_CLOSURE
+owner_authorization_required: true
+expected_diagnostic: DESIGNER_REMEDIATION_LIMIT_EXCEEDED

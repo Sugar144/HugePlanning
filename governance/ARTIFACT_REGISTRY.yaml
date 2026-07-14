@@ -245,6 +245,25 @@ artifacts:
       - Byte-identical to GOV-PROTOCOL-002 at preparation time.
       - Preserves the exact future KGR-005 contract, including envelope metadata binding, the ordered loop result matrix, pre-substantive conflict handling, strict result schemas, and deterministic output packaging; no execution or output evidence exists.
 
+  - id: HP-PROMPT-001
+    title: Phase 2 Controller Implementation Orchestration Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: exact_bounded_orchestration_prompt_not_execution_or_validation_proof
+    path: governance/prompts/orchestration/HP-PROMPT-001-phase-2-controller-implementation-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_PROMPT_CUSTODY_CORRECTION
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: []
+    notes:
+      - Preserves the exact Phase 2 prompt recovered from the interrupted Codex session, without later testing-framework discussion.
+      - Records local modification authority and explicit prohibitions on staging, commit, push, KGR-005 execution, real Controller transitions, and automatic LLM execution.
+      - Prompt custody is orchestration evidence, not proof of correct execution, validation, commit, constitutional authority, ratification, or Enforcement Engineering authorization.
+
   - id: GOV-METHOD-001
     title: Kernel Designer Mode Registry
     version: 0.2.0
@@ -305,7 +324,7 @@ artifacts:
 
   - id: GOV-METHOD-003
     title: Project Operating Contract
-    version: 0.1.0
+    version: 0.2.0
     status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
     authority: governance_operating_method_not_execution_or_constitutional_authority
     path: governance/methodology/project-operating-contract.md
@@ -322,6 +341,26 @@ artifacts:
     notes:
       - Defines authority, status, record, deterministic-routing, output-artifact, immutability, traceability, handoff, and anti-recursion semantics.
       - Instruction files apply concise behavior rules; this contract does not prove execution, validation, acceptance, ratification, or operation.
+
+  - id: GOV-METHOD-004
+    title: Methodology Backlog
+    version: 0.1.0
+    status: ACTIVE_NON_AUTHORITATIVE_PROPOSAL_REGISTER
+    authority: methodology_proposals_only_not_implementation_or_execution_authority
+    path: governance/methodology/METHODOLOGY_BACKLOG.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_PROMPT_CUSTODY_CORRECTION
+    artifact_type: methodology_proposal_register
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes:
+      - HP-MPROP-001 is owner-approved for a separately authorized future Phase 2.1 after Phase 2 is committed and pushed and before KGR-005 execution.
+      - HP-MPROP-002 is owner-approved for a separately authorized future Phase 2.2 after Phase 2.1 and before repeated future governance runs; it creates no skill or execution authority.
+      - Backlog approval is not implementation authorization, implemented state, execution evidence, constitutional authority, ratification, or Enforcement Engineering authorization.
+      - Superseded proposals remain preserved and marked rather than deleted.
 
   - id: GOV-SUP-006
     title: Professional Failure and Learning Record System
@@ -347,6 +386,26 @@ artifacts:
       - Four initial GOV-4 records are CORRECTED but not VALIDATED; unavailable historic metrics and evidence remain explicit.
       - Base records and append-only events are source truth; the Markdown index is a deterministic generated view.
 
+  - id: GOV-SUP-007
+    title: Material Prompt Custody System
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+    authority: prompt_custody_and_orchestration_evidence_not_execution_or_constitutional_authority
+    path: governance/prompts/README.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_PROMPT_CUSTODY_CORRECTION
+    artifact_type: prompt_custody_system
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/prompts/orchestration/
+      - governance/tools/validate_prompts.py
+    notes:
+      - Defines materiality, stable IDs and versions, lifecycle, exact-text custody, executed-prompt immutability, supersession, formal-run references, historical gaps, and interrupted-execution recovery.
+      - Custody does not prove correct execution, validated outputs, authorized actions, constitutional authority, ratification, or Enforcement Engineering authorization.
+
   - id: GOV-TOOL-001
     title: Deterministic Learning Record Manager
     version: 0.1.0
@@ -366,6 +425,37 @@ artifacts:
     notes:
       - Implements only validate, record, event, and index; summarize and closure-loop Controller behavior remain outside Phase 1.
       - Dry-run is default, writes require --apply, and no network, LLM, Git mutation, or automated risk decision is performed.
+
+  - id: GOV-TOOL-002
+    title: Deterministic Closure-Loop Controller Tooling Foundation
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+    authority: deterministic_validation_and_transition_simulation_no_constitutional_or_execution_authority
+    path: governance/tools/validate_closure_loop.py
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_DETERMINISTIC_CLOSURE_LOOP_TOOLING_FOUNDATION
+    artifact_type: offline_deterministic_tooling_foundation
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/tools/validate_run_package.py
+      - governance/tools/apply_loop_transition.py
+      - governance/tools/_lib/
+      - governance/schemas/kernel-design-closure-loop.schema.json
+      - governance/schemas/controller-transition.schema.json
+      - governance/schemas/governance-validation-record.schema.json
+      - governance/schemas/protocols/
+      - governance/tests/run-controller-tests.sh
+      - governance/tests/fixtures/transitions/
+      - governance/tests/fixtures/loop-mutations/
+      - governance/tests/fixtures/packages/
+      - governance/validation/README.md
+    notes:
+      - Implements local read-only validation and dry-run transition simulation; a write requires both `--apply` and an explicit authorization reference and is limited to one immutable Controller record path.
+      - No real Controller transition or GOV-VAL record exists, KGR-005 remains NOT_STARTED, and the Controller is implemented locally but not operational.
+      - The tooling does not launch an LLM, decide constitutional substance, mutate the Kernel or state documents, create KGR-006, open Enforcement Engineering, or ratify the Kernel.
 
   - id: GOV-REVIEW-001
     title: Phase 1 Governance Tooling and Learning Architecture Report

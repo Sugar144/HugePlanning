@@ -1,6 +1,6 @@
 ---
 document_id: GOV-METHOD-OPERATING-CONTRACT-001
-version: 0.1.0
+version: 0.2.0
 status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
 constitutional_authority: NONE
 ---
@@ -51,9 +51,25 @@ repository custody before the associated change is committed.
 Review bundles are temporary transport and review artifacts unless an
 explicit custody decision registers them for long-term preservation.
 
+## Material prompt custody
+
+A prompt is material when it authorizes material repository modification; defines implementation or review scope, affected files, or validation requirements; prepares or executes a formal run; corrects a material defect; authorizes staging, commit, push, pull request, merge, tag, release, deployment, or publication; changes governance methodology, tooling, or authority boundaries; or produces formal architecture, implementation, review, or other durable artifacts. Brief questions, minor clarifications, formatting-only requests, status checks, and messages without repository, execution, authority, or durable-artifact effect are not material.
+
+Every material prompt receives a stable `HP-PROMPT-###` identifier and a semantic version. The identifier remains stable across corrections to the same prompt lineage; a correction increments the version and records supersession. Categories identify the prompt function without granting authority. Lifecycle states are `DRAFT`, `APPROVED_NOT_EXECUTED`, `EXECUTED`, `SUPERSEDED`, `ABORTED`, `INVALID_EXECUTION`, and `NOT_PRESERVED`.
+
+Preserve the exact prompt text with its authorization scope, forbidden actions, environment, execution status, and links to resulting artifacts, reports, validation evidence, and commit when available. A material prompt must enter repository custody before or as part of the commit containing the work it authorized or defined. Once executed, its file is immutable execution-contract evidence; correction requires a new semantic version and an explicit supersession link. Prompt existence does not establish execution: execution status and evidence remain separate facts.
+
+After interruption, recover from the repository-custodied prompt and durable worktree or result evidence, verify identity and status, record the interruption and resumption, and do not silently substitute a revised prompt. If an exact historical prompt is unavailable, record `NOT_PRESERVED`, describe the evidence limitation, and never reconstruct a plausible text as original evidence.
+
+Formal run prompt snapshots under `governance/runs/<run>/prompt/` retain authoritative custody for their runs. The prompt catalogue references those snapshots and their run evidence without unnecessary byte duplication. Prompt custody carries only the authority explicitly stated in the prompt and cannot expand, reuse, or transfer it.
+
+Prompt custody does not itself prove that the prompt was executed correctly, that its outputs were validated, or that its authorized actions occurred.
+
 ## Record classes
 
 Failure and lesson records capture causal learning. Formal run records capture an execution contract and evidence. Operational logs capture transient chronology. Decision records capture authoritative choices. Incident records govern material security or authority breaches. Methodology parking-lot proposals capture prospective improvements without asserting an observed failure. One class may link to another but never substitutes for it.
+
+Material methodology proposals discovered during orchestration must be captured in the canonical methodology backlog before the current reviewed change is closed. They must not remain only in chat or an external working note.
 
 ## Deterministic and cost-aware routing
 

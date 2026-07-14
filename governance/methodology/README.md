@@ -14,5 +14,10 @@ Current methodology areas:
 - `roles/kernel-designer/` — Designer modes and versioned revision/remediation protocols.
 - `roles/kernel-adversary/` — Adversary modes and the targeted-closure protocol.
 - `loops/kernel-design-closure/` — bounded orchestration, transition, counter, finding-identity, and history rules for independent Kernel design closure.
+- `METHODOLOGY_BACKLOG.md` — canonical non-authoritative future methodology proposals; entries are not implemented state or implementation authorization.
 
 Loop success is distinct from Kernel ratification. Methodology has no constitutional authority and does not itself execute a run.
+
+The Phase 2 deterministic closure-loop foundation is locally implemented under `governance/tools/` pending Project Owner review. It validates the current loop/profile structure, stage-specific packages, and declared transition facts; it does not make constitutional judgments, launch a model, create KGR-006, mutate repository state documents, or make the Controller operational. A real transition remains separately authorized and requires valid active-state and import evidence.
+
+The operating contract also defines material prompt custody. The canonical custody contract and orchestration records live under `../prompts/`; prompt existence is not execution or validation proof.

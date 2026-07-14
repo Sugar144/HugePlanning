@@ -22,9 +22,9 @@
 | Owner decisions required | None |
 | Architecture disposition | KGR-004 preserves the seven-clause architecture with revised semantics; independent targeted closure is still required |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Instruction and learning foundation | Phase 1 locally implemented pending Project Owner review; four GOV-4 learning records are `CORRECTED`, not `VALIDATED` |
+| Instruction, learning, prompt-custody, and Controller-tooling foundation | Phases 1 and 2 plus prompt-custody foundations locally implemented pending Project Owner review; Phase 2 is not operational and no real transition exists; four GOV-4 learning records are `CORRECTED`, not `VALIDATED` |
 | Known blockers | No constitutional owner decision is currently required. KGR-005 execution has not yet been authorized or performed. |
-| Exact next action | Review the Phase 1 implementation report and review bundle; KGR-005 remains the next governance execution and requires separate authorization. |
+| Exact next action | Upload and review the external Phase 2 Controller implementation report and review bundle; KGR-005 remains `NOT_STARTED` and any execution or real Controller transition requires separate authorization. |
 
 ## Phase 1 instruction and professional-learning foundation
 
@@ -33,6 +33,14 @@ The Project Owner authorized local implementation of the approved Phase 1 instru
 The proposed architecture report and original local implementation report are preserved under `governance/reviews/phase-1-instructions-learning/` with original-source provenance and hashes. The review ZIP remains an external temporary transport/review artifact and is not imported into repository custody.
 
 This foundation does not implement a Controller, closure-loop runtime, or Enforcement Engineering. It does not execute KGR-005, change GOV-4 status, consume a loop counter, close an adversarial finding, ratify the Kernel, or begin human ratification. The initial records are `CORRECTED`, not `VALIDATED`; preventive controls require demonstrated use after review and future evidence.
+
+## Phase 2 deterministic closure-loop tooling foundation
+
+The Project Owner authorized local implementation of the bounded Phase 2 tooling foundation. The shared strict-parsing, canonicalization, schema, archive-safety, atomic-write, and diagnostic helpers; versioned loop, protocol-result, Controller-transition, and validation-evidence schemas; `validate_closure_loop.py`; `validate_run_package.py`; `apply_loop_transition.py`; and offline synthetic/security tests are locally implemented pending Project Owner review.
+
+The tools validate declared structure, package custody, identity, counters, guards, and routing only. They do not evaluate constitutional truth, launch an LLM, create KGR-006, update state documents automatically, or make the Controller operational. No real Controller transition has been applied, no counter has been consumed, and no `GOV-VAL-###` record has been allocated. KGR-005 remains `NOT_STARTED`; GOV-4 remains `IN_PROGRESS`; the Kernel remains `0.2.0-proposed / PROPOSED_NOT_RATIFIED`; Enforcement Engineering remains `CLOSED`; human ratification remains `NOT_STARTED`.
+
+Material prompt custody foundations are locally implemented pending Project Owner review. `HP-PROMPT-001` preserves the exact executed Phase 2 prompt and its original authorization boundary; `HP-FAIL-004-E001` records the interruption and recovery near miss. Custody is orchestration evidence, not execution proof, constitutional authority, ratification, or Enforcement Engineering authorization. The future testing proposal `HP-MPROP-001` is backlog-only and requires separate Phase 2.1 implementation authorization.
 
 ## GOV-4 closure-loop preparation
 
@@ -66,6 +74,12 @@ phase_1_instruction_and_learning_foundation:
   status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
   initial_learning_records: 4
   controller_implemented: false
+
+phase_2_controller_tooling_foundation:
+  status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+  controller_status: IMPLEMENTED_LOCALLY_NOT_OPERATIONAL
+  real_controller_transitions_applied: 0
+  kgr_005_execution: NOT_STARTED
 
 kernel:
   version: 0.2.0-proposed

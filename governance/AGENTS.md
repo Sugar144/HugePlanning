@@ -13,6 +13,10 @@ Apply the repository-wide `../AGENTS.md` and the canonical `methodology/project-
 - A formal run requires exact role, mode, and run identity; an exact prompt snapshot; an envelope; the applicable control snapshot; a complete hashed input set; an output contract; honest status; and independent import validation.
 - Keep authority separate: the Designer drafts but cannot self-close; the Adversary assesses but cannot mutate the Kernel or counters; a future Controller may validate declared structure and route transitions but cannot make constitutional judgments; the Project Owner retains authorization, risk, acceptance, and ratification decisions.
 - Register prompts, inputs, outputs, decisions, limitations, provenance, and honest run status.
+- For every material orchestration prompt, preserve the exact executed text, assign a stable prompt ID and version, record its authorization boundary and execution status, and link it to resulting artifacts, validation evidence, and commit when available.
+- Executed prompts are immutable. Corrections require a new version.
+- If the exact historical prompt is unavailable, record `NOT_PRESERVED` and do not reconstruct it as original evidence.
+- Formal run prompts already preserved under `governance/runs/<run>/prompt/` remain authoritative for those runs and need only be catalogued or referenced, not duplicated unnecessarily.
 - Triage material governance failures and owner corrections under `learning/README.md`. Route incidents and decisions to their own record classes.
 - On completion of a governance run, update its manifest, `ARTIFACT_REGISTRY.yaml`, `CURRENT_STATE.md`, and the relevant plan status.
 - Use governance validation tools when available before claiming structural, package, result, transition, or generated-view validity.

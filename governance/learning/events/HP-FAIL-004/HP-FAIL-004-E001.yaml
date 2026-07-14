@@ -1,0 +1,32 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-004-E001
+  record_id: HP-FAIL-004
+  date: 2026-07-14
+  event_type: CORRECTION
+  status_from: null
+  status_to: null
+  summary: A material Phase 2 implementation prompt was not preserved before execution, and accidental Codex interruption created uncertainty about the active prompt version.
+  rationale: Recovery required inspection of the partial 44-file worktree and the preserved Codex conversation text. No repository data was lost; no unauthorized commit, push, KGR execution, or Controller transition occurred. Implementation resumed within the original boundary and the full test suite was rerun. The prospective correction is durable prompt cataloguing plus repository instruction enforcement, requiring future material prompts to enter custody before or as part of the resulting commit. HP-FAIL-004 remains CORRECTED rather than VALIDATED until the preventive control has demonstrated use after review.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/prompts/orchestration/HP-PROMPT-001-phase-2-controller-implementation-v0.1.0.md
+      anchor: Exact executed text
+      sha256: null
+      availability: PRESERVED
+      note: Exact recovered Phase 2 execution prompt with interruption, resumption, authorization boundary, and result references.
+    - type: REPOSITORY_PATH
+      locator: governance/prompts/README.md
+      anchor: Interrupted execution and recovery
+      sha256: null
+      availability: PRESERVED
+      note: Prospective prompt-custody and recovery control created by this correction.
+    - type: OWNER_STATEMENT
+      locator: Phase 2 prompt-custody correction instruction
+      anchor: null
+      sha256: null
+      availability: NOT_PRESERVED
+      note: The Project Owner reported the accidental interruption, active-version uncertainty, successful worktree recovery, and absence of unauthorized actions; the original conversation evidence is not independently repository-preserved.
+  owner_decision_ref: null
+  accepted_risk: null
+  supersedes: null

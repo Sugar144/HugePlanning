@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://hugeplanning.local/governance/schemas/governance-validation-record.schema.json",
+  "title":"Future durable governance validation evidence contract",
+  "type":"object",
+  "required":["schema_version","record_id","tool","subject","profile_versions","result","diagnostics","constitutional_authority","authority_limit"],
+  "properties":{
+    "schema_version":{"const":"0.1.0"},
+    "record_id":{"pattern":"^GOV-VAL-[0-9]{3}$"},
+    "tool":{"type":"object","required":["name","version"],"additionalProperties":false},
+    "subject":{"type":"object"},
+    "profile_versions":{"type":"object"},
+    "result":{"enum":["VALID","INVALID"]},
+    "diagnostics":{"type":"array","items":{"type":"object","required":["code","path","message"],"additionalProperties":false}},
+    "constitutional_authority":{"const":"NONE"},
+    "authority_limit":{"const":"VALIDATION_IS_NOT_ACCEPTANCE_RATIFICATION_EXECUTION_OR_OPERATION"}
+  },
+  "additionalProperties":false
+}

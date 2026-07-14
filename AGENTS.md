@@ -10,6 +10,7 @@ These rules apply repository-wide. More specific `AGENTS.md` files may add stric
 - Run relevant validation and tests before claiming completion.
 - Triage and register material failures and lessons under `governance/learning/README.md`; never hide a material error in chat or silently repair it.
 - Preserve historical artifacts and append-only records. Correct prospectively through a new version or event.
+- Material prompts that define, authorize, review, correct, execute, or publish repository work must be catalogued and preserved under governance/prompts/ before or as part of the resulting commit. Do not leave the only exact copy in chat or a transient session.
 - Use honest status language: proposed is not approved; prepared is not executed; generated is not validated; validated is not accepted; accepted is not ratified; implemented is not operational.
 - Use the least costly capable model or deterministic method and avoid recursive model review of script-settleable facts.
 - Write durable repository artifacts in English. Operator communication follows the applicable project instruction.
