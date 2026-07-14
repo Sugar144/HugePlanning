@@ -70,7 +70,7 @@ proposal:
 
   first_skill:
     name: formal-governance-run-preparer
-    status: NOT_IMPLEMENTED_PHASE_2_2_SELECTED_BOUNDED_REVIEW_WORKFLOWS
+    status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
     purpose: >
       Prepare, validate, package, and present a formal governance run
       without executing it or crossing human authorization gates.
@@ -85,6 +85,10 @@ proposal:
     - governance-review-packager
     - agent-session-reviewer
 
+  phase_2_3_implementation:
+    - formal-governance-run-preparer
+    - KGR-005 preparation validation evidence GOV-VAL-001
+
   extraction_rule: >
     A skill is justified when a workflow has been executed repeatedly,
     has stable inputs and outputs, contains reusable judgment or sequencing,
@@ -97,7 +101,7 @@ proposal:
     - Skills must call deterministic scripts for deterministic operations.
 ```
 
-Phase 2.2 locally implements the reusable-skill extraction pattern with `governance-review-packager` and `agent-session-reviewer` pending review. The originally identified `formal-governance-run-preparer` remains unimplemented and requires separate scope. This status does not mean either skill is accepted, operational, publication authority, formal-run authority, or constitutional authority.
+Phase 2.2 locally implements the reusable-skill extraction pattern with `governance-review-packager` and `agent-session-reviewer` pending review. Phase 2.3 locally implements `formal-governance-run-preparer` and validates the existing KGR-005 preparation custody as `READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION`, also pending review. `HP-FAIL-006` preserves the validation-record schema defect and its authorized correction/validation events. This is preparation validation, not formal execution, acceptance, import, ratification, operation, publication authority, or constitutional authority.
 
 ## HP-MPROP-003 — Extract deterministic review-bundle generation
 

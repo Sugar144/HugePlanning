@@ -1,7 +1,7 @@
 registry:
-  version: '0.7'
-  generated_for: PHASE_2_2_DURABLE_REVIEW_PACKAGING_AND_SESSION_SUPERVISION
-  base_commit: 71c753152598aa76a18fa8b34f3629a1c76c4c14
+  version: '0.8'
+  generated_for: PHASE_2_3_FORMAL_GOVERNANCE_RUN_PREPARATION
+  base_commit: 74c5ea76c5b2f6ae2fe51ea683fed55b0b5cf759
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -377,7 +377,7 @@ artifacts:
     aliases: []
     notes:
       - HP-MPROP-001 is implemented locally for Phase 2.1 pending Project Owner review under the separately preserved HP-PROMPT-003 authorization.
-      - HP-MPROP-002 is locally implemented pending review through two bounded Phase 2.2 skills; formal-governance-run-preparer remains unimplemented.
+      - HP-MPROP-002 is locally implemented pending review through two bounded Phase 2.2 skills and the Phase 2.3 formal-governance-run-preparer skill.
       - HP-MPROP-003 is locally implemented pending review through GOV-TOOL-003 and GOV-SKILL-001.
       - HP-MPROP-004 is locally implemented pending review through GOV-SKILL-002 and remains limited to observable evidence.
       - Backlog approval is not implementation authorization, implemented state, execution evidence, constitutional authority, ratification, or Enforcement Engineering authorization.
@@ -478,9 +478,10 @@ artifacts:
       - governance/validation/README.md
     notes:
       - Implements local read-only validation and dry-run transition simulation; a write requires both `--apply` and an explicit authorization reference and is limited to one immutable Controller record path.
-      - No real Controller transition or GOV-VAL record exists, KGR-005 remains NOT_STARTED, and the Controller is implemented locally but not operational.
+      - No real Controller transition exists, KGR-005 remains NOT_STARTED, and the Controller is implemented locally but not operational; Phase 2.3 later allocates GOV-VAL-001 as preparation-validation evidence only.
       - The tooling does not launch an LLM, decide constitutional substance, mutate the Kernel or state documents, create KGR-006, open Enforcement Engineering, or ratify the Kernel.
       - Phase 2.1 adds pytest, bounded Hypothesis properties, and an independent-model state machine without changing Controller, loop, protocol, schema, or package semantics.
+      - HP-PROMPT-008 authorizes the bounded validation-record schema correction preserved by HP-FAIL-006; positive and strict unexpected-property regression tests pass without changing Controller semantics.
 
   - id: GOV-TOOL-003
     title: Durable Review Bundle Builder
@@ -541,6 +542,44 @@ artifacts:
     notes:
       - Reviews only observable session evidence and emits one of three bounded outcomes with durable routing for material findings.
       - Cannot access hidden reasoning, manufacture or self-validate findings, accept risk, publish, execute a run, or modify the repository without authorization.
+
+  - id: GOV-SKILL-003
+    title: Formal Governance Run Preparer Skill
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
+    authority: bounded_formal_run_preparation_workflow_no_execution_import_or_transition_authority
+    path: governance/skills/formal-governance-run-preparer/SKILL.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_3_FORMAL_GOVERNANCE_RUN_PREPARATION
+    artifact_type: governance_skill
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/skills/formal-governance-run-preparer/agents/openai.yaml
+    notes:
+      - Verifies formal-run custody and routes package, schema, archive, hash, inventory, and evidence operations through deterministic repository tools.
+      - Stops before formal execution and cannot invoke a role, fabricate outputs, create a successor run, import findings, apply a Controller transition, modify the Kernel, accept risk, ratify, or publish independently.
+
+  - id: GOV-VAL-001
+    title: KGR-005 Formal Input Preparation Validation
+    version: 0.1.0
+    status: VALIDATED_PREPARATION_NOT_EXECUTED
+    authority: deterministic_preparation_validation_not_acceptance_execution_import_or_constitutional_authority
+    path: governance/reviews/phase-2-3-formal-run-preparation/kgr-005-readiness-v0.1.0.yaml
+    source_path: /home/sugar/Downloads/KGR-005-formal-input-package.zip
+    source_sha256: 26291b32594f2b73e12107bec9572b528e4ec3e32e4ca08f9746c5aba1adf9cf
+    produced_by: PHASE_2_3_FORMAL_GOVERNANCE_RUN_PREPARATION
+    artifact_type: governance_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: null
+    aliases: []
+    notes:
+      - Deterministic preparation validation returned VALIDATED_PACKAGE with exactly 19 members and zero diagnostics.
+      - Readiness is READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION; KGR-005 remains NOT_STARTED with no outputs, completed-output package, execution evidence, import, or Controller transition.
+      - HP-FAIL-006 preserves the discovered validation-record schema defect and its authorized correction and validation events.
 
   - id: GOV-REVIEW-001
     title: Phase 1 Governance Tooling and Learning Architecture Report
@@ -635,6 +674,25 @@ artifacts:
     notes:
       - Records the bounded configurable review tool, two observable-authority-limited skills, affected validation, and review transport evidence.
       - Does not authorize a pull request, merge, release, KGR-005 execution, Controller transition, acceptance, ratification, or operation.
+
+  - id: GOV-REVIEW-006
+    title: Phase 2.3 Formal Governance Run Preparation Implementation Report
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
+    authority: local_implementation_and_preparation_validation_not_publication_or_formal_execution_authority
+    path: governance/reviews/phase-2-3-formal-run-preparation/implementation-report-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_3_FORMAL_GOVERNANCE_RUN_PREPARATION
+    artifact_type: implementation_validation_report
+    language: English
+    canonicality: preserved_implementation_evidence
+    supersedes: null
+    aliases:
+      - governance/reviews/phase-2-3-formal-run-preparation/review-bundle-profile-v0.1.0.yaml
+    notes:
+      - Records the skill design, authority boundary, KGR-005 preparation validation, affected checks, session review, and review transport evidence.
+      - Does not authorize KGR-005 execution, role invocation, result import, a Controller transition, Kernel modification, risk acceptance, ratification, pull request, merge, or release.
 
   - id: GOV-PROTOCOL-001
     title: Kernel Designer Adversarial Revision Protocol

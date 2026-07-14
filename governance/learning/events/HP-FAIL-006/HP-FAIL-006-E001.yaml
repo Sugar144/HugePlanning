@@ -1,0 +1,29 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-006-E001
+  record_id: HP-FAIL-006
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CONTAINED
+  status_to: CORRECTED
+  summary: The validation-record tool object now explicitly permits its required name
+    and version fields while continuing to reject undeclared properties.
+  rationale: HP-PROMPT-008 authorized the bounded schema correction and positive and
+    negative regression tests without changing Controller, loop, protocol, run, or
+    Kernel semantics.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/schemas/governance-validation-record.schema.json
+    anchor: properties.tool
+    sha256: null
+    availability: PRESERVED
+    note: Corrected strict tool identity object.
+  - type: REPOSITORY_PATH
+    locator: governance/prompts/orchestration/HP-PROMPT-008-phase-2-3-validation-record-schema-correction-v0.1.0.md
+    anchor: Exact executed text
+    sha256: null
+    availability: PRESERVED
+    note: Exact Project Owner scope expansion and correction authority.
+  owner_decision_ref: HP-PROMPT-008/0.1.0
+  accepted_risk: null
+  supersedes: null

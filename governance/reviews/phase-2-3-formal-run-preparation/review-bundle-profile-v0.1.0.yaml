@@ -1,0 +1,85 @@
+schema_version: 0.1.0
+repository:
+  expected_branch: governance/kernel-designer-revision-v0.1
+  base_head: 74c5ea76c5b2f6ae2fe51ea683fed55b0b5cf759
+  require_changes: true
+  require_empty_staging: true
+scope:
+  enforce_exact: true
+  paths:
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/CURRENT_STATE.md
+    - governance/learning/FAILURE_AND_LESSONS_INDEX.md
+    - governance/learning/events/HP-FAIL-006/HP-FAIL-006-E001.yaml
+    - governance/learning/events/HP-FAIL-006/HP-FAIL-006-E002.yaml
+    - governance/learning/records/HP-FAIL-006.yaml
+    - governance/methodology/METHODOLOGY_BACKLOG.md
+    - governance/prompts/orchestration/HP-PROMPT-007-phase-2-3-formal-governance-run-preparer-v0.1.0.md
+    - governance/prompts/orchestration/HP-PROMPT-008-phase-2-3-validation-record-schema-correction-v0.1.0.md
+    - governance/reviews/phase-2-3-formal-run-preparation/implementation-report-v0.1.0.md
+    - governance/reviews/phase-2-3-formal-run-preparation/kgr-005-readiness-v0.1.0.yaml
+    - governance/reviews/phase-2-3-formal-run-preparation/review-bundle-profile-v0.1.0.yaml
+    - governance/schemas/governance-validation-record.schema.json
+    - governance/skills/formal-governance-run-preparer/SKILL.md
+    - governance/skills/formal-governance-run-preparer/agents/openai.yaml
+    - governance/tests/test_phase_2_3_contracts.py
+validations:
+  - id: phase-2-3-skill-contracts
+    argv: [python3, -m, pytest, -q, -p, no:cacheprovider, governance/tests/test_phase_2_3_contracts.py]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: skill-creator-validation
+    argv: [python3, /home/sugar/.codex/skills/.system/skill-creator/scripts/quick_validate.py, governance/skills/formal-governance-run-preparer]
+    cwd: .
+    required: true
+    timeout_seconds: 60
+  - id: kgr-005-package-validation
+    argv: [python3, governance/tools/validate_run_package.py, --stage, preparation, --role, adversary, --package, /home/sugar/Downloads/KGR-005-formal-input-package.zip, --envelope, governance/runs/KGR-005-kernel-adversary-targeted-closure/input-envelope.yaml, --prompt-snapshot, governance/runs/KGR-005-kernel-adversary-targeted-closure/prompt/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md, --loop-snapshot, governance/runs/KGR-005-kernel-adversary-targeted-closure/control/kernel-design-closure-loop-v0.1.0.yaml, --json]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: prompt-custody-tests
+    argv: [governance/tests/run-prompt-custody-tests.sh]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: learning-validation
+    argv: [python3, governance/tools/manage_learning.py, validate]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: strict-yaml-schema-validation
+    argv:
+      - python3
+      - -c
+      - "from pathlib import Path; import json, jsonschema, sys; sys.path.insert(0, 'governance/tools'); from _lib.strict_yaml import load; paths=('governance/ARTIFACT_REGISTRY.yaml','governance/reviews/phase-2-3-formal-run-preparation/kgr-005-readiness-v0.1.0.yaml','governance/reviews/phase-2-3-formal-run-preparation/review-bundle-profile-v0.1.0.yaml'); docs=[load(Path(p)) for p in paths]; schema=json.loads(Path('governance/schemas/governance-validation-record.schema.json').read_text()); jsonschema.Draft202012Validator(schema).validate(docs[1]); print('strict YAML: 3 documents valid; readiness schema valid')"
+    cwd: .
+    required: true
+    timeout_seconds: 60
+  - id: whitespace-validation
+    argv: [git, diff, --check]
+    cwd: .
+    required: true
+    timeout_seconds: 60
+dependencies:
+  - id: python-version
+    argv: [python3, --version]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+  - id: git-version
+    argv: [git, --version]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+  - id: python-package-versions
+    argv:
+      - python3
+      - -c
+      - "from importlib.metadata import version; print(f'jsonschema={version(\"jsonschema\")} pytest={version(\"pytest\")} PyYAML={version(\"PyYAML\")}')"
+    cwd: .
+    required: true
+    timeout_seconds: 30
+bundle:
+  root_directory: phase-2-3-review

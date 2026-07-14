@@ -22,9 +22,9 @@
 | Owner decisions required | None |
 | Architecture disposition | KGR-004 preserves the seven-clause architecture with revised semantics; independent targeted closure is still required |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Instruction, learning, prompt-custody, Controller-tooling, and review-workflow foundation | Phases 1, 2, 2.0.1, 2.1, and 2.2 are locally implemented pending Project Owner review; Phase 2.2 adds deterministic review packaging and two bounded governance skills without making them operational; Controller tooling is not operational and no real transition exists; five learning records are `CORRECTED`, not `VALIDATED` |
+| Instruction, learning, prompt-custody, Controller-tooling, and review-workflow foundation | Phases 1, 2, 2.0.1, 2.1, 2.2, and 2.3 are locally implemented pending Project Owner review; Phase 2.3 adds the bounded formal-run preparation skill and validated KGR-005 preparation evidence without execution; Controller tooling is not operational and no real transition exists; `HP-FAIL-006` preserves the corrected and validated schema defect |
 | Known blockers | No constitutional owner decision is currently required. KGR-005 execution has not yet been authorized or performed. |
-| Exact next action | Review the Phase 2.2 commit and deterministic review evidence returned to orchestration; KGR-005 remains `NOT_STARTED` and any execution or real Controller transition requires separate authorization. |
+| Exact next action | Request explicit Project Owner authorization before executing KGR-005; KGR-005 remains `NOT_STARTED` and any execution or real Controller transition requires separate authorization. |
 
 ## Phase 1 instruction and professional-learning foundation
 
@@ -38,7 +38,7 @@ This foundation does not implement a Controller, closure-loop runtime, or Enforc
 
 The Project Owner authorized local implementation of the bounded Phase 2 tooling foundation. The shared strict-parsing, canonicalization, schema, archive-safety, atomic-write, and diagnostic helpers; versioned loop, protocol-result, Controller-transition, and validation-evidence schemas; `validate_closure_loop.py`; `validate_run_package.py`; `apply_loop_transition.py`; and offline synthetic/security tests are locally implemented pending Project Owner review.
 
-The tools validate declared structure, package custody, identity, counters, guards, and routing only. They do not evaluate constitutional truth, launch an LLM, create KGR-006, update state documents automatically, or make the Controller operational. No real Controller transition has been applied, no counter has been consumed, and no `GOV-VAL-###` record has been allocated. KGR-005 remains `NOT_STARTED`; GOV-4 remains `IN_PROGRESS`; the Kernel remains `0.2.0-proposed / PROPOSED_NOT_RATIFIED`; Enforcement Engineering remains `CLOSED`; human ratification remains `NOT_STARTED`.
+The tools validate declared structure, package custody, identity, counters, guards, and routing only. They do not evaluate constitutional truth, launch an LLM, create KGR-006, update state documents automatically, or make the Controller operational. No real Controller transition has been applied and no counter has been consumed. Phase 2.3 later allocates `GOV-VAL-001` as preparation-validation evidence only. KGR-005 remains `NOT_STARTED`; GOV-4 remains `IN_PROGRESS`; the Kernel remains `0.2.0-proposed / PROPOSED_NOT_RATIFIED`; Enforcement Engineering remains `CLOSED`; human ratification remains `NOT_STARTED`.
 
 Material prompt custody foundations are locally implemented pending Project Owner review. `HP-PROMPT-001` preserves the exact executed Phase 2 prompt and its original authorization boundary; `HP-FAIL-004-E001` records the interruption and recovery near miss. Custody is orchestration evidence, not execution proof, constitutional authority, ratification, or Enforcement Engineering authorization. The future testing proposal `HP-MPROP-001` is backlog-only and requires separate Phase 2.1 implementation authorization.
 
@@ -51,6 +51,14 @@ Phase 2.1 locally hardens the deterministic Controller test foundation with pyte
 Phase 2.2 locally implements a configurable deterministic review-bundle builder, a strict versioned configuration schema and profile, and two bounded governance skills pending Project Owner review. `governance-review-packager` routes inventory, diff, validation, hashing, and ZIP work to the deterministic tool and stops at the publication boundary. `agent-session-reviewer` reviews only observable session evidence and routes material findings without claiming hidden reasoning or repository-modification authority.
 
 The tool runs configured commands in an isolated local repository copy, creates temporary review transport outside the repository, and contains no stage, commit, push, extraction, Controller, or formal-run operation. The skills are repository-custodied under `governance/skills/`, not projected into active `.claude/skills/` runtime. Local implementation is not acceptance or operation. No Controller, loop, protocol, Kernel, run, or governance authority semantics changed; KGR-005 remains `NOT_STARTED`.
+
+## Phase 2.3 formal governance run preparation
+
+Phase 2.3 locally implements `formal-governance-run-preparer` version `0.1.0` pending Project Owner review. The skill verifies repository and durable governance status, binds formal-run custody, routes package/hash/schema/ZIP facts through existing deterministic tools, produces readiness or blocker evidence, and stops before execution.
+
+The controlled KGR-005 exercise validated the unchanged formal input package as `VALIDATED_PACKAGE` with SHA-256 `26291b32594f2b73e12107bec9572b528e4ec3e32e4ca08f9746c5aba1adf9cf`, exactly 19 members, and no diagnostics. `GOV-VAL-001` records `READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION`. KGR-005 remains `NOT_STARTED`; no formal output package, execution evidence, imported result, or Controller transition exists. Readiness is preparation validation only, not execution, acceptance, import, ratification, operation, or authority to start.
+
+During validation, the existing validation-record schema was found to require and prohibit `tool.name` and `tool.version`. `HP-FAIL-006` preserves the defect. Under the separately preserved `HP-PROMPT-008` scope expansion, the strict object contract was corrected, a positive conforming instance and negative unexpected-property test were added, and both correction and validation were recorded through append-only events. No Controller, loop, protocol, run, or Kernel semantics changed.
 
 ## GOV-4 closure-loop preparation
 
@@ -100,6 +108,16 @@ phase_2_2_review_packaging_and_session_supervision:
   status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
   durable_review_bundle_tool: IMPLEMENTED_LOCALLY_NOT_OPERATIONAL
   governance_skills: 2
+  active_runtime_projection: false
+  production_semantics_changed: false
+
+phase_2_3_formal_governance_run_preparation:
+  status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+  governance_skills: 1
+  kgr_005_package_validation: VALID
+  readiness_record_validation: VALID
+  kgr_005_execution: NOT_STARTED
+  real_controller_transitions_applied: 0
   active_runtime_projection: false
   production_semantics_changed: false
 

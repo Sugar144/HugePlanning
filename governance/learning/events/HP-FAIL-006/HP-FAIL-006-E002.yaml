@@ -1,0 +1,29 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-006-E002
+  record_id: HP-FAIL-006
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: Positive and negative validation-record regression tests passed after the
+    bounded schema correction.
+  rationale: A valid GOV-VAL-001 instance now validates, an unexpected tool property
+    is rejected, all five targeted Phase 2.3 contracts pass, prompt custody passes
+    12 checks, learning validation passes, and git diff whitespace validation passes.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_3_contracts.py
+    anchor: test_kgr_005_readiness_record_schema_and_boundary
+    sha256: null
+    availability: PRESERVED
+    note: Positive conforming-instance regression test.
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_3_contracts.py
+    anchor: test_validation_record_tool_rejects_unexpected_properties
+    sha256: null
+    availability: PRESERVED
+    note: Negative strict-additional-properties regression test.
+  owner_decision_ref: null
+  accepted_risk: null
+  supersedes: null

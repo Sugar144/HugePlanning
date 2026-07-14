@@ -1,7 +1,7 @@
 # Failure and Lessons Index
 
 > GENERATED FILE — source of truth: `records/` plus append-only `events/`.
-> Tool version: `0.1.0`. Deterministic input digest: `cd30fbcde91c2175a0a13a1147f8446cca63d73ed82db29966421007f0e4a5c5`.
+> Tool version: `0.1.0`. Deterministic input digest: `bc7f42b7f89616825c628f67a45f2a8ab9267d00524bf5c2b4efea6dfc7e7d8f`.
 > Manual edits will be overwritten by `--apply` or rejected as generated-view drift.
 
 | ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |
@@ -11,3 +11,4 @@
 | HP-FAIL-003 | 2026-07-14 | Deterministic governance checks were repeatedly assigned to high-capability models | COST_WASTE | MEDIUM | CORRECTED | Governance Validation and Model Routing | GOV-4/none | no | PARTIAL | Route exact governance checks to offline scripts and reserve model reasoning for judgment that code cannot settle. |
 | HP-FAIL-004 | 2026-07-14 | Formal learning and analysis artifacts were dispersed across non-canonical surfaces | PROCESS_DEFECT | MEDIUM | CORRECTED | Durable Learning and Formal Analysis Output | GOV-4/none | no | PARTIAL | Declare and validate a durable output artifact before formal analysis, and store material learning in canonical indexed records. |
 | HP-FAIL-005 | 2026-07-14 | Prompt custody created recursive publication authorization | PROCESS_DEFECT | MEDIUM | CORRECTED | Material Prompt Custody | Phase 2.0.1/none | no | UNAVAILABLE | Terminal owner publication authority must bind to an immutable reviewed candidate without mutating that candidate to preserve the authorization. |
+| HP-FAIL-006 | 2026-07-15 | Governance validation record schema rejects its required tool identity | PROCESS_DEFECT | MEDIUM | VALIDATED | Governance Validation Record Schema | Phase 2.3/KGR-005 | no | PARTIAL | A syntactically valid schema still requires at least one positive conforming-instance test for every durable record contract. |
