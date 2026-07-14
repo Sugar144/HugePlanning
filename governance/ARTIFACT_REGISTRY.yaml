@@ -1,7 +1,7 @@
 registry:
-  version: '0.6'
-  generated_for: PHASE_1_INSTRUCTIONS_AND_PROFESSIONAL_LEARNING_FOUNDATION
-  base_commit: c41fbbf2bc6d2c54d609dbadd52b429e43f77a15
+  version: '0.7'
+  generated_for: PHASE_2_2_DURABLE_REVIEW_PACKAGING_AND_SESSION_SUPERVISION
+  base_commit: 71c753152598aa76a18fa8b34f3629a1c76c4c14
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -377,10 +377,9 @@ artifacts:
     aliases: []
     notes:
       - HP-MPROP-001 is implemented locally for Phase 2.1 pending Project Owner review under the separately preserved HP-PROMPT-003 authorization.
-      - HP-MPROP-002 is owner-approved for a separately authorized future Phase 2.2 after Phase 2.1 and before repeated future governance runs; it creates no skill or execution authority.
-      - HP-MPROP-003 is owner-approved for a separately authorized future deterministic review-bundle generator and possible governance-review-packager skill; no tool or skill is implemented.
-      - HP-MPROP-004 is owner-approved for separately authorized future agent-session supervision and workflow mining limited to observable traces; no skill or supervision process is implemented.
-      - HP-MPROP-003 and HP-MPROP-004 each require separate future implementation authorization.
+      - HP-MPROP-002 is locally implemented pending review through two bounded Phase 2.2 skills; formal-governance-run-preparer remains unimplemented.
+      - HP-MPROP-003 is locally implemented pending review through GOV-TOOL-003 and GOV-SKILL-001.
+      - HP-MPROP-004 is locally implemented pending review through GOV-SKILL-002 and remains limited to observable evidence.
       - Backlog approval is not implementation authorization, implemented state, execution evidence, constitutional authority, ratification, or Enforcement Engineering authorization.
       - Superseded proposals remain preserved and marked rather than deleted.
 
@@ -483,6 +482,66 @@ artifacts:
       - The tooling does not launch an LLM, decide constitutional substance, mutate the Kernel or state documents, create KGR-006, open Enforcement Engineering, or ratify the Kernel.
       - Phase 2.1 adds pytest, bounded Hypothesis properties, and an independent-model state machine without changing Controller, loop, protocol, schema, or package semantics.
 
+  - id: GOV-TOOL-003
+    title: Durable Review Bundle Builder
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
+    authority: deterministic_review_transport_tool_no_publication_or_governance_authority
+    path: governance/tools/build_review_bundle.py
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_2_DURABLE_REVIEW_PACKAGING_AND_SESSION_SUPERVISION
+    artifact_type: offline_deterministic_tool
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/schemas/review-bundle-config.schema.json
+      - governance/reviews/phase-2-2-durable-review-packaging/review-bundle-profile-v0.1.0.yaml
+      - governance/tests/test_review_bundle.py
+    notes:
+      - Verifies repository identity, branch, base HEAD, staging, scope, and worktree changes; copies exact changed files; emits binary-safe diff, command evidence, dependency evidence, SHA-256 manifest, and safe deterministic-order ZIP members.
+      - Configured commands run in an isolated local copy; the tool never stages, commits, pushes, extracts into, or intentionally mutates the reviewed repository.
+      - A bundle is temporary review transport, not validation acceptance, publication evidence, or governance authority.
+
+  - id: GOV-SKILL-001
+    title: Governance Review Packager Skill
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
+    authority: bounded_review_workflow_no_publication_or_formal_run_authority
+    path: governance/skills/governance-review-packager/SKILL.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_2_DURABLE_REVIEW_PACKAGING_AND_SESSION_SUPERVISION
+    artifact_type: governance_skill
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/skills/governance-review-packager/agents/openai.yaml
+    notes:
+      - Routes deterministic inventory, validation, hashing, and ZIP work to GOV-TOOL-003 and stops before publication without explicit authority.
+      - Cannot independently commit, push, open a pull request, accept risk, ratify, execute a formal run, or apply a Controller transition.
+
+  - id: GOV-SKILL-002
+    title: Agent Session Reviewer Skill
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
+    authority: observable_session_review_workflow_no_repository_modification_authority
+    path: governance/skills/agent-session-reviewer/SKILL.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_2_DURABLE_REVIEW_PACKAGING_AND_SESSION_SUPERVISION
+    artifact_type: governance_skill
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/skills/agent-session-reviewer/agents/openai.yaml
+    notes:
+      - Reviews only observable session evidence and emits one of three bounded outcomes with durable routing for material findings.
+      - Cannot access hidden reasoning, manufacture or self-validate findings, accept risk, publish, execute a run, or modify the repository without authorization.
+
   - id: GOV-REVIEW-001
     title: Phase 1 Governance Tooling and Learning Architecture Report
     version: 0.1.0
@@ -557,6 +616,25 @@ artifacts:
     notes:
       - Records the bounded pytest, Hypothesis, canonical-fixture, state-machine, dependency, and validation implementation evidence.
       - Does not authorize staging, commit, push, PR, KGR-005 execution, a Controller transition, acceptance, or operation.
+
+  - id: GOV-REVIEW-005
+    title: Phase 2.2 Durable Review Packaging and Session Supervision Implementation Report
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
+    authority: local_implementation_and_validation_evidence_not_publication_or_execution_authority
+    path: governance/reviews/phase-2-2-durable-review-packaging/implementation-report-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_2_DURABLE_REVIEW_PACKAGING_AND_SESSION_SUPERVISION
+    artifact_type: implementation_validation_report
+    language: English
+    canonicality: preserved_implementation_evidence
+    supersedes: null
+    aliases:
+      - governance/reviews/phase-2-2-durable-review-packaging/review-bundle-profile-v0.1.0.yaml
+    notes:
+      - Records the bounded configurable review tool, two observable-authority-limited skills, affected validation, and review transport evidence.
+      - Does not authorize a pull request, merge, release, KGR-005 execution, Controller transition, acceptance, ratification, or operation.
 
   - id: GOV-PROTOCOL-001
     title: Kernel Designer Adversarial Revision Protocol

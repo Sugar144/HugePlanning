@@ -22,9 +22,9 @@
 | Owner decisions required | None |
 | Architecture disposition | KGR-004 preserves the seven-clause architecture with revised semantics; independent targeted closure is still required |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Instruction, learning, prompt-custody, and Controller-tooling foundation | Phases 1, 2, 2.0.1, and the Phase 2.1 Controller testing hardening are locally implemented pending Project Owner review; Controller tooling is not operational and no real transition exists; five learning records are `CORRECTED`, not `VALIDATED` |
+| Instruction, learning, prompt-custody, Controller-tooling, and review-workflow foundation | Phases 1, 2, 2.0.1, 2.1, and 2.2 are locally implemented pending Project Owner review; Phase 2.2 adds deterministic review packaging and two bounded governance skills without making them operational; Controller tooling is not operational and no real transition exists; five learning records are `CORRECTED`, not `VALIDATED` |
 | Known blockers | No constitutional owner decision is currently required. KGR-005 execution has not yet been authorized or performed. |
-| Exact next action | Review the bounded Phase 2.0.1 publication-authorization recursion delta, then explicitly authorize commit and push if accepted; KGR-005 remains `NOT_STARTED` and any execution or real Controller transition requires separate authorization. |
+| Exact next action | Review the Phase 2.2 commit and deterministic review evidence returned to orchestration; KGR-005 remains `NOT_STARTED` and any execution or real Controller transition requires separate authorization. |
 
 ## Phase 1 instruction and professional-learning foundation
 
@@ -45,6 +45,12 @@ Material prompt custody foundations are locally implemented pending Project Owne
 The bounded Phase 2.0.1 correction defines `OWNER_PUBLICATION_AUTHORIZATION` as non-prompt publication evidence only for explicit Project Owner authority over an already reviewed immutable candidate, with no new implementation scope and only named atomic stage, commit, or push actions. PR, merge, release, execution, ratification, risk acceptance, and further modification remain separately unauthorized. `HP-FAIL-005` records the discovered recursion as a distinct corrected-but-not-validated learning record. No publication action has occurred.
 
 Phase 2.1 locally hardens the deterministic Controller test foundation with pytest, bounded Hypothesis properties, and one `RuleBasedStateMachine`. All twenty canonical transition fixtures remain unchanged and individually identifiable. The prior unittest evidence remains under pytest compatibility coverage. Generated examples are exploration, not exhaustive proof. No material Controller defect was found, no learning record was manufactured, no production Controller/loop/protocol/schema/package semantics changed, and no real transition or KGR-005 execution occurred.
+
+## Phase 2.2 durable review packaging and session supervision
+
+Phase 2.2 locally implements a configurable deterministic review-bundle builder, a strict versioned configuration schema and profile, and two bounded governance skills pending Project Owner review. `governance-review-packager` routes inventory, diff, validation, hashing, and ZIP work to the deterministic tool and stops at the publication boundary. `agent-session-reviewer` reviews only observable session evidence and routes material findings without claiming hidden reasoning or repository-modification authority.
+
+The tool runs configured commands in an isolated local repository copy, creates temporary review transport outside the repository, and contains no stage, commit, push, extraction, Controller, or formal-run operation. The skills are repository-custodied under `governance/skills/`, not projected into active `.claude/skills/` runtime. Local implementation is not acceptance or operation. No Controller, loop, protocol, Kernel, run, or governance authority semantics changed; KGR-005 remains `NOT_STARTED`.
 
 ## GOV-4 closure-loop preparation
 
@@ -88,6 +94,13 @@ phase_2_controller_tooling_foundation:
 phase_2_1_controller_testing_hardening:
   status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
   canonical_transition_fixtures: 20
+  production_semantics_changed: false
+
+phase_2_2_review_packaging_and_session_supervision:
+  status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+  durable_review_bundle_tool: IMPLEMENTED_LOCALLY_NOT_OPERATIONAL
+  governance_skills: 2
+  active_runtime_projection: false
   production_semantics_changed: false
 
 kernel:

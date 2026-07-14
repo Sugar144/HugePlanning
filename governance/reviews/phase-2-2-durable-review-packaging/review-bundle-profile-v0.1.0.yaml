@@ -1,0 +1,79 @@
+schema_version: 0.1.0
+repository:
+  expected_branch: governance/kernel-designer-revision-v0.1
+  base_head: 71c753152598aa76a18fa8b34f3629a1c76c4c14
+  require_changes: true
+  require_empty_staging: true
+scope:
+  enforce_exact: true
+  paths:
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/CURRENT_STATE.md
+    - governance/methodology/METHODOLOGY_BACKLOG.md
+    - governance/prompts/orchestration/HP-PROMPT-006-phase-2-2-review-packaging-session-supervision-v0.1.0.md
+    - governance/reviews/phase-2-2-durable-review-packaging/implementation-report-v0.1.0.md
+    - governance/reviews/phase-2-2-durable-review-packaging/review-bundle-profile-v0.1.0.yaml
+    - governance/schemas/review-bundle-config.schema.json
+    - governance/skills/README.md
+    - governance/skills/agent-session-reviewer/SKILL.md
+    - governance/skills/agent-session-reviewer/agents/openai.yaml
+    - governance/skills/governance-review-packager/SKILL.md
+    - governance/skills/governance-review-packager/agents/openai.yaml
+    - governance/tests/test_phase_2_2_contracts.py
+    - governance/tests/test_review_bundle.py
+    - governance/tools/build_review_bundle.py
+validations:
+  - id: review-bundle-tool-tests
+    argv: [python3, -m, pytest, -q, -p, no:cacheprovider, governance/tests/test_review_bundle.py]
+    cwd: .
+    required: true
+    timeout_seconds: 180
+  - id: skill-and-phase-contract-tests
+    argv: [python3, -m, pytest, -q, -p, no:cacheprovider, governance/tests/test_phase_2_2_contracts.py]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: prompt-custody-tests
+    argv: [governance/tests/run-prompt-custody-tests.sh]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: learning-validation
+    argv: [python3, governance/tools/manage_learning.py, validate]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: strict-yaml-validation
+    argv:
+      - python3
+      - -c
+      - "from pathlib import Path; import sys; sys.path.insert(0, 'governance/tools'); from _lib.strict_yaml import load; [load(Path(p)) for p in ('governance/ARTIFACT_REGISTRY.yaml', 'governance/reviews/phase-2-2-durable-review-packaging/review-bundle-profile-v0.1.0.yaml')]; print('strict YAML: 2 documents valid')"
+    cwd: .
+    required: true
+    timeout_seconds: 60
+  - id: whitespace-validation
+    argv: [git, diff, --check]
+    cwd: .
+    required: true
+    timeout_seconds: 60
+dependencies:
+  - id: python-version
+    argv: [python3, --version]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+  - id: git-version
+    argv: [git, --version]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+  - id: python-package-versions
+    argv:
+      - python3
+      - -c
+      - "from importlib.metadata import version; print(f'jsonschema={version(\"jsonschema\")} pytest={version(\"pytest\")} PyYAML={version(\"PyYAML\")}')"
+    cwd: .
+    required: true
+    timeout_seconds: 30
+bundle:
+  root_directory: phase-2-2-review

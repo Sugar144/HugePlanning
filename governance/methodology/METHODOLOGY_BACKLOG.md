@@ -63,13 +63,14 @@ Phase 2.1 locally implements the approved pytest and Hypothesis scope pending Pr
 proposal:
   id: HP-MPROP-002
   title: Extract reusable governance workflows into versioned skills
-  status: OWNER_APPROVED_FOR_FUTURE_PHASE
+  status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
   target_phase: PHASE_2_2
   scheduled_after: PHASE_2_1
   scheduled_before: REPEATED_FUTURE_GOVERNANCE_RUNS
 
   first_skill:
     name: formal-governance-run-preparer
+    status: NOT_IMPLEMENTED_PHASE_2_2_SELECTED_BOUNDED_REVIEW_WORKFLOWS
     purpose: >
       Prepare, validate, package, and present a formal governance run
       without executing it or crossing human authorization gates.
@@ -79,6 +80,10 @@ proposal:
     - material-prompt-custodian
     - governance-review-packager
     - failure-learning-recorder
+
+  phase_2_2_implementation:
+    - governance-review-packager
+    - agent-session-reviewer
 
   extraction_rule: >
     A skill is justified when a workflow has been executed repeatedly,
@@ -92,7 +97,7 @@ proposal:
     - Skills must call deterministic scripts for deterministic operations.
 ```
 
-This proposal does not create or install a skill, authorize Phase 2.2 implementation, execute a governance run, or cross any human authorization gate.
+Phase 2.2 locally implements the reusable-skill extraction pattern with `governance-review-packager` and `agent-session-reviewer` pending review. The originally identified `formal-governance-run-preparer` remains unimplemented and requires separate scope. This status does not mean either skill is accepted, operational, publication authority, formal-run authority, or constitutional authority.
 
 ## HP-MPROP-003 — Extract deterministic review-bundle generation
 
@@ -100,7 +105,7 @@ This proposal does not create or install a skill, authorize Phase 2.2 implementa
 proposal:
   id: HP-MPROP-003
   title: Extract deterministic review-bundle generation
-  status: OWNER_APPROVED_FOR_FUTURE_PHASE
+  status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
   priority: HIGH
   evidence:
     - Codex repeatedly generated temporary review-bundle scripts.
@@ -120,13 +125,15 @@ proposal:
     - hardcoded phase-specific paths
 ```
 
+Phase 2.2 locally implements the configurable deterministic tool and bounded review-packager skill pending review. The tool generates transport evidence only; it does not stage, commit, push, publish, accept risk, or create governance authority.
+
 ## HP-MPROP-004 — Agent session supervision and workflow mining
 
 ```yaml
 proposal:
   id: HP-MPROP-004
   title: Agent session supervision and workflow mining
-  status: OWNER_APPROVED_FOR_FUTURE_PHASE
+  status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
   proposed_skill: agent-session-reviewer
   trigger:
     - material implementation closure
@@ -146,4 +153,6 @@ proposal:
     - automatic acceptance or repository modification
 ```
 
-Both proposals require separate future implementation authorization. They do not create the proposed tool or skills, grant publication authority, authorize repository modification, or treat observable session traces as validated truth.
+Phase 2.2 locally implements the bounded observable-evidence session-review skill pending review. It cannot access hidden reasoning, validate its own findings, manufacture lessons, or modify repository state without authorization.
+
+These local implementations are not accepted or operational. They do not grant publication authority, execute a governance run, apply a Controller transition, alter Kernel or loop semantics, or treat observable session traces as validated truth.

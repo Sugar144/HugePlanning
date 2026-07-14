@@ -1,0 +1,4 @@
+interface:
+  display_name: "Governance Review Packager"
+  short_description: "Build and inspect bounded governance review bundles"
+  default_prompt: "Build a deterministic review bundle for the authorized repository changes, inspect the evidence, and stop before publication."

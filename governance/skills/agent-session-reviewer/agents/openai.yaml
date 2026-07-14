@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Session Reviewer"
+  short_description: "Review observable session evidence for durable improvements"
+  default_prompt: "Review the observable session evidence, report only material findings, and route each finding to its durable destination."
