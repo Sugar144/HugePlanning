@@ -1,0 +1,231 @@
+input_envelope:
+  id: GOV-INPUT-002
+  version: 0.1.0
+  package_type: TARGETED_CLOSURE_PACKAGE
+  target_role: Kernel Adversary
+  target_mode: TARGETED_CLOSURE
+  target_run: KGR-005
+  phase: GOV-4
+  status: READY_FOR_EXECUTION
+
+  path_semantics:
+    path: repository custody path
+    source_path: historical repository provenance path
+    package_member: exact relative transport-archive member
+
+  execution_contract:
+    prompt_id: GOV-PROMPT-007
+    protocol_id: GOV-PROTOCOL-002
+    protocol_version: 0.1.0
+    role: Kernel Adversary
+    mode: TARGETED_CLOSURE
+    target_run: KGR-005
+    canonical_prompt_path: governance/methodology/roles/kernel-adversary/protocols/targeted-closure/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+    run_prompt_snapshot_path: governance/runs/KGR-005-kernel-adversary-targeted-closure/prompt/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+    prompt_sha256: 171914d7d6ff7024330ecccc1d662055ee8b77c4402a0c4bcac4271cbc98f67a
+    delivery:
+      method: SEPARATE_EXACT_RUN_PROMPT_SNAPSHOT
+      prompt_in_input_zip: false
+      formal_input_zip_supplied_separately: true
+    execution_identity_validation:
+      require_matching_prompt_id: true
+      require_matching_protocol_id: true
+      require_matching_protocol_version: true
+      require_matching_target_run: true
+      require_matching_prompt_sha256_in_preparation_and_import: true
+
+  prompt_binding:
+    preparation:
+      canonical_and_run_snapshot_byte_identity: REQUIRED
+      prompt_sha256_recorded_in_envelope: REQUIRED
+    isolated_execution:
+      metadata_identity_match: REQUIRED
+      exact_run_snapshot_must_be_supplied: REQUIRED
+      pasted_prompt_cryptographic_hash_required: false
+    repository_import:
+      supplied_prompt_snapshot_sha256_reverification: REQUIRED
+      envelope_prompt_sha256_match: REQUIRED
+
+  protocol:
+    id: GOV-PROTOCOL-002
+    version: 0.1.0
+    snapshot_id: GOV-PROMPT-007
+    snapshot_path: governance/runs/KGR-005-kernel-adversary-targeted-closure/prompt/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+    formal_package_member: false
+
+  loop_control:
+    artifact_id: GOV-LOOP-001
+    version: 0.1.0
+    path: governance/runs/KGR-005-kernel-adversary-targeted-closure/control/kernel-design-closure-loop-v0.1.0.yaml
+    source_path: governance/methodology/loops/kernel-design-closure/kernel-design-closure-loop-v0.1.0.yaml
+    package_member: control/kernel-design-closure-loop-v0.1.0.yaml
+    sha256: cf7855a85d4ab9f3d4bb42c14ebbb0e735abcde938796f88284160904031fbe1
+    custody: BYTE_IDENTICAL_SNAPSHOT
+    authority: GOVERNANCE_METHODOLOGY_NOT_CONSTITUTIONAL_AUTHORITY
+
+  current_proposal:
+    source_run: KGR-004
+    result: READY_FOR_TARGETED_ADVERSARIAL_CLOSURE
+    kernel_version: 0.2.0-proposed
+    custody: BYTE_IDENTICAL_ALIASES_NOT_NEW_AUTHORITY
+    artifacts:
+      - artifact_id: KD-R00
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/current-proposal/00-kernel-design-basis-v0.2.md
+        source_path: governance/runs/KGR-004-kernel-designer-revision/outputs/00-kernel-design-basis-v0.2.md
+        package_member: inputs/current-proposal/00-kernel-design-basis-v0.2.md
+        sha256: 114659b02efbd983afbdde37e66520a0a8d02d224b6bdf718c4f056ce12d81a5
+      - artifact_id: KD-R01
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/current-proposal/01-kernel-admission-analysis-v0.2.md
+        source_path: governance/runs/KGR-004-kernel-designer-revision/outputs/01-kernel-admission-analysis-v0.2.md
+        package_member: inputs/current-proposal/01-kernel-admission-analysis-v0.2.md
+        sha256: f3154923a7aefee165fac387f617c343c2294751722e8bd27eb6e1b84576642e
+      - artifact_id: KD-R02
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/current-proposal/02-kernel-v0.2-draft.md
+        source_path: governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md
+        package_member: inputs/current-proposal/02-kernel-v0.2-draft.md
+        sha256: 0dba205609e0b3c2df2fdfa6ee5b393174a9bffb1b12c5a24a2eecd4820b8545
+      - artifact_id: KD-R03
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/current-proposal/03-kernel-clauses-v0.2.yaml
+        source_path: governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml
+        package_member: inputs/current-proposal/03-kernel-clauses-v0.2.yaml
+        sha256: 0b48212543b54eb775e4bd5e6688dae3ff19eabb11f89ee4750b11faf7dd2ca1
+      - artifact_id: KD-R04
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/current-proposal/04-designer-open-questions-v0.2.md
+        source_path: governance/runs/KGR-004-kernel-designer-revision/outputs/04-designer-open-questions-v0.2.md
+        package_member: inputs/current-proposal/04-designer-open-questions-v0.2.md
+        sha256: 184e4345b390f9f91256565c508ebff8b80bfd0e7109d5e89614187cb79a85d4
+      - artifact_id: KD-R05
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/current-proposal/05-lower-layer-routing-v0.2.md
+        source_path: governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md
+        package_member: inputs/current-proposal/05-lower-layer-routing-v0.2.md
+        sha256: 6f62a56a56c57ba07a07125bd75fbcfe5a51db34f024f7f4ecdaec3ff2c1afee
+      - artifact_id: KD-R06
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/current-proposal/06-targeted-adversarial-closure-handoff.md
+        source_path: governance/runs/KGR-004-kernel-designer-revision/outputs/06-targeted-adversarial-closure-handoff.md
+        package_member: inputs/current-proposal/06-targeted-adversarial-closure-handoff.md
+        sha256: a0ca01b5ac39827ad8725a7d3acdac5220564ef4f8e29b239ae6cfb454049f65
+      - artifact_id: KD-R07
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/current-proposal/07-finding-disposition-register.yaml
+        source_path: governance/runs/KGR-004-kernel-designer-revision/outputs/07-finding-disposition-register.yaml
+        package_member: inputs/current-proposal/07-finding-disposition-register.yaml
+        sha256: c1b1aad7312c795131573d89a6c402e115ddb206abfb3a97a1d3d1687c4eacbd
+
+  original_review:
+    source_run: KGR-003
+    result: DESIGNER_REVISION_REQUIRED
+    custody: BYTE_IDENTICAL_ALIASES_NOT_NEW_AUTHORITY
+    artifacts:
+      - artifact_id: KA-00
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/original-review/00-adversarial-review-basis.md
+        source_path: governance/runs/KGR-003-kernel-adversary/outputs/00-adversarial-review-basis.md
+        package_member: inputs/original-review/00-adversarial-review-basis.md
+        sha256: 5085b382ad6b7b33567ff07b049af447b6888dcaa69cf69bdfcb9140dbeeef9d
+      - artifact_id: KA-01
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/original-review/01-adversarial-findings.md
+        source_path: governance/runs/KGR-003-kernel-adversary/outputs/01-adversarial-findings.md
+        package_member: inputs/original-review/01-adversarial-findings.md
+        sha256: 6bce1ec9d22ad68441980da2e22549787f0693c7fbee151978bc74129c64134b
+      - artifact_id: KA-02
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/original-review/02-adversarial-scenarios.md
+        source_path: governance/runs/KGR-003-kernel-adversary/outputs/02-adversarial-scenarios.md
+        package_member: inputs/original-review/02-adversarial-scenarios.md
+        sha256: 29fec90c532423a2579ed810b618b65141feb73ef276660c4c59b9bb4ef6de1c
+      - artifact_id: KA-03
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/original-review/03-revision-directives.md
+        source_path: governance/runs/KGR-003-kernel-adversary/outputs/03-revision-directives.md
+        package_member: inputs/original-review/03-revision-directives.md
+        sha256: 2cdbf4196a95112654f64606c0d52a68f6a3b7db5ee0219d48eaac20aee29669
+      - artifact_id: KA-04
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/original-review/04-owner-decision-register.md
+        source_path: governance/runs/KGR-003-kernel-adversary/outputs/04-owner-decision-register.md
+        package_member: inputs/original-review/04-owner-decision-register.md
+        sha256: e8333eca71a0a6a5a2560c27ce3e45e7e8df5fda9a5516173a1cd1c8c2a1bbb3
+      - artifact_id: KA-05
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/original-review/05-enforcement-concerns.md
+        source_path: governance/runs/KGR-003-kernel-adversary/outputs/05-enforcement-concerns.md
+        package_member: inputs/original-review/05-enforcement-concerns.md
+        sha256: d663f7228f259e126fdfb659152972b857e0fbcf314d0f490e71c8e66cad005c
+      - artifact_id: KA-06
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/original-review/06-adversarial-summary-and-handoff.md
+        source_path: governance/runs/KGR-003-kernel-adversary/outputs/06-adversarial-summary-and-handoff.md
+        package_member: inputs/original-review/06-adversarial-summary-and-handoff.md
+        sha256: d4917152a39d878f20b84d0885dbf1bf10045615a0eb1c210f6e6bd6677fa495
+    finding_ids:
+      first: KA-F-001
+      last: KA-F-015
+      count: 15
+    severity_counts:
+      CRITICAL: 1
+      HIGH: 7
+      MEDIUM: 5
+      LOW: 1
+      OBSERVATION: 1
+
+  predecessor_kernel:
+    source_run: KGR-002
+    kernel_version: 0.1.0-proposed
+    custody: BYTE_IDENTICAL_ALIASES_NOT_NEW_AUTHORITY
+    artifacts:
+      - artifact_id: KD-02
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/predecessor-kernel/02-kernel-v0.1-draft.md
+        source_path: governance/runs/KGR-002-kernel-designer/outputs/02-kernel-v0.1-draft.md
+        package_member: inputs/predecessor-kernel/02-kernel-v0.1-draft.md
+        sha256: cbd1bce2edb9a369b9de3f6b2466709d9c00c2952c69030424cca3f73ecb463d
+      - artifact_id: hugeplanning-meta-kernel
+        path: governance/runs/KGR-005-kernel-adversary-targeted-closure/inputs/predecessor-kernel/03-kernel-clauses.yaml
+        source_path: governance/runs/KGR-002-kernel-designer/outputs/03-kernel-clauses.yaml
+        package_member: inputs/predecessor-kernel/03-kernel-clauses.yaml
+        sha256: bcf5816162396ff4a99d3a42d20c1705ec2c80fe2dcd55976c9c31e2acdd053a
+
+  formal_package:
+    envelope_files: 1
+    loop_control_files: 1
+    alias_files: 17
+    actual_file_count: 19
+    excludes:
+      - prompt
+      - outputs
+      - repository_state_files
+      - manifests
+      - methodology_readmes
+      - historical_raw_packages
+
+  validation_responsibilities:
+    preparation:
+      independently_verifies_alias_against_repository_source_path: true
+      verifies_package_member_matches_repository_custody_path_content: true
+    isolated_execution:
+      validates_envelope_identity: true
+      resolves_inputs_by_package_member: true
+      validates_package_member_hash: true
+      requires_repository_path_access: false
+      requires_repository_source_path_access: false
+    repository_import:
+      independently_rechecks_source_identity: true
+      independently_validates_completed_output_package: true
+
+  loop_counters_before_execution:
+    counters:
+      completed_targeted_closure_runs: 0
+      completed_designer_remediation_runs: 0
+    limits:
+      maximum_targeted_closure_runs: 3
+      maximum_designer_remediation_runs: 2
+
+  authority:
+    kernel_version: 0.2.0-proposed
+    kernel_status: PROPOSED_NOT_RATIFIED
+    enforcement_engineering_gate: CLOSED
+    human_ratification: NOT_STARTED
+    aliases_gain_new_authority: false
+    loop_has_constitutional_authority: false
+    preparation_is_execution_evidence: false
+
+  routing_guard:
+    required_package_type: TARGETED_CLOSURE_PACKAGE
+    required_target_mode: TARGETED_CLOSURE
+    informal_chat_context_is_formal_input: false
+    on_mismatch: BLOCKED_BY_PACKAGE_CONFLICT
+    mismatch_is_completed_run_result: false
+    creates_formal_outputs_on_mismatch: false
+    same_run_may_resume_after_correction: true

@@ -2,6 +2,12 @@ role:
   id: kernel-designer
   name: Kernel Designer
 
+registry:
+  id: GOV-METHOD-001
+  version: 0.2.0
+  status: ACTIVE_FOR_FUTURE_EXECUTIONS
+  authority: GOVERNANCE_METHODOLOGY_NOT_EXECUTION_EVIDENCE
+
 modes:
   - id: INITIAL_DESIGN
     input_type: KERNEL_INTAKE_PACKAGE
@@ -26,7 +32,17 @@ modes:
       - KGR-004
 
   - id: CLOSURE_REMEDIATION
-    status: PLANNED_NOT_INSTANTIATED
+    workflow: KD-C0_TO_KD-C5
+    status: DEFINED_FOR_FUTURE_INSTANTIATION_NOT_EXECUTED
+    protocol_id: GOV-PROTOCOL-003
+    protocol_version: 0.1.0
+    canonical_protocol:
+      path: governance/methodology/roles/kernel-designer/protocols/closure-remediation/06-kernel-designer-closure-remediation-prompt-sol-high-v0.1.0.md
+    trigger_result: DESIGNER_REMEDIATION_REQUIRED
+    concrete_run: null
+    run_specific_input_envelope: null
+    target_version: null
+    instantiation_authority: LOOP_CONTROLLER_AFTER_VALID_TARGETED_CLOSURE_IMPORT
 
   - id: KERNEL_AMENDMENT
     status: PLANNED_NOT_INSTANTIATED

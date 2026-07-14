@@ -1,0 +1,161 @@
+run:
+  id: KGR-005
+  role: Kernel Adversary
+  mode: TARGETED_CLOSURE
+  phase: GOV-4
+  status: NOT_STARTED
+  preparation_status: COMPLETED
+  readiness: READY_FOR_EXECUTION
+  started_at: null
+  completed_at: null
+
+execution:
+  platform:
+    intended: ChatGPT
+    actual: NOT_STARTED
+  model:
+    intended: Sol
+    actual: NOT_STARTED
+  reasoning_mode:
+    intended: High
+    actual: NOT_STARTED
+  prompt:
+    id: GOV-PROMPT-007
+    version: 0.1.0
+    protocol_id: GOV-PROTOCOL-002
+    canonical_path: governance/methodology/roles/kernel-adversary/protocols/targeted-closure/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+    path: governance/runs/KGR-005-kernel-adversary-targeted-closure/prompt/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+    sha256: 171914d7d6ff7024330ecccc1d662055ee8b77c4402a0c4bcac4271cbc98f67a
+    snapshot_matches_canonical: true
+    delivery:
+      method: SEPARATE_EXACT_RUN_PROMPT_SNAPSHOT
+      prompt_in_formal_input_zip: false
+      formal_input_zip_supplied_separately: true
+    envelope_identity_binding: REQUIRED
+  execution_evidence:
+    targeted_closure_performed: false
+    outputs_exist: false
+    exact_transcript: NONE
+    hidden_reasoning: NOT_AVAILABLE_NOT_EVIDENCE
+
+loop:
+  id: GOV-LOOP-001
+  version: 0.1.0
+  decision: GOV-DEC-014
+  canonical_path: governance/methodology/loops/kernel-design-closure/kernel-design-closure-loop-v0.1.0.yaml
+  control_snapshot_path: governance/runs/KGR-005-kernel-adversary-targeted-closure/control/kernel-design-closure-loop-v0.1.0.yaml
+  sha256: cf7855a85d4ab9f3d4bb42c14ebbb0e735abcde938796f88284160904031fbe1
+  snapshot_matches_canonical: true
+  authority: GOVERNANCE_METHODOLOGY_NOT_EXECUTION_EVIDENCE_OR_CONSTITUTIONAL_AUTHORITY
+  counters_before_execution:
+    completed_targeted_closure_runs: 0
+    completed_designer_remediation_runs: 0
+  limits:
+    maximum_targeted_closure_runs: 3
+    maximum_designer_remediation_runs: 2
+
+inputs:
+  envelope:
+    id: GOV-INPUT-002
+    path: governance/runs/KGR-005-kernel-adversary-targeted-closure/input-envelope.yaml
+    sha256: ef943325bdf6625fb6901990d80b3008c37f362458f0a5e4b9d9e1f181b2d6d2
+  current_proposal_run: KGR-004
+  original_review_run: KGR-003
+  predecessor_kernel_run: KGR-002
+  alias_count: 17
+  custody: BYTE_IDENTICAL_ALIASES_NOT_NEW_AUTHORITY
+  formal_transport:
+    path: /home/sugar/Downloads/KGR-005-formal-input-package.zip
+    sha256: 26291b32594f2b73e12107bec9572b528e4ec3e32e4ca08f9746c5aba1adf9cf
+    actual_file_count: 19
+    expected_file_count: 19
+    exact_members: VERIFIED
+    path_safety: VERIFIED
+    duplicate_members: NONE
+    symbolic_links: NONE
+    encrypted_members: NONE
+    utf8_readability: VERIFIED
+    constitutional_authority: NONE
+    completed_output_package: false
+
+target:
+  kernel_version: 0.2.0-proposed
+  kernel_status: PROPOSED_NOT_RATIFIED
+  baseline_review_run: KGR-003
+  revised_proposal_run: KGR-004
+  expected_initial_state: READY_FOR_TARGETED_CLOSURE
+  enforcement_engineering_gate: CLOSED
+  human_ratification: NOT_STARTED
+
+outputs:
+  status: NOT_CREATED_RUN_NOT_EXECUTED
+  placeholder: governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/README.md
+  expected_artifacts:
+    - 00-targeted-closure-basis.md
+    - 01-finding-closure-verdicts.yaml
+    - 02-targeted-adversarial-scenarios.md
+    - 03-regression-and-new-findings.md
+    - 04-markdown-yaml-parity-review.md
+    - 05-residual-risk-and-routing.md
+    - 06-closure-result.yaml
+    - 07-targeted-closure-summary-and-handoff.md
+  created_artifacts: []
+  completed_run_package:
+    expected_name: HugePlanning-KGR-005-targeted-closure-v0.2-proposed.zip
+    create_only_after_valid_substantive_completion: true
+    create_for_package_conflict: false
+    exact_output_members: 8
+    automatic_authority: false
+    requires_independent_repository_import_validation: true
+    registry_id_after_valid_import: GOV-PKG-007
+
+result:
+  status: NOT_AVAILABLE_RUN_NOT_EXECUTED
+  allowed_completed_results:
+    - CLOSURE_CONFIRMED
+    - DESIGNER_REMEDIATION_REQUIRED
+    - OWNER_DECISION_REQUIRED
+    - RESEARCH_REQUIRED
+    - STRUCTURAL_REDESIGN_REQUIRED
+  interaction_only_state: PAUSED
+  controller_final_transition: PENDING_VALID_COMPLETED_RESULT
+  controller_counters_after: PENDING_VALID_COMPLETED_RESULT
+  decision_matrix:
+    id: GOV-LOOP-001_RESULT_DECISION_MATRIX
+    version: 0.1.0
+    ordered_selection_required: true
+    exactly_one_substantive_result_required: true
+  ready_for_enforcement_engineering: false
+  targeted_adversarial_closure_performed: false
+
+attempt_outcomes:
+  BLOCKED_BY_PACKAGE_CONFLICT:
+    completed_run: false
+    creates_formal_outputs: false
+    creates_formal_output_package: false
+    consumes_targeted_closure_counter: false
+    valid_for_completed_run_import: false
+    run_status_during_block: BLOCKED_PRE_EXECUTION
+    same_run_may_resume_after_correction: true
+
+controller_import:
+  transition_record_contract: GOV-LOOP-001_CONTROLLER_TRANSITION_0.1.0
+  transition_record_created: false
+  counter_incremented: false
+  guard_evaluation_performed: false
+  notes:
+    - The Controller record is created only during valid result import after KGR-005 executes.
+    - The Adversary reports decision-matrix and guard facts but does not create the durable transition record.
+
+provenance:
+  prepared_under_decision: GOV-DEC-014
+  formal_inputs_complete: true
+  input_hashes_verified: 17
+  prompt_snapshot_byte_exact: true
+  loop_snapshot_byte_exact: true
+  execution_started: false
+  notes:
+    - Preparation preserves the execution contract and formal input provenance but is not execution evidence.
+    - No KGR-005 output package or GOV-PKG-007 exists.
+    - The transport ZIP is a local execution transport artifact and has no constitutional authority.
+    - Enforcement Engineering and human ratification remain closed or not started.

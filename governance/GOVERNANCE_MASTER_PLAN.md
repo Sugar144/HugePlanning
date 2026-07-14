@@ -10,7 +10,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 | GOV-1 Kernel intake | `COMPLETED` — imported/reconstructed |
 | GOV-2 Kernel design | `COMPLETED` — imported/reconstructed |
 | GOV-3 Independent adversarial review | `COMPLETED` — `DESIGNER_REVISION_REQUIRED` |
-| GOV-4 Designer revision and adversarial closure | `IN_PROGRESS` — Designer revision completed; targeted closure next |
+| GOV-4 Designer revision and adversarial closure | `IN_PROGRESS` — Designer revision completed; closure loop defined; KGR-005 ready but not started |
 | GOV-5 Enforcement analysis and derived governance requirements | `PLANNED` — not ready to start |
 | GOV-6 Human ratification | `PLANNED` |
 | GOV-7 Minimum executable governance bootstrap | `PLANNED` |
@@ -70,12 +70,12 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 ## GOV-4 — Designer revision and adversarial closure
 
 - Purpose: address adversarial findings and establish whether constitutional design is ready for enforcement analysis.
-- Authoritative inputs: the KGR-004 input envelope, seven byte-identical KGR-002 baseline artifacts, seven byte-identical KGR-003 review artifacts, the versioned `ADVERSARIAL_REVISION` protocol, and any explicit owner decisions recorded during execution.
-- Required outputs: eight KGR-004 artifacts comprising a complete proposed v0.2 package, disposition of every KGR-003 finding, updated routing and open items, and a targeted-closure handoff; followed by independent targeted adversarial closure.
+- Authoritative inputs: for completed Designer revision, the KGR-004 input envelope, seven byte-identical KGR-002 baseline artifacts, seven byte-identical KGR-003 review artifacts, and the versioned `ADVERSARIAL_REVISION` protocol; for targeted closure, `GOV-INPUT-002`, the `GOV-LOOP-001` control snapshot, eight byte-identical KGR-004 outputs, seven byte-identical KGR-003 outputs, and two byte-identical KGR-002 predecessor representations.
+- Required outputs: eight completed KGR-004 artifacts comprising a complete proposed v0.2 package, disposition of every KGR-003 finding, updated routing and open items, and a targeted-closure handoff; followed by the exact eight outputs and completed-run ZIP required by `GOV-PROTOCOL-002` from a valid independent targeted-closure execution. The Adversary applies the one ordered `GOV-LOOP-001` result matrix; the Loop Controller validates import, increments exact counters, evaluates deterministic guards, and creates the durable transition record.
 - Role/owner: Kernel Designer and independent Adversary; Ratification Owner decides reserved questions.
 - Entry conditions: GOV-3 completed with actionable findings.
 - Completion gate: no unresolved finding that blocks enforcement analysis; all semantic changes trace to findings, owner decisions, verified source corrections, or documented regression prevention.
-- Current status: `IN_PROGRESS`. KGR-004 Designer revision is `COMPLETED` with `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE`, producing the complete `0.2.0-proposed` package and dispositions of 14 `RESOLVED` plus 1 `ROUTED` (`KA-F-015`). No owner decision is required. Independent targeted adversarial closure has not occurred and is the next substage; GOV-4 remains incomplete and the Enforcement Engineering gate remains closed.
+- Current status: `IN_PROGRESS`. KGR-004 Designer revision is `COMPLETED` with `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE`, producing the complete `0.2.0-proposed` package and dispositions of 14 `RESOLVED` plus 1 `ROUTED` (`KA-F-015`). `GOV-LOOP-001` version `0.1.0` is defined for initial trial. KGR-005 preparation is `COMPLETED`, readiness is `READY_FOR_EXECUTION`, and execution status is `NOT_STARTED`. Independent targeted adversarial closure has not occurred; GOV-4 remains incomplete and the Enforcement Engineering gate remains closed.
 - Dependencies: GOV-3.
 - Explicit non-goals: repeating Intake, ratification by revision, silent finding dismissal, Designer self-closure, Enforcement Engineering before targeted closure, a full policy suite, or runtime implementation.
 

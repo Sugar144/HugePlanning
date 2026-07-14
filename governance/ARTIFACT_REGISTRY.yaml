@@ -1,6 +1,6 @@
 registry:
-  version: '0.4'
-  generated_for: GOV-4_KGR-004_DESIGNER_REVISION_COMPLETION
+  version: '0.5'
+  generated_for: GOV-4_KGR-005_TARGETED_CLOSURE_PREPARATION
   base_commit: 3246b6849d370c8098ce53caa28fa6dd3c34846d
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
@@ -157,8 +157,8 @@ artifacts:
   - id: GOV-PROMPT-003
     title: Kernel Adversary Prompt — Sol High
     version: '0.1'
-    status: READY_NOT_EXECUTED
-    authority: planned_execution_contract
+    status: USED_BY_COMPLETED_KGR_003
+    authority: historical_execution_contract_source
     path: governance/runs/KGR-003-kernel-adversary/prompt/03-kernel-adversary-prompt-sol-high-v0.1.md
     source_path: _governance_inbox/hugeplanning-governance-bootstrap-prompt-pack-v0.1/03-kernel-adversary-prompt-sol-high-v0.1.md
     source_sha256: ef3c6834f9c1bad35d3d25c198b063e4a97fd8a2da3926d9843cf1605a1a3e61
@@ -170,7 +170,8 @@ artifacts:
     aliases:
       - governance/sources/raw/packages/hugeplanning-governance-bootstrap-prompt-pack-v0.1/03-kernel-adversary-prompt-sol-high-v0.1.md
     notes:
-      - Prompt existence is not execution evidence.
+      - Metadata normalized after KGR-003 completion; the historical prompt, provenance, timestamps, inputs, outputs, and execution claims remain unchanged.
+      - Prompt existence alone is not execution evidence; KGR-003 execution is recorded separately by its completed run record and exact output custody.
 
   - id: GOV-PROMPT-004
     title: Governance Bootstrap Codex Prompt
@@ -226,14 +227,32 @@ artifacts:
       - Imported KGR-004 outputs identify this prompt, protocol 0.1.0, and run KGR-004; the exact execution transcript remains unavailable.
       - This prompt does not replace the historical KGR-002 prompt.
 
+  - id: GOV-PROMPT-007
+    title: KGR-005 Kernel Adversary Targeted Closure Prompt Snapshot
+    version: 0.1.0
+    status: READY_NOT_EXECUTED
+    authority: exact_run_contract_snapshot_not_execution_evidence
+    path: governance/runs/KGR-005-kernel-adversary-targeted-closure/prompt/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+    source_path: governance/methodology/roles/kernel-adversary/protocols/targeted-closure/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+    source_sha256: 171914d7d6ff7024330ecccc1d662055ee8b77c4402a0c4bcac4271cbc98f67a
+    produced_by: GOV-4_KGR-005_PREPARATION
+    artifact_type: run_prompt_snapshot
+    language: English
+    canonicality: exact_run_snapshot
+    supersedes: null
+    aliases: []
+    notes:
+      - Byte-identical to GOV-PROTOCOL-002 at preparation time.
+      - Preserves the exact future KGR-005 contract, including envelope metadata binding, the ordered loop result matrix, pre-substantive conflict handling, strict result schemas, and deterministic output packaging; no execution or output evidence exists.
+
   - id: GOV-METHOD-001
     title: Kernel Designer Mode Registry
-    version: 0.1.0
+    version: 0.2.0
     status: ACTIVE_FOR_FUTURE_EXECUTIONS
     authority: governance_methodology_not_execution_evidence
     path: governance/methodology/roles/kernel-designer/designer-modes.yaml
     source_path: null
-    source_sha256: c0d1ff187fb94dbbc13be53ec39e2f73a706e5808c6433912014d5fa2c6c4c45
+    source_sha256: 5eaae629d06169f6fcd59d762a62133a540293a46f9832dce466bd231ea7f033
     produced_by: GOV-4_PREPARATION
     artifact_type: role_mode_registry
     language: English
@@ -242,7 +261,47 @@ artifacts:
     aliases: []
     notes:
       - Distinguishes INITIAL_DESIGN from ADVERSARIAL_REVISION without rewriting historical contracts.
-      - Planned modes have no instantiated protocol.
+      - Defines CLOSURE_REMEDIATION as a future-instantiation basis under GOV-PROTOCOL-003 without a concrete run or readiness claim.
+      - KERNEL_AMENDMENT remains planned and uninstantiated.
+
+  - id: GOV-LOOP-001
+    title: Kernel Design Closure Loop
+    version: 0.1.0
+    status: ACTIVE_FOR_INITIAL_TRIAL
+    authority: governance_methodology_not_execution_evidence_or_constitutional_authority
+    path: governance/methodology/loops/kernel-design-closure/kernel-design-closure-loop-v0.1.0.yaml
+    source_path: null
+    source_sha256: cf7855a85d4ab9f3d4bb42c14ebbb0e735abcde938796f88284160904031fbe1
+    produced_by: GOV-4_KGR-005_PREPARATION
+    artifact_type: bounded_governance_methodology_loop
+    language: English
+    canonicality: canonical_methodology
+    supersedes: null
+    aliases:
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/control/kernel-design-closure-loop-v0.1.0.yaml
+    notes:
+      - Implements GOV-DEC-014 with a closed nine-state enum, typed attempt and non-completion events, explicit exits from both active states, one ordered Adversary result matrix, exact counters/limits, deterministic no-progress and reappearance guards, Controller transition contract, finding identity, re-entry, artifact-resolution, and immutable-history rules.
+      - Designer remediation imports exactly one of four routed results; only READY_FOR_TARGETED_CLOSURE permits preparation of another Adversary run.
+      - The run control alias is byte-identical and has no constitutional authority.
+      - Loop success is not Kernel ratification, adoption, enforcement, implementation, operation, compliance, or maturity.
+
+  - id: GOV-METHOD-002
+    title: Kernel Adversary Mode Registry
+    version: 0.1.0
+    status: ACTIVE_FOR_FUTURE_EXECUTIONS
+    authority: governance_methodology_not_execution_evidence
+    path: governance/methodology/roles/kernel-adversary/adversary-modes.yaml
+    source_path: null
+    source_sha256: 476f5f354b1fbadabdbe8e2c81faac7940a279c3ce984a42a3103b8fb005b717
+    produced_by: GOV-4_KGR-005_PREPARATION
+    artifact_type: role_mode_registry
+    language: English
+    canonicality: canonical_methodology
+    supersedes: null
+    aliases: []
+    notes:
+      - Preserves FULL_ADVERSARIAL_REVIEW as KGR-003 history and activates TARGETED_CLOSURE for future execution.
+      - Does not modify the historical KGR-003 prompt.
 
   - id: GOV-PROTOCOL-001
     title: Kernel Designer Adversarial Revision Protocol
@@ -263,6 +322,46 @@ artifacts:
       - Imported KGR-004 outputs identify and match this protocol; this does not preserve the exact execution transcript.
       - It does not supersede or modify GOV-PROMPT-002.
 
+  - id: GOV-PROTOCOL-002
+    title: Kernel Adversary Targeted Closure Protocol
+    version: 0.1.0
+    status: ACTIVE_FOR_FUTURE_EXECUTIONS
+    authority: reusable_execution_contract_not_execution_evidence
+    path: governance/methodology/roles/kernel-adversary/protocols/targeted-closure/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+    source_path: null
+    source_sha256: 171914d7d6ff7024330ecccc1d662055ee8b77c4402a0c4bcac4271cbc98f67a
+    produced_by: GOV-4_KGR-005_PREPARATION
+    artifact_type: role_execution_protocol
+    language: English
+    canonicality: canonical_methodology
+    supersedes: null
+    aliases: []
+    notes:
+      - Defines KA-C0 through KA-C5, exact prompt/envelope identity binding, strict YAML result contracts, and exactly eight required outputs for valid completed TARGETED_CLOSURE runs.
+      - Package conflict is a pre-substantive attempt outcome; the Adversary reports a substantive result while the Controller validates transitions and counters.
+      - A valid completed run must create the exact named output ZIP, which gains no authority before independent import.
+      - Prepared for KGR-005 but not executed; it cannot ratify, adopt, or authorize Enforcement Engineering.
+
+  - id: GOV-PROTOCOL-003
+    title: Kernel Designer Closure Remediation Protocol
+    version: 0.1.0
+    status: DEFINED_FOR_FUTURE_INSTANTIATION_NOT_EXECUTED
+    authority: reusable_execution_contract_not_execution_evidence
+    path: governance/methodology/roles/kernel-designer/protocols/closure-remediation/06-kernel-designer-closure-remediation-prompt-sol-high-v0.1.0.md
+    source_path: null
+    source_sha256: 9a29e3365bc688c343536043687ab2cf32ada0ab3564d557570ebf033ea4e164
+    produced_by: GOV-4_KGR-005_PREPARATION
+    artifact_type: role_execution_protocol
+    language: English
+    canonicality: canonical_methodology
+    supersedes: null
+    aliases: []
+    notes:
+      - Defines bounded Designer remediation after a valid DESIGNER_REMEDIATION_REQUIRED result.
+      - Defines an ordered four-result remediation matrix and prohibits Designer-declared CLOSURE_CONFIRMED; suspended and redesign results increment the remediation counter only after valid import.
+      - It is not directly execution-ready; the Controller must bind a concrete run, target version, envelope, protocol snapshot, counters, and outputs.
+      - No KGR-006 run is instantiated or ready and no remediation evidence exists.
+
   - id: GOV-INPUT-001
     title: KGR-004 Adversarial Revision Input Envelope
     version: 0.1.0
@@ -281,6 +380,28 @@ artifacts:
       - Routes KGR-004 to ADVERSARIAL_REVISION and records hashes for 14 existing-artifact aliases.
       - All 14 hashes were independently verified against the preserved run inputs and the imported output package claims.
       - It does not grant new authority to the baseline or adversarial-review artifacts.
+
+  - id: GOV-INPUT-002
+    title: KGR-005 Targeted Closure Input Envelope
+    version: 0.1.0
+    status: READY_FOR_EXECUTION
+    authority: formal_run_input_routing_and_hash_record_not_execution_evidence
+    path: governance/runs/KGR-005-kernel-adversary-targeted-closure/input-envelope.yaml
+    source_path: null
+    source_sha256: ef943325bdf6625fb6901990d80b3008c37f362458f0a5e4b9d9e1f181b2d6d2
+    produced_by: GOV-4_KGR-005_PREPARATION
+    artifact_type: input_envelope
+    language: English
+    canonicality: exact_run_input
+    supersedes: null
+    aliases: []
+    notes:
+      - Routes KGR-005 to TARGETED_CLOSURE and hashes one loop-control snapshot plus 17 byte-identical aliases.
+      - Distinguishes repository custody path, historical source path, and exact transport package member for every non-envelope formal input.
+      - Binds GOV-PROMPT-007 identity and SHA-256 without placing the prompt in the formal ZIP or creating a circular hash dependency.
+      - Isolated execution validates package members without requiring absent repository paths; preparation and repository import independently validate source identity.
+      - Alias sources are eight KGR-004 outputs, seven KGR-003 outputs, and two KGR-002 predecessor representations.
+      - The 19-file formal transport package is preparation infrastructure, not constitutional authority or completed output evidence.
 
   - id: GOV-SUP-001
     title: Governance Role Prompts Index
@@ -1080,3 +1201,24 @@ artifacts:
       - Result is READY_FOR_TARGETED_ADVERSARIAL_CLOSURE; the current proposal is 0.2.0-proposed and no owner decision is required.
       - Exact execution transcript, model identity, reasoning setting, timestamps, token usage, interaction count, and chat-session identity are unavailable or unverified.
       - No targeted closure, ratification, or Enforcement Engineering occurred.
+
+  - id: KGR-005
+    title: Kernel Adversary Targeted Closure Run Manifest
+    version: 0.1.0
+    status: NOT_STARTED
+    authority: prepared_run_record_not_execution_evidence_or_constitutional_authority
+    path: governance/runs/KGR-005-kernel-adversary-targeted-closure/run-manifest.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: GOV-4_KGR-005_PREPARATION
+    artifact_type: run_manifest
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases: []
+    notes:
+      - Preparation is COMPLETED and readiness is READY_FOR_EXECUTION, but KGR-005 has not started and has no outputs or result.
+      - Formal input consists of GOV-INPUT-002, GOV-LOOP-001 control, and 17 byte-identical aliases; the prompt is outside the formal transport package.
+      - BLOCKED_BY_PACKAGE_CONFLICT is a resumable pre-substantive attempt outcome, not a completed result and not an eight-output package.
+      - A valid completed execution must package exactly eight outputs in HugePlanning-KGR-005-targeted-closure-v0.2-proposed.zip; GOV-PKG-007 is reserved until valid repository import.
+      - Enforcement Engineering remains CLOSED and human ratification remains NOT_STARTED.

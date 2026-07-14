@@ -1,0 +1,580 @@
+finding_disposition_register:
+  run: KGR-004
+  mode: ADVERSARIAL_REVISION
+  baseline_run: KGR-002
+  adversarial_run: KGR-003
+  baseline_kernel_version: 0.1.0-proposed
+  revised_kernel_version: 0.2.0-proposed
+  kernel_status: PROPOSED_NOT_RATIFIED
+  owner_decisions_required: false
+  totals:
+    RESOLVED: 14
+    ROUTED: 1
+  records:
+  - finding_disposition:
+      finding_id: KA-F-001
+      original_severity: CRITICAL
+      disposition: RESOLVED
+      affected_clauses:
+      - K-001
+      - K-003
+      - K-005
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: Serious, critical, or constitutional residual risk can be accepted without the competent
+        human authority that the design basis says must remain final.
+      revision_summary: Removed the lower-layer predicate and made C3/C4 final acceptance and serious/critical/constitutional
+        residual-risk acceptance unconditionally human-reserved.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - K-001 normative reservation names C3/C4 and serious/critical/constitutional risk.
+      - K-001 prohibits lower-layer relabeling or automation of reserved categories.
+      - Markdown and YAML carry the same reservation.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Residual risk is operational identification and reliable routing of competent human authority.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-001, K-003, K-005
+      - 03-kernel-clauses-v0.2.yaml — K-001, K-003, K-005
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-002
+      original_severity: HIGH
+      disposition: RESOLVED
+      affected_clauses:
+      - K-002
+      - K-007
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: A constitutionally significant effect occurs while literal compliance is claimed
+        because no state mutation occurred at the target.
+      revision_summary: Replaced the state-change-only boundary with governed-effect semantics covering sensitive
+        access/transmission, material resource commitment, external exposure, and authoritative outputs while preserving
+        lighter treatment for harmless local analysis.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - Governed effects are defined kernel-wide.
+      - K-002 applies authorization to state-changing and significant non-state-changing effects.
+      - K-007 permits investigation only when bounded and non-increasing.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Effect taxonomy and detection remain enforcement work.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-002, K-007
+      - 03-kernel-clauses-v0.2.yaml — K-002, K-007
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-003
+      original_severity: HIGH
+      disposition: RESOLVED
+      affected_clauses:
+      - K-003
+      - K-004
+      - K-005
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: The executor does not literally “provide” the independent evaluation but still controls
+        its decisive inputs and selection.
+      revision_summary: Made the decisive evaluation chain constitutionally visible and prohibited unilateral beneficiary
+        control over appointment, claim/rubric, evidence, context, method, interpretation, exception, and acceptance
+        for critical or materially conflicted work.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - K-003 names all decisive chain dimensions.
+      - K-003 violation invalidates proxy self-certification.
+      - K-004 requires evaluation-control provenance.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Exact independence mechanisms and correlation testing remain evaluation/enforcement work.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-003, K-004, K-005
+      - 03-kernel-clauses-v0.2.yaml — K-003, K-004, K-005
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-004
+      original_severity: HIGH
+      disposition: RESOLVED
+      affected_clauses:
+      - K-004
+      - K-005
+      - K-006
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: Evidence is sufficient for the stated claim but the claim is not sufficient for the
+        actual gate.
+      revision_summary: Bound gate-level evidence to the canonical authorized objective, exact claim, mandatory
+        criteria, accepted scope, and material dependencies; preserved narrow PASS only as a narrow state.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - K-005 prohibits narrow PASS from implying broader acceptance.
+      - Qualified acceptance cannot violate mandatory criteria or core purpose.
+      - Repeated limitations are aggregated.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Operational gate-to-claim schemas and fidelity tests remain below the Kernel.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-004, K-005, K-006
+      - 03-kernel-clauses-v0.2.yaml — K-004, K-005, K-006
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-005
+      original_severity: HIGH
+      disposition: RESOLVED
+      affected_clauses:
+      - K-004
+      - K-007
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: The Kernel produces contradictory duties at the moment of highest sensitivity.
+      revision_summary: Replaced absolute raw-retention with integrity-preserving, competent, documented least-loss
+        handling for legal, privacy, security, or active-harm needs.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - K-004 permits justified redaction/isolation/minimization/attestation/deletion.
+      - Authority, reason, scope, timing, confidence impact, and safest decision record remain traceable.
+      - K-007 delegates emergency evidence handling to K-004.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Applicable law and concrete retention/deletion mechanisms remain domain research and enforcement
+        work.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-004, K-007
+      - 03-kernel-clauses-v0.2.yaml — K-004, K-007
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-006
+      original_severity: HIGH
+      disposition: RESOLVED
+      affected_clauses:
+      - K-001
+      - K-002
+      - K-006
+      - K-007
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: Temporary machinery becomes the normal operating constitution without a policy replacement
+        or amendment.
+      revision_summary: Made renewals and emergencies cumulative across records and required bounded continuation
+        plus transition to normal authority, terminal disposition, or amendment when effects become enduring.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - K-002 requires bounded termination and cumulative lineage.
+      - K-006 aggregation includes time and rerecording.
+      - K-007 states that a new emergency record does not reset duration/effect.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Exact review cadence and operational expiry controls remain lower-layer work.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-001, K-002, K-006, K-007
+      - 03-kernel-clauses-v0.2.yaml — K-001, K-002, K-006, K-007
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-007
+      original_severity: HIGH
+      disposition: RESOLVED
+      affected_clauses:
+      - K-006
+      - K-007
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: Safe stopping becomes silent abandonment or a permanent high-control state.
+      revision_summary: Added accountable ownership, reason, dependencies, and next-review or terminal-disposition
+        requirements for material blocked, paused, inconclusive, and higher-provisional states without imposing
+        unsafe automatic progress.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - Kernel-wide managed-state rule added.
+      - K-007 preserves continued blocking when safety requires it.
+      - Unowned stale blocking is treated as an incident.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: State aging, notification, and escalation mechanisms remain enforcement work.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-006, K-007
+      - 03-kernel-clauses-v0.2.yaml — K-006, K-007
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-008
+      original_severity: HIGH
+      disposition: RESOLVED
+      affected_clauses:
+      - K-005
+      - K-007
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: A status that implies executable governance is achieved without a constitutionally
+        adequate control set.
+      revision_summary: Redefined ENFORCEABLE as a scoped declaration requiring demonstrated coverage by the constitutionally
+        applicable combination of control families, justified inapplicability, and independent evidence.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - Adoption definition no longer uses disjunctive presence of any one mechanism.
+      - K-005 explicitly governs adoption-state claims.
+      - ENFORCEABLE is scoped to defined effect classes.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Coverage matrices and capability evidence remain Enforcement Engineering work.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-005, K-007
+      - 03-kernel-clauses-v0.2.yaml — K-005, K-007
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-009
+      original_severity: MEDIUM
+      disposition: RESOLVED
+      affected_clauses:
+      - K-001
+      - K-002
+      - K-003
+      - K-004
+      - K-005
+      - K-006
+      - K-007
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: Different authoritative forms can produce different blocking, simplification, and
+        containment behavior.
+      revision_summary: Generated Markdown and YAML from one canonical semantic model and included all interpretation,
+        exception, violation, trigger, amendment, and adoption meanings in both forms.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - IDs/titles and normative fields match.
+      - Kernel-wide rules and adoption definitions are encoded in YAML.
+      - Automated semantic parity checks passed.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Future revisions must repeat parity checks; format-level wording differs only structurally.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-001, K-002, K-003, K-004, K-005, K-006, K-007
+      - 03-kernel-clauses-v0.2.yaml — K-001, K-002, K-003, K-004, K-005, K-006, K-007
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-010
+      original_severity: MEDIUM
+      disposition: RESOLVED
+      affected_clauses:
+      - K-006
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: The anti-bureaucracy clause creates proof recursion or a route to pressure controls
+        downward.
+      revision_summary: Limited proportional justification to material, recurring, permanent, or contested burdens;
+        assigned rationale to the burden proponent and separate adequacy proof to anyone weakening protection; excluded
+        bespoke recursive proof for minor transient controls.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - K-006 removes universal proof recursion.
+      - Cost alone cannot waive a floor.
+      - Cumulative burden can still trigger review.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Sampling and cost metrics remain policy/research.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-006
+      - 03-kernel-clauses-v0.2.yaml — K-006
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-011
+      original_severity: MEDIUM
+      disposition: RESOLVED
+      affected_clauses:
+      - K-001
+      - K-003
+      - K-005
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: Human presence becomes ceremonial rather than meaningful authority.
+      revision_summary: Required K-001-reserved human acceptance to be informed and attributable through a comprehensible
+        decision basis containing scope, material evidence, limitations, contradictions/dissent, and residual risk.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - K-005 names the decision-basis content.
+      - Identity or click alone no longer satisfies the constitutional condition.
+      - K-003 protects the chain that prepares decisive evidence.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: No wording can guarantee comprehension; interface usability and decision-packet evidence remain
+        enforcement concerns.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-001, K-003, K-005
+      - 03-kernel-clauses-v0.2.yaml — K-001, K-003, K-005
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-012
+      original_severity: MEDIUM
+      disposition: RESOLVED
+      affected_clauses:
+      - K-004
+      - K-005
+      - K-007
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: A stale assumption remains the de facto basis of the system indefinitely without
+        violating the prohibition on silent promotion.
+      revision_summary: Required material assumptions supporting governed effects or acceptance to have an owner
+        and validity/revalidation condition, and to block dependent gates when stale, contradicted, or expired.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - K-004 makes currency operative, not merely a trigger.
+      - K-004 violation effect covers stale assumptions.
+      - K-007 manages blocked dependency states.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Exact expiry rules and assumption registries remain standards/policy.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-004, K-005, K-007
+      - 03-kernel-clauses-v0.2.yaml — K-004, K-005, K-007
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-013
+      original_severity: MEDIUM
+      disposition: RESOLVED
+      affected_clauses:
+      - K-001
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: The package can claim the review trigger was observed while the operative prohibition
+        never applied.
+      revision_summary: Made architecture constitutional only when its material effects change authority concentration,
+        autonomy/permissions, governed-effect pathways, canonical/evaluation topology, or guarantees.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - Operative reservation now includes the bounded architecture category.
+      - Ordinary architecture remains lower-layer work.
+      - Review triggers mirror the same material-effect test.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Classification examples remain policy and targeted closure should test borderline topology
+        changes.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-001
+      - 03-kernel-clauses-v0.2.yaml — K-001
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-014
+      original_severity: LOW
+      disposition: RESOLVED
+      affected_clauses:
+      - K-005
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: State vocabulary is needlessly ambiguous.
+      revision_summary: Normalized FAILED as an honest non-accepted state in Markdown and YAML.
+      rationale: The original exploit path is credible. The revision closes the constitutional ambiguity or bypass
+        using the minimum coherent semantic expansion while keeping mechanisms below the Kernel.
+      acceptance_criteria:
+      - FAILED appears in the declared vocabulary.
+      - K-005 violation effect uses the same meaning.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Lower-layer state-transition details remain standards/enforcement.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-005
+      - 03-kernel-clauses-v0.2.yaml — K-005
+      - 00-kernel-design-basis-v0.2.md — regression and parity records
+  - finding_disposition:
+      finding_id: KA-F-015
+      original_severity: OBSERVATION
+      disposition: ROUTED
+      affected_clauses:
+      - K-002
+      - K-003
+      - K-004
+      - K-007
+      affected_artifacts:
+      - 00-kernel-design-basis-v0.2.md
+      - 01-kernel-admission-analysis-v0.2.md
+      - 02-kernel-v0.2-draft.md
+      - 03-kernel-clauses-v0.2.yaml
+      - 04-designer-open-questions-v0.2.md
+      - 05-lower-layer-routing-v0.2.md
+      - 06-targeted-adversarial-closure-handoff.md
+      - 07-finding-disposition-register.yaml
+      exploit_path_assessment: The Kernel remains semantically valid but cannot be made enforceable for that environment.
+      revision_summary: Preserved technology independence and strengthened the substitution trigger so equivalence
+        cannot be claimed without capability evidence for applicable effect classes.
+      rationale: The observation identifies a real capability dependency. Constitutional meaning is sufficient after
+        strengthening the substitution trigger; empirical capability evidence belongs to research and Enforcement
+        Engineering.
+      acceptance_criteria:
+      - Technology-independence rule requires capability evidence before control-equivalence claims.
+      - Provider capability inventory is routed to research and Enforcement Engineering.
+      regression_checks:
+      - No new lower-layer authority can waive a constitutional floor.
+      - Harmless local work remains proportionately governable.
+      - No claim of enforceability or independent validation is introduced.
+      - Markdown and YAML preserve the same constitutional meaning.
+      remaining_risk: Provider limitations may make specific effect classes unenforceable; this is a capability
+        result, not a constitutional wording defect.
+      owner_decision_required: false
+      closure_evidence:
+      - 02-kernel-v0.2-draft.md — K-002, K-003, K-004, K-007
+      - 03-kernel-clauses-v0.2.yaml — K-002, K-003, K-004, K-007
+      - 00-kernel-design-basis-v0.2.md — regression and parity records

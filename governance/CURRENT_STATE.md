@@ -2,7 +2,7 @@
 
 | Question | Current answer |
 |---|---|
-| Current governance phase | GOV-4 — `IN_PROGRESS`; Designer revision complete, targeted closure next |
+| Current governance phase | GOV-4 — `IN_PROGRESS`; Designer revision complete, closure loop defined, KGR-005 ready but not started |
 | Last completed governance function | KGR-004 Kernel Designer adversarial revision — `COMPLETED` |
 | Completed phases | GOV-0, GOV-1, GOV-2, and GOV-3 — `COMPLETED` |
 | GOV-3 status | `COMPLETED` |
@@ -11,19 +11,56 @@
 | KGR-004 status | `COMPLETED` — `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE` |
 | KGR-004 mode | `ADVERSARIAL_REVISION` under protocol `0.1.0` |
 | Current proposed Kernel | `0.2.0-proposed`; v0.1 remains preserved as the predecessor proposal |
-| Next exact execution | Prepare and run independent targeted adversarial closure against the exact KGR-004 package. |
+| Next exact execution | Project Owner authorizes and launches KGR-005 independent `TARGETED_CLOSURE` using the exact `GOV-PROMPT-007` and KGR-005 formal input package. |
 | Kernel status | `PROPOSED_NOT_RATIFIED` |
-| Adversary status | KGR-003 `COMPLETED`; independent targeted closure has not occurred |
-| GOV-4 status | `IN_PROGRESS`; Designer-revision substage `COMPLETED`, targeted-closure substage is next |
+| Adversary status | KGR-003 `COMPLETED`; KGR-005 `NOT_STARTED`, preparation `COMPLETED`, readiness `READY_FOR_EXECUTION` |
+| GOV-4 status | `IN_PROGRESS`; Designer revision `COMPLETED`, closure-loop methodology `DEFINED_FOR_INITIAL_TRIAL`, targeted closure ready but not performed |
 | GOV-5 status | `PLANNED`; not ready to start |
-| Enforcement Engineering gate | `CLOSED` pending Designer revision and targeted adversarial closure |
+| Enforcement Engineering gate | `CLOSED` pending independent targeted adversarial closure |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED`; no executable enforcement evidence exists |
 | Ratification status | `NOT_STARTED` |
 | Owner decisions required | None |
 | Architecture disposition | KGR-004 preserves the seven-clause architecture with revised semantics; independent targeted closure is still required |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | No owner decision is required; independent targeted closure is still required before Enforcement Engineering |
-| Exact next action | Prepare independent targeted adversarial closure against the exact KGR-004 outputs without beginning Enforcement Engineering. |
+| Known blockers | No constitutional owner decision is currently required. KGR-005 execution has not yet been authorized or performed. |
+| Exact next action | After the preparation commit is reviewed and published, launch KGR-005 in a separate isolated Kernel Adversary chat. |
+
+## GOV-4 closure-loop preparation
+
+`GOV-DEC-014` establishes the bounded, versioned `GOV-LOOP-001` Kernel Design Closure Loop as governance methodology for initial trial. The Kernel Adversary `TARGETED_CLOSURE` mode and `GOV-PROTOCOL-002` are prepared for KGR-005. Designer `CLOSURE_REMEDIATION` and `GOV-PROTOCOL-003` are only `DEFINED_FOR_FUTURE_INSTANTIATION_NOT_EXECUTED`; no concrete remediation run, target version, run-specific envelope, or output contract exists.
+
+KGR-005 is `NOT_STARTED`, with preparation `COMPLETED` and readiness `READY_FOR_EXECUTION`. `GOV-INPUT-002` records one loop-control snapshot and 17 byte-identical aliases: eight KGR-004 current-proposal outputs, seven KGR-003 original-review outputs, and two KGR-002 predecessor representations. The local formal transport package contains exactly 19 files. The prompt and loop snapshots match their canonical methodology artifacts byte for byte. The outputs directory contains only a preparation notice; none of the eight expected closure outputs exists.
+
+The closure loop has nine closed persistent states, one ordered substantive-result matrix, initial counters of zero, maximums of three targeted closures and two Designer remediations, deterministic no-progress/reappearance guards, and a future Controller transition-record contract. `GOV-PROMPT-007` is delivered separately from the formal ZIP and is identity/hash-bound through `GOV-INPUT-002`; no execution or Controller import record exists yet.
+
+This preparation does not close any KGR-003 finding, perform adversarial closure, change the Kernel, consume a loop counter, create an output package, or authorize Enforcement Engineering. `CLOSURE_CONFIRMED`, if a later valid run produces it, would mean only that configured independent adversarial closure criteria passed and would not mean ratification or adoption.
+
+```yaml
+GOV-4:
+  status: IN_PROGRESS
+  designer_revision: COMPLETED
+  closure_loop_methodology: DEFINED_FOR_INITIAL_TRIAL
+  targeted_closure:
+    run: KGR-005
+    status: READY_FOR_EXECUTION
+
+KGR-004:
+  status: COMPLETED
+  result: READY_FOR_TARGETED_ADVERSARIAL_CLOSURE
+
+KGR-005:
+  status: NOT_STARTED
+  preparation_status: COMPLETED
+  readiness: READY_FOR_EXECUTION
+
+kernel:
+  version: 0.2.0-proposed
+  status: PROPOSED_NOT_RATIFIED
+
+gates:
+  enforcement_engineering: CLOSED
+  human_ratification: NOT_STARTED
+```
 
 ## GOV-4 Designer revision
 
@@ -31,7 +68,7 @@ KGR-004 completed with `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE`. Its exact ZIP a
 
 The current proposal under review is `0.2.0-proposed`; it does not erase or rewrite the preserved v0.1 proposal. The exact execution transcript is not preserved, and exact model identity, reasoning setting, timestamps, token usage, interaction count, and chat-session identity are unknown or unverified. The outputs remain Designer work product, not independent targeted-closure evidence.
 
-GOV-4 is not complete. Independent targeted adversarial closure is the next substage. The Enforcement Engineering gate remains closed, human ratification remains not started, and no adoption, operation, compliance, or maturity claim has been made.
+GOV-4 is not complete. Independent targeted adversarial closure is prepared but has not begun. The Enforcement Engineering gate remains closed, human ratification remains not started, and no adoption, operation, compliance, or maturity claim has been made.
 
 ## GOV-3 completion
 

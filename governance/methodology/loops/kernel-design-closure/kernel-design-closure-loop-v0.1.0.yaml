@@ -1,0 +1,681 @@
+loop:
+  id: GOV-LOOP-001
+  name: Kernel Design Closure Loop
+  version: 0.1.0
+  status: ACTIVE_FOR_INITIAL_TRIAL
+  authority: GOVERNANCE_METHODOLOGY_NOT_EXECUTION_EVIDENCE
+  initial_run: KGR-005
+  phase: GOV-4
+  purpose:
+    - Provide bounded independent closure of a proposed Kernel revision.
+    - Prevent Designer self-validation.
+    - Prevent Adversary mutation of the Kernel.
+    - Prevent Controller design decisions.
+    - Prevent indefinite Designer-Adversary ping-pong.
+    - Prevent interpreting adversarial closure as ratification.
+    - Prevent rewriting historical runs after process changes.
+
+roles:
+  kernel_designer:
+    may:
+      - create_or_revise_kernel_proposal
+      - respond_to_formally_routed_findings
+      - produce_dispositions
+      - explain_residual_risk
+    may_not:
+      - independently_close_adversarial_findings
+      - certify_own_independence
+      - ratify_kernel
+      - authorize_enforcement_engineering
+  kernel_adversary:
+    may:
+      - verify_closure_criteria
+      - reopen_findings
+      - execute_constitutional_thought_experiments
+      - perform_regression_analysis
+      - identify_genuinely_new_findings
+      - apply_the_ordered_substantive_result_matrix
+      - report_exactly_one_substantive_completed_result
+    may_not:
+      - edit_kernel
+      - replace_designer
+      - ratify_kernel
+      - perform_enforcement_engineering
+      - accept_risk_reserved_to_project_owner
+      - increment_validated_loop_counters
+      - determine_guard_exhaustion
+      - decide_loop_limit_reached
+  loop_controller:
+    nature: DETERMINISTIC_ORCHESTRATION_METHODOLOGY_NOT_CONSTITUTIONAL_AUTHOR_OR_REVIEWER
+    may:
+      - read_formal_run_results
+      - validate_decision_matrix_application
+      - validate_completed_run_imports
+      - evaluate_declared_transition_conditions
+      - select_next_allowed_transition
+      - create_new_immutable_run_envelopes
+      - resolve_formal_input_sets
+      - increment_validated_loop_counters
+      - evaluate_deterministic_guards
+      - preserve_run_and_artifact_provenance
+    may_not:
+      - write_kernel_clauses
+      - reinterpret_finding_substance
+      - change_finding_severity
+      - declare_remediation_sufficient
+      - make_human_decisions
+      - ratify_kernel
+      - authorize_enforcement_engineering
+  project_owner:
+    retains_authority_for:
+      - owner_decisions
+      - constitutional_risk_acceptance
+      - continuation_after_loop_limit_exhaustion
+      - structural_scope_choices
+      - ratification
+
+states:
+  - READY_FOR_TARGETED_CLOSURE
+  - TARGETED_CLOSURE_IN_PROGRESS
+  - DESIGNER_REMEDIATION_REQUIRED
+  - DESIGNER_REMEDIATION_IN_PROGRESS
+  - CLOSURE_CONFIRMED
+  - OWNER_DECISION_REQUIRED
+  - RESEARCH_REQUIRED
+  - STRUCTURAL_REDESIGN_REQUIRED
+  - LOOP_LIMIT_REACHED
+
+transition_selectors: []
+
+state_classes:
+  ready:
+    - READY_FOR_TARGETED_CLOSURE
+    - DESIGNER_REMEDIATION_REQUIRED
+  active:
+    - TARGETED_CLOSURE_IN_PROGRESS
+    - DESIGNER_REMEDIATION_IN_PROGRESS
+  successful_terminal:
+    - CLOSURE_CONFIRMED
+  suspended:
+    - OWNER_DECISION_REQUIRED
+    - RESEARCH_REQUIRED
+  exited_for_redesign:
+    - STRUCTURAL_REDESIGN_REQUIRED
+  owner_escalation:
+    - LOOP_LIMIT_REACHED
+
+attempt_events:
+  - event: TARGETED_CLOSURE_PACKAGE_VALIDATION_FAILED
+    applies_while_persistent_state_is: READY_FOR_TARGETED_CLOSURE
+    outcome: BLOCKED_BY_PACKAGE_CONFLICT
+    persistent_state_changes: false
+    substantive_stage_started: false
+  - event: DESIGNER_REMEDIATION_PACKAGE_VALIDATION_FAILED
+    applies_while_persistent_state_is: DESIGNER_REMEDIATION_REQUIRED
+    outcome: BLOCKED_BY_PACKAGE_CONFLICT
+    persistent_state_changes: false
+    substantive_stage_started: false
+
+non_completion_events:
+  - event: INVALID_OUTPUT_PACKAGE
+    applies_while_persistent_state_is: TARGETED_CLOSURE_IN_PROGRESS
+    completed_run: false
+    counter_increment: false
+    persistent_state_changes: false
+    formal_result_imported: false
+    correction_and_reimport_allowed: true
+    creates_new_run: false
+  - event: INVALID_IMPORT
+    applies_while_persistent_state_is: TARGETED_CLOSURE_IN_PROGRESS
+    completed_run: false
+    counter_increment: false
+    persistent_state_changes: false
+    formal_result_imported: false
+    correction_and_reimport_allowed: true
+    creates_new_run: false
+  - event: INVALID_OUTPUT_PACKAGE
+    applies_while_persistent_state_is: DESIGNER_REMEDIATION_IN_PROGRESS
+    completed_run: false
+    counter_increment: false
+    persistent_state_changes: false
+    formal_result_imported: false
+    correction_and_reimport_allowed: true
+    creates_new_run: false
+  - event: INVALID_IMPORT
+    applies_while_persistent_state_is: DESIGNER_REMEDIATION_IN_PROGRESS
+    completed_run: false
+    counter_increment: false
+    persistent_state_changes: false
+    formal_result_imported: false
+    correction_and_reimport_allowed: true
+    creates_new_run: false
+
+execution_abandonment:
+  automatic_transition: false
+  requires_separately_recorded_controller_or_owner_action: true
+
+attempt_outcomes:
+  BLOCKED_BY_PACKAGE_CONFLICT:
+    result_level: ATTEMPT
+    completed_run: false
+    consumes_targeted_closure_counter: false
+    consumes_designer_remediation_counter: false
+    creates_formal_eight_output_set: false
+    creates_formal_output_zip: false
+    valid_for_completed_run_import: false
+    persistent_state_changes: false
+    same_run_may_resume_after_correction: true
+    required_behavior:
+      - stop_before_substantive_stage
+      - report_expected_and_observed_member_hash_or_identity
+      - preserve_all_counters
+      - keep_run_not_started_or_blocked_pre_execution
+
+result_decision_matrix:
+  version: 0.1.0
+  evaluation_order: ASCENDING_PRIORITY
+  exactly_one_substantive_result_required: true
+  multiple_substantive_results_prohibited: true
+  pre_substantive:
+    - priority: 0
+      when: package_validation_failed
+      outcome: BLOCKED_BY_PACKAGE_CONFLICT
+      result_level: ATTEMPT
+      valid_completed_run: false
+  substantive:
+    - priority: 1
+      result: STRUCTURAL_REDESIGN_REQUIRED
+      condition_logic: ANY
+      when:
+        - local_designer_remediation_is_incapable_of_resolving_a_material_constitutional_defect
+        - bounded_loop_scope_is_no_longer_sufficient
+    - priority: 2
+      result: OWNER_DECISION_REQUIRED
+      condition_logic: ANY
+      when:
+        - an_explicit_reserved_owner_decision_is_required
+        - competing_constitutional_values_cannot_be_resolved_by_existing_authority
+        - continuation_requires_owner_risk_acceptance
+    - priority: 3
+      result: RESEARCH_REQUIRED
+      condition_logic: ALL
+      when:
+        - required_evidence_is_absent
+        - the_missing_evidence_can_materially_change_the_closure_verdict
+        - no_owner_decision_or_local_remediation_can_substitute_for_it
+    - priority: 4
+      result: DESIGNER_REMEDIATION_REQUIRED
+      condition_logic: ANY
+      when:
+        - any_original_finding_required_for_closure_is_reopened
+        - any_new_or_regression_constitutional_finding_is_blocking
+        - markdown_yaml_parity_failed
+        - proportionality_or_operability_failed
+        - required_routing_is_incorrect_or_claims_unavailable_capability
+    - priority: 5
+      result: CLOSURE_CONFIRMED
+      condition_logic: ALL
+      when:
+        - all_closure_requirements_pass
+
+closure_confirmed_requires:
+  package_validation: PASSED
+  substantive_review_completed: true
+  original_findings:
+    KA-F-001_through_KA-F-014: CONFIRMED_CLOSED
+    KA-F-015: ROUTED_CONFIRMED
+  blocking_new_findings: 0
+  blocking_regression_findings: 0
+  markdown_yaml_parity: PASSED
+  seven_clause_proportionality: PASSED
+  solo_owner_operability: PASSED
+  authority_integrity: PASSED
+  kernel_status: PROPOSED_NOT_RATIFIED
+  owner_decision_required: false
+  research_required: false
+  structural_redesign_required: false
+
+finding_blocking_rules:
+  blocking_severities:
+    - CRITICAL
+    - HIGH
+    - MEDIUM
+  low_may_permit_closure_only_when:
+    explicitly_non_blocking: true
+    routed_or_bounded: true
+    rationale_recorded: true
+    residual_risk_recorded: true
+    semantic_contradiction: false
+    parity_failure: false
+  observation_may_permit_closure_only_when:
+    explicitly_non_blocking: true
+    routed_or_bounded: true
+    rationale_recorded: true
+    residual_risk_recorded: true
+    semantic_contradiction: false
+    parity_failure: false
+
+controller_mapping:
+  CLOSURE_CONFIRMED:
+    transition: CLOSURE_CONFIRMED
+  DESIGNER_REMEDIATION_REQUIRED:
+    when_guards_available: DESIGNER_REMEDIATION_REQUIRED
+    when_any_applicable_guard_exhausted: LOOP_LIMIT_REACHED
+  OWNER_DECISION_REQUIRED:
+    transition: OWNER_DECISION_REQUIRED
+  RESEARCH_REQUIRED:
+    transition: RESEARCH_REQUIRED
+  STRUCTURAL_REDESIGN_REQUIRED:
+    transition: STRUCTURAL_REDESIGN_REQUIRED
+
+designer_remediation_controller_mapping:
+  READY_FOR_TARGETED_CLOSURE:
+    transition: READY_FOR_TARGETED_CLOSURE
+    permits_preparation_of_next_adversary_run: true
+  OWNER_DECISION_REQUIRED:
+    transition: OWNER_DECISION_REQUIRED
+    permits_preparation_of_next_adversary_run: false
+  RESEARCH_REQUIRED:
+    transition: RESEARCH_REQUIRED
+    permits_preparation_of_next_adversary_run: false
+  STRUCTURAL_REDESIGN_REQUIRED:
+    transition: STRUCTURAL_REDESIGN_REQUIRED
+    permits_preparation_of_next_adversary_run: false
+  exactly_one_substantive_result_required: true
+  designer_may_emit_closure_confirmed: false
+
+transitions:
+  - from: READY_FOR_TARGETED_CLOSURE
+    to: TARGETED_CLOSURE_IN_PROGRESS
+    authority: LOOP_CONTROLLER
+    when: package_validation_passes_and_valid_targeted_closure_execution_begins
+  - from: TARGETED_CLOSURE_IN_PROGRESS
+    to: CLOSURE_CONFIRMED
+    authority: LOOP_CONTROLLER
+    when: valid_imported_result_is_closure_confirmed
+  - from: TARGETED_CLOSURE_IN_PROGRESS
+    to: DESIGNER_REMEDIATION_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: valid_imported_result_requires_remediation_and_all_applicable_guards_are_available
+  - from: TARGETED_CLOSURE_IN_PROGRESS
+    to: OWNER_DECISION_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: valid_imported_result_requires_owner_decision
+  - from: TARGETED_CLOSURE_IN_PROGRESS
+    to: RESEARCH_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: valid_imported_result_requires_research
+  - from: TARGETED_CLOSURE_IN_PROGRESS
+    to: STRUCTURAL_REDESIGN_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: valid_imported_result_requires_structural_redesign
+  - from: TARGETED_CLOSURE_IN_PROGRESS
+    to: LOOP_LIMIT_REACHED
+    authority: LOOP_CONTROLLER
+    when: valid_imported_result_requires_remediation_and_any_applicable_guard_is_exhausted
+  - from: DESIGNER_REMEDIATION_REQUIRED
+    to: DESIGNER_REMEDIATION_IN_PROGRESS
+    authority: LOOP_CONTROLLER
+    when: package_validation_passes_and_valid_remediation_execution_begins
+  - from: DESIGNER_REMEDIATION_IN_PROGRESS
+    to: READY_FOR_TARGETED_CLOSURE
+    authority: LOOP_CONTROLLER
+    when: valid_imported_designer_result_is_ready_for_targeted_closure
+  - from: DESIGNER_REMEDIATION_IN_PROGRESS
+    to: OWNER_DECISION_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: valid_imported_designer_result_requires_owner_decision
+  - from: DESIGNER_REMEDIATION_IN_PROGRESS
+    to: RESEARCH_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: valid_imported_designer_result_requires_research
+  - from: DESIGNER_REMEDIATION_IN_PROGRESS
+    to: STRUCTURAL_REDESIGN_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: valid_imported_designer_result_requires_structural_redesign
+  - from: OWNER_DECISION_REQUIRED
+    to: DESIGNER_REMEDIATION_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: new_explicit_owner_decision_is_validated_and_requires_designer_remediation
+  - from: OWNER_DECISION_REQUIRED
+    to: READY_FOR_TARGETED_CLOSURE
+    authority: LOOP_CONTROLLER
+    when: new_explicit_owner_decision_is_validated_and_permits_renewed_targeted_closure
+  - from: RESEARCH_REQUIRED
+    to: DESIGNER_REMEDIATION_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: formal_research_is_validated_and_requires_designer_remediation
+  - from: RESEARCH_REQUIRED
+    to: READY_FOR_TARGETED_CLOSURE
+    authority: LOOP_CONTROLLER
+    when: formal_research_is_validated_and_permits_renewed_targeted_closure
+  - from: RESEARCH_REQUIRED
+    to: OWNER_DECISION_REQUIRED
+    authority: LOOP_CONTROLLER
+    when: formal_research_is_validated_and_exposes_a_reserved_owner_decision
+
+transition_validation:
+  persistent_state_enum_is_closed: true
+  every_transition_source_must_be_declared_state: true
+  every_transition_destination_must_be_declared_state: true
+  selectors_may_not_appear_as_persistent_states: true
+  undeclared_transition_reference_result: INVALID_LOOP_SPECIFICATION
+  attempt_events_must_use_declared_event_schema: true
+  attempt_events_may_not_mutate_persistent_state: true
+  non_completion_events_must_name_a_declared_active_state: true
+  non_completion_events_may_not_mutate_persistent_state: true
+
+counters:
+  completed_targeted_closure_runs: 0
+  completed_designer_remediation_runs: 0
+
+increment_rules:
+  targeted_closure:
+    increment_on_valid_completed_results:
+      - CLOSURE_CONFIRMED
+      - DESIGNER_REMEDIATION_REQUIRED
+      - OWNER_DECISION_REQUIRED
+      - RESEARCH_REQUIRED
+      - STRUCTURAL_REDESIGN_REQUIRED
+    increment_before_guard_evaluation: true
+  designer_remediation:
+    increment_on_valid_completed_results:
+      - READY_FOR_TARGETED_CLOSURE
+      - OWNER_DECISION_REQUIRED
+      - RESEARCH_REQUIRED
+      - STRUCTURAL_REDESIGN_REQUIRED
+    increment_only_after_valid_import: true
+    suspended_or_redesign_results_increment_after_valid_import: true
+    increment_before_preparing_next_targeted_closure: true
+  do_not_increment_for:
+    - BLOCKED_BY_PACKAGE_CONFLICT
+    - PAUSED
+    - INTERRUPTED
+    - INVALID_OUTPUT_PACKAGE
+    - INVALID_IMPORT
+    - ABORTED_BEFORE_SUBSTANTIVE_COMPLETION
+
+limits:
+  maximum_targeted_closure_runs: 3
+  maximum_designer_remediation_runs: 2
+  allowed_targeted_closure_ordinals:
+    - 1
+    - 2
+    - 3
+  allowed_designer_remediation_ordinals:
+    - 1
+    - 2
+  fourth_targeted_closure_may_be_prepared: false
+  third_designer_remediation_may_be_prepared: false
+
+controller_post_import_logic:
+  targeted_closure_counter_is_incremented_before_cycle_preparation_check: true
+  if_result_is_DESIGNER_REMEDIATION_REQUIRED:
+    - if: completed_designer_remediation_runs >= 2
+      transition: LOOP_LIMIT_REACHED
+    - elif: completed_targeted_closure_runs >= 3
+      transition: LOOP_LIMIT_REACHED
+    - else: true
+      transition: DESIGNER_REMEDIATION_REQUIRED
+  maximum_valid_sequence:
+    - run: KGR-005
+      function: TARGETED_CLOSURE
+      ordinal: 1
+    - run: KGR-006
+      function: DESIGNER_REMEDIATION
+      ordinal: 1
+    - run: KGR-007
+      function: TARGETED_CLOSURE
+      ordinal: 2
+    - run: KGR-008
+      function: DESIGNER_REMEDIATION
+      ordinal: 2
+    - run: KGR-009
+      function: TARGETED_CLOSURE
+      ordinal: 3
+  if_kgr_009_requires_further_designer_remediation: LOOP_LIMIT_REACHED
+
+blocking_finding_signature:
+  applies_to: EACH_VALID_COMPLETED_TARGETED_CLOSURE_IMPORT
+  included_findings: ALL_FINDINGS_THAT_BLOCK_CLOSURE
+  record_components:
+    - finding_id
+    - adversary_verdict
+    - original_or_assigned_severity
+    - sorted_failed_criterion_ids
+    - sorted_relationship_type_and_parent_id_when_applicable
+  canonicalization:
+    encoding: UTF-8
+    format: JSON
+    object_key_order: LEXICOGRAPHIC
+    record_order: SORT_BY_FINDING_ID
+    failed_criterion_ids: SORT_LEXICOGRAPHICALLY_AND_DEDUPLICATE
+    relationships: SORT_BY_TYPE_THEN_PARENT_ID_AND_DEDUPLICATE
+    whitespace: NONE_OUTSIDE_JSON_STRING_VALUES
+    line_ending: NONE
+  hash:
+    algorithm: SHA-256
+    representation: LOWERCASE_HEXADECIMAL
+
+no_progress_guard:
+  comparison_scope: TWO_CONSECUTIVE_VALID_TARGETED_CLOSURE_RUNS_EACH_FOLLOWING_A_DISTINCT_VALID_DESIGNER_REMEDIATION
+  requires:
+    same_blocking_finding_signature: true
+    net_blocking_finding_reduction: 0
+  net_blocking_finding_reduction_definition: PREVIOUS_BLOCKING_FINDING_COUNT_MINUS_CURRENT_BLOCKING_FINDING_COUNT
+  evaluated_by: LOOP_CONTROLLER_DURING_VALID_RESULT_IMPORT
+  transition: LOOP_LIMIT_REACHED
+
+finding_reappearance_guard:
+  threshold: 2
+  requires:
+    same_original_finding_id: true
+    adversary_verdict: REOPENED
+    distinct_valid_targeted_closure_runs: 2
+    valid_designer_remediation_runs_between: AT_LEAST_1
+  repeated_discussion_inside_one_run_counts: false
+  evaluated_by: LOOP_CONTROLLER_DURING_VALID_RESULT_IMPORT
+  transition: LOOP_LIMIT_REACHED
+
+controller_transition_contract:
+  created_during_result_import: true
+  created_by_adversary: false
+  created_before_kgr_005_execution: false
+  enums:
+    adversary_substantive_result:
+      - CLOSURE_CONFIRMED
+      - DESIGNER_REMEDIATION_REQUIRED
+      - OWNER_DECISION_REQUIRED
+      - RESEARCH_REQUIRED
+      - STRUCTURAL_REDESIGN_REQUIRED
+    designer_remediation_substantive_result:
+      - READY_FOR_TARGETED_CLOSURE
+      - OWNER_DECISION_REQUIRED
+      - RESEARCH_REQUIRED
+      - STRUCTURAL_REDESIGN_REQUIRED
+    result_validity:
+      - VALID
+      - INVALID
+    final_transition:
+      - READY_FOR_TARGETED_CLOSURE
+      - TARGETED_CLOSURE_IN_PROGRESS
+      - DESIGNER_REMEDIATION_REQUIRED
+      - DESIGNER_REMEDIATION_IN_PROGRESS
+      - CLOSURE_CONFIRMED
+      - OWNER_DECISION_REQUIRED
+      - RESEARCH_REQUIRED
+      - STRUCTURAL_REDESIGN_REQUIRED
+      - LOOP_LIMIT_REACHED
+  schema:
+    controller_transition:
+      schema_version: 0.1.0
+      loop_id: GOV-LOOP-001
+      loop_version: 0.1.0
+      source_run: SOURCE_RUN_ID
+      source_role: SOURCE_ROLE
+      source_mode: SOURCE_MODE
+      imported_result: ROLE_APPROPRIATE_SUBSTANTIVE_RESULT_ENUM
+      result_validity: VALID_OR_INVALID
+      counters_before: {}
+      counters_after_import: {}
+      decision_matrix_result: ROLE_APPROPRIATE_SUBSTANTIVE_RESULT_ENUM
+      guard_evaluation:
+        counters_before: {}
+        counters_after_import: {}
+        blocking_finding_signature: ""
+        previous_blocking_finding_signature: ""
+        same_signature: false
+        net_blocking_finding_reduction: 0
+        repeated_finding_ids: []
+        exhausted_guards: []
+        final_transition: PERSISTENT_STATE_ENUM
+      final_transition: PERSISTENT_STATE_ENUM
+      next_role: STRING_OR_NULL
+      next_mode: STRING_OR_NULL
+      next_run_to_prepare: STRING_OR_NULL
+      owner_authorization_required: false
+      rationale_refs: []
+
+controller_import_rules:
+  adversary_reports_guard_relevant_facts_only: true
+  adversary_computes_final_transition: false
+  adversary_increments_counters: false
+  controller_validates_result_schema_and_package: true
+  controller_validates_decision_matrix_selection: true
+  controller_validates_substantive_completion: true
+  controller_increments_counter_only_after_valid_import: true
+  designer_remediation_counter_includes_valid_suspended_or_redesign_results: true
+  only_ready_for_targeted_closure_permits_next_adversary_run_preparation: true
+  controller_determines_guard_exhaustion: true
+  controller_creates_durable_transition_and_counter_record: true
+  controller_does_not_reinterpret_finding_substance: true
+
+reentry_rules:
+  owner_decision_required:
+    prerequisite: new_explicit_formal_owner_decision_artifact
+    controller_options_after_validation:
+      - DESIGNER_REMEDIATION_REQUIRED
+      - READY_FOR_TARGETED_CLOSURE
+  research_required:
+    prerequisite: new_formal_applicable_research_or_evidence_artifact
+    controller_options_after_validation:
+      - DESIGNER_REMEDIATION_REQUIRED
+      - READY_FOR_TARGETED_CLOSURE
+      - OWNER_DECISION_REQUIRED
+  structural_redesign_required:
+    exits_bounded_loop: true
+    continuation_requires: NEW_OR_REVISED_VERSIONED_PROTOCOL
+  loop_limit_reached:
+    continuation_requires:
+      - EXPLICIT_PROJECT_OWNER_AUTHORIZATION
+      - VERSIONED_PROCESS_DECISION
+    automatic_continuation: false
+
+artifact_resolution:
+  immutable_history: true
+  original_review:
+    resolution: fixed
+    initial_source_run: KGR-003
+  current_proposal:
+    resolution: latest_valid_completed_designer_run
+  current_finding_history:
+    resolution: cumulative_original_findings_plus_all_valid_reopen_new_and_regression_events
+  prior_closure_results:
+    resolution: all_valid_completed_targeted_closure_runs_in_loop_order
+  owner_decisions:
+    resolution: all_explicit_applicable_owner_decision_artifacts_after_loop_entry
+  research_results:
+    resolution: all_formal_applicable_research_artifacts_after_loop_entry
+  controller_state:
+    resolution: latest_valid_imported_transition_record_and_counters
+  protocol:
+    resolution: exact_version_bound_to_the_new_run
+  aliases:
+    gain_new_authority: false
+    must_be_hash_bound: true
+  run_envelopes:
+    controller_creates_new_immutable_envelope_for_each_run: true
+    earlier_envelopes_are_rewritten: false
+  minimum_resolved_input_sets:
+    initial_targeted_closure:
+      - exact_initial_targeted_closure_protocol_snapshot
+      - exact_loop_control_snapshot
+      - fixed_original_kgr_003_review
+      - current_kgr_004_proposal_and_disposition_register
+      - predecessor_kernel_markdown_and_yaml
+      - initial_controller_state_and_zero_validated_counters
+      - new_immutable_run_envelope
+    designer_closure_remediation:
+      - concrete_run_specific_designer_protocol_snapshot
+      - exact_loop_control_snapshot
+      - fixed_original_kgr_003_review
+      - latest_valid_completed_designer_proposal
+      - cumulative_finding_history
+      - all_prior_valid_closure_results
+      - applicable_owner_decisions_and_research_results
+      - latest_controller_transition_and_counters
+      - findings_formally_routed_to_designer
+      - new_immutable_run_envelope
+    subsequent_targeted_closure:
+      - exact_targeted_closure_protocol_version_bound_to_new_run
+      - exact_loop_control_snapshot
+      - fixed_original_kgr_003_review
+      - latest_valid_completed_designer_proposal
+      - cumulative_finding_history
+      - all_prior_valid_closure_results
+      - applicable_owner_decisions_and_research_results
+      - latest_controller_transition_and_counters
+      - predecessor_kernel_needed_for_regression_comparison
+      - new_immutable_run_envelope
+
+finding_identity:
+  namespace: KA-F
+  continue_after: KA-F-015
+  reopened_findings_preserve_original_id: true
+  reopened_findings_add_reopen_event: true
+  regression_findings_receive_new_id: true
+  regression_relationship_required: REGRESSION_OF
+  genuinely_new_findings_receive_new_id: true
+  discovered_in_run_required: true
+  examples:
+    reopened:
+      finding_id: KA-F-003
+      previous_designer_disposition: RESOLVED
+      closure_status: REOPENED
+      reopened_in_run: KGR-005
+    regression:
+      finding_id: KA-F-016
+      type: REGRESSION
+      discovered_in_run: KGR-005
+      relationships:
+        - type: REGRESSION_OF
+          finding_id: KA-F-003
+    new_finding:
+      finding_id: KA-F-017
+      type: NEW_FINDING
+      discovered_in_run: KGR-005
+
+history:
+  completed_runs_are_immutable: true
+  completed_outputs_are_immutable: true
+  process_changes_require_a_new_version: true
+  historical_results_are_not_rewritten_to_fit_new_processes: true
+
+success_semantics:
+  closure_confirmed_means: ALL_CLOSURE_CONFIRMED_REQUIREMENTS_PASSED
+  closure_confirmed_does_not_mean:
+    - RATIFIED
+    - ADOPTED
+    - ENFORCEABLE
+    - IMPLEMENTED
+    - OPERATIONAL
+    - COMPLIANT
+    - MATURE
+
+authority_boundary:
+  revises_kernel: false
+  closes_kgr_003_findings_by_definition: false
+  executes_targeted_closure: false
+  authorizes_enforcement_engineering: false
+  ratifies_or_adopts_kernel: false
+  constitutional_authority: NONE

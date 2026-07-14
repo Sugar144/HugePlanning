@@ -131,3 +131,40 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Source: Project Owner KGR-004 preparation instruction dated 2026-07-14.
 - Consequences: Each materially different Designer workflow receives an independently versioned protocol. Historical executed prompts remain immutable. A new loop preserves the earlier run and its contract, creates a new run record, and records all formal inputs without overwriting or retroactively modifying prior execution history. KGR-004 therefore uses `ADVERSARIAL_REVISION` and preserves the exact KGR-002 prompt and proposal. This is a governance-process and provenance decision, not Kernel ratification, constitutional authority, independent validation, Enforcement Engineering authorization, or adoption.
 - Supersedes: none
+
+## GOV-DEC-014 — Bounded and versioned Kernel Design Closure Loop
+
+- Date: 2026-07-14
+- Status: ACTIVE
+- Statement: Independent closure of a proposed Kernel revision uses the bounded, versioned `GOV-LOOP-001` Kernel Design Closure Loop, initially at version `0.1.0`.
+- Rationale: Closure requires independent Designer and Adversary roles, deterministic routing, explicit finding identity, finite repetition guards, and immutable run history. These constraints prevent Designer self-validation, Adversary mutation of the Kernel, Controller design decisions, indefinite remediation/review ping-pong, and authority inflation.
+- Source: Project Owner approval of the Kernel Design Closure Loop blueprint dated 2026-07-14.
+- Consequences:
+
+  ```yaml
+  loop:
+    id: GOV-LOOP-001
+    initial_version: 0.1.0
+
+  guards:
+    maximum_designer_remediation_runs: 2
+    maximum_targeted_closure_runs: 3
+
+  finding_identity:
+    reopened_findings_preserve_original_id: true
+    reopened_findings_add_reopen_event: true
+    regression_findings_receive_new_id: true
+    regression_relationship_required: REGRESSION_OF
+    genuinely_new_findings_receive_new_id: true
+    discovered_in_run_required: true
+
+  history:
+    completed_runs_are_immutable: true
+    completed_outputs_are_immutable: true
+    process_changes_require_a_new_version: true
+    historical_results_are_not_rewritten_to_fit_new_processes: true
+  ```
+
+  Only Controller-validated completed runs consume the explicit `completed_targeted_closure_runs` and `completed_designer_remediation_runs` counters. Package-conflicted, paused, interrupted, or invalid attempts without a valid completed run consume no iteration or formal output set. The Adversary applies one ordered substantive-result matrix and reports exactly one result; the deterministic Loop Controller validates import, increments counters, evaluates limits and cross-run guards, and records the transition. `CLOSURE_CONFIRMED` records only configured independent adversarial closure and is not ratification or adoption.
+- Authority boundary: This decision is governance methodology only. It does not revise the Kernel, close KGR-003 findings, execute targeted closure, authorize Enforcement Engineering, or ratify or adopt the Kernel.
+- Supersedes: none

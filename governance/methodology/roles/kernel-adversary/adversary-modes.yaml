@@ -1,0 +1,29 @@
+registry:
+  id: GOV-METHOD-002
+  version: 0.1.0
+  status: ACTIVE_FOR_FUTURE_EXECUTIONS
+  authority: GOVERNANCE_METHODOLOGY_NOT_EXECUTION_EVIDENCE
+
+role:
+  id: kernel-adversary
+  name: Kernel Adversary
+
+modes:
+  - id: FULL_ADVERSARIAL_REVIEW
+    status: HISTORICAL_EXECUTED_PROTOCOL
+    historical_run:
+      - KGR-003
+    historical_prompt:
+      path: governance/runs/KGR-003-kernel-adversary/prompt/03-kernel-adversary-prompt-sol-high-v0.1.md
+    notes:
+      - The historical KGR-003 prompt remains immutable.
+
+  - id: TARGETED_CLOSURE
+    status: ACTIVE_FOR_FUTURE_EXECUTIONS
+    input_type: TARGETED_CLOSURE_PACKAGE
+    protocol_id: GOV-PROTOCOL-002
+    protocol_version: 0.1.0
+    canonical_protocol:
+      path: governance/methodology/roles/kernel-adversary/protocols/targeted-closure/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
+    intended_run:
+      - KGR-005
