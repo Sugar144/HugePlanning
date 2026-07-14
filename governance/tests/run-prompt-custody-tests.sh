@@ -88,7 +88,7 @@ try:
         [sys.executable, "governance/tools/validate_prompts.py", "--root", str(repo)],
         cwd=repo, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
     )
-    check(actual.returncode == 0 and '"prompts":1' in actual.stdout, "1 repository prompt front matter and exact text", actual.stderr)
+    check(actual.returncode == 0 and '"prompts":2' in actual.stdout, "1 repository prompt front matter and exact text", actual.stderr)
 
     duplicate = make_root("duplicate")
     write_record(duplicate)
@@ -154,6 +154,28 @@ try:
     prompt.write_text(prompt.read_text().replace("Synthetic prompt custody test", "Mutated executed prompt"))
     result = run(immutable)
     check(result.returncode == 1 and "executed prompt is immutable" in result.stderr, "10 executed prompt immutability")
+
+    owner_publication = make_root("owner-publication-authorization")
+    write_record(
+        owner_publication,
+        data=metadata(evidence_type="OWNER_PUBLICATION_AUTHORIZATION"),
+    )
+    result = run(owner_publication)
+    check(
+        result.returncode == 1
+        and "publication evidence, not a material prompt custody record" in result.stderr,
+        "11 owner publication authorization is not material prompt custody",
+        result.stderr,
+    )
+
+    unknown_evidence = make_root("unknown-evidence-type")
+    write_record(unknown_evidence, data=metadata(evidence_type="UNKNOWN"))
+    result = run(unknown_evidence)
+    check(
+        result.returncode == 1 and "invalid evidence_type" in result.stderr,
+        "12 unknown evidence type rejection",
+        result.stderr,
+    )
 finally:
     shutil.rmtree(temporary, ignore_errors=True)
 

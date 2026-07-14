@@ -19,6 +19,8 @@ STATUSES = {
     "ABORTED", "INVALID_EXECUTION", "NOT_PRESERVED",
 }
 CATEGORIES = {"ORCHESTRATION", "FORMAL_RUN", "REVIEW", "CORRECTION", "PUBLICATION", "ARCHITECTURE"}
+MATERIAL_PROMPT = "MATERIAL_PROMPT"
+OWNER_PUBLICATION_AUTHORIZATION = "OWNER_PUBLICATION_AUTHORIZATION"
 PROMPT_RE = re.compile(r"^HP-PROMPT-(\d{3})$")
 VERSION_RE = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 SHA_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -81,6 +83,13 @@ def validate_metadata(root: Path, path: Path, metadata: dict, body: str) -> None
         raise PromptError(f"{path}: invalid lifecycle status")
     if metadata["category"] not in CATEGORIES:
         raise PromptError(f"{path}: invalid category")
+    evidence_type = metadata.get("evidence_type", MATERIAL_PROMPT)
+    if evidence_type == OWNER_PUBLICATION_AUTHORIZATION:
+        raise PromptError(
+            f"{path}: OWNER_PUBLICATION_AUTHORIZATION is publication evidence, not a material prompt custody record"
+        )
+    if evidence_type != MATERIAL_PROMPT:
+        raise PromptError(f"{path}: invalid evidence_type")
     for field in ("authorization_scope", "forbidden_actions", "result_artifacts"):
         if not isinstance(metadata[field], list) or any(not isinstance(item, str) or not item for item in metadata[field]):
             raise PromptError(f"{path}: {field} must be a string list")

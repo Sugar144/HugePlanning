@@ -264,6 +264,24 @@ artifacts:
       - Records local modification authority and explicit prohibitions on staging, commit, push, KGR-005 execution, real Controller transitions, and automatic LLM execution.
       - Prompt custody is orchestration evidence, not proof of correct execution, validation, commit, constitutional authority, ratification, or Enforcement Engineering authorization.
 
+  - id: HP-PROMPT-002
+    title: Phase 2.0.1 Publication-Authorization Recursion Fix Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: exact_bounded_correction_prompt_not_publication_authority
+    path: governance/prompts/orchestration/HP-PROMPT-002-phase-2-0-1-publication-authorization-recursion-fix-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_0_1_PUBLICATION_AUTHORIZATION_RECURSION_FIX
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: []
+    notes:
+      - Preserves the exact bounded Project Owner correction prompt at base dc1927b4891cf72ddcefd2ab4726f22dfbfc4b37.
+      - Authorizes only local Phase 2.0.1 correction and proportional validation; staging, commit, push, PR, KGR-005 execution, Controller transitions, and Phase 2.1 remain forbidden.
+
   - id: GOV-METHOD-001
     title: Kernel Designer Mode Registry
     version: 0.2.0
@@ -324,7 +342,7 @@ artifacts:
 
   - id: GOV-METHOD-003
     title: Project Operating Contract
-    version: 0.2.0
+    version: 0.2.1
     status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
     authority: governance_operating_method_not_execution_or_constitutional_authority
     path: governance/methodology/project-operating-contract.md
@@ -340,6 +358,7 @@ artifacts:
       - governance/AGENTS.md
     notes:
       - Defines authority, status, record, deterministic-routing, output-artifact, immutability, traceability, handoff, and anti-recursion semantics.
+      - Version 0.2.1 distinguishes bounded OWNER_PUBLICATION_AUTHORIZATION evidence from material implementation prompts without broadening PR, merge, release, execution, ratification, risk acceptance, or modification authority.
       - Instruction files apply concise behavior rules; this contract does not prove execution, validation, acceptance, ratification, or operation.
 
   - id: GOV-METHOD-004
@@ -383,12 +402,12 @@ artifacts:
       - governance/schemas/failure-record.schema.json
       - governance/schemas/failure-record-event.schema.json
     notes:
-      - Four initial GOV-4 records are CORRECTED but not VALIDATED; unavailable historic metrics and evidence remain explicit.
+      - Five records are CORRECTED but not VALIDATED; unavailable historic metrics and evidence remain explicit.
       - Base records and append-only events are source truth; the Markdown index is a deterministic generated view.
 
   - id: GOV-SUP-007
     title: Material Prompt Custody System
-    version: 0.1.0
+    version: 0.1.1
     status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
     authority: prompt_custody_and_orchestration_evidence_not_execution_or_constitutional_authority
     path: governance/prompts/README.md
@@ -404,6 +423,7 @@ artifacts:
       - governance/tools/validate_prompts.py
     notes:
       - Defines materiality, stable IDs and versions, lifecycle, exact-text custody, executed-prompt immutability, supersession, formal-run references, historical gaps, and interrupted-execution recovery.
+      - Version 0.1.1 defines the narrow OWNER_PUBLICATION_AUTHORIZATION evidence exception and rejects that evidence type from material-prompt custody records.
       - Custody does not prove correct execution, validated outputs, authorized actions, constitutional authority, ratification, or Enforcement Engineering authorization.
 
   - id: GOV-TOOL-001
@@ -495,6 +515,24 @@ artifacts:
       - Original source SHA-256 is recorded in `source_sha256`; repository custody copy SHA-256 is 8a94cd9728e826a58335353af5b9b29b4f30be739e937d53eeb8d4889da422f5.
       - The original local source path is later reused for the regenerated final report; the recorded source hash, not mutable external path contents, identifies the imported source.
       - Records local implementation and validation evidence pending commit; it is not KGR execution evidence, constitutional authority, ratification, or Enforcement Engineering authorization.
+
+  - id: GOV-REVIEW-003
+    title: Phase 2.0.1 Publication-Authorization Recursion Implementation Report
+    version: 0.1.0
+    status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
+    authority: local_implementation_and_validation_evidence_not_publication_authority
+    path: governance/reviews/phase-2-0-1-publication-authorization-recursion/implementation-report-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_0_1_PUBLICATION_AUTHORIZATION_RECURSION_FIX
+    artifact_type: implementation_validation_report
+    language: English
+    canonicality: preserved_implementation_evidence
+    supersedes: null
+    aliases: []
+    notes:
+      - Provides concise scope, review inventory, authority boundary, and proportional validation evidence for the bounded correction.
+      - Does not authorize staging, commit, push, PR, KGR-005 execution, a Controller transition, or Phase 2.1.
 
   - id: GOV-PROTOCOL-001
     title: Kernel Designer Adversarial Revision Protocol

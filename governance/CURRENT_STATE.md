@@ -22,9 +22,9 @@
 | Owner decisions required | None |
 | Architecture disposition | KGR-004 preserves the seven-clause architecture with revised semantics; independent targeted closure is still required |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Instruction, learning, prompt-custody, and Controller-tooling foundation | Phases 1 and 2 plus prompt-custody foundations locally implemented pending Project Owner review; Phase 2 is not operational and no real transition exists; four GOV-4 learning records are `CORRECTED`, not `VALIDATED` |
+| Instruction, learning, prompt-custody, and Controller-tooling foundation | Phases 1 and 2 plus the bounded Phase 2.0.1 prompt-custody recursion correction are locally implemented pending Project Owner review; Phase 2 is not operational and no real transition exists; five learning records are `CORRECTED`, not `VALIDATED` |
 | Known blockers | No constitutional owner decision is currently required. KGR-005 execution has not yet been authorized or performed. |
-| Exact next action | Upload and review the external Phase 2 Controller implementation report and review bundle; KGR-005 remains `NOT_STARTED` and any execution or real Controller transition requires separate authorization. |
+| Exact next action | Review the bounded Phase 2.0.1 publication-authorization recursion delta, then explicitly authorize commit and push if accepted; KGR-005 remains `NOT_STARTED` and any execution or real Controller transition requires separate authorization. |
 
 ## Phase 1 instruction and professional-learning foundation
 
@@ -41,6 +41,8 @@ The Project Owner authorized local implementation of the bounded Phase 2 tooling
 The tools validate declared structure, package custody, identity, counters, guards, and routing only. They do not evaluate constitutional truth, launch an LLM, create KGR-006, update state documents automatically, or make the Controller operational. No real Controller transition has been applied, no counter has been consumed, and no `GOV-VAL-###` record has been allocated. KGR-005 remains `NOT_STARTED`; GOV-4 remains `IN_PROGRESS`; the Kernel remains `0.2.0-proposed / PROPOSED_NOT_RATIFIED`; Enforcement Engineering remains `CLOSED`; human ratification remains `NOT_STARTED`.
 
 Material prompt custody foundations are locally implemented pending Project Owner review. `HP-PROMPT-001` preserves the exact executed Phase 2 prompt and its original authorization boundary; `HP-FAIL-004-E001` records the interruption and recovery near miss. Custody is orchestration evidence, not execution proof, constitutional authority, ratification, or Enforcement Engineering authorization. The future testing proposal `HP-MPROP-001` is backlog-only and requires separate Phase 2.1 implementation authorization.
+
+The bounded Phase 2.0.1 correction defines `OWNER_PUBLICATION_AUTHORIZATION` as non-prompt publication evidence only for explicit Project Owner authority over an already reviewed immutable candidate, with no new implementation scope and only named atomic stage, commit, or push actions. PR, merge, release, execution, ratification, risk acceptance, and further modification remain separately unauthorized. `HP-FAIL-005` records the discovered recursion as a distinct corrected-but-not-validated learning record. No publication action has occurred.
 
 ## GOV-4 closure-loop preparation
 

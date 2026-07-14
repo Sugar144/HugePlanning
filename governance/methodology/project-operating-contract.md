@@ -1,6 +1,6 @@
 ---
 document_id: GOV-METHOD-OPERATING-CONTRACT-001
-version: 0.2.0
+version: 0.2.1
 status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
 constitutional_authority: NONE
 ---
@@ -53,7 +53,11 @@ explicit custody decision registers them for long-term preservation.
 
 ## Material prompt custody
 
-A prompt is material when it authorizes material repository modification; defines implementation or review scope, affected files, or validation requirements; prepares or executes a formal run; corrects a material defect; authorizes staging, commit, push, pull request, merge, tag, release, deployment, or publication; changes governance methodology, tooling, or authority boundaries; or produces formal architecture, implementation, review, or other durable artifacts. Brief questions, minor clarifications, formatting-only requests, status checks, and messages without repository, execution, authority, or durable-artifact effect are not material.
+A prompt is material when it authorizes material repository modification; defines implementation or review scope, affected files, or validation requirements; prepares or executes a formal run; corrects a material defect; authorizes pull request, merge, tag, release, deployment, or publication beyond the bounded exception below; changes governance methodology, tooling, or authority boundaries; or produces formal architecture, implementation, review, or other durable artifacts. Brief questions, minor clarifications, formatting-only requests, status checks, and messages without repository, execution, authority, or durable-artifact effect are not material.
+
+`OWNER_PUBLICATION_AUTHORIZATION` is a distinct evidence type, not a material implementation prompt, only when it comes explicitly from the Project Owner; identifies an already reviewed immutable change set, bundle, inventory, or commit candidate; adds no implementation scope; authorizes only atomic publication actions such as stage, commit, or push; and does not authorize a pull request, merge, release, execution, ratification, risk acceptance, or additional modification. Failure of any condition keeps the instruction subject to ordinary material-prompt custody.
+
+Qualifying `OWNER_PUBLICATION_AUTHORIZATION` may be preserved through publication evidence, commit metadata, operational records, or a subsequent append-only record. Its custody must not require a new pre-publication repository file that changes the authorized change set. The authorization remains bounded to the identified immutable candidate and named atomic actions; it does not imply authority for any other publication or governance step.
 
 Every material prompt receives a stable `HP-PROMPT-###` identifier and a semantic version. The identifier remains stable across corrections to the same prompt lineage; a correction increments the version and records supersession. Categories identify the prompt function without granting authority. Lifecycle states are `DRAFT`, `APPROVED_NOT_EXECUTED`, `EXECUTED`, `SUPERSEDED`, `ABORTED`, `INVALID_EXECUTION`, and `NOT_PRESERVED`.
 

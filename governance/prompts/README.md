@@ -1,6 +1,6 @@
 ---
 document_id: GOV-PROMPT-CUSTODY-001
-version: 0.1.0
+version: 0.1.1
 status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
 authority: prompt_custody_and_orchestration_evidence_only
 ---
@@ -18,11 +18,23 @@ A prompt is material when it does any of the following:
 - defines affected files or validation requirements;
 - prepares or executes formal runs;
 - corrects material defects;
-- authorizes staging, commit, push, pull request, merge, tag, release, deployment, or publication;
+- authorizes pull request, merge, tag, release, deployment, or publication beyond the bounded Project Owner exception below;
 - changes governance methodology, tooling, or authority boundaries;
 - produces formal architecture, implementation, review, or other durable artifacts.
 
 Brief questions, minor clarifications, formatting-only requests, status checks, and messages without repository, execution, authority, or durable-artifact effect do not require preservation.
+
+## Owner publication authorization
+
+`OWNER_PUBLICATION_AUTHORIZATION` is publication evidence rather than a material implementation prompt only when every condition below is true:
+
+- it comes explicitly from the Project Owner;
+- it references an already reviewed immutable change set, bundle, inventory, or commit candidate;
+- it adds no implementation scope;
+- it authorizes only atomic publication actions such as stage, commit, or push;
+- it does not authorize pull request, merge, release, execution, ratification, risk acceptance, or additional modifications.
+
+If any condition is absent, ordinary material-prompt custody applies. A qualifying authorization may be preserved in publication evidence, commit metadata, operational records, or a subsequent append-only record. It must not require a new pre-publication repository file that changes the immutable candidate and recursively invalidates the authorization. The evidence does not expand beyond the identified candidate and explicitly named atomic actions.
 
 ## Identity, categories, and lifecycle
 

@@ -1,0 +1,110 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-005
+  date: '2026-07-14'
+  recorded_on: '2026-07-14'
+  title: Prompt custody created recursive publication authorization
+  context:
+    phase: Phase 2.0.1
+    run: null
+    component: Material Prompt Custody
+    branch: governance/kernel-designer-revision-v0.1
+    commit: dc1927b4891cf72ddcefd2ab4726f22dfbfc4b37
+    environment: Codex CLI governance implementation
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  - OWNER_CORRECTION
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: An atomic Project Owner authorization to stage, commit, or push
+    an already reviewed immutable candidate should preserve authority evidence without
+    changing that candidate.
+  observed_behavior: The prompt-custody contract classified every publication authorization
+    as a new material prompt requiring pre-publication repository custody, so preserving
+    the authorization changed the reviewed candidate and required renewed authorization
+    recursively.
+  impact: The publication workflow could not reach a stable authorized commit candidate
+    and could consume repeated owner review without adding safety or implementation
+    evidence.
+  detection_method: The Project Owner identified the recursion and authorized this
+    bounded Phase 2.0.1 correction in HP-PROMPT-002.
+  root_cause:
+    immediate: Materiality rules treated atomic stage, commit, and push authorization
+      as material implementation scope without an immutable-candidate exception.
+    systemic: Prompt custody did not distinguish implementation authority from publication
+      evidence bound to an already reviewed immutable candidate.
+    contributing_factors:
+    - The pre-commit custody rule assumed every publication authorization must create
+      a repository prompt file.
+    - The contract separated publication actions but did not model a terminal owner
+      authorization evidence type.
+  response:
+    containment: No stage, commit, push, PR, KGR execution, or Controller transition
+      was performed under the recursive rule.
+    correction: Define OWNER_PUBLICATION_AUTHORIZATION with five conjunctive conditions
+      and permit non-mutating or subsequent evidence custody without a new pre-publication
+      repository file.
+    prevention:
+    - Keep the exception narrow to explicit Project Owner authority over an identified
+      reviewed immutable candidate.
+    - Reject OWNER_PUBLICATION_AUTHORIZATION records from the material-prompt custody
+      directory.
+    - Test that unknown evidence types and publication evidence misfiled as prompts
+      are rejected.
+    accountable_owner: Project Owner
+    validation_required:
+    - Run the affected prompt-custody tests.
+    - Run strict prompt front-matter validation.
+    - Review the bounded methodology wording and authority exclusions.
+  learning:
+    reusable_lesson: Terminal owner publication authority must bind to an immutable
+      reviewed candidate without mutating that candidate to preserve the authorization.
+    candidate_system_changes:
+    - VALIDATION
+    - TEST
+    - AGENTS_INSTRUCTION
+    - WORKFLOW_PATTERN
+    - DOCUMENTATION
+    applicable_future_phases:
+    - All repository publication workflows
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: null
+    deterministic_rework_count: null
+    package_rebuild_count: null
+    measurement_quality: UNAVAILABLE
+    basis: Historic cost and effort values for discovering the recursion were not
+      preserved and remain null.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/prompts/orchestration/HP-PROMPT-002-phase-2-0-1-publication-authorization-recursion-fix-v0.1.0.md
+    anchor: Exact executed text
+    sha256: null
+    availability: PRESERVED
+    note: Exact Project Owner correction and bounded implementation authorization.
+  - type: REPOSITORY_PATH
+    locator: governance/methodology/project-operating-contract.md
+    anchor: Material prompt custody
+    sha256: null
+    availability: PRESERVED
+    note: Prospectively corrected canonical operating semantics.
+  - type: REPOSITORY_PATH
+    locator: governance/tools/validate_prompts.py
+    anchor: validate_metadata
+    sha256: null
+    availability: PRESERVED
+    note: Deterministic refusal to treat owner publication evidence as a material
+      prompt record.
+  related_records:
+  - HP-FAIL-004
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []
