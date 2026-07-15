@@ -137,8 +137,11 @@ def test_phase_2_4_registry_and_durable_state_are_consistent() -> None:
     assert artifacts["KGR-005"]["status"] == "COMPLETED"
     assert artifacts["GOV-PKG-007"]["source_sha256"] == "4e8de3b72d0ac9d70b7f13d7a1768d18a1cd57c1af090f5593f3b40e534f198b"
     state = (GOV / "CURRENT_STATE.md").read_text(encoding="utf-8")
-    assert "GOV-4 — `COMPLETED`" in state
-    assert "PROPOSED_NOT_RATIFIED" in state
+    assert "GOV-4:\n  status: COMPLETED" in state
+    historical_run = yaml.safe_load(
+        (GOV / "runs/KGR-005-kernel-adversary-targeted-closure/run-manifest.yaml").read_text(encoding="utf-8")
+    )
+    assert historical_run["target"]["kernel_status"] == "PROPOSED_NOT_RATIFIED"
     enforcement_gate = next(line for line in state.splitlines() if "Enforcement Engineering gate |" in line)
     assert "CLOSED" in enforcement_gate
     assert "open for" not in enforcement_gate.lower()

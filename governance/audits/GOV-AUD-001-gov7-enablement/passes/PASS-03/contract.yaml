@@ -1,0 +1,86 @@
+pass:
+  id: PASS-03
+  title: Measurement, Prompt/Agent Evaluation and Interviewer Testing
+  status: PLANNED_NOT_EXECUTED
+  purpose: Design honest historical baselines and prospective evaluation for whole work units, prompts, agents and interviewer trajectories.
+  authority: SEPARATE_PROJECT_OWNER_EXECUTION_AUTHORIZATION_REQUIRED
+  required_predecessors: [CHECKPOINT-A]
+  checkpoint_dependency: CHECKPOINT-A
+  governance_phase_prerequisites:
+    gov_5: COMPLETED_CLOSED
+    gov_6: COMPLETED_CLOSED
+    gov_7: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    checkpoint_a: EXPLICIT_OWNER_DISPOSITION_RECORDED
+  canonical_inputs: [accepted or explicitly bounded PASS-01 and PASS-02 outputs, checkpoint-A decision, observable historical prompt/run/evaluation evidence, S0a-S9 interviewer and testing architecture]
+  read_only_repository_scope: [governance/**, planning/**, product/**, relevant methodology/runtime test definitions]
+  permitted_external_research: EVALUATION_METHODS_ONLY_WHEN_NEEDED_TO_COMPARE_A_DEFINED_REPOSITORY_GAP
+  mandatory_principles:
+    repository_first_gap_driven: metrics and tests address observed work and accepted architecture gaps
+    prompt_economy: collect only observable decision-relevant fields
+    ai_first_effort: compare validation cost against reduced manual and correction burden
+    whole_work_unit: evaluate complete execution and disposition, not prompt length alone
+    strategy_neutrality: measurement must not privilege a GOV-7 strategy
+    relationship_model_neutrality: telemetry may reference typed links but cannot become canonical truth
+    controlled_self_hosting: generated evidence cannot be treated as independent evidence
+    open_tool_discovery: design method before choosing an evaluation platform
+  required_questions:
+    - Which historical metrics are honestly recoverable, and which require explicit unavailable markers?
+    - What prospective work-unit fields are observable without hidden chain-of-thought or unstable transcript dependence?
+    - Which criteria use schemas, code graders, property/golden/mutation/metamorphic tests, pairwise comparison, LLM evaluation, independent models or humans?
+    - How should hidden client truth, information extraction, necessary/unnecessary questions, burden, contradictions, uncertainty, non-invention, completion, pause/resume, rehydration, branching, profile/risk triggers, sanitization/PII and domain packs be tested?
+    - How can simulators be isolated from hidden facts, checked for collusion, calibrated against small human samples and kept cheaper than full manual interviews?
+  required_outputs:
+    - historical metric recoverability matrix
+    - prospective non-authoritative telemetry contract
+    - prompt and agent evaluation architecture
+    - layered interviewer test architecture covering deterministic, fixture, replay, model-based, property, mutation, metamorphic, synthetic/adversarial and trajectory methods
+    - hidden-truth and evaluator-independence design
+    - human calibration and final-acceptance boundary
+    - cost and burden comparison
+  interviewer_test_candidate_set:
+    - deterministic state-machine tests
+    - contract tests
+    - fixed scripted personas with hidden facts
+    - transcript replay
+    - regression conversations
+    - branching conversation fixtures
+    - model-based testing
+    - property-based testing
+    - mutation testing
+    - metamorphic testing
+    - synthetic multi-turn users
+    - cheaper-model user simulators
+    - adversarial personas
+    - contradictory personas
+    - incomplete or evasive personas
+    - non-technical personas
+    - overconfident personas
+    - privacy-sensitive personas
+    - trajectory evaluators
+    - artifact-level graders
+    - requirement-origin graders
+    - requirement-coverage graders
+    - contradiction-detection graders
+    - cross-model pairwise comparison
+    - limited human calibration samples
+    - occasional real-client validation when ethical and operationally appropriate
+  output_structure:
+    format: MEASUREMENT_AND_EVALUATION_DESIGN_WITH_FIELD_LEVEL_PROVENANCE
+    statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+    unavailable_value: null
+    missing_data_marker_required: true
+  required_evidence: [observable repository records, checkpoint-A bounds, field provenance, benchmark or fixture identities, explicit unavailable-data markers]
+  validation: [no invented historical values, telemetry authority-boundary check, evaluator-independence check, interviewer coverage matrix, cost comparison, output-contract validation]
+  stopping_conditions: [checkpoint A absent, metric requires hidden reasoning, stable evidence cannot be separated from inference, synthetic evaluation would become sole final acceptance, privacy boundary unresolved]
+  prohibited_actions: [modify repository during analysis without separate authority, collect hidden chain-of-thought, implement telemetry/simulator/evaluation platform, eliminate all human testing, accept recommendations, resolve Owner decisions, rewrite predecessor outputs, treat chat memory as durable truth]
+  prohibited_claims: [telemetry as canonical truth, metric as semantic-quality proof, compliance, accepted risk, phase-transition authority, interviewer validity without evidence, implementation]
+  model_class_recommendation: CAPABLE_EVALUATION_DESIGN_MODEL_WITH_DETERMINISTIC_METHOD_ROUTING
+  ai_first_effort_dimensions:
+    cycles: 4-6
+    owner_effort: MEDIUM
+    validation_burden: HIGH
+    novelty: NEW_BOUNDED_COMPONENT
+    correction_uncertainty: HIGH
+    maintenance_burden: MEDIUM
+  correction_protocol: Preserve unavailable-data limitations and executed evidence; correct via a versioned design and new evaluation.
+  handoff_to_next_pass: Bind evidence-backed gaps and evaluation needs into PASS-04; no tooling research outside those bounds.

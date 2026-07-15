@@ -1,0 +1,21 @@
+prompt_registry:
+  audit_id: GOV-AUD-001
+  version: 0.1.0
+  lifecycle_states: [TEMPLATE, INSTANTIATED_NOT_EXECUTED, EXECUTED, EVALUATED, SUPERSEDED]
+  custody_rule: FINAL_INSTANTIATED_PROMPT_MUST_BE_PRESERVED_AND_HASH_BOUND_BEFORE_EXECUTION
+  prompts:
+    - prompt_id: GOV-AUD-PROMPT-000
+      catalog_prompt_id: HP-PROMPT-023
+      version: 0.2.0
+      lifecycle: EXECUTED
+      purpose: AUDIT_PROGRAM_SCAFFOLD
+      path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/GOV-AUD-PROMPT-000-audit-program-scaffold-v0.2.0.md
+      exact_text_sha256: 7ea731bb822d88328c26bfe69b5280a84a37153bc525f963d051fb74b6033b07
+      audit_pass_executed: false
+    - {prompt_id: GOV-AUD-PROMPT-010, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-01, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-010-pass-01-capability-gap-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-020, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-02, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-030, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-03, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-030-pass-03-measurement-interviewer-evaluation-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-040, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-04, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-040-pass-04-targeted-tooling-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-050, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-05, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-050-pass-05-gov7-strategy-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-060, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-06, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-060-pass-06-synthesis-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-070, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-07, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-070-pass-07-independent-evaluation-v0.1.0.md}

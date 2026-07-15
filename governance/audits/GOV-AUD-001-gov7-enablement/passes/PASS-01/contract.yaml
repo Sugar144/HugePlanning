@@ -1,0 +1,63 @@
+pass:
+  id: PASS-01
+  title: Repository Capability, Repetition, Waste and Gap Audit
+  status: PLANNED_NOT_EXECUTED
+  purpose: Establish what HugePlanning already supports and rank demonstrated gaps using the complete work unit.
+  authority: SEPARATE_PROJECT_OWNER_EXECUTION_AUTHORIZATION_REQUIRED
+  required_predecessors: []
+  checkpoint_dependency: null
+  governance_phase_prerequisites:
+    gov_5: COMPLETED_CLOSED
+    gov_6: COMPLETED_CLOSED
+    kernel: 0.2.0/RATIFIED
+    gov_7: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    scaffold: ACCEPTED_OR_EXPLICITLY_AUTHORIZED_FOR_PASS_01
+  canonical_inputs:
+    - current governance state, decisions, accepted manifests and validated indexes
+    - repository capability surfaces, S0a-S9 assets and ER-001 through ER-020
+    - learning records and observable completed work-unit evidence
+  read_only_repository_scope: [governance/**, planning/**, product/**, runtime support surfaces needed to inventory existing capability]
+  permitted_external_research: STRICTLY_NECESSARY_ONLY_TO_IDENTIFY_AN_EXISTING_REPOSITORY_CAPABILITY
+  mandatory_principles:
+    repository_first_gap_driven: verified capability -> demonstrated gap -> smallest sufficient response -> candidate implementation or tool
+    prompt_economy: include current-risk or contract requirements; classify optional value; omit ceremony and speculation
+    ai_first_effort: use execution cycles, Owner effort, validation, novelty, uncertainty, integration and maintenance
+    whole_work_unit: input + prompt + observable model/mode + execution + artifacts + validation + corrections + Owner + independent disposition
+    strategy_neutrality: do not select a GOV-7 implementation strategy
+    relationship_model_neutrality: record traceability needs without selecting graph technology
+    controlled_self_hosting: record capability and safety gaps without implementing self-hosting
+    open_tool_discovery: every later candidate set includes NO_NEW_TOOL, repository-native and smallest custom options
+  required_questions:
+    - Which capabilities already exist across prompts, runs, authorization, packaging, hashes, import, evaluation, state reconciliation, learning, parsers, schemas, validators, controllers, scripts, skills and hooks?
+    - Which mechanical and semantic workflows repeat, fail, or impose avoidable prompt or Owner burden?
+    - Which work should stop because an existing mechanism already solves it?
+    - What historical burden is honestly observable, and what is unavailable?
+    - Which gaps rank highest by frequency * burden * failure risk * expected reduction / implementation and maintenance burden?
+  required_outputs:
+    - verified capability inventory
+    - repeated-work inventory
+    - mechanical-work candidates
+    - semantic-workflow candidates
+    - ranked evidence-backed gap register
+    - observable prompt and Owner burden with historical limitations
+    - preliminary automation candidates
+    - preliminary stop-doing list
+  output_structure:
+    format: YAML_AND_MARKDOWN_AS_DECLARED_BY_INSTANTIATED_PROMPT
+    statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+    ranking_formula: frequency * current_burden * failure_risk * expected_reduction / implementation_and_maintenance_burden
+  required_evidence: [repository paths and versions, run or decision identities, observable counts, explicit missing-data markers]
+  validation: [input-manifest hash validation, unique finding IDs, evidence-path existence, ranking-field completeness, output-contract validation]
+  stopping_conditions: [baseline mismatch, unauthorized write requirement, missing core input package, evidence cannot distinguish capability from inference, GOV-7 activation or implementation detected]
+  prohibited_actions: [modify repository during analysis without separate authority, execute another pass, perform broad external framework research, accept recommendations, resolve Owner decisions, implement automation, rewrite predecessor evidence, treat chat memory as durable truth]
+  prohibited_claims: [implementation, readiness without evidence, enforceability, operation, compliance, maturity, risk acceptance, GOV-7 activation]
+  model_class_recommendation: DETERMINISTIC_INVENTORY_FIRST_THEN_LEAST_EXPENSIVE_SUFFICIENT_CLASSIFICATION_MODEL
+  ai_first_effort_dimensions:
+    cycles: 2-3
+    owner_effort: MEDIUM
+    validation_burden: MEDIUM
+    novelty: REUSE_EXISTING
+    correction_uncertainty: MEDIUM
+    maintenance_burden: NEGLIGIBLE
+  correction_protocol: Preserve the executed prompt and output; correct material defects through a new version and separately authorized bounded run.
+  handoff_to_next_pass: Bind accepted or explicitly bounded outputs into PASS-02; no automatic acceptance.

@@ -1,0 +1,29 @@
+manifest:
+  id: GOV-AUD-001-BASELINE-001
+  version: 0.1.0
+  status: VERIFIED_FOR_SCAFFOLD_PLANNING_ONLY
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_head: fb8379235933cc82eb74cccbde5711406688122b
+  source_checksums_validation: VALID_FROM_REPOSITORY_ROOT
+  inputs:
+    - {path: governance/CURRENT_STATE.md, sha256: 396f29c34f507fa0083a954bd76b862f9435c49fbc572798b7c6471839da4132, role: CURRENT_STATE}
+    - {path: governance/GOVERNANCE_MASTER_PLAN.md, sha256: 9d61bd55aa5f6808d4fbb8803e82fcf36b9e4ad8027fc6d9ce988d111a9b5529, role: PHASE_PLAN}
+    - {path: governance/ARTIFACT_REGISTRY.yaml, sha256: a04d34d72b618a86846f5def813a8f57930c4ba7d81817fc8fbab4905e897518, role: STARTING_ARTIFACT_REGISTRY}
+    - {path: governance/methodology/project-operating-contract.md, sha256: cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa, role: OPERATING_CONTRACT}
+    - {path: governance/prompts/README.md, sha256: 2fed127afa1f4f507d7de709b605dc698045a73db0a3a6395da219e7ee83a98d, role: PROMPT_CUSTODY}
+    - {path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.2.0.yaml, sha256: 83ade19391d51cb810abd5a9e9e799c557f1f769f63224052d1719df87e85b34, role: GOV_5_ACCEPTANCE}
+    - {path: governance/reviews/gov-6-ratification/kernel-ratification-decision-record-v0.1.0.yaml, sha256: 4b4efd10e6c09df7a9050509aeca8abe589b01a76f7f59e8f71b956e2c65c284, role: GOV_6_RATIFICATION}
+    - {path: governance/reviews/gov-7-direction/od-005-gov-7-direction-decision-record-v0.1.0.yaml, sha256: 300f8e1baf0dfa978ef1e0a096c10f5879cfe1299c7ae2bf10e1f9e81f4ec98d, role: GOV_7_DIRECTION}
+    - {path: governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml, sha256: 120c752c5e877d569056655e7b94d9626783cdf06bb7d8b0ad821485b92e03d5, role: ACCEPTED_RUN_MANIFEST}
+    - {path: governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/05-minimum-executable-package-recommendation.md, sha256: 51d751b9463909c5f0732c844fb3b4f49d9fe0c50f276bce7a846cd418a7d488, role: MINIMUM_GOV_7_RECOMMENDATION}
+    - {path: planning/v2/01_architecture_and_operating_model.md, sha256: 3e01600d08c2898b3cbcede26d3c947be4c1a54353be79fa9532841f8c765604, role: S0A_S9_ARCHITECTURE_READ_ONLY}
+    - {path: planning/v2/04_client_discovery_interviewer_system.md, sha256: ea17bdc66ba9d43afdd8389ac8979bc46667727f8f83ef6129049279e61c8e0a, role: INTERVIEWER_ARCHITECTURE_READ_ONLY}
+    - {path: planning/v2/05_technical_solution_interviewer_system.md, sha256: 7d34c48009f841e68c397350b794599dea0bdcd08be48e37cf839931356e2e89, role: TECHNICAL_INTERVIEWER_READ_ONLY}
+    - {path: planning/v2/06_artifact_and_information_architecture.md, sha256: 2159158a1fc310f5f1ad4df3b5cb8e88bf102c90f2d1588a5ec267f772797104, role: INFORMATION_ARCHITECTURE_READ_ONLY}
+    - {path: planning/v2/10_testing_and_quality_architecture.md, sha256: c116c2e67007e627499ef773e527242c67f8f9cd85b5fccfc1b6c7fa0cc6ba38, role: QUALITY_ARCHITECTURE_READ_ONLY}
+    - {path: planning/v2/13_mvp_scope_and_implementation_roadmap.md, sha256: 510fb6fe05e66578214c9f2eaa2def3e6b2379da7071d2be55ed7515cc3ae90a, role: S0A_S9_ROADMAP_READ_ONLY}
+    - {path: planning/v2/17_knowledge_architecture_and_authoring_standard.md, sha256: c8d389579d8e98a86442e89511f04ccbecfcf72d53570f8273aeb941e0c8079e, role: KNOWLEDGE_ARCHITECTURE_READ_ONLY}
+  limitations:
+    - This manifest binds scaffold-planning evidence only and is not a future pass input manifest.
+    - Every future pass must create a new complete hashed input manifest after prerequisites and checkpoints are satisfied.

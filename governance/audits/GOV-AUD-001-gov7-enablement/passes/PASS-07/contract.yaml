@@ -1,0 +1,58 @@
+pass:
+  id: PASS-07
+  title: Independent Evaluation
+  status: PLANNED_NOT_EXECUTED
+  purpose: Evaluate the audit package independently of the synthesis author's unilateral control.
+  authority: SEPARATE_PROJECT_OWNER_EXECUTION_AUTHORIZATION_REQUIRED
+  required_predecessors: [PASS-06]
+  checkpoint_dependency: CHECKPOINT-B
+  governance_phase_prerequisites:
+    gov_5: COMPLETED_CLOSED
+    gov_6: COMPLETED_CLOSED
+    gov_7: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    synthesis: COMPLETE_VALIDATED_NOT_ACCEPTED
+    evaluator_independence: ESTABLISHED_BEFORE_EXECUTION
+  canonical_inputs: [immutable PASS-01 through PASS-06 outputs, checkpoint records, corrections, exact synthesis prompt/input/output package]
+  read_only_repository_scope: [governance/** and immutable referenced evidence]
+  permitted_external_research: ONLY_TO_VERIFY_A_CONTESTED_SOURCE_CLAIM_ALREADY_USED_BY_THE_AUDIT
+  mandatory_principles:
+    repository_first_gap_driven: reject framework shopping and unsupported recommendations
+    prompt_economy: evaluate protective value versus audit bureaucracy and delay
+    ai_first_effort: test whether effort and maintenance estimates fit the AI-first model
+    whole_work_unit: evaluate inputs, execution, artifacts, validation, corrections, Owner burden and independence
+    strategy_neutrality: detect predetermined vertical slicing or foreclosed alternatives
+    relationship_model_neutrality: test graph authority boundary and technology neutrality
+    controlled_self_hosting: test trust root, independence and self-certification protections
+    open_tool_discovery: test whether alternatives and minimal options were genuinely considered
+  required_questions:
+    - Is the audit faithful to repository evidence, complete, coherent, feasible and explicit about unresolved Owner decisions?
+    - Is the relationship model non-authoritative, technology-neutral, provenance-rich and compatible with version/migration requirements?
+    - Does controlled self-hosting prevent self-modification, self-certification, circular authority and loss of recovery/manual fallback?
+    - Are prompt, agent and interviewer evaluation designs sound, proportionate and not dependent on one LLM judge or total manual testing?
+    - Did the audit avoid framework shopping, predetermined strategy and generic enterprise effort estimates?
+    - Did it become unnecessary bureaucracy, delay GOV-7 without protective value, or recommend more maintenance than value?
+  required_outputs:
+    - independent findings with evidence and severity
+    - criterion-by-criterion evaluation matrix
+    - unresolved Owner decision list
+    - one permitted final result
+  output_structure:
+    format: INDEPENDENT_EVALUATION_PACKAGE
+    statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+    permitted_results: [SUITABLE_FOR_PROJECT_OWNER_DECISION, RETURN_FOR_BOUNDED_VERSIONED_CORRECTION, INVALID_AUDIT_EXECUTION]
+    exactly_one_result: true
+  required_evidence: [immutable artifact hashes, evaluator identity and independence basis, cited finding paths, validation results, limitations]
+  validation: [evaluator-independence check, complete criterion coverage, exactly one permitted result, finding evidence resolution, output-contract validation]
+  stopping_conditions: [independence absent, synthesis package mutates, required evidence missing, evaluator is asked to accept risk or make Owner decisions, substantive conflict cannot be bounded]
+  prohibited_actions: [modify repository during analysis without separate authority, rewrite or change synthesis outputs, accept or implement recommendations, resolve Owner decisions, activate GOV-7, self-ratify, treat generated evidence as independent evidence, treat chat memory as durable truth]
+  prohibited_claims: [Project Owner acceptance, implementation authority, GOV-7 activation, enforceability, operation, compliance, maturity, risk acceptance]
+  model_class_recommendation: INDEPENDENT_CAPABLE_EVALUATOR_OUTSIDE_SYNTHESIS_AUTHOR_UNILATERAL_CONTROL
+  ai_first_effort_dimensions:
+    cycles: 2-3
+    owner_effort: MEDIUM
+    validation_burden: HIGH
+    novelty: REUSE_EXISTING
+    correction_uncertainty: MEDIUM
+    maintenance_burden: NEGLIGIBLE
+  correction_protocol: Evaluation is immutable; a returned audit receives a separately authorized bounded versioned correction and new independent evaluation.
+  handoff_to_next_pass: Present PASS-07 and the immutable audit package to CHECKPOINT-C; no acceptance or implementation is inferred.

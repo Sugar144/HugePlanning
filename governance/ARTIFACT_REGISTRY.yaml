@@ -1,7 +1,7 @@
 registry:
-  version: '0.15'
-  generated_for: GOV_7_DIRECTION_DECISION
-  base_commit: 950a4fe382a37bc6bd5cb0fc431c558406cb393c
+  version: '0.16'
+  generated_for: GOV_7_AUDIT_PROGRAM_SCAFFOLD
+  base_commit: fb8379235933cc82eb74cccbde5711406688122b
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -2493,3 +2493,61 @@ artifacts:
     supersedes: null
     aliases: [GOV-DEC-026]
     notes: [Preserves the exact bounded OD-005 direction decision; prohibits GOV-7 implementation, audit execution, component design, technology or provider adoption, real-data processing, pilot execution, residual-risk acceptance, OD-006 resolution, runtime changes and PR creation.]
+
+  - id: GOV-AUD-001
+    title: GOV-7 Enablement, Cross-Layer Architecture and Empirical Validation Audit Program Scaffold
+    version: 0.1.0
+    status: PLANNED_NOT_EXECUTED
+    authority: scaffold_planning_and_custody_only_not_audit_execution_gov_7_activation_or_implementation
+    path: governance/audits/GOV-AUD-001-gov7-enablement/00-audit-charter.md
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/GOV-AUD-PROMPT-000-audit-program-scaffold-v0.2.0.md
+    source_sha256: 7ea731bb822d88328c26bfe69b5280a84a37153bc525f963d051fb74b6033b07
+    produced_by: AUDIT_PROGRAM_ARCHITECT
+    artifact_type: audit_program_scaffold
+    language: English
+    canonicality: planning_only_audit_program_index
+    supersedes: null
+    aliases:
+      - governance/audits/GOV-AUD-001-gov7-enablement/01-audit-plan.yaml
+      - governance/audits/GOV-AUD-001-gov7-enablement/02-audit-status.yaml
+      - governance/audits/GOV-AUD-001-gov7-enablement/03-baseline-input-manifest.yaml
+      - governance/audits/GOV-AUD-001-gov7-enablement/04-artifact-and-custody-contract.md
+      - governance/audits/GOV-AUD-001-gov7-enablement/05-owner-checkpoints.md
+      - governance/audits/GOV-AUD-001-gov7-enablement/06-model-routing-policy.md
+      - governance/audits/GOV-AUD-001-gov7-enablement/prompt-registry.yaml
+    notes:
+      - Plans seven dependent audit passes and three explicit Project Owner checkpoints; no pass is executed.
+      - Requires a typed cross-layer relationship model while leaving graph technology unselected.
+      - Covers controlled system and infrastructure self-hosting, interviewer testing, prompt lifecycle, open-ended tool discovery and AI-first effort without implementation authority.
+
+  - id: HP-PROMPT-023
+    title: GOV-7 Audit Program Scaffold Prompt
+    version: 0.2.0
+    status: EXECUTED
+    authority: bounded_audit_scaffold_planning_validation_commit_and_push_authority
+    path: governance/prompts/orchestration/HP-PROMPT-023-gov-7-audit-program-scaffold-v0.2.0.md
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/GOV-AUD-PROMPT-000-audit-program-scaffold-v0.2.0.md
+    source_sha256: 7ea731bb822d88328c26bfe69b5280a84a37153bc525f963d051fb74b6033b07
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: [GOV-AUD-PROMPT-000]
+    notes: [Authorizes only the planning scaffold, exact prompt custody, pass contracts/templates, minimum validation, one bounded commit and non-force push; prohibits audit execution, substantive external research, Kernel or phase changes, GOV-7 activation/implementation, runtime changes, risk acceptance and PR creation.]
+
+  - id: GOV-TOOL-004
+    title: GOV-7 Audit Program Scaffold Validator
+    version: 0.1.0
+    status: IMPLEMENTED_AND_VALIDATED_FOR_PLANNING_ARTIFACTS
+    authority: deterministic_scaffold_validation_not_audit_execution_acceptance_activation_or_implementation
+    path: governance/tools/validate_audit_scaffold.py
+    source_path: null
+    source_sha256: null
+    produced_by: AUDIT_PROGRAM_ARCHITECT
+    artifact_type: deterministic_validation_tool
+    language: English
+    canonicality: reusable_validation_support
+    supersedes: null
+    aliases: [governance/tests/test_gov_7_audit_scaffold.py]
+    notes: [Validates exact prompt custody, IDs, dependencies, contracts, prompt templates, planning-only state, baseline prerequisites, referenced paths, YAML/Markdown and absence of fake execution artifacts; it cannot execute an audit or make semantic/Owner decisions.]

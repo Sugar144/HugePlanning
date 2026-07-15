@@ -1,0 +1,33 @@
+governance_baseline:
+  kernel:
+    version: 0.2.0
+    status: RATIFIED
+    implemented: false
+    enforceability_claimed: false
+    operational: false
+  gov_5:
+    status: COMPLETED_CLOSED
+  gov_6:
+    status: COMPLETED_CLOSED
+  gov_7:
+    status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    direction: ACCEPTED_MINIMUM_GOV_7_DIRECTION_NOT_IMPLEMENTED
+  od_006:
+    status: UNRESOLVED_TRIGGER_GATED
+audit:
+  id: GOV-AUD-001
+  status: PLANNED_NOT_EXECUTED
+  authority: SCAFFOLD_CREATION_ONLY
+  passes_executed: 0
+  checkpoints_completed: 0
+  gov_7_activated: false
+  recommendations_accepted: false
+  implementation_authorized: false
+  audit_execution_authorized: false
+  graph_implemented: false
+  telemetry_implemented: false
+  interviewer_simulation_implemented: false
+  self_hosting_implemented: false
+  owner_decision_inferred: false
+  last_completed_step: SCAFFOLD_PLANNING_ONLY
+  next_action: PROJECT_OWNER_REVIEW_AND_SEPARATE_PASS_01_AUTHORIZATION_DECISION

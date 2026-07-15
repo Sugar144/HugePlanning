@@ -1,0 +1,26 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-017-E003
+  record_id: HP-FAIL-017
+  date: '2026-07-15'
+  event_type: RECURRENCE
+  status_from: null
+  status_to: null
+  summary: The historical Phase 2.4 regression again froze mutable current-phase wording after GOV-6 closure.
+  rationale: The full governance suite required the literal current-state phrase GOV-4 completed even though durable evidence now correctly identifies GOV-6 as the current closed phase. The bounded correction checks the enduring structured GOV-4 completion fact instead of requiring obsolete phase-summary prose.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/test_phase_2_4_contracts.py
+      anchor: test_phase_2_4_registry_and_durable_state_are_consistent
+      sha256: null
+      availability: PRESERVED
+      note: The regression now asserts the durable GOV-4 completion block without freezing the current phase.
+    - type: REPOSITORY_PATH
+      locator: governance/CURRENT_STATE.md
+      anchor: Durable state
+      sha256: null
+      availability: PRESERVED
+      note: The current phase remains GOV-6 closed while the historical GOV-4 completion fact remains preserved.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-023-gov-7-audit-program-scaffold-v0.2.0.md
+  accepted_risk: null
+  supersedes: null

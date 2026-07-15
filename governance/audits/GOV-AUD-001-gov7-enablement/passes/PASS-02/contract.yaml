@@ -1,0 +1,64 @@
+pass:
+  id: PASS-02
+  title: Cross-Layer Architecture, Graph, Versioning and Controlled Self-Hosting
+  status: PLANNED_NOT_EXECUTED
+  purpose: Define evidence-supported interaction among governance derivation, methodology construction, client lifecycle and information architecture.
+  authority: SEPARATE_PROJECT_OWNER_EXECUTION_AUTHORIZATION_REQUIRED
+  required_predecessors: [PASS-01]
+  checkpoint_dependency: null
+  governance_phase_prerequisites:
+    gov_5: COMPLETED_CLOSED
+    gov_6: COMPLETED_CLOSED
+    kernel: 0.2.0/RATIFIED
+    gov_7: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    pass_01: ACCEPTED_OR_EXPLICITLY_BOUNDED_INPUT
+  canonical_inputs: [accepted or bounded PASS-01 outputs, ratified Kernel and derived requirements, S0a-S9 architecture and artifact model, current governance operating contract]
+  read_only_repository_scope: [governance/**, planning/**, product/**, methodology and runtime architecture surfaces needed for mapping]
+  permitted_external_research: ARCHITECTURE_PRECEDENT_ONLY_WHEN_REPOSITORY_EVIDENCE_CANNOT_SETTLE_A_DEFINED_QUESTION
+  mandatory_principles:
+    repository_first_gap_driven: architecture responds only to verified capability and demonstrated gaps
+    prompt_economy: architecture detail must affect boundaries, authority, evidence, validation or decisions
+    ai_first_effort: compare options through execution cycles and integration/maintenance burden
+    whole_work_unit: map inputs through independent disposition, not prompt text alone
+    strategy_neutrality: compare architecture without presupposing vertical slices
+    relationship_model_neutrality: typed relationship model is required; implementation technology remains unselected
+    controlled_self_hosting: separate system and infrastructure self-hosting with trust-root protection
+    open_tool_discovery: no architecture or graph product is mandatory
+  required_questions:
+    - What are bounded contexts, canonical owners, interfaces, exchanged artifacts, failure/stopping/recovery boundaries and Controller responsibilities?
+    - How do Kernel -> requirements -> policy -> standard -> procedure -> control -> evidence, S0a -> S9, client lifecycle, and information layers relate?
+    - What typed relationships answer clause-to-control, stage, agent/skill/script/hook, artifact/test, gate, feedback, impact, compatibility and migration queries?
+    - Does each applicable S-stage need a versioned governance-application contract, and with which fields?
+    - How do Kernel, executable governance, methodology, client lock, schema, agent, skill and control versions remain compatible and migrate?
+    - How does operational evidence route upward to the correct owning layer without silent trust-root change?
+    - How can system self-hosting and infrastructure self-hosting progress without self-certification, circular authority, or loss of rollback/manual escape paths?
+    - Which architecture style is smallest sufficient among modular artifact-driven, layered, event-driven, controller-led, service-oriented, microservices, repository-native and hybrids?
+  required_outputs:
+    - bounded-context and canonical-ownership model
+    - interfaces and cross-layer application contracts assessment
+    - typed cross-layer relationship model and query contract
+    - traceability and impact-analysis model
+    - version compatibility, migration and supersession model
+    - controlled system self-hosting and infrastructure self-hosting models
+    - trust-root and independence boundaries
+    - upward feedback routing and finding ownership taxonomy
+    - architecture-style comparison with distributed-architecture adoption criteria
+  output_structure:
+    format: VERSIONED_ARCHITECTURE_REPORT_PLUS_TYPED_RELATIONSHIP_MODEL
+    statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+    required_axes: [governance_derivation, methodology_construction, client_lifecycle, information_architecture]
+  required_evidence: [PASS-01 gap IDs, canonical repository paths, ownership/version records, explicit inference and unresolved-decision markers]
+  validation: [relationship type and endpoint validation, source-path existence, query coverage, compatibility-matrix completeness, authority-boundary review, output-contract validation]
+  stopping_conditions: [PASS-01 not accepted or bounded, architecture requires GOV-7 activation, graph technology selection becomes necessary without evidence, trust-root or authority conflict, missing canonical owner]
+  prohibited_actions: [modify repository during analysis without separate authority, implement graph/projection/services/controllers/self-hosting, select technology during planning, accept recommendations, resolve Owner decisions, rewrite PASS-01, treat chat memory as durable truth]
+  prohibited_claims: [approved architecture, implemented graph, GOV-7 readiness, enforceability, operation, compliance, maturity, risk acceptance]
+  model_class_recommendation: STRONGEST_AVAILABLE_REASONING_CLASS_JUSTIFIED_BY_CROSS_LAYER_SYNTHESIS
+  ai_first_effort_dimensions:
+    cycles: 4-6
+    owner_effort: HIGH
+    validation_burden: HIGH
+    novelty: NEW_BOUNDED_COMPONENT
+    correction_uncertainty: HIGH
+    maintenance_burden: LOW
+  correction_protocol: Preserve executed artifacts; issue a new version bound to explicit checkpoint corrections and new validation.
+  handoff_to_next_pass: Present PASS-01 and PASS-02 to CHECKPOINT-A; do not instantiate PASS-03 before explicit disposition.
