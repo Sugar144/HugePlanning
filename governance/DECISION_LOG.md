@@ -256,3 +256,25 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: This context-bounded finding does not establish universal usability; OD-004 through OD-006 remain unresolved.
 - Authority boundary: This does not accept KGR-006-R1 or risk, close GOV-5, activate GOV-6, ratify the Kernel, accept GOV-7, or authorize implementation.
 - Supersedes: none
+
+## GOV-DEC-023 — KGR-006-R1 Project Owner acceptance
+
+- Date: 2026-07-15
+- Status: ACCEPTED_BY_PROJECT_OWNER
+- Statement: Accept `KGR-006-R1` as the bounded GOV-5 enforcement-analysis result.
+- Rationale: `NOT_PROVIDED` by the Project Owner.
+- Source: Project Owner instruction `HP-PROMPT-020/0.1.0` and `GOV-DECISION-RECORD-001/0.2.0`.
+- Consequences: Acceptance includes the documented gaps, limitations, deferred items and unaccepted risks only within the bounded GOV-5 analysis scope. OD-004 through OD-006 remain unresolved; no residual risk is accepted.
+- Authority boundary: This does not ratify or reject the Kernel, activate GOV-6, accept or implement GOV-7, implement enforcement, change runtime surfaces, or establish operational status.
+- Supersedes: none
+
+## GOV-DEC-024 — GOV-5 Project Owner closure
+
+- Date: 2026-07-15
+- Status: COMPLETED_CLOSED
+- Statement: Close GOV-5 after acceptance of KGR-006-R1.
+- Rationale: `NOT_PROVIDED` by the Project Owner.
+- Source: Project Owner instruction `HP-PROMPT-020/0.1.0`, `GOV-DECISION-RECORD-001/0.2.0`, and `GOV-REVIEW-015/0.2.0`.
+- Consequences: GOV-5 is completed and closed. GOV-6 remains inactive; OD-004 through OD-006 remain unresolved; the minimum GOV-7 package remains recommendation-only; residual risk remains unaccepted; enforcement implementation remains not performed.
+- Authority boundary: This does not execute or activate GOV-6, resolve OD-004 through OD-006, ratify the Kernel, accept residual risk, accept or implement GOV-7, modify product/runtime files, open a pull request, merge, release, or deploy.
+- Supersedes: none

@@ -1,0 +1,57 @@
+project_owner_decision_record:
+  schema_version: 0.1.0
+  document_id: GOV-DECISION-RECORD-001
+  version: 0.2.0
+  supersedes: GOV-DECISION-RECORD-001/0.1.0
+  date: '2026-07-15'
+  source_run: KGR-006-R1
+  owner_role: Project Owner
+  status: ACCEPTED_KGR_006_R1_AND_GOV_5_CLOSED
+  decision_context:
+    dossier: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-dossier-v0.1.0.md
+    closure_review: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml
+    kernel_version: 0.2.0-proposed
+    kernel_status: PROPOSED_NOT_RATIFIED
+    project: HugePlanning
+    governance_level: 3
+    scope: BOUNDED_SINGLE_USER_MINIMUM_ANALYSIS_SCOPE_AS_DESCRIBED_IN_DOSSIER
+    packet_sufficiency_context: CURRENT_PROJECT_OWNER_DECISION_CONTEXT_ONLY
+  decisions:
+    - id: KGR-006-R1
+      decision: ACCEPT_KGR_006_R1
+      status: ACCEPTED_BY_PROJECT_OWNER
+      effect: Accepts only the bounded GOV-5 enforcement-analysis result, including its documented gaps, limitations, deferred items and unaccepted risks.
+    - id: GOV-5
+      decision: CLOSE_GOV_5
+      status: COMPLETED_CLOSED
+      effect: Closes GOV-5 without activating GOV-6 or altering any later-phase, constitutional, risk, implementation or operational boundary.
+    - id: OD-002
+      status: RESOLVED
+      selection: CONFIRM_EXACT_SCOPE
+      effect: Confirms only the exact Kernel candidate and bounded scope for later decision review.
+    - id: OD-003
+      status: RESOLVED
+      selection: PACKET_SUFFICIENT
+      effect: Confirms dossier sufficiency only for the current Project Owner decision context; no SD-003 or ER-015 review is required for this packet in this context.
+    - {id: OD-004, status: UNRESOLVED, selection: null}
+    - {id: OD-005, status: UNRESOLVED, selection: null}
+    - {id: OD-006, status: UNRESOLVED, selection: null}
+  additional_owner_rationale: NOT_PROVIDED
+  acceptance_scope_limitations:
+    - Bounded GOV-5 enforcement-analysis result only.
+    - Documented gaps, limitations, deferred items and unaccepted risks remain as recorded.
+  authority_exclusions:
+    - RESIDUAL_RISK_ACCEPTANCE
+    - GOV_6_ACTIVATION_OR_KERNEL_RATIFICATION
+    - GOV_7_ACCEPTANCE_IMPLEMENTATION_OR_ENFORCEMENT
+    - GOV_8_OR_GOV_9_WORK
+    - POLICY_CONTROL_PRODUCT_RUNTIME_OR_OPERATIONAL_CHANGE
+  resulting_state:
+    KGR-006-R1: ACCEPTED_BY_PROJECT_OWNER
+    GOV-5: COMPLETED_CLOSED
+    GOV-6: INACTIVE
+    minimum-GOV-7-package: RECOMMENDATION_ONLY
+    risk-accepted: false
+    enforcement-implementation: NOT_PERFORMED
+    kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED
+  constitutional_authority: NONE

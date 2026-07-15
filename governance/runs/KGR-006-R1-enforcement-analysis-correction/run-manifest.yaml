@@ -5,9 +5,9 @@ run:
   role: Enforcement Engineer
   mode: MINIMUM_ENFORCEMENT_ANALYSIS
   phase: GOV-5
-  status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE
+  status: ACCEPTED_BY_PROJECT_OWNER
   preparation_status: VALIDATED
-  readiness: CLOSURE_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_DECISION_PENDING_ACCEPTANCE
+  readiness: ACCEPTED_BY_PROJECT_OWNER_GOV_5_CLOSED_READY_FOR_SEPARATE_GOV_6_DECISION
 execution:
   authorized: true
   authorization_record: governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
@@ -67,7 +67,7 @@ independent_evaluation:
   imported_count: 3
   imported_byte_identical: true
 owner_decisions:
-  record: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.1.0.yaml
+  record: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.2.0.yaml
   OD-002: RESOLVED_CONFIRM_EXACT_SCOPE
   OD-003: RESOLVED_PACKET_SUFFICIENT
   OD-004: UNRESOLVED
@@ -80,10 +80,10 @@ phase_closure_review:
   result: READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION
   authoritative_to_accept_run: false
   authoritative_to_close_phase: false
-  gov_5_closed: false
+  gov_5_closed: true
   gov_6_activated: false
 authority:
-  gov_5: IN_PROGRESS
+  gov_5: COMPLETED_CLOSED
   gov_6_activated: false
   gov_7_activated: false
   gov_8_activated: false
@@ -91,6 +91,6 @@ authority:
   kernel_ratified: false
   risk_accepted: false
   constitutional_authority: NONE
-  project_owner_acceptance: PENDING
+  project_owner_acceptance: ACCEPTED_BY_PROJECT_OWNER
   kernel_status: PROPOSED_NOT_RATIFIED
   enforcement_implementation: NOT_PERFORMED

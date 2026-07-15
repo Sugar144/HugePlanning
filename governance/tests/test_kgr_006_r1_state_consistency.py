@@ -61,9 +61,9 @@ def test_rejects_missing_terminal_authorization_reconciliation(tmp_path):
 
 def test_rejects_inconsistent_od_002_or_od_003(tmp_path):
     root = isolated(tmp_path)
-    path = root / "governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.1.0.yaml"
-    rewrite_yaml(path, lambda doc: doc["project_owner_decision_record"]["decisions"][0].update(selection="REJECT_SCOPE"))
-    assert "exact selections" in diagnostics(root)
+    path = root / "governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.2.0.yaml"
+    rewrite_yaml(path, lambda doc: doc["project_owner_decision_record"]["decisions"][2].update(selection="REJECT_SCOPE"))
+    assert "Owner decision record state mismatch" in diagnostics(root)
 
 
 def test_rejects_obsolete_readme_kgr_005_gov_4_state(tmp_path):
@@ -76,7 +76,7 @@ def test_rejects_obsolete_readme_kgr_005_gov_4_state(tmp_path):
 def test_rejects_gov_5_closed(tmp_path):
     root = isolated(tmp_path)
     path = root / "governance/CURRENT_STATE.md"
-    replace(path, "gov_5_status: IN_PROGRESS", "gov_5_status: COMPLETED")
+    replace(path, "gov_5_status: COMPLETED_CLOSED", "gov_5_status: IN_PROGRESS")
     assert "CURRENT_STATE gov_5_status mismatch" in diagnostics(root)
 
 
@@ -106,7 +106,7 @@ def test_rejects_stale_kgr_006_r1_status_inside_current_state_durable_block(tmp_
     path = root / "governance/CURRENT_STATE.md"
     replace(
         path,
-        "status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE",
+        "status: ACCEPTED_BY_PROJECT_OWNER",
         "status: EXECUTED_EVALUATED_IMPORTED_PENDING_PROJECT_OWNER_DECISION",
     )
     assert "CURRENT_STATE Durable state KGR-006-R1 status mismatch" in diagnostics(root)
@@ -122,14 +122,14 @@ def test_rejects_stale_gov_5_closure_status_inside_current_state_durable_block(t
 def test_rejects_current_state_table_drift_even_when_final_marker_is_current(tmp_path):
     root = isolated(tmp_path)
     path = root / "governance/CURRENT_STATE.md"
-    replace(path, "GOV-5 closure review is `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION`", "GOV-5 closure review is `NOT_EXECUTED`")
-    assert "CURRENT_STATE table Phase-transition boundary mismatch" in diagnostics(root)
+    replace(path, "closure review remains `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION`", "closure review remains `NOT_EXECUTED`")
+    assert "CURRENT_STATE table GOV-5 status mismatch" in diagnostics(root)
 
 
 def test_rejects_master_plan_status_table_drift_even_when_final_marker_is_current(tmp_path):
     root = isolated(tmp_path)
     path = root / "governance/GOVERNANCE_MASTER_PLAN.md"
-    replace(path, "closure review executed and ready for Project Owner decision", "closure review pending")
+    replace(path, "KGR-006-R1 accepted by the Project Owner", "KGR-006-R1 acceptance pending")
     assert "GOVERNANCE_MASTER_PLAN table GOV-5 Enforcement analysis and derived governance requirements mismatch" in diagnostics(root)
 
 

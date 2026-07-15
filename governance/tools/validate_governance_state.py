@@ -17,7 +17,7 @@ from _lib.strict_yaml import load
 OUTPUT_SHA256 = "0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b"
 RUN_REL = Path("governance/runs/KGR-006-R1-enforcement-analysis-correction")
 REVIEW_REL = Path("governance/reviews/kgr-006-r1-controlled-import-and-owner-review")
-DECISION_RECORD_REL = REVIEW_REL / "project-owner-decision-record-v0.1.0.yaml"
+DECISION_RECORD_REL = REVIEW_REL / "project-owner-decision-record-v0.2.0.yaml"
 EXECUTED_REVIEW_REL = REVIEW_REL / "gov-5-phase-closure-readiness-v0.2.0.yaml"
 READY_REVIEW_STATUS = "EXECUTED_READY_FOR_PROJECT_OWNER_DECISION"
 READY_REVIEW_RESULT = "READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION"
@@ -236,6 +236,8 @@ def validate(root: Path) -> dict:
     validate_executed_review(executed_review, errors)
 
     expected_decisions = {
+        "KGR-006-R1": ("ACCEPTED_BY_PROJECT_OWNER", None),
+        "GOV-5": ("COMPLETED_CLOSED", None),
         "OD-002": ("RESOLVED", "CONFIRM_EXACT_SCOPE"),
         "OD-003": ("RESOLVED", "PACKET_SUFFICIENT"),
         "OD-004": ("UNRESOLVED", None),
@@ -247,7 +249,14 @@ def validate(root: Path) -> dict:
         for item in decisions.get("decisions", [])
     }
     if actual_decisions != expected_decisions:
-        errors.append("Owner decision record must resolve only OD-002 and OD-003 with the exact selections")
+        errors.append("Owner decision record state mismatch")
+    decisions_by_id = {item["id"]: item for item in decisions.get("decisions", [])}
+    if decisions_by_id.get("KGR-006-R1", {}).get("decision") != "ACCEPT_KGR_006_R1":
+        errors.append("Owner decision record KGR-006-R1 acceptance mismatch")
+    if decisions_by_id.get("GOV-5", {}).get("decision") != "CLOSE_GOV_5":
+        errors.append("Owner decision record GOV-5 closure mismatch")
+    if decisions.get("status") != "ACCEPTED_KGR_006_R1_AND_GOV_5_CLOSED":
+        errors.append("Owner decision record status mismatch")
     if decisions.get("additional_owner_rationale") != "NOT_PROVIDED":
         errors.append("Owner decision rationale must remain NOT_PROVIDED")
 
@@ -268,14 +277,14 @@ def validate(root: Path) -> dict:
         errors.append("decision log terminal authorization hash mismatch or reconciliation missing")
 
     run_decisions = run.get("owner_decisions", {})
-    if run.get("run", {}).get("status") != "IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE":
+    if run.get("run", {}).get("status") != "ACCEPTED_BY_PROJECT_OWNER":
         errors.append("run manifest KGR-006-R1 state mismatch")
     if run_decisions.get("OD-002") != "RESOLVED_CONFIRM_EXACT_SCOPE" or run_decisions.get("OD-003") != "RESOLVED_PACKET_SUFFICIENT":
         errors.append("run manifest OD-002/OD-003 state mismatch")
     if [run_decisions.get(item) for item in ("OD-004", "OD-005", "OD-006")] != ["UNRESOLVED"] * 3:
         errors.append("run manifest must leave OD-004 through OD-006 unresolved")
     run_review = run.get("phase_closure_review", {})
-    if run.get("run", {}).get("readiness") != "CLOSURE_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_DECISION_PENDING_ACCEPTANCE":
+    if run.get("run", {}).get("readiness") != "ACCEPTED_BY_PROJECT_OWNER_GOV_5_CLOSED_READY_FOR_SEPARATE_GOV_6_DECISION":
         errors.append("run manifest closure-review readiness mismatch")
     if run_review != {
         "path": EXECUTED_REVIEW_REL.as_posix(),
@@ -283,17 +292,17 @@ def validate(root: Path) -> dict:
         "result": READY_REVIEW_RESULT,
         "authoritative_to_accept_run": False,
         "authoritative_to_close_phase": False,
-        "gov_5_closed": False,
+        "gov_5_closed": True,
         "gov_6_activated": False,
     }:
         errors.append("run manifest phase-closure review state mismatch")
 
     surfaces = {"CURRENT_STATE": current, "GOVERNANCE_MASTER_PLAN": plan, "README": readme}
     expected_surface = {
-        "phase": "GOV-5",
-        "gov_5_status": "IN_PROGRESS",
+        "phase": "GOV-5_CLOSED",
+        "gov_5_status": "COMPLETED_CLOSED",
         "gov_5_closure_review": READY_REVIEW_STATUS,
-        "kgr_006_r1_status": "IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE",
+        "kgr_006_r1_status": "ACCEPTED_BY_PROJECT_OWNER",
         "authorization_status": "CONSUMED_1_OF_1_NONE_REMAINING",
         "od_002": "RESOLVED_CONFIRM_EXACT_SCOPE",
         "od_003": "RESOLVED_PACKET_SUFFICIENT",
@@ -310,9 +319,9 @@ def validate(root: Path) -> dict:
                 errors.append(f"{name} {key} mismatch")
 
     durable_run = current_durable.get("KGR-006-R1", {})
-    if durable_run.get("status") != "IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE":
+    if durable_run.get("status") != "ACCEPTED_BY_PROJECT_OWNER":
         errors.append("CURRENT_STATE Durable state KGR-006-R1 status mismatch")
-    if durable_run.get("project_owner_acceptance") != "PENDING":
+    if durable_run.get("project_owner_acceptance") != "ACCEPTED_BY_PROJECT_OWNER":
         errors.append("CURRENT_STATE Durable state Project Owner acceptance mismatch")
     if durable_run.get("owner_decisions") != {
         "OD-002": "RESOLVED_CONFIRM_EXACT_SCOPE",
@@ -323,8 +332,8 @@ def validate(root: Path) -> dict:
     }:
         errors.append("CURRENT_STATE Durable state Owner decisions mismatch")
     durable_gov_5 = current_durable.get("GOV-5", {})
-    if durable_gov_5.get("status") != "IN_PROGRESS" or durable_gov_5.get("closed") is not False:
-        errors.append("CURRENT_STATE Durable state GOV-5 open status mismatch")
+    if durable_gov_5.get("status") != "COMPLETED_CLOSED" or durable_gov_5.get("closed") is not True:
+        errors.append("CURRENT_STATE Durable state GOV-5 closed status mismatch")
     if durable_gov_5.get("closure_review") != READY_REVIEW_STATUS:
         errors.append("CURRENT_STATE Durable state GOV-5 closure review mismatch")
     if [current_durable.get(f"GOV-{number}", {}).get("status") for number in range(6, 10)] != ["INACTIVE"] * 4:
@@ -333,11 +342,11 @@ def validate(root: Path) -> dict:
         errors.append("CURRENT_STATE Durable state Kernel mismatch")
 
     current_table_expectations = {
-        "Current governance phase": ("GOV-5", "IN_PROGRESS"),
-        "GOV-5 status": ("IN_PROGRESS", f"closure review `{READY_REVIEW_STATUS}`", "not closed"),
+        "Current governance phase": ("GOV-5", "COMPLETED / CLOSED"),
+        "GOV-5 status": ("COMPLETED / CLOSED", "ACCEPTED_BY_PROJECT_OWNER", f"closure review remains `{READY_REVIEW_STATUS}`"),
         "Enforcement Engineering gate": ("CLOSED", "1 of 1"),
         "Human ratification": ("NOT_STARTED",),
-        "Phase-transition boundary": (READY_REVIEW_STATUS, "GOV-6 remains inactive"),
+        "Phase-transition boundary": ("GOV-5 is closed", "GOV-6 remains inactive"),
     }
     for row, fragments in current_table_expectations.items():
         value = current_table.get(row, "")
@@ -345,7 +354,7 @@ def validate(root: Path) -> dict:
             errors.append(f"CURRENT_STATE table {row} mismatch")
 
     plan_table_expectations = {
-        "GOV-5 Enforcement analysis and derived governance requirements": ("IN_PROGRESS", "closure review executed and ready for Project Owner decision"),
+        "GOV-5 Enforcement analysis and derived governance requirements": ("COMPLETED / CLOSED", "KGR-006-R1 accepted by the Project Owner"),
         "GOV-6 Human ratification": ("PLANNED",),
         "GOV-7 Minimum executable governance bootstrap": ("PLANNED",),
         "GOV-8 Honest S0a–S1 adoption and regularization": ("PLANNED",),
@@ -373,7 +382,7 @@ def validate(root: Path) -> dict:
     for required in (
         "KGR-006-R1", "GOV-AUTH-001", "GOV-DECISION-RECORD-001",
         "GOV-VAL-008", "GOV-REVIEW-014", "HP-PROMPT-018",
-        "GOV-VAL-009", "GOV-REVIEW-015", "GOV-REVIEW-016", "HP-PROMPT-019",
+        "GOV-VAL-009", "GOV-REVIEW-015", "GOV-REVIEW-016", "HP-PROMPT-019", "HP-PROMPT-020",
     ):
         if required not in artifacts:
             errors.append(f"artifact registry missing {required}")
@@ -383,7 +392,7 @@ def validate(root: Path) -> dict:
     if auth_entry.get("status") != "CONSUMED" or OUTPUT_SHA256 not in " ".join(auth_entry.get("notes", [])):
         errors.append("artifact registry authorization terminal state mismatch")
     run_entry = artifacts.get("KGR-006-R1", {})
-    if run_entry.get("status") != "IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE":
+    if run_entry.get("status") != "ACCEPTED_BY_PROJECT_OWNER":
         errors.append("artifact registry KGR-006-R1 state mismatch")
 
     immutable = load(root / REVIEW_REL / "kgr-006-r1-import-validation-v0.1.0.yaml")["subject"]
@@ -399,6 +408,7 @@ def validate(root: Path) -> dict:
         Path("governance/README.md"),
         Path("governance/learning/FAILURE_AND_LESSONS_INDEX.md"),
         Path("governance/prompts/orchestration/HP-PROMPT-019-gov-5-phase-closure-readiness-review-v0.1.0.md"),
+        Path("governance/prompts/orchestration/HP-PROMPT-020-accept-kgr-006-r1-and-close-gov-5-v0.1.0.md"),
         REVIEW_REL / "gov-5-phase-closure-readiness-implementation-report-v0.1.0.md",
     ], errors)
 

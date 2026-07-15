@@ -2003,8 +2003,8 @@ artifacts:
   - id: KGR-006-R1
     title: KGR-006 First Versioned Correction Run Manifest
     version: 0.1.0
-    status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE
-    authority: completed_correction_and_evaluation_evidence_not_owner_acceptance_ratification_or_implementation
+    status: ACCEPTED_BY_PROJECT_OWNER
+    authority: bounded_owner_accepted_analysis_evidence_not_ratification_or_implementation
     path: governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
     source_path: null
     source_sha256: null
@@ -2017,10 +2017,10 @@ artifacts:
     notes:
       - Applies the prospective BASE_RUN_ID-RN convention without replacing KGR-006 or consuming another KGR identity.
       - GOV-AUTH-001 authorized exactly one execution; count consumed is 1 and no execution remains.
-      - GOV-5 remains in progress and GOV-6 through GOV-9 remain inactive.
-      - Seven corrected outputs and three evaluation artifacts are imported byte-identically; Project Owner acceptance remains pending.
+      - GOV-5 is completed and closed; GOV-6 through GOV-9 remain inactive.
+      - Seven corrected outputs and three evaluation artifacts are imported byte-identically; the Project Owner accepted KGR-006-R1.
       - OD-002 and OD-003 are resolved under GOV-DECISION-RECORD-001; OD-004 through OD-006 remain unresolved.
-      - The GOV-5 closure review is executed and ready for a separate Project Owner decision; GOV-5 remains open and GOV-6 remains inactive.
+      - The GOV-5 closure review remains executed evidence; GOV-5 is closed and GOV-6 remains inactive pending a separate constitutional decision.
 
   - id: GOV-PROMPT-009
     title: KGR-006-R1 Enforcement Engineer Correction Prompt Snapshot
@@ -2280,19 +2280,19 @@ artifacts:
 
   - id: GOV-DECISION-RECORD-001
     title: KGR-006-R1 Project Owner Decision Record
-    version: 0.1.0
-    status: PARTIALLY_RESOLVED_PENDING_ACCEPTANCE_AND_CONSTITUTIONAL_DECISIONS
-    authority: exact_context_bounded_owner_decisions_not_acceptance_ratification_or_phase_transition
-    path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.1.0.yaml
-    source_path: governance/prompts/orchestration/HP-PROMPT-018-kgr-006-r1-owner-decisions-state-reconciliation-v0.1.0.md
+    version: 0.2.0
+    status: ACCEPTED_KGR_006_R1_AND_GOV_5_CLOSED
+    authority: exact_bounded_owner_acceptance_and_phase_closure_not_ratification_or_implementation
+    path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.2.0.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-020-accept-kgr-006-r1-and-close-gov-5-v0.1.0.md
     source_sha256: null
     produced_by: PROJECT_OWNER
     artifact_type: project_owner_decision_record
     language: English
     canonicality: exact_owner_decision_custody
-    supersedes: null
-    aliases: [GOV-DEC-021, GOV-DEC-022]
-    notes: [OD-002 is CONFIRM_EXACT_SCOPE; OD-003 is PACKET_SUFFICIENT for the current context; OD-004 through OD-006 remain unresolved.]
+    supersedes: GOV-DECISION-RECORD-001/0.1.0
+    aliases: [GOV-DEC-021, GOV-DEC-022, GOV-DEC-023, GOV-DEC-024]
+    notes: [Accepts KGR-006-R1 and closes GOV-5 within the bounded analysis scope; OD-002 and OD-003 remain resolved, OD-004 through OD-006 remain unresolved, no risk is accepted, and GOV-6 remains inactive.]
 
   - id: GOV-VAL-008
     title: KGR-006-R1 Cross-Surface State-Consistency Validation
@@ -2360,7 +2360,7 @@ artifacts:
     aliases: []
     notes:
       - Returns exactly READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION.
-      - GOV-5 remains IN_PROGRESS, KGR-006-R1 acceptance remains pending, GOV-6 remains inactive and no risk is accepted.
+      - The review itself left GOV-5 in progress and acceptance pending; later Project Owner decisions accepted KGR-006-R1 and closed GOV-5 without activating GOV-6 or accepting risk.
       - The historical v0.1.0 prepared, non-executed review remains unchanged.
 
   - id: GOV-VAL-009
@@ -2413,3 +2413,19 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Authorizes the bounded recurrence correction, executed readiness review, evidence, one commit and non-force push; prohibits acceptance, phase closure, GOV-6 activation, risk acceptance, ratification, implementation and PR creation.]
+
+  - id: HP-PROMPT-020
+    title: Accept KGR-006-R1 and Close GOV-5 Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_owner_acceptance_phase_closure_validation_commit_and_push_authority
+    path: governance/prompts/orchestration/HP-PROMPT-020-accept-kgr-006-r1-and-close-gov-5-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: [GOV-DEC-023, GOV-DEC-024]
+    notes: [Preserves the exact bounded Project Owner acceptance and GOV-5 closure instruction; prohibits GOV-6 execution, Kernel ratification, risk acceptance, GOV-7 work, runtime changes and PR creation.]
