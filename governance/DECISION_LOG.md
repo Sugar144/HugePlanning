@@ -190,3 +190,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: KGR-006 may be prepared with strict seven-clause and 20-route coverage, trigger-gated specialists, analysis-only scalability constraints, and a separate evaluation handoff. GOV-5 remains unexecuted; GOV-8 remains unperformed.
 - Authority boundary: This decision does not execute GOV-5, open Enforcement Engineering, perform independent evaluation, accept risk, ratify, implement GOV-7, perform GOV-8/GOV-9, modify Kernel/Controller/product code, open a PR, merge, or release.
 - Supersedes: none
+
+## GOV-DEC-017 — Retrospective KGR-006 execution attestation and bounded evidence import
+
+- Date: 2026-07-15
+- Status: ACTIVE_WITH_RECORDED_PROVENANCE_LIMITATION
+- Statement: Preserve the Project Owner's retrospective attestation that exactly one bounded external KGR-006 Enforcement Engineer execution was authorized after review of the prepared contract, and use it only to reconcile and import the immutable source and independent-evaluation evidence.
+- Rationale: The external execution and exact packages exist, but the contemporaneous chat authorization and repository-side execution-authorization record were not preserved. Honest reconciliation requires explicit `NOT_PRESERVED` limits rather than reconstruction or continued false `NOT_STARTED` state.
+- Source: `HP-PROMPT-015/0.1.0` and structured `GOV-ATT-001`, classified `RETROSPECTIVE_PROJECT_OWNER_ATTESTATION`.
+- Consequences: KGR-006 is recorded as externally executed and independently evaluated with result `RETURN_FOR_VERSIONED_CORRECTION`; its seven outputs and three evaluation artifacts are imported byte-identically. The attestation is not contemporaneous evidence and does not substantively validate or accept the run. GOV-5 remains in progress; GOV-6 through GOV-9 remain inactive.
+- Authority boundary: This decision does not rewrite historical custody, validate or accept KGR-006, resolve OD-002 through OD-006, modify Kernel meaning, implement GOV-7, accept risk, ratify, activate a later phase, modify product/runtime code, push, open a pull request, merge, or release.
+- Supersedes: none

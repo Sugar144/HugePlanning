@@ -1,0 +1,100 @@
+independent_evaluation:
+  schema_version: 0.1.0
+  record_contract: EVALUATOR_DEFINED_BOUNDED_RECORD_NO_REPOSITORY_SCHEMA
+  document_id: GOV-EVAL-KGR-006-FINDINGS-001
+  version: 0.1.0
+  run: KGR-006
+  source_role: Enforcement Engineer
+  source_mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  evaluation_role: Independent Evaluator
+  evaluation_contract: GOV-HANDOFF-IE-001/0.1.0
+  status: EVALUATION_COMPLETE_WITH_MATERIAL_CHALLENGES
+  declared_result: RETURN_FOR_VERSIONED_CORRECTION
+  source_package:
+    path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/output/HugePlanning-KGR-006-minimum-enforcement-analysis-v0.1.0.zip
+    expected_sha256: 10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a
+    observed_sha256: 10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a
+    verified: true
+    exact_member_count: 7
+    zip_integrity: PASS
+    structural_contract_validation: PASS_ZERO_DIAGNOSTICS
+  independence:
+    appointed_directly_by_project_owner: true
+    evaluator_authored_source_outputs: false
+    known_material_conflicts: []
+    limitation: Source executor identity and model/tool correlation evidence were not supplied; independence is established only by separate evaluation context, direct appointment, and absence of source modification or Engineer control in this evaluation.
+  confirmed_findings:
+    - id: IE-CF-001
+      finding: The source ZIP matches the pinned SHA-256 and exact safe seven-member inventory.
+    - id: IE-CF-002
+      finding: The seven outputs satisfy the deterministic KGR-006 output contract and clause-matrix schema with zero validator diagnostics.
+    - id: IE-CF-003
+      finding: K-001 through K-007 occur exactly once in order and the substantive implication analysis is conservative and materially faithful to the proposed Kernel; no Kernel change or contradiction was identified.
+    - id: IE-CF-004
+      finding: LLR-001 through LLR-020 occur exactly once in the routing-coverage array; LLR-020 is correctly classified NOT_APPLICABLE_TO_GOV_5_EXECUTION, explicitly justified, routed to GOV-8, and not performed.
+    - id: IE-CF-005
+      finding: All 20 requirement IDs are unique and exact; recomputed capability counts are 0 supported, 7 partial, 9 gaps, 3 specialist-dependent, 1 provider-test-dependent, 0 infeasible, and 0 not applicable.
+    - id: IE-CF-006
+      finding: Evidence references identify existing bound artifacts and the classifications remain conservative; no implementation, provider, real-data, recovery-effectiveness, broad capability, compliance, or operational claim is treated as established.
+    - id: IE-CF-007
+      finding: All requirements are DERIVED_REQUIREMENT, no candidate mechanism is represented as selected, and analysis, later requirements, later controls, implementation, risk acceptance, owner authority, and ratification remain separated.
+    - id: IE-CF-008
+      finding: The four trigger-gated dependencies use allowed triggers, contain all required fields, identify competent specialist types, preserve explicit unsupported boundaries, and do not conceal a Kernel contradiction.
+    - id: IE-CF-009
+      finding: The six Project Owner decisions are complete for the stated flow, identify timing and competent authority, and do not imply that the Engineer or evaluator resolves them.
+    - id: IE-CF-010
+      finding: The seven-component minimum GOV-7 package allocates ER-001 through ER-020 exactly once and is sufficiently supported only as a bounded recommendation for later separately authorized work.
+  material_challenges:
+    - id: IE-MC-001
+      severity: HIGH
+      category: AUTHORIZATION_EXECUTION_AND_CUSTODY_PROVENANCE
+      observation: The handoff trigger requires separate source-run authorization, execution, deterministic validation, and import into review custody, but the durable repository manifest records KGR-006 unauthorized and not started with outputs absent, and the evaluated ZIP was not accompanied by prior completed-output validator or import-custody evidence.
+      impact: Current structural revalidation cannot establish or retroactively create the missing source-run authority and custody chain; the evaluation must not be used as a GOV-6-ready result until the conflict is competently reconciled.
+      required_disposition: Provide and validate the exact pre-existing authorization, execution, completed-output validation, and review-custody evidence, or return the source work through a separately authorized versioned KGR-006 correction/run path.
+    - id: IE-MC-002
+      severity: MEDIUM
+      category: CANONICAL_ROUTE_TO_CLAUSE_TRACEABILITY
+      observation: >-
+        The matrix globally counts all routes but its effect-family routing_ids
+        omit 15 applicable clause-route anchors from the immutable canonical
+        routing table: K-002/LLR-017; K-003/LLR-017 and LLR-018;
+        K-004/LLR-011, LLR-017, and LLR-018; K-005/LLR-004, LLR-007,
+        LLR-008, LLR-016, and LLR-017; K-006/LLR-017; and K-007/LLR-001,
+        LLR-008, and LLR-009. K-005/LLR-020 is also absent but is correctly
+        deferred. K-003/LLR-005 and K-004/LLR-019 are additional mappings.
+      impact: Substantive discussion covers much of the omitted material, but the claimed exact consumption of canonical routing cannot be independently demonstrated at clause/effect-family level, especially the K-002-through-K-007 scope of LLR-017.
+      required_disposition: In a versioned correction, preserve the canonical anchor crosswalk explicitly or provide an authoritative, reviewable mapping rule showing why each omitted anchor is satisfied without reinterpreting the source routing.
+    - id: IE-MC-003
+      severity: MEDIUM
+      category: SPECIALIST_DEPENDENCY_SOURCE_OF_TRUTH_CONSISTENCY
+      observation: The four dependencies are repeated in requirement-level specialist_dependency fields and in the top-level specialist_dependencies array but are not identical. Most changes are editorial, while ER-012's top-level safe boundary blocks affected real-data processing generally and its nested boundary limits the statement to processing under a governed pilot.
+      impact: Two competing source-of-truth formulations leave the exact safe interim boundary ambiguous despite declared parity and may change when the boundary applies.
+      required_disposition: Canonicalize each dependency once or make the duplicated records exact-field-equal in a versioned correction, then revalidate all Markdown summaries against that canonical record.
+  nonblocking_observations:
+    - id: IE-NO-001
+      observation: Evidence-reference fragments generally name table concepts or IDs rather than resolvable Markdown headings; the artifacts exist and support the conservative claims, but more deterministic locators would improve reviewability.
+    - id: IE-NO-002
+      observation: OD-001 is satisfied for this evaluation by direct Project Owner appointment; OD-002 through OD-006 remain unresolved and reserved.
+  specialist_dependencies_assessment:
+    count: 4
+    result: COMPLETE_AND_JUSTIFIED_WITH_DUPLICATION_CORRECTION_REQUIRED
+    details:
+      ER-007: Provider testing is correctly blocked before provider-dependent pilot or equivalence claims.
+      ER-012: Legal/privacy handling with security coordination is justified before affected real-data processing; its duplicated boundary requires canonicalization.
+      ER-015: Decision-usability review is proportionate and does not transfer ratification authority.
+      ER-019: Recovery/continuity testing is transition-specific and correctly blocks a governed pilot until evidence exists.
+  owner_decisions_assessment:
+    count: 6
+    result: COMPLETE_AND_PROPERLY_RESERVED
+    unresolved_after_this_evaluation: [OD-002, OD-003, OD-004, OD-005, OD-006]
+  minimum_gov_7_recommendation:
+    result: SUFFICIENTLY_SUPPORTED_AS_RECOMMENDATION_ONLY
+    authority_effect: NONE
+    implementation_authorized: false
+    risk_accepted: false
+    kernel_ratified: false
+    later_phase_activated: false
+  blockers:
+    - Source-run authorization/execution/validation/import provenance is not established by the supplied evaluation set and conflicts with the durable manifest.
+    - Material route-anchor traceability and specialist-boundary consistency require versioned source correction before a satisfactory evaluation result.
+  exact_next_action: The Project Owner returns the exact source package to a separately authorized versioned KGR-006 correction or reconciliation path to establish source-run custody, preserve the full canonical route-to-clause crosswalk, and canonicalize the four dependency records; a new immutable seven-output package must then receive deterministic validation and independent evaluation before any GOV-6 decision.

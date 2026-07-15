@@ -3,16 +3,23 @@ run:
   role: Enforcement Engineer
   mode: MINIMUM_ENFORCEMENT_ANALYSIS
   phase: GOV-5
-  status: NOT_STARTED
+  status: EXECUTED_EVALUATED_CORRECTION_REQUIRED
   preparation_status: COMPLETED
-  readiness: READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION
+  readiness: RETURNED_FOR_VERSIONED_CORRECTION
   allocated_from_baseline_head: 8e761801fb9bfd8a8e5e817d5c332a11456f77d8
+  started_at: NOT_PRESERVED
+  completed_at: NOT_PRESERVED
 execution:
-  authorized: false
-  started: false
-  completed: false
-  platform: NOT_SELECTED
-  model: NOT_SELECTED
+  authorized: true
+  authorization_evidence:
+    id: GOV-ATT-001
+    classification: RETROSPECTIVE_PROJECT_OWNER_ATTESTATION
+    contemporaneous_repository_custody: false
+    original_authorization_text: NOT_PRESERVED
+  started: true
+  completed: true
+  platform: EXTERNAL_EXECUTION_PLATFORM_NOT_PRESERVED
+  model: EXTERNAL_EXECUTION_MODEL_NOT_PRESERVED
   prompt:
     id: GOV-PROMPT-008
     version: 0.1.0
@@ -34,7 +41,7 @@ inputs:
   clause_count: 7
   lower_layer_route_count: 20
 outputs:
-  status: ABSENT_NOT_EXECUTED
+  status: IMPORTED_BYTE_IDENTICAL_NOT_ACCEPTED_CORRECTION_REQUIRED
   required_count: 7
   contract_path: governance/runs/KGR-006-enforcement-analysis/output-contract.yaml
   expected_artifacts:
@@ -45,12 +52,27 @@ outputs:
     - 04-owner-decisions-and-residual-risks.md
     - 05-minimum-executable-package-recommendation.md
     - 06-ratification-decision-handoff.md
+  completed_run_package:
+    source_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/output/HugePlanning-KGR-006-minimum-enforcement-analysis-v0.1.0.zip
+    sha256: 10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a
+    member_count: 7
+    declared_result: ANALYSIS_COMPLETE_PENDING_INDEPENDENT_EVALUATION
+    imported_member_count: 7
+    imported_outputs_byte_identical: true
+    deterministic_import_validation: GOV-VAL-004
+    substantive_validation: false
 independent_evaluation:
   handoff_path: governance/runs/KGR-006-enforcement-analysis/independent-evaluation-handoff.md
-  status: PREPARED_NOT_EXECUTED
-  evaluator_appointed: false
+  status: COMPLETED_RETURN_FOR_VERSIONED_CORRECTION
+  evaluator_appointed: true
+  package_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/evaluation/HugePlanning-KGR-006-independent-evaluation-v0.1.0.zip
+  package_sha256: 1c2167a093ec5d7bf636fe2ab25202e714e5375389ec4464653b0eefd45ed39e
+  artifact_count: 3
+  imported_artifacts_byte_identical: true
+  result: RETURN_FOR_VERSIONED_CORRECTION
+  material_challenge_count: 3
 authority:
-  enforcement_engineering_gate: CLOSED
+  enforcement_engineering_gate: CLOSED_TO_FURTHER_EXECUTION_PENDING_VERSIONED_CORRECTION
   human_ratification: NOT_STARTED
   gov_6_activated: false
   gov_7_activated: false
@@ -61,3 +83,12 @@ provenance:
   preparation_is_not_execution: true
   readiness_is_not_acceptance: true
   analysis_is_not_enforceability: true
+  execution_authorization_prompt_custody: NOT_PRESERVED_BEFORE_EXECUTION
+  retrospective_attestation: GOV-ATT-001
+  import_validation: GOV-VAL-004
+  imported_source_package: GOV-PKG-008
+  imported_evaluation_package: GOV-EVAL-001
+  correction_identity_authorized: KGR-006-R1
+  accepted: false
+  risk_accepted: false
+  ratified: false

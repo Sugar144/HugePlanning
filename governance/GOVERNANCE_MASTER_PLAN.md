@@ -11,7 +11,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 | GOV-2 Kernel design | `COMPLETED` — imported/reconstructed |
 | GOV-3 Independent adversarial review | `COMPLETED` — `DESIGNER_REVISION_REQUIRED` |
 | GOV-4 Designer revision and adversarial closure | `COMPLETED` — KGR-005 imported with `CLOSURE_CONFIRMED` and one validated Controller transition |
-| GOV-5 Enforcement analysis and derived governance requirements | `CONTRACT_PREPARED` — KGR-006 ready for separate explicit execution authorization; not executed |
+| GOV-5 Enforcement analysis and derived governance requirements | `IN_PROGRESS` — KGR-006 executed and evaluated; `RETURN_FOR_VERSIONED_CORRECTION` |
 | GOV-6 Human ratification | `PLANNED` |
 | GOV-7 Minimum executable governance bootstrap | `PLANNED` |
 | GOV-8 Honest S0a–S1 adoption and regularization | `PLANNED` |
@@ -87,7 +87,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: Enforcement Engineer with relevant evaluators/specialists; human owner retains risk authority.
 - Entry conditions: GOV-4 closure permits enforcement analysis.
 - Completion gate: every proposed clause has an honest feasibility/coverage assessment and unresolved owner decisions are explicit.
-- Current status: `CONTRACT_PREPARED`. KGR-006 binds the minimum analysis contract, 20-route coverage, exact inputs, seven outputs, and independent-evaluation handoff. Enforcement Engineering remains closed and execution remains `NOT_STARTED`; a separate Project Owner authorization is required to run the analysis.
+- Current status: `IN_PROGRESS`. KGR-006 executed externally under a retrospectively attested Project Owner authorization, produced seven imported immutable outputs, and received independent result `RETURN_FOR_VERSIONED_CORRECTION`. The original authorization lacked contemporaneous repository custody. Three material findings are preserved, GOV-5 is not complete, and further execution remains closed pending separately prepared and authorized KGR-006-R1.
 - Dependencies: GOV-4.
 - Explicit non-goals: claiming enforceability, implementing every control, or silently changing constitutional meaning.
 

@@ -139,7 +139,7 @@ def test_phase_2_4_registry_and_durable_state_are_consistent() -> None:
     state = (GOV / "CURRENT_STATE.md").read_text(encoding="utf-8")
     assert "GOV-4 — `COMPLETED`" in state
     assert "PROPOSED_NOT_RATIFIED" in state
-    assert "Enforcement Engineering gate | `CLOSED`" in state
+    assert "Enforcement Engineering gate | `CLOSED_TO_FURTHER_EXECUTION_PENDING_VERSIONED_CORRECTION`" in state
 
 
 def test_dry_run_and_applied_transition_have_identical_calculation() -> None:

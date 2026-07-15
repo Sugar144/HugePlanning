@@ -1,0 +1,96 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-016
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: KGR-006 duplicated specialist dependencies with inconsistent ER-012 boundary
+  context:
+    phase: GOV-5 independent evaluation
+    run: KGR-006
+    component: Specialist dependency source-of-truth consistency
+    branch: governance/kernel-designer-revision-v0.1
+    commit: d865de74bdae3d9ac26e26663b243be7b9df9e8c
+    environment: External KGR-006 output and independent evaluation
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  - FAILURE
+  severity: MEDIUM
+  status: CONTAINED
+  expected_behavior: Each of the four trigger-gated specialist dependencies has one
+    canonical exact record or exact-field-equal duplicates across requirement and
+    summary locations, including one unambiguous ER-012 safe boundary.
+  observed_behavior: Requirement-level specialist_dependency records and the top-level
+    specialist_dependencies array differ textually; the ER-012 top-level boundary
+    blocks affected real-data processing generally while the nested boundary narrows
+    the wording to a governed pilot.
+  impact: The package declares parity while two formulations can change when the safe
+    interim boundary applies. The independent evaluator returned the package for versioned
+    correction.
+  detection_method: Deterministic exact-field comparison of nested and top-level dependency
+    records during independent evaluation.
+  root_cause:
+    immediate: The same dependency facts were authored twice without an equality invariant.
+    systemic: The schema validates each record independently but does not designate
+      one canonical dependency source or require duplicate equality.
+    contributing_factors:
+    - Markdown summaries compress dependency wording again.
+    - Structural validation did not distinguish editorial differences from boundary-scope
+      differences.
+  response:
+    containment: Keep KGR-006 unaccepted and preserve both original formulations as
+      immutable evidence.
+    correction: Prepare KGR-006-R1 with one canonical set of four dependencies and
+      one consistent ER-012 boundary propagated to every output.
+    prevention:
+    - Define one canonical dependency collection and reference it from requirements
+      or require exact-field equality.
+    - Validate ER-007, ER-012, ER-015, and ER-019 parity across YAML and Markdown.
+    - Treat safe interim boundary divergence as a blocking validation error.
+    accountable_owner: Project Owner
+    validation_required:
+    - Assert exact equality or canonical references for all four dependencies.
+    - Assert one ER-012 safe boundary across every corrected output.
+    - Require new independent evaluation.
+  learning:
+    reusable_lesson: Duplicated governance boundaries require one canonical source
+      or exact equality; schema-valid paraphrases can change operational scope.
+    candidate_system_changes:
+    - VALIDATION
+    - SCHEMA
+    - TEST
+    - PROTOCOL
+    applicable_future_phases:
+    - GOV-5 and all specialist-dependent formal runs
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 0
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: Four duplicated dependency pairs and one materially divergent ER-012 boundary
+      are observable; time and execution cost are unavailable.
+  evidence_refs:
+  - type: RUN_ARTIFACT
+    locator: governance/runs/KGR-006-enforcement-analysis/evaluation/01-independent-evaluation-findings.yaml
+    anchor: IE-MC-003
+    sha256: ed6a78059500c00a966d8ca29c5535547a87a88d0b76b5f1f781a7c03bc21383
+    availability: PRESERVED
+    note: Independent material consistency challenge.
+  - type: RUN_ARTIFACT
+    locator: governance/runs/KGR-006-enforcement-analysis/outputs/01-clause-implication-matrix.yaml
+    anchor: enforcement_analysis.specialist_dependencies
+    sha256: fa630f70061ad4145e5c0ff71c68899d928cea56e1bdc99c3643cf9165b27f82
+    availability: PRESERVED
+    note: Immutable duplicated dependency records.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

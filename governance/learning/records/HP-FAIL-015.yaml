@@ -1,0 +1,103 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-015
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: KGR-006 matrix omitted applicable canonical clause-route anchors
+  context:
+    phase: GOV-5 independent evaluation
+    run: KGR-006
+    component: Clause-to-lower-layer-route traceability
+    branch: governance/kernel-designer-revision-v0.1
+    commit: d865de74bdae3d9ac26e26663b243be7b9df9e8c
+    environment: External KGR-006 output and independent evaluation
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  - FAILURE
+  severity: MEDIUM
+  status: CONTAINED
+  expected_behavior: The implication matrix explicitly preserves every applicable
+    clause-route anchor from the immutable 20-row canonical routing table while retaining
+    LLR-020's GOV-8 deferral.
+  observed_behavior: The global routing array accounts for all 20 routes, but effect-family
+    routing_ids omit 15 applicable canonical clause-route pairs, including the K-002-through-K-007
+    span of LLR-017.
+  impact: Route counts pass while exact canonical consumption cannot be independently
+    demonstrated at clause/effect-family level. The independent evaluator returned
+    the package for versioned correction.
+  detection_method: Deterministic comparison of the canonical routing table Constitutional
+    anchor column with matrix effect-family routing_ids during independent evaluation.
+  root_cause:
+    immediate: Validation checked exact route inventory and order but did not compare
+      canonical clause-route anchor pairs.
+    systemic: The output contract represented route coverage globally without a canonical
+      anchor crosswalk invariant.
+    contributing_factors:
+    - Substantive prose covered much of the omitted material, masking traceability
+      gaps.
+    - LLR-017 was represented as one K-007 requirement despite its explicit K-002-through-K-007
+      anchor.
+  response:
+    containment: Keep KGR-006 unaccepted, preserve the original matrix, and require
+      a versioned correction with all 15 applicable anchors explicit.
+    correction: Prepare KGR-006-R1 to preserve the canonical anchor crosswalk without
+      changing Kernel or route meaning.
+    prevention:
+    - Derive clause-route pairs deterministically from the canonical routing source.
+    - Validate the corrected matrix against all applicable pairs and the LLR-020 deferral.
+    - Require independent evaluation of the corrected immutable package.
+    accountable_owner: Project Owner
+    validation_required:
+    - Assert exact applicable clause-route pair preservation in the KGR-006-R1 validator.
+    - Assert all 20 routes remain accounted for and LLR-020 remains deferred to GOV-8.
+  learning:
+    reusable_lesson: Exact route counts do not prove canonical clause-route traceability;
+      formal matrices must preserve the source anchor crosswalk explicitly.
+    candidate_system_changes:
+    - VALIDATION
+    - SCHEMA
+    - TEST
+    - PROTOCOL
+    applicable_future_phases:
+    - GOV-5 and all lower-layer derivation runs
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 0
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: Fifteen omitted applicable pairs and two additional mappings are deterministically
+      observable; execution cost and time are unavailable.
+  evidence_refs:
+  - type: RUN_ARTIFACT
+    locator: governance/runs/KGR-006-enforcement-analysis/evaluation/01-independent-evaluation-findings.yaml
+    anchor: IE-MC-002
+    sha256: ed6a78059500c00a966d8ca29c5535547a87a88d0b76b5f1f781a7c03bc21383
+    availability: PRESERVED
+    note: Independent material challenge and exact omitted-pair inventory.
+  - type: RUN_ARTIFACT
+    locator: governance/runs/KGR-006-enforcement-analysis/outputs/01-clause-implication-matrix.yaml
+    anchor: enforcement_analysis.clauses.effect_families.routing_ids
+    sha256: fa630f70061ad4145e5c0ff71c68899d928cea56e1bdc99c3643cf9165b27f82
+    availability: PRESERVED
+    note: Immutable source matrix.
+  - type: REPOSITORY_PATH
+    locator: governance/runs/KGR-006-enforcement-analysis/control/lower-layer-routing-index.yaml
+    anchor: routing_index.entries
+    sha256: null
+    availability: PRESERVED
+    note: Derived 20-route index; canonical anchors remain in its immutable source
+      table.
+  related_records:
+  - HP-FAIL-011
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

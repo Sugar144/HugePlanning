@@ -1,0 +1,94 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-018
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Global whitespace validation conflicted with byte-exact external artifact
+    import
+  context:
+    phase: GOV-5 provenance reconciliation
+    run: KGR-006
+    component: Immutable import validation and selective staging
+    branch: governance/kernel-designer-revision-v0.1
+    commit: d865de74bdae3d9ac26e26663b243be7b9df9e8c
+    environment: Git staged-diff validation
+  primary_classification: TOOLING_GAP
+  classification:
+  - TOOLING_GAP
+  - PROCESS_DEFECT
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: Validation preserves exact imported package bytes while whitespace
+    checks settle authored repository changes without requiring source transformation.
+  observed_behavior: Global git diff --cached --check rejected blank lines at EOF
+    present in seven immutable source/evaluation members, even though byte identity
+    forbids trimming them.
+  impact: Selective publication validation failed after staging and blocked the provenance
+    commit until immutable and authored paths were validated under separate controls.
+  detection_method: Staged git diff --check after byte-identical source/evaluation
+    import.
+  root_cause:
+    immediate: One global whitespace policy was applied to both authored repository
+      content and externally authored immutable evidence.
+    systemic: The import workflow did not predeclare precedence and separate validation
+      profiles for exact external bytes versus local formatting.
+    contributing_factors:
+    - Seven imported members end with an extra blank line.
+    - Git reports the preserved bytes as newly introduced repository whitespace.
+  response:
+    containment: Do not modify any imported member and stop the commit attempt.
+    correction: Validate imported artifacts by package hash and member byte identity,
+      and run git diff --check only on authored paths with exact imported members
+      excluded.
+    prevention:
+    - Declare immutable imported member paths in import validation records.
+    - Pair byte-identity checks with path-scoped whitespace validation.
+    - Never normalize externally authored evidence to satisfy repository formatting.
+    accountable_owner: Project Owner
+    validation_required:
+    - Recompare all ten imported members with their exact packages.
+    - Run path-scoped staged whitespace validation over every authored Phase A path.
+    - Confirm the staged inventory remains exact.
+  learning:
+    reusable_lesson: Byte-exact imported evidence and locally authored content need
+      separate validation profiles; formatting checks must never rewrite immutable
+      source bytes.
+    candidate_system_changes:
+    - VALIDATION
+    - WORKFLOW_PATTERN
+    - DOCUMENTATION
+    applicable_future_phases:
+    - All external evidence imports
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: Seven immutable files and one failed staged whitespace check are observable;
+      time and token use are unavailable.
+  evidence_refs:
+  - type: VALIDATION_RECORD
+    locator: governance/reviews/gov-5-provenance-reconciliation/kgr-006-import-validation-v0.1.0.yaml
+    anchor: subject.source_package and subject.evaluation_package
+    sha256: null
+    availability: PRESERVED
+    note: Exact package/member hashes and imported byte identity.
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_kgr_006_provenance_reconciliation.py
+    anchor: source and evaluation inventory tests
+    sha256: null
+    availability: PRESERVED
+    note: Deterministic imported-member hash validation.
+  related_records:
+  - HP-FAIL-007
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

@@ -1,0 +1,29 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-018-E001
+  record_id: HP-FAIL-018
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: Immutable imported bytes and authored Phase A whitespace now pass separate
+    deterministic validation profiles.
+  rationale: All ten imported source/evaluation members are byte-identical to their
+    pinned packages, while path-scoped staged diff validation reports no whitespace
+    error across every authored Phase A path.
+  evidence_refs:
+  - type: VALIDATION_RECORD
+    locator: governance/reviews/gov-5-provenance-reconciliation/kgr-006-import-validation-v0.1.0.yaml
+    anchor: imported byte identity and member inventories
+    sha256: null
+    availability: PRESERVED
+    note: Exact package/member hashes and import roots.
+  - type: REPOSITORY_PATH
+    locator: governance/reviews/gov-5-provenance-reconciliation/implementation-report-v0.1.0.md
+    anchor: Validation and exact next action
+    sha256: null
+    availability: PRESERVED
+    note: Declares separate immutable-byte and authored-whitespace validation boundaries.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-015-kgr-006-provenance-reconciliation-and-correction-preparation-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

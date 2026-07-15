@@ -10,10 +10,9 @@ ROOT = Path(__file__).resolve().parents[2]
 GOV = ROOT / "governance"
 sys.path.insert(0, str(GOV / "tools"))
 from _lib.strict_yaml import load
-from prepare_enforcement_run import CLAUSES, OUTPUTS, ROUTES, validate_preparation
+from prepare_enforcement_run import CLAUSES, OUTPUTS, ROUTES
 
 RUN = GOV / "runs/KGR-006-enforcement-analysis"
-PACKAGE = Path("/tmp/HugePlanning-KGR-006-formal-input-package.zip")
 
 
 def test_output_contract_schema_and_exact_enums():
@@ -40,24 +39,33 @@ def test_canonical_routing_has_twenty_rows_and_exact_disposition():
     }
 
 
-def test_preparation_package_is_valid_and_outputs_absent():
-    result = validate_preparation(ROOT, PACKAGE)
-    assert result["result"] == "VALID"
-    assert result["member_count"] == 44
-    assert result["execution_status"] == "NOT_STARTED"
-    assert result["readiness"] == "READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION"
+def test_historical_preparation_validation_remains_preserved():
+    record = load(GOV / "reviews/gov-5-contract-preparation/kgr-006-readiness-v0.1.0.yaml")
+    assert record["record_id"] == "GOV-VAL-003"
+    assert record["result"] == "VALID"
+    assert record["subject"]["package_sha256"] == "d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7"
+    assert record["subject"]["execution_status"] == "NOT_STARTED"
+    assert record["subject"]["formal_outputs"] == "ABSENT"
 
 
 def test_prompt_snapshot_matches_canonical():
     assert (RUN / "prompt/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md").read_bytes() == (GOV / "methodology/roles/enforcement-engineer/protocols/minimum-analysis/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md").read_bytes()
 
 
-def test_manifest_preserves_non_execution_and_authority_gates():
+def test_manifest_preserves_external_execution_evaluation_and_authority_gates():
     manifest = load(RUN / "run-manifest.yaml")
-    assert manifest["run"]["status"] == "NOT_STARTED"
-    assert manifest["execution"]["authorized"] is False
-    assert manifest["outputs"]["status"] == "ABSENT_NOT_EXECUTED"
-    assert manifest["authority"]["enforcement_engineering_gate"] == "CLOSED"
+    assert manifest["run"]["status"] == "EXECUTED_EVALUATED_CORRECTION_REQUIRED"
+    assert manifest["execution"]["authorized"] is True
+    assert manifest["execution"]["authorization_evidence"] == {
+        "id": "GOV-ATT-001",
+        "classification": "RETROSPECTIVE_PROJECT_OWNER_ATTESTATION",
+        "contemporaneous_repository_custody": False,
+        "original_authorization_text": "NOT_PRESERVED",
+    }
+    assert manifest["outputs"]["status"] == "IMPORTED_BYTE_IDENTICAL_NOT_ACCEPTED_CORRECTION_REQUIRED"
+    assert manifest["outputs"]["completed_run_package"]["substantive_validation"] is False
+    assert manifest["independent_evaluation"]["result"] == "RETURN_FOR_VERSIONED_CORRECTION"
+    assert manifest["authority"]["enforcement_engineering_gate"] == "CLOSED_TO_FURTHER_EXECUTION_PENDING_VERSIONED_CORRECTION"
     assert manifest["authority"]["human_ratification"] == "NOT_STARTED"
 
 

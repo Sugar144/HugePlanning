@@ -1,0 +1,29 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-017-E001
+  record_id: HP-FAIL-017
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The reconciled closed Enforcement gate state passes targeted Phase 2.4/KGR-006
+    tests and the full governance suite.
+  rationale: Targeted tests passed 21 checks and the complete suite passed 109 checks
+    while preserving GOV-4 completion, KGR-006 correction-required status, and inactive
+    GOV-6 through GOV-9.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_4_contracts.py
+    anchor: test_phase_2_4_registry_and_durable_state_are_consistent
+    sha256: null
+    availability: PRESERVED
+    note: The test now verifies the exact reconciled closed-to-further-execution state.
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_kgr_006_provenance_reconciliation.py
+    anchor: imported state and authority assertions
+    sha256: null
+    availability: PRESERVED
+    note: KGR-006 remains unaccepted and returned for correction.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-015-kgr-006-provenance-reconciliation-and-correction-preparation-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

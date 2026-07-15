@@ -2,7 +2,7 @@
 
 | Question | Current answer |
 |---|---|
-| Current governance phase | GOV-4 — `COMPLETED`; GOV-5 remains `PLANNED` pending separate activation authority |
+| Current governance phase | GOV-5 — `IN_PROGRESS`; KGR-006 requires a versioned correction |
 | Last completed governance function | KGR-005 Kernel Adversary targeted closure — `COMPLETED / CLOSURE_CONFIRMED` |
 | Completed phases | GOV-0 through GOV-4 — `COMPLETED` |
 | KGR-004 status | `COMPLETED` — `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE` |
@@ -12,14 +12,22 @@
 | Kernel status | `PROPOSED_NOT_RATIFIED` |
 | Controller counters | targeted closure `1`; Designer remediation `0` |
 | Controller guards | zero blocking findings; no repeated findings; none exhausted |
-| GOV-5 status | `CONTRACT_PREPARED`; KGR-006 is ready for separate explicit execution authorization but remains `NOT_STARTED` |
-| Enforcement Engineering gate | `CLOSED` |
+| GOV-5 status | `IN_PROGRESS`; KGR-006 executed externally, independent evaluation returned `RETURN_FOR_VERSIONED_CORRECTION` |
+| Enforcement Engineering gate | `CLOSED_TO_FURTHER_EXECUTION_PENDING_VERSIONED_CORRECTION` |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
 | Human ratification | `NOT_STARTED` |
-| Owner decisions required | Separate authorization is required before the exact KGR-006 Enforcement Engineer execution begins |
+| Owner decisions required | OD-002 through OD-006 remain unresolved; KGR-006-R1 preparation is authorized but execution is not |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | None for the completed Phase 2.4 import and transition; GOV-5 remains an authority gate |
-| Exact next action | Project Owner reviews the KGR-006 preparation commit and, if desired, separately authorizes execution using the exact prepared prompt and input package |
+| Known blockers | Three KGR-006 evaluation challenges require versioned correction; original execution authorization lacks contemporaneous custody |
+| Exact next action | Prepare but do not execute the KGR-006-R1 correction contract under HP-PROMPT-015 |
+
+## KGR-006 execution and independent-evaluation reconciliation
+
+The exact external source package has SHA-256 `10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a` and seven byte-identical imported outputs. The exact independent-evaluation package has SHA-256 `1c2167a093ec5d7bf636fe2ab25202e714e5375389ec4464653b0eefd45ed39e` and three byte-identical imported artifacts. `GOV-VAL-004` records deterministic import checks; validation of package structure and custody is not substantive acceptance.
+
+The original execution authorization was not preserved in repository prompt custody. `GOV-ATT-001`, classified `RETROSPECTIVE_PROJECT_OWNER_ATTESTATION`, preserves the Project Owner's later statement without claiming contemporaneous custody. `HP-FAIL-014` records that process failure; `HP-FAIL-015` and `HP-FAIL-016` preserve the evaluation's two source-output consistency defects.
+
+The independent result is `RETURN_FOR_VERSIONED_CORRECTION`. KGR-006 is executed and evaluated, not accepted or substantively validated. GOV-5 remains in progress; GOV-6 through GOV-9 remain inactive.
 
 ## Phase 2.4 formal result import and Controller transition
 
@@ -74,16 +82,32 @@ gates:
   human_ratification: NOT_STARTED
 
 KGR-006:
-  status: NOT_STARTED
+  status: EXECUTED_EVALUATED_CORRECTION_REQUIRED
   preparation_status: COMPLETED
-  readiness: READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION
+  execution_authorization_evidence: RETROSPECTIVE_PROJECT_OWNER_ATTESTATION
+  contemporaneous_authorization_custody: false
+  source_result: ANALYSIS_COMPLETE_PENDING_INDEPENDENT_EVALUATION
+  independent_evaluation: RETURN_FOR_VERSIONED_CORRECTION
+  imported_outputs_byte_identical: true
+  imported_evaluation_byte_identical: true
+  substantive_validation: false
+  accepted: false
   role: Enforcement Engineer
   mode: MINIMUM_ENFORCEMENT_ANALYSIS
   clause_count: 7
   lower_layer_route_count: 20
   required_output_count: 7
+
+GOV-5:
+  status: IN_PROGRESS
+  correction_required: KGR-006-R1
+
+GOV-6: {status: INACTIVE}
+GOV-7: {status: INACTIVE}
+GOV-8: {status: INACTIVE}
+GOV-9: {status: INACTIVE}
 ```
 
 ## Authority boundary
 
-GOV-4 completion establishes only bounded independent adversarial closure under the configured protocol. It does not mean the Kernel is ratified, adopted, enforceable, implemented, operational, compliant, or mature. Phase 2.4 does not authorize GOV-5 execution, Enforcement Engineering activation, risk acceptance, human ratification, runtime integration, a pull request, merge, release, or deployment.
+KGR-006 evidence import establishes only that one retrospectively attested external analysis execution and one independent evaluation are durably preserved. It does not validate or accept KGR-006, complete GOV-5, ratify or adopt the Kernel, establish enforceability, implement or operate governance, accept risk, activate GOV-6 through GOV-9, or authorize runtime integration.
