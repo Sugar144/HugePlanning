@@ -7,6 +7,7 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 python3 - "$REPO_ROOT" <<'PY'
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 import shutil
@@ -67,7 +68,15 @@ try:
         [sys.executable, str(source_tool), "validate"],
         cwd=repo, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
     )
-    check(repository_result.returncode == 0 and '"events":1' in repository_result.stdout, "1 repository HP-FAIL-004 event schema and numbering", repository_result.stderr)
+    repository_report = json.loads(repository_result.stdout) if repository_result.returncode == 0 else {}
+    repository_event_count = len(list((repo / "governance/learning/events").glob("*/*.yaml")))
+    check(
+        repository_result.returncode == 0
+        and repository_report.get("events") == repository_event_count
+        and repository_event_count >= 2,
+        "1 repository accepts multiple valid append-only events and reports their dynamic count",
+        repository_result.stderr,
+    )
     repository_event = yaml.safe_load((repo / "governance/learning/events/HP-FAIL-004/HP-FAIL-004-E001.yaml").read_text())["failure_record_event"]
     repository_index = (repo / "governance/learning/FAILURE_AND_LESSONS_INDEX.md").read_text()
     check(

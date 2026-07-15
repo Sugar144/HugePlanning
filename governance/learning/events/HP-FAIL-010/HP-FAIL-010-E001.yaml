@@ -1,0 +1,31 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-010-E001
+  record_id: HP-FAIL-010
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: Dynamic repository event counting and explicit multiple-event regression
+    coverage passed.
+  rationale: The affected learning wrapper reports 23 passed and 0 failed with six
+    preexisting valid events plus the new correction record; direct learning and generated-index
+    checks also pass without a historical total assertion.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/run-learning-tests.sh
+    anchor: repository accepts multiple valid append-only events and reports their
+      dynamic count
+    sha256: null
+    availability: PRESERVED
+    note: The positive repository regression parses the report, compares the derived
+      inventory, and requires multiple events.
+  - type: REPOSITORY_PATH
+    locator: governance/learning/FAILURE_AND_LESSONS_INDEX.md
+    anchor: HP-FAIL-010
+    sha256: null
+    availability: PRESERVED
+    note: The deterministic index records the corrected effective state.
+  owner_decision_ref: null
+  accepted_risk: null
+  supersedes: null

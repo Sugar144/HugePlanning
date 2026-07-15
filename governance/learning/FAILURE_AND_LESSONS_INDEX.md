@@ -1,7 +1,7 @@
 # Failure and Lessons Index
 
 > GENERATED FILE — source of truth: `records/` plus append-only `events/`.
-> Tool version: `0.1.0`. Deterministic input digest: `14e8219a403d7c16bae0fda3dfceb82fb65627509ec696ce64ea2e79db7ecc4e`.
+> Tool version: `0.1.0`. Deterministic input digest: `371948a46b18597e1d85751d28575a72199cd62a1024e8f7232fd984d1748540`.
 > Manual edits will be overwritten by `--apply` or rejected as generated-view drift.
 
 | ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |
@@ -15,3 +15,4 @@
 | HP-FAIL-007 | 2026-07-15 | Completed-output validator omitted required import identity and byte-custody checks | TOOLING_GAP | MEDIUM | VALIDATED | Formal Governance Result Import Validation | Phase 2.4/KGR-005 | no | PARTIAL | A schema-valid formal output package is not import-valid until exact identity, cross-representation parity, and repository custody bytes are also settled deterministically. |
 | HP-FAIL-008 | 2026-07-15 | Controller apply path ignored canonical suffixed run directory | PROCESS_DEFECT | MEDIUM | VALIDATED | Controller Transition Custody | Phase 2.4/KGR-005 | no | PARTIAL | A Controller record is not durably imported until its write target resolves the repository's canonical run-directory convention, not merely the short run ID. |
 | HP-FAIL-009 | 2026-07-15 | Controller history replay rejected its supported active-state import bridge | PROCESS_DEFECT | HIGH | VALIDATED | Controller History Replay | Phase 2.4/KGR-005 | no | PARTIAL | Every Controller state-entry shortcut accepted during calculation must be replayable from the exact durable record shape it produces. |
+| HP-FAIL-010 | 2026-07-15 | Learning wrapper hardcoded a historical repository event total | PROCESS_DEFECT | MEDIUM | VALIDATED | Learning validation wrapper | Bounded learning-system maintenance/none | no | PARTIAL | Append-only repository tests must validate inventory invariants, not freeze a historical aggregate that valid future events necessarily change. |

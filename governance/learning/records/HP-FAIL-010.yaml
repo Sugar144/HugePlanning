@@ -1,0 +1,103 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-010
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Learning wrapper hardcoded a historical repository event total
+  context:
+    phase: Bounded learning-system maintenance
+    run: null
+    component: Learning validation wrapper
+    branch: governance/kernel-designer-revision-v0.1
+    commit: a9d891931d902dab7f17d2fadb2d80fc17b9b99a
+    environment: Codex CLI maintenance execution
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  - TOOLING_GAP
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: Repository learning validation accepts any valid append-only
+    event inventory and confirms that the tool-reported total matches the current
+    durable files.
+  observed_behavior: The wrapper required the literal JSON fragment '"events":1',
+    so six valid durable events caused one false failing assertion while direct learning
+    validation remained valid.
+  impact: The affected validation wrapper reported a repository failure after valid
+    append-only growth, creating a false blocker and undermining confidence in the
+    learning-system test signal.
+  detection_method: The bounded GOV-5 scope review ran run-learning-tests.sh and compared
+    its single failure with the direct manage_learning.py validation result.
+  root_cause:
+    immediate: The repository integration assertion hardcoded the event total that
+      existed when HP-FAIL-004-E001 was the only event.
+    systemic: A test of append-only repository validity was coupled to a historical
+      aggregate count instead of deriving the current inventory and testing the invariant.
+    contributing_factors:
+    - Later valid learning events increased the durable total without changing the
+      underlying contract.
+    - The assertion searched raw JSON text rather than parsing the deterministic report.
+  response:
+    containment: Treat the wrapper result as a false negative, preserve the direct
+      valid learning report, and limit correction to the stale repository assertion.
+    correction: Parse the validation JSON, derive the current event-file count, require
+      equality, and require at least two events so append-only multiplicity remains
+      under regression coverage.
+    prevention:
+    - Do not hardcode mutable repository aggregate counts in validity tests.
+    - Compare deterministic tool reports with repository-derived inventories.
+    - Retain an explicit multiple-valid-events assertion.
+    accountable_owner: Project Owner
+    validation_required:
+    - Run governance/tests/run-learning-tests.sh with zero failures.
+    - Validate learning records and generated-index consistency.
+    - Run prompt-custody validation and git diff --check.
+  learning:
+    reusable_lesson: Append-only repository tests must validate inventory invariants,
+      not freeze a historical aggregate that valid future events necessarily change.
+    candidate_system_changes:
+    - TEST
+    - VALIDATION
+    applicable_future_phases:
+    - All governance learning-system maintenance
+    - Future append-only record families
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One false failing assertion and one bounded test correction are observable;
+      time, token, and model-use values are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/run-learning-tests.sh
+    anchor: repository accepts multiple valid append-only events and reports their
+      dynamic count
+    sha256: null
+    availability: PRESERVED
+    note: The corrected regression derives and compares the live durable event inventory.
+  - type: REPOSITORY_PATH
+    locator: governance/learning/README.md
+    anchor: Status, immutability, and events
+    sha256: null
+    availability: PRESERVED
+    note: The contract defines base records and append-only events as source truth.
+  - type: REPOSITORY_PATH
+    locator: governance/prompts/orchestration/HP-PROMPT-010-learning-event-count-maintenance-v0.1.0.md
+    anchor: Exact executed text
+    sha256: null
+    availability: PRESERVED
+    note: Exact Project Owner correction authority and scope boundary.
+  related_records:
+  - HP-FAIL-004
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []
