@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the durable KGR-006-R1/GOV-6 state across governance surfaces."""
+"""Validate the durable KGR-006-R1/GOV-7 direction state across governance surfaces."""
 
 from __future__ import annotations
 
@@ -20,6 +20,7 @@ REVIEW_REL = Path("governance/reviews/kgr-006-r1-controlled-import-and-owner-rev
 DECISION_RECORD_REL = REVIEW_REL / "project-owner-decision-record-v0.2.0.yaml"
 EXECUTED_REVIEW_REL = REVIEW_REL / "gov-5-phase-closure-readiness-v0.2.0.yaml"
 RATIFICATION_RECORD_REL = Path("governance/reviews/gov-6-ratification/kernel-ratification-decision-record-v0.1.0.yaml")
+GOV_7_DIRECTION_RECORD_REL = Path("governance/reviews/gov-7-direction/od-005-gov-7-direction-decision-record-v0.1.0.yaml")
 READY_REVIEW_STATUS = "EXECUTED_READY_FOR_PROJECT_OWNER_DECISION"
 READY_REVIEW_RESULT = "READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION"
 ALLOWED_REVIEW_RESULTS = {
@@ -222,6 +223,7 @@ def validate(root: Path) -> dict:
     authorization = load(root / RUN_REL / "authorization/execution-authorization.yaml")["execution_authorization"]
     decisions = load(root / DECISION_RECORD_REL)["project_owner_decision_record"]
     ratification = load(root / RATIFICATION_RECORD_REL)["kernel_ratification_decision_record"]
+    gov_7_direction = load(root / GOV_7_DIRECTION_RECORD_REL)["gov_7_direction_decision_record"]
     executed_review = load(root / EXECUTED_REVIEW_REL)["phase_closure_readiness_review"]
     registry = load(root / "governance/ARTIFACT_REGISTRY.yaml")
     current_path = root / "governance/CURRENT_STATE.md"
@@ -298,6 +300,54 @@ def validate(root: Path) -> dict:
     if resulting != expected_ratification_state:
         errors.append("GOV-6 ratification resulting state mismatch")
 
+    if gov_7_direction.get("document_id") != "GOV-DECISION-RECORD-003" or gov_7_direction.get("status") != "RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION":
+        errors.append("OD-005 direction record identity or status mismatch")
+    if gov_7_direction.get("decision") != {
+        "id": "OD-005",
+        "selection": "ACCEPT_MINIMUM_GOV_7_DIRECTION",
+        "status": "RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION",
+    }:
+        errors.append("OD-005 direction record decision mismatch")
+    if gov_7_direction.get("accepted") != [
+        "seven-component capability direction",
+        "one bounded governed transition as the initial target",
+        "reuse of existing deterministic custody and validation primitives",
+        "read-only tooling and methodology audit",
+        "GOV-7 design preparation",
+    ]:
+        errors.append("OD-005 direction record accepted scope mismatch")
+    if gov_7_direction.get("authority_exclusions") != [
+        "GOV_7_IMPLEMENTATION",
+        "GOV_7_REPOSITORY_MODIFICATIONS_BEYOND_THIS_DECISION_CUSTODY",
+        "TECHNOLOGY_OR_FRAMEWORK_ADOPTION",
+        "PROVIDER_USE",
+        "REAL_DATA_PROCESSING",
+        "PILOT_EXECUTION",
+        "RESIDUAL_RISK_ACCEPTANCE",
+        "OD_006_RESOLUTION",
+    ]:
+        errors.append("OD-005 direction record authority exclusions mismatch")
+    expected_direction_state = {
+        "OD-005": "RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION",
+        "GOV-7": "INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY",
+        "OD-006": "UNRESOLVED_TRIGGER_GATED",
+        "minimum-GOV-7-package": "DIRECTION_ACCEPTED_NOT_IMPLEMENTED",
+        "residual-risk-accepted": False,
+        "enforcement-implementation": "NOT_PERFORMED",
+    }
+    if gov_7_direction.get("resulting_state") != expected_direction_state:
+        errors.append("OD-005 direction record resulting state mismatch")
+    if gov_7_direction.get("constitutional_authority") != "PROJECT_OWNER_DIRECTION_DECISION_ONLY":
+        errors.append("OD-005 direction record authority mismatch")
+    for fragment in (
+        "## GOV-DEC-026 — OD-005 minimum GOV-7 direction",
+        "Status: RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION",
+        "Source: Project Owner instruction `HP-PROMPT-022/0.1.0` and `GOV-DECISION-RECORD-003/0.1.0`.",
+        "GOV-7 remains `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`",
+    ):
+        if fragment not in log:
+            errors.append("OD-005 decision log custody mismatch")
+
     expected_authorization = {
         "status": "CONSUMED",
         "execution_count_limit": 1,
@@ -345,12 +395,13 @@ def validate(root: Path) -> dict:
         "od_002": "RESOLVED_CONFIRM_EXACT_SCOPE",
         "od_003": "RESOLVED_PACKET_SUFFICIENT",
         "od_004": "RESOLVED_RATIFY_EXACT_KERNEL_0_2_0",
-        "od_005": "UNRESOLVED",
+        "od_005": "RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION",
         "od_006": "UNRESOLVED_TRIGGER_GATED",
         "gov_6_status": "COMPLETED_CLOSED",
-        "gov_7_through_gov_9": "INACTIVE",
+        "gov_7_status": "INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY",
+        "gov_8_through_gov_9": "INACTIVE",
         "kernel": "0.2.0/RATIFIED",
-        "minimum_gov_7_package": "RECOMMENDATION_ONLY",
+        "minimum_gov_7_package": "DIRECTION_ACCEPTED_NOT_IMPLEMENTED",
         "risk_accepted": False,
         "enforcement_implementation": "NOT_PERFORMED",
     }
@@ -377,7 +428,12 @@ def validate(root: Path) -> dict:
         errors.append("CURRENT_STATE Durable state GOV-5 closed status mismatch")
     if durable_gov_5.get("closure_review") != READY_REVIEW_STATUS:
         errors.append("CURRENT_STATE Durable state GOV-5 closure review mismatch")
-    if current_durable.get("GOV-6", {}).get("status") != "COMPLETED_CLOSED" or [current_durable.get(f"GOV-{number}", {}).get("status") for number in range(7, 10)] != ["INACTIVE"] * 3:
+    if current_durable.get("GOV-6", {}).get("status") != "COMPLETED_CLOSED" or current_durable.get("GOV-7") != {
+        "status": "INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY",
+        "decision": "OD-005",
+        "direction_record": "GOV-DECISION-RECORD-003/0.1.0",
+        "minimum_package": "DIRECTION_ACCEPTED_NOT_IMPLEMENTED",
+    } or [current_durable.get(f"GOV-{number}", {}).get("status") for number in range(8, 10)] != ["INACTIVE"] * 2:
         errors.append("CURRENT_STATE Durable state GOV-6 closure or later-phase state mismatch")
     if current_durable.get("kernel") != {
         "version": "0.2.0",
@@ -396,7 +452,7 @@ def validate(root: Path) -> dict:
         "Enforcement Engineering gate": ("CLOSED", "1 of 1"),
         "GOV-6 status": ("COMPLETED / CLOSED", "ratified exact Kernel `0.2.0`"),
         "Human ratification": ("RATIFIED", "0.2.0"),
-        "Phase-transition boundary": ("GOV-6 is closed", "GOV-7 remains inactive"),
+        "Phase-transition boundary": ("GOV-6 is closed", "GOV-7 remains inactive pending audit and separate design or implementation authority"),
     }
     for row, fragments in current_table_expectations.items():
         value = current_table.get(row, "")
@@ -406,7 +462,7 @@ def validate(root: Path) -> dict:
     plan_table_expectations = {
         "GOV-5 Enforcement analysis and derived governance requirements": ("COMPLETED / CLOSED", "KGR-006-R1 accepted by the Project Owner"),
         "GOV-6 Human ratification": ("COMPLETED / CLOSED", "ratified exact Kernel `0.2.0`"),
-        "GOV-7 Minimum executable governance bootstrap": ("INACTIVE", "RECOMMENDATION_ONLY"),
+        "GOV-7 Minimum executable governance bootstrap": ("INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY", "DIRECTION_ACCEPTED_NOT_IMPLEMENTED"),
         "GOV-8 Honest S0a–S1 adoption and regularization": ("PLANNED",),
         "GOV-9 S2 governed pilot": ("PLANNED",),
     }
@@ -433,7 +489,7 @@ def validate(root: Path) -> dict:
         "KGR-006-R1", "GOV-AUTH-001", "GOV-DECISION-RECORD-001",
         "GOV-VAL-008", "GOV-REVIEW-014", "HP-PROMPT-018",
         "GOV-VAL-009", "GOV-REVIEW-015", "GOV-REVIEW-016", "HP-PROMPT-019", "HP-PROMPT-020",
-        "GOV-DECISION-RECORD-002", "HP-PROMPT-021",
+        "GOV-DECISION-RECORD-002", "HP-PROMPT-021", "GOV-DECISION-RECORD-003", "HP-PROMPT-022",
     ):
         if required not in artifacts:
             errors.append(f"artifact registry missing {required}")
@@ -445,6 +501,12 @@ def validate(root: Path) -> dict:
     run_entry = artifacts.get("KGR-006-R1", {})
     if run_entry.get("status") != "ACCEPTED_BY_PROJECT_OWNER":
         errors.append("artifact registry KGR-006-R1 state mismatch")
+    direction_entry = artifacts.get("GOV-DECISION-RECORD-003", {})
+    if direction_entry.get("status") != "RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION" or direction_entry.get("source_path") != "governance/prompts/orchestration/HP-PROMPT-022-record-od-005-gov-7-direction-decision-v0.1.0.md":
+        errors.append("artifact registry OD-005 direction decision custody mismatch")
+    prompt_entry = artifacts.get("HP-PROMPT-022", {})
+    if prompt_entry.get("status") != "EXECUTED" or prompt_entry.get("aliases") != ["GOV-DEC-026"]:
+        errors.append("artifact registry HP-PROMPT-022 custody mismatch")
 
     immutable = load(root / REVIEW_REL / "kgr-006-r1-import-validation-v0.1.0.yaml")["subject"]
     for group, directory in (("source_package", "outputs"), ("evaluation_package", "evaluation")):
@@ -461,6 +523,7 @@ def validate(root: Path) -> dict:
         Path("governance/prompts/orchestration/HP-PROMPT-019-gov-5-phase-closure-readiness-review-v0.1.0.md"),
         Path("governance/prompts/orchestration/HP-PROMPT-020-accept-kgr-006-r1-and-close-gov-5-v0.1.0.md"),
         Path("governance/prompts/orchestration/HP-PROMPT-021-ratify-kernel-0-2-0-and-close-gov-6-v0.1.0.md"),
+        Path("governance/prompts/orchestration/HP-PROMPT-022-record-od-005-gov-7-direction-decision-v0.1.0.md"),
         REVIEW_REL / "gov-5-phase-closure-readiness-implementation-report-v0.1.0.md",
     ], errors)
 

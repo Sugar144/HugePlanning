@@ -14,7 +14,7 @@ Start with:
 
 Raw sources show what was received. Run directories reconstruct what a function used and produced. Canonical candidates provide stable review paths without increasing authority. A prompt is an execution contract, not proof that execution occurred. A proposed artifact is not ratified merely because it is complete or reviewable.
 
-The current Kernel is `0.2.0 / RATIFIED` for HugePlanning level 3 under the Kernel scope rules. GOV-0 through GOV-6 are complete; KGR-005 completed with `CLOSURE_CONFIRMED`, and KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, and OD-004 as `RATIFY_EXACT_KERNEL_0_2_0`; OD-005 remains unresolved and OD-006 remains unresolved trigger-gated. GOV-7 through GOV-9 are inactive. The minimum GOV-7 package remains `RECOMMENDATION_ONLY`; no risk is accepted and no enforcement implementation has occurred.
+The current Kernel is `0.2.0 / RATIFIED` for HugePlanning level 3 under the Kernel scope rules. GOV-0 through GOV-6 are complete; KGR-005 completed with `CLOSURE_CONFIRMED`, and KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, OD-004 as `RATIFY_EXACT_KERNEL_0_2_0`, and OD-005 as `ACCEPT_MINIMUM_GOV_7_DIRECTION`; OD-006 remains unresolved trigger-gated. GOV-7 is `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`; GOV-8 and GOV-9 are inactive. The minimum GOV-7 package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`; no risk is accepted and no enforcement implementation has occurred.
 
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml
@@ -27,12 +27,13 @@ governance_state:
   od_002: RESOLVED_CONFIRM_EXACT_SCOPE
   od_003: RESOLVED_PACKET_SUFFICIENT
   od_004: RESOLVED_RATIFY_EXACT_KERNEL_0_2_0
-  od_005: UNRESOLVED
+  od_005: RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION
   od_006: UNRESOLVED_TRIGGER_GATED
   gov_6_status: COMPLETED_CLOSED
-  gov_7_through_gov_9: INACTIVE
+  gov_7_status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+  gov_8_through_gov_9: INACTIVE
   kernel: 0.2.0/RATIFIED
-  minimum_gov_7_package: RECOMMENDATION_ONLY
+  minimum_gov_7_package: DIRECTION_ACCEPTED_NOT_IMPLEMENTED
   risk_accepted: false
   enforcement_implementation: NOT_PERFORMED
 ```

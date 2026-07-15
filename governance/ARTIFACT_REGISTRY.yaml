@@ -1,6 +1,6 @@
 registry:
   version: '0.15'
-  generated_for: GOV_6_RATIFICATION
+  generated_for: GOV_7_DIRECTION_DECISION
   base_commit: 950a4fe382a37bc6bd5cb0fc431c558406cb393c
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
@@ -2461,3 +2461,35 @@ artifacts:
     supersedes: null
     aliases: [GOV-DEC-025]
     notes: [Preserves the exact bounded Project Owner ratification and GOV-6 closure instruction; prohibits GOV-7 work, OD-005/OD-006 resolution, risk acceptance, enforceability, implementation, operation, runtime changes and PR creation.]
+
+  - id: GOV-DECISION-RECORD-003
+    title: OD-005 GOV-7 Direction Decision Record
+    version: 0.1.0
+    status: RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION
+    authority: exact_project_owner_gov_7_direction_decision_without_implementation_or_risk_acceptance
+    path: governance/reviews/gov-7-direction/od-005-gov-7-direction-decision-record-v0.1.0.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-022-record-od-005-gov-7-direction-decision-v0.1.0.md
+    source_sha256: null
+    produced_by: PROJECT_OWNER
+    artifact_type: gov_7_direction_decision_record
+    language: English
+    canonicality: exact_owner_direction_decision_custody
+    supersedes: null
+    aliases: [GOV-DEC-026, OD-005]
+    notes: [Accepts only the minimum GOV-7 direction; keeps GOV-7 inactive pending audit and separate design or implementation authority, OD-006 unresolved trigger-gated, residual risk unaccepted, and enforcement implementation not performed.]
+
+  - id: HP-PROMPT-022
+    title: Record OD-005 GOV-7 Direction Decision Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_owner_direction_decision_custody_state_reconciliation_validation_commit_and_push_authority
+    path: governance/prompts/orchestration/HP-PROMPT-022-record-od-005-gov-7-direction-decision-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: [GOV-DEC-026]
+    notes: [Preserves the exact bounded OD-005 direction decision; prohibits GOV-7 implementation, audit execution, component design, technology or provider adoption, real-data processing, pilot execution, residual-risk acceptance, OD-006 resolution, runtime changes and PR creation.]

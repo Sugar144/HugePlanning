@@ -289,3 +289,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: Kernel `0.2.0` is `RATIFIED`; GOV-6 is `COMPLETED_CLOSED`; GOV-7 remains inactive; OD-005 remains `UNRESOLVED`; OD-006 remains `UNRESOLVED_TRIGGER_GATED`; no residual risk is accepted; enforcement implementation remains `NOT_PERFORMED`; and the minimum GOV-7 package remains `RECOMMENDATION_ONLY`.
 - Authority boundary: This does not authorize or execute GOV-7, resolve OD-005 or OD-006, accept residual risk, claim enforceability, implementation, operation, compliance, or maturity, modify product or runtime files, open a pull request, merge, release, or deploy.
 - Supersedes: Kernel `0.2.0-proposed` only as the current constitutional Kernel; the proposed source artifacts and completed evidence remain immutable historical records.
+
+## GOV-DEC-026 — OD-005 minimum GOV-7 direction
+
+- Date: 2026-07-15
+- Status: RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION
+- Statement: Resolve `OD-005` as `ACCEPT_MINIMUM_GOV_7_DIRECTION`, accepting the seven-component capability direction, one bounded governed transition as the initial target, reuse of existing deterministic custody and validation primitives, a read-only tooling and methodology audit, and GOV-7 design preparation.
+- Rationale: `NOT_PROVIDED` by the Project Owner.
+- Source: Project Owner instruction `HP-PROMPT-022/0.1.0` and `GOV-DECISION-RECORD-003/0.1.0`.
+- Consequences: GOV-7 remains `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`; its minimum package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`. OD-006 remains `UNRESOLVED_TRIGGER_GATED`; no residual risk is accepted and enforcement implementation remains `NOT_PERFORMED`.
+- Authority boundary: This does not implement or activate GOV-7; perform the audit; design the seven components; resolve OD-006; adopt technology or a framework; use a provider; process real data; execute a pilot; accept residual risk; modify product/runtime files; open a pull request, merge, release, or deploy.
+- Supersedes: none

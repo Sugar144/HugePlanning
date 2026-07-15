@@ -13,7 +13,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 | GOV-4 Designer revision and adversarial closure | `COMPLETED` — KGR-005 imported with `CLOSURE_CONFIRMED` and one validated Controller transition |
 | GOV-5 Enforcement analysis and derived governance requirements | `COMPLETED / CLOSED` — KGR-006-R1 accepted by the Project Owner; closure review evidence retained |
 | GOV-6 Human ratification | `COMPLETED / CLOSED` — Project Owner ratified exact Kernel `0.2.0` under OD-004; no enforceability or implementation claim |
-| GOV-7 Minimum executable governance bootstrap | `INACTIVE` — minimum package remains `RECOMMENDATION_ONLY`; OD-005 remains unresolved |
+| GOV-7 Minimum executable governance bootstrap | `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY` — minimum package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`; OD-005 is resolved without implementation authority |
 | GOV-8 Honest S0a–S1 adoption and regularization | `PLANNED` |
 | GOV-9 S2 governed pilot | `PLANNED` |
 | GOV-10 Continuous governance evolution | `PLANNED` |
@@ -29,12 +29,13 @@ governance_state:
   od_002: RESOLVED_CONFIRM_EXACT_SCOPE
   od_003: RESOLVED_PACKET_SUFFICIENT
   od_004: RESOLVED_RATIFY_EXACT_KERNEL_0_2_0
-  od_005: UNRESOLVED
+  od_005: RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION
   od_006: UNRESOLVED_TRIGGER_GATED
   gov_6_status: COMPLETED_CLOSED
-  gov_7_through_gov_9: INACTIVE
+  gov_7_status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+  gov_8_through_gov_9: INACTIVE
   kernel: 0.2.0/RATIFIED
-  minimum_gov_7_package: RECOMMENDATION_ONLY
+  minimum_gov_7_package: DIRECTION_ACCEPTED_NOT_IMPLEMENTED
   risk_accepted: false
   enforcement_implementation: NOT_PERFORMED
 ```
@@ -108,7 +109,7 @@ governance_state:
 - Role/owner: Enforcement Engineer with relevant evaluators/specialists; human owner retains risk authority.
 - Entry conditions: GOV-4 closure permits enforcement analysis.
 - Completion gate: every proposed clause has an honest feasibility/coverage assessment and unresolved owner decisions are explicit.
-- Current status: `COMPLETED / CLOSED`. KGR-006 executed externally under a retrospectively attested Project Owner authorization, produced seven imported immutable outputs, and received independent result `RETURN_FOR_VERSIONED_CORRECTION`. KGR-006-R1 then consumed `GOV-AUTH-001` exactly once, produced seven corrected outputs imported byte-identically, and received a separately controlled three-artifact evaluation with result `SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, and OD-004 as `RATIFY_EXACT_KERNEL_0_2_0`; OD-005 remains unresolved and OD-006 remains unresolved trigger-gated. The executed closure review returned `READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION`; the Project Owner accepted KGR-006-R1 and closed GOV-5. GOV-6 is completed and closed by the separate ratification decision.
+- Current status: `COMPLETED / CLOSED`. KGR-006 executed externally under a retrospectively attested Project Owner authorization, produced seven imported immutable outputs, and received independent result `RETURN_FOR_VERSIONED_CORRECTION`. KGR-006-R1 then consumed `GOV-AUTH-001` exactly once, produced seven corrected outputs imported byte-identically, and received a separately controlled three-artifact evaluation with result `SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, OD-004 as `RATIFY_EXACT_KERNEL_0_2_0`, and OD-005 as `ACCEPT_MINIMUM_GOV_7_DIRECTION`; OD-006 remains unresolved trigger-gated. The executed closure review returned `READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION`; the Project Owner accepted KGR-006-R1 and closed GOV-5. GOV-6 is completed and closed by the separate ratification decision.
 - Dependencies: GOV-4.
 - Explicit non-goals: claiming enforceability, implementing every control, or silently changing constitutional meaning.
 
@@ -132,7 +133,7 @@ governance_state:
 - Role/owner: authorized governance implementation roles and repository owner.
 - Entry conditions: ratified Kernel and explicit write paths/task contract.
 - Completion gate: minimum controls pass deterministic and appropriate independent validation; enforceability claims remain claim-specific.
-- Current status: `INACTIVE`; the minimum package remains `RECOMMENDATION_ONLY`, and OD-005 remains unresolved before affected GOV-7 work.
+- Current status: `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`; the minimum package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`. OD-005 accepts direction only; the read-only audit and any material GOV-7 design or implementation require separate authority.
 - Dependencies: GOV-6.
 - Explicit non-goals: a complete future governance platform, unauthorized runtime edits, or operational/maturity claims.
 

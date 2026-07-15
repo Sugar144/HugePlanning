@@ -17,10 +17,10 @@
 | Enforcement Engineering gate | `CLOSED`; GOV-AUTH-001 consumed exactly 1 of 1, with no remaining execution |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
 | Human ratification | `RATIFIED` — exact Kernel `0.2.0`, recorded in `GOV-DECISION-RECORD-002/0.1.0` |
-| Owner decisions required | OD-001 satisfied for the evaluation context; OD-002 `CONFIRM_EXACT_SCOPE`, OD-003 `PACKET_SUFFICIENT`, and OD-004 `RATIFY_EXACT_KERNEL_0_2_0` resolved; OD-005 unresolved; OD-006 unresolved trigger-gated |
+| Owner decisions required | OD-001 satisfied for the evaluation context; OD-002 `CONFIRM_EXACT_SCOPE`, OD-003 `PACKET_SUFFICIENT`, OD-004 `RATIFY_EXACT_KERNEL_0_2_0`, and OD-005 `ACCEPT_MINIMUM_GOV_7_DIRECTION` resolved; OD-006 unresolved trigger-gated |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | OD-005 and OD-006, plus later implementation/effect boundaries, remain unresolved; the next action is a separate Project Owner decision for OD-005 before affected GOV-7 work |
-| Phase-transition boundary | GOV-6 is closed after the Project Owner ratified exact Kernel `0.2.0`; GOV-7 remains inactive and is not authorized |
+| Known blockers | OD-006 and the separately authorized GOV-7 audit/design-or-implementation boundaries remain unresolved; the next action is the read-only GOV-7 enablement, tooling and empirical-validation audit |
+| Phase-transition boundary | GOV-6 is closed after the Project Owner ratified exact Kernel `0.2.0`; GOV-7 remains inactive pending audit and separate design or implementation authority |
 
 ## KGR-006 execution and independent-evaluation reconciliation
 
@@ -175,7 +175,11 @@ GOV-6:
   status: COMPLETED_CLOSED
   decision: OD-004
   ratification_record: GOV-DECISION-RECORD-002/0.1.0
-GOV-7: {status: INACTIVE}
+GOV-7:
+  status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+  decision: OD-005
+  direction_record: GOV-DECISION-RECORD-003/0.1.0
+  minimum_package: DIRECTION_ACCEPTED_NOT_IMPLEMENTED
 GOV-8: {status: INACTIVE}
 GOV-9: {status: INACTIVE}
 ```
@@ -191,16 +195,17 @@ governance_state:
   od_002: RESOLVED_CONFIRM_EXACT_SCOPE
   od_003: RESOLVED_PACKET_SUFFICIENT
   od_004: RESOLVED_RATIFY_EXACT_KERNEL_0_2_0
-  od_005: UNRESOLVED
+  od_005: RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION
   od_006: UNRESOLVED_TRIGGER_GATED
   gov_6_status: COMPLETED_CLOSED
-  gov_7_through_gov_9: INACTIVE
+  gov_7_status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+  gov_8_through_gov_9: INACTIVE
   kernel: 0.2.0/RATIFIED
-  minimum_gov_7_package: RECOMMENDATION_ONLY
+  minimum_gov_7_package: DIRECTION_ACCEPTED_NOT_IMPLEMENTED
   risk_accepted: false
   enforcement_implementation: NOT_PERFORMED
 ```
 
 ## Authority boundary
 
-KGR-006-R1 execution, controlled import and independent evaluation establish validated correction evidence and consume GOV-AUTH-001. The Project Owner accepted the bounded KGR-006-R1 result and closed GOV-5 as recorded in `GOV-DECISION-RECORD-001/0.2.0`. The Project Owner then ratified exact Kernel `0.2.0` and closed GOV-6 as recorded in `GOV-DECISION-RECORD-002/0.1.0`. This does not resolve OD-005 or OD-006, accept residual risk, establish enforceability, implement or operate governance, activate or authorize GOV-7 through GOV-9, or authorize runtime integration.
+KGR-006-R1 execution, controlled import and independent evaluation establish validated correction evidence and consume GOV-AUTH-001. The Project Owner accepted the bounded KGR-006-R1 result and closed GOV-5 as recorded in `GOV-DECISION-RECORD-001/0.2.0`. The Project Owner then ratified exact Kernel `0.2.0` and closed GOV-6 as recorded in `GOV-DECISION-RECORD-002/0.1.0`. The Project Owner resolved OD-005 only as the direction recorded in `GOV-DECISION-RECORD-003/0.1.0`. This does not resolve OD-006, accept residual risk, establish enforceability, implement or operate governance, activate GOV-7, authorize GOV-7 design or implementation, or authorize runtime integration.
