@@ -1,0 +1,38 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-021-E001
+  record_id: HP-FAIL-021
+  date: '2026-07-16'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: Lifecycle-aware audit validation and direct regressions validate both the
+    planning-only and one-pass-executed states while preserving PASS-01 output bytes
+    and authority boundaries.
+  rationale: Eleven focused tests, direct audit and governance validators, custody
+    and checksum checks, and the complete governance suite with 152 passed and 0 failed
+    establish the bounded correction; PASS-01 remains unaccepted, CHECKPOINT-A pending,
+    PASS-02 unexecuted and GOV-7 inactive.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_gov_7_audit_scaffold.py
+    anchor: planning-only, one-pass and invalid-transition regressions
+    sha256: null
+    availability: PRESERVED
+    note: Eleven focused tests pass.
+  - type: VALIDATION_RECORD
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/pass-01-validation-report.yaml
+    anchor: correction GOV-AUD-001-P01-R1-C1
+    sha256: null
+    availability: PRESERVED
+    note: Preserves the initial failure and records the corrected 152-passed suite.
+  - type: RUN_ARTIFACT
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/manifest.yaml
+    anchor: GOV-AUD-001-P01-R1-C1
+    sha256: null
+    availability: PRESERVED
+    note: The containing Git commit is the bounded correction commit and supplies
+      its exact identity after publication.
+  owner_decision_ref: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

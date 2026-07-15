@@ -20,6 +20,8 @@ audit:
   authority: PASS_01_ONLY_PROJECT_OWNER_AUTHORIZATION_CONSUMED
   passes_executed: 1
   checkpoints_completed: 0
+  completed: false
+  pass_01_accepted: false
   gov_7_activated: false
   recommendations_accepted: false
   implementation_authorized: false
@@ -35,3 +37,8 @@ audit:
   owner_decision_inferred: false
   last_completed_step: PASS_01_EXECUTED_AND_VALIDATED
   next_action: PROJECT_OWNER_PASS_01_DISPOSITION_AND_SEPARATE_PASS_02_AUTHORIZATION_DECISION
+  validation_lifecycle_correction:
+    correction_id: GOV-AUD-001-P01-R1-C1
+    initial_full_suite: {result: FAILED, passed_tests: 141, failed_tests: 3}
+    corrected_full_suite: {result: PASSED, passed_tests: 152, failed_tests: 0}
+    substantive_outputs_changed: false

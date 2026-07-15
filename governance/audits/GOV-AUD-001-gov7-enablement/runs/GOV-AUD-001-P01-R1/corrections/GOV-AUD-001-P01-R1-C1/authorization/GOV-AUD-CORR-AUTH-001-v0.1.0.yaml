@@ -1,0 +1,57 @@
+authorization:
+  authorization_id: GOV-AUD-CORR-AUTH-001
+  correction_id: GOV-AUD-001-P01-R1-C1
+  version: 0.1.0
+  evidence_class: CONTEMPORANEOUS_PROJECT_OWNER_CORRECTION_AUTHORIZATION
+  authority: PROJECT_OWNER
+  status: AUTHORIZED_FOR_ONE_BOUNDED_CORRECTION
+  source_run_id: GOV-AUD-001-P01-R1
+  audit_id: GOV-AUD-001
+  role: Audit Validation Lifecycle Corrector
+  mode: BOUNDED_VERSIONED_VALIDATION_CORRECTION
+  execution_count_limit: 1
+  execution_count_consumed: 0
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_local_head: f4329d011e6006877b9a620fbd646f1c64815c30
+  starting_remote_head: f4329d011e6006877b9a620fbd646f1c64815c30
+  local_remote_aligned_at_start: true
+  clean_worktree_and_empty_staging_at_start: true
+  original_full_suite: {passed: 141, failed: 3}
+  prompt_identity: GOV-AUD-PROMPT-012/0.1.0
+  catalog_prompt_identity: HP-PROMPT-025/0.1.0
+  prompt_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md
+  prompt_sha256: 7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea569119f5c4edc5d
+  prior_authorization:
+    authorization_id: GOV-AUD-AUTH-001
+    status: CONSUMED_1_OF_1_NONE_REMAINING
+    reusable: false
+  authorized_actions:
+    - correct the shared audit-scaffold validator lifecycle contract and directly affected regression tests
+    - correct PASS-01 validation evidence and directly affected audit lifecycle records
+    - preserve correction prompt and authorization custody
+    - capture the material defect through the append-only learning mechanism
+    - validate, create one bounded correction commit and push once without force
+  authorized_write_scope:
+    - governance/tools/validate_audit_scaffold.py
+    - governance/tests/test_gov_7_audit_scaffold.py
+    - governance/audits/GOV-AUD-001-gov7-enablement/**
+    - governance/prompts/orchestration/**
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/learning/**
+    - directly affected governance state or checksum surfaces required by deterministic validation
+  immutable_substantive_outputs:
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/01-verified-capability-inventory.yaml, sha256: 0e1ae26cfd8201e781768eec81045c056b1bc1cd557b0ab1f9fbcae1d47cb124}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/02-repetition-waste-and-burden-analysis.md, sha256: 57cbd6fc8d151d6c338a14c9c6f51e702f9a8519136d5dde5b2d20b2327f900f}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/03-ranked-gap-register.yaml, sha256: 8a485a3df850d6f9b37c4490435980715ddd84c689567ad3a94be89dca674cde}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/04-pass-01-findings-and-handoff.md, sha256: fd3e035812150b61f1dc54ad33412d5d8c09dcb31abe5a8ddaebd34e8323d2ff}
+  not_authorized:
+    - modify or re-execute substantive PASS-01 analysis or outputs
+    - accept PASS-01 findings or recommendations
+    - execute or authorize PASS-02 or complete CHECKPOINT-A
+    - activate, design or implement GOV-7
+    - modify Kernel substance or ratification evidence
+    - resolve OD-006 or accept residual risk
+    - select architecture, graph technology, tools or GOV-7 strategy
+    - open a pull request, merge, force push, tag, release or deploy
+  authority_limit: ONE_BOUNDED_VALIDATION_LIFECYCLE_CORRECTION_COMMIT_AND_ONE_NON_FORCE_PUSH_ONLY

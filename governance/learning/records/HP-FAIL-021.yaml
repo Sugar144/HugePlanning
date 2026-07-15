@@ -1,0 +1,124 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-021
+  date: '2026-07-16'
+  recorded_on: '2026-07-16'
+  title: Audit scaffold validation froze the planning-only lifecycle snapshot
+  context:
+    phase: GOV-7 audit preparation
+    run: GOV-AUD-001-P01-R1
+    component: Audit scaffold lifecycle validation
+    branch: governance/kernel-designer-revision-v0.1
+    commit: f4329d011e6006877b9a620fbd646f1c64815c30
+    environment: Complete governance pytest suite after PASS-01 publication
+  primary_classification: TOOLING_GAP
+  classification:
+  - TOOLING_GAP
+  - PROCESS_DEFECT
+  severity: HIGH
+  status: CORRECTED
+  expected_behavior: The shared audit scaffold validator remains valid as the audit
+    advances from the planning-only state to the next legitimate one-pass-executed
+    state.
+  observed_behavior: After PASS-01 publication, the complete governance suite failed
+    three tests because the shared validator and its regression tests encoded zero
+    executed passes and no run directory as permanent invariants.
+  impact: PASS-01 was published with incomplete full-suite validation and could not
+    be treated as fully validated input pending correction, even though the failure
+    did not determine whether the four substantive outputs were semantically correct.
+  detection_method: The complete governance pytest suite produced 141 passed and 3
+    failed after PASS-01 publication; all failures were in governance/tests/test_gov_7_audit_scaffold.py
+    and traced to governance/tools/validate_audit_scaffold.py.
+  root_cause:
+    immediate: Hard-coded planning-only status, zero-pass count and no-run-directory
+      assertions remained in the shared validator and tests.
+    systemic: The scaffold validation contract modeled only the bootstrap snapshot
+      and did not model or test the next legitimate lifecycle transition.
+    contributing_factors:
+    - Targeted PASS-01 validation explicitly treated the scaffold validator as planning-only
+      instead of extending the shared lifecycle contract before publication.
+    - Regression coverage had no coherent one-pass-executed fixture or direct invalid-transition
+      cases.
+  response:
+    containment: Preserve the four substantive PASS-01 outputs byte-identically, keep
+      PASS-01 unaccepted, and prohibit PASS-02 or checkpoint progression until full
+      validation succeeds.
+    correction: Replace snapshot assertions with bounded lifecycle-aware invariants
+      for coherent zero-pass planning and one-pass execution, and add direct invalid-transition
+      regression coverage.
+    prevention:
+    - Validators for staged systems must cover applicable valid transitions and at
+      least the next reachable lifecycle state.
+    - Derive expected records and counts from canonical lifecycle status instead of
+      freezing one phase snapshot.
+    - Require the complete governance suite before treating a published audit pass
+      as fully validated input.
+    accountable_owner: Project Owner
+    validation_required:
+    - Focused validator and lifecycle regression tests.
+    - Direct validation of coherent planning-only and one-pass-executed states.
+    - PASS-01 custody, prompt, authorization, registry, checksum and governance-state
+      validation.
+    - Complete governance pytest suite and byte-identity verification for all four
+      substantive PASS-01 outputs.
+  learning:
+    reusable_lesson: State validation must derive expectations from canonical lifecycle
+      status rather than permanently encode one phase snapshot.
+    candidate_system_changes:
+    - SCRIPT
+    - VALIDATION
+    - TEST
+    - WORKFLOW_PATTERN
+    - DOCUMENTATION
+    applicable_future_phases:
+    - Audit scaffold
+    - PASS-01 execution
+    - Future audit passes
+    - Shared validation methodology
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: The published commit, three exact failing tests, four immutable output
+      hashes and corrected regression suite are directly observable; elapsed human
+      time and token/cost data are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_gov_7_audit_scaffold.py
+    anchor: original complete-suite failures at commit f4329d011e6006877b9a620fbd646f1c64815c30
+    sha256: null
+    availability: PRESERVED
+    note: The original suite result was 141 passed and 3 failed.
+  - type: REPOSITORY_PATH
+    locator: governance/tools/validate_audit_scaffold.py
+    anchor: lifecycle-aware validation
+    sha256: null
+    availability: PRESERVED
+    note: Corrected shared validator for planning-only and one-pass-executed states.
+  - type: REPOSITORY_PATH
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md
+    anchor: GOV-AUD-PROMPT-012 / HP-PROMPT-025 / 0.1.0
+    sha256: 7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea569119f5c4edc5d
+    availability: PRESERVED
+    note: Exact correction scope, authority and stopping conditions.
+  - type: VALIDATION_RECORD
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/pass-01-validation-report.yaml
+    anchor: initial_validation and correction
+    sha256: null
+    availability: PRESERVED
+    note: Preserves the initial failure and final corrected validation sequence.
+  related_records:
+  - HP-FAIL-017
+  - HP-FAIL-020
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

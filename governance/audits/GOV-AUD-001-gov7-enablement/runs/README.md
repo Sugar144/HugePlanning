@@ -17,3 +17,4 @@ The run must reuse the canonical formal-run requirements in `governance/methodol
 ## Registered runs
 
 - `GOV-AUD-001-P01-R1` — PASS-01, `EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION`; authorization `GOV-AUD-AUTH-001` consumed exactly once; PASS-02 remains unexecuted and unauthorized.
+- `GOV-AUD-001-P01-R1-C1` — bounded validation-lifecycle correction; preserves the initial `141 passed / 3 failed` evidence, validates the planning-only and one-pass-executed states with `152 passed / 0 failed`, and leaves all four substantive PASS-01 outputs byte-unchanged and unaccepted.

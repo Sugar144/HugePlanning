@@ -28,7 +28,10 @@ audit_program:
     - {id: CHECKPOINT-C, depends_on: [PASS-07], checkpoint_before: null, status: PENDING_OWNER_DECISION}
   execution_rule: EACH_PASS_REQUIRES_SEPARATE_OWNER_AUTHORIZATION_EXACT_INSTANTIATED_PROMPT_AND_HASHED_INPUT_MANIFEST
   passes_executed: 1
+  validation_correction_id: GOV-AUD-001-P01-R1-C1
   checkpoints_approved: 0
+  completed: false
+  pass_01_accepted: false
   gov_7_activated: false
   recommendations_accepted: false
   implementation_authorized: false

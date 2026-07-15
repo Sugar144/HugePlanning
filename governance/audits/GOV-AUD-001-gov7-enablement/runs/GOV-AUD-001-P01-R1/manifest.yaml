@@ -85,3 +85,29 @@ next_checkpoint:
   id: CHECKPOINT-A
   status: PENDING_OWNER_DECISION
   pass_02_remains_unexecuted: true
+validation_lifecycle_correction:
+  correction_id: GOV-AUD-001-P01-R1-C1
+  status: VALIDATED
+  source_published_commit: f4329d011e6006877b9a620fbd646f1c64815c30
+  prompt:
+    prompt_id: GOV-AUD-PROMPT-012
+    catalog_prompt_id: HP-PROMPT-025
+    version: 0.1.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md
+    sha256: 7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea569119f5c4edc5d
+  authorization:
+    authorization_id: GOV-AUD-CORR-AUTH-001
+    version: 0.1.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/authorization/GOV-AUD-CORR-AUTH-001-v0.1.0.yaml
+    execution_count_limit: 1
+    execution_count_consumed: 1
+    remaining_execution: NONE
+    prior_authorization_reused: false
+  initial_full_suite: {result: FAILED, passed_tests: 141, failed_tests: 3}
+  corrected_full_suite: {result: PASSED, passed_tests: 152, failed_tests: 0}
+  substantive_outputs_changed: false
+  pass_01_accepted: false
+  checkpoint_a_completed: false
+  pass_02_executed: false
+  recommendations_accepted: false
+  implementation_authorized: false

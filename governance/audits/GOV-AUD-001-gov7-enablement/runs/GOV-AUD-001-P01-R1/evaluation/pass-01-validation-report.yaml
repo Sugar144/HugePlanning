@@ -1,12 +1,31 @@
 validation_report:
   record_id: GOV-AUD-VAL-001
-  version: 0.1.0
+  version: 0.2.0
   audit_id: GOV-AUD-001
   run_id: GOV-AUD-001-P01-R1
   pass_id: PASS-01
   evidence_class: SOURCE_RUN_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_EVALUATION
   status: VALIDATED
   result: VALID
+  initial_validation:
+    targeted_checks: PASSED
+    full_governance_suite: FAILED
+    passed_tests: 141
+    failed_tests: 3
+    result: INCOMPLETE_VALIDATION
+    cause: PLANNING_ONLY_VALIDATOR_LIFECYCLE_DEFECT
+    published_commit: f4329d011e6006877b9a620fbd646f1c64815c30
+  correction:
+    correction_id: GOV-AUD-001-P01-R1-C1
+    correction_prompt: GOV-AUD-PROMPT-012/HP-PROMPT-025/0.1.0
+    correction_authorization: GOV-AUD-CORR-AUTH-001/0.1.0
+    validator_corrected: true
+    regression_tests_updated: true
+    substantive_outputs_changed: false
+    corrected_full_suite: PASSED
+    passed_tests: 152
+    failed_tests: 0
+    final_validation_result: VALID
   starting_head: 2af090ccf00f2cf8fb6d49972f4dacf5e3ddea38
   prompt:
     prompt_id: GOV-AUD-PROMPT-011
@@ -81,11 +100,18 @@ validation_report:
     - command: direct PASS-01 strict-YAML, hash, output-contract, ID, evidence-path, ranking and scope checks
       result: PASS_ON_FINAL_REPLAY
   full_governance_suite:
-    performed: false
-    reason:
-      - No shared validator, schema, registry logic or state-validation logic was modified.
-      - Targeted validation did not indicate a cross-surface regression requiring the full suite.
-      - The environment does not provide the pytest module; direct canonical validators cover the changed state surfaces.
+    initial_run:
+      performed: true
+      result: FAILED
+      passed_tests: 141
+      failed_tests: 3
+      cause: PLANNING_ONLY_VALIDATOR_LIFECYCLE_DEFECT
+    corrected_run:
+      performed: true
+      result: PASSED
+      passed_tests: 152
+      failed_tests: 0
+      command: /tmp/hp-phase-2-1-venv/bin/python -m pytest -q -p no:cacheprovider governance/tests
   pre_validation_diagnostics:
     - diagnostic: The first input-hash check exposed two transposed characters in the copied GOV-6 decision SHA-256.
       disposition: Corrected in the unexecuted input manifest before output analysis; all bound hashes then passed.
@@ -100,7 +126,7 @@ validation_report:
       disposition: Sequencing diagnostic; rerun after report creation is required and recorded above.
       material_failure: false
     - diagnostic: pytest executable and module are unavailable.
-      disposition: No dependency installation was authorized or required; direct canonical state validation and prompt tests were used.
+      disposition: This was true for the original PASS-01 execution environment. The published full-suite failure and this correction were reproduced and validated with the already available isolated dependency environment.
       material_failure: false
   external_research_performed: false
   independent_evaluation_performed: false

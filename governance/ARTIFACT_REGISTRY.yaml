@@ -1,7 +1,7 @@
 registry:
-  version: '0.17'
-  generated_for: GOV_AUD_001_PASS_01_EXECUTION
-  base_commit: 2af090ccf00f2cf8fb6d49972f4dacf5e3ddea38
+  version: '0.18'
+  generated_for: GOV_AUD_001_PASS_01_VALIDATION_LIFECYCLE_CORRECTION
+  base_commit: f4329d011e6006877b9a620fbd646f1c64815c30
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -2538,9 +2538,9 @@ artifacts:
 
   - id: GOV-TOOL-004
     title: GOV-7 Audit Program Scaffold Validator
-    version: 0.1.0
-    status: IMPLEMENTED_AND_VALIDATED_FOR_PLANNING_ARTIFACTS
-    authority: deterministic_scaffold_validation_not_audit_execution_acceptance_activation_or_implementation
+    version: 0.2.0
+    status: IMPLEMENTED_AND_VALIDATED_FOR_PLANNING_AND_ONE_PASS_EXECUTED_LIFECYCLES
+    authority: deterministic_audit_lifecycle_validation_not_audit_execution_acceptance_activation_or_implementation
     path: governance/tools/validate_audit_scaffold.py
     source_path: null
     source_sha256: null
@@ -2550,7 +2550,7 @@ artifacts:
     canonicality: reusable_validation_support
     supersedes: null
     aliases: [governance/tests/test_gov_7_audit_scaffold.py]
-    notes: [Validates exact prompt custody, IDs, dependencies, contracts, prompt templates, planning-only state, baseline prerequisites, referenced paths, YAML/Markdown and absence of fake execution artifacts; it cannot execute an audit or make semantic/Owner decisions.]
+    notes: [Validates exact prompt custody, IDs, dependencies, contracts, prompt templates, the coherent planning-only and one-pass-executed lifecycle states, registered PASS-01 run custody, baseline prerequisites, referenced paths, YAML/Markdown and direct invalid transitions; it cannot execute an audit or make semantic/Owner decisions.]
 
   - id: GOV-AUD-001-P01-R1
     title: GOV-AUD-001 PASS-01 Repository Capability and Gap Audit Run
@@ -2599,6 +2599,54 @@ artifacts:
     supersedes: null
     aliases: [GOV-AUD-PROMPT-011]
     notes: [Executes only PASS-01 and authorizes the exact write, validation, commit and push boundary; no prompt duplicate is created under governance/prompts/orchestration.]
+
+  - id: GOV-AUD-001-P01-R1-C1
+    title: PASS-01 Validation Lifecycle Correction
+    version: 0.1.0
+    status: VALIDATED
+    authority: bounded_validation_lifecycle_correction_not_pass_acceptance_later_pass_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/manifest.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/pass-01-validation-report.yaml
+    source_sha256: null
+    produced_by: AUDIT_VALIDATION_LIFECYCLE_CORRECTOR
+    artifact_type: audit_validation_lifecycle_correction
+    language: English
+    canonicality: versioned_correction_evidence
+    supersedes: null
+    aliases: []
+    notes: [Preserves the original 141-passed/3-failed suite evidence, validates the planning-only and one-pass-executed states, and leaves the four substantive PASS-01 outputs byte-unchanged and unaccepted.]
+
+  - id: GOV-AUD-CORR-AUTH-001
+    title: PASS-01 Validation Lifecycle Correction Authorization
+    version: 0.1.0
+    status: CONSUMED_1_OF_1_NONE_REMAINING
+    authority: exact_project_owner_validation_correction_commit_and_non_force_push_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/authorization/GOV-AUD-CORR-AUTH-001-v0.1.0.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md
+    source_sha256: 7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea569119f5c4edc5d
+    produced_by: PROJECT_OWNER
+    artifact_type: prospective_correction_authorization
+    language: English
+    canonicality: exact_authorization_snapshot_with_terminal_consumption_in_correction_manifest
+    supersedes: null
+    aliases: []
+    notes: [Authorizes exactly one bounded validation-lifecycle correction, commit and non-force push; the already-consumed GOV-AUD-AUTH-001 remains non-reusable.]
+
+  - id: HP-PROMPT-025
+    title: PASS-01 Audit Validation Lifecycle Correction Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: exact_bounded_validation_correction_contract_not_pass_acceptance_later_pass_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md
+    source_path: null
+    source_sha256: 7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea569119f5c4edc5d
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_audit_correction_prompt
+    language: English
+    canonicality: authoritative_audit_correction_prompt_snapshot
+    supersedes: null
+    aliases: [GOV-AUD-PROMPT-012]
+    notes: [Corrects only the shared validation lifecycle, directly affected evidence and append-only learning; prohibits substantive PASS-01 changes, PASS-02, CHECKPOINT-A completion, GOV-7 activation or implementation.]
 
   - id: GOV-AUD-OUT-001
     title: PASS-01 Verified Capability Inventory
@@ -2666,7 +2714,7 @@ artifacts:
 
   - id: GOV-AUD-VAL-001
     title: PASS-01 Deterministic Validation Report
-    version: 0.1.0
+    version: 0.2.0
     status: VALIDATED
     authority: deterministic_pass_validation_not_independent_evaluation_acceptance_or_implementation_authority
     path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/pass-01-validation-report.yaml
@@ -2678,4 +2726,4 @@ artifacts:
     canonicality: supporting_validation_evidence
     supersedes: null
     aliases: []
-    notes: [Validates prompt/authorization identity, hashes, inputs, four outputs, rankings, evidence paths, scope and unchanged governance boundaries; it is not independent evaluation.]
+    notes: [Preserves the initial targeted pass and 141-passed/3-failed full-suite result, records correction GOV-AUD-001-P01-R1-C1, and validates prompt/authorization identity, hashes, inputs, four byte-unchanged outputs, lifecycle state and unchanged governance boundaries; it is not independent evaluation or acceptance.]
