@@ -66,10 +66,10 @@ def test_rejects_inconsistent_od_002_or_od_003(tmp_path):
     assert "Owner decision record state mismatch" in diagnostics(root)
 
 
-def test_rejects_obsolete_readme_kgr_005_gov_4_state(tmp_path):
+def test_rejects_obsolete_readme_gov_6_state(tmp_path):
     root = isolated(tmp_path)
     path = root / "governance/README.md"
-    replace(path, "phase: GOV-5", "phase: GOV-4")
+    replace(path, "phase: GOV-6", "phase: GOV-5")
     assert "README phase mismatch" in diagnostics(root)
 
 
@@ -80,17 +80,17 @@ def test_rejects_gov_5_closed(tmp_path):
     assert "CURRENT_STATE gov_5_status mismatch" in diagnostics(root)
 
 
-def test_rejects_gov_6_active(tmp_path):
+def test_rejects_gov_6_not_closed(tmp_path):
     root = isolated(tmp_path)
     path = root / "governance/GOVERNANCE_MASTER_PLAN.md"
-    replace(path, "gov_6_through_gov_9: INACTIVE", "gov_6_through_gov_9: ACTIVE")
-    assert "GOVERNANCE_MASTER_PLAN gov_6_through_gov_9 mismatch" in diagnostics(root)
+    replace(path, "gov_6_status: COMPLETED_CLOSED", "gov_6_status: INACTIVE")
+    assert "GOVERNANCE_MASTER_PLAN gov_6_status mismatch" in diagnostics(root)
 
 
-def test_rejects_ratified_kernel(tmp_path):
+def test_rejects_unratified_kernel(tmp_path):
     root = isolated(tmp_path)
     path = root / "governance/CURRENT_STATE.md"
-    replace(path, "kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED", "kernel: 0.2.0/RATIFIED")
+    replace(path, "kernel: 0.2.0/RATIFIED", "kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED")
     assert "CURRENT_STATE kernel mismatch" in diagnostics(root)
 
 

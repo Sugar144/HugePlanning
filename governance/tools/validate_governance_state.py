@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the durable KGR-006-R1/GOV-5 state across governance surfaces."""
+"""Validate the durable KGR-006-R1/GOV-6 state across governance surfaces."""
 
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ RUN_REL = Path("governance/runs/KGR-006-R1-enforcement-analysis-correction")
 REVIEW_REL = Path("governance/reviews/kgr-006-r1-controlled-import-and-owner-review")
 DECISION_RECORD_REL = REVIEW_REL / "project-owner-decision-record-v0.2.0.yaml"
 EXECUTED_REVIEW_REL = REVIEW_REL / "gov-5-phase-closure-readiness-v0.2.0.yaml"
+RATIFICATION_RECORD_REL = Path("governance/reviews/gov-6-ratification/kernel-ratification-decision-record-v0.1.0.yaml")
 READY_REVIEW_STATUS = "EXECUTED_READY_FOR_PROJECT_OWNER_DECISION"
 READY_REVIEW_RESULT = "READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION"
 ALLOWED_REVIEW_RESULTS = {
@@ -220,6 +221,7 @@ def validate(root: Path) -> dict:
     run = load(root / RUN_REL / "run-manifest.yaml")
     authorization = load(root / RUN_REL / "authorization/execution-authorization.yaml")["execution_authorization"]
     decisions = load(root / DECISION_RECORD_REL)["project_owner_decision_record"]
+    ratification = load(root / RATIFICATION_RECORD_REL)["kernel_ratification_decision_record"]
     executed_review = load(root / EXECUTED_REVIEW_REL)["phase_closure_readiness_review"]
     registry = load(root / "governance/ARTIFACT_REGISTRY.yaml")
     current_path = root / "governance/CURRENT_STATE.md"
@@ -260,6 +262,42 @@ def validate(root: Path) -> dict:
     if decisions.get("additional_owner_rationale") != "NOT_PROVIDED":
         errors.append("Owner decision rationale must remain NOT_PROVIDED")
 
+    if ratification.get("document_id") != "GOV-DECISION-RECORD-002" or ratification.get("status") != "RATIFIED_EXACT_KERNEL_0_2_0_GOV_6_CLOSED":
+        errors.append("GOV-6 ratification record identity or status mismatch")
+    decision = ratification.get("decision", {})
+    if decision != {
+        "id": "OD-004",
+        "selection": "RATIFY_EXACT_KERNEL_0_2_0",
+        "status": "RESOLVED_RATIFY_EXACT_KERNEL_0_2_0",
+    }:
+        errors.append("GOV-6 ratification record OD-004 mismatch")
+    kernel = ratification.get("ratified_kernel", {})
+    if kernel.get("version") != "0.2.0" or kernel.get("scope") != "HugePlanning level 3 under the Kernel scope rules":
+        errors.append("GOV-6 ratification record Kernel version or scope mismatch")
+    conditions = ratification.get("ratification_conditions", {})
+    if conditions != {
+        "residual_risk_accepted": False,
+        "enforceability_claimed": False,
+        "implementation_status": "NOT_PERFORMED",
+        "gov_7_authorized": False,
+        "provider_or_real_data_authorized": False,
+    }:
+        errors.append("GOV-6 ratification conditions mismatch")
+    resulting = ratification.get("resulting_state", {})
+    expected_ratification_state = {
+        "OD-004": "RESOLVED_RATIFY_EXACT_KERNEL_0_2_0",
+        "kernel": "0.2.0/RATIFIED",
+        "GOV-6": "COMPLETED_CLOSED",
+        "GOV-7": "INACTIVE",
+        "OD-005": "UNRESOLVED",
+        "OD-006": "UNRESOLVED_TRIGGER_GATED",
+        "residual-risk-accepted": False,
+        "enforcement-implementation": "NOT_PERFORMED",
+        "minimum-GOV-7-package": "RECOMMENDATION_ONLY",
+    }
+    if resulting != expected_ratification_state:
+        errors.append("GOV-6 ratification resulting state mismatch")
+
     expected_authorization = {
         "status": "CONSUMED",
         "execution_count_limit": 1,
@@ -299,16 +337,19 @@ def validate(root: Path) -> dict:
 
     surfaces = {"CURRENT_STATE": current, "GOVERNANCE_MASTER_PLAN": plan, "README": readme}
     expected_surface = {
-        "phase": "GOV-5_CLOSED",
+        "phase": "GOV-6_CLOSED",
         "gov_5_status": "COMPLETED_CLOSED",
         "gov_5_closure_review": READY_REVIEW_STATUS,
         "kgr_006_r1_status": "ACCEPTED_BY_PROJECT_OWNER",
         "authorization_status": "CONSUMED_1_OF_1_NONE_REMAINING",
         "od_002": "RESOLVED_CONFIRM_EXACT_SCOPE",
         "od_003": "RESOLVED_PACKET_SUFFICIENT",
-        "od_004_through_od_006": "UNRESOLVED",
-        "gov_6_through_gov_9": "INACTIVE",
-        "kernel": "0.2.0-proposed/PROPOSED_NOT_RATIFIED",
+        "od_004": "RESOLVED_RATIFY_EXACT_KERNEL_0_2_0",
+        "od_005": "UNRESOLVED",
+        "od_006": "UNRESOLVED_TRIGGER_GATED",
+        "gov_6_status": "COMPLETED_CLOSED",
+        "gov_7_through_gov_9": "INACTIVE",
+        "kernel": "0.2.0/RATIFIED",
         "minimum_gov_7_package": "RECOMMENDATION_ONLY",
         "risk_accepted": False,
         "enforcement_implementation": "NOT_PERFORMED",
@@ -336,17 +377,26 @@ def validate(root: Path) -> dict:
         errors.append("CURRENT_STATE Durable state GOV-5 closed status mismatch")
     if durable_gov_5.get("closure_review") != READY_REVIEW_STATUS:
         errors.append("CURRENT_STATE Durable state GOV-5 closure review mismatch")
-    if [current_durable.get(f"GOV-{number}", {}).get("status") for number in range(6, 10)] != ["INACTIVE"] * 4:
-        errors.append("CURRENT_STATE Durable state GOV-6 through GOV-9 mismatch")
-    if current_durable.get("kernel") != {"version": "0.2.0-proposed", "status": "PROPOSED_NOT_RATIFIED"}:
+    if current_durable.get("GOV-6", {}).get("status") != "COMPLETED_CLOSED" or [current_durable.get(f"GOV-{number}", {}).get("status") for number in range(7, 10)] != ["INACTIVE"] * 3:
+        errors.append("CURRENT_STATE Durable state GOV-6 closure or later-phase state mismatch")
+    if current_durable.get("kernel") != {
+        "version": "0.2.0",
+        "status": "RATIFIED",
+        "scope": "HugePlanning level 3 under the Kernel scope rules",
+        "ratification_record": "GOV-DECISION-RECORD-002/0.1.0",
+        "enforceability_claimed": False,
+        "implementation_status": "NOT_PERFORMED",
+        "operational": False,
+    }:
         errors.append("CURRENT_STATE Durable state Kernel mismatch")
 
     current_table_expectations = {
-        "Current governance phase": ("GOV-5", "COMPLETED / CLOSED"),
+        "Current governance phase": ("GOV-6", "COMPLETED / CLOSED", "ratified exact Kernel `0.2.0`"),
         "GOV-5 status": ("COMPLETED / CLOSED", "ACCEPTED_BY_PROJECT_OWNER", f"closure review remains `{READY_REVIEW_STATUS}`"),
         "Enforcement Engineering gate": ("CLOSED", "1 of 1"),
-        "Human ratification": ("NOT_STARTED",),
-        "Phase-transition boundary": ("GOV-5 is closed", "GOV-6 remains inactive"),
+        "GOV-6 status": ("COMPLETED / CLOSED", "ratified exact Kernel `0.2.0`"),
+        "Human ratification": ("RATIFIED", "0.2.0"),
+        "Phase-transition boundary": ("GOV-6 is closed", "GOV-7 remains inactive"),
     }
     for row, fragments in current_table_expectations.items():
         value = current_table.get(row, "")
@@ -355,8 +405,8 @@ def validate(root: Path) -> dict:
 
     plan_table_expectations = {
         "GOV-5 Enforcement analysis and derived governance requirements": ("COMPLETED / CLOSED", "KGR-006-R1 accepted by the Project Owner"),
-        "GOV-6 Human ratification": ("PLANNED",),
-        "GOV-7 Minimum executable governance bootstrap": ("PLANNED",),
+        "GOV-6 Human ratification": ("COMPLETED / CLOSED", "ratified exact Kernel `0.2.0`"),
+        "GOV-7 Minimum executable governance bootstrap": ("INACTIVE", "RECOMMENDATION_ONLY"),
         "GOV-8 Honest S0a–S1 adoption and regularization": ("PLANNED",),
         "GOV-9 S2 governed pilot": ("PLANNED",),
     }
@@ -383,6 +433,7 @@ def validate(root: Path) -> dict:
         "KGR-006-R1", "GOV-AUTH-001", "GOV-DECISION-RECORD-001",
         "GOV-VAL-008", "GOV-REVIEW-014", "HP-PROMPT-018",
         "GOV-VAL-009", "GOV-REVIEW-015", "GOV-REVIEW-016", "HP-PROMPT-019", "HP-PROMPT-020",
+        "GOV-DECISION-RECORD-002", "HP-PROMPT-021",
     ):
         if required not in artifacts:
             errors.append(f"artifact registry missing {required}")
@@ -409,6 +460,7 @@ def validate(root: Path) -> dict:
         Path("governance/learning/FAILURE_AND_LESSONS_INDEX.md"),
         Path("governance/prompts/orchestration/HP-PROMPT-019-gov-5-phase-closure-readiness-review-v0.1.0.md"),
         Path("governance/prompts/orchestration/HP-PROMPT-020-accept-kgr-006-r1-and-close-gov-5-v0.1.0.md"),
+        Path("governance/prompts/orchestration/HP-PROMPT-021-ratify-kernel-0-2-0-and-close-gov-6-v0.1.0.md"),
         REVIEW_REL / "gov-5-phase-closure-readiness-implementation-report-v0.1.0.md",
     ], errors)
 

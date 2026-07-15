@@ -2,24 +2,25 @@
 
 | Question | Current answer |
 |---|---|
-| Current governance phase | GOV-5 — `COMPLETED / CLOSED`; KGR-006-R1 accepted by the Project Owner; GOV-6 remains inactive pending a separate constitutional decision |
+| Current governance phase | GOV-6 — `COMPLETED / CLOSED`; the Project Owner ratified exact Kernel `0.2.0` under OD-004 |
 | Last completed governance function | KGR-006-R1 Enforcement Engineer correction — `COMPLETED`, independently evaluated, imported and accepted by the Project Owner |
-| Completed phases | GOV-0 through GOV-5 — `COMPLETED` |
+| Completed phases | GOV-0 through GOV-6 — `COMPLETED` |
 | KGR-004 status | `COMPLETED` — `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE` |
 | KGR-005 status | `COMPLETED`; package and import `VALID`; Controller state `CLOSURE_CONFIRMED` |
 | KGR-005 result | 14 `CONFIRMED_CLOSED`, 1 `ROUTED_CONFIRMED`, 0 reopened, 0 new, 0 regressions |
-| Current proposed Kernel | `0.2.0-proposed` |
-| Kernel status | `PROPOSED_NOT_RATIFIED` |
+| Current Kernel | `0.2.0` |
+| Kernel status | `RATIFIED` — HugePlanning level 3 under the Kernel scope rules; not enforceable, implemented, operational, compliant, or mature |
 | Controller counters | targeted closure `1`; Designer remediation `0` |
 | Controller guards | zero blocking findings; no repeated findings; none exhausted |
-| GOV-5 status | `COMPLETED / CLOSED`; KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`; closure review remains `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION`; GOV-6 has not been activated |
+| GOV-5 status | `COMPLETED / CLOSED`; KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`; closure review remains `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION` |
+| GOV-6 status | `COMPLETED / CLOSED`; OD-004 ratified exact Kernel `0.2.0` |
 | Enforcement Engineering gate | `CLOSED`; GOV-AUTH-001 consumed exactly 1 of 1, with no remaining execution |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
-| Human ratification | `NOT_STARTED` |
-| Owner decisions required | OD-001 satisfied for the evaluation context; OD-002 `CONFIRM_EXACT_SCOPE` and OD-003 `PACKET_SUFFICIENT` resolved; OD-004 through OD-006 unresolved |
+| Human ratification | `RATIFIED` — exact Kernel `0.2.0`, recorded in `GOV-DECISION-RECORD-002/0.1.0` |
+| Owner decisions required | OD-001 satisfied for the evaluation context; OD-002 `CONFIRM_EXACT_SCOPE`, OD-003 `PACKET_SUFFICIENT`, and OD-004 `RATIFY_EXACT_KERNEL_0_2_0` resolved; OD-005 unresolved; OD-006 unresolved trigger-gated |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | OD-004 through OD-006 and later implementation/effect boundaries remain unresolved; the next action is a separate GOV-6 constitutional decision for OD-004 |
-| Phase-transition boundary | GOV-5 is closed after Project Owner acceptance; GOV-6 remains inactive and requires a separate constitutional decision |
+| Known blockers | OD-005 and OD-006, plus later implementation/effect boundaries, remain unresolved; the next action is a separate Project Owner decision for OD-005 before affected GOV-7 work |
+| Phase-transition boundary | GOV-6 is closed after the Project Owner ratified exact Kernel `0.2.0`; GOV-7 remains inactive and is not authorized |
 
 ## KGR-006 execution and independent-evaluation reconciliation
 
@@ -100,12 +101,17 @@ phase_2_4_formal_result_import:
   kernel_substance_changed: false
 
 kernel:
-  version: 0.2.0-proposed
-  status: PROPOSED_NOT_RATIFIED
+  version: 0.2.0
+  status: RATIFIED
+  scope: HugePlanning level 3 under the Kernel scope rules
+  ratification_record: GOV-DECISION-RECORD-002/0.1.0
+  enforceability_claimed: false
+  implementation_status: NOT_PERFORMED
+  operational: false
 
 gates:
   enforcement_engineering: CLOSED
-  human_ratification: NOT_STARTED
+  human_ratification: RATIFIED_0_2_0
 
 KGR-006:
   status: EXECUTED_EVALUATED_CORRECTION_REQUIRED
@@ -165,7 +171,10 @@ GOV-5:
   closure_review: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
   closed: true
 
-GOV-6: {status: INACTIVE}
+GOV-6:
+  status: COMPLETED_CLOSED
+  decision: OD-004
+  ratification_record: GOV-DECISION-RECORD-002/0.1.0
 GOV-7: {status: INACTIVE}
 GOV-8: {status: INACTIVE}
 GOV-9: {status: INACTIVE}
@@ -174,16 +183,19 @@ GOV-9: {status: INACTIVE}
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml
 governance_state:
-  phase: GOV-5_CLOSED
+  phase: GOV-6_CLOSED
   gov_5_status: COMPLETED_CLOSED
   gov_5_closure_review: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
   kgr_006_r1_status: ACCEPTED_BY_PROJECT_OWNER
   authorization_status: CONSUMED_1_OF_1_NONE_REMAINING
   od_002: RESOLVED_CONFIRM_EXACT_SCOPE
   od_003: RESOLVED_PACKET_SUFFICIENT
-  od_004_through_od_006: UNRESOLVED
-  gov_6_through_gov_9: INACTIVE
-  kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED
+  od_004: RESOLVED_RATIFY_EXACT_KERNEL_0_2_0
+  od_005: UNRESOLVED
+  od_006: UNRESOLVED_TRIGGER_GATED
+  gov_6_status: COMPLETED_CLOSED
+  gov_7_through_gov_9: INACTIVE
+  kernel: 0.2.0/RATIFIED
   minimum_gov_7_package: RECOMMENDATION_ONLY
   risk_accepted: false
   enforcement_implementation: NOT_PERFORMED
@@ -191,4 +203,4 @@ governance_state:
 
 ## Authority boundary
 
-KGR-006-R1 execution, controlled import and independent evaluation establish validated correction evidence and consume GOV-AUTH-001. The Project Owner then accepted the bounded KGR-006-R1 result and closed GOV-5 as recorded in `GOV-DECISION-RECORD-001/0.2.0`. This does not resolve OD-004 through OD-006, ratify or adopt the Kernel, establish enforceability, implement or operate governance, accept risk, activate GOV-6 through GOV-9, or authorize runtime integration.
+KGR-006-R1 execution, controlled import and independent evaluation establish validated correction evidence and consume GOV-AUTH-001. The Project Owner accepted the bounded KGR-006-R1 result and closed GOV-5 as recorded in `GOV-DECISION-RECORD-001/0.2.0`. The Project Owner then ratified exact Kernel `0.2.0` and closed GOV-6 as recorded in `GOV-DECISION-RECORD-002/0.1.0`. This does not resolve OD-005 or OD-006, accept residual risk, establish enforceability, implement or operate governance, activate or authorize GOV-7 through GOV-9, or authorize runtime integration.

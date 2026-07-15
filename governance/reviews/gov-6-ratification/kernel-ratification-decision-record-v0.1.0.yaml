@@ -1,0 +1,49 @@
+kernel_ratification_decision_record:
+  schema_version: 0.1.0
+  document_id: GOV-DECISION-RECORD-002
+  version: 0.1.0
+  date: '2026-07-15'
+  owner_role: Project Owner
+  status: RATIFIED_EXACT_KERNEL_0_2_0_GOV_6_CLOSED
+  decision:
+    id: OD-004
+    selection: RATIFY_EXACT_KERNEL_0_2_0
+    status: RESOLVED_RATIFY_EXACT_KERNEL_0_2_0
+  ratified_kernel:
+    version: 0.2.0
+    source_candidate_version: 0.2.0-proposed
+    scope: HugePlanning level 3 under the Kernel scope rules
+    source_artifacts:
+      - governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md
+      - governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml
+  evidence_basis:
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/06-closure-result.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.2.0.yaml
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml
+  ratification_conditions:
+    residual_risk_accepted: false
+    enforceability_claimed: false
+    implementation_status: NOT_PERFORMED
+    gov_7_authorized: false
+    provider_or_real_data_authorized: false
+  limitations:
+    - Ratification does not accept residual risk.
+    - Ratification does not claim enforceability, implementation, operation, compliance, or maturity.
+    - GOV-7 remains inactive and its minimum package remains RECOMMENDATION_ONLY.
+    - OD-005 remains unresolved before affected GOV-7 work.
+    - OD-006 remains UNRESOLVED_TRIGGER_GATED before any relevant provider, data, pilot, or real-world boundary.
+  supersession_effect:
+    - Kernel 0.2.0 supersedes 0.2.0-proposed as the current constitutional Kernel for the stated scope.
+    - The proposed source artifacts and completed run evidence remain immutable historical evidence.
+  resulting_state:
+    OD-004: RESOLVED_RATIFY_EXACT_KERNEL_0_2_0
+    kernel: 0.2.0/RATIFIED
+    GOV-6: COMPLETED_CLOSED
+    GOV-7: INACTIVE
+    OD-005: UNRESOLVED
+    OD-006: UNRESOLVED_TRIGGER_GATED
+    residual-risk-accepted: false
+    enforcement-implementation: NOT_PERFORMED
+    minimum-GOV-7-package: RECOMMENDATION_ONLY
+  constitutional_authority: PROJECT_OWNER_RATIFICATION

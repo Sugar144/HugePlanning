@@ -278,3 +278,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: GOV-5 is completed and closed. GOV-6 remains inactive; OD-004 through OD-006 remain unresolved; the minimum GOV-7 package remains recommendation-only; residual risk remains unaccepted; enforcement implementation remains not performed.
 - Authority boundary: This does not execute or activate GOV-6, resolve OD-004 through OD-006, ratify the Kernel, accept residual risk, accept or implement GOV-7, modify product/runtime files, open a pull request, merge, release, or deploy.
 - Supersedes: none
+
+## GOV-DEC-025 — OD-004 exact Kernel ratification and GOV-6 closure
+
+- Date: 2026-07-15
+- Status: RATIFIED_EXACT_KERNEL_0_2_0_GOV_6_CLOSED
+- Statement: Resolve `OD-004` as `RATIFY_EXACT_KERNEL_0_2_0`, ratifying HugePlanning Kernel `0.2.0` for HugePlanning level 3 under the Kernel scope rules, and close GOV-6.
+- Rationale: `NOT_PROVIDED` by the Project Owner.
+- Source: Project Owner instruction `HP-PROMPT-021/0.1.0` and `GOV-DECISION-RECORD-002/0.1.0`.
+- Consequences: Kernel `0.2.0` is `RATIFIED`; GOV-6 is `COMPLETED_CLOSED`; GOV-7 remains inactive; OD-005 remains `UNRESOLVED`; OD-006 remains `UNRESOLVED_TRIGGER_GATED`; no residual risk is accepted; enforcement implementation remains `NOT_PERFORMED`; and the minimum GOV-7 package remains `RECOMMENDATION_ONLY`.
+- Authority boundary: This does not authorize or execute GOV-7, resolve OD-005 or OD-006, accept residual risk, claim enforceability, implementation, operation, compliance, or maturity, modify product or runtime files, open a pull request, merge, release, or deploy.
+- Supersedes: Kernel `0.2.0-proposed` only as the current constitutional Kernel; the proposed source artifacts and completed evidence remain immutable historical records.

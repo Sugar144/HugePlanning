@@ -1,6 +1,6 @@
 registry:
-  version: '0.14'
-  generated_for: GOV_5_PHASE_CLOSURE_READINESS_REVIEW
+  version: '0.15'
+  generated_for: GOV_6_RATIFICATION
   base_commit: 950a4fe382a37bc6bd5cb0fc431c558406cb393c
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
@@ -2429,3 +2429,35 @@ artifacts:
     supersedes: null
     aliases: [GOV-DEC-023, GOV-DEC-024]
     notes: [Preserves the exact bounded Project Owner acceptance and GOV-5 closure instruction; prohibits GOV-6 execution, Kernel ratification, risk acceptance, GOV-7 work, runtime changes and PR creation.]
+
+  - id: GOV-DECISION-RECORD-002
+    title: GOV-6 Kernel Ratification Decision Record
+    version: 0.1.0
+    status: RATIFIED_EXACT_KERNEL_0_2_0_GOV_6_CLOSED
+    authority: exact_project_owner_kernel_ratification_with_no_enforceability_or_implementation_claim
+    path: governance/reviews/gov-6-ratification/kernel-ratification-decision-record-v0.1.0.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-021-ratify-kernel-0-2-0-and-close-gov-6-v0.1.0.md
+    source_sha256: null
+    produced_by: PROJECT_OWNER
+    artifact_type: kernel_ratification_decision_record
+    language: English
+    canonicality: exact_owner_ratification_custody
+    supersedes: null
+    aliases: [GOV-DEC-025, OD-004]
+    notes: [Ratifies exact Kernel 0.2.0 for HugePlanning level 3 under the Kernel scope rules; closes GOV-6; leaves GOV-7 inactive, residual risk unaccepted, enforcement unimplemented, OD-005 unresolved and OD-006 unresolved trigger-gated.]
+
+  - id: HP-PROMPT-021
+    title: Ratify Kernel 0.2.0 and Close GOV-6 Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_owner_ratification_gov_6_closure_validation_commit_and_push_authority
+    path: governance/prompts/orchestration/HP-PROMPT-021-ratify-kernel-0-2-0-and-close-gov-6-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: [GOV-DEC-025]
+    notes: [Preserves the exact bounded Project Owner ratification and GOV-6 closure instruction; prohibits GOV-7 work, OD-005/OD-006 resolution, risk acceptance, enforceability, implementation, operation, runtime changes and PR creation.]

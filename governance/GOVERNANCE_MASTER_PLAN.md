@@ -11,9 +11,9 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 | GOV-2 Kernel design | `COMPLETED` — imported/reconstructed |
 | GOV-3 Independent adversarial review | `COMPLETED` — `DESIGNER_REVISION_REQUIRED` |
 | GOV-4 Designer revision and adversarial closure | `COMPLETED` — KGR-005 imported with `CLOSURE_CONFIRMED` and one validated Controller transition |
-| GOV-5 Enforcement analysis and derived governance requirements | `COMPLETED / CLOSED` — KGR-006-R1 accepted by the Project Owner; closure review evidence retained; OD-004 through OD-006 remain unresolved and GOV-6 remains inactive |
-| GOV-6 Human ratification | `PLANNED` |
-| GOV-7 Minimum executable governance bootstrap | `PLANNED` |
+| GOV-5 Enforcement analysis and derived governance requirements | `COMPLETED / CLOSED` — KGR-006-R1 accepted by the Project Owner; closure review evidence retained |
+| GOV-6 Human ratification | `COMPLETED / CLOSED` — Project Owner ratified exact Kernel `0.2.0` under OD-004; no enforceability or implementation claim |
+| GOV-7 Minimum executable governance bootstrap | `INACTIVE` — minimum package remains `RECOMMENDATION_ONLY`; OD-005 remains unresolved |
 | GOV-8 Honest S0a–S1 adoption and regularization | `PLANNED` |
 | GOV-9 S2 governed pilot | `PLANNED` |
 | GOV-10 Continuous governance evolution | `PLANNED` |
@@ -21,16 +21,19 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml
 governance_state:
-  phase: GOV-5_CLOSED
+  phase: GOV-6_CLOSED
   gov_5_status: COMPLETED_CLOSED
   gov_5_closure_review: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
   kgr_006_r1_status: ACCEPTED_BY_PROJECT_OWNER
   authorization_status: CONSUMED_1_OF_1_NONE_REMAINING
   od_002: RESOLVED_CONFIRM_EXACT_SCOPE
   od_003: RESOLVED_PACKET_SUFFICIENT
-  od_004_through_od_006: UNRESOLVED
-  gov_6_through_gov_9: INACTIVE
-  kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED
+  od_004: RESOLVED_RATIFY_EXACT_KERNEL_0_2_0
+  od_005: UNRESOLVED
+  od_006: UNRESOLVED_TRIGGER_GATED
+  gov_6_status: COMPLETED_CLOSED
+  gov_7_through_gov_9: INACTIVE
+  kernel: 0.2.0/RATIFIED
   minimum_gov_7_package: RECOMMENDATION_ONLY
   risk_accepted: false
   enforcement_implementation: NOT_PERFORMED
@@ -105,7 +108,7 @@ governance_state:
 - Role/owner: Enforcement Engineer with relevant evaluators/specialists; human owner retains risk authority.
 - Entry conditions: GOV-4 closure permits enforcement analysis.
 - Completion gate: every proposed clause has an honest feasibility/coverage assessment and unresolved owner decisions are explicit.
-- Current status: `COMPLETED / CLOSED`. KGR-006 executed externally under a retrospectively attested Project Owner authorization, produced seven imported immutable outputs, and received independent result `RETURN_FOR_VERSIONED_CORRECTION`. KGR-006-R1 then consumed `GOV-AUTH-001` exactly once, produced seven corrected outputs imported byte-identically, and received a separately controlled three-artifact evaluation with result `SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE` and OD-003 as `PACKET_SUFFICIENT` for the current context. OD-004 through OD-006 remain unresolved. The executed closure review returned `READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION`; the Project Owner accepted KGR-006-R1 and closed GOV-5. GOV-6 remains inactive pending a separate constitutional decision.
+- Current status: `COMPLETED / CLOSED`. KGR-006 executed externally under a retrospectively attested Project Owner authorization, produced seven imported immutable outputs, and received independent result `RETURN_FOR_VERSIONED_CORRECTION`. KGR-006-R1 then consumed `GOV-AUTH-001` exactly once, produced seven corrected outputs imported byte-identically, and received a separately controlled three-artifact evaluation with result `SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, and OD-004 as `RATIFY_EXACT_KERNEL_0_2_0`; OD-005 remains unresolved and OD-006 remains unresolved trigger-gated. The executed closure review returned `READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION`; the Project Owner accepted KGR-006-R1 and closed GOV-5. GOV-6 is completed and closed by the separate ratification decision.
 - Dependencies: GOV-4.
 - Explicit non-goals: claiming enforceability, implementing every control, or silently changing constitutional meaning.
 
@@ -117,7 +120,7 @@ governance_state:
 - Role/owner: competent Human Ratification Owner.
 - Entry conditions: GOV-5 complete and decision package understandable.
 - Completion gate: explicit human decision with scope, version, date, rationale, limitations, and supersession effect.
-- Current status: `PLANNED`; ratification is `NOT_STARTED`.
+- Current status: `COMPLETED / CLOSED`; the Project Owner ratified exact Kernel `0.2.0` on 2026-07-15 under `GOV-DECISION-RECORD-002/0.1.0`. The ratification does not accept residual risk or claim enforceability, implementation, operation, compliance, or maturity.
 - Dependencies: GOV-4 and GOV-5.
 - Explicit non-goals: agent self-ratification, implied approval, or declaring enforceability/operation.
 
@@ -129,7 +132,7 @@ governance_state:
 - Role/owner: authorized governance implementation roles and repository owner.
 - Entry conditions: ratified Kernel and explicit write paths/task contract.
 - Completion gate: minimum controls pass deterministic and appropriate independent validation; enforceability claims remain claim-specific.
-- Current status: `PLANNED`.
+- Current status: `INACTIVE`; the minimum package remains `RECOMMENDATION_ONLY`, and OD-005 remains unresolved before affected GOV-7 work.
 - Dependencies: GOV-6.
 - Explicit non-goals: a complete future governance platform, unauthorized runtime edits, or operational/maturity claims.
 

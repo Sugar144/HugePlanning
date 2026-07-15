@@ -14,21 +14,24 @@ Start with:
 
 Raw sources show what was received. Run directories reconstruct what a function used and produced. Canonical candidates provide stable review paths without increasing authority. A prompt is an execution contract, not proof that execution occurred. A proposed artifact is not ratified merely because it is complete or reviewable.
 
-The current Kernel is `0.2.0-proposed / PROPOSED_NOT_RATIFIED`. GOV-0 through GOV-5 are complete; KGR-005 completed with `CLOSURE_CONFIRMED`, and KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, and OD-004 through OD-006 remain unresolved. GOV-6 through GOV-9 are inactive. The minimum GOV-7 package remains `RECOMMENDATION_ONLY`; no risk is accepted and no enforcement implementation has occurred.
+The current Kernel is `0.2.0 / RATIFIED` for HugePlanning level 3 under the Kernel scope rules. GOV-0 through GOV-6 are complete; KGR-005 completed with `CLOSURE_CONFIRMED`, and KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, and OD-004 as `RATIFY_EXACT_KERNEL_0_2_0`; OD-005 remains unresolved and OD-006 remains unresolved trigger-gated. GOV-7 through GOV-9 are inactive. The minimum GOV-7 package remains `RECOMMENDATION_ONLY`; no risk is accepted and no enforcement implementation has occurred.
 
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml
 governance_state:
-  phase: GOV-5_CLOSED
+  phase: GOV-6_CLOSED
   gov_5_status: COMPLETED_CLOSED
   gov_5_closure_review: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
   kgr_006_r1_status: ACCEPTED_BY_PROJECT_OWNER
   authorization_status: CONSUMED_1_OF_1_NONE_REMAINING
   od_002: RESOLVED_CONFIRM_EXACT_SCOPE
   od_003: RESOLVED_PACKET_SUFFICIENT
-  od_004_through_od_006: UNRESOLVED
-  gov_6_through_gov_9: INACTIVE
-  kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED
+  od_004: RESOLVED_RATIFY_EXACT_KERNEL_0_2_0
+  od_005: UNRESOLVED
+  od_006: UNRESOLVED_TRIGGER_GATED
+  gov_6_status: COMPLETED_CLOSED
+  gov_7_through_gov_9: INACTIVE
+  kernel: 0.2.0/RATIFIED
   minimum_gov_7_package: RECOMMENDATION_ONLY
   risk_accepted: false
   enforcement_implementation: NOT_PERFORMED
