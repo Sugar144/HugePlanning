@@ -5,12 +5,15 @@ run:
   role: Enforcement Engineer
   mode: MINIMUM_ENFORCEMENT_ANALYSIS
   phase: GOV-5
-  status: PREPARED_NOT_EXECUTED
+  status: AUTHORIZED_NOT_EXECUTED
   preparation_status: VALIDATED
-  readiness: READY_FOR_SEPARATE_EXECUTION_AUTHORIZATION
+  readiness: READY_FOR_ONE_AUTHORIZED_EXECUTION
 execution:
-  authorized: false
+  authorized: true
   authorization_record: governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
+  authorization_prompt: HP-PROMPT-016/0.1.0
+  execution_count_limit: 1
+  execution_count_consumed: 0
   repository_authorization_gate_required: true
   started: false
   completed: false
@@ -18,6 +21,7 @@ execution:
 correction:
   identity_convention: <BASE_RUN_ID>-R<N>
   owner_authorization: HP-PROMPT-015/0.1.0
+  execution_authorization: HP-PROMPT-016/0.1.0
   base_formal_input_package:
     path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/input/HugePlanning-KGR-006-formal-input-package.zip
     sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
@@ -32,7 +36,7 @@ correction:
 inputs:
   envelope_id: GOV-INPUT-004
   envelope_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/input-envelope.yaml
-  formal_package_path: /tmp/HugePlanning-KGR-006-R1-formal-input-package.zip
+  formal_package_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/input/HugePlanning-KGR-006-R1-formal-input-package.zip
   formal_package_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
   member_count: 14
   artifact_count: 13

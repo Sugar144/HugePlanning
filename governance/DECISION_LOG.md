@@ -212,3 +212,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: Every correction binds the base input/output packages, evaluation result and correction findings, and explicit Owner authorization; it receives deterministic validation and a new independent evaluation. KGR-006-R1 is prepared under `GOV-PROTOCOL-004/0.2.0` with no execution authorization or outputs.
 - Authority boundary: This decision does not execute KGR-006-R1, modify KGR-006 or its evaluation, validate or accept a corrected result, resolve OD-002 through OD-006, implement GOV-7, perform GOV-8, change Kernel meaning or Controller/product semantics, accept risk, ratify, activate GOV-6 through GOV-9, push, open a pull request, merge, or release.
 - Supersedes: none
+
+## GOV-DEC-019 — One bounded KGR-006-R1 formal execution authorization
+
+- Date: 2026-07-15
+- Status: ACTIVE_NOT_CONSUMED
+- Statement: Authorize exactly one future `KGR-006-R1` Enforcement Engineer execution in mode `MINIMUM_ENFORCEMENT_ANALYSIS` using stable input package SHA-256 `ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8`.
+- Correction purpose: Versioned correction of the evaluated KGR-006 outputs.
+- Source: Exact contemporaneous Project Owner instruction `HP-PROMPT-016/0.1.0` and structured record `GOV-AUTH-001`.
+- Consequences: The repository-side authorization gate is open for one execution, with execution count consumed 0. The execution remains limited to the prepared correction contract and requires a new independent evaluation afterward.
+- Authority boundary: This decision does not execute KGR-006-R1, create corrected outputs, modify the prepared contract or historical evidence, invoke the evaluator, implement controls or later phases, change Kernel meaning, accept risk, ratify, open a pull request, merge, release, or deploy.
+- Supersedes: none

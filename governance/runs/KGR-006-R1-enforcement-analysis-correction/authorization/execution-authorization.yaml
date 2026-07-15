@@ -1,0 +1,52 @@
+execution_authorization:
+  schema_version: 0.1.0
+  id: GOV-AUTH-001
+  status: AUTHORIZED_NOT_EXECUTED
+  evidence_class: CONTEMPORANEOUS_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+  project_owner_prompt_id: HP-PROMPT-016/0.1.0
+  run: KGR-006-R1
+  base_run: KGR-006
+  role: Enforcement Engineer
+  mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  correction_purpose: Versioned correction of the evaluated KGR-006 outputs.
+  protocol: GOV-PROTOCOL-004/0.2.0
+  formal_input_package_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/input/HugePlanning-KGR-006-R1-formal-input-package.zip
+  formal_input_package_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
+  execution_count_limit: 1
+  execution_count_consumed: 0
+  authorized: true
+  required_output_filenames:
+    - 00-enforcement-analysis-basis.md
+    - 01-clause-implication-matrix.yaml
+    - 02-existing-capability-inventory.md
+    - 03-feasibility-coverage-and-gap-assessment.md
+    - 04-owner-decisions-and-residual-risks.md
+    - 05-minimum-executable-package-recommendation.md
+    - 06-ratification-decision-handoff.md
+  required_correction_boundaries:
+    canonical_route_count: 20
+    explicitly_preserved_evaluated_anchor_count: 15
+    canonical_specialist_dependency_count: 4
+    er_012_boundary_count: 1
+    llr_020_later_phase_destination: GOV-8
+    owner_decision_count: 6
+    minimum_gov_7_package: RECOMMENDATION_ONLY
+    new_independent_evaluation_required: true
+  prohibited_actions:
+    - REPOSITORY_MODIFICATION_BY_FORMAL_EXECUTOR
+    - ORIGINAL_KGR_006_OR_EVALUATION_ARTIFACT_MODIFICATION
+    - SCOPE_EXPANSION_BEYOND_PREPARED_CORRECTION_CONTRACT
+    - POLICY_STANDARD_PROCEDURE_CONTROL_OR_GOV_7_GOV_8_GOV_9_IMPLEMENTATION
+    - KERNEL_MODIFICATION
+    - RISK_ACCEPTANCE
+    - RATIFICATION
+    - PULL_REQUEST_CREATION
+    - MERGE
+    - RELEASE
+    - DEPLOYMENT
+  execution_state:
+    started: false
+    completed: false
+    outputs_created: false
+    independent_evaluation_invoked: false
+  authority_limit: ONE_BOUNDED_FORMAL_EXECUTION_ONLY_NOT_ACCEPTANCE_RATIFICATION_IMPLEMENTATION_OR_OPERATION

@@ -84,14 +84,19 @@ def test_formal_input_package_is_deterministic_and_preparation_valid(tmp_path):
     assert result["member_count"] == 14
 
 
-def test_repository_execution_authorization_gate_is_closed():
-    package = Path("/tmp/HugePlanning-KGR-006-R1-formal-input-package.zip")
+def test_repository_execution_authorization_gate_is_open_for_exactly_one_execution():
+    package = Path("/home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/input/HugePlanning-KGR-006-R1-formal-input-package.zip")
     result = validate_authorization(ROOT, package)
     assert result == {
-        "result": "INVALID",
-        "diagnostics": ["repository-side execution authorization record is absent"],
+        "result": "VALID",
+        "diagnostics": [],
         "run": "KGR-006-R1",
-        "gate": "EXECUTION_AUTHORIZATION",
+        "role": "Enforcement Engineer",
+        "mode": "MINIMUM_ENFORCEMENT_ANALYSIS",
+        "correction_purpose": "Versioned correction of the evaluated KGR-006 outputs.",
+        "execution_count_limit": 1,
+        "execution_count_consumed": 0,
+        "gate": "OPEN_FOR_EXACTLY_ONE_EXECUTION",
     }
 
 

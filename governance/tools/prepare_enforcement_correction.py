@@ -204,8 +204,13 @@ def validate_preparation(root: Path, package: Path) -> dict:
         errors.append("correction identity does not follow BASE_RUN_ID-RN")
     if manifest["run"].get("base_run") != BASE_RUN or manifest["run"].get("correction_index") != 1:
         errors.append("correction identity/base binding mismatch")
-    if manifest["execution"].get("authorized") is not False or manifest["execution"].get("started") is not False:
-        errors.append("prepared correction must remain unauthorized and not started")
+    authorized = manifest["execution"].get("authorized")
+    if authorized not in (False, True) or manifest["execution"].get("started") is not False:
+        errors.append("correction execution state is invalid")
+    if authorized is True:
+        authorization = validate_authorization(root, package)
+        if authorization["result"] != "VALID":
+            errors.extend(f"authorization: {item}" for item in authorization["diagnostics"])
     prompt = run_root / "prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md"
     canonical = root / "governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md"
     if prompt.read_bytes() != canonical.read_bytes():
@@ -255,8 +260,8 @@ def validate_preparation(root: Path, package: Path) -> dict:
         "diagnostics": errors,
         "run": RUN,
         "execution_status": "NOT_STARTED",
-        "authorization_status": "NOT_AUTHORIZED",
-        "readiness": "READY_FOR_SEPARATE_EXECUTION_AUTHORIZATION" if not errors else "NOT_READY",
+        "authorization_status": "AUTHORIZED_FOR_EXACTLY_ONE_EXECUTION" if authorized is True else "NOT_AUTHORIZED",
+        "readiness": ("READY_FOR_ONE_AUTHORIZED_EXECUTION" if authorized is True else "READY_FOR_SEPARATE_EXECUTION_AUTHORIZATION") if not errors else "NOT_READY",
         "package_sha256": sha(package.read_bytes()) if package.exists() else None,
         "member_count": len(envelope["formal_inputs"]["artifacts"]) + 1,
     }
@@ -270,20 +275,53 @@ def validate_authorization(root: Path, package: Path) -> dict:
     else:
         doc = load(path).get("execution_authorization", {})
         expected = {
+            "id": "GOV-AUTH-001",
+            "status": "AUTHORIZED_NOT_EXECUTED",
+            "evidence_class": "CONTEMPORANEOUS_PROJECT_OWNER_EXECUTION_AUTHORIZATION",
+            "project_owner_prompt_id": "HP-PROMPT-016/0.1.0",
             "run": RUN,
+            "base_run": BASE_RUN,
             "role": "Enforcement Engineer",
             "mode": "MINIMUM_ENFORCEMENT_ANALYSIS",
+            "correction_purpose": "Versioned correction of the evaluated KGR-006 outputs.",
             "protocol": "GOV-PROTOCOL-004/0.2.0",
+            "formal_input_package_path": "/home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/input/HugePlanning-KGR-006-R1-formal-input-package.zip",
             "formal_input_package_sha256": sha(package.read_bytes()),
-            "execution_count": 1,
+            "execution_count_limit": 1,
+            "execution_count_consumed": 0,
             "authorized": True,
         }
         for key, value in expected.items():
             if doc.get(key) != value:
                 errors.append(f"execution authorization mismatch: {key}")
-        if not doc.get("project_owner_prompt_id"):
-            errors.append("execution authorization lacks Project Owner prompt custody")
-    return {"result": "VALID" if not errors else "INVALID", "diagnostics": errors, "run": RUN, "gate": "EXECUTION_AUTHORIZATION"}
+        if doc.get("required_output_filenames") != OUTPUTS:
+            errors.append("execution authorization output inventory mismatch")
+        expected_boundaries = {
+            "canonical_route_count": 20,
+            "explicitly_preserved_evaluated_anchor_count": 15,
+            "canonical_specialist_dependency_count": 4,
+            "er_012_boundary_count": 1,
+            "llr_020_later_phase_destination": "GOV-8",
+            "owner_decision_count": 6,
+            "minimum_gov_7_package": "RECOMMENDATION_ONLY",
+            "new_independent_evaluation_required": True,
+        }
+        if doc.get("required_correction_boundaries") != expected_boundaries:
+            errors.append("execution authorization correction boundaries mismatch")
+        state = doc.get("execution_state", {})
+        if state != {"started": False, "completed": False, "outputs_created": False, "independent_evaluation_invoked": False}:
+            errors.append("execution authorization state must remain not started")
+    return {
+        "result": "VALID" if not errors else "INVALID",
+        "diagnostics": errors,
+        "run": RUN,
+        "role": "Enforcement Engineer",
+        "mode": "MINIMUM_ENFORCEMENT_ANALYSIS",
+        "correction_purpose": "Versioned correction of the evaluated KGR-006 outputs.",
+        "execution_count_limit": 1,
+        "execution_count_consumed": 0,
+        "gate": "OPEN_FOR_EXACTLY_ONE_EXECUTION" if not errors else "EXECUTION_AUTHORIZATION",
+    }
 
 
 def validate_output(root: Path, output_dir: Path) -> dict:

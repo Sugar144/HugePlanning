@@ -2,7 +2,7 @@
 
 | Question | Current answer |
 |---|---|
-| Current governance phase | GOV-5 — `IN_PROGRESS`; KGR-006-R1 correction contract prepared, not executed |
+| Current governance phase | GOV-5 — `IN_PROGRESS`; KGR-006-R1 authorized once, not executed |
 | Last completed governance function | KGR-005 Kernel Adversary targeted closure — `COMPLETED / CLOSURE_CONFIRMED` |
 | Completed phases | GOV-0 through GOV-4 — `COMPLETED` |
 | KGR-004 status | `COMPLETED` — `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE` |
@@ -13,13 +13,13 @@
 | Controller counters | targeted closure `1`; Designer remediation `0` |
 | Controller guards | zero blocking findings; no repeated findings; none exhausted |
 | GOV-5 status | `IN_PROGRESS`; KGR-006 executed externally, independent evaluation returned `RETURN_FOR_VERSIONED_CORRECTION` |
-| Enforcement Engineering gate | `CLOSED_TO_FURTHER_EXECUTION_PENDING_VERSIONED_CORRECTION`; KGR-006-R1 authorization subgate closed |
+| Enforcement Engineering gate | `CLOSED_TO_FURTHER_EXECUTION_PENDING_VERSIONED_CORRECTION`; KGR-006-R1 subgate open for exactly one authorized execution |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
 | Human ratification | `NOT_STARTED` |
-| Owner decisions required | OD-002 through OD-006 remain unresolved; KGR-006-R1 execution is not authorized |
+| Owner decisions required | OD-002 through OD-006 remain unresolved; one KGR-006-R1 execution is authorized but not started |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | KGR-006-R1 has no repository-custodied execution authorization; corrected outputs and a new independent evaluation do not exist |
-| Exact next action | Project Owner separately authorizes exactly one KGR-006-R1 execution against package SHA-256 `ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8`, or leaves the gate closed |
+| Known blockers | Corrected KGR-006-R1 outputs and the required new independent evaluation do not exist |
+| Exact next action | Transfer the exact authorized prompt and stable package to one external Enforcement Engineer execution; do not execute from this repository-custody session |
 
 ## KGR-006 execution and independent-evaluation reconciliation
 
@@ -43,9 +43,10 @@ Its correction scope is limited to explicit preservation of 15 omitted
 applicable canonical anchors, four canonical specialist dependencies, one
 ER-012 boundary, and necessary parity updates. All 20 routes, LLR-020's GOV-8
 deferral, six Owner decisions, and the recommendation-only GOV-7 package remain
-bound. The repository-side execution-authorization gate is deliberately
-closed, formal outputs are absent, and a new independent evaluation is
-required outside the corrected Engineer's unilateral control.
+bound. `GOV-AUTH-001`, supported by `HP-PROMPT-016/0.1.0`, opens the
+repository-side gate for exactly one execution with count consumed 0. Formal
+outputs remain absent, and a new independent evaluation is required outside
+the corrected Engineer's unilateral control after execution.
 
 ## Phase 2.4 formal result import and Controller transition
 
@@ -117,12 +118,15 @@ KGR-006:
   required_output_count: 7
 
 KGR-006-R1:
-  status: PREPARED_NOT_EXECUTED
+  status: AUTHORIZED_NOT_EXECUTED
   base_run: KGR-006
   preparation_validation: VALID
   formal_input_package_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
   formal_input_member_count: 14
-  execution_authorization: ABSENT
+  execution_authorization: GOV-AUTH-001
+  execution_authorization_prompt: HP-PROMPT-016/0.1.0
+  execution_count_limit: 1
+  execution_count_consumed: 0
   execution_status: NOT_STARTED
   corrected_outputs: ABSENT
   independent_evaluation: NOT_STARTED
@@ -135,7 +139,7 @@ KGR-006-R1:
 GOV-5:
   status: IN_PROGRESS
   correction_required: KGR-006-R1
-  correction_contract: PREPARED_NOT_EXECUTED
+  correction_contract: AUTHORIZED_NOT_EXECUTED
 
 GOV-6: {status: INACTIVE}
 GOV-7: {status: INACTIVE}
@@ -145,4 +149,4 @@ GOV-9: {status: INACTIVE}
 
 ## Authority boundary
 
-KGR-006 evidence import and KGR-006-R1 preparation establish only historical custody and a future correction contract. They do not validate or accept KGR-006, execute or validate KGR-006-R1 outputs, complete GOV-5, ratify or adopt the Kernel, establish enforceability, implement or operate governance, accept risk, activate GOV-6 through GOV-9, or authorize runtime integration.
+KGR-006 evidence import and KGR-006-R1 authorization establish only historical custody and authority for one bounded future correction execution. They do not validate or accept KGR-006, execute or validate KGR-006-R1 outputs, complete GOV-5, ratify or adopt the Kernel, establish enforceability, implement or operate governance, accept risk, activate GOV-6 through GOV-9, or authorize runtime integration.

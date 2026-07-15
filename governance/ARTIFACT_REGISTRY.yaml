@@ -1,7 +1,7 @@
 registry:
-  version: '0.10'
-  generated_for: KGR_006_R1_CONTRACT_PREPARATION
-  base_commit: f4d16304a0560813191d1a7a32a726be6db380e5
+  version: '0.11'
+  generated_for: KGR_006_R1_EXECUTION_AUTHORIZATION
+  base_commit: 866867b1dc415f7faa3d803f26b8532a9f3326d1
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -2003,8 +2003,8 @@ artifacts:
   - id: KGR-006-R1
     title: KGR-006 First Versioned Correction Run Manifest
     version: 0.1.0
-    status: PREPARED_NOT_EXECUTED
-    authority: correction_contract_preparation_not_execution_acceptance_or_ratification
+    status: AUTHORIZED_NOT_EXECUTED
+    authority: one_bounded_correction_execution_authorized_not_executed_accepted_or_ratified
     path: governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
     source_path: null
     source_sha256: null
@@ -2016,14 +2016,15 @@ artifacts:
     aliases: []
     notes:
       - Applies the prospective BASE_RUN_ID-RN convention without replacing KGR-006 or consuming another KGR identity.
-      - Execution authorization and corrected outputs are absent; GOV-5 remains in progress and GOV-6 through GOV-9 remain inactive.
+      - GOV-AUTH-001 authorizes exactly one execution; count consumed is 0 and corrected outputs remain absent.
+      - GOV-5 remains in progress and GOV-6 through GOV-9 remain inactive.
       - Requires deterministic completed-output validation and a new independent evaluation outside the corrected source role's unilateral control.
 
   - id: GOV-PROMPT-009
     title: KGR-006-R1 Enforcement Engineer Correction Prompt Snapshot
     version: 0.1.0
-    status: PREPARED_NOT_EXECUTED
-    authority: exact_correction_run_contract_not_execution_acceptance_or_ratification
+    status: AUTHORIZED_NOT_EXECUTED
+    authority: exact_correction_run_contract_bound_by_separate_one_execution_authorization_not_acceptance_or_ratification
     path: governance/runs/KGR-006-R1-enforcement-analysis-correction/prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
     source_path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
     source_sha256: null
@@ -2033,15 +2034,15 @@ artifacts:
     canonicality: exact_run_snapshot
     supersedes: null
     aliases: []
-    notes: [Execution requires a later repository-custodied Project Owner authorization that passes the deterministic gate.]
+    notes: [GOV-AUTH-001 now binds this exact prompt for one not-yet-consumed execution.]
 
   - id: GOV-INPUT-004
     title: KGR-006-R1 Formal Correction Input Envelope
     version: 0.2.0
-    status: VALIDATED_PREPARED_NOT_EXECUTED
+    status: VALIDATED_AUTHORIZED_NOT_EXECUTED
     authority: correction_input_custody_not_execution_acceptance_or_ratification
     path: governance/runs/KGR-006-R1-enforcement-analysis-correction/input-envelope.yaml
-    source_path: /tmp/HugePlanning-KGR-006-R1-formal-input-package.zip
+    source_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/input/HugePlanning-KGR-006-R1-formal-input-package.zip
     source_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
     produced_by: KGR_006_R1_CONTRACT_PREPARATION
     artifact_type: formal_input_envelope
@@ -2101,3 +2102,55 @@ artifacts:
     aliases:
       - governance/reviews/kgr-006-r1-contract-preparation/review-bundle-profile-v0.1.0.yaml
     notes: [Records the prospective identity, bounded contract, deterministic validation, closed execution gate, and exact next action.]
+
+  - id: HP-PROMPT-016
+    title: KGR-006-R1 One-Execution Authorization Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: exact_project_owner_one_execution_authorization_and_custody_publication_scope
+    path: governance/prompts/orchestration/HP-PROMPT-016-kgr-006-r1-execution-authorization-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: []
+    notes:
+      - Withdraws the prior conflicting requested mode and binds the exact prepared MINIMUM_ENFORCEMENT_ANALYSIS mode.
+      - Authorizes one future KGR-006-R1 execution and this custody commit/push; it does not execute the run.
+
+  - id: GOV-AUTH-001
+    title: KGR-006-R1 Formal Execution Authorization
+    version: 0.1.0
+    status: AUTHORIZED_NOT_EXECUTED
+    authority: one_exact_project_owner_formal_execution_authorization_not_acceptance_or_ratification
+    path: governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-016-kgr-006-r1-execution-authorization-v0.1.0.md
+    source_sha256: null
+    produced_by: PROJECT_OWNER
+    artifact_type: formal_execution_authorization
+    language: English
+    canonicality: exact_run_execution_authority
+    supersedes: null
+    aliases: []
+    notes:
+      - Binds KGR-006-R1, Enforcement Engineer, MINIMUM_ENFORCEMENT_ANALYSIS, GOV-PROTOCOL-004/0.2.0, exact package hash, and execution_count_limit 1.
+      - Execution count consumed is 0; no output or independent evaluation exists.
+
+  - id: GOV-VAL-006
+    title: KGR-006-R1 Execution Authorization Validation
+    version: 0.1.0
+    status: VALIDATED_AUTHORIZATION_NOT_EXECUTED
+    authority: deterministic_authorization_gate_validation_not_execution_acceptance_or_ratification
+    path: governance/reviews/kgr-006-r1-contract-preparation/kgr-006-r1-execution-authorization-validation-v0.1.0.yaml
+    source_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/input/HugePlanning-KGR-006-R1-formal-input-package.zip
+    source_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
+    produced_by: KGR_006_R1_EXECUTION_AUTHORIZATION
+    artifact_type: governance_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: null
+    aliases: []
+    notes: [Gate is OPEN_FOR_EXACTLY_ONE_EXECUTION with count consumed 0 and no substantive execution.]
