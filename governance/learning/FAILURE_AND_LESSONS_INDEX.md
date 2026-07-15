@@ -1,7 +1,7 @@
 # Failure and Lessons Index
 
 > GENERATED FILE — source of truth: `records/` plus append-only `events/`.
-> Tool version: `0.1.0`. Deterministic input digest: `94eef68630e390a3c7a47ce672367b68b57260f5474fabfbc324fb9d68f6f61d`.
+> Tool version: `0.1.0`. Deterministic input digest: `77fbb94279c10610c3004e9a933ac07b46e0eb5f60a0401791f0c4054c8f06cf`.
 > Manual edits will be overwritten by `--apply` or rejected as generated-view drift.
 
 | ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |
@@ -17,3 +17,4 @@
 | HP-FAIL-009 | 2026-07-15 | Controller history replay rejected its supported active-state import bridge | PROCESS_DEFECT | HIGH | VALIDATED | Controller History Replay | Phase 2.4/KGR-005 | no | PARTIAL | Every Controller state-entry shortcut accepted during calculation must be replayable from the exact durable record shape it produces. |
 | HP-FAIL-010 | 2026-07-15 | Learning wrapper hardcoded a historical repository event total | PROCESS_DEFECT | MEDIUM | VALIDATED | Learning validation wrapper | Bounded learning-system maintenance/none | no | PARTIAL | Append-only repository tests must validate inventory invariants, not freeze a historical aggregate that valid future events necessarily change. |
 | HP-FAIL-012 | 2026-07-15 | Phase 2.3 backlog test depended on absent incidental prose | PROCESS_DEFECT | MEDIUM | VALIDATED | Phase 2.3 registry and backlog regression | Bounded Phase 2.3 baseline correction/none | no | PARTIAL | Tests for mixed Markdown/YAML governance contracts should parse structured fields and assert meaning-bearing invariants instead of requiring accidental prose. |
+| HP-FAIL-013 | 2026-07-15 | Stateful Controller model replaced accepted records with non-recordable attempts | PROCESS_DEFECT | MEDIUM | VALIDATED | Hypothesis Controller state-machine model | Bounded Controller test-model correction/none | no | PARTIAL | Property models must preserve the same acceptance gate as production persistence; calculated candidates are not durable transition records. |

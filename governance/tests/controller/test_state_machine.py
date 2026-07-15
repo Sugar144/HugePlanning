@@ -56,7 +56,8 @@ class ControllerModel(RuleBasedStateMachine):
         record, diagnostics, recordable = calculate(
             command, LOOP, source_run, payload, self.history_root, None, False
         )
-        self.last_record = record
+        if recordable:
+            self.last_record = record
         return record, diagnostics, recordable
 
     @precondition(lambda self: self.state == "READY_FOR_TARGETED_CLOSURE")
@@ -186,3 +187,29 @@ TestControllerModel.settings = settings(
     deadline=None,
     database=None,
 )
+
+
+def test_nonrecordable_attempts_preserve_terminal_accepted_record() -> None:
+    model = ControllerModel()
+    try:
+        assert model.last_record is None
+        model.begin_targeted_closure()
+        active_record = model.last_record
+        assert active_record is not None
+        assert active_record["resulting_state"] == "TARGETED_CLOSURE_IN_PROGRESS"
+
+        model.import_targeted_closure("CLOSURE_CONFIRMED")
+        accepted_terminal = model.last_record
+        assert accepted_terminal is not None and accepted_terminal is not active_record
+        assert accepted_terminal["resulting_state"] == "CLOSURE_CONFIRMED"
+        assert accepted_terminal["next_role"] is None
+        assert accepted_terminal["next_mode"] is None
+
+        for outcome in NON_COMPLETIONS:
+            model.invalid_or_noncompletion_does_not_mutate_history(outcome)
+            assert model.state == "CLOSURE_CONFIRMED"
+            assert model.last_record is accepted_terminal
+            model.implementation_matches_reference_model()
+            model.terminal_states_have_no_automatic_continuation()
+    finally:
+        model.teardown()
