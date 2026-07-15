@@ -1,7 +1,7 @@
 # Failure and Lessons Index
 
 > GENERATED FILE — source of truth: `records/` plus append-only `events/`.
-> Tool version: `0.1.0`. Deterministic input digest: `4f086d78182e1ec6253e2418074ec06eadc27a01b7dde466668fd74e68034b88`.
+> Tool version: `0.1.0`. Deterministic input digest: `16cb82082dcbe7a26947b951e71e3367585752103661d01f933a458fa541e4ef`.
 > Manual edits will be overwritten by `--apply` or rejected as generated-view drift.
 
 | ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |
@@ -25,3 +25,4 @@
 | HP-FAIL-017 | 2026-07-15 | Phase 2.4 state test froze the pre-execution Enforcement gate wording | PROCESS_DEFECT | MEDIUM | VALIDATED | Phase 2.4 durable-state regression | GOV-5 provenance reconciliation/KGR-006 | no | PARTIAL | Historical-phase tests should preserve enduring gate invariants without freezing mutable later-phase status wording. |
 | HP-FAIL-018 | 2026-07-15 | Global whitespace validation conflicted with byte-exact external artifact import | TOOLING_GAP | MEDIUM | VALIDATED | Immutable import validation and selective staging | GOV-5 provenance reconciliation/KGR-006 | no | PARTIAL | Byte-exact imported evidence and locally authored content need separate validation profiles; formatting checks must never rewrite immutable source bytes. |
 | HP-FAIL-019 | 2026-07-15 | KGR-006-R1 authorization validator represented only the pre-execution open state | TOOLING_GAP | MEDIUM | VALIDATED | Execution-authorization consumption reconciliation | GOV-5 controlled import/KGR-006-R1 | no | PARTIAL | A one-execution authorization gate needs a deterministic terminal consumption profile; validating that authority was open does not prove that it was consumed once and cannot be reused. |
+| HP-FAIL-020 | 2026-07-15 | Material governance completion left status-bearing surfaces divergent | PROCESS_DEFECT | HIGH | VALIDATED | Durable cross-surface governance state | GOV-5/KGR-006-R1 | no | PARTIAL | A locally correct governance artifact can still leave the repository operationally false; material completion requires one canonical comparison of every affected durable status surface. |

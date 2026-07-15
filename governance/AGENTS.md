@@ -20,6 +20,7 @@ Apply the repository-wide `../AGENTS.md` and the canonical `methodology/project-
 - Formal run prompts already preserved under `governance/runs/<run>/prompt/` remain authoritative for those runs and need only be catalogued or referenced, not duplicated unnecessarily.
 - Triage material governance failures and owner corrections under `learning/README.md`. Route incidents and decisions to their own record classes.
 - On completion of a governance run, update its manifest, `ARTIFACT_REGISTRY.yaml`, `CURRENT_STATE.md`, and the relevant plan status.
+- Completion of material governance work must reconcile every affected status-bearing surface and run the canonical cross-surface state-consistency validation; task-local tests never substitute for durable state reconciliation.
 - Use governance validation tools when available before claiming structural, package, result, transition, or generated-view validity.
 - `CURRENT_STATE.md` must follow evidence and never fabricate or lead it. After a valid authorized event, update applicable learning, decision, registry, run, plan, and state records consistently.
 - Correct methodology defects prospectively through versioning. Never rewrite historical evidence to conform to newer methodology.

@@ -223,3 +223,36 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: The repository-side authorization gate is open for one execution, with execution count consumed 0. The execution remains limited to the prepared correction contract and requires a new independent evaluation afterward.
 - Authority boundary: This decision does not execute KGR-006-R1, create corrected outputs, modify the prepared contract or historical evidence, invoke the evaluator, implement controls or later phases, change Kernel meaning, accept risk, ratify, open a pull request, merge, release, or deploy.
 - Supersedes: none
+
+## GOV-DEC-020 — Terminal reconciliation of GOV-AUTH-001
+
+- Date: 2026-07-15
+- Status: TERMINAL_CONSUMED
+- Statement: Reconcile `GOV-AUTH-001` at its terminal state: execution count `1/1`, remaining execution `none`, consuming output SHA-256: `0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b`.
+- Rationale: The authorization and run evidence already record one completed execution, but the append-only decision log retained only the historical open-state entry `GOV-DEC-019`.
+- Source: `GOV-AUTH-001`, `GOV-VAL-007`, and Project Owner instruction `HP-PROMPT-018/0.1.0`.
+- Consequences: The historical `GOV-DEC-019` remains unchanged; this terminal entry records that no execution remains and creates no new execution authority.
+- Authority boundary: No execution, acceptance, risk decision, GOV-5 closure, GOV-6 activation, ratification, implementation, or operation is authorized.
+- Supersedes: none; terminally reconciles the state historically opened by GOV-DEC-019
+
+## GOV-DEC-021 — OD-002 exact scope confirmation
+
+- Date: 2026-07-15
+- Status: ACTIVE
+- Statement: Resolve `OD-002` as `CONFIRM_EXACT_SCOPE`, confirming Kernel `0.2.0-proposed` for HugePlanning Level 3 only under the bounded scope described in `GOV-REVIEW-011`.
+- Rationale: `NOT_PROVIDED` by the Project Owner.
+- Source: Project Owner instruction `HP-PROMPT-018/0.1.0` and `GOV-DECISION-RECORD-001`.
+- Consequences: The exact candidate and scope are fixed for the current decision sequence; OD-004 through OD-006 remain unresolved.
+- Authority boundary: This does not accept KGR-006-R1 or risk, close GOV-5, activate GOV-6, ratify the Kernel, accept GOV-7, or authorize implementation.
+- Supersedes: none
+
+## GOV-DEC-022 — OD-003 current-context packet sufficiency
+
+- Date: 2026-07-15
+- Status: ACTIVE_CONTEXT_BOUNDED
+- Statement: Resolve `OD-003` as `PACKET_SUFFICIENT` for the current Project Owner decision context using `GOV-REVIEW-011`; no simplification or `SD-003 / ER-015` specialist review is required for this packet in this context.
+- Rationale: `NOT_PROVIDED` by the Project Owner.
+- Source: Project Owner instruction `HP-PROMPT-018/0.1.0` and `GOV-DECISION-RECORD-001`.
+- Consequences: This context-bounded finding does not establish universal usability; OD-004 through OD-006 remain unresolved.
+- Authority boundary: This does not accept KGR-006-R1 or risk, close GOV-5, activate GOV-6, ratify the Kernel, accept GOV-7, or authorize implementation.
+- Supersedes: none

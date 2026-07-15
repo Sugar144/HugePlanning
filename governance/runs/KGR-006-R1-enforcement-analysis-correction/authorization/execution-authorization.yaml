@@ -23,6 +23,12 @@ execution_authorization:
       output_package_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
       source_declared_result: CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION
       reconciliation_evidence: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml
+  terminal_reconciliation:
+    decision_log_entry: GOV-DEC-020
+    execution_count: 1/1
+    remaining_execution: NONE
+    consuming_output_package_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+    creates_new_execution_authority: false
   required_output_filenames:
     - 00-enforcement-analysis-basis.md
     - 01-clause-implication-matrix.yaml

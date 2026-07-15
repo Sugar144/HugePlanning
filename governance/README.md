@@ -14,7 +14,25 @@ Start with:
 
 Raw sources show what was received. Run directories reconstruct what a function used and produced. Canonical candidates provide stable review paths without increasing authority. A prompt is an execution contract, not proof that execution occurred. A proposed artifact is not ratified merely because it is complete or reviewable.
 
-The current Kernel is `PROPOSED_NOT_RATIFIED`. KGR-001 Intake, KGR-002 Designer, KGR-003 Adversary, and the KGR-004 Designer revision are recorded as completed. KGR-004 produced the current `0.2.0-proposed` package with `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE`: 14 findings are Designer-dispositioned as `RESOLVED` and `KA-F-015` is `ROUTED`. The bounded `GOV-LOOP-001` methodology and KGR-005 targeted-closure package are prepared for initial trial. KGR-005 is `NOT_STARTED`, preparation is `COMPLETED`, and readiness is `READY_FOR_EXECUTION`. GOV-4 remains `IN_PROGRESS` because independent targeted closure has not occurred. Enforcement Engineering remains gated; no policy package, enforcement system, ratification record, or operational governance system exists.
+The current Kernel is `0.2.0-proposed / PROPOSED_NOT_RATIFIED`. GOV-0 through GOV-4 are complete. KGR-005 completed with `CLOSURE_CONFIRMED`. KGR-006-R1 is imported and independently evaluated pending Project Owner acceptance; OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, and OD-004 through OD-006 remain unresolved. GOV-5 is `IN_PROGRESS`, its phase-closure review is `NOT_EXECUTED`, and GOV-6 through GOV-9 are inactive. The minimum GOV-7 package remains `RECOMMENDATION_ONLY`; no risk is accepted and no enforcement implementation has occurred.
+
+<!-- GOVERNANCE_STATE_V1 -->
+```yaml
+governance_state:
+  phase: GOV-5
+  gov_5_status: IN_PROGRESS
+  gov_5_closure_review: NOT_EXECUTED
+  kgr_006_r1_status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE
+  authorization_status: CONSUMED_1_OF_1_NONE_REMAINING
+  od_002: RESOLVED_CONFIRM_EXACT_SCOPE
+  od_003: RESOLVED_PACKET_SUFFICIENT
+  od_004_through_od_006: UNRESOLVED
+  gov_6_through_gov_9: INACTIVE
+  kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED
+  minimum_gov_7_package: RECOMMENDATION_ONLY
+  risk_accepted: false
+  enforcement_implementation: NOT_PERFORMED
+```
 
 Methodology describes how governance work is performed; `runs/` records actual executions and honest non-executed preparation. A methodology artifact or prompt is not execution evidence. Every run preserves the exact contract and formal inputs it uses. Historical prompts remain in their original run records and are not silently replaced by current methodology.
 

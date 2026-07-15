@@ -1,0 +1,46 @@
+project_owner_decision_record:
+  schema_version: 0.1.0
+  document_id: GOV-DECISION-RECORD-001
+  version: 0.1.0
+  date: '2026-07-15'
+  source_run: KGR-006-R1
+  owner_role: Project Owner
+  status: PARTIALLY_RESOLVED_PENDING_ACCEPTANCE_AND_CONSTITUTIONAL_DECISIONS
+  decision_context:
+    dossier: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-dossier-v0.1.0.md
+    kernel_version: 0.2.0-proposed
+    kernel_status: PROPOSED_NOT_RATIFIED
+    project: HugePlanning
+    governance_level: 3
+    scope: BOUNDED_SINGLE_USER_MINIMUM_ANALYSIS_SCOPE_AS_DESCRIBED_IN_DOSSIER
+    packet_sufficiency_context: CURRENT_PROJECT_OWNER_DECISION_CONTEXT_ONLY
+  decisions:
+    - id: OD-002
+      status: RESOLVED
+      selection: CONFIRM_EXACT_SCOPE
+      effect: Confirms only the exact Kernel candidate and bounded scope for later decision review.
+    - id: OD-003
+      status: RESOLVED
+      selection: PACKET_SUFFICIENT
+      effect: Confirms dossier sufficiency only for the current Project Owner decision context; no SD-003 or ER-015 review is required for this packet in this context.
+    - {id: OD-004, status: UNRESOLVED, selection: null}
+    - {id: OD-005, status: UNRESOLVED, selection: null}
+    - {id: OD-006, status: UNRESOLVED, selection: null}
+  additional_owner_rationale: NOT_PROVIDED
+  authority_exclusions:
+    - KGR_006_R1_ACCEPTANCE
+    - RESIDUAL_RISK_ACCEPTANCE
+    - GOV_5_CLOSURE_OR_CLOSURE_REVIEW_EXECUTION
+    - GOV_6_ACTIVATION_OR_KERNEL_RATIFICATION
+    - GOV_7_ACCEPTANCE_IMPLEMENTATION_OR_ENFORCEMENT
+    - GOV_8_OR_GOV_9_WORK
+    - POLICY_CONTROL_PRODUCT_RUNTIME_OR_OPERATIONAL_CHANGE
+  resulting_state:
+    KGR-006-R1: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE
+    GOV-5: IN_PROGRESS
+    GOV-5-closure-review: NOT_EXECUTED
+    GOV-6-through-GOV-9: INACTIVE
+    minimum-GOV-7-package: RECOMMENDATION_ONLY
+    risk-accepted: false
+    enforcement-implementation: NOT_PERFORMED
+  constitutional_authority: NONE

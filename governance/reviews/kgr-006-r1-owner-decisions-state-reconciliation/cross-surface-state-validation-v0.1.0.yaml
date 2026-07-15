@@ -1,0 +1,42 @@
+schema_version: 0.1.0
+record_id: GOV-VAL-008
+tool:
+  name: validate_governance_state.py
+  version: 0.1.0
+subject:
+  phase: GOV-5
+  run: KGR-006-R1
+  owner_decision_record: GOV-DECISION-RECORD-001
+  authorization: GOV-AUTH-001
+  compared_surfaces:
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.1.0.yaml
+    - governance/DECISION_LOG.md
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/GOVERNANCE_MASTER_PLAN.md
+    - governance/CURRENT_STATE.md
+    - governance/README.md
+  expected_state:
+    authorization: CONSUMED_1_OF_1_NONE_REMAINING
+    consuming_output_package_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+    OD-002: RESOLVED_CONFIRM_EXACT_SCOPE
+    OD-003: RESOLVED_PACKET_SUFFICIENT
+    OD-004-through-OD-006: UNRESOLVED
+    GOV-5: IN_PROGRESS
+    GOV-5-closure-review: NOT_EXECUTED
+    GOV-6-through-GOV-9: INACTIVE
+    kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED
+    minimum-GOV-7-package: RECOMMENDATION_ONLY
+    risk-accepted: false
+    enforcement-implementation: NOT_PERFORMED
+  immutable_imported_artifact_count: 10
+  immutable_imported_artifacts_unchanged: true
+profile_versions:
+  cross_surface_state_consistency: 0.1.0
+  owner_decision_record: 0.1.0
+  immutable_import_validation: GOV-VAL-007/0.1.0
+result: VALID
+diagnostics: []
+constitutional_authority: NONE
+authority_limit: VALIDATION_IS_NOT_ACCEPTANCE_RATIFICATION_EXECUTION_OR_OPERATION

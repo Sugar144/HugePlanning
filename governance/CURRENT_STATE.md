@@ -2,7 +2,7 @@
 
 | Question | Current answer |
 |---|---|
-| Current governance phase | GOV-5 — `IN_PROGRESS`; KGR-006-R1 executed, corrected/evaluation evidence imported, Owner review pending |
+| Current governance phase | GOV-5 — `IN_PROGRESS`; KGR-006-R1 imported and evaluated, OD-002/OD-003 resolved, Project Owner acceptance pending |
 | Last completed governance function | KGR-006-R1 Enforcement Engineer correction — `COMPLETED`, independently evaluated and imported, not accepted |
 | Completed phases | GOV-0 through GOV-4 — `COMPLETED` |
 | KGR-004 status | `COMPLETED` — `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE` |
@@ -12,14 +12,14 @@
 | Kernel status | `PROPOSED_NOT_RATIFIED` |
 | Controller counters | targeted closure `1`; Designer remediation `0` |
 | Controller guards | zero blocking findings; no repeated findings; none exhausted |
-| GOV-5 status | `IN_PROGRESS`; KGR-006-R1 independently evaluated as suitable for controlled import and Owner decision review; not closed |
+| GOV-5 status | `IN_PROGRESS`; KGR-006-R1 imported and evaluated pending Project Owner acceptance; closure review `NOT_EXECUTED`; not closed |
 | Enforcement Engineering gate | `CLOSED`; GOV-AUTH-001 consumed exactly 1 of 1, with no remaining execution |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
 | Human ratification | `NOT_STARTED` |
-| Owner decisions required | OD-001 satisfied for the KGR-006-R1 evaluation context only; OD-002 through OD-006 remain unresolved |
+| Owner decisions required | OD-001 satisfied for the evaluation context; OD-002 `CONFIRM_EXACT_SCOPE` and OD-003 `PACKET_SUFFICIENT` resolved; OD-004 through OD-006 unresolved |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | OD-002 and OD-003 must be resolved before any OD-004 or GOV-6 constitutional decision; later implementation/effect boundaries remain unsupported |
-| Exact next action | Project Owner reviews OD-002 and OD-003 in the prepared dossier; do not close GOV-5 or activate GOV-6 through this state record |
+| Known blockers | Project Owner acceptance and a separately authorized GOV-5 phase-closure readiness review remain pending; OD-004 through OD-006 and later implementation/effect boundaries remain unresolved |
+| Phase-transition boundary | GOV-5 closure review is `NOT_EXECUTED`; GOV-5 remains open and GOV-6 remains inactive |
 
 ## KGR-006 execution and independent-evaluation reconciliation
 
@@ -146,7 +146,14 @@ KGR-006-R1:
   canonical_specialist_dependencies_required: 4
   owner_decisions_preserved: 6
   minimum_gov_7_package: RECOMMENDATION_ONLY
-  project_owner_acceptance: NOT_STARTED
+  owner_decision_record: GOV-DECISION-RECORD-001
+  owner_decisions:
+    OD-002: RESOLVED_CONFIRM_EXACT_SCOPE
+    OD-003: RESOLVED_PACKET_SUFFICIENT
+    OD-004: UNRESOLVED
+    OD-005: UNRESOLVED
+    OD-006: UNRESOLVED
+  project_owner_acceptance: PENDING
   ratified: false
   implemented: false
   operational: false
@@ -163,6 +170,24 @@ GOV-8: {status: INACTIVE}
 GOV-9: {status: INACTIVE}
 ```
 
+<!-- GOVERNANCE_STATE_V1 -->
+```yaml
+governance_state:
+  phase: GOV-5
+  gov_5_status: IN_PROGRESS
+  gov_5_closure_review: NOT_EXECUTED
+  kgr_006_r1_status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE
+  authorization_status: CONSUMED_1_OF_1_NONE_REMAINING
+  od_002: RESOLVED_CONFIRM_EXACT_SCOPE
+  od_003: RESOLVED_PACKET_SUFFICIENT
+  od_004_through_od_006: UNRESOLVED
+  gov_6_through_gov_9: INACTIVE
+  kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED
+  minimum_gov_7_package: RECOMMENDATION_ONLY
+  risk_accepted: false
+  enforcement_implementation: NOT_PERFORMED
+```
+
 ## Authority boundary
 
-KGR-006-R1 execution, controlled import and independent evaluation establish validated correction evidence and consume GOV-AUTH-001. They do not constitute Project Owner acceptance, complete GOV-5, decide OD-002 through OD-006, ratify or adopt the Kernel, establish enforceability, implement or operate governance, accept risk, activate GOV-6 through GOV-9, or authorize runtime integration.
+KGR-006-R1 execution, controlled import and independent evaluation establish validated correction evidence and consume GOV-AUTH-001. OD-002 and OD-003 are now resolved only as recorded in `GOV-DECISION-RECORD-001`; this does not constitute Project Owner acceptance, complete GOV-5, resolve OD-004 through OD-006, ratify or adopt the Kernel, establish enforceability, implement or operate governance, accept risk, activate GOV-6 through GOV-9, or authorize runtime integration.
