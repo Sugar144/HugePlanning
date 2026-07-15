@@ -179,3 +179,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: Root and governance instructions reference a canonical operating contract; material failures use schema-validated base records and append-only events; deterministic learning commands are dry-run first; historic evidence and missing metrics are not reconstructed; the initial four records are `CORRECTED` pending preventive-control validation. Automatic category summarization and CI integration are deferred.
 - Authority boundary: This decision does not execute KGR-005, advance GOV-4, implement the Controller or closure-loop runtime, open Enforcement Engineering, accept risk, ratify or adopt the Kernel, begin human ratification, or authorize commit, push, PR, merge, tag, release, deployment, or publication.
 - Supersedes: none
+
+## GOV-DEC-016 — Minimum GOV-5 scope and complete routing disposition
+
+- Date: 2026-07-15
+- Status: ACTIVE
+- Statement: Prepare one minimum-scope KGR-006 Enforcement Engineer analysis contract for the current single-user Project Owner context, preserving future portability and separability constraints without implementing commercial functionality. Account for all 20 canonical KGR-004 lower-layer routes; classify Historical repository audit and S1 regularization as `NOT_APPLICABLE_TO_GOV_5_EXECUTION` and route it to GOV-8 with explicit justification.
+- Rationale: GOV-5 must expose practical clause implications and recommend the smallest later GOV-7 package while avoiding premature controls, provider testing, historical regularization, or platform design. The canonical source contains 20 routes even though the historical scope review reported 19.
+- Source: Project Owner GOV-5 contract-preparation instruction and routing disposition preserved as `HP-PROMPT-011/0.1.0` and `HP-PROMPT-012/0.1.0`.
+- Consequences: KGR-006 may be prepared with strict seven-clause and 20-route coverage, trigger-gated specialists, analysis-only scalability constraints, and a separate evaluation handoff. GOV-5 remains unexecuted; GOV-8 remains unperformed.
+- Authority boundary: This decision does not execute GOV-5, open Enforcement Engineering, perform independent evaluation, accept risk, ratify, implement GOV-7, perform GOV-8/GOV-9, modify Kernel/Controller/product code, open a PR, merge, or release.
+- Supersedes: none

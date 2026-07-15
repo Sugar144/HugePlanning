@@ -1,0 +1,35 @@
+routing_index:
+  schema_version: 0.1.0
+  id: GOV-ROUTING-INDEX-001
+  status: DERIVED_INDEX_OF_IMMUTABLE_KGR_004_ROUTING
+  source:
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md
+    run: KGR-004
+    artifact_id: KD-R05
+  order_semantics: IDs follow the source table row order and add no substantive meaning.
+  entries:
+    - {id: LLR-001, title: Governed-effect taxonomy; harmless-read boundary; data/cost/exposure classes}
+    - {id: LLR-002, title: Authority identity, competence, delegation, expiry, revocation, and C3/C4 routing}
+    - {id: LLR-003, title: Fundamental architecture-effect classifier}
+    - {id: LLR-004, title: Decisive evaluation-chain independence dimensions and assignment}
+    - {id: LLR-005, title: Claim lineage and gate-scope schema}
+    - {id: LLR-006, title: Qualified acceptance and recurring-limitation aggregation}
+    - {id: LLR-007, title: Canonical composition, summary/migration fidelity, and supersession}
+    - {id: LLR-008, title: Material-assumption registry and dependency revalidation}
+    - {id: LLR-009, title: Evidence retention, minimization, redaction, isolation, deletion, and attestation}
+    - {id: LLR-010, title: Temporary deviation lineage and cumulative renewal tests}
+    - {id: LLR-011, title: Emergency containment procedure and transition to normal authority}
+    - {id: LLR-012, title: Managed-state machine for BLOCKED, PAUSED, INCONCLUSIVE, FAILED, and abrupt termination}
+    - {id: LLR-013, title: Cross-actor/branch/stage/release/time aggregation}
+    - {id: LLR-014, title: Material governance-burden rationale and simplification review}
+    - {id: LLR-015, title: Human decision packet and acceptance record}
+    - {id: LLR-016, title: Recovery, restoration, compensation, and irreversibility evidence}
+    - {id: LLR-017, title: Scoped ENFORCEABLE coverage matrix}
+    - {id: LLR-018, title: Provider capability profiles and substitution tests}
+    - {id: LLR-019, title: Markdown/YAML parity controls}
+    - {id: LLR-020, title: Historical repository audit and S1 regularization}
+  gov_5_disposition:
+    LLR-020:
+      applicability: NOT_APPLICABLE_TO_GOV_5_EXECUTION
+      later_phase_destination: GOV-8
+      reason: GOV-5 analyzes enforcement implications and derived requirements; it does not perform historical S0a-S1 audit or regularization.

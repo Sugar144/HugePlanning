@@ -1777,7 +1777,7 @@ artifacts:
     authority: formal_input_custody_not_execution_or_constitutional_authority
     path: governance/runs/KGR-006-enforcement-analysis/input-envelope.yaml
     source_path: /tmp/HugePlanning-KGR-006-formal-input-package.zip
-    source_sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
+    source_sha256: ea168cdf068d0ce222f14c676c1be77e90b241e76e2a7923cd6a375bfab7c467
     produced_by: GOV-5_CONTRACT_PREPARATION
     artifact_type: formal_input_envelope
     language: English
@@ -1793,7 +1793,7 @@ artifacts:
     authority: deterministic_readiness_not_execution_acceptance_or_ratification
     path: governance/reviews/gov-5-contract-preparation/kgr-006-readiness-v0.1.0.yaml
     source_path: /tmp/HugePlanning-KGR-006-formal-input-package.zip
-    source_sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
+    source_sha256: ea168cdf068d0ce222f14c676c1be77e90b241e76e2a7923cd6a375bfab7c467
     produced_by: GOV-5_CONTRACT_PREPARATION
     artifact_type: governance_validation_record
     language: English

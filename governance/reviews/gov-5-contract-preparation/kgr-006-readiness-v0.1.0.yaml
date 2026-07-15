@@ -1,0 +1,35 @@
+schema_version: 0.1.0
+record_id: GOV-VAL-003
+tool:
+  name: prepare_enforcement_run.py
+  version: 0.1.0
+subject:
+  run: KGR-006
+  role: Enforcement Engineer
+  mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  protocol: GOV-PROTOCOL-004
+  protocol_version: 0.1.0
+  prompt: GOV-PROMPT-008
+  envelope: GOV-INPUT-003
+  package_path: /tmp/HugePlanning-KGR-006-formal-input-package.zip
+  package_classification: VALIDATED_PACKAGE
+  package_sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
+  member_count: 44
+  input_artifact_count: 43
+  clause_count: 7
+  lower_layer_route_count: 20
+  required_output_count: 7
+  execution_status: NOT_STARTED
+  formal_outputs: ABSENT
+  independent_evaluation: NOT_EXECUTED
+  readiness: READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION
+  exact_next_action: Project Owner separately authorizes one KGR-006 Enforcement Engineer execution using the exact prepared prompt and package.
+profile_versions:
+  envelope: 0.1.0
+  protocol: 0.1.0
+  output_contract: 0.1.0
+  validator: 0.1.0
+result: VALID
+diagnostics: []
+constitutional_authority: NONE
+authority_limit: VALIDATION_IS_NOT_ACCEPTANCE_RATIFICATION_EXECUTION_OR_OPERATION

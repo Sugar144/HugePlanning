@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hugeplanning.local/governance/schemas/GOV-PROTOCOL-004/0.1.0/enforcement-analysis-output-contract.schema.json",
+  "title": "Minimum enforcement analysis output contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["output_contract"],
+  "properties": {
+    "output_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "id", "version", "run", "role", "mode", "protocol", "status", "source_of_truth", "enums", "coverage", "specialist_dependency_fields", "outputs", "forbidden_claims", "independent_evaluation"],
+      "properties": {
+        "schema_version": {"const": "0.1.0"},
+        "id": {"const": "GOV-OUTPUT-CONTRACT-001"},
+        "version": {"const": "0.1.0"},
+        "run": {"const": "KGR-006"},
+        "role": {"const": "Enforcement Engineer"},
+        "mode": {"const": "MINIMUM_ENFORCEMENT_ANALYSIS"},
+        "protocol": {
+          "type": "object", "additionalProperties": false, "required": ["id", "version"],
+          "properties": {"id": {"const": "GOV-PROTOCOL-004"}, "version": {"const": "0.1.0"}}
+        },
+        "status": {"const": "PREPARED_NOT_EXECUTED"},
+        "source_of_truth": {"const": "01-clause-implication-matrix.yaml"},
+        "enums": {
+          "type": "object", "additionalProperties": false,
+          "required": ["timing", "lower_layer", "capability_status", "requirement_kind", "specialist_trigger", "specialist_blocking", "scope_posture", "output_status"],
+          "properties": {
+            "timing": {"const": ["MUST_BEFORE_RATIFICATION", "MUST_BEFORE_GOVERNED_PILOT", "SHOULD_LATER", "HUMAN_ONLY", "NOT_FEASIBLE"]},
+            "lower_layer": {"const": ["policy", "standard", "procedure_or_contract", "control", "evidence", "human_judgment"]},
+            "capability_status": {"const": ["SUPPORTED_BY_EVIDENCE", "PARTIAL", "GAP", "DEPENDENT_ON_SPECIALIST", "DEPENDENT_ON_PROVIDER_TEST", "NOT_FEASIBLE", "NOT_APPLICABLE"]},
+            "requirement_kind": {"const": ["DERIVED_REQUIREMENT", "CANDIDATE_MECHANISM"]},
+            "specialist_trigger": {"const": ["material_legal_or_privacy_dependency", "material_security_or_isolation_dependency", "provider_capability_requires_empirical_validation", "high_consequence_human_decision_usability_risk", "operational_recovery_or_continuity_dependency"]},
+            "specialist_blocking": {"const": ["BLOCKING", "NONBLOCKING_WITH_EXPLICIT_UNSUPPORTED_BOUNDARY"]},
+            "scope_posture": {"const": ["CURRENT_SINGLE_USER_MINIMUM", "ANALYSIS_ONLY_FUTURE_SCALABILITY_CONSTRAINT", "OUT_OF_SCOPE_FUTURE_COMMERCIAL_FUNCTIONALITY"]},
+            "output_status": {"const": ["ANALYSIS_COMPLETE_PENDING_INDEPENDENT_EVALUATION"]}
+          }
+        },
+        "coverage": {
+          "type": "object", "additionalProperties": false, "required": ["clause_ids", "routing_ids", "required_output_count"],
+          "properties": {
+            "clause_ids": {"const": ["K-001", "K-002", "K-003", "K-004", "K-005", "K-006", "K-007"]},
+            "routing_ids": {"const": ["LLR-001", "LLR-002", "LLR-003", "LLR-004", "LLR-005", "LLR-006", "LLR-007", "LLR-008", "LLR-009", "LLR-010", "LLR-011", "LLR-012", "LLR-013", "LLR-014", "LLR-015", "LLR-016", "LLR-017", "LLR-018", "LLR-019", "LLR-020"]},
+            "required_output_count": {"const": 7},
+            "route_applicability": {"const": ["APPLICABLE_TO_GOV_5_EXECUTION", "NOT_APPLICABLE_TO_GOV_5_EXECUTION"]},
+            "not_applicable_requires": {"const": ["explicit_justification", "later_phase_destination"]}
+          }
+        },
+        "specialist_dependency_fields": {"const": ["trigger", "affected_clause", "affected_effect_or_requirement", "why_general_analysis_is_insufficient", "required_specialist_type", "blocking_or_nonblocking", "safe_interim_boundary", "later_phase_destination"]},
+        "outputs": {
+          "type": "array", "minItems": 7, "maxItems": 7,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["filename", "format", "required_headings", "front_matter_required", "purpose"],
+            "properties": {
+              "filename": {"type": "string"}, "format": {"enum": ["MARKDOWN", "YAML"]},
+              "required_headings": {"type": "array", "items": {"type": "string"}},
+              "front_matter_required": {"type": "boolean"}, "purpose": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "forbidden_claims": {"type": "array", "minItems": 8, "uniqueItems": true, "items": {"type": "string"}},
+        "independent_evaluation": {
+          "type": "object", "additionalProperties": false,
+          "required": ["handoff_path", "required", "executed_during_preparation", "engineer_may_select_or_control_evaluator", "evaluation_dimensions"],
+          "properties": {
+            "handoff_path": {"const": "governance/runs/KGR-006-enforcement-analysis/independent-evaluation-handoff.md"},
+            "required": {"const": true}, "executed_during_preparation": {"const": false},
+            "engineer_may_select_or_control_evaluator": {"const": false},
+            "evaluation_dimensions": {"type": "array", "minItems": 5, "uniqueItems": true, "items": {"type": "string"}}
+          }
+        }
+      }
+    }
+  }
+}

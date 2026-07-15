@@ -1,0 +1,76 @@
+schema_version: 0.1.0
+record_id: GOV-VAL-002
+tool:
+  name: validate_run_package.py
+  version: 0.1.0
+subject:
+  run: KGR-005
+  role: Kernel Adversary
+  mode: TARGETED_CLOSURE
+  protocol: GOV-PROTOCOL-002
+  protocol_version: 0.1.0
+  loop: GOV-LOOP-001
+  loop_version: 0.1.0
+  prompt: GOV-PROMPT-007
+  envelope: GOV-INPUT-002
+  package_path: /home/sugar/Downloads/HugePlanning-KGR-005-targeted-closure-v0.2-proposed.zip
+  package_classification: VALIDATED_COMPLETED_OUTPUT_PACKAGE
+  package_sha256: 4e8de3b72d0ac9d70b7f13d7a1768d18a1cd57c1af090f5593f3b40e534f198b
+  member_count: 8
+  exact_members: true
+  unsafe_zip_paths: false
+  extra_members: false
+  utf8_valid: true
+  strict_yaml_valid: true
+  json_schema_valid: true
+  run_identity_valid: true
+  role_mode_identity_valid: true
+  protocol_loop_identity_valid: true
+  declared_result: CLOSURE_CONFIRMED
+  result_verdict_parity_valid: true
+  markdown_yaml_parity_declared_passed: true
+  closure_facts:
+    confirmed_closed: 14
+    routed_confirmed: 1
+    reopened: 0
+    new_findings: 0
+    regressions: 0
+  canonical_import_root: governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs
+  imported_member_count: 8
+  imported_outputs_byte_identical: true
+  historical_placeholder_preserved: governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/README.md
+  inventory:
+    - member: 00-targeted-closure-basis.md
+      sha256: cf135ee2923ea8cbcf7e614b0ac2f29d218049b0634b2c0c5948964f1a60b04a
+      size: 5064
+    - member: 01-finding-closure-verdicts.yaml
+      sha256: 6b38773c5168d37e739a2500c0d44a73240252b3fe04e909e396a7346d5d3f29
+      size: 9310
+    - member: 02-targeted-adversarial-scenarios.md
+      sha256: 8c4b3aa45048fce69bbd40bca1b7b7a4b79a81788dd1cb4bb2cd9f071a5eacb5
+      size: 11248
+    - member: 03-regression-and-new-findings.md
+      sha256: 9a82936905728aca48ba287373b886386b99817d2adec0aa85ddbbb69d93519d
+      size: 1747
+    - member: 04-markdown-yaml-parity-review.md
+      sha256: b404a0d8dad7c2bca24d0306f4cd9bfa5bb45672e13fdd20d4d34e284ccff20c
+      size: 5232
+    - member: 05-residual-risk-and-routing.md
+      sha256: acebc8cbe18da9fd900091b41e169ecbf2db01a9d4e661ce292817bb50c0b35c
+      size: 6601
+    - member: 06-closure-result.yaml
+      sha256: 687ca353a213444b93665198b953c2f0cfbdc04b8452e13173b6963f890e96a0
+      size: 3006
+    - member: 07-targeted-closure-summary-and-handoff.md
+      sha256: 84cfc51472a8b08f62f81e7c8d9a5afc058efa53a4e3b45460a8906a43384f9c
+      size: 4378
+profile_versions:
+  envelope: 0.1.0
+  protocol: 0.1.0
+  loop: 0.1.0
+  skill: 0.1.0
+  validation_record: 0.1.0
+result: VALID
+diagnostics: []
+constitutional_authority: NONE
+authority_limit: VALIDATION_IS_NOT_ACCEPTANCE_RATIFICATION_EXECUTION_OR_OPERATION

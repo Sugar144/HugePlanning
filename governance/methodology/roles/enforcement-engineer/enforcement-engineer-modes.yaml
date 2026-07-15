@@ -1,0 +1,33 @@
+registry:
+  id: GOV-METHOD-005
+  version: 0.1.0
+  status: PREPARED_FOR_FUTURE_EXECUTION
+  authority: GOVERNANCE_METHODOLOGY_NOT_EXECUTION_RATIFICATION_OR_ENFORCEMENT_AUTHORITY
+
+role:
+  id: enforcement-engineer
+  name: Enforcement Engineer
+
+modes:
+  - id: MINIMUM_ENFORCEMENT_ANALYSIS
+    status: PREPARED_NOT_EXECUTED
+    phase: GOV-5
+    input_type: HASH_BOUND_ENFORCEMENT_ANALYSIS_PACKAGE
+    protocol_id: GOV-PROTOCOL-004
+    protocol_version: 0.1.0
+    intended_run:
+      - KGR-006
+    canonical_protocol:
+      path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md
+    output_contract:
+      path: governance/runs/KGR-006-enforcement-analysis/output-contract.yaml
+    authority_limits:
+      - ANALYZE_AND_RECOMMEND_ONLY
+      - NO_KERNEL_MEANING_CHANGE
+      - NO_RISK_ACCEPTANCE
+      - NO_RATIFICATION
+      - NO_CONTROL_IMPLEMENTATION
+      - NO_GOV_6_OR_GOV_7_ACTIVATION
+      - NO_ENFORCEABILITY_DECLARATION
+      - NO_PRODUCT_OR_RUNTIME_MODIFICATION
+      - NO_SELF_ALLOCATION_OF_AUTHORITY

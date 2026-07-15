@@ -1,0 +1,83 @@
+closure_result:
+  schema_version: 0.1.0
+  run: KGR-005
+  protocol: GOV-PROTOCOL-002
+  loop:
+    id: GOV-LOOP-001
+    version: 0.1.0
+  execution:
+    package_validation: PASSED
+    substantive_review_completed: true
+    valid_completed_run: true
+  adversary_result:
+    status: CLOSURE_CONFIRMED
+    rationale_refs:
+      - 01-finding-closure-verdicts.yaml
+      - 02-targeted-adversarial-scenarios.md
+      - 04-markdown-yaml-parity-review.md
+      - 05-residual-risk-and-routing.md
+  decision_matrix:
+    version: 0.1.0
+    evaluated_in_priority_order: true
+    selected_priority: 5
+    selected_result: CLOSURE_CONFIRMED
+    matched_conditions:
+      - all_closure_requirements_pass
+    higher_priority_conditions_confirmed_false:
+      - priority: 1
+        result: STRUCTURAL_REDESIGN_REQUIRED
+        reason: No material constitutional defect exceeds local closure scope, and the bounded seven-clause architecture remains sufficient.
+      - priority: 2
+        result: OWNER_DECISION_REQUIRED
+        reason: No reserved owner decision, unresolved constitutional-value conflict, or owner risk acceptance is required for semantic closure.
+      - priority: 3
+        result: RESEARCH_REQUIRED
+        reason: Remaining empirical gaps are correctly routed and do not materially change the constitutional wording verdict; no closure-critical evidence is absent.
+      - priority: 4
+        result: DESIGNER_REMEDIATION_REQUIRED
+        reason: No original finding is reopened, no blocking new or regression finding exists, parity and proportionality pass, and routing makes no unavailable-capability claim.
+  findings:
+    confirmed_closed:
+      - KA-F-001
+      - KA-F-002
+      - KA-F-003
+      - KA-F-004
+      - KA-F-005
+      - KA-F-006
+      - KA-F-007
+      - KA-F-008
+      - KA-F-009
+      - KA-F-010
+      - KA-F-011
+      - KA-F-012
+      - KA-F-013
+      - KA-F-014
+    reopened: []
+    routed_confirmed:
+      - KA-F-015
+    new: []
+    regressions: []
+  counter_facts:
+    counters_before:
+      completed_targeted_closure_runs: 0
+      completed_designer_remediation_runs: 0
+    completed_targeted_closure_run: true
+    completed_designer_remediation_run: false
+  guard_relevant_facts:
+    - fact: no_original_finding_reopened
+      value: true
+    - fact: no_new_or_regression_finding
+      value: true
+    - fact: further_designer_remediation_appears_necessary
+      value: false
+    - fact: counter_and_guard_evaluation_reserved_to_controller
+      value: true
+  controller:
+    final_transition: PENDING_CONTROLLER_VALIDATION
+    counters_after: PENDING_CONTROLLER_VALIDATION
+  authority:
+    kernel_version: 0.2.0-proposed
+    kernel_status: PROPOSED_NOT_RATIFIED
+    enforcement_engineering_gate: CLOSED
+    human_ratification: NOT_STARTED
+  exact_next_action: Independently validate and import the completed KGR-005 output package; only a separately authorized Controller action may then evaluate the transition and counters. Keep Enforcement Engineering and ratification closed.

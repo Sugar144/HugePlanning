@@ -1,0 +1,26 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-011-E001
+  record_id: HP-FAIL-011
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: Exact 20-route KGR-006 coverage and the LLR-020 GOV-8 disposition passed contract and package validation.
+  rationale: The new contract tests derive 20 canonical table rows, require LLR-001 through LLR-020, and verify that LLR-020 is not applicable to GOV-5 execution with an explicit reason and GOV-8 destination. Formal package validation also returns zero diagnostics without creating outputs.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/test_gov_5_contract_preparation.py
+      anchor: test_canonical_routing_has_twenty_rows_and_exact_disposition
+      sha256: null
+      availability: PRESERVED
+      note: Regression binds canonical count and owner disposition.
+    - type: VALIDATION_RECORD
+      locator: governance/reviews/gov-5-contract-preparation/kgr-006-readiness-v0.1.0.yaml
+      anchor: GOV-VAL-003
+      sha256: null
+      availability: PRESERVED
+      note: Readiness record declares 20 routes and no execution.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-012-gov-5-routing-disposition-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

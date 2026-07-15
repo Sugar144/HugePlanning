@@ -1,0 +1,29 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://hugeplanning.local/governance/schemas/kernel-design-closure-loop.schema.json",
+  "title":"GOV-LOOP-001 deterministic enforcement profile",
+  "type":"object",
+  "required":["loop","states","state_classes","transitions","attempt_events","attempt_outcomes","non_completion_events","result_decision_matrix","designer_remediation_controller_mapping","counters","increment_rules","limits","controller_post_import_logic","blocking_finding_signature","no_progress_guard","finding_reappearance_guard","reentry_rules","artifact_resolution","controller_transition_contract"],
+  "properties":{
+    "loop":{"type":"object","required":["id","version"],"properties":{"id":{"const":"GOV-LOOP-001"},"version":{"const":"0.1.0"}},"additionalProperties":true},
+    "states":{"type":"array","minItems":9,"maxItems":9,"uniqueItems":true,"items":{"type":"string"}},
+    "state_classes":{"type":"object"},
+    "transitions":{"type":"array","minItems":1,"items":{"type":"object","required":["from","to","when","authority"],"properties":{"from":{"type":"string"},"to":{"type":"string"},"when":{"type":"string"},"authority":{"const":"LOOP_CONTROLLER"}},"additionalProperties":false}},
+    "attempt_events":{"type":"array","items":{"type":"object","required":["event","outcome","applies_while_persistent_state_is","persistent_state_changes","substantive_stage_started"],"properties":{"event":{"type":"string"},"outcome":{"const":"BLOCKED_BY_PACKAGE_CONFLICT"},"applies_while_persistent_state_is":{"type":"string"},"persistent_state_changes":{"const":false},"substantive_stage_started":{"const":false}},"additionalProperties":false}},
+    "attempt_outcomes":{"type":"object"},
+    "non_completion_events":{"type":"array","items":{"type":"object","required":["event","applies_while_persistent_state_is","completed_run","counter_increment","formal_result_imported","persistent_state_changes"],"additionalProperties":true}},
+    "result_decision_matrix":{"type":"object"},
+    "designer_remediation_controller_mapping":{"type":"object"},
+    "counters":{"type":"object","required":["completed_targeted_closure_runs","completed_designer_remediation_runs"]},
+    "increment_rules":{"type":"object"},
+    "limits":{"type":"object"},
+    "controller_post_import_logic":{"type":"object"},
+    "blocking_finding_signature":{"type":"object"},
+    "no_progress_guard":{"type":"object"},
+    "finding_reappearance_guard":{"type":"object"},
+    "reentry_rules":{"type":"object"},
+    "artifact_resolution":{"type":"object"},
+    "controller_transition_contract":{"type":"object"}
+  },
+  "additionalProperties":true
+}

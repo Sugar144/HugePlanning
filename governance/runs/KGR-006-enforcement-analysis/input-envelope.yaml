@@ -1,0 +1,333 @@
+input_envelope:
+  schema_version: 0.1.0
+  id: GOV-INPUT-003
+  target_run: KGR-006
+  status: PREPARED_NOT_EXECUTED
+  baseline_head: 8e761801fb9bfd8a8e5e817d5c332a11456f77d8
+  envelope_package_member: input-envelope.yaml
+  execution_contract:
+    target_run: KGR-006
+    role: Enforcement Engineer
+    mode: MINIMUM_ENFORCEMENT_ANALYSIS
+    protocol_id: GOV-PROTOCOL-004
+    protocol_version: 0.1.0
+    prompt_id: GOV-PROMPT-008
+    prompt_version: 0.1.0
+    prompt_sha256: 79e38dca1b8f4eaa924533786c97df1c5d5e93a4cafb9a874bdf08d613a4db37
+  formal_inputs:
+    artifact_count: 43
+    artifacts:
+    - group: state
+      package_member: state/CURRENT_STATE.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/state/CURRENT_STATE.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/state/CURRENT_STATE.md
+      origin: governance/CURRENT_STATE.md
+      sha256: 1e599f0ed723b3fe65992bce01ea1f4a50a171e5f3bbca3d23ad222523f94fc6
+      size: 5587
+    - group: state
+      package_member: state/GOVERNANCE_MASTER_PLAN.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/state/GOVERNANCE_MASTER_PLAN.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/state/GOVERNANCE_MASTER_PLAN.md
+      origin: governance/GOVERNANCE_MASTER_PLAN.md
+      sha256: 40078629772d59421b64b6af2a7e6ddf6e87e1ffeff1f29e5e5531c20b7a2eb1
+      size: 13473
+    - group: state
+      package_member: state/ARTIFACT_REGISTRY.yaml
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/state/ARTIFACT_REGISTRY.yaml
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/state/ARTIFACT_REGISTRY.yaml
+      origin: governance/ARTIFACT_REGISTRY.yaml
+      sha256: 6658a97ae843bd5a940c64ec1a7974d00a4f6999223702fcfdfe895906e9725a
+      size: 94291
+    - group: operating_contract
+      package_member: methodology/project-operating-contract.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/methodology/project-operating-contract.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/methodology/project-operating-contract.md
+      origin: governance/methodology/project-operating-contract.md
+      sha256: 1c48df9987486a53f2eabc43e0b548fe68d2b698df00fa1bc437035ef0986846
+      size: 10159
+    - group: kernel
+      package_member: kernel/02-kernel-v0.2-draft.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/kernel/02-kernel-v0.2-draft.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/kernel/02-kernel-v0.2-draft.md
+      origin: governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md
+      sha256: 0dba205609e0b3c2df2fdfa6ee5b393174a9bffb1b12c5a24a2eecd4820b8545
+      size: 36827
+    - group: kernel
+      package_member: kernel/03-kernel-clauses-v0.2.yaml
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/kernel/03-kernel-clauses-v0.2.yaml
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/kernel/03-kernel-clauses-v0.2.yaml
+      origin: governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml
+      sha256: 0b48212543b54eb775e4bd5e6688dae3ff19eabb11f89ee4750b11faf7dd2ca1
+      size: 36455
+    - group: intake
+      package_member: intake/02-known-hazards.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/02-known-hazards.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/02-known-hazards.md
+      origin: governance/runs/KGR-001-intake/outputs/02-known-hazards.md
+      sha256: f3811f4897e705b2fcc7b16797981d4d3eea5b00fc81c8389db7a6a1bdd7bb11
+      size: 14558
+    - group: intake
+      package_member: intake/03-authority-and-effects.yaml
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/03-authority-and-effects.yaml
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/03-authority-and-effects.yaml
+      origin: governance/runs/KGR-001-intake/outputs/03-authority-and-effects.yaml
+      sha256: 7579cae03fe70e6e8c897c4627c6d2e48118e65f6ef9314450384cecb769a2a8
+      size: 11687
+    - group: intake
+      package_member: intake/04-criticality-model.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/04-criticality-model.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/04-criticality-model.md
+      origin: governance/runs/KGR-001-intake/outputs/04-criticality-model.md
+      sha256: aba8993106999b328e98e81657472850552611cc14442c024f06d18b483fa384
+      size: 8403
+    - group: intake
+      package_member: intake/05-reference-scenarios.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/05-reference-scenarios.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/05-reference-scenarios.md
+      origin: governance/runs/KGR-001-intake/outputs/05-reference-scenarios.md
+      sha256: 40ef0ff0cf0d214cbcc431955f9e9a342cbda8fa8bb6e11433e32cd926c38f56
+      size: 9277
+    - group: intake
+      package_member: intake/06-open-questions.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/06-open-questions.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/06-open-questions.md
+      origin: governance/runs/KGR-001-intake/outputs/06-open-questions.md
+      sha256: effe649fbbe8930434ad7163825ceb99b597474627b6d0e53b43599e2c98b92a
+      size: 10631
+    - group: intake
+      package_member: intake/07-intake-summary.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/07-intake-summary.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/intake/07-intake-summary.md
+      origin: governance/runs/KGR-001-intake/outputs/07-intake-summary.md
+      sha256: c5d473634bece727488bfe6318e6b2889440fbc9a918ee29ea434119a5f0a459
+      size: 9412
+    - group: adversarial
+      package_member: adversarial/01-adversarial-findings.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/adversarial/01-adversarial-findings.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/adversarial/01-adversarial-findings.md
+      origin: governance/runs/KGR-003-kernel-adversary/outputs/01-adversarial-findings.md
+      sha256: 6bce1ec9d22ad68441980da2e22549787f0693c7fbee151978bc74129c64134b
+      size: 46796
+    - group: adversarial
+      package_member: adversarial/05-enforcement-concerns.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/adversarial/05-enforcement-concerns.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/adversarial/05-enforcement-concerns.md
+      origin: governance/runs/KGR-003-kernel-adversary/outputs/05-enforcement-concerns.md
+      sha256: d663f7228f259e126fdfb659152972b857e0fbcf314d0f490e71c8e66cad005c
+      size: 7059
+    - group: revision
+      package_member: revision/04-designer-open-questions-v0.2.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/revision/04-designer-open-questions-v0.2.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/revision/04-designer-open-questions-v0.2.md
+      origin: governance/runs/KGR-004-kernel-designer-revision/outputs/04-designer-open-questions-v0.2.md
+      sha256: 184e4345b390f9f91256565c508ebff8b80bfd0e7109d5e89614187cb79a85d4
+      size: 7281
+    - group: revision
+      package_member: revision/05-lower-layer-routing-v0.2.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/revision/05-lower-layer-routing-v0.2.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/revision/05-lower-layer-routing-v0.2.md
+      origin: governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md
+      sha256: 6f62a56a56c57ba07a07125bd75fbcfe5a51db34f024f7f4ecdaec3ff2c1afee
+      size: 8523
+    - group: revision
+      package_member: revision/07-finding-disposition-register.yaml
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/revision/07-finding-disposition-register.yaml
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/revision/07-finding-disposition-register.yaml
+      origin: governance/runs/KGR-004-kernel-designer-revision/outputs/07-finding-disposition-register.yaml
+      sha256: c1b1aad7312c795131573d89a6c402e115ddb206abfb3a97a1d3d1687c4eacbd
+      size: 30035
+    - group: closure
+      package_member: closure/05-residual-risk-and-routing.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/closure/05-residual-risk-and-routing.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/closure/05-residual-risk-and-routing.md
+      origin: governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/05-residual-risk-and-routing.md
+      sha256: acebc8cbe18da9fd900091b41e169ecbf2db01a9d4e661ce292817bb50c0b35c
+      size: 6601
+    - group: closure
+      package_member: closure/06-closure-result.yaml
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/closure/06-closure-result.yaml
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/closure/06-closure-result.yaml
+      origin: governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/06-closure-result.yaml
+      sha256: 687ca353a213444b93665198b953c2f0cfbdc04b8452e13173b6963f890e96a0
+      size: 3006
+    - group: roadmap
+      package_member: roadmap/13_mvp_scope_and_implementation_roadmap.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/roadmap/13_mvp_scope_and_implementation_roadmap.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/roadmap/13_mvp_scope_and_implementation_roadmap.md
+      origin: planning/v2/13_mvp_scope_and_implementation_roadmap.md
+      sha256: 510fb6fe05e66578214c9f2eaa2def3e6b2379da7071d2be55ed7515cc3ae90a
+      size: 16690
+    - group: owner_decisions
+      package_member: owner/HP-PROMPT-011.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/owner/HP-PROMPT-011.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/owner/HP-PROMPT-011.md
+      origin: governance/prompts/orchestration/HP-PROMPT-011-gov-5-contract-preparation-v0.1.0.md
+      sha256: b0d06fa235138364e5aff8264387471d2db47ed05d44c40fe2cc14fef558afd8
+      size: 12105
+    - group: owner_decisions
+      package_member: owner/HP-PROMPT-012.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/owner/HP-PROMPT-012.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/owner/HP-PROMPT-012.md
+      origin: governance/prompts/orchestration/HP-PROMPT-012-gov-5-routing-disposition-v0.1.0.md
+      sha256: 17f6d2b5f40395eb707bb8c5059ee2726dbf1bc649ca0143b6f1eeeaddd93611
+      size: 2902
+    - group: scope_review
+      package_member: scope/HugePlanning-GOV-5-scope-review-v0.1.0.md
+      path: /home/sugar/Downloads/HugePlanning-GOV-5-scope-review-v0.1.0.md
+      source_path: /home/sugar/Downloads/HugePlanning-GOV-5-scope-review-v0.1.0.md
+      origin: /home/sugar/Downloads/HugePlanning-GOV-5-scope-review-v0.1.0.md
+      sha256: 260ecc7892da0419c1a2b19dda52779cf3e29dff1fe5d9f54a1b9a0ffc1e7727
+      size: 22167
+    - group: capability
+      package_member: capability/tools/validate_run_package.py
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/validate_run_package.py
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/validate_run_package.py
+      origin: governance/tools/validate_run_package.py
+      sha256: ddb1349f40254ef6c920eff78cd99d2d3ea64bc705a1b154120bae9bedd1ba7a
+      size: 19705
+    - group: capability
+      package_member: capability/tools/validate_closure_loop.py
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/validate_closure_loop.py
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/validate_closure_loop.py
+      origin: governance/tools/validate_closure_loop.py
+      sha256: a8070e2a4e489b0cd2e5235ce7d1c5ee34e6cf993343d3d8bc04935122575ea7
+      size: 14564
+    - group: capability
+      package_member: capability/tools/apply_loop_transition.py
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/apply_loop_transition.py
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/apply_loop_transition.py
+      origin: governance/tools/apply_loop_transition.py
+      sha256: b76e6f60c411f420eba3e829d870d7736fb2d04c445a7f6185248fc68826dd9b
+      size: 19702
+    - group: capability
+      package_member: capability/tools/validate_prompts.py
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/validate_prompts.py
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/validate_prompts.py
+      origin: governance/tools/validate_prompts.py
+      sha256: 107837d188ccb48ce5a137f0712782d563209b1970bf7050f10f308133494c2c
+      size: 9130
+    - group: capability
+      package_member: capability/tools/manage_learning.py
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/manage_learning.py
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/manage_learning.py
+      origin: governance/tools/manage_learning.py
+      sha256: cc482d621e0b376c4a2ef46052d015c308d27aa2c7808a42dd81ee63e0d84c82
+      size: 24505
+    - group: capability
+      package_member: capability/tools/build_review_bundle.py
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/build_review_bundle.py
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/tools/build_review_bundle.py
+      origin: governance/tools/build_review_bundle.py
+      sha256: 8ea9c8fd8549ba1509c68771d70f559511f6f9c9a70ef08a2b51384c98f799dd
+      size: 15520
+    - group: capability
+      package_member: capability/schemas/controller-transition.schema.json
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/controller-transition.schema.json
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/controller-transition.schema.json
+      origin: governance/schemas/controller-transition.schema.json
+      sha256: 817b8f50535e3d5b4500f81117a0a51fdf8e324d45d04d8e05a4c43a6cb187e1
+      size: 3040
+    - group: capability
+      package_member: capability/schemas/failure-record-event.schema.json
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/failure-record-event.schema.json
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/failure-record-event.schema.json
+      origin: governance/schemas/failure-record-event.schema.json
+      sha256: 9384c10adcf09ffcd7f477f569d32929a4d40607ae8ef2f137654162af57e943
+      size: 2994
+    - group: capability
+      package_member: capability/schemas/failure-record.schema.json
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/failure-record.schema.json
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/failure-record.schema.json
+      origin: governance/schemas/failure-record.schema.json
+      sha256: b76d10d7c70cdfe4122a97b7708b05072b1cedcce58ad627d991019cefe5aead
+      size: 7874
+    - group: capability
+      package_member: capability/schemas/governance-validation-record.schema.json
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/governance-validation-record.schema.json
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/governance-validation-record.schema.json
+      origin: governance/schemas/governance-validation-record.schema.json
+      sha256: 4fb5d757b35ecf8aed1170ae9359ceb32d795b5ad98583cf404b1cc265cbc556
+      size: 1120
+    - group: capability
+      package_member: capability/schemas/kernel-design-closure-loop.schema.json
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/kernel-design-closure-loop.schema.json
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/kernel-design-closure-loop.schema.json
+      origin: governance/schemas/kernel-design-closure-loop.schema.json
+      sha256: 9cb45a60560f910fb46c7b810811b986df08d7bbce7f7144086f19aeaf9de61d
+      size: 2654
+    - group: capability
+      package_member: capability/schemas/review-bundle-config.schema.json
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/review-bundle-config.schema.json
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/schemas/review-bundle-config.schema.json
+      origin: governance/schemas/review-bundle-config.schema.json
+      sha256: 20a0168cf85ea7cdb858b9440dad7d8df24adab57418e0bb607efec1c74346c1
+      size: 2229
+    - group: capability
+      package_member: capability/skills/agent-session-reviewer.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/skills/agent-session-reviewer.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/skills/agent-session-reviewer.md
+      origin: governance/skills/agent-session-reviewer/SKILL.md
+      sha256: de22a532822d4c03464c7574137dd73a175de23b83a3ab908a8eb2fbff6ed18b
+      size: 2417
+    - group: capability
+      package_member: capability/skills/formal-governance-run-preparer.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/skills/formal-governance-run-preparer.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/skills/formal-governance-run-preparer.md
+      origin: governance/skills/formal-governance-run-preparer/SKILL.md
+      sha256: 22babd813598d79100e51f6240774d85e50a3d2f1935b8c5148248b2b4bdd36b
+      size: 4469
+    - group: capability
+      package_member: capability/skills/governance-result-importer.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/skills/governance-result-importer.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/skills/governance-result-importer.md
+      origin: governance/skills/governance-result-importer/SKILL.md
+      sha256: fb672761eda84e57d81fe86b59c67372a203868c0537bb54e435511b7e3efbba
+      size: 4623
+    - group: capability
+      package_member: capability/skills/governance-review-packager.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/skills/governance-review-packager.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/skills/governance-review-packager.md
+      origin: governance/skills/governance-review-packager/SKILL.md
+      sha256: e60e24d5edbb6805c28c79932f2088849757c37abd5e1c4143eab22d441a81c8
+      size: 2762
+    - group: capability
+      package_member: capability/learning/README.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/learning/README.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/learning/README.md
+      origin: governance/learning/README.md
+      sha256: c272ab694a6cb3c3064c09c54d3db6c878c670d7626f3b8abc878949af58a531
+      size: 4575
+    - group: capability
+      package_member: capability/learning/FAILURE_AND_LESSONS_INDEX.md
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/learning/FAILURE_AND_LESSONS_INDEX.md
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/learning/FAILURE_AND_LESSONS_INDEX.md
+      origin: governance/learning/FAILURE_AND_LESSONS_INDEX.md
+      sha256: 683a1135406d4e2749b80fe4231881c7de35d5e391f00d8644b4df5b7a4d1da2
+      size: 5173
+    - group: capability
+      package_member: capability/validation/GOV-VAL-001.yaml
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/validation/GOV-VAL-001.yaml
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/validation/GOV-VAL-001.yaml
+      origin: governance/reviews/phase-2-3-formal-run-preparation/kgr-005-readiness-v0.1.0.yaml
+      sha256: 268891dc80512bf9252faeaf62af34aeff738b15706f9f37ec7731edd9040d4d
+      size: 1210
+    - group: capability
+      package_member: capability/validation/GOV-VAL-002.yaml
+      path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/validation/GOV-VAL-002.yaml
+      source_path: governance/runs/KGR-006-enforcement-analysis/inputs/formal/capability/validation/GOV-VAL-002.yaml
+      origin: governance/reviews/phase-2-4-formal-result-import/kgr-005-import-validation-v0.1.0.yaml
+      sha256: df8fdfb3d63457286cb751df1eae09fc04f688a7cc7fe016c31d250f23c1d983
+      size: 2739
+  expected_output_members:
+  - 00-enforcement-analysis-basis.md
+  - 01-clause-implication-matrix.yaml
+  - 02-existing-capability-inventory.md
+  - 03-feasibility-coverage-and-gap-assessment.md
+  - 04-owner-decisions-and-residual-risks.md
+  - 05-minimum-executable-package-recommendation.md
+  - 06-ratification-decision-handoff.md
+  authority:
+    kernel_status: PROPOSED_NOT_RATIFIED
+    gov_5_execution: NOT_STARTED
+    enforcement_engineering_gate: CLOSED
+    human_ratification: NOT_STARTED

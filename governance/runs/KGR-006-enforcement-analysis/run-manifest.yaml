@@ -1,0 +1,63 @@
+run:
+  id: KGR-006
+  role: Enforcement Engineer
+  mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  phase: GOV-5
+  status: NOT_STARTED
+  preparation_status: COMPLETED
+  readiness: READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION
+  allocated_from_baseline_head: 8e761801fb9bfd8a8e5e817d5c332a11456f77d8
+execution:
+  authorized: false
+  started: false
+  completed: false
+  platform: NOT_SELECTED
+  model: NOT_SELECTED
+  prompt:
+    id: GOV-PROMPT-008
+    version: 0.1.0
+    protocol_id: GOV-PROTOCOL-004
+    protocol_version: 0.1.0
+    path: governance/runs/KGR-006-enforcement-analysis/prompt/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md
+    canonical_path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md
+inputs:
+  envelope_id: GOV-INPUT-003
+  envelope_path: governance/runs/KGR-006-enforcement-analysis/input-envelope.yaml
+  artifact_count: 43
+  formal_package:
+    path: /tmp/HugePlanning-KGR-006-formal-input-package.zip
+    sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
+    member_count: 44
+    classification: VALIDATED_PACKAGE
+  kernel_version: 0.2.0-proposed
+  kernel_status: PROPOSED_NOT_RATIFIED
+  clause_count: 7
+  lower_layer_route_count: 20
+outputs:
+  status: ABSENT_NOT_EXECUTED
+  required_count: 7
+  contract_path: governance/runs/KGR-006-enforcement-analysis/output-contract.yaml
+  expected_artifacts:
+    - 00-enforcement-analysis-basis.md
+    - 01-clause-implication-matrix.yaml
+    - 02-existing-capability-inventory.md
+    - 03-feasibility-coverage-and-gap-assessment.md
+    - 04-owner-decisions-and-residual-risks.md
+    - 05-minimum-executable-package-recommendation.md
+    - 06-ratification-decision-handoff.md
+independent_evaluation:
+  handoff_path: governance/runs/KGR-006-enforcement-analysis/independent-evaluation-handoff.md
+  status: PREPARED_NOT_EXECUTED
+  evaluator_appointed: false
+authority:
+  enforcement_engineering_gate: CLOSED
+  human_ratification: NOT_STARTED
+  gov_6_activated: false
+  gov_7_activated: false
+  risk_accepted: false
+  constitutional_authority: NONE
+provenance:
+  preparation_prompts: [HP-PROMPT-011/0.1.0, HP-PROMPT-012/0.1.0, HP-PROMPT-013/0.1.0, HP-PROMPT-014/0.1.0]
+  preparation_is_not_execution: true
+  readiness_is_not_acceptance: true
+  analysis_is_not_enforceability: true

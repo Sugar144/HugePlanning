@@ -1,0 +1,71 @@
+output_contract:
+  schema_version: 0.1.0
+  id: GOV-OUTPUT-CONTRACT-001
+  version: 0.1.0
+  run: KGR-006
+  role: Enforcement Engineer
+  mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  protocol:
+    id: GOV-PROTOCOL-004
+    version: 0.1.0
+  status: PREPARED_NOT_EXECUTED
+  source_of_truth: 01-clause-implication-matrix.yaml
+  enums:
+    timing: [MUST_BEFORE_RATIFICATION, MUST_BEFORE_GOVERNED_PILOT, SHOULD_LATER, HUMAN_ONLY, NOT_FEASIBLE]
+    lower_layer: [policy, standard, procedure_or_contract, control, evidence, human_judgment]
+    capability_status: [SUPPORTED_BY_EVIDENCE, PARTIAL, GAP, DEPENDENT_ON_SPECIALIST, DEPENDENT_ON_PROVIDER_TEST, NOT_FEASIBLE, NOT_APPLICABLE]
+    requirement_kind: [DERIVED_REQUIREMENT, CANDIDATE_MECHANISM]
+    specialist_trigger: [material_legal_or_privacy_dependency, material_security_or_isolation_dependency, provider_capability_requires_empirical_validation, high_consequence_human_decision_usability_risk, operational_recovery_or_continuity_dependency]
+    specialist_blocking: [BLOCKING, NONBLOCKING_WITH_EXPLICIT_UNSUPPORTED_BOUNDARY]
+    scope_posture: [CURRENT_SINGLE_USER_MINIMUM, ANALYSIS_ONLY_FUTURE_SCALABILITY_CONSTRAINT, OUT_OF_SCOPE_FUTURE_COMMERCIAL_FUNCTIONALITY]
+    output_status: [ANALYSIS_COMPLETE_PENDING_INDEPENDENT_EVALUATION]
+  coverage:
+    clause_ids: [K-001, K-002, K-003, K-004, K-005, K-006, K-007]
+    routing_ids: [LLR-001, LLR-002, LLR-003, LLR-004, LLR-005, LLR-006, LLR-007, LLR-008, LLR-009, LLR-010, LLR-011, LLR-012, LLR-013, LLR-014, LLR-015, LLR-016, LLR-017, LLR-018, LLR-019, LLR-020]
+    required_output_count: 7
+    route_applicability: [APPLICABLE_TO_GOV_5_EXECUTION, NOT_APPLICABLE_TO_GOV_5_EXECUTION]
+    not_applicable_requires: [explicit_justification, later_phase_destination]
+  specialist_dependency_fields: [trigger, affected_clause, affected_effect_or_requirement, why_general_analysis_is_insufficient, required_specialist_type, blocking_or_nonblocking, safe_interim_boundary, later_phase_destination]
+  outputs:
+    - filename: 00-enforcement-analysis-basis.md
+      format: MARKDOWN
+      required_headings: [Bound identities and authority state, Scope and non-goals, Authoritative evidence consumed, Analysis method and limitations, Scalability constraints]
+      front_matter_required: true
+      purpose: Bind the exact basis, authority boundary, evidence, and analysis-only scalability posture.
+    - filename: 01-clause-implication-matrix.yaml
+      format: YAML
+      required_headings: []
+      front_matter_required: false
+      purpose: Provide the schema-valid source of truth for classifications, coverage, requirements, dependencies, and parity.
+    - filename: 02-existing-capability-inventory.md
+      format: MARKDOWN
+      required_headings: [Inventory method, Supported capabilities, Partial capabilities, Gaps and dependencies, Capability count parity]
+      front_matter_required: true
+      purpose: Inventory only capabilities supported by bound repository evidence.
+    - filename: 03-feasibility-coverage-and-gap-assessment.md
+      format: MARKDOWN
+      required_headings: [Coverage summary, Feasibility limits, Cost and burden, Gaps and unsupported scope, Specialist trigger register, Scalability retrofit risks]
+      front_matter_required: true
+      purpose: Expose feasibility, cost, limitations, gaps, triggered dependencies, and analysis-only scalability implications.
+    - filename: 04-owner-decisions-and-residual-risks.md
+      format: MARKDOWN
+      required_headings: [Reserved human decisions, Decisions required before ratification, Decisions deferred with blocked boundary, Residual risks, Risk acceptance boundary]
+      front_matter_required: true
+      purpose: Route decisions and residual risks without accepting either.
+    - filename: 05-minimum-executable-package-recommendation.md
+      format: MARKDOWN
+      required_headings: [One bounded governed transition, Minimum GOV-7 package, Requirement traceability, Acceptance evidence for later implementation, Explicit exclusions]
+      front_matter_required: true
+      purpose: Recommend but do not implement the smallest later executable package.
+    - filename: 06-ratification-decision-handoff.md
+      format: MARKDOWN
+      required_headings: [Decision scope, Evidence available, Material limitations and blocked claims, Independent evaluation handoff, Human options, Exact next action]
+      front_matter_required: true
+      purpose: Present an honest handoff for separate evaluation and competent human ratification decision.
+  forbidden_claims: [RATIFIED, ENFORCEABLE, IMPLEMENTED, OPERATIONAL, MATURE, COMPLIANT, ACCEPTED, RISK_ACCEPTED]
+  independent_evaluation:
+    handoff_path: governance/runs/KGR-006-enforcement-analysis/independent-evaluation-handoff.md
+    required: true
+    executed_during_preparation: false
+    engineer_may_select_or_control_evaluator: false
+    evaluation_dimensions: [complete_clause_and_route_coverage, kernel_fidelity, evidence_and_claim_scope, gap_and_limitation_visibility, independence_boundary, minimum_scope_discipline, markdown_yaml_material_parity]
