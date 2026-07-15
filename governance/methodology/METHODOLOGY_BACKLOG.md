@@ -89,6 +89,10 @@ proposal:
     - formal-governance-run-preparer
     - KGR-005 preparation validation evidence GOV-VAL-001
 
+  phase_2_4_implementation:
+    - governance-result-importer
+    - KGR-005 completed-output import validation evidence GOV-VAL-002
+
   extraction_rule: >
     A skill is justified when a workflow has been executed repeatedly,
     has stable inputs and outputs, contains reusable judgment or sequencing,
@@ -101,7 +105,7 @@ proposal:
     - Skills must call deterministic scripts for deterministic operations.
 ```
 
-Phase 2.2 locally implements the reusable-skill extraction pattern with `governance-review-packager` and `agent-session-reviewer` pending review. Phase 2.3 locally implements `formal-governance-run-preparer` and validates the existing KGR-005 preparation custody as `READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION`, also pending review. `HP-FAIL-006` preserves the validation-record schema defect and its authorized correction/validation events. This is preparation validation, not formal execution, acceptance, import, ratification, operation, publication authority, or constitutional authority.
+Phase 2.2 locally implements the reusable-skill extraction pattern with `governance-review-packager` and `agent-session-reviewer` pending review. Phase 2.3 locally implements `formal-governance-run-preparer` and validates KGR-005 preparation custody as `READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION`. Phase 2.4 implements `governance-result-importer`, validates and imports the exact KGR-005 completed-output package, and applies one authorized Controller transition. `HP-FAIL-006`, `HP-FAIL-007`, and `HP-FAIL-008` preserve validation-schema, result-import, and Controller-custody defects with bounded corrections. These skills and records do not ratify the Kernel, activate Enforcement Engineering, or grant future execution or publication authority.
 
 ## HP-MPROP-003 — Extract deterministic review-bundle generation
 

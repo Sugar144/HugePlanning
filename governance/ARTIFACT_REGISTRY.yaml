@@ -1,7 +1,7 @@
 registry:
-  version: '0.8'
-  generated_for: PHASE_2_3_FORMAL_GOVERNANCE_RUN_PREPARATION
-  base_commit: 74c5ea76c5b2f6ae2fe51ea683fed55b0b5cf759
+  version: '0.9'
+  generated_for: PHASE_2_4_FORMAL_RESULT_IMPORT_AND_CONTROLLER_TRANSITION
+  base_commit: a2f8caa6c3b3497e8673c256e58c41877afd098f
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -116,6 +116,33 @@ artifacts:
     notes:
       - ZIP and eight extracted members match byte-for-byte and passed independent path-safety, UTF-8, and exact-member validation.
       - Supersession applies only to the current Designer proposal under review; the KGR-002 package and v0.1 proposal remain preserved.
+
+  - id: GOV-PKG-007
+    title: HugePlanning KGR-005 Targeted Closure Completed Output Package
+    version: 0.2.0-proposed
+    status: VALIDATED_IMPORTED_CLOSURE_CONFIRMED
+    authority: completed_adversary_output_not_constitutional_ratification_or_enforcement_authority
+    path: governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/
+    source_path: /home/sugar/Downloads/HugePlanning-KGR-005-targeted-closure-v0.2-proposed.zip
+    source_sha256: 4e8de3b72d0ac9d70b7f13d7a1768d18a1cd57c1af090f5593f3b40e534f198b
+    produced_by: KGR-005
+    artifact_type: completed_formal_run_package
+    language: English
+    canonicality: immutable_formal_run_output
+    supersedes: null
+    aliases:
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/00-targeted-closure-basis.md
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/01-finding-closure-verdicts.yaml
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/02-targeted-adversarial-scenarios.md
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/03-regression-and-new-findings.md
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/04-markdown-yaml-parity-review.md
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/05-residual-risk-and-routing.md
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/06-closure-result.yaml
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/07-targeted-closure-summary-and-handoff.md
+    notes:
+      - The exact eight members passed ZIP safety, UTF-8, strict YAML, JSON Schema, identity, finding/result parity, and import-byte validation under GOV-VAL-002.
+      - The declared result is CLOSURE_CONFIRMED; the Controller independently mapped it through one authorized transition.
+      - This package does not ratify, adopt, enforce, implement, operationalize, or mature the Kernel.
       - Baseline run KGR-002; review run KGR-003; revision run KGR-004; next review mode TARGETED_CLOSURE.
       - The package was imported after execution; the exact execution transcript is not preserved and the outputs are not independent closure evidence.
 
@@ -230,7 +257,7 @@ artifacts:
   - id: GOV-PROMPT-007
     title: KGR-005 Kernel Adversary Targeted Closure Prompt Snapshot
     version: 0.1.0
-    status: READY_NOT_EXECUTED
+    status: USED_BY_COMPLETED_KGR_005
     authority: exact_run_contract_snapshot_not_execution_evidence
     path: governance/runs/KGR-005-kernel-adversary-targeted-closure/prompt/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
     source_path: governance/methodology/roles/kernel-adversary/protocols/targeted-closure/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md
@@ -243,7 +270,8 @@ artifacts:
     aliases: []
     notes:
       - Byte-identical to GOV-PROTOCOL-002 at preparation time.
-      - Preserves the exact future KGR-005 contract, including envelope metadata binding, the ordered loop result matrix, pre-substantive conflict handling, strict result schemas, and deterministic output packaging; no execution or output evidence exists.
+      - Preserves the exact KGR-005 contract, including envelope metadata binding, ordered loop result matrix, pre-substantive conflict handling, strict result schemas, and deterministic output packaging.
+      - Imported KGR-005 outputs bind this prompt, protocol, loop, role, mode, and run; the exact external execution transcript remains unavailable.
 
   - id: HP-PROMPT-001
     title: Phase 2 Controller Implementation Orchestration Prompt
@@ -377,7 +405,7 @@ artifacts:
     aliases: []
     notes:
       - HP-MPROP-001 is implemented locally for Phase 2.1 pending Project Owner review under the separately preserved HP-PROMPT-003 authorization.
-      - HP-MPROP-002 is locally implemented pending review through two bounded Phase 2.2 skills and the Phase 2.3 formal-governance-run-preparer skill.
+      - HP-MPROP-002 is locally implemented pending review through two bounded Phase 2.2 skills, the Phase 2.3 formal-governance-run-preparer skill, and the Phase 2.4 governance-result-importer skill.
       - HP-MPROP-003 is locally implemented pending review through GOV-TOOL-003 and GOV-SKILL-001.
       - HP-MPROP-004 is locally implemented pending review through GOV-SKILL-002 and remains limited to observable evidence.
       - Backlog approval is not implementation authorization, implemented state, execution evidence, constitutional authority, ratification, or Enforcement Engineering authorization.
@@ -404,7 +432,7 @@ artifacts:
       - governance/schemas/failure-record.schema.json
       - governance/schemas/failure-record-event.schema.json
     notes:
-      - Five records are CORRECTED but not VALIDATED; unavailable historic metrics and evidence remain explicit.
+      - Nine records and their append-only events preserve observed governance failures and lessons; unavailable metrics and evidence remain explicit.
       - Base records and append-only events are source truth; the Markdown index is a deterministic generated view.
 
   - id: GOV-SUP-007
@@ -477,8 +505,8 @@ artifacts:
       - governance/tests/fixtures/packages/
       - governance/validation/README.md
     notes:
-      - Implements local read-only validation and dry-run transition simulation; a write requires both `--apply` and an explicit authorization reference and is limited to one immutable Controller record path.
-      - No real Controller transition exists, KGR-005 remains NOT_STARTED, and the Controller is implemented locally but not operational; Phase 2.3 later allocates GOV-VAL-001 as preparation-validation evidence only.
+      - Implements local validation, dry-run transition simulation, and explicitly authorized immutable transition recording; a write requires both `--apply` and an authorization reference.
+      - Phase 2.4 adds completed-output identity/parity/import-byte checks and canonical suffixed-run resolution, then applies exactly one real KGR-005 transition recorded under the run tree.
       - The tooling does not launch an LLM, decide constitutional substance, mutate the Kernel or state documents, create KGR-006, open Enforcement Engineering, or ratify the Kernel.
       - Phase 2.1 adds pytest, bounded Hypothesis properties, and an independent-model state machine without changing Controller, loop, protocol, schema, or package semantics.
       - HP-PROMPT-008 authorizes the bounded validation-record schema correction preserved by HP-FAIL-006; positive and strict unexpected-property regression tests pass without changing Controller semantics.
@@ -562,6 +590,25 @@ artifacts:
       - Verifies formal-run custody and routes package, schema, archive, hash, inventory, and evidence operations through deterministic repository tools.
       - Stops before formal execution and cannot invoke a role, fabricate outputs, create a successor run, import findings, apply a Controller transition, modify the Kernel, accept risk, ratify, or publish independently.
 
+  - id: GOV-SKILL-004
+    title: Governance Result Importer Skill
+    version: 0.1.0
+    status: IMPLEMENTED_AND_EXERCISED_PENDING_REVIEW
+    authority: bounded_formal_result_import_workflow_no_ratification_or_enforcement_authority
+    path: governance/skills/governance-result-importer/SKILL.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_4_FORMAL_RESULT_IMPORT_AND_CONTROLLER_TRANSITION
+    artifact_type: governance_skill
+    language: English
+    canonicality: supporting
+    supersedes: null
+    aliases:
+      - governance/skills/governance-result-importer/agents/openai.yaml
+    notes:
+      - Binds one exact formal result, routes deterministic validation and import, requires Controller dry-run, and permits at most one explicitly authorized transition.
+      - Cannot fabricate results, create a successor run, modify Kernel substance, accept risk, ratify, activate Enforcement Engineering, or publish independently.
+
   - id: GOV-VAL-001
     title: KGR-005 Formal Input Preparation Validation
     version: 0.1.0
@@ -580,6 +627,26 @@ artifacts:
       - Deterministic preparation validation returned VALIDATED_PACKAGE with exactly 19 members and zero diagnostics.
       - Readiness is READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION; KGR-005 remains NOT_STARTED with no outputs, completed-output package, execution evidence, import, or Controller transition.
       - HP-FAIL-006 preserves the discovered validation-record schema defect and its authorized correction and validation events.
+
+  - id: GOV-VAL-002
+    title: KGR-005 Completed Output Import Validation
+    version: 0.1.0
+    status: VALIDATED_IMPORTED
+    authority: deterministic_package_and_import_validation_not_acceptance_ratification_or_operation
+    path: governance/reviews/phase-2-4-formal-result-import/kgr-005-import-validation-v0.1.0.yaml
+    source_path: /home/sugar/Downloads/HugePlanning-KGR-005-targeted-closure-v0.2-proposed.zip
+    source_sha256: 4e8de3b72d0ac9d70b7f13d7a1768d18a1cd57c1af090f5593f3b40e534f198b
+    produced_by: PHASE_2_4_FORMAL_RESULT_IMPORT_AND_CONTROLLER_TRANSITION
+    artifact_type: governance_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: null
+    aliases:
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/controller-dry-run-v0.1.0.json
+      - governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/controller-transition.json
+    notes:
+      - Records exactly eight safe UTF-8 members, strict YAML and JSON Schema validity, exact identities, result parity, closure facts, and byte-identical import.
+      - Validation is not acceptance, ratification, execution authority, Enforcement Engineering activation, or operation.
 
   - id: GOV-REVIEW-001
     title: Phase 1 Governance Tooling and Learning Architecture Report
@@ -693,6 +760,25 @@ artifacts:
     notes:
       - Records the skill design, authority boundary, KGR-005 preparation validation, affected checks, session review, and review transport evidence.
       - Does not authorize KGR-005 execution, role invocation, result import, a Controller transition, Kernel modification, risk acceptance, ratification, pull request, merge, or release.
+
+  - id: GOV-REVIEW-007
+    title: Phase 2.4 Formal Result Import and Controller Transition Report
+    version: 0.1.0
+    status: IMPLEMENTED_AND_APPLIED_PENDING_REVIEW
+    authority: import_transition_and_validation_evidence_not_ratification_or_enforcement_authority
+    path: governance/reviews/phase-2-4-formal-result-import/implementation-report-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PHASE_2_4_FORMAL_RESULT_IMPORT_AND_CONTROLLER_TRANSITION
+    artifact_type: implementation_validation_report
+    language: English
+    canonicality: preserved_implementation_evidence
+    supersedes: null
+    aliases:
+      - governance/reviews/phase-2-4-formal-result-import/review-bundle-profile-v0.1.0.yaml
+    notes:
+      - Records the exact package import, Controller dry-run and single applied transition, affected validations, findings, and authority limits.
+      - Does not authorize a pull request, merge, release, Kernel or human ratification, risk acceptance, Enforcement Engineering activation, or runtime integration.
 
   - id: GOV-PROTOCOL-001
     title: Kernel Designer Adversarial Revision Protocol
@@ -1596,20 +1682,20 @@ artifacts:
   - id: KGR-005
     title: Kernel Adversary Targeted Closure Run Manifest
     version: 0.1.0
-    status: NOT_STARTED
-    authority: prepared_run_record_not_execution_evidence_or_constitutional_authority
+    status: COMPLETED
+    authority: completed_targeted_closure_record_not_constitutional_ratification_or_enforcement_authority
     path: governance/runs/KGR-005-kernel-adversary-targeted-closure/run-manifest.yaml
     source_path: null
     source_sha256: null
-    produced_by: GOV-4_KGR-005_PREPARATION
+    produced_by: GOV-4
     artifact_type: run_manifest
     language: English
     canonicality: supporting
     supersedes: null
     aliases: []
     notes:
-      - Preparation is COMPLETED and readiness is READY_FOR_EXECUTION, but KGR-005 has not started and has no outputs or result.
-      - Formal input consists of GOV-INPUT-002, GOV-LOOP-001 control, and 17 byte-identical aliases; the prompt is outside the formal transport package.
-      - BLOCKED_BY_PACKAGE_CONFLICT is a resumable pre-substantive attempt outcome, not a completed result and not an eight-output package.
-      - A valid completed execution must package exactly eight outputs in HugePlanning-KGR-005-targeted-closure-v0.2-proposed.zip; GOV-PKG-007 is reserved until valid repository import.
-      - Enforcement Engineering remains CLOSED and human ratification remains NOT_STARTED.
+      - The exact eight-member completed-output package is registered as GOV-PKG-007 and imported byte-identically under GOV-VAL-002.
+      - Result is CLOSURE_CONFIRMED: 14 confirmed closed, KA-F-015 routed confirmed, and zero reopened, new, or regression findings.
+      - One authorized Controller transition increments the targeted counter to 1 with no exhausted guard and no successor run.
+      - Exact execution transcript, platform, model, reasoning mode, timestamps, token usage, and interaction count are unavailable.
+      - The Kernel remains PROPOSED_NOT_RATIFIED; Enforcement Engineering remains CLOSED and human ratification remains NOT_STARTED.

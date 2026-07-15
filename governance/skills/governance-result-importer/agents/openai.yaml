@@ -1,0 +1,4 @@
+interface:
+  display_name: "Governance Result Importer"
+  short_description: "Validate and import formal governance results"
+  default_prompt: "Use $governance-result-importer to validate and import one authorized formal governance result."

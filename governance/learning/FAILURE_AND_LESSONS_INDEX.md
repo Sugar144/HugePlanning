@@ -1,7 +1,7 @@
 # Failure and Lessons Index
 
 > GENERATED FILE — source of truth: `records/` plus append-only `events/`.
-> Tool version: `0.1.0`. Deterministic input digest: `bc7f42b7f89616825c628f67a45f2a8ab9267d00524bf5c2b4efea6dfc7e7d8f`.
+> Tool version: `0.1.0`. Deterministic input digest: `14e8219a403d7c16bae0fda3dfceb82fb65627509ec696ce64ea2e79db7ecc4e`.
 > Manual edits will be overwritten by `--apply` or rejected as generated-view drift.
 
 | ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |
@@ -12,3 +12,6 @@
 | HP-FAIL-004 | 2026-07-14 | Formal learning and analysis artifacts were dispersed across non-canonical surfaces | PROCESS_DEFECT | MEDIUM | CORRECTED | Durable Learning and Formal Analysis Output | GOV-4/none | no | PARTIAL | Declare and validate a durable output artifact before formal analysis, and store material learning in canonical indexed records. |
 | HP-FAIL-005 | 2026-07-14 | Prompt custody created recursive publication authorization | PROCESS_DEFECT | MEDIUM | CORRECTED | Material Prompt Custody | Phase 2.0.1/none | no | UNAVAILABLE | Terminal owner publication authority must bind to an immutable reviewed candidate without mutating that candidate to preserve the authorization. |
 | HP-FAIL-006 | 2026-07-15 | Governance validation record schema rejects its required tool identity | PROCESS_DEFECT | MEDIUM | VALIDATED | Governance Validation Record Schema | Phase 2.3/KGR-005 | no | PARTIAL | A syntactically valid schema still requires at least one positive conforming-instance test for every durable record contract. |
+| HP-FAIL-007 | 2026-07-15 | Completed-output validator omitted required import identity and byte-custody checks | TOOLING_GAP | MEDIUM | VALIDATED | Formal Governance Result Import Validation | Phase 2.4/KGR-005 | no | PARTIAL | A schema-valid formal output package is not import-valid until exact identity, cross-representation parity, and repository custody bytes are also settled deterministically. |
+| HP-FAIL-008 | 2026-07-15 | Controller apply path ignored canonical suffixed run directory | PROCESS_DEFECT | MEDIUM | VALIDATED | Controller Transition Custody | Phase 2.4/KGR-005 | no | PARTIAL | A Controller record is not durably imported until its write target resolves the repository's canonical run-directory convention, not merely the short run ID. |
+| HP-FAIL-009 | 2026-07-15 | Controller history replay rejected its supported active-state import bridge | PROCESS_DEFECT | HIGH | VALIDATED | Controller History Replay | Phase 2.4/KGR-005 | no | PARTIAL | Every Controller state-entry shortcut accepted during calculation must be replayable from the exact durable record shape it produces. |

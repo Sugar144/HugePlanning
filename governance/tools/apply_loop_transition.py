@@ -81,6 +81,13 @@ def _history_records(root: Path, embedded: list[Any]) -> tuple[list[dict[str, An
     return records, diags
 
 
+def run_directory(root: Path, source_run: str) -> Path:
+    candidates = sorted(path for path in root.glob(f"{source_run}-*") if path.is_dir())
+    if len(candidates) > 1:
+        raise ValueError(f"ambiguous canonical run directory for {source_run}")
+    return candidates[0] if candidates else root / source_run
+
+
 def replay(records: list[dict[str, Any]]) -> tuple[str, dict[str,int], list[dict[str, Any]], list[Diagnostic]]:
     state = INITIAL_STATE; counters = dict(ZERO); accepted=[]; diags=[]; seen=set()
     for index, record in enumerate(sorted(records, key=lambda x:x.get("source_run",""))):
@@ -89,7 +96,12 @@ def replay(records: list[dict[str, Any]]) -> tuple[str, dict[str,int], list[dict
         seen.add(run)
         before = record.get("counters_before", counters)
         previous = record.get("previous_state", state)
-        if before != counters or previous != state:
+        role = record.get("source_role")
+        active_bridge = (
+            (role == "Kernel Adversary" and state == "READY_FOR_TARGETED_CLOSURE" and previous == "TARGETED_CLOSURE_IN_PROGRESS")
+            or (role == "Kernel Designer" and state == "DESIGNER_REMEDIATION_REQUIRED" and previous == "DESIGNER_REMEDIATION_IN_PROGRESS")
+        )
+        if before != counters or (previous != state and not active_bridge):
             diags.append(Diagnostic("HISTORY_FORK", f"$history[{index}]", "counter or state chain diverges")); continue
         after = record.get("counters_after", before)
         if not isinstance(after, dict): diags.append(Diagnostic("HISTORY_RECORD_INVALID",f"$history[{index}]","invalid counters_after")); continue
@@ -239,7 +251,7 @@ def main(argv: list[str] | None=None) -> int:
             print(compact_json(report) if args.json else "AUTHORIZATION_REQUIRED"); return 3
         created=None
         if args.apply and recordable:
-            target=Path(args.history_root)/args.source_run/"controller/controller-transition.json"
+            target=run_directory(Path(args.history_root),args.source_run)/"controller/controller-transition.json"
             write_new(target,json_bytes(proposed,trailing_newline=True)); created=str(target)
         report={"applied":bool(created),"created_path":created,"diagnostics":[],"proposed_transition":proposed,"result":"VALID","tool":{"name":"apply_loop_transition.py","version":__version__}}
         print(compact_json(report) if args.json else "VALID"); return 0

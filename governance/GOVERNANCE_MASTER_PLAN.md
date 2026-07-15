@@ -10,8 +10,8 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 | GOV-1 Kernel intake | `COMPLETED` — imported/reconstructed |
 | GOV-2 Kernel design | `COMPLETED` — imported/reconstructed |
 | GOV-3 Independent adversarial review | `COMPLETED` — `DESIGNER_REVISION_REQUIRED` |
-| GOV-4 Designer revision and adversarial closure | `IN_PROGRESS` — Designer revision completed; closure loop defined; KGR-005 ready but not started |
-| GOV-5 Enforcement analysis and derived governance requirements | `PLANNED` — not ready to start |
+| GOV-4 Designer revision and adversarial closure | `COMPLETED` — KGR-005 imported with `CLOSURE_CONFIRMED` and one validated Controller transition |
+| GOV-5 Enforcement analysis and derived governance requirements | `PLANNED` — entry condition met; separate activation authorization required |
 | GOV-6 Human ratification | `PLANNED` |
 | GOV-7 Minimum executable governance bootstrap | `PLANNED` |
 | GOV-8 Honest S0a–S1 adoption and regularization | `PLANNED` |
@@ -75,7 +75,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: Kernel Designer and independent Adversary; Ratification Owner decides reserved questions.
 - Entry conditions: GOV-3 completed with actionable findings.
 - Completion gate: no unresolved finding that blocks enforcement analysis; all semantic changes trace to findings, owner decisions, verified source corrections, or documented regression prevention.
-- Current status: `IN_PROGRESS`. KGR-004 Designer revision is `COMPLETED` with `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE`, producing the complete `0.2.0-proposed` package and dispositions of 14 `RESOLVED` plus 1 `ROUTED` (`KA-F-015`). `GOV-LOOP-001` version `0.1.0` is defined for initial trial. KGR-005 preparation is `COMPLETED`, readiness is `READY_FOR_EXECUTION`, and execution status is `NOT_STARTED`. Independent targeted adversarial closure has not occurred; GOV-4 remains incomplete and the Enforcement Engineering gate remains closed.
+- Current status: `COMPLETED`. KGR-004 produced the complete `0.2.0-proposed` package and dispositions of 14 `RESOLVED` plus 1 `ROUTED` (`KA-F-015`). KGR-005 completed independent targeted closure with `CLOSURE_CONFIRMED`; the exact eight-member output package was validated and imported byte-identically, and the single Controller transition incremented the targeted-closure counter to 1 with no exhausted guard. This completes GOV-4 but does not ratify the Kernel or authorize Enforcement Engineering.
 - Dependencies: GOV-3.
 - Explicit non-goals: repeating Intake, ratification by revision, silent finding dismissal, Designer self-closure, Enforcement Engineering before targeted closure, a full policy suite, or runtime implementation.
 
@@ -87,7 +87,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: Enforcement Engineer with relevant evaluators/specialists; human owner retains risk authority.
 - Entry conditions: GOV-4 closure permits enforcement analysis.
 - Completion gate: every proposed clause has an honest feasibility/coverage assessment and unresolved owner decisions are explicit.
-- Current status: `PLANNED` and not ready to start; the Enforcement Engineering gate remains closed until GOV-4 completes Designer revision and targeted adversarial closure.
+- Current status: `PLANNED`; the GOV-4 entry condition is met, but Enforcement Engineering remains closed because Phase 2.4 does not authorize GOV-5 activation. A separate Project Owner authorization is required to begin enforcement analysis.
 - Dependencies: GOV-4.
 - Explicit non-goals: claiming enforceability, implementing every control, or silently changing constitutional meaning.
 

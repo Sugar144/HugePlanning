@@ -1,0 +1,29 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-007-E001
+  record_id: HP-FAIL-007
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: Completed-output validation and import-byte regression coverage passed
+    against the exact KGR-005 package.
+  rationale: Seven Phase 2.4 contracts and the affected Controller suite validate
+    UTF-8, identity, result parity, parity declarations, exact custody bytes, and
+    the expected package hash and inventory.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_4_contracts.py
+    anchor: test_exact_completed_package_has_expected_classification_and_facts
+    sha256: null
+    availability: PRESERVED
+    note: Real-package positive validation and mutation regressions passed.
+  - type: VALIDATION_RECORD
+    locator: governance/reviews/phase-2-4-formal-result-import/kgr-005-import-validation-v0.1.0.yaml
+    anchor: GOV-VAL-002
+    sha256: null
+    availability: PRESERVED
+    note: Durable import validation records exact package and custody facts.
+  owner_decision_ref: null
+  accepted_risk: null
+  supersedes: null

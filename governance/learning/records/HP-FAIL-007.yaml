@@ -1,0 +1,115 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-007
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Completed-output validator omitted required import identity and byte-custody
+    checks
+  context:
+    phase: Phase 2.4
+    run: KGR-005
+    component: Formal Governance Result Import Validation
+    branch: governance/kernel-designer-revision-v0.1
+    commit: a2f8caa6c3b3497e8673c256e58c41877afd098f
+    environment: Codex CLI governance execution
+  primary_classification: TOOLING_GAP
+  classification:
+  - TOOLING_GAP
+  - PROCESS_DEFECT
+  - NEAR_MISS
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: Completed-output and import validation should deterministically
+    verify every member is UTF-8, exact run and protocol identities, result/verdict
+    and Markdown/YAML declaration parity, and byte-identical repository custody.
+  observed_behavior: The existing output stage validated ZIP safety, exact members,
+    strict YAML, and two schemas but did not decode Markdown members, bind output
+    run identities to the envelope, compare formal result representations, or compare
+    canonical imported files unless historical envelope entries supplied import_path.
+  impact: The exact package could have received a zero-diagnostic result without settling
+    all Phase 2.4 import requirements, creating a near miss if import proceeded on
+    the earlier classification alone.
+  detection_method: Source inspection of validate_run_package.py after the initial
+    zero-diagnostic completed-package validation was compared with the explicit Phase
+    2.4 import checklist.
+  root_cause:
+    immediate: The original validator implemented generic package and schema checks
+      but no completed-output semantic profile or explicit import-root custody option.
+    systemic: Phase 2 foundations were built before a real completed-output import
+      existed, so tests covered invalid schemas and envelope import_path mismatches
+      but not the full adversary output set.
+    contributing_factors:
+    - The prepared KGR-005 input envelope correctly contains no retrospective output
+      import paths.
+    - Prior tests used synthetic import_path entries rather than a canonical formal-output
+      directory.
+  response:
+    containment: Stop before repository import and Controller dry-run until the deterministic
+      validator and regression tests cover every missing fact.
+    correction: Extend validate_run_package.py with all-member UTF-8 validation, exact
+      adversary output identities, result parity and closure facts, strict Markdown
+      front matter, parity declarations, and explicit import-root byte comparison.
+    prevention:
+    - Keep a real-package Phase 2.4 contract test for the expected classification,
+      hash, count, and result.
+    - Retain mutation tests for UTF-8, identity, result parity, Markdown/YAML parity
+      declaration, and repository byte drift.
+    - Require governance-result-importer to run output validation before writes and
+      import validation before Controller dry-run.
+    accountable_owner: Project Owner
+    validation_required:
+    - Run the Phase 2.4 targeted contracts against the exact completed-output package.
+    - Run the affected Controller package and transition suites.
+    - Validate byte-identical canonical custody and the final Phase 2.4 review bundle.
+  learning:
+    reusable_lesson: A schema-valid formal output package is not import-valid until
+      exact identity, cross-representation parity, and repository custody bytes are
+      also settled deterministically.
+    candidate_system_changes:
+    - SCRIPT
+    - TEST
+    - VALIDATION
+    - SKILL
+    - WORKFLOW_PATTERN
+    applicable_future_phases:
+    - Phase 2.4 formal result import
+    - All future formal governance result imports
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One validator correction and one targeted red/green regression cycle are
+      observable; time, tokens, and model usage are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tools/validate_run_package.py
+    anchor: _validate_adversary_output_semantics
+    sha256: null
+    availability: PRESERVED
+    note: Prospective correction adds the missing completed-output and import checks.
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_4_contracts.py
+    anchor: test_import_root_requires_byte_identical_exact_formal_set
+    sha256: null
+    availability: PRESERVED
+    note: Mutation tests preserve the gap and corrected behavior.
+  - type: EXTERNAL
+    locator: /home/sugar/Downloads/HugePlanning-KGR-005-targeted-closure-v0.2-proposed.zip
+    anchor: sha256:4e8de3b72d0ac9d70b7f13d7a1768d18a1cd57c1af090f5593f3b40e534f198b
+    sha256: 4e8de3b72d0ac9d70b7f13d7a1768d18a1cd57c1af090f5593f3b40e534f198b
+    availability: PRESERVED
+    note: Exact completed-output package that exposed the missing validation surface.
+  related_records:
+  - HP-FAIL-002
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

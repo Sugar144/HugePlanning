@@ -100,7 +100,104 @@ def _validate_structured(members: dict[str, bytes], role: str, stage: str, root:
         except StrictYAMLError: pass
 
 
-def validate_package(stage: str, role: str, package_path: Path, envelope_path: Path, prompt: Path | None, loop_snapshot: Path | None) -> tuple[dict[str, Any], list[Diagnostic]]:
+def _validate_utf8(members: dict[str, bytes], diags: list[Diagnostic]) -> dict[str, str]:
+    decoded: dict[str, str] = {}
+    for name, data in sorted(members.items()):
+        try:
+            decoded[name] = data.decode("utf-8")
+        except UnicodeDecodeError as exc:
+            diags.append(Diagnostic("PACKAGE_MEMBER_NOT_UTF8", name, str(exc)))
+    return decoded
+
+
+def _markdown_front_matter(name: str, text: str, diags: list[Diagnostic]) -> dict[str, Any]:
+    if not text.startswith("---\n") or (boundary := text.find("\n---\n", 4)) < 0:
+        diags.append(Diagnostic("MARKDOWN_FRONT_MATTER_INVALID", name, "strict YAML front matter required"))
+        return {}
+    try:
+        value = load_bytes(text[4:boundary].encode("utf-8"), name)
+    except StrictYAMLError as exc:
+        diags.append(Diagnostic("MARKDOWN_FRONT_MATTER_INVALID", name, str(exc)))
+        return {}
+    if not isinstance(value, dict):
+        diags.append(Diagnostic("MARKDOWN_FRONT_MATTER_INVALID", name, "front matter must be a mapping"))
+        return {}
+    return value
+
+
+def _validate_adversary_output_semantics(
+    members: dict[str, bytes], decoded: dict[str, str], expected_run: Any, diags: list[Diagnostic]
+) -> None:
+    try:
+        verdict_doc = load_bytes(members["01-finding-closure-verdicts.yaml"], "01-finding-closure-verdicts.yaml")
+        result_doc = load_bytes(members["06-closure-result.yaml"], "06-closure-result.yaml")
+    except (KeyError, StrictYAMLError):
+        return
+    verdicts = verdict_doc.get("finding_closure_verdicts", {}) if isinstance(verdict_doc, dict) else {}
+    result = result_doc.get("closure_result", {}) if isinstance(result_doc, dict) else {}
+    for name, value in (("01-finding-closure-verdicts.yaml", verdicts), ("06-closure-result.yaml", result)):
+        _diag(diags, value.get("run") == expected_run, "OUTPUT_RUN_IDENTITY_MISMATCH", name, f"expected run {expected_run}")
+        _diag(diags, value.get("protocol") == "GOV-PROTOCOL-002", "OUTPUT_PROTOCOL_IDENTITY_MISMATCH", name, "expected GOV-PROTOCOL-002")
+    loop = result.get("loop", {})
+    _diag(diags, loop == {"id": "GOV-LOOP-001", "version": "0.1.0"}, "OUTPUT_LOOP_IDENTITY_MISMATCH", "06-closure-result.yaml", "expected GOV-LOOP-001 0.1.0")
+
+    original = verdicts.get("original_findings", [])
+    if not isinstance(original, list): original = []
+    by_id = {item.get("finding_id"): item for item in original if isinstance(item, dict)}
+    expected_ids = {f"KA-F-{number:03d}" for number in range(1, 16)}
+    _diag(diags, len(by_id) == len(original) and set(by_id) == expected_ids, "FINDING_INVENTORY_MISMATCH", "01-finding-closure-verdicts.yaml", "expected unique KA-F-001 through KA-F-015")
+    categorized = {
+        "confirmed_closed": sorted(fid for fid, item in by_id.items() if item.get("adversary_verdict") == "CONFIRMED_CLOSED"),
+        "reopened": sorted(fid for fid, item in by_id.items() if item.get("adversary_verdict") == "REOPENED"),
+        "routed_confirmed": sorted(fid for fid, item in by_id.items() if item.get("adversary_verdict") == "ROUTED_CONFIRMED"),
+        "new": sorted(item.get("finding_id") for item in verdicts.get("new_findings", []) if isinstance(item, dict)),
+        "regressions": sorted(item.get("finding_id") for item in verdicts.get("regression_findings", []) if isinstance(item, dict)),
+    }
+    declared = result.get("findings", {})
+    for key, values in categorized.items():
+        _diag(diags, sorted(declared.get(key, [])) == values, "RESULT_VERDICT_PARITY_MISMATCH", f"06-closure-result.yaml:$.findings.{key}", "result finding IDs differ from verdict YAML")
+    status = result.get("adversary_result", {}).get("status")
+    matrix = result.get("decision_matrix", {})
+    _diag(diags, matrix.get("selected_result") == status, "RESULT_MATRIX_PARITY_MISMATCH", "06-closure-result.yaml", "selected result differs from adversary result")
+    if status == "CLOSURE_CONFIRMED":
+        closure_ok = (
+            categorized["confirmed_closed"] == sorted(f"KA-F-{number:03d}" for number in range(1, 15))
+            and categorized["routed_confirmed"] == ["KA-F-015"]
+            and not categorized["reopened"] and not categorized["new"] and not categorized["regressions"]
+            and all(not item.get("failed_criteria") and item.get("reopen_event") is None for item in original if isinstance(item, dict))
+        )
+        _diag(diags, closure_ok, "CLOSURE_CONFIRMED_FACTS_INVALID", "01-finding-closure-verdicts.yaml", "closure requires 14 confirmed, KA-F-015 routed, and zero reopened/new/regression findings")
+
+    front_matter: dict[str, dict[str, Any]] = {}
+    for name in ADVERSARY_OUTPUTS:
+        if name.endswith(".md") and name in decoded:
+            front_matter[name] = _markdown_front_matter(name, decoded[name], diags)
+            metadata = front_matter[name]
+            _diag(diags, metadata.get("run") == expected_run, "OUTPUT_RUN_IDENTITY_MISMATCH", name, f"expected run {expected_run}")
+            if "protocol" in metadata:
+                _diag(diags, metadata.get("protocol") == "GOV-PROTOCOL-002", "OUTPUT_PROTOCOL_IDENTITY_MISMATCH", name, "expected GOV-PROTOCOL-002")
+    parity = front_matter.get("04-markdown-yaml-parity-review.md", {})
+    _diag(diags, parity.get("parity_result") == "PASSED", "MARKDOWN_YAML_PARITY_NOT_PASSED", "04-markdown-yaml-parity-review.md", "parity_result must be PASSED")
+    summary = front_matter.get("07-targeted-closure-summary-and-handoff.md", {})
+    _diag(diags, summary.get("role") == "Kernel Adversary" and summary.get("mode") == "TARGETED_CLOSURE", "OUTPUT_ROLE_MODE_MISMATCH", "07-targeted-closure-summary-and-handoff.md", "expected Kernel Adversary / TARGETED_CLOSURE")
+    _diag(diags, summary.get("declared_adversary_result") == status, "RESULT_MARKDOWN_PARITY_MISMATCH", "07-targeted-closure-summary-and-handoff.md", "summary result differs from result YAML")
+
+
+def _validate_import_root(members: dict[str, bytes], import_root: Path, diags: list[Diagnostic]) -> None:
+    if not import_root.is_dir():
+        diags.append(Diagnostic("IMPORT_CUSTODY_MISMATCH", str(import_root), "import root is absent"))
+        return
+    actual = sorted(item.name for item in import_root.iterdir() if item.is_file() and item.name != "README.md")
+    expected = sorted(members)
+    for name in sorted(set(expected) - set(actual)):
+        diags.append(Diagnostic("IMPORT_CUSTODY_MISMATCH", str(import_root / name), "imported member absent"))
+    for name in sorted(set(actual) - set(expected)):
+        diags.append(Diagnostic("IMPORT_CUSTODY_EXTRA", str(import_root / name), "undeclared imported output present"))
+    for name in sorted(set(actual) & set(expected)):
+        candidate = import_root / name
+        if candidate.is_symlink() or candidate.read_bytes() != members[name]:
+            diags.append(Diagnostic("IMPORT_CUSTODY_MISMATCH", str(candidate), "imported bytes differ from package"))
+def validate_package(stage: str, role: str, package_path: Path, envelope_path: Path, prompt: Path | None, loop_snapshot: Path | None, import_root: Path | None = None) -> tuple[dict[str, Any], list[Diagnostic]]:
     diags: list[Diagnostic] = []
     envelope_data = load(envelope_path)
     envelope = _envelope_root(envelope_data)
@@ -165,8 +262,14 @@ def validate_package(stage: str, role: str, package_path: Path, envelope_path: P
             _diag(diags, loop_data.get("loop", {}).get("id") == "GOV-LOOP-001" and loop_data.get("loop", {}).get("version") == "0.1.0", "LOOP_IDENTITY_MISMATCH", loop_entry["package_member"], "unsupported loop identity")
         except (StrictYAMLError, AttributeError): pass
     _validate_structured(members, role, stage, root, diags)
+    decoded = _validate_utf8(members, diags)
+    if stage in ("output", "import") and role == "adversary":
+        _validate_adversary_output_semantics(members, decoded, run, diags)
+    if stage == "import" and import_root is not None:
+        _validate_import_root(members, import_root, diags)
     inventory = [{"member": name, "sha256": sha256_bytes(data), "size": len(data)} for name, data in sorted(members.items())]
-    result = {"classification":"VALIDATED_PACKAGE" if not diags else "BLOCKED_BY_PACKAGE_CONFLICT" if stage in ("preparation","isolated-input") else "INVALID_OUTPUT_PACKAGE" if stage == "output" else "INVALID_IMPORT", "constitutional_authority":"NONE", "member_count":len(members), "members":inventory, "package_sha256":sha256_file(package_path) if package_path.is_file() else None, "role":role, "run":run, "stage":stage}
+    valid_classification = "VALIDATED_COMPLETED_OUTPUT_PACKAGE" if stage in ("output", "import") else "VALIDATED_PACKAGE"
+    result = {"classification":valid_classification if not diags else "BLOCKED_BY_PACKAGE_CONFLICT" if stage in ("preparation","isolated-input") else "INVALID_OUTPUT_PACKAGE" if stage == "output" else "INVALID_IMPORT", "constitutional_authority":"NONE", "member_count":len(members), "members":inventory, "package_sha256":sha256_file(package_path) if package_path.is_file() else None, "role":role, "run":run, "stage":stage}
     return result, ordered(diags)
 
 
@@ -175,7 +278,7 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--stage", choices=["preparation","isolated-input","output","import"], required=True)
     p.add_argument("--role", choices=sorted(ROLE_PROFILE), required=True)
     p.add_argument("--package", required=True); p.add_argument("--envelope", required=True)
-    p.add_argument("--prompt-snapshot"); p.add_argument("--loop-snapshot"); p.add_argument("--json", action="store_true")
+    p.add_argument("--prompt-snapshot"); p.add_argument("--loop-snapshot"); p.add_argument("--import-root"); p.add_argument("--json", action="store_true")
     return p
 
 
@@ -183,7 +286,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
         with tempfile.TemporaryDirectory(prefix="governance-package-validation-"):
-            facts, diagnostics = validate_package(args.stage, args.role, Path(args.package), Path(args.envelope), Path(args.prompt_snapshot) if args.prompt_snapshot else None, Path(args.loop_snapshot) if args.loop_snapshot else None)
+            facts, diagnostics = validate_package(args.stage, args.role, Path(args.package), Path(args.envelope), Path(args.prompt_snapshot) if args.prompt_snapshot else None, Path(args.loop_snapshot) if args.loop_snapshot else None, Path(args.import_root) if args.import_root else None)
         report = {**facts, "diagnostics":[d.as_dict() for d in diagnostics], "result":"VALID" if not diagnostics else "INVALID", "tool":{"name":"validate_run_package.py","version":__version__}}
         print(compact_json(report) if args.json else f"{report['result']}: {len(diagnostics)} diagnostic(s)")
         return 0 if not diagnostics else 1

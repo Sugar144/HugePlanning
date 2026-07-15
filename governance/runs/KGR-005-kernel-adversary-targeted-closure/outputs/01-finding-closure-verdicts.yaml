@@ -1,0 +1,184 @@
+finding_closure_verdicts:
+  schema_version: 0.1.0
+  run: KGR-005
+  protocol: GOV-PROTOCOL-002
+  original_findings:
+    - finding_id: KA-F-001
+      original_severity: CRITICAL
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-001
+        - inputs/original-review/03-revision-directives.md#KA-F-001
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-001
+        - inputs/current-proposal/03-kernel-clauses-v0.2.yaml#K-001
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Operational identification, competence, and routing of the reserved human authority remain downstream control and evaluation work.
+    - finding_id: KA-F-002
+      original_severity: HIGH
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-002
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#interpretation-governed-effects
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-002
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-007
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Effect taxonomy, classification, and detection are unimplemented downstream work; harmless local analysis remains explicitly bounded.
+    - finding_id: KA-F-003
+      original_severity: HIGH
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-003
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-002
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-003
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-003
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Concrete independence mechanisms, correlation tests, and evaluator-chain provenance remain downstream evaluation and enforcement work.
+    - finding_id: KA-F-004
+      original_severity: HIGH
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-004
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-004
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-010
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-005
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Gate-to-claim schemas and semantic-fidelity evaluation remain downstream work.
+    - finding_id: KA-F-005
+      original_severity: HIGH
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-005
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-012
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-004
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-007
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Applicable law, data classification, and actual least-loss mechanisms require domain research and later control design.
+    - finding_id: KA-F-006
+      original_severity: HIGH
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-006
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-007
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-008
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-002
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-007
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Renewal lineage, aggregate-duration measurement, and operational expiry controls remain downstream work.
+    - finding_id: KA-F-007
+      original_severity: HIGH
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-007
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-014
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#managed-nonprogress-states
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-007
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: State aging, notification, escalation, and incident mechanisms remain downstream work; safe continued blocking is preserved.
+    - finding_id: KA-F-008
+      original_severity: HIGH
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-008
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-017
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#adoption-boundary
+        - inputs/current-proposal/03-kernel-clauses-v0.2.yaml#adoption_states
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: No enforceability coverage or capability evidence exists; every ENFORCEABLE declaration remains blocked pending later analysis and evidence.
+    - finding_id: KA-F-009
+      original_severity: MEDIUM
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-009
+        - inputs/current-proposal/02-kernel-v0.2-draft.md
+        - inputs/current-proposal/03-kernel-clauses-v0.2.yaml
+        - 04-markdown-yaml-parity-review.md
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Future revisions must repeat semantic parity validation before machine-oriented use.
+    - finding_id: KA-F-010
+      original_severity: MEDIUM
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-010
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-020
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-006
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Sampling and cost/protective-value comparison methods remain policy and research work.
+    - finding_id: KA-F-011
+      original_severity: MEDIUM
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-011
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-018
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-005
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Wording cannot prove comprehension; decision-packet usability and presentation evidence remain downstream evaluation work.
+    - finding_id: KA-F-012
+      original_severity: MEDIUM
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-012
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-001
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-004
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-007
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Assumption taxonomies, dependency records, and validity/revalidation mechanisms remain downstream work.
+    - finding_id: KA-F-013
+      original_severity: MEDIUM
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-013
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-019
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#K-001
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Borderline architecture-effect classification requires lower-layer examples and independent challenge; ordinary architecture remains below the Kernel.
+    - finding_id: KA-F-014
+      original_severity: LOW
+      designer_disposition: RESOLVED
+      adversary_verdict: CONFIRMED_CLOSED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-014
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#honest-state-and-uncertainty
+        - inputs/current-proposal/03-kernel-clauses-v0.2.yaml#honest_states
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Complete state-transition semantics remain a lower-layer standard and control concern.
+    - finding_id: KA-F-015
+      original_severity: OBSERVATION
+      designer_disposition: ROUTED
+      adversary_verdict: ROUTED_CONFIRMED
+      evidence_refs:
+        - inputs/original-review/01-adversarial-findings.md#KA-F-015
+        - inputs/original-review/02-adversarial-scenarios.md#KA-S-013
+        - inputs/current-proposal/02-kernel-v0.2-draft.md#technology-independence
+        - inputs/current-proposal/05-lower-layer-routing-v0.2.md#provider-capability-profiles
+      failed_criteria: []
+      reopen_event: null
+      residual_risk: Provider limitations may make specific effect classes unenforceable; routing asserts no capability and blocks equivalence claims without evidence.
+  new_findings: []
+  regression_findings: []

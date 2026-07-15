@@ -1,0 +1,29 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-008-E001
+  record_id: HP-FAIL-008
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: Canonical suffixed-run resolution and byte-identical transition custody
+    passed targeted and Controller validation.
+  rationale: The resolver selects the existing KGR-005 suffixed directory, the relocated
+    transition retains SHA-256 025c9a070f220505ca7724907ec0be7cec8bf914f9f71f47c0f2ae4978136952,
+    and affected tests pass.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_4_contracts.py
+    anchor: test_controller_resolves_canonical_suffixed_run_directory
+    sha256: null
+    availability: PRESERVED
+    note: Canonical and fallback path resolution regression test passed.
+  - type: REPOSITORY_PATH
+    locator: governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/controller-transition.json
+    anchor: null
+    sha256: 025c9a070f220505ca7724907ec0be7cec8bf914f9f71f47c0f2ae4978136952
+    availability: PRESERVED
+    note: Canonical applied record retains the original transition bytes.
+  owner_decision_ref: null
+  accepted_risk: null
+  supersedes: null
