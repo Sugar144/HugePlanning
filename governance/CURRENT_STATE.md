@@ -2,7 +2,7 @@
 
 | Question | Current answer |
 |---|---|
-| Current governance phase | GOV-5 — `IN_PROGRESS`; KGR-006-R1 imported and evaluated, OD-002/OD-003 resolved, Project Owner acceptance pending |
+| Current governance phase | GOV-5 — `IN_PROGRESS`; KGR-006-R1 imported and evaluated, closure review executed and ready for Project Owner decision, acceptance pending |
 | Last completed governance function | KGR-006-R1 Enforcement Engineer correction — `COMPLETED`, independently evaluated and imported, not accepted |
 | Completed phases | GOV-0 through GOV-4 — `COMPLETED` |
 | KGR-004 status | `COMPLETED` — `READY_FOR_TARGETED_ADVERSARIAL_CLOSURE` |
@@ -12,14 +12,14 @@
 | Kernel status | `PROPOSED_NOT_RATIFIED` |
 | Controller counters | targeted closure `1`; Designer remediation `0` |
 | Controller guards | zero blocking findings; no repeated findings; none exhausted |
-| GOV-5 status | `IN_PROGRESS`; KGR-006-R1 imported and evaluated pending Project Owner acceptance; closure review `NOT_EXECUTED`; not closed |
+| GOV-5 status | `IN_PROGRESS`; KGR-006-R1 imported and evaluated pending Project Owner acceptance; closure review `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION`; not closed |
 | Enforcement Engineering gate | `CLOSED`; GOV-AUTH-001 consumed exactly 1 of 1, with no remaining execution |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
 | Human ratification | `NOT_STARTED` |
 | Owner decisions required | OD-001 satisfied for the evaluation context; OD-002 `CONFIRM_EXACT_SCOPE` and OD-003 `PACKET_SUFFICIENT` resolved; OD-004 through OD-006 unresolved |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | Project Owner acceptance and a separately authorized GOV-5 phase-closure readiness review remain pending; OD-004 through OD-006 and later implementation/effect boundaries remain unresolved |
-| Phase-transition boundary | GOV-5 closure review is `NOT_EXECUTED`; GOV-5 remains open and GOV-6 remains inactive |
+| Known blockers | Project Owner acceptance of KGR-006-R1 and a separate Project Owner GOV-5 closure decision remain pending; OD-004 through OD-006 and later implementation/effect boundaries remain unresolved |
+| Phase-transition boundary | GOV-5 closure review is `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION`; GOV-5 remains open and GOV-6 remains inactive |
 
 ## KGR-006 execution and independent-evaluation reconciliation
 
@@ -125,7 +125,7 @@ KGR-006:
   required_output_count: 7
 
 KGR-006-R1:
-  status: EXECUTED_EVALUATED_IMPORTED_PENDING_PROJECT_OWNER_DECISION
+  status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE
   base_run: KGR-006
   preparation_validation: VALID
   formal_input_package_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
@@ -161,7 +161,8 @@ KGR-006-R1:
 GOV-5:
   status: IN_PROGRESS
   correction_evidence: IMPORTED_AND_INDEPENDENTLY_EVALUATED
-  project_owner_decision_review: PENDING
+  project_owner_decision_review: CLOSURE_REVIEW_EXECUTED_PENDING_OWNER_ACCEPTANCE_AND_CLOSURE_DECISION
+  closure_review: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
   closed: false
 
 GOV-6: {status: INACTIVE}
@@ -175,7 +176,7 @@ GOV-9: {status: INACTIVE}
 governance_state:
   phase: GOV-5
   gov_5_status: IN_PROGRESS
-  gov_5_closure_review: NOT_EXECUTED
+  gov_5_closure_review: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
   kgr_006_r1_status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE
   authorization_status: CONSUMED_1_OF_1_NONE_REMAINING
   od_002: RESOLVED_CONFIRM_EXACT_SCOPE

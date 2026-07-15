@@ -1,7 +1,7 @@
 registry:
-  version: '0.13'
-  generated_for: KGR_006_R1_OWNER_DECISIONS_AND_STATE_RECONCILIATION
-  base_commit: 16e0959eccc3c413da5d2ad11f7a881c92c25411
+  version: '0.14'
+  generated_for: GOV_5_PHASE_CLOSURE_READINESS_REVIEW
+  base_commit: 950a4fe382a37bc6bd5cb0fc431c558406cb393c
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -2020,6 +2020,7 @@ artifacts:
       - GOV-5 remains in progress and GOV-6 through GOV-9 remain inactive.
       - Seven corrected outputs and three evaluation artifacts are imported byte-identically; Project Owner acceptance remains pending.
       - OD-002 and OD-003 are resolved under GOV-DECISION-RECORD-001; OD-004 through OD-006 remain unresolved.
+      - The GOV-5 closure review is executed and ready for a separate Project Owner decision; GOV-5 remains open and GOV-6 remains inactive.
 
   - id: GOV-PROMPT-009
     title: KGR-006-R1 Enforcement Engineer Correction Prompt Snapshot
@@ -2342,3 +2343,73 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Authorizes one bounded reconciliation commit and non-force push; prohibits acceptance, GOV-5 closure, GOV-6 activation, ratification, implementation and PR creation.]
+
+  - id: GOV-REVIEW-015
+    title: Executed GOV-5 Phase-Closure Readiness Review
+    version: 0.2.0
+    status: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
+    authority: review_judgment_not_run_acceptance_phase_closure_ratification_or_activation_authority
+    path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: GOV_5_PHASE_CLOSURE_READINESS_REVIEW
+    artifact_type: executed_phase_closure_readiness_review
+    language: English
+    canonicality: current_executed_review_evidence
+    supersedes: GOV-REVIEW-012/0.1.0
+    aliases: []
+    notes:
+      - Returns exactly READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION.
+      - GOV-5 remains IN_PROGRESS, KGR-006-R1 acceptance remains pending, GOV-6 remains inactive and no risk is accepted.
+      - The historical v0.1.0 prepared, non-executed review remains unchanged.
+
+  - id: GOV-VAL-009
+    title: GOV-5 Phase-Closure Readiness Validation
+    version: 0.1.0
+    status: VALIDATED
+    authority: deterministic_review_and_state_validation_not_acceptance_phase_closure_ratification_or_activation
+    path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-validation-v0.1.0.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: GOV_5_PHASE_CLOSURE_READINESS_REVIEW
+    artifact_type: governance_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: null
+    aliases:
+      - governance/tools/validate_governance_state.py
+      - governance/tests/test_kgr_006_r1_state_consistency.py
+    notes: [Validates the corrected internal state, executed review contract, exact result, item coverage, risk/dependency counts and authority boundaries.]
+
+  - id: GOV-REVIEW-016
+    title: GOV-5 Phase-Closure Readiness Implementation Report
+    version: 0.1.0
+    status: IMPLEMENTED_AND_VALIDATED_READY_FOR_PROJECT_OWNER_DECISION
+    authority: bounded_reconciliation_review_and_validation_evidence_not_acceptance_phase_closure_or_later_phase_authority
+    path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-implementation-report-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: GOV_5_PHASE_CLOSURE_READINESS_REVIEW
+    artifact_type: implementation_validation_report
+    language: English
+    canonicality: preserved_implementation_evidence
+    supersedes: null
+    aliases:
+      - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/review-bundle-profile-v0.2.0.yaml
+    notes: [Records the bounded correction, executed review, validations, review bundle and exact next Owner action.]
+
+  - id: HP-PROMPT-019
+    title: GOV-5 Phase-Closure Readiness Review Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_state_correction_review_validation_commit_and_push_authority
+    path: governance/prompts/orchestration/HP-PROMPT-019-gov-5-phase-closure-readiness-review-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: []
+    notes: [Authorizes the bounded recurrence correction, executed readiness review, evidence, one commit and non-force push; prohibits acceptance, phase closure, GOV-6 activation, risk acceptance, ratification, implementation and PR creation.]

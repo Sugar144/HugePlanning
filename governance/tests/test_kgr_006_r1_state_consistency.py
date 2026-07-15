@@ -40,7 +40,7 @@ def test_canonical_state_is_consistent():
 
 
 def test_validation_record_conforms_to_canonical_schema():
-    record = yaml.safe_load((ROOT / "governance/reviews/kgr-006-r1-owner-decisions-state-reconciliation/cross-surface-state-validation-v0.1.0.yaml").read_text())
+    record = yaml.safe_load((ROOT / "governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-validation-v0.1.0.yaml").read_text())
     schema = json.loads((ROOT / "governance/schemas/governance-validation-record.schema.json").read_text())
     jsonschema.Draft202012Validator(schema).validate(record)
 
@@ -99,3 +99,82 @@ def test_rejects_consuming_output_hash_mismatch(tmp_path):
     path = root / "governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml"
     rewrite_yaml(path, lambda doc: doc["execution_authorization"].update(consumed_by_output_package_sha256="0" * 64))
     assert "authorization consumed_by_output_package_sha256 mismatch" in diagnostics(root)
+
+
+def test_rejects_stale_kgr_006_r1_status_inside_current_state_durable_block(tmp_path):
+    root = isolated(tmp_path)
+    path = root / "governance/CURRENT_STATE.md"
+    replace(
+        path,
+        "status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE",
+        "status: EXECUTED_EVALUATED_IMPORTED_PENDING_PROJECT_OWNER_DECISION",
+    )
+    assert "CURRENT_STATE Durable state KGR-006-R1 status mismatch" in diagnostics(root)
+
+
+def test_rejects_stale_gov_5_closure_status_inside_current_state_durable_block(tmp_path):
+    root = isolated(tmp_path)
+    path = root / "governance/CURRENT_STATE.md"
+    replace(path, "closure_review: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION", "closure_review: NOT_EXECUTED")
+    assert "CURRENT_STATE Durable state GOV-5 closure review mismatch" in diagnostics(root)
+
+
+def test_rejects_current_state_table_drift_even_when_final_marker_is_current(tmp_path):
+    root = isolated(tmp_path)
+    path = root / "governance/CURRENT_STATE.md"
+    replace(path, "GOV-5 closure review is `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION`", "GOV-5 closure review is `NOT_EXECUTED`")
+    assert "CURRENT_STATE table Phase-transition boundary mismatch" in diagnostics(root)
+
+
+def test_rejects_master_plan_status_table_drift_even_when_final_marker_is_current(tmp_path):
+    root = isolated(tmp_path)
+    path = root / "governance/GOVERNANCE_MASTER_PLAN.md"
+    replace(path, "closure review executed and ready for Project Owner decision", "closure review pending")
+    assert "GOVERNANCE_MASTER_PLAN table GOV-5 Enforcement analysis and derived governance requirements mismatch" in diagnostics(root)
+
+
+def test_rejects_review_with_more_than_one_allowed_result(tmp_path):
+    root = isolated(tmp_path)
+    path = root / "governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml"
+    rewrite_yaml(path, lambda doc: doc["phase_closure_readiness_review"].update(secondary_result="RETURN_FOR_REMEDIATION"))
+    assert "must emit exactly one allowed ready result" in diagnostics(root)
+
+
+def test_rejects_review_missing_one_residual_risk(tmp_path):
+    root = isolated(tmp_path)
+    path = root / "governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml"
+    rewrite_yaml(
+        path,
+        lambda doc: doc["phase_closure_readiness_review"]["items"].__setitem__(
+            slice(None),
+            [item for item in doc["phase_closure_readiness_review"]["items"] if item["id"] != "RR-015"],
+        ),
+    )
+    assert "all fifteen residual risks" in diagnostics(root)
+
+
+def test_rejects_review_that_accepts_risk_or_self_closes_phase(tmp_path):
+    root = isolated(tmp_path)
+    path = root / "governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml"
+    rewrite_yaml(
+        path,
+        lambda doc: doc["phase_closure_readiness_review"].update(
+            accepts_risk=True,
+            authoritative_to_close_phase=True,
+        ),
+    )
+    output = diagnostics(root)
+    assert "accepts_risk mismatch" in output
+    assert "authoritative_to_close_phase mismatch" in output
+
+
+def test_rejects_review_that_misroutes_od_004(tmp_path):
+    root = isolated(tmp_path)
+    path = root / "governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml"
+    rewrite_yaml(
+        path,
+        lambda doc: doc["phase_closure_readiness_review"]["explicit_reassessments"]["OD-004"].update(
+            disposition="RESOLVE_IN_GOV_5"
+        ),
+    )
+    assert "OD-004 disposition mismatch" in diagnostics(root)

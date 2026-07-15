@@ -1,0 +1,91 @@
+schema_version: 0.1.0
+repository:
+  expected_branch: governance/kernel-designer-revision-v0.1
+  base_head: 950a4fe382a37bc6bd5cb0fc431c558406cb393c
+  require_changes: true
+  require_empty_staging: true
+scope:
+  enforce_exact: true
+  paths:
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/CURRENT_STATE.md
+    - governance/GOVERNANCE_MASTER_PLAN.md
+    - governance/README.md
+    - governance/learning/FAILURE_AND_LESSONS_INDEX.md
+    - governance/learning/events/HP-FAIL-020/HP-FAIL-020-E002.yaml
+    - governance/learning/events/HP-FAIL-020/HP-FAIL-020-E003.yaml
+    - governance/prompts/orchestration/HP-PROMPT-019-gov-5-phase-closure-readiness-review-v0.1.0.md
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-implementation-report-v0.1.0.md
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-validation-v0.1.0.yaml
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/review-bundle-profile-v0.2.0.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+    - governance/tests/test_kgr_006_r1_state_consistency.py
+    - governance/tools/validate_governance_state.py
+validations:
+  - id: cross-surface-and-review
+    argv: [python3, governance/tools/validate_governance_state.py]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: formal-run-reconciliation
+    argv: [python3, governance/tools/prepare_enforcement_correction.py, validate-reconciliation]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: focused-regressions
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -m, pytest, -q, -p, no:cacheprovider, governance/tests/test_kgr_006_r1_state_consistency.py, governance/tests/test_kgr_006_r1_controlled_import.py]
+    cwd: .
+    required: true
+    timeout_seconds: 240
+  - id: prompt-custody
+    argv: [governance/tests/run-prompt-custody-tests.sh]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: learning-validation
+    argv: [python3, governance/tools/manage_learning.py, validate]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: source-checksums
+    argv: [sha256sum, -c, governance/SOURCE_CHECKSUMS.sha256]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: governed-yaml
+    argv:
+      - python3
+      - -c
+      - "from pathlib import Path; import sys; sys.path.insert(0, 'governance/tools'); from _lib.strict_yaml import load; paths=[p for p in Path('governance').rglob('*.yaml') if '/sources/raw/' not in p.as_posix() and '/tests/fixtures/' not in p.as_posix()]; [load(p) for p in paths]; print(f'STRICT_YAML_VALID={len(paths)}')"
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: historical-review-immutable
+    argv: [git, diff, --exit-code, 950a4fe382a37bc6bd5cb0fc431c558406cb393c, --, governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.1.0.yaml]
+    cwd: .
+    required: true
+    timeout_seconds: 60
+  - id: full-governance-suite
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -m, pytest, -q, -p, no:cacheprovider, governance/tests]
+    cwd: .
+    required: true
+    timeout_seconds: 360
+  - id: authored-whitespace
+    argv: [git, diff, --check, 950a4fe382a37bc6bd5cb0fc431c558406cb393c, --, .]
+    cwd: .
+    required: true
+    timeout_seconds: 60
+dependencies:
+  - id: python-version
+    argv: [python3, --version]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+  - id: test-package-versions
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -c, "from importlib.metadata import version; print(f'jsonschema={version(\"jsonschema\")} pytest={version(\"pytest\")} hypothesis={version(\"hypothesis\")} PyYAML={version(\"PyYAML\")}')"]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+bundle:
+  root_directory: gov-5-phase-closure-readiness-review

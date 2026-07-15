@@ -7,7 +7,7 @@ run:
   phase: GOV-5
   status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE
   preparation_status: VALIDATED
-  readiness: OWNER_DECISIONS_PARTIALLY_RESOLVED_PENDING_ACCEPTANCE_AND_SEPARATELY_AUTHORIZED_CLOSURE_REVIEW
+  readiness: CLOSURE_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_DECISION_PENDING_ACCEPTANCE
 execution:
   authorized: true
   authorization_record: governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
@@ -74,6 +74,14 @@ owner_decisions:
   OD-005: UNRESOLVED
   OD-006: UNRESOLVED
   additional_owner_rationale: NOT_PROVIDED
+phase_closure_review:
+  path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml
+  status: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
+  result: READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION
+  authoritative_to_accept_run: false
+  authoritative_to_close_phase: false
+  gov_5_closed: false
+  gov_6_activated: false
 authority:
   gov_5: IN_PROGRESS
   gov_6_activated: false

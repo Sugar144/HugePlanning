@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import sys
 
@@ -18,6 +18,15 @@ OUTPUT_SHA256 = "0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66
 RUN_REL = Path("governance/runs/KGR-006-R1-enforcement-analysis-correction")
 REVIEW_REL = Path("governance/reviews/kgr-006-r1-controlled-import-and-owner-review")
 DECISION_RECORD_REL = REVIEW_REL / "project-owner-decision-record-v0.1.0.yaml"
+EXECUTED_REVIEW_REL = REVIEW_REL / "gov-5-phase-closure-readiness-v0.2.0.yaml"
+READY_REVIEW_STATUS = "EXECUTED_READY_FOR_PROJECT_OWNER_DECISION"
+READY_REVIEW_RESULT = "READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION"
+ALLOWED_REVIEW_RESULTS = {
+    READY_REVIEW_RESULT,
+    "RETURN_FOR_REMEDIATION",
+    "OWNER_DECISION_REQUIRED_BEFORE_GOV_5_CLOSURE",
+    "INVALID_REVIEW",
+}
 
 
 def markdown_state(path: Path, marker: str) -> dict:
@@ -34,8 +43,176 @@ def markdown_state(path: Path, marker: str) -> dict:
     return loads(match.group("body"), f"{path}:{marker}")
 
 
+def markdown_yaml_section(path: Path, heading: str) -> dict:
+    text = path.read_text()
+    match = re.search(
+        rf"^{re.escape(heading)}\n\n```yaml\n(?P<body>.*?)\n```",
+        text,
+        re.MULTILINE | re.DOTALL,
+    )
+    if not match:
+        raise ValueError(f"{path}: missing structured section {heading}")
+    from _lib.strict_yaml import loads
+
+    return loads(match.group("body"), f"{path}:{heading}")
+
+
+def markdown_table(path: Path, heading: str) -> dict[str, str]:
+    text = path.read_text()
+    start = text.find(heading)
+    if start < 0:
+        raise ValueError(f"{path}: missing table section {heading}")
+    lines = text[start + len(heading):].splitlines()
+    table_lines: list[str] = []
+    started = False
+    for line in lines:
+        if line.startswith("|"):
+            started = True
+            table_lines.append(line)
+        elif started:
+            break
+    if len(table_lines) < 3:
+        raise ValueError(f"{path}: incomplete table section {heading}")
+    result: dict[str, str] = {}
+    for line in table_lines[2:]:
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if len(cells) != 2 or cells[0] in result:
+            raise ValueError(f"{path}: invalid table row in {heading}")
+        result[cells[0]] = cells[1]
+    return result
+
+
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def validate_executed_review(review: dict, errors: list[str]) -> None:
+    expected_flags = {
+        "status": READY_REVIEW_STATUS,
+        "authority": "NONE",
+        "authoritative_to_accept_run": False,
+        "authoritative_to_close_phase": False,
+        "phase_transition_requested": False,
+        "creates_new_governance_layer": False,
+        "accepts_risk": False,
+        "ratifies_kernel": False,
+        "activates_gov_6": False,
+    }
+    for key, value in expected_flags.items():
+        if review.get(key) != value:
+            errors.append(f"executed closure review {key} mismatch")
+    if review.get("completion_gate", {}).get("overall_satisfied") is not True:
+        errors.append("executed closure review GOV-5 completion gate mismatch")
+    for gate in ("clause_feasibility_and_coverage", "unresolved_owner_decisions"):
+        if review.get("completion_gate", {}).get(gate, {}).get("satisfied") is not True:
+            errors.append(f"executed closure review gate {gate} mismatch")
+
+    result_values: list[str] = []
+    def collect(value):
+        if isinstance(value, dict):
+            for item in value.values():
+                collect(item)
+        elif isinstance(value, list):
+            for item in value:
+                collect(item)
+        elif value in ALLOWED_REVIEW_RESULTS:
+            result_values.append(value)
+    collect(review)
+    if result_values != [READY_REVIEW_RESULT] or review.get("review_result") != READY_REVIEW_RESULT:
+        errors.append("executed closure review must emit exactly one allowed ready result")
+
+    required_item_fields = set(review.get("item_field_contract", {}).get("required_fields", []))
+    expected_item_fields = {
+        "id", "category", "item", "current_status", "evidence", "closure_relevance",
+        "blocks_gov_5_closure", "legitimate_deferral_destination",
+        "future_action_trigger", "owner_decision_required",
+    }
+    if required_item_fields != expected_item_fields:
+        errors.append("executed closure review item field contract mismatch")
+    items = review.get("items", [])
+    ids = [item.get("id") for item in items if isinstance(item, dict)]
+    if len(ids) != len(set(ids)) or len(ids) != len(items):
+        errors.append("executed closure review item IDs must be unique")
+    for item in items:
+        if set(item) != expected_item_fields:
+            errors.append(f"executed closure review item field mismatch: {item.get('id')}")
+        if not isinstance(item.get("evidence"), list) or not item.get("evidence"):
+            errors.append(f"executed closure review item evidence missing: {item.get('id')}")
+        if not isinstance(item.get("blocks_gov_5_closure"), bool):
+            errors.append(f"executed closure review item blocking value invalid: {item.get('id')}")
+    if {f"RR-{number:03d}" for number in range(1, 16)} - set(ids):
+        errors.append("executed closure review must classify all fifteen residual risks")
+    if {f"SD-{number:03d}" for number in range(1, 5)} - set(ids):
+        errors.append("executed closure review must classify all four specialist dependencies")
+    if {f"OD-{number:03d}" for number in range(1, 7)} - set(ids):
+        errors.append("executed closure review must classify OD-001 through OD-006")
+    for required in (
+        "HP-FAIL-005", "HP-FAIL-020", "IE-MC-001", "IE-MC-002", "IE-MC-003",
+        "MINIMUM-GOV-7-RECOMMENDATION", "PROJECT-OWNER-KGR-006-R1-ACCEPTANCE",
+        "PROJECT-OWNER-GOV-5-CLOSURE", "PHASE-TRANSITION-BOUNDARY",
+    ):
+        if required not in ids:
+            errors.append(f"executed closure review missing material item {required}")
+
+    reassessments = review.get("explicit_reassessments", {})
+    if reassessments.get("HP-FAIL-005", {}).get("blocks_gov_5") is not False or reassessments.get("HP-FAIL-005", {}).get("blocks_gov_6") is not False:
+        errors.append("executed closure review HP-FAIL-005 reassessment mismatch")
+    if reassessments.get("HP-FAIL-020_recurrence", {}).get("validated_before_review") is not True:
+        errors.append("executed closure review HP-FAIL-020 recurrence validation mismatch")
+    if reassessments.get("OD-002_and_OD-003", {}).get("fully_satisfy_decisions_required_before_gov_6") is not True:
+        errors.append("executed closure review OD-002/OD-003 reassessment mismatch")
+    if reassessments.get("OD-004", {}).get("disposition") != "CORRECTLY_ROUTED_TO_GOV_6":
+        errors.append("executed closure review OD-004 disposition mismatch")
+    if reassessments.get("OD-005", {}).get("disposition") != "CORRECTLY_ROUTED_AFTER_ANY_RATIFICATION_AND_BEFORE_AFFECTED_GOV_7_WORK":
+        errors.append("executed closure review OD-005 disposition mismatch")
+    if reassessments.get("OD-006", {}).get("disposition") != "MAY_REMAIN_DEFERRED_UNTIL_RELEVANT_PROVIDER_DATA_PILOT_OR_REAL_WORLD_BOUNDARY":
+        errors.append("executed closure review OD-006 disposition mismatch")
+    risks = reassessments.get("residual_risks", {})
+    if risks.get("exact_count") != 15 or risks.get("accepted") is not False or risks.get("routed") is not True:
+        errors.append("executed closure review residual-risk treatment mismatch")
+    dependencies = reassessments.get("specialist_dependencies", {})
+    if dependencies.get("exact_count") != 4 or dependencies.get("trigger_gated_correctly") is not True:
+        errors.append("executed closure review specialist-dependency treatment mismatch")
+    if reassessments.get("research_items", {}).get("blocks_constitutional_ratification") is not False:
+        errors.append("executed closure review research-item reassessment mismatch")
+
+    disposition = review.get("readiness_disposition", {})
+    if disposition.get("gate_satisfied") is not True or disposition.get("remediation_required") != []:
+        errors.append("executed closure review readiness disposition mismatch")
+    if disposition.get("blocking_items") != [
+        "PROJECT-OWNER-KGR-006-R1-ACCEPTANCE", "PROJECT-OWNER-GOV-5-CLOSURE"
+    ]:
+        errors.append("executed closure review blocking items mismatch")
+    state = review.get("resulting_state", {})
+    if state.get("KGR-006-R1", {}).get("project_owner_acceptance") != "PENDING":
+        errors.append("executed closure review acceptance state mismatch")
+    if state.get("GOV-5") != {
+        "status": "IN_PROGRESS", "closure_review": READY_REVIEW_STATUS, "closed": False
+    }:
+        errors.append("executed closure review GOV-5 resulting state mismatch")
+    if [state.get(f"GOV-{number}") for number in range(6, 10)] != ["INACTIVE"] * 4:
+        errors.append("executed closure review later-phase state mismatch")
+    if state.get("kernel") != "0.2.0-proposed/PROPOSED_NOT_RATIFIED":
+        errors.append("executed closure review Kernel state mismatch")
+
+
+def validate_markdown_links(root: Path, paths: list[Path], errors: list[str]) -> None:
+    for relative in paths:
+        path = root / relative
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", path.read_text()):
+            if target.startswith(("http://", "https://", "mailto:", "#")):
+                continue
+            local = target.split("#", 1)[0]
+            if not local:
+                continue
+            candidate = (path.parent / local).resolve()
+            try:
+                candidate.relative_to(root.resolve())
+            except ValueError:
+                errors.append(f"Markdown link escapes repository: {relative} -> {target}")
+                continue
+            if not candidate.exists():
+                errors.append(f"Markdown link target missing: {relative} -> {target}")
 
 
 def validate(root: Path) -> dict:
@@ -43,11 +220,20 @@ def validate(root: Path) -> dict:
     run = load(root / RUN_REL / "run-manifest.yaml")
     authorization = load(root / RUN_REL / "authorization/execution-authorization.yaml")["execution_authorization"]
     decisions = load(root / DECISION_RECORD_REL)["project_owner_decision_record"]
+    executed_review = load(root / EXECUTED_REVIEW_REL)["phase_closure_readiness_review"]
     registry = load(root / "governance/ARTIFACT_REGISTRY.yaml")
-    current = markdown_state(root / "governance/CURRENT_STATE.md", "GOVERNANCE_STATE_V1")["governance_state"]
-    plan = markdown_state(root / "governance/GOVERNANCE_MASTER_PLAN.md", "GOVERNANCE_STATE_V1")["governance_state"]
-    readme = markdown_state(root / "governance/README.md", "GOVERNANCE_STATE_V1")["governance_state"]
+    current_path = root / "governance/CURRENT_STATE.md"
+    plan_path = root / "governance/GOVERNANCE_MASTER_PLAN.md"
+    readme_path = root / "governance/README.md"
+    current = markdown_state(current_path, "GOVERNANCE_STATE_V1")["governance_state"]
+    current_durable = markdown_yaml_section(current_path, "## Durable state")
+    current_table = markdown_table(current_path, "# Current Governance State")
+    plan = markdown_state(plan_path, "GOVERNANCE_STATE_V1")["governance_state"]
+    plan_table = markdown_table(plan_path, "## Status summary")
+    readme = markdown_state(readme_path, "GOVERNANCE_STATE_V1")["governance_state"]
     log = (root / "governance/DECISION_LOG.md").read_text()
+
+    validate_executed_review(executed_review, errors)
 
     expected_decisions = {
         "OD-002": ("RESOLVED", "CONFIRM_EXACT_SCOPE"),
@@ -88,12 +274,25 @@ def validate(root: Path) -> dict:
         errors.append("run manifest OD-002/OD-003 state mismatch")
     if [run_decisions.get(item) for item in ("OD-004", "OD-005", "OD-006")] != ["UNRESOLVED"] * 3:
         errors.append("run manifest must leave OD-004 through OD-006 unresolved")
+    run_review = run.get("phase_closure_review", {})
+    if run.get("run", {}).get("readiness") != "CLOSURE_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_DECISION_PENDING_ACCEPTANCE":
+        errors.append("run manifest closure-review readiness mismatch")
+    if run_review != {
+        "path": EXECUTED_REVIEW_REL.as_posix(),
+        "status": READY_REVIEW_STATUS,
+        "result": READY_REVIEW_RESULT,
+        "authoritative_to_accept_run": False,
+        "authoritative_to_close_phase": False,
+        "gov_5_closed": False,
+        "gov_6_activated": False,
+    }:
+        errors.append("run manifest phase-closure review state mismatch")
 
     surfaces = {"CURRENT_STATE": current, "GOVERNANCE_MASTER_PLAN": plan, "README": readme}
     expected_surface = {
         "phase": "GOV-5",
         "gov_5_status": "IN_PROGRESS",
-        "gov_5_closure_review": "NOT_EXECUTED",
+        "gov_5_closure_review": READY_REVIEW_STATUS,
         "kgr_006_r1_status": "IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE",
         "authorization_status": "CONSUMED_1_OF_1_NONE_REMAINING",
         "od_002": "RESOLVED_CONFIRM_EXACT_SCOPE",
@@ -110,10 +309,71 @@ def validate(root: Path) -> dict:
             if surface.get(key) != value:
                 errors.append(f"{name} {key} mismatch")
 
+    durable_run = current_durable.get("KGR-006-R1", {})
+    if durable_run.get("status") != "IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE":
+        errors.append("CURRENT_STATE Durable state KGR-006-R1 status mismatch")
+    if durable_run.get("project_owner_acceptance") != "PENDING":
+        errors.append("CURRENT_STATE Durable state Project Owner acceptance mismatch")
+    if durable_run.get("owner_decisions") != {
+        "OD-002": "RESOLVED_CONFIRM_EXACT_SCOPE",
+        "OD-003": "RESOLVED_PACKET_SUFFICIENT",
+        "OD-004": "UNRESOLVED",
+        "OD-005": "UNRESOLVED",
+        "OD-006": "UNRESOLVED",
+    }:
+        errors.append("CURRENT_STATE Durable state Owner decisions mismatch")
+    durable_gov_5 = current_durable.get("GOV-5", {})
+    if durable_gov_5.get("status") != "IN_PROGRESS" or durable_gov_5.get("closed") is not False:
+        errors.append("CURRENT_STATE Durable state GOV-5 open status mismatch")
+    if durable_gov_5.get("closure_review") != READY_REVIEW_STATUS:
+        errors.append("CURRENT_STATE Durable state GOV-5 closure review mismatch")
+    if [current_durable.get(f"GOV-{number}", {}).get("status") for number in range(6, 10)] != ["INACTIVE"] * 4:
+        errors.append("CURRENT_STATE Durable state GOV-6 through GOV-9 mismatch")
+    if current_durable.get("kernel") != {"version": "0.2.0-proposed", "status": "PROPOSED_NOT_RATIFIED"}:
+        errors.append("CURRENT_STATE Durable state Kernel mismatch")
+
+    current_table_expectations = {
+        "Current governance phase": ("GOV-5", "IN_PROGRESS"),
+        "GOV-5 status": ("IN_PROGRESS", f"closure review `{READY_REVIEW_STATUS}`", "not closed"),
+        "Enforcement Engineering gate": ("CLOSED", "1 of 1"),
+        "Human ratification": ("NOT_STARTED",),
+        "Phase-transition boundary": (READY_REVIEW_STATUS, "GOV-6 remains inactive"),
+    }
+    for row, fragments in current_table_expectations.items():
+        value = current_table.get(row, "")
+        if not all(fragment in value for fragment in fragments):
+            errors.append(f"CURRENT_STATE table {row} mismatch")
+
+    plan_table_expectations = {
+        "GOV-5 Enforcement analysis and derived governance requirements": ("IN_PROGRESS", "closure review executed and ready for Project Owner decision"),
+        "GOV-6 Human ratification": ("PLANNED",),
+        "GOV-7 Minimum executable governance bootstrap": ("PLANNED",),
+        "GOV-8 Honest S0a–S1 adoption and regularization": ("PLANNED",),
+        "GOV-9 S2 governed pilot": ("PLANNED",),
+    }
+    for row, fragments in plan_table_expectations.items():
+        value = plan_table.get(row, "")
+        if not all(fragment in value for fragment in fragments):
+            errors.append(f"GOVERNANCE_MASTER_PLAN table {row} mismatch")
+
     artifacts = {item.get("id"): item for item in registry.get("artifacts", [])}
+    if len(artifacts) != len(registry.get("artifacts", [])):
+        errors.append("artifact registry IDs must be unique")
+    for artifact_id, artifact in artifacts.items():
+        value = artifact.get("path")
+        if not isinstance(value, str):
+            errors.append(f"artifact registry path missing for {artifact_id}")
+            continue
+        pure = PurePosixPath(value.rstrip("/"))
+        if pure.is_absolute() or any(part in ("", ".", "..") for part in pure.parts):
+            errors.append(f"artifact registry path unsafe for {artifact_id}")
+            continue
+        if not (root / Path(*pure.parts)).exists():
+            errors.append(f"artifact registry path missing for {artifact_id}")
     for required in (
         "KGR-006-R1", "GOV-AUTH-001", "GOV-DECISION-RECORD-001",
         "GOV-VAL-008", "GOV-REVIEW-014", "HP-PROMPT-018",
+        "GOV-VAL-009", "GOV-REVIEW-015", "GOV-REVIEW-016", "HP-PROMPT-019",
     ):
         if required not in artifacts:
             errors.append(f"artifact registry missing {required}")
@@ -132,6 +392,15 @@ def validate(root: Path) -> dict:
             path = root / RUN_REL / directory / item["member"]
             if sha256(path) != item["sha256"]:
                 errors.append(f"immutable artifact hash mismatch: {path.relative_to(root)}")
+
+    validate_markdown_links(root, [
+        Path("governance/CURRENT_STATE.md"),
+        Path("governance/GOVERNANCE_MASTER_PLAN.md"),
+        Path("governance/README.md"),
+        Path("governance/learning/FAILURE_AND_LESSONS_INDEX.md"),
+        Path("governance/prompts/orchestration/HP-PROMPT-019-gov-5-phase-closure-readiness-review-v0.1.0.md"),
+        REVIEW_REL / "gov-5-phase-closure-readiness-implementation-report-v0.1.0.md",
+    ], errors)
 
     return {"result": "VALID" if not errors else "INVALID", "diagnostics": errors}
 

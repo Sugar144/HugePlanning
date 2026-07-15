@@ -1,0 +1,719 @@
+phase_closure_readiness_review:
+  schema_version: 0.2.0
+  document_id: GOV-REVIEW-015
+  version: 0.2.0
+  supersedes: GOV-REVIEW-012/0.1.0
+  phase: GOV-5
+  source_run: KGR-006-R1
+  executed_on: '2026-07-15'
+  status: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
+  authority: NONE
+  authoritative_to_accept_run: false
+  authoritative_to_close_phase: false
+  phase_transition_requested: false
+  creates_new_governance_layer: false
+  accepts_risk: false
+  ratifies_kernel: false
+  activates_gov_6: false
+  evidence_basis:
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/03-feasibility-coverage-and-gap-assessment.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/05-minimum-executable-package-recommendation.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.1.0.yaml
+    - governance/reviews/kgr-006-r1-owner-decisions-state-reconciliation/cross-surface-state-validation-v0.1.0.yaml
+    - governance/CURRENT_STATE.md
+    - governance/GOVERNANCE_MASTER_PLAN.md
+    - governance/methodology/METHODOLOGY_BACKLOG.md
+    - governance/learning/FAILURE_AND_LESSONS_INDEX.md
+  phase_a_state_basis:
+    recurrence: HP-FAIL-020-E002
+    correction_validation: HP-FAIL-020-E003
+    canonical_validator_result_before_review: VALID_ZERO_DIAGNOSTICS
+    focused_regressions_before_review: 14_PASSED
+    state_eligible_as_review_basis: true
+  completion_gate:
+    clause_feasibility_and_coverage:
+      requirement: Every proposed Kernel clause has an honest feasibility and coverage assessment.
+      evidence:
+        - K-001 through K-007 are each assessed at clause and effect-family level.
+        - All 46 applicable canonical clause-route pairs and all 20 lower-layer routes are accounted for.
+        - Capability evidence is honestly classified as 0 supported, 7 partial, 9 gaps, 3 specialist-dependent and 1 provider-test-dependent.
+        - Feasibility limits, burden, residual risk, stopping and recovery implications are explicit without an enforceability claim.
+      satisfied: true
+    unresolved_owner_decisions:
+      requirement: All unresolved Owner decisions are explicit and correctly routed.
+      evidence:
+        - OD-001 is satisfied only for the completed KGR-006-R1 evaluation context.
+        - OD-002 is RESOLVED_CONFIRM_EXACT_SCOPE.
+        - OD-003 is RESOLVED_PACKET_SUFFICIENT for the current Project Owner decision context.
+        - OD-004 remains a GOV-6 constitutional decision.
+        - OD-005 remains after any ratification and before affected GOV-7 work.
+        - OD-006 remains before the relevant provider, data, pilot or real-world boundary.
+      satisfied: true
+    overall_satisfied: true
+  item_field_contract:
+    required_fields:
+      - id
+      - category
+      - item
+      - current_status
+      - evidence
+      - closure_relevance
+      - blocks_gov_5_closure
+      - legitimate_deferral_destination
+      - future_action_trigger
+      - owner_decision_required
+  items:
+    - id: HP-FAIL-005
+      category: LEARNING_RECORD
+      item: Prompt-custody publication-authorization recursion.
+      current_status: CORRECTED_WITHOUT_VALIDATED_EVENT
+      evidence: [governance/learning/records/HP-FAIL-005.yaml, governance/methodology/project-operating-contract.md]
+      closure_relevance: The defect concerns terminal publication evidence, not the completeness or constitutional adequacy of KGR-006-R1.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Future prompt-custody control validation.
+      future_action_trigger: The next material publication-authorization workflow that exercises OWNER_PUBLICATION_AUTHORIZATION.
+      owner_decision_required: NONE_NOW_OR_FOR_GOV_6_ENTRY
+    - id: HP-FAIL-014
+      category: LEARNING_RECORD
+      item: Historical KGR-006 execution lacked contemporaneous repository authorization custody.
+      current_status: VALIDATED_WITH_HISTORICAL_LIMITATION_PRESERVED
+      evidence: [governance/learning/events/HP-FAIL-014/HP-FAIL-014-E002.yaml, governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml]
+      closure_relevance: KGR-006-R1 prospectively corrected the execution gate without rewriting KGR-006 history.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: Preserve the gate for every future formal execution.
+      owner_decision_required: NONE
+    - id: HP-FAIL-015
+      category: LEARNING_RECORD
+      item: KGR-006 omitted 15 canonical clause-route anchors.
+      current_status: VALIDATED_CORRECTED_IN_KGR_006_R1
+      evidence: [governance/learning/events/HP-FAIL-015/HP-FAIL-015-E002.yaml, governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml]
+      closure_relevance: Exact clause-route coverage is direct GOV-5 gate evidence.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: Revalidate the canonical crosswalk for any later versioned analysis.
+      owner_decision_required: NONE
+    - id: HP-FAIL-016
+      category: LEARNING_RECORD
+      item: KGR-006 duplicated specialist dependencies and diverged on ER-012.
+      current_status: VALIDATED_CORRECTED_IN_KGR_006_R1
+      evidence: [governance/learning/events/HP-FAIL-016/HP-FAIL-016-E002.yaml, governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml]
+      closure_relevance: Dependency and unsupported-boundary consistency is direct GOV-5 gate evidence.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: Revalidate dependency identity and boundary parity for any later version.
+      owner_decision_required: NONE
+    - id: HP-FAIL-017
+      category: LEARNING_RECORD_AND_RECURRENCE
+      item: Historical-phase tests twice froze mutable later-phase wording.
+      current_status: VALIDATED_WITH_RECURRENCE_PRESERVED
+      evidence: [governance/learning/events/HP-FAIL-017/HP-FAIL-017-E001.yaml, governance/learning/events/HP-FAIL-017/HP-FAIL-017-E002.yaml]
+      closure_relevance: The enduring CLOSED gate invariant now survives truthful GOV-5 state changes.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: Apply enduring-invariant tests at later state transitions.
+      owner_decision_required: NONE
+    - id: HP-FAIL-018
+      category: LEARNING_RECORD
+      item: Global whitespace validation conflicted with immutable external imports.
+      current_status: VALIDATED
+      evidence: [governance/learning/events/HP-FAIL-018/HP-FAIL-018-E001.yaml, governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml]
+      closure_relevance: Confirms immutable evidence can remain byte-identical while authored files receive style validation.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: Use the split validation profile for later immutable imports.
+      owner_decision_required: NONE
+    - id: HP-FAIL-019
+      category: LEARNING_RECORD
+      item: The KGR-006-R1 authorization validator initially modeled only the open state.
+      current_status: VALIDATED
+      evidence: [governance/learning/events/HP-FAIL-019/HP-FAIL-019-E001.yaml, governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml]
+      closure_relevance: Confirms exact one-time consumption and prevents execution-authority reuse.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: Require terminal profiles for later one-shot authorizations.
+      owner_decision_required: NONE
+    - id: HP-FAIL-020
+      category: LEARNING_RECORD_AND_RECURRENCE
+      item: Cross-surface completion missed an internal Durable state representation.
+      current_status: VALIDATED_RECURRENCE_CORRECTED_AND_VALIDATED
+      evidence: [governance/learning/events/HP-FAIL-020/HP-FAIL-020-E002.yaml, governance/learning/events/HP-FAIL-020/HP-FAIL-020-E003.yaml, governance/tests/test_kgr_006_r1_state_consistency.py]
+      closure_relevance: The state used by this review is reconciled and the missed representation now has regression coverage.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: Run the canonical validator at every material governance completion.
+      owner_decision_required: NONE
+    - id: IE-MC-001
+      category: PROJECT_OWNER_CORRECTION_AND_INDEPENDENT_FINDING
+      item: Prospective execution authorization custody for KGR-006-R1.
+      current_status: IMPLEMENTED_AND_INDEPENDENTLY_VALIDATED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml, governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml]
+      closure_relevance: Removes the correction-run provenance challenge while preserving the original limitation.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: None; preserve prospectively for future runs.
+      owner_decision_required: NONE
+    - id: IE-MC-002
+      category: PROJECT_OWNER_CORRECTION_AND_INDEPENDENT_FINDING
+      item: Explicit preservation of all canonical clause-route anchors.
+      current_status: IMPLEMENTED_AND_INDEPENDENTLY_VALIDATED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml, governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml]
+      closure_relevance: Direct evidence that every clause has complete analytical routing coverage.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: None for this immutable result.
+      owner_decision_required: NONE
+    - id: IE-MC-003
+      category: PROJECT_OWNER_CORRECTION_AND_INDEPENDENT_FINDING
+      item: Canonical four-dependency model and exact ER-012 boundary.
+      current_status: IMPLEMENTED_AND_INDEPENDENTLY_VALIDATED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml, governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml]
+      closure_relevance: Direct evidence of honest specialist routing and unsupported boundaries.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: None for this immutable result.
+      owner_decision_required: NONE
+    - id: IE-R1-CF-001_THROUGH_IE-R1-CF-013
+      category: INDEPENDENT_EVALUATION_FINDINGS
+      item: Thirteen confirmed findings validate the correction contract, coverage, dependencies, boundaries, decisions and recommendation-only posture.
+      current_status: CONFIRMED_NO_NEW_MATERIAL_CHALLENGE
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml, governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/02-independent-evaluation-report.md]
+      closure_relevance: Supplies the required independent assessment of the corrected enforcement analysis.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: A new material contradiction or versioned source change.
+      owner_decision_required: NONE
+    - id: CAPABILITY-SUPPORTED-000
+      category: FEASIBILITY_AND_CAPABILITY_GAP
+      item: No derived enforcement requirement is fully supported by current capability evidence.
+      current_status: DISCLOSED_ZERO_OF_TWENTY
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/02-existing-capability-inventory.md]
+      closure_relevance: Honest zero-support disclosure satisfies analysis scope; it is not an enforceability claim.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Owner-scoped GOV-7 after ratification and separate authorization.
+      future_action_trigger: OD-004 ratification followed by OD-005 and bounded GOV-7 authorization.
+      owner_decision_required: LATER
+    - id: CAPABILITY-PARTIAL-007
+      category: FEASIBILITY_AND_CAPABILITY_GAP
+      item: Seven requirements have only partial evidence.
+      current_status: DISCLOSED_AND_ROUTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/02-existing-capability-inventory.md]
+      closure_relevance: Demonstrates honest coverage assessment rather than completed capability.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Future exact-scope GOV-7 implementation evidence.
+      future_action_trigger: Authorized implementation of an affected bounded transition.
+      owner_decision_required: LATER
+    - id: CAPABILITY-GAP-009
+      category: FEASIBILITY_AND_CAPABILITY_GAP
+      item: Nine requirements are direct capability gaps.
+      current_status: DISCLOSED_AND_BLOCKING_AFFECTED_LATER_CLAIMS
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/02-existing-capability-inventory.md, governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/03-feasibility-coverage-and-gap-assessment.md]
+      closure_relevance: The gaps are the expected output of GOV-5 analysis and do not need implementation inside GOV-5.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 before affected capability or pilot claims.
+      future_action_trigger: Separately authorized affected implementation or pilot scope.
+      owner_decision_required: LATER
+    - id: CAPABILITY-SPECIALIST-003
+      category: FEASIBILITY_AND_CAPABILITY_GAP
+      item: Three requirements depend on competent specialist evidence.
+      current_status: DISCLOSED_WITH_EXPLICIT_UNSUPPORTED_BOUNDARIES
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/02-existing-capability-inventory.md]
+      closure_relevance: Trigger-gated dependencies are explicit and do not conceal current capability.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: SD-002, SD-003 and SD-004 at their exact triggers.
+      future_action_trigger: Relevant real data, material packet complexity, or recovery/continuity scope.
+      owner_decision_required: LATER_IF_TRIGGERED
+    - id: CAPABILITY-PROVIDER-001
+      category: FEASIBILITY_AND_CAPABILITY_GAP
+      item: One requirement depends on empirical provider testing.
+      current_status: DISCLOSED_WITH_PROVIDER_EFFECTS_BLOCKED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/02-existing-capability-inventory.md]
+      closure_relevance: Provider uncertainty is honestly bounded rather than treated as current evidence.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: SD-001 in affected GOV-7 work.
+      future_action_trigger: Selection of a provider and effect classes for a bounded transition.
+      owner_decision_required: LATER
+    - id: UA-001
+      category: UNRESOLVED_ASSUMPTION
+      item: Source-executor identity and model/tool correlation evidence were not supplied for the independent evaluation.
+      current_status: DOCUMENTED_EVIDENCE_LIMITATION
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/00-independent-evaluation-basis.md]
+      closure_relevance: Limits independence claims but does not contradict the separately appointed immutable-package evaluation.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Project Owner consideration during KGR-006-R1 acceptance and GOV-6 constitutional review.
+      future_action_trigger: Owner judges the disclosed limitation material or commissions further review.
+      owner_decision_required: NOW_AS_DISCLOSURE_NOT_AS_SEPARATE_BLOCKER
+    - id: UA-002
+      category: UNRESOLVED_ASSUMPTION
+      item: Provider behavior and effect-class equivalence are empirically untested.
+      current_status: UNSUPPORTED_AND_BLOCKED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/03-feasibility-coverage-and-gap-assessment.md]
+      closure_relevance: No provider claim is needed to complete the constitutional analysis.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: SD-001 in future bounded GOV-7 work.
+      future_action_trigger: A provider-dependent transition is proposed.
+      owner_decision_required: LATER
+    - id: UA-003
+      category: UNRESOLVED_ASSUMPTION
+      item: Actual data, purpose, jurisdiction, provider and threat context are not fixed.
+      current_status: DEFERRED_WITH_REAL_DATA_BLOCKED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/03-feasibility-coverage-and-gap-assessment.md]
+      closure_relevance: The exact ER-012 boundary prevents unsupported real-world effects.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: OD-006 and SD-002 before relevant real-data use.
+      future_action_trigger: Affected data, jurisdiction, provider or threat context is approached.
+      owner_decision_required: LATER
+    - id: UA-004
+      category: UNRESOLVED_ASSUMPTION
+      item: Recovery, burden, protective value and general decision-usability effectiveness lack operational evidence.
+      current_status: DISCLOSED_NOT_CLAIMED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/03-feasibility-coverage-and-gap-assessment.md]
+      closure_relevance: GOV-5 correctly avoids invented operational evidence.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: SD-004 before a pilot, later sampled operation, and SD-003 only for a materially complex decision packet.
+      future_action_trigger: A bounded pilot, actual operation, or a materially complex future packet.
+      owner_decision_required: LATER_IF_TRIGGERED
+    - id: HP-MPROP-001
+      category: METHODOLOGY_PROPOSAL
+      item: Controller testing hardening and possible later formal-method evaluations.
+      current_status: IMPLEMENTED_LOCALLY_PENDING_REVIEW_WITH_FUTURE_EVALUATIONS_DEFERRED
+      evidence: [governance/methodology/METHODOLOGY_BACKLOG.md]
+      closure_relevance: Methodology quality follow-up does not alter KGR-006-R1 coverage evidence.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Separate methodology review and trigger-specific future evaluation.
+      future_action_trigger: Explicit Project Owner review or a matching Controller/API risk.
+      owner_decision_required: LATER
+    - id: HP-MPROP-002
+      category: METHODOLOGY_PROPOSAL
+      item: Further reusable governance workflow extraction.
+      current_status: IMPLEMENTED_LOCALLY_PENDING_REVIEW_WITH_FOLLOW_UPS_TRIGGER_GATED
+      evidence: [governance/methodology/METHODOLOGY_BACKLOG.md]
+      closure_relevance: Workflow extraction is not a constitutional or enforcement-analysis completion criterion.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Separate methodology review under the extraction rule.
+      future_action_trigger: Repeated stable workflow not settleable entirely by a deterministic script.
+      owner_decision_required: LATER
+    - id: HP-MPROP-003
+      category: METHODOLOGY_PROPOSAL
+      item: Deterministic review-bundle generation.
+      current_status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
+      evidence: [governance/methodology/METHODOLOGY_BACKLOG.md, governance/tools/build_review_bundle.py]
+      closure_relevance: Available tooling supports review evidence but grants no phase authority.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Separate acceptance or operationalization review.
+      future_action_trigger: Project Owner chooses to review the methodology implementation.
+      owner_decision_required: LATER
+    - id: HP-MPROP-004
+      category: METHODOLOGY_PROPOSAL
+      item: Agent session supervision and workflow mining.
+      current_status: IMPLEMENTED_LOCALLY_PENDING_REVIEW
+      evidence: [governance/methodology/METHODOLOGY_BACKLOG.md]
+      closure_relevance: Observable-session methodology is outside the GOV-5 gate.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Separate acceptance or operationalization review.
+      future_action_trigger: Project Owner chooses to review the methodology implementation.
+      owner_decision_required: LATER
+    - id: HP-MPROP-005
+      category: METHODOLOGY_PROPOSAL
+      item: Phase-transition methodology candidates.
+      current_status: DOCUMENTED_CANDIDATES_NOT_ADOPTED
+      evidence: [governance/methodology/METHODOLOGY_BACKLOG.md]
+      closure_relevance: Candidate ideas are not active requirements and cannot expand GOV-5.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Separate evidence basis, Owner disposition and implementation authorization per candidate.
+      future_action_trigger: A separately prepared research or design contract.
+      owner_decision_required: LATER
+    - id: HP-MCAND-001_THROUGH_HP-MCAND-010
+      category: METHODOLOGY_RESEARCH_CANDIDATES
+      item: Ten idea-ledger, discovery, prompt, runtime, documentation, automation and learning-promotion candidates.
+      current_status: DOCUMENTED_NOT_ADOPTED_NOT_ACTIVE_SCOPE
+      evidence: [governance/methodology/METHODOLOGY_BACKLOG.md]
+      closure_relevance: No candidate supplies missing constitutional evidence or creates a GOV-5 obligation.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Candidate-specific future research or design review.
+      future_action_trigger: Separate Owner-authorized evidence or design contract for the named candidate.
+      owner_decision_required: LATER
+    - id: RR-001
+      category: RESIDUAL_RISK
+      item: Authority, competence and decision-packet evidence remains partial.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Disclosed for Owner acceptance and constitutional review without acceptance here.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-6 exact constitutional decision and later exact-scope decisions.
+      future_action_trigger: KGR-006-R1 acceptance, GOV-6 decision, or proposed exact risk disposition.
+      owner_decision_required: NOW_FOR_DISCLOSURE_LATER_FOR_RISK_DISPOSITION
+    - id: RR-002
+      category: RESIDUAL_RISK
+      item: Effect taxonomy, data flows, thresholds and classification tests are gaps.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Properly routed later capability gap.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: OD-006 and affected GOV-7 work.
+      future_action_trigger: A bounded transition or effect class is proposed.
+      owner_decision_required: LATER
+    - id: RR-003
+      category: RESIDUAL_RISK
+      item: Evaluator correlation evidence remains unavailable beyond functional separation.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/00-independent-evaluation-basis.md]
+      closure_relevance: Known evaluation limitation, not a hidden contradiction.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Owner consideration or separately commissioned future review.
+      future_action_trigger: Owner judges additional independence evidence proportionate.
+      owner_decision_required: NOW_FOR_DISCLOSURE_LATER_IF_FURTHER_REVIEW
+    - id: RR-004
+      category: RESIDUAL_RISK
+      item: General claim/gate lineage and qualified acceptance capability are incomplete.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Later implementation gap, explicitly not claimed complete.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 before affected acceptance or release gates.
+      future_action_trigger: Authorized bounded implementation.
+      owner_decision_required: LATER
+    - id: RR-005
+      category: RESIDUAL_RISK
+      item: Real-data retention and deletion can create legal, privacy, security or evidence harm.
+      current_status: DISCLOSED_UNACCEPTED_REAL_DATA_BLOCKED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Exact unsupported boundary is present.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: SD-002 and OD-006 before affected real-data use.
+      future_action_trigger: Sensitive, regulated, confidential or actively harmful real data is approached.
+      owner_decision_required: LATER_WITH_COMPETENT_DOMAIN_AUTHORITY
+    - id: RR-006
+      category: RESIDUAL_RISK
+      item: Deviation, emergency lineage, cumulative tests and exercised containment remain gaps.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Later control gap, not a missing analysis route.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 before affected deviations or pilot effects.
+      future_action_trigger: A bounded implementation permits deviation or emergency paths.
+      owner_decision_required: LATER
+    - id: RR-007
+      category: RESIDUAL_RISK
+      item: Managed-state evidence is partial and limited to a narrow governance loop.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Later transition-state capability gap.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 for the exact bounded transition.
+      future_action_trigger: A governed transition is selected for implementation.
+      owner_decision_required: LATER
+    - id: RR-008
+      category: RESIDUAL_RISK
+      item: No independent implementation evidence supports scoped clause/effect capability.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Confirms GOV-5 is analysis, not implementation proof.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 validation before any scoped capability claim.
+      future_action_trigger: Separately authorized implementation exists.
+      owner_decision_required: LATER
+    - id: RR-009
+      category: RESIDUAL_RISK
+      item: Deterministic parity is partial and unchecked prose may diverge.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Current material parity was independently reviewed; universal parity is not claimed.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Future exact structured representations and GOV-7 evidence contracts.
+      future_action_trigger: A new machine-oriented representation drives a governed transition.
+      owner_decision_required: LATER_IF_MATERIAL_DISPUTE
+    - id: RR-010
+      category: RESIDUAL_RISK
+      item: Operational burden and protective value are unmeasured.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: GOV-5 correctly avoids fabricated pre-operation metrics.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Sampled evidence after authorized operation, principally GOV-9/GOV-10.
+      future_action_trigger: Real governed operation produces measurable evidence.
+      owner_decision_required: LATER
+    - id: RR-011
+      category: RESIDUAL_RISK
+      item: General high-consequence decision-usability evidence is absent.
+      current_status: DISCLOSED_UNACCEPTED_CURRENT_PACKET_ACCEPTED_AS_SUFFICIENT
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md, governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.1.0.yaml]
+      closure_relevance: OD-003 resolves the present packet context without creating universal usability evidence.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: SD-003 if a later packet is materially complex.
+      future_action_trigger: Material complexity in a different or revised high-consequence packet.
+      owner_decision_required: ALREADY_RESOLVED_FOR_CURRENT_CONTEXT_LATER_IF_TRIGGERED
+    - id: RR-012
+      category: RESIDUAL_RISK
+      item: No active dependency-aware material-assumption registry is evidenced.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Later implementation gap, not a missing GOV-5 assessment.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 for the exact bounded transition.
+      future_action_trigger: A transition with material assumptions is authorized.
+      owner_decision_required: LATER
+    - id: RR-013
+      category: RESIDUAL_RISK
+      item: Fundamental architecture-effect classification lacks tested borderline cases.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Contextual human judgment is explicitly reserved.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 methodology for affected architecture changes.
+      future_action_trigger: A plausibly fundamental architecture change is proposed.
+      owner_decision_required: LATER_IF_DISPUTED
+    - id: RR-014
+      category: RESIDUAL_RISK
+      item: Existing state machinery does not cover a general governed transition.
+      current_status: DISCLOSED_UNACCEPTED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Later implementation gap, not a GOV-5 analysis omission.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 exact-transition implementation.
+      future_action_trigger: A bounded governed transition is authorized.
+      owner_decision_required: LATER
+    - id: RR-015
+      category: RESIDUAL_RISK
+      item: Provider equivalence and effect-class capability are empirically unsupported.
+      current_status: DISCLOSED_UNACCEPTED_PROVIDER_EFFECTS_BLOCKED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Unsupported provider claims remain blocked.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: SD-001 before affected GOV-7 provider use or pilot.
+      future_action_trigger: Provider and effect classes are selected.
+      owner_decision_required: LATER
+    - id: SD-001
+      category: SPECIALIST_DEPENDENCY
+      item: ER-007 empirical provider capability testing.
+      current_status: NONBLOCKING_FOR_GOV_5_WITH_UNSUPPORTED_PROVIDER_EFFECTS_BLOCKED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml]
+      closure_relevance: Trigger-gated correctly; no provider is required for constitutional ratification.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 before affected provider use or pilot.
+      future_action_trigger: provider_capability_requires_empirical_validation
+      owner_decision_required: LATER
+    - id: SD-002
+      category: SPECIALIST_DEPENDENCY
+      item: ER-012 legal, privacy and security evidence-lifecycle boundary.
+      current_status: NONBLOCKING_FOR_GOV_5_WITH_AFFECTED_REAL_DATA_BLOCKED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml]
+      closure_relevance: Trigger-gated correctly; abstract constitutional review does not require actual data or jurisdiction.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Before relevant real-data use in affected GOV-7 work.
+      future_action_trigger: material_legal_or_privacy_dependency
+      owner_decision_required: LATER_WITH_COMPETENT_DOMAIN_AUTHORITY
+    - id: SD-003
+      category: SPECIALIST_DEPENDENCY
+      item: ER-015 high-consequence decision-usability review.
+      current_status: NOT_TRIGGERED_FOR_CURRENT_PACKET_BY_OD_003
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml, governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.1.0.yaml]
+      closure_relevance: OD-003 fully resolves current packet sufficiency; the dependency remains available for later material complexity.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Pre-ratification only if a later or revised packet is materially complex.
+      future_action_trigger: high_consequence_human_decision_usability_risk
+      owner_decision_required: ALREADY_RESOLVED_FOR_CURRENT_CONTEXT_LATER_IF_TRIGGERED
+    - id: SD-004
+      category: SPECIALIST_DEPENDENCY
+      item: ER-019 operational recovery and continuity testing.
+      current_status: NONBLOCKING_FOR_GOV_5_WITH_GOVERNED_PILOT_BLOCKED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml]
+      closure_relevance: Trigger-gated correctly; no pilot or recovery claim is part of constitutional ratification.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-7 before affected work or pilot.
+      future_action_trigger: operational_recovery_or_continuity_dependency
+      owner_decision_required: LATER
+    - id: OD-001
+      category: OWNER_DECISION
+      item: Independent evaluator appointment for KGR-006-R1.
+      current_status: SATISFIED_FOR_KGR_006_R1_EVALUATION_CONTEXT_ONLY
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/00-independent-evaluation-basis.md]
+      closure_relevance: The required independent evaluation is complete.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: New appointment only for a new evaluation context.
+      future_action_trigger: A new independent evaluation is commissioned.
+      owner_decision_required: ALREADY_SATISFIED
+    - id: OD-002
+      category: OWNER_DECISION
+      item: Confirm exact Kernel version and bounded scope.
+      current_status: RESOLVED_CONFIRM_EXACT_SCOPE
+      evidence: [governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.1.0.yaml, governance/DECISION_LOG.md]
+      closure_relevance: Fully satisfies the exact-scope decision required before GOV-6.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: null
+      future_action_trigger: New candidate or material scope change requires a new decision.
+      owner_decision_required: ALREADY_RESOLVED
+    - id: OD-003
+      category: OWNER_DECISION
+      item: Decide current decision-packet sufficiency.
+      current_status: RESOLVED_PACKET_SUFFICIENT
+      evidence: [governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.1.0.yaml, governance/DECISION_LOG.md]
+      closure_relevance: Fully satisfies the current-context comprehension decision required before GOV-6.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: SD-003 only for a later materially complex packet.
+      future_action_trigger: A materially changed or different packet.
+      owner_decision_required: ALREADY_RESOLVED_FOR_CURRENT_CONTEXT
+    - id: OD-004
+      category: OWNER_DECISION
+      item: Return, reject or ratify the exact proposed Kernel.
+      current_status: UNRESOLVED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Correctly outside GOV-5; it is the constitutional decision in GOV-6.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: GOV-6 under a separate constitutional decision record.
+      future_action_trigger: Project Owner closes GOV-5 and separately opens the GOV-6 decision path.
+      owner_decision_required: LATER_IN_GOV_6
+    - id: OD-005
+      category: OWNER_DECISION
+      item: Dispose of the recommendation-only minimum GOV-7 package and separately authorize implementation.
+      current_status: UNRESOLVED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Correctly later than constitutional ratification and unrelated to GOV-5 analytical completeness.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: After any ratification and before affected GOV-7 work.
+      future_action_trigger: OD-004 ratifies the exact Kernel and the Owner considers GOV-7 scope.
+      owner_decision_required: LATER_AFTER_RATIFICATION
+    - id: OD-006
+      category: OWNER_DECISION
+      item: Define a later transition, provider, data/jurisdiction, effects, budget and competent owners.
+      current_status: UNRESOLVED_WITH_UNSUPPORTED_EFFECTS_BLOCKED
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md]
+      closure_relevance: Correctly deferrable because no real provider, data, pilot or affected work is authorized now.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Before affected GOV-7 work, provider/data use or governed pilot.
+      future_action_trigger: The relevant provider, data, pilot or real-world boundary is approached.
+      owner_decision_required: LATER
+    - id: MINIMUM-GOV-7-RECOMMENDATION
+      category: MINIMUM_GOV_7_RECOMMENDATION
+      item: Seven-component package allocating ER-001 through ER-020 exactly once.
+      current_status: RECOMMENDATION_ONLY
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/05-minimum-executable-package-recommendation.md, governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml]
+      closure_relevance: Demonstrates the required minimum-package recommendation without selecting mechanisms or implementing controls.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: OD-005 after any ratification and before separately authorized GOV-7 work.
+      future_action_trigger: Exact Kernel ratification followed by a separate GOV-7 scope decision.
+      owner_decision_required: LATER
+    - id: PROJECT-OWNER-KGR-006-R1-ACCEPTANCE
+      category: OWNER_DECISION
+      item: Accept or return the exact imported and independently evaluated KGR-006-R1 result.
+      current_status: PENDING
+      evidence: [governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml]
+      closure_relevance: Required Owner disposition of the source run; readiness evidence cannot self-accept.
+      blocks_gov_5_closure: true
+      legitimate_deferral_destination: Project Owner GOV-5 closure decision.
+      future_action_trigger: Review of this executed closure-readiness evidence.
+      owner_decision_required: NOW_BEFORE_GOV_5_CLOSURE
+    - id: PROJECT-OWNER-GOV-5-CLOSURE
+      category: OWNER_DECISION
+      item: Decide whether the satisfied GOV-5 gate warrants closing GOV-5.
+      current_status: PENDING
+      evidence: [governance/GOVERNANCE_MASTER_PLAN.md]
+      closure_relevance: Only the Project Owner may close the phase after reviewing the evidence and run disposition.
+      blocks_gov_5_closure: true
+      legitimate_deferral_destination: Project Owner GOV-5 closure decision.
+      future_action_trigger: Project Owner acceptance or return decision for KGR-006-R1.
+      owner_decision_required: NOW_BEFORE_GOV_5_CLOSURE
+    - id: PHASE-TRANSITION-BOUNDARY
+      category: AUTHORITY_BOUNDARY
+      item: Review readiness is not phase closure or successor-phase activation.
+      current_status: GOV_5_OPEN_GOV_6_INACTIVE
+      evidence: [governance/CURRENT_STATE.md, governance/GOVERNANCE_MASTER_PLAN.md]
+      closure_relevance: Preserves separation between review judgment, Owner phase closure and later GOV-6 authority.
+      blocks_gov_5_closure: false
+      legitimate_deferral_destination: Separate Owner closure event and later separately authorized GOV-6 activation.
+      future_action_trigger: Project Owner issues a competent explicit phase decision.
+      owner_decision_required: NOW_FOR_CLOSURE_LATER_FOR_GOV_6_ACTIVATION
+  explicit_reassessments:
+    HP-FAIL-005:
+      blocks_gov_5: false
+      blocks_gov_6: false
+      rationale: The publication-recursion defect is corrected and unrelated to constitutional sufficiency; its next-workflow validation remains a methodology follow-up.
+    HP-FAIL-020_recurrence:
+      corrected: true
+      validated_before_review: true
+      evidence: [HP-FAIL-020-E002, HP-FAIL-020-E003, 14 focused regressions]
+    OD-002_and_OD-003:
+      fully_satisfy_decisions_required_before_gov_6: true
+      boundary: They fix exact scope and current packet sufficiency only; they do not accept KGR-006-R1, close GOV-5 or decide OD-004.
+    OD-004:
+      disposition: CORRECTLY_ROUTED_TO_GOV_6
+      blocks_gov_5_closure: false
+    OD-005:
+      disposition: CORRECTLY_ROUTED_AFTER_ANY_RATIFICATION_AND_BEFORE_AFFECTED_GOV_7_WORK
+      blocks_gov_5_closure: false
+    OD-006:
+      disposition: MAY_REMAIN_DEFERRED_UNTIL_RELEVANT_PROVIDER_DATA_PILOT_OR_REAL_WORLD_BOUNDARY
+      interim_boundary: Unsupported provider, real-data, specialist-dependent and pilot effects remain blocked.
+      blocks_gov_5_closure: false
+    residual_risks:
+      exact_count: 15
+      disclosed: true
+      routed: true
+      accepted: false
+      blocks_gov_5_closure: false
+    specialist_dependencies:
+      exact_count: 4
+      trigger_gated_correctly: true
+      SD-003_triggered_for_current_packet: false
+      blocks_gov_5_closure: false
+    research_items:
+      blocks_constitutional_ratification: false
+      rationale: Current research items concern later provider, data, recovery, operational, methodology or implementation evidence; none identifies a contradiction or missing GOV-5 assessment. SD-003 remains available only if a later packet becomes materially complex.
+  review_result: READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION
+  readiness_disposition:
+    gate_satisfied: true
+    remediation_required: []
+    blocking_items:
+      - PROJECT-OWNER-KGR-006-R1-ACCEPTANCE
+      - PROJECT-OWNER-GOV-5-CLOSURE
+    blocking_item_nature: RESERVED_OWNER_DECISIONS_NOT_REMEDIATION_DEFECTS
+    owner_decisions_required_before_closure:
+      - id: PROJECT-OWNER-KGR-006-R1-ACCEPTANCE
+        decision: Accept or return the exact imported and independently evaluated KGR-006-R1 result.
+      - id: PROJECT-OWNER-GOV-5-CLOSURE
+        decision: Separately decide whether to close GOV-5 after considering the satisfied gate, disclosed limitations, deferred items and unaccepted risks.
+    legitimately_deferred_destinations:
+      GOV-6: [OD-004]
+      AFTER_RATIFICATION_BEFORE_GOV-7: [OD-005, MINIMUM-GOV-7-RECOMMENDATION]
+      TRIGGERED_GOV-7_OR_PILOT_BOUNDARIES: [OD-006, SD-001, SD-002, SD-004, CAPABILITY-SUPPORTED-000, CAPABILITY-PARTIAL-007, CAPABILITY-GAP-009, CAPABILITY-SPECIALIST-003, CAPABILITY-PROVIDER-001]
+      PRE_RATIFICATION_IF_NEW_COMPLEXITY: [SD-003, RR-011]
+      LATER_OPERATIONAL_EVIDENCE: [RR-010, UA-004]
+      SEPARATE_METHODOLOGY_REVIEW: [HP-FAIL-005, HP-MPROP-001, HP-MPROP-002, HP-MPROP-003, HP-MPROP-004, HP-MPROP-005, HP-MCAND-001_THROUGH_HP-MCAND-010]
+      EXACT_RISK_OR_CAPABILITY_DESTINATIONS: [RR-001, RR-002, RR-003, RR-004, RR-005, RR-006, RR-007, RR-008, RR-009, RR-012, RR-013, RR-014, RR-015, UA-001, UA-002, UA-003]
+    remaining_limitations:
+      - Project Owner acceptance of KGR-006-R1 is pending.
+      - No residual risk is accepted.
+      - Zero of twenty enforcement requirements is fully supported by current capability evidence.
+      - Provider, real-data, recovery, operational-effectiveness and general usability evidence remains absent or trigger-gated.
+      - Independent evaluation cannot prove source-executor identity or model/tool assumption diversity.
+      - GOV-7 remains a recommendation only and no implementation mechanism is selected.
+    gov_5_closure_would_establish:
+      - The Project Owner accepted the bounded KGR-006-R1 enforcement-analysis result if acceptance is explicitly recorded.
+      - The GOV-5 completion gate is satisfied for Kernel 0.2.0-proposed under the confirmed scope.
+      - Clause feasibility and coverage assessments, explicit decisions, gaps, risks and deferrals are sufficient to end GOV-5 analysis.
+    gov_5_closure_would_not_establish:
+      - Kernel ratification, rejection or return under OD-004.
+      - Acceptance of any residual risk or the minimum GOV-7 recommendation.
+      - Enforceability, control implementation, operational effectiveness or compliance.
+      - GOV-6 activation, GOV-7 authorization, provider or specialist work, runtime projection or a governed pilot.
+    exact_project_owner_action: Review this executed evidence, separately decide whether to accept KGR-006-R1, and separately decide whether to close GOV-5. Do not close GOV-5 or activate GOV-6 through this review result itself.
+  resulting_state:
+    KGR-006-R1:
+      status: IMPORTED_AND_EVALUATED_PENDING_PROJECT_OWNER_ACCEPTANCE
+      project_owner_acceptance: PENDING
+    GOV-5:
+      status: IN_PROGRESS
+      closure_review: EXECUTED_READY_FOR_PROJECT_OWNER_DECISION
+      closed: false
+    GOV-6: INACTIVE
+    GOV-7: INACTIVE
+    GOV-8: INACTIVE
+    GOV-9: INACTIVE
+    kernel: 0.2.0-proposed/PROPOSED_NOT_RATIFIED
+    minimum_gov_7_package: RECOMMENDATION_ONLY
+    risk_accepted: false
+    enforcement_implementation: NOT_PERFORMED
