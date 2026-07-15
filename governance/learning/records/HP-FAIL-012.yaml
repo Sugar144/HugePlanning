@@ -1,0 +1,79 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-012
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Phase 2.3 backlog test depended on absent incidental prose
+  context:
+    phase: Bounded Phase 2.3 baseline correction
+    run: null
+    component: Phase 2.3 registry and backlog regression
+    branch: governance/kernel-designer-revision-v0.1
+    commit: 7cfc92ed63fbba06232ceba8e4c9b5e10f0258dc
+    environment: Codex CLI KGR-006 preparation validation
+  primary_classification: PROCESS_DEFECT
+  classification: [PROCESS_DEFECT, TOOLING_GAP]
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: The Phase 2.3 test verifies the structured skill identity, status, non-execution purpose, and explicit execution-authorization boundary expressed by HP-MPROP-002.
+  observed_behavior: The test required the literal substring not formal execution, although the committed backlog used semantically equivalent structured statements and never contained that phrase.
+  impact: The full governance suite failed one assertion on the clean baseline, blocking unrelated KGR-006 validation and publication despite no semantic contract violation.
+  detection_method: The complete governance pytest suite was run during KGR-006 contract preparation and the failing assertion was compared with both committed files at HEAD.
+  root_cause:
+    immediate: A regression assertion searched incidental prose rather than parsing and checking the YAML proposal fields.
+    systemic: Contract semantics and test representation were coupled through a literal phrase that was never part of the committed contract.
+    contributing_factors:
+      - Targeted Phase 2.3 tests were not rerun after the backlog wording evolved.
+      - The test mixed structured identity/status checks with an unstructured substring assertion.
+  response:
+    containment: Stop KGR-006 publication and confirm the mismatch existed at the preparation baseline.
+    correction: Parse the HP-MPROP-002 YAML block and assert the formal preparer name, status, non-execution purpose, and explicit authorization boundary semantically.
+    prevention:
+      - Prefer structured contract fields over incidental Markdown phrases.
+      - Run the full governance suite before publication of later phases.
+    accountable_owner: Project Owner
+    validation_required:
+      - Run the targeted Phase 2.3 test module.
+      - Run the complete governance pytest suite.
+      - Validate learning records, prompt custody, and git whitespace.
+  learning:
+    reusable_lesson: Tests for mixed Markdown/YAML governance contracts should parse structured fields and assert meaning-bearing invariants instead of requiring accidental prose.
+    candidate_system_changes: [TEST, VALIDATION]
+    applicable_future_phases: [All governance methodology validation]
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One baseline failing assertion and one bounded semantic-test correction are observable; time, token, and model-use values are unavailable.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/test_phase_2_3_contracts.py
+      anchor: test_phase_2_3_registry_and_backlog_status
+      sha256: null
+      availability: PRESERVED
+      note: Corrected regression parses the structured proposal.
+    - type: REPOSITORY_PATH
+      locator: governance/methodology/METHODOLOGY_BACKLOG.md
+      anchor: HP-MPROP-002
+      sha256: null
+      availability: PRESERVED
+      note: Existing contract already states non-execution and explicit authorization boundaries.
+    - type: REPOSITORY_PATH
+      locator: governance/prompts/orchestration/HP-PROMPT-013-phase-2-3-backlog-test-reconciliation-v0.1.0.md
+      anchor: Exact executed text
+      sha256: null
+      availability: PRESERVED
+      note: Project Owner authorization for the bounded baseline correction.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

@@ -88,6 +88,8 @@ def test_phase_2_3_registry_and_backlog_status() -> None:
         assert artifact_id in ids
     backlog = (ROOT / "governance/methodology/METHODOLOGY_BACKLOG.md").read_text()
     section = backlog.split("## HP-MPROP-002", 1)[1].split("## ", 1)[0]
-    assert "formal-governance-run-preparer" in section
-    assert "IMPLEMENTED_LOCALLY_PENDING_REVIEW" in section
-    assert "not formal execution" in section
+    proposal = yaml.safe_load(section.split("```yaml", 1)[1].split("```", 1)[0])["proposal"]
+    assert proposal["first_skill"]["name"] == "formal-governance-run-preparer"
+    assert proposal["first_skill"]["status"] == "IMPLEMENTED_LOCALLY_PENDING_REVIEW"
+    assert "without executing it" in proposal["first_skill"]["purpose"]
+    assert any("execute a run" in item and "explicit authorization" in item for item in proposal["non_goals"])

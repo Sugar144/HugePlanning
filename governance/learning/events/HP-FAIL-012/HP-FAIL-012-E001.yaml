@@ -1,0 +1,26 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-012-E001
+  record_id: HP-FAIL-012
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: Structured Phase 2.3 backlog semantics and the complete governance suite passed after the bounded test correction.
+  rationale: The targeted Phase 2.3 module passed 5 tests and the complete governance suite exited successfully after replacing the absent literal phrase assertion with parsed identity, status, non-execution, and explicit-authorization invariants.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/test_phase_2_3_contracts.py
+      anchor: test_phase_2_3_registry_and_backlog_status
+      sha256: null
+      availability: PRESERVED
+      note: Regression now tests the structured proposal semantics.
+    - type: REPOSITORY_PATH
+      locator: governance/methodology/METHODOLOGY_BACKLOG.md
+      anchor: HP-MPROP-002
+      sha256: null
+      availability: PRESERVED
+      note: Existing non-execution and authorization boundaries remain unchanged.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-013-phase-2-3-backlog-test-reconciliation-v0.1.0.md
+  accepted_risk: null
+  supersedes: null
