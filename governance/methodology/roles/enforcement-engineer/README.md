@@ -4,4 +4,4 @@ The Enforcement Engineer analyzes the practical implications of a closed propose
 
 The role does not modify or reinterpret Kernel meaning, accept risk, ratify, implement controls, create a complete policy suite, activate a later governance phase, declare enforceability, modify product/runtime code, or allocate authority to itself. Its formal work remains analysis pending independent evaluation and competent human decision.
 
-The `MINIMUM_ENFORCEMENT_ANALYSIS` mode is registered in `enforcement-engineer-modes.yaml`. Its historical KGR-006 contract and prepared KGR-006-R1 correction contract are under `protocols/minimum-analysis/`; neither grants standing execution authority.
+The `MINIMUM_ENFORCEMENT_ANALYSIS` mode is registered in `enforcement-engineer-modes.yaml`. Its historical KGR-006 contract and executed KGR-006-R1 correction contract are under `protocols/minimum-analysis/`; neither grants standing execution authority, and the single KGR-006-R1 authorization is fully consumed.

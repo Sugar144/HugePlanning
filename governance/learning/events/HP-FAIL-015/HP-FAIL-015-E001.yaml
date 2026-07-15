@@ -1,0 +1,20 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-015-E001
+  record_id: HP-FAIL-015
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CONTAINED
+  status_to: CORRECTED
+  summary: KGR-006-R1 explicitly preserves all 46 canonical applicable clause-route pairs, including the 15 omitted from KGR-006.
+  rationale: The corrected immutable matrix contains each required pair and retains LLR-020's justified GOV-8 deferral without modifying historical KGR-006 evidence.
+  evidence_refs:
+    - type: RUN_ARTIFACT
+      locator: governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+      anchor: enforcement_analysis.clauses.effect_families.routing_ids
+      sha256: 16094b2afdb38f8623867a3904fd61ec71473a988d70c1be0b962485a2402d19
+      availability: PRESERVED
+      note: Immutable corrected matrix with exact canonical pairs.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-017-kgr-006-r1-controlled-import-owner-review-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

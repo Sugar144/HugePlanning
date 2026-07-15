@@ -1,7 +1,7 @@
 execution_authorization:
   schema_version: 0.1.0
   id: GOV-AUTH-001
-  status: AUTHORIZED_NOT_EXECUTED
+  status: CONSUMED
   evidence_class: CONTEMPORANEOUS_PROJECT_OWNER_EXECUTION_AUTHORIZATION
   project_owner_prompt_id: HP-PROMPT-016/0.1.0
   run: KGR-006-R1
@@ -13,8 +13,16 @@ execution_authorization:
   formal_input_package_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/input/HugePlanning-KGR-006-R1-formal-input-package.zip
   formal_input_package_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
   execution_count_limit: 1
-  execution_count_consumed: 0
+  execution_count_consumed: 1
   authorized: true
+  execution_available: false
+  consumed_by_output_package_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+  consumption_events:
+    - sequence: 1
+      run: KGR-006-R1
+      output_package_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+      source_declared_result: CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION
+      reconciliation_evidence: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml
   required_output_filenames:
     - 00-enforcement-analysis-basis.md
     - 01-clause-implication-matrix.yaml
@@ -45,8 +53,9 @@ execution_authorization:
     - RELEASE
     - DEPLOYMENT
   execution_state:
-    started: false
-    completed: false
-    outputs_created: false
-    independent_evaluation_invoked: false
+    started: true
+    completed: true
+    outputs_created: true
+    independent_evaluation_invoked: true
+    independent_evaluation_completed: true
   authority_limit: ONE_BOUNDED_FORMAL_EXECUTION_ONLY_NOT_ACCEPTANCE_RATIFICATION_IMPLEMENTATION_OR_OPERATION

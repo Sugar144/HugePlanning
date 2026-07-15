@@ -1,0 +1,117 @@
+independent_evaluation:
+  schema_version: 0.1.0
+  record_contract: EVALUATOR_DEFINED_BOUNDED_RECORD_NO_REPOSITORY_SCHEMA
+  document_id: GOV-EVAL-KGR-006-R1-FINDINGS-001
+  version: 0.1.0
+  run: KGR-006-R1
+  base_run: KGR-006
+  source_role: Enforcement Engineer
+  source_mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  source_authorization: GOV-AUTH-001
+  source_declared_result: CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION
+  evaluation_role: Independent Evaluator
+  evaluation_contract: PROJECT_OWNER_KGR_006_R1_INDEPENDENT_EVALUATION_CONTRACT/2026-07-15
+  status: EVALUATION_COMPLETE
+  declared_result: SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW
+  source_package:
+    path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/output/HugePlanning-KGR-006-R1-minimum-enforcement-analysis-correction-v0.1.0.zip
+    expected_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+    observed_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+    verified: true
+    exact_member_count: 7
+    safe_inventory: PASS
+    zip_integrity: PASS
+    structural_contract_validation: PASS_ZERO_DIAGNOSTICS
+  independence:
+    appointed_directly_by_project_owner: true
+    evaluator_authored_or_modified_source_outputs: false
+    source_role_controlled_evaluation: false
+    conclusions_from_other_conversations_used: false
+    known_material_conflicts: []
+    limitation: Source-executor identity and model/tool correlation evidence were not supplied; independence is established by the separate evaluation context, direct appointment, immutable source boundary, and independent verification, not by proof of tool or assumption diversity.
+  diagnostics: []
+  original_material_challenges:
+    - id: IE-MC-001
+      original_category: AUTHORIZATION_EXECUTION_AND_CUSTODY_PROVENANCE
+      disposition: CORRECTED_FOR_KGR_006_R1_WITH_HISTORICAL_KGR_006_LIMITATION_PRESERVED
+      evidence: GOV-AUTH-001 prospectively binds the exact KGR-006-R1 role, mode, formal input package, one execution, bounded correction requirements, and seven-output inventory. The correction also preserves GOV-ATT-001, GOV-VAL-004, and the original limitation without retroactive reconstruction.
+    - id: IE-MC-002
+      original_category: CANONICAL_ROUTE_TO_CLAUSE_TRACEABILITY
+      disposition: CORRECTED
+      evidence: All 46 applicable canonical clause-route pairs are explicit in effect-family routing_ids, including all 15 formerly omitted anchors; no canonical pair is missing.
+    - id: IE-MC-003
+      original_category: SPECIALIST_DEPENDENCY_SOURCE_OF_TRUTH_CONSISTENCY
+      disposition: CORRECTED
+      evidence: Exactly four top-level canonical records SD-001 through SD-004 exist and only ER-007, ER-012, ER-015, and ER-019 reference them by ID. No nested duplicate dependency record remains, and ER-012 uses the exact correction boundary.
+  confirmed_findings:
+    - id: IE-R1-CF-001
+      finding: The source ZIP matches the expected SHA-256 and exact safe seven-member inventory; CRC, UTF-8, duplicate, traversal, symlink, and encryption checks pass.
+    - id: IE-R1-CF-002
+      finding: The seven outputs comply with GOV-OUTPUT-CONTRACT-002 and the supplied schemas; identities, status, required headings, exact output count, and repository validator checks pass with zero diagnostics.
+    - id: IE-R1-CF-003
+      finding: K-001 through K-007 remain exact and ordered; all 46 applicable canonical clause-route pairs and all 15 required correction anchors are explicit.
+    - id: IE-R1-CF-004
+      finding: LLR-001 through LLR-020 are each accounted for; LLR-020 remains NOT_APPLICABLE_TO_GOV_5_EXECUTION, justified, and deferred to GOV-8 without historical audit or regularization.
+    - id: IE-R1-CF-005
+      finding: Exactly four canonical specialist dependency records exist with the required SD-to-ER mapping, and exactly four requirement references point to them by ID; no duplicated or divergent dependency record remains.
+    - id: IE-R1-CF-006
+      finding: The ER-012 safe interim boundary exactly states that sensitive, regulated, confidential, or actively harmful real data must not be processed until the applicable boundary is established; all affected summaries preserve it without the obsolete governed-pilot narrowing.
+    - id: IE-R1-CF-007
+      finding: OD-001 through OD-006 are preserved. OD-002 through OD-006 remain UNRESOLVED and reserved for competent Project Owner or human authority; this evaluation resolves none of them.
+    - id: IE-R1-CF-008
+      finding: "ER-001 through ER-020 remain unique and exact. Recomputed capability counts match the matrix and all summaries: 0 supported, 7 partial, 9 gaps, 3 specialist-dependent, 1 provider-test-dependent, 0 infeasible, and 0 not applicable."
+    - id: IE-R1-CF-009
+      finding: Structural comparison with the immutable KGR-006 matrix found no substantive change outside correction identity, 15 route-anchor additions, dependency canonicalization, ER-012 boundary correction, LLR-020 clarification, and required parity/decision/recommendation records.
+    - id: IE-R1-CF-010
+      finding: The seven-component minimum GOV-7 package remains RECOMMENDATION_ONLY, allocates ER-001 through ER-020 exactly once, selects no implementation mechanism, and activates no later phase.
+    - id: IE-R1-CF-011
+      finding: The package does not claim that GOV-5, GOV-7, ratification, enforceability, implementation, operation, risk acceptance, provider testing, or product/runtime functionality is complete or established.
+    - id: IE-R1-CF-012
+      finding: The three original material challenges are corrected for KGR-006-R1; none remains open and no replacement material challenge was identified.
+    - id: IE-R1-CF-013
+      finding: The corrected package is suitable for controlled repository import and Project Owner decision review, subject to a separately authorized import that preserves exact bytes, provenance, status boundaries, and this evaluation.
+  new_material_challenges: []
+  clause_route_traceability_assessment:
+    canonical_applicable_pair_count: 46
+    canonical_applicable_pairs_explicit: 46
+    required_correction_anchor_count: 15
+    required_correction_anchors_explicit: 15
+    lower_layer_routes_accounted: 20
+    llr_020_destination: GOV-8
+    result: COMPLETE_AND_CONSISTENT
+  specialist_dependency_assessment:
+    canonical_record_count: 4
+    canonical_reference_count: 4
+    mapping:
+      SD-001: ER-007
+      SD-002: ER-012
+      SD-003: ER-015
+      SD-004: ER-019
+    duplicated_or_divergent_records: 0
+    result: CANONICAL_COMPLETE_AND_CONSISTENT
+  er_012_consistency_assessment:
+    exact_boundary: Do not process sensitive, regulated, confidential, or actively harmful real data until the applicable boundary is established.
+    divergent_boundaries: 0
+    obsolete_governed_pilot_narrowing: false
+    result: CONSISTENT
+  owner_decisions_assessment:
+    preserved_count: 6
+    unresolved_and_reserved: [OD-002, OD-003, OD-004, OD-005, OD-006]
+    resolved_by_evaluator: []
+    result: COMPLETE_AND_PROPERLY_RESERVED
+  minimum_gov_7_recommendation:
+    result: SUFFICIENTLY_SUPPORTED_AS_RECOMMENDATION_ONLY
+    implementation_authorized: false
+    risk_accepted: false
+    kernel_ratified: false
+    gov_5_completed: false
+    later_phase_activated: false
+  repository_import_suitability:
+    result: SUITABLE_FOR_CONTROLLED_IMPORT
+    conditions:
+      - Verify the exact source and evaluation package hashes during import.
+      - Import source and evaluation artifacts without byte changes and preserve provenance.
+      - Update durable run, registry, validation, plan, learning, and current-state records only under separate explicit authorization.
+      - Preserve EVALUATION_COMPLETE as evaluation status without converting it into acceptance, GOV-5 completion, ratification, implementation, enforceability, operation, or risk acceptance.
+  blockers: []
+  exact_next_action: Under separate explicit authorization, perform controlled byte-identical repository import of the exact KGR-006-R1 source package and this evaluation package, validate custody and status reconciliation, and then present OD-002 and OD-003 for Project Owner review before any OD-004 or GOV-6 action; do not begin GOV-7, GOV-8, GOV-9, implementation, provider/specialist work, risk acceptance, or ratification through this result.

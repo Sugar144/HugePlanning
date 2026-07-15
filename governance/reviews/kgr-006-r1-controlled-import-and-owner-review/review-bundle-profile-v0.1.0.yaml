@@ -1,0 +1,108 @@
+schema_version: 0.1.0
+repository:
+  expected_branch: governance/kernel-designer-revision-v0.1
+  base_head: e14af3d9d36172b1db4bbaba1a7983d8b17461eb
+  require_changes: true
+  require_empty_staging: true
+scope:
+  enforce_exact: true
+  paths:
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/CURRENT_STATE.md
+    - governance/GOVERNANCE_MASTER_PLAN.md
+    - governance/learning/FAILURE_AND_LESSONS_INDEX.md
+    - governance/learning/events/HP-FAIL-015/HP-FAIL-015-E001.yaml
+    - governance/learning/events/HP-FAIL-015/HP-FAIL-015-E002.yaml
+    - governance/learning/events/HP-FAIL-016/HP-FAIL-016-E001.yaml
+    - governance/learning/events/HP-FAIL-016/HP-FAIL-016-E002.yaml
+    - governance/learning/events/HP-FAIL-017/HP-FAIL-017-E002.yaml
+    - governance/learning/events/HP-FAIL-019/HP-FAIL-019-E001.yaml
+    - governance/learning/records/HP-FAIL-019.yaml
+    - governance/methodology/METHODOLOGY_BACKLOG.md
+    - governance/methodology/roles/enforcement-engineer/README.md
+    - governance/methodology/roles/enforcement-engineer/enforcement-engineer-modes.yaml
+    - governance/methodology/roles/enforcement-engineer/protocols/README.md
+    - governance/prompts/orchestration/HP-PROMPT-017-kgr-006-r1-controlled-import-owner-review-v0.1.0.md
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.1.0.yaml
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/implementation-report-v0.1.0.md
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-dossier-v0.1.0.md
+    - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/review-bundle-profile-v0.1.0.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/README.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/00-independent-evaluation-basis.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/02-independent-evaluation-report.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/00-enforcement-analysis-basis.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/02-existing-capability-inventory.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/03-feasibility-coverage-and-gap-assessment.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/05-minimum-executable-package-recommendation.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/06-ratification-decision-handoff.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/README.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+    - governance/tests/test_kgr_006_r1_contract_preparation.py
+    - governance/tests/test_kgr_006_r1_controlled_import.py
+    - governance/tests/test_phase_2_4_contracts.py
+    - governance/tools/prepare_enforcement_correction.py
+validations:
+  - id: reconciliation
+    argv: [python3, governance/tools/prepare_enforcement_correction.py, validate-reconciliation]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: affected-tests
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -m, pytest, -q, -p, no:cacheprovider, governance/tests/test_kgr_006_r1_contract_preparation.py, governance/tests/test_kgr_006_r1_controlled_import.py, governance/tests/test_kgr_006_provenance_reconciliation.py, governance/tests/test_gov_5_contract_preparation.py, governance/tests/test_phase_2_4_contracts.py]
+    cwd: .
+    required: true
+    timeout_seconds: 240
+  - id: full-governance-suite
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -m, pytest, -q, -p, no:cacheprovider, governance/tests]
+    cwd: .
+    required: true
+    timeout_seconds: 360
+  - id: prompt-custody
+    argv: [governance/tests/run-prompt-custody-tests.sh]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: learning-validation
+    argv: [python3, governance/tools/manage_learning.py, validate]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: authored-whitespace
+    argv:
+      - git
+      - diff
+      - --check
+      - e14af3d9d36172b1db4bbaba1a7983d8b17461eb
+      - --
+      - .
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/00-enforcement-analysis-basis.md'
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml'
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/02-existing-capability-inventory.md'
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/03-feasibility-coverage-and-gap-assessment.md'
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md'
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/05-minimum-executable-package-recommendation.md'
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/06-ratification-decision-handoff.md'
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/00-independent-evaluation-basis.md'
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml'
+      - ':(exclude)governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/02-independent-evaluation-report.md'
+    cwd: .
+    required: true
+    timeout_seconds: 60
+dependencies:
+  - id: python-version
+    argv: [python3, --version]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+  - id: test-package-versions
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -c, "from importlib.metadata import version; print(f'jsonschema={version(\"jsonschema\")} pytest={version(\"pytest\")} hypothesis={version(\"hypothesis\")} PyYAML={version(\"PyYAML\")}')"]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+bundle:
+  root_directory: kgr-006-r1-controlled-import-owner-review

@@ -1,7 +1,7 @@
 registry:
-  version: '0.11'
-  generated_for: KGR_006_R1_EXECUTION_AUTHORIZATION
-  base_commit: 866867b1dc415f7faa3d803f26b8532a9f3326d1
+  version: '0.12'
+  generated_for: KGR_006_R1_CONTROLLED_IMPORT_AND_OWNER_REVIEW
+  base_commit: e14af3d9d36172b1db4bbaba1a7983d8b17461eb
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -1725,8 +1725,8 @@ artifacts:
   - id: GOV-PROTOCOL-004
     title: Minimum Enforcement Analysis Protocol
     version: 0.2.0
-    status: PREPARED_CORRECTION_NOT_EXECUTED
-    authority: analysis_execution_contract_not_execution_or_constitutional_authority
+    status: EXECUTED_FOR_KGR_006_R1
+    authority: executed_analysis_contract_not_acceptance_or_constitutional_authority
     path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
     source_path: null
     source_sha256: null
@@ -1742,12 +1742,12 @@ artifacts:
     notes:
       - Requires seven clauses, 20 routes, strict classifications, minimum GOV-7 recommendation, and a separate evaluation handoff.
       - Prohibits Kernel changes, risk acceptance, ratification, control implementation, later-phase activation, and enforceability claims.
-      - Version 0.2.0 prepares KGR-006-R1 only; historical version 0.1.0 remains the immutable KGR-006 execution contract.
+      - Version 0.2.0 governed the completed KGR-006-R1 execution; historical version 0.1.0 remains the immutable KGR-006 execution contract.
 
   - id: GOV-METHOD-005
     title: Enforcement Engineer Mode Registry
     version: 0.2.0
-    status: PREPARED_FOR_FUTURE_EXECUTION
+    status: EXECUTED_RUNS_RECORDED_NO_STANDING_AUTHORITY
     authority: governance_methodology_not_execution_evidence
     path: governance/methodology/roles/enforcement-engineer/enforcement-engineer-modes.yaml
     source_path: null
@@ -1758,7 +1758,7 @@ artifacts:
     canonicality: canonical_methodology
     supersedes: null
     aliases: []
-    notes: [Defines MINIMUM_ENFORCEMENT_ANALYSIS and its KGR-006-R1 correction binding; grants no execution or human authority.]
+    notes: [Defines MINIMUM_ENFORCEMENT_ANALYSIS and its completed KGR-006-R1 correction binding; grants no standing execution or human authority.]
 
   - id: GOV-PROMPT-008
     title: KGR-006 Enforcement Engineer Prompt Snapshot
@@ -2003,28 +2003,28 @@ artifacts:
   - id: KGR-006-R1
     title: KGR-006 First Versioned Correction Run Manifest
     version: 0.1.0
-    status: AUTHORIZED_NOT_EXECUTED
-    authority: one_bounded_correction_execution_authorized_not_executed_accepted_or_ratified
+    status: EXECUTED_EVALUATED_IMPORTED_PENDING_PROJECT_OWNER_DECISION
+    authority: completed_correction_and_evaluation_evidence_not_owner_acceptance_ratification_or_implementation
     path: governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
     source_path: null
     source_sha256: null
     produced_by: KGR_006_R1_CONTRACT_PREPARATION
     artifact_type: run_manifest
     language: English
-    canonicality: exact_run_preparation
+    canonicality: exact_run_state_and_evidence_custody
     supersedes: null
     aliases: []
     notes:
       - Applies the prospective BASE_RUN_ID-RN convention without replacing KGR-006 or consuming another KGR identity.
-      - GOV-AUTH-001 authorizes exactly one execution; count consumed is 0 and corrected outputs remain absent.
+      - GOV-AUTH-001 authorized exactly one execution; count consumed is 1 and no execution remains.
       - GOV-5 remains in progress and GOV-6 through GOV-9 remain inactive.
-      - Requires deterministic completed-output validation and a new independent evaluation outside the corrected source role's unilateral control.
+      - Seven corrected outputs and three evaluation artifacts are imported byte-identically; Project Owner acceptance remains NOT_STARTED.
 
   - id: GOV-PROMPT-009
     title: KGR-006-R1 Enforcement Engineer Correction Prompt Snapshot
     version: 0.1.0
-    status: AUTHORIZED_NOT_EXECUTED
-    authority: exact_correction_run_contract_bound_by_separate_one_execution_authorization_not_acceptance_or_ratification
+    status: EXECUTED
+    authority: exact_executed_correction_contract_not_acceptance_or_ratification
     path: governance/runs/KGR-006-R1-enforcement-analysis-correction/prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
     source_path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
     source_sha256: null
@@ -2034,7 +2034,7 @@ artifacts:
     canonicality: exact_run_snapshot
     supersedes: null
     aliases: []
-    notes: [GOV-AUTH-001 now binds this exact prompt for one not-yet-consumed execution.]
+    notes: [GOV-AUTH-001 bound this exact prompt for the one completed execution; no execution remains.]
 
   - id: GOV-INPUT-004
     title: KGR-006-R1 Formal Correction Input Envelope
@@ -2055,8 +2055,8 @@ artifacts:
   - id: GOV-OUTPUT-CONTRACT-002
     title: KGR-006-R1 Corrected Enforcement Analysis Output Contract
     version: 0.1.0
-    status: PREPARED_NOT_EXECUTED
-    authority: correction_output_contract_not_execution_or_substantive_result
+    status: EXECUTED_CONTRACT
+    authority: correction_output_contract_and_validated_structure_not_acceptance_or_substantive_owner_decision
     path: governance/runs/KGR-006-R1-enforcement-analysis-correction/output-contract.yaml
     source_path: null
     source_sha256: null
@@ -2119,13 +2119,13 @@ artifacts:
     aliases: []
     notes:
       - Withdraws the prior conflicting requested mode and binds the exact prepared MINIMUM_ENFORCEMENT_ANALYSIS mode.
-      - Authorizes one future KGR-006-R1 execution and this custody commit/push; it does not execute the run.
+      - Authorized one KGR-006-R1 execution that is now consumed; the prompt itself did not execute the run.
 
   - id: GOV-AUTH-001
     title: KGR-006-R1 Formal Execution Authorization
     version: 0.1.0
-    status: AUTHORIZED_NOT_EXECUTED
-    authority: one_exact_project_owner_formal_execution_authorization_not_acceptance_or_ratification
+    status: CONSUMED
+    authority: consumed_one_exact_project_owner_formal_execution_authorization_not_acceptance_or_ratification
     path: governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
     source_path: governance/prompts/orchestration/HP-PROMPT-016-kgr-006-r1-execution-authorization-v0.1.0.md
     source_sha256: null
@@ -2137,7 +2137,7 @@ artifacts:
     aliases: []
     notes:
       - Binds KGR-006-R1, Enforcement Engineer, MINIMUM_ENFORCEMENT_ANALYSIS, GOV-PROTOCOL-004/0.2.0, exact package hash, and execution_count_limit 1.
-      - Execution count consumed is 0; no output or independent evaluation exists.
+      - Execution count consumed is 1 of 1 by exact output package SHA-256 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b; no execution remains.
 
   - id: GOV-VAL-006
     title: KGR-006-R1 Execution Authorization Validation
@@ -2154,3 +2154,124 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Gate is OPEN_FOR_EXACTLY_ONE_EXECUTION with count consumed 0 and no substantive execution.]
+
+  - id: GOV-PKG-009
+    title: KGR-006-R1 Corrected Minimum Enforcement Analysis Package
+    version: 0.1.0
+    status: IMPORTED_BYTE_IDENTICAL_VALIDATED_NOT_ACCEPTED
+    authority: completed_correction_output_evidence_not_owner_acceptance_ratification_or_implementation
+    path: governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs
+    source_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/output/HugePlanning-KGR-006-R1-minimum-enforcement-analysis-correction-v0.1.0.zip
+    source_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+    produced_by: KGR-006-R1
+    artifact_type: formal_completed_output_package
+    language: English
+    canonicality: immutable_corrected_run_output_custody
+    supersedes: null
+    aliases: []
+    notes:
+      - Exactly seven outputs are imported byte-identically under GOV-VAL-007.
+      - Declared source result is CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION.
+      - The correction preserves historical KGR-006 and grants no acceptance, ratification, implementation or operation.
+
+  - id: GOV-EVAL-002
+    title: KGR-006-R1 Independent Evaluation Package
+    version: 0.1.0
+    status: IMPORTED_BYTE_IDENTICAL_SUITABLE_FOR_OWNER_DECISION_REVIEW
+    authority: independent_evaluation_suitability_not_owner_acceptance_risk_decision_or_ratification
+    path: governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation
+    source_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/evaluation/HugePlanning-KGR-006-R1-independent-evaluation-v0.1.0.zip
+    source_sha256: ab133dc6e92b0a51f9911f5dd39bf65f3b2e244f97b023d98ea06a695f5fbe62
+    produced_by: KGR-006-R1_INDEPENDENT_EVALUATION
+    artifact_type: independent_evaluation_package
+    language: English
+    canonicality: immutable_independent_evaluation_custody
+    supersedes: null
+    aliases: []
+    notes:
+      - Exactly three evaluation artifacts are imported byte-identically under GOV-VAL-007.
+      - Declared result is SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW.
+      - OD-002 through OD-006 remain unresolved; the evaluation accepts no risk and ratifies nothing.
+
+  - id: GOV-VAL-007
+    title: KGR-006-R1 Import and Authorization-Consumption Validation
+    version: 0.1.0
+    status: VALIDATED_IMPORT_AND_CONSUMPTION_NOT_ACCEPTED
+    authority: deterministic_import_and_consumption_validation_not_owner_acceptance_ratification_or_operation
+    path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml
+    source_path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/output/HugePlanning-KGR-006-R1-minimum-enforcement-analysis-correction-v0.1.0.zip
+    source_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+    produced_by: KGR_006_R1_CONTROLLED_IMPORT
+    artifact_type: governance_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: null
+    aliases:
+      - governance/tools/prepare_enforcement_correction.py
+      - governance/tests/test_kgr_006_r1_controlled_import.py
+    notes: [Records exact source/evaluation hashes, safe inventories, byte identity, authorization count 1 of 1, no remaining execution, identities and authority boundaries.]
+
+  - id: GOV-REVIEW-011
+    title: KGR-006-R1 Project Owner Decision Dossier
+    version: 0.1.0
+    status: PREPARED_FOR_PROJECT_OWNER_REVIEW
+    authority: decision_support_not_owner_decision_acceptance_or_ratification
+    path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-dossier-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: KGR_006_R1_CONTROLLED_IMPORT
+    artifact_type: project_owner_decision_dossier
+    language: English
+    canonicality: prepared_review_support
+    supersedes: null
+    aliases: []
+    notes: [Presents OD-002 and OD-003 first; OD-001 is satisfied for this evaluation context only and OD-002 through OD-006 remain unresolved.]
+
+  - id: GOV-REVIEW-012
+    title: GOV-5 Phase-Closure Readiness Review
+    version: 0.1.0
+    status: PREPARED_FOR_PROJECT_OWNER_REVIEW_NOT_EXECUTED
+    authority: nonauthoritative_readiness_inventory_not_phase_closure_or_gov_6_activation
+    path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.1.0.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: KGR_006_R1_CONTROLLED_IMPORT
+    artifact_type: phase_closure_readiness_review
+    language: English
+    canonicality: prepared_nonexecuted_review
+    supersedes: null
+    aliases: []
+    notes: [Inventories learning, findings, assumptions, proposals, ideas, decisions, risks and dependencies without closing GOV-5 or creating a new governance layer.]
+
+  - id: GOV-REVIEW-013
+    title: KGR-006-R1 Controlled Import Implementation Report
+    version: 0.1.0
+    status: IMPLEMENTED_AND_VALIDATED_PENDING_PROJECT_OWNER_REVIEW
+    authority: bounded_import_and_review_preparation_evidence_not_acceptance_ratification_or_later_phase_authority
+    path: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/implementation-report-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: KGR_006_R1_CONTROLLED_IMPORT
+    artifact_type: implementation_validation_report
+    language: English
+    canonicality: preserved_implementation_evidence
+    supersedes: null
+    aliases:
+      - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/review-bundle-profile-v0.1.0.yaml
+    notes: [Records the exact bounded delta, validations, immutable allowlist, review bundle and next Owner action.]
+
+  - id: HP-PROMPT-017
+    title: KGR-006-R1 Controlled Import and Owner Review Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_import_reconciliation_review_preparation_commit_and_push_authority
+    path: governance/prompts/orchestration/HP-PROMPT-017-kgr-006-r1-controlled-import-owner-review-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: []
+    notes: [Authorizes the exact controlled import, reconciliation, validation, decision/readiness preparation, one commit and non-force push; prohibits later governance decisions and effects.]

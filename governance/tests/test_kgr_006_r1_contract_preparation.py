@@ -24,9 +24,8 @@ from prepare_enforcement_correction import (
     ROUTES,
     build,
     canonical_pairs,
-    validate_authorization,
-    validate_preparation,
     validate_output,
+    validate_reconciliation,
 )
 
 RUN = ROOT / RUN_REL
@@ -72,32 +71,27 @@ def test_corrected_matrix_schema_uses_canonical_dependency_references():
     assert dependencies["minItems"] == dependencies["maxItems"] == 4
 
 
-def test_formal_input_package_is_deterministic_and_preparation_valid(tmp_path):
+def test_formal_input_package_remains_deterministic_after_execution(tmp_path):
     first = tmp_path / "first.zip"
     second = tmp_path / "second.zip"
     inventory = RUN / "input-inventory.yaml"
     build(ROOT, inventory, first)
     build(ROOT, inventory, second)
     assert first.read_bytes() == second.read_bytes()
-    result = validate_preparation(ROOT, first)
+    assert digest(first) == "ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8"
+    with zipfile.ZipFile(first) as archive:
+        assert len(archive.namelist()) == 14
+
+
+def test_repository_execution_authorization_is_consumed_once():
+    source = Path("/home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/output/HugePlanning-KGR-006-R1-minimum-enforcement-analysis-correction-v0.1.0.zip")
+    evaluation = Path("/home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/evaluation/HugePlanning-KGR-006-R1-independent-evaluation-v0.1.0.zip")
+    result = validate_reconciliation(ROOT, source, evaluation)
     assert result["result"] == "VALID"
-    assert result["member_count"] == 14
-
-
-def test_repository_execution_authorization_gate_is_open_for_exactly_one_execution():
-    package = Path("/home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/input/HugePlanning-KGR-006-R1-formal-input-package.zip")
-    result = validate_authorization(ROOT, package)
-    assert result == {
-        "result": "VALID",
-        "diagnostics": [],
-        "run": "KGR-006-R1",
-        "role": "Enforcement Engineer",
-        "mode": "MINIMUM_ENFORCEMENT_ANALYSIS",
-        "correction_purpose": "Versioned correction of the evaluated KGR-006 outputs.",
-        "execution_count_limit": 1,
-        "execution_count_consumed": 0,
-        "gate": "OPEN_FOR_EXACTLY_ONE_EXECUTION",
-    }
+    assert result["diagnostics"] == []
+    assert result["execution_count_limit"] == 1
+    assert result["execution_count_consumed"] == 1
+    assert result["remaining_execution_available"] is False
 
 
 def test_bound_external_packages_and_imported_originals_remain_exact():
@@ -125,10 +119,10 @@ def test_bound_external_packages_and_imported_originals_remain_exact():
                 assert archive.read(name) == (custody / name).read_bytes()
 
 
-def test_prompt_snapshot_is_exact_and_outputs_absent():
+def test_prompt_snapshot_is_exact_and_outputs_are_exactly_imported():
     name = "07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md"
     assert (RUN / "prompt" / name).read_bytes() == (GOV / "methodology/roles/enforcement-engineer/protocols/minimum-analysis" / name).read_bytes()
-    assert [path.name for path in (RUN / "outputs").iterdir() if path.name != "README.md"] == []
+    assert sorted(path.name for path in (RUN / "outputs").iterdir() if path.name != "README.md") == sorted(OUTPUTS)
 
 
 def write_valid_completed_output(output_dir: Path) -> None:

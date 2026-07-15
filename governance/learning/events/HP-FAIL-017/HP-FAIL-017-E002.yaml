@@ -1,0 +1,26 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-017-E002
+  record_id: HP-FAIL-017
+  date: '2026-07-15'
+  event_type: RECURRENCE
+  status_from: null
+  status_to: null
+  summary: The Phase 2.4 regression again froze a mutable later-phase Enforcement gate phrase during KGR-006-R1 consumption reconciliation.
+  rationale: The test required CLOSED_TO_FURTHER_EXECUTION_PENDING_VERSIONED_CORRECTION and failed when the one authorized correction completed and the truthful terminal state became CLOSED with no remaining execution. The correction now asserts the enduring CLOSED invariant and absence of an open gate instead of a historical GOV-5 phrase.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/test_phase_2_4_contracts.py
+      anchor: test_phase_2_4_registry_and_durable_state_are_consistent
+      sha256: null
+      availability: PRESERVED
+      note: Historical-phase regression now checks the enduring closure invariant.
+    - type: REPOSITORY_PATH
+      locator: governance/CURRENT_STATE.md
+      anchor: Enforcement Engineering gate
+      sha256: null
+      availability: PRESERVED
+      note: Current state is CLOSED after exact 1-of-1 consumption.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-017-kgr-006-r1-controlled-import-owner-review-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

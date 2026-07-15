@@ -11,7 +11,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 | GOV-2 Kernel design | `COMPLETED` — imported/reconstructed |
 | GOV-3 Independent adversarial review | `COMPLETED` — `DESIGNER_REVISION_REQUIRED` |
 | GOV-4 Designer revision and adversarial closure | `COMPLETED` — KGR-005 imported with `CLOSURE_CONFIRMED` and one validated Controller transition |
-| GOV-5 Enforcement analysis and derived governance requirements | `IN_PROGRESS` — KGR-006 returned; KGR-006-R1 authorized once but not executed |
+| GOV-5 Enforcement analysis and derived governance requirements | `IN_PROGRESS` — corrected KGR-006-R1 evidence imported and independently evaluated; Project Owner decision review pending |
 | GOV-6 Human ratification | `PLANNED` |
 | GOV-7 Minimum executable governance bootstrap | `PLANNED` |
 | GOV-8 Honest S0a–S1 adoption and regularization | `PLANNED` |
@@ -87,7 +87,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 - Role/owner: Enforcement Engineer with relevant evaluators/specialists; human owner retains risk authority.
 - Entry conditions: GOV-4 closure permits enforcement analysis.
 - Completion gate: every proposed clause has an honest feasibility/coverage assessment and unresolved owner decisions are explicit.
-- Current status: `IN_PROGRESS`. KGR-006 executed externally under a retrospectively attested Project Owner authorization, produced seven imported immutable outputs, and received independent result `RETURN_FOR_VERSIONED_CORRECTION`. The original authorization lacked contemporaneous repository custody. KGR-006-R1 is prepared, deterministically validated, and authorized for exactly one execution under `GOV-AUTH-001`; count consumed is 0 and execution has not started. Corrected outputs and the required new independent evaluation are absent, so GOV-5 is not complete.
+- Current status: `IN_PROGRESS`. KGR-006 executed externally under a retrospectively attested Project Owner authorization, produced seven imported immutable outputs, and received independent result `RETURN_FOR_VERSIONED_CORRECTION`. KGR-006-R1 then consumed `GOV-AUTH-001` exactly once, produced seven corrected outputs imported byte-identically, and received a separately controlled three-artifact evaluation with result `SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW`. The correction and evaluation are technically validated and imported, but OD-002 through OD-006 remain unresolved, Project Owner acceptance has not occurred, and GOV-5 is not closed.
 - Dependencies: GOV-4.
 - Explicit non-goals: claiming enforceability, implementing every control, or silently changing constitutional meaning.
 

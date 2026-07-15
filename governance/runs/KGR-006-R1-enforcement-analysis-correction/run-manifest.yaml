@@ -5,19 +5,21 @@ run:
   role: Enforcement Engineer
   mode: MINIMUM_ENFORCEMENT_ANALYSIS
   phase: GOV-5
-  status: AUTHORIZED_NOT_EXECUTED
+  status: EXECUTED_EVALUATED_IMPORTED_PENDING_PROJECT_OWNER_DECISION
   preparation_status: VALIDATED
-  readiness: READY_FOR_ONE_AUTHORIZED_EXECUTION
+  readiness: READY_FOR_PROJECT_OWNER_DECISION_REVIEW
 execution:
   authorized: true
   authorization_record: governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
   authorization_prompt: HP-PROMPT-016/0.1.0
   execution_count_limit: 1
-  execution_count_consumed: 0
+  execution_count_consumed: 1
   repository_authorization_gate_required: true
-  started: false
-  completed: false
-  output_validation: NOT_RUN
+  started: true
+  completed: true
+  output_validation: VALID
+  output_package_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+  remaining_execution_available: false
 correction:
   identity_convention: <BASE_RUN_ID>-R<N>
   owner_authorization: HP-PROMPT-015/0.1.0
@@ -41,7 +43,7 @@ inputs:
   member_count: 14
   artifact_count: 13
 outputs:
-  status: ABSENT
+  status: IMPORTED_BYTE_IDENTICAL_VALIDATED_NOT_ACCEPTED
   required_count: 7
   contract_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/output-contract.yaml
   expected_artifacts:
@@ -52,10 +54,18 @@ outputs:
     - 04-owner-decisions-and-residual-risks.md
     - 05-minimum-executable-package-recommendation.md
     - 06-ratification-decision-handoff.md
+  imported_count: 7
+  imported_byte_identical: true
+  source_declared_result: CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION
+  import_validation: GOV-VAL-007
 independent_evaluation:
   required: true
   evaluator_must_be_outside_corrected_engineer_unilateral_control: true
-  status: NOT_STARTED
+  status: COMPLETED_IMPORTED_BYTE_IDENTICAL
+  result: SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW
+  package_sha256: ab133dc6e92b0a51f9911f5dd39bf65f3b2e244f97b023d98ea06a695f5fbe62
+  imported_count: 3
+  imported_byte_identical: true
 authority:
   gov_5: IN_PROGRESS
   gov_6_activated: false
@@ -65,3 +75,6 @@ authority:
   kernel_ratified: false
   risk_accepted: false
   constitutional_authority: NONE
+  project_owner_acceptance: NOT_STARTED
+  kernel_status: PROPOSED_NOT_RATIFIED
+  enforcement_implementation: NOT_PERFORMED

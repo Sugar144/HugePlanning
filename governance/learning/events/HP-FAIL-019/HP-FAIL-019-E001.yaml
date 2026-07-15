@@ -1,0 +1,26 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-019-E001
+  record_id: HP-FAIL-019
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The consumed-state profile validates one exact consumption, no remaining execution and byte-identical source/evaluation custody.
+  rationale: Targeted tests, full governance validation and isolated-copy review-bundle validation exercise the terminal profile and reject mismatched counts, events, hashes or import bytes.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/test_kgr_006_r1_controlled_import.py
+      anchor: authorization consumption and import validation tests
+      sha256: null
+      availability: PRESERVED
+      note: Deterministic positive and negative terminal-state coverage.
+    - type: VALIDATION_RECORD
+      locator: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml
+      anchor: GOV-VAL-007
+      sha256: null
+      availability: PRESERVED
+      note: Exact reconciliation and custody facts.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-017-kgr-006-r1-controlled-import-owner-review-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

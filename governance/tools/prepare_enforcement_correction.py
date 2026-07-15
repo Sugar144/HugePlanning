@@ -10,6 +10,7 @@ from pathlib import Path, PurePosixPath
 import re
 import shutil
 import sys
+import tempfile
 import zipfile
 
 import jsonschema
@@ -30,6 +31,13 @@ OUTPUTS = [
     "05-minimum-executable-package-recommendation.md",
     "06-ratification-decision-handoff.md",
 ]
+EVALUATION_OUTPUTS = [
+    "00-independent-evaluation-basis.md",
+    "01-independent-evaluation-findings.yaml",
+    "02-independent-evaluation-report.md",
+]
+SOURCE_PACKAGE_SHA256 = "0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b"
+EVALUATION_PACKAGE_SHA256 = "ab133dc6e92b0a51f9911f5dd39bf65f3b2e244f97b023d98ea06a695f5fbe62"
 CLAUSES = [f"K-{n:03d}" for n in range(1, 8)]
 ROUTES = [f"LLR-{n:03d}" for n in range(1, 21)]
 OWNER_DECISIONS = [f"OD-{n:03d}" for n in range(1, 7)]
@@ -386,13 +394,142 @@ def validate_output(root: Path, output_dir: Path) -> dict:
     return {"result": "VALID" if not errors else "INVALID", "diagnostics": errors, "output_count": len(names), "canonical_pair_count": len(actual_pairs & canonical_pairs(control))}
 
 
+def read_exact_archive(path: Path, expected_names: list[str], expected_hash: str) -> tuple[dict[str, bytes], list[str]]:
+    errors: list[str] = []
+    members: dict[str, bytes] = {}
+    if sha(path.read_bytes()) != expected_hash:
+        errors.append(f"package SHA-256 mismatch: {path}")
+    with zipfile.ZipFile(path) as archive:
+        infos = archive.infolist()
+        names = [item.filename for item in infos]
+        if names != expected_names:
+            errors.append(f"exact package inventory mismatch: {path}")
+        if len(names) != len(set(names)):
+            errors.append(f"duplicate package member: {path}")
+        for info in infos:
+            try:
+                safe_member(info.filename)
+            except ValueError as exc:
+                errors.append(str(exc))
+                continue
+            mode = info.external_attr >> 16
+            if info.is_dir() or (mode and (mode & 0o170000) not in (0, 0o100000)):
+                errors.append(f"non-regular package member: {info.filename}")
+            if info.flag_bits & 0x1:
+                errors.append(f"encrypted package member: {info.filename}")
+            data = archive.read(info)
+            try:
+                data.decode("utf-8")
+            except UnicodeDecodeError:
+                errors.append(f"non-UTF-8 package member: {info.filename}")
+            members[info.filename] = data
+    return members, errors
+
+
+def validate_reconciliation(root: Path, source_package: Path, evaluation_package: Path) -> dict:
+    errors: list[str] = []
+    source_members, source_errors = read_exact_archive(source_package, OUTPUTS, SOURCE_PACKAGE_SHA256)
+    evaluation_members, evaluation_errors = read_exact_archive(
+        evaluation_package, EVALUATION_OUTPUTS, EVALUATION_PACKAGE_SHA256
+    )
+    errors.extend(source_errors)
+    errors.extend(evaluation_errors)
+    run_root = root / RUN_REL
+
+    if not source_errors:
+        with tempfile.TemporaryDirectory(prefix="kgr-006-r1-output-validation-") as name:
+            output_dir = Path(name)
+            for member, data in source_members.items():
+                (output_dir / member).write_bytes(data)
+            output_result = validate_output(root, output_dir)
+            errors.extend(f"output: {item}" for item in output_result["diagnostics"])
+
+    for member, data in source_members.items():
+        custody = run_root / "outputs" / member
+        if not custody.is_file() or custody.read_bytes() != data:
+            errors.append(f"source import byte mismatch: {member}")
+    for member, data in evaluation_members.items():
+        custody = run_root / "evaluation" / member
+        if not custody.is_file() or custody.read_bytes() != data:
+            errors.append(f"evaluation import byte mismatch: {member}")
+
+    if evaluation_members:
+        try:
+            findings = loads(
+                evaluation_members["01-independent-evaluation-findings.yaml"].decode("utf-8"),
+                "01-independent-evaluation-findings.yaml",
+            )["independent_evaluation"]
+            expected = {
+                "run": RUN,
+                "base_run": BASE_RUN,
+                "source_role": "Enforcement Engineer",
+                "source_mode": "MINIMUM_ENFORCEMENT_ANALYSIS",
+                "source_authorization": "GOV-AUTH-001",
+                "source_declared_result": "CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION",
+                "status": "EVALUATION_COMPLETE",
+                "declared_result": "SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW",
+            }
+            for key, value in expected.items():
+                if findings.get(key) != value:
+                    errors.append(f"evaluation identity mismatch: {key}")
+            if findings.get("diagnostics") != [] or findings.get("blockers") != []:
+                errors.append("evaluation diagnostics or blockers are not empty")
+            owner = findings.get("owner_decisions_assessment", {})
+            if owner.get("unresolved_and_reserved") != OWNER_DECISIONS[1:] or owner.get("resolved_by_evaluator") != []:
+                errors.append("evaluation Owner-decision reservation mismatch")
+            for name in ("00-independent-evaluation-basis.md", "02-independent-evaluation-report.md"):
+                meta, _ = strict_front(evaluation_members[name].decode("utf-8"), name)
+                if meta.get("run") != RUN or meta.get("status") != "EVALUATION_COMPLETE":
+                    errors.append(f"evaluation Markdown identity mismatch: {name}")
+        except (KeyError, UnicodeDecodeError, StrictYAMLError, ValueError) as exc:
+            errors.append(f"evaluation record invalid: {exc}")
+
+    authorization = load(run_root / "authorization/execution-authorization.yaml").get("execution_authorization", {})
+    consumption = authorization.get("consumption_events", [])
+    if authorization.get("status") != "CONSUMED":
+        errors.append("authorization status must be CONSUMED")
+    if authorization.get("execution_count_limit") != 1 or authorization.get("execution_count_consumed") != 1:
+        errors.append("authorization execution count must be exactly 1 of 1")
+    if authorization.get("execution_available") is not False:
+        errors.append("authorization must have no remaining execution")
+    if authorization.get("consumed_by_output_package_sha256") != SOURCE_PACKAGE_SHA256:
+        errors.append("authorization consumed output package mismatch")
+    if len(consumption) != 1 or consumption[0].get("sequence") != 1 or consumption[0].get("output_package_sha256") != SOURCE_PACKAGE_SHA256:
+        errors.append("authorization must contain exactly one bound consumption event")
+    state = authorization.get("execution_state", {})
+    expected_state = {
+        "started": True,
+        "completed": True,
+        "outputs_created": True,
+        "independent_evaluation_invoked": True,
+        "independent_evaluation_completed": True,
+    }
+    if state != expected_state:
+        errors.append("authorization terminal execution state mismatch")
+
+    return {
+        "result": "VALID" if not errors else "INVALID",
+        "diagnostics": errors,
+        "run": RUN,
+        "source_package_sha256": sha(source_package.read_bytes()),
+        "evaluation_package_sha256": sha(evaluation_package.read_bytes()),
+        "source_member_count": len(source_members),
+        "evaluation_member_count": len(evaluation_members),
+        "execution_count_limit": authorization.get("execution_count_limit"),
+        "execution_count_consumed": authorization.get("execution_count_consumed"),
+        "remaining_execution_available": authorization.get("execution_available"),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["build", "validate-preparation", "validate-authorization", "validate-output"])
+    parser.add_argument("command", choices=["build", "validate-preparation", "validate-authorization", "validate-output", "validate-reconciliation"])
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
     parser.add_argument("--inventory", type=Path, default=Path(f"{RUN_REL}/input-inventory.yaml"))
     parser.add_argument("--package", type=Path, default=Path("/tmp/HugePlanning-KGR-006-R1-formal-input-package.zip"))
     parser.add_argument("--output-dir", type=Path, default=Path(f"{RUN_REL}/outputs"))
+    parser.add_argument("--source-package", type=Path, default=Path("/home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/output/HugePlanning-KGR-006-R1-minimum-enforcement-analysis-correction-v0.1.0.zip"))
+    parser.add_argument("--evaluation-package", type=Path, default=Path("/home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/evaluation/HugePlanning-KGR-006-R1-independent-evaluation-v0.1.0.zip"))
     args = parser.parse_args()
     root = args.root.resolve()
     try:
@@ -402,8 +539,10 @@ def main() -> int:
             result = validate_preparation(root, args.package)
         elif args.command == "validate-authorization":
             result = validate_authorization(root, args.package)
-        else:
+        elif args.command == "validate-output":
             result = validate_output(root, root / args.output_dir)
+        else:
+            result = validate_reconciliation(root, args.source_package, args.evaluation_package)
     except (OSError, ValueError, KeyError, StrictYAMLError, jsonschema.ValidationError, zipfile.BadZipFile) as exc:
         result = {"result": "INVALID", "diagnostics": [str(exc)]}
     print(json.dumps(result, sort_keys=True, separators=(",", ":")))

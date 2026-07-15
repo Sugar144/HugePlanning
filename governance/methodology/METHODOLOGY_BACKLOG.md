@@ -164,3 +164,58 @@ proposal:
 Phase 2.2 locally implements the bounded observable-evidence session-review skill pending review. It cannot access hidden reasoning, validate its own findings, manufacture lessons, or modify repository state without authorization.
 
 These local implementations are not accepted or operational. They do not grant publication authority, execute a governance run, apply a Controller transition, alter Kernel or loop semantics, or treat observable session traces as validated truth.
+
+## HP-MPROP-005 — Phase-transition methodology candidates
+
+```yaml
+proposal:
+  id: HP-MPROP-005
+  title: Phase-transition methodology candidates
+  status: DOCUMENTED_CANDIDATES_NOT_ADOPTED
+  authority: NONE
+  source: HP-PROMPT-017/0.1.0
+  trigger: Project Owner review of a separately prepared research or design contract
+  candidates:
+    - id: HP-MCAND-001
+      title: Durable Owner Idea Ledger
+      boundary: External personal-idea custody only; personal TFG ideas do not become canonical project requirements.
+    - id: HP-MCAND-002
+      title: Project strategic-idea capture
+      boundary: Project methodology proposal only after separate research and Owner review.
+    - id: HP-MCAND-003
+      title: Governance hypothesis-to-evidence lifecycle
+      boundary: Candidate evidence-lifecycle methodology, not an active requirement.
+    - id: HP-MCAND-004
+      title: Improved Governance Intake Interviewer
+      boundary: Candidate future protocol revision, not a change to historical KGR-001.
+    - id: HP-MCAND-005
+      title: Governance Discovery Core plus Domain Packs
+      boundary: Candidate methodology architecture, not a new governance layer.
+    - id: HP-MCAND-006
+      title: Prompt evaluation and optimization
+      boundary: Candidate research; no prompt or model route is adopted here.
+    - id: HP-MCAND-007
+      title: Runtime distribution boundary
+      boundary: Candidate research; no runtime projection or product change is authorized.
+    - id: HP-MCAND-008
+      title: Third-party documentation
+      boundary: Candidate documentation method; no publication obligation is created.
+    - id: HP-MCAND-009
+      title: Formal-run automation
+      boundary: Candidate deterministic tooling; human authority gates may not be automated away.
+    - id: HP-MCAND-010
+      title: Phase learning-promotion review
+      boundary: Candidate phase-transition method; this entry does not execute a promotion review.
+  class_distinctions:
+    personal_idea: External Owner Idea Ledger only.
+    project_methodology_proposal: This non-authoritative backlog after explicit capture.
+    learning_record: Evidence-based record under governance/learning only.
+    owner_decision: Explicit competent human decision record only.
+    active_scope_requirement: Only an already authorized contract requirement; no candidate is one.
+  non_goals:
+    - No candidate is approved, accepted, implemented, validated, operational, or scheduled.
+    - No personal TFG idea is added to canonical project requirements.
+    - No new governance layer is created.
+```
+
+These candidates are preserved because they were explicitly requested for phase-readiness review. Each requires a separate evidence basis, Owner disposition, and implementation authorization before any repository or operational change.

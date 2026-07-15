@@ -1,16 +1,16 @@
-# KGR-006-R1 correction preparation
+# KGR-006-R1 correction evidence
 
-This directory prepares, but does not execute, the first versioned correction
-of immutable run KGR-006. The correction is limited to the three independent-
-evaluation challenges and the strictly necessary consistency changes declared
-in `control/correction-findings.yaml`.
+This directory preserves the first versioned correction of immutable run
+KGR-006. Its one authorized execution was consumed once. Seven corrected
+outputs and three independent-evaluation artifacts are imported byte-
+identically. The evaluation result is
+`SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW`.
 
-The seven original KGR-006 outputs and three evaluation artifacts remain in
-their original custody paths and are not modified. No corrected output exists
-here. Execution requires a separately preserved Project Owner authorization
-record that passes the deterministic authorization gate. Any completed package
-must pass output validation and a new independent evaluation outside the
-corrected Enforcement Engineer's unilateral control.
+The seven original KGR-006 outputs and three original evaluation artifacts
+remain in their historical custody paths and are unchanged. No execution
+remains available under `GOV-AUTH-001`. The exact next action is Project Owner
+review of OD-002 and OD-003 using the prepared decision dossier.
 
-Prepared is not executed, validated output, accepted, ratified, implemented,
-operational, enforceable, or risk-accepted.
+Imported and independently evaluated is not Project Owner acceptance, GOV-5
+closure, ratification, implementation, operation, enforceability, or risk
+acceptance.
