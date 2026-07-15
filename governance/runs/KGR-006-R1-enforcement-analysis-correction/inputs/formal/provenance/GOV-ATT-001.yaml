@@ -1,0 +1,49 @@
+attestation:
+  schema_version: 0.1.0
+  id: GOV-ATT-001
+  version: 0.1.0
+  evidence_classification: RETROSPECTIVE_PROJECT_OWNER_ATTESTATION
+  status: PRESERVED_RETROSPECTIVE_ATTESTATION
+  owner: Project Owner
+  recorded_on: '2026-07-15'
+  source_prompt: HP-PROMPT-015/0.1.0
+  source_prompt_path: governance/prompts/orchestration/HP-PROMPT-015-kgr-006-provenance-reconciliation-and-correction-preparation-v0.1.0.md
+  attested_execution:
+    run: KGR-006
+    role: Enforcement Engineer
+    mode: MINIMUM_ENFORCEMENT_ANALYSIS
+    protocol: GOV-PROTOCOL-004/0.1.0
+    formal_input_package: HugePlanning-KGR-006-formal-input-package.zip
+    formal_input_package_sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
+    source_output_package: HugePlanning-KGR-006-minimum-enforcement-analysis-v0.1.0.zip
+    source_output_package_sha256: 10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a
+    execution_count: 1
+    execution_location: EXTERNAL_TO_REPOSITORY
+  original_authorization_custody:
+    exact_historical_authorization_text: NOT_PRESERVED
+    contemporaneous_repository_record: false
+    evidence_limitation: The Project Owner attests after execution that chat authorization was given; no contemporaneous repository-side execution-authorization record exists and none is reconstructed.
+  attested_authorization_boundary:
+    permitted:
+      - one bounded KGR-006 Enforcement Engineer execution
+    prohibited:
+      - repository modification
+      - control policy standard procedure GOV-7 GOV-8 or GOV-9 implementation
+      - Kernel modification
+      - risk acceptance
+      - Kernel ratification
+      - independent evaluator invocation by the source role
+      - commit push pull request merge or release
+  methodological_use:
+    sufficient_for_bounded_import: true
+    basis: The operating contract permits honest NOT_PRESERVED historical evidence limitations and prohibits reconstruction; this record preserves a competent Owner statement without converting it into contemporaneous evidence.
+    does_not_establish:
+      - contemporaneous repository custody
+      - substantive validation
+      - acceptance
+      - ratification
+      - enforceability
+      - implementation
+      - operation
+      - risk acceptance
+  constitutional_authority: NONE

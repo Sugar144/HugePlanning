@@ -201,3 +201,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: KGR-006 is recorded as externally executed and independently evaluated with result `RETURN_FOR_VERSIONED_CORRECTION`; its seven outputs and three evaluation artifacts are imported byte-identically. The attestation is not contemporaneous evidence and does not substantively validate or accept the run. GOV-5 remains in progress; GOV-6 through GOV-9 remain inactive.
 - Authority boundary: This decision does not rewrite historical custody, validate or accept KGR-006, resolve OD-002 through OD-006, modify Kernel meaning, implement GOV-7, accept risk, ratify, activate a later phase, modify product/runtime code, push, open a pull request, merge, or release.
 - Supersedes: none
+
+## GOV-DEC-018 — Prospective formal-run correction identity and KGR-006-R1 preparation
+
+- Date: 2026-07-15
+- Status: ACTIVE_PROSPECTIVELY
+- Statement: Adopt `<BASE_RUN_ID>-R<N>` for versioned corrections of immutable completed formal runs, beginning with `KGR-006-R1`, without consuming the next unrelated KGR sequential identity.
+- Rationale: KGR-006 requires bounded source correction after independent evaluation. A separate correction identity preserves the historical input, output, evaluation, and provenance records while allowing a reviewable corrected package.
+- Source: Project Owner Decision 2 and bounded authorization preserved exactly as `HP-PROMPT-015/0.1.0`.
+- Consequences: Every correction binds the base input/output packages, evaluation result and correction findings, and explicit Owner authorization; it receives deterministic validation and a new independent evaluation. KGR-006-R1 is prepared under `GOV-PROTOCOL-004/0.2.0` with no execution authorization or outputs.
+- Authority boundary: This decision does not execute KGR-006-R1, modify KGR-006 or its evaluation, validate or accept a corrected result, resolve OD-002 through OD-006, implement GOV-7, perform GOV-8, change Kernel meaning or Controller/product semantics, accept risk, ratify, activate GOV-6 through GOV-9, push, open a pull request, merge, or release.
+- Supersedes: none

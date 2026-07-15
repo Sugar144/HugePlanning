@@ -1,0 +1,130 @@
+input_envelope:
+  schema_version: 0.2.0
+  id: GOV-INPUT-004
+  target_run: KGR-006-R1
+  base_run: KGR-006
+  status: VALIDATED_PREPARED_NOT_EXECUTED
+  baseline_head: f4d16304a0560813191d1a7a32a726be6db380e5
+  envelope_package_member: input-envelope.yaml
+  execution_contract:
+    target_run: KGR-006-R1
+    role: Enforcement Engineer
+    mode: MINIMUM_ENFORCEMENT_ANALYSIS
+    protocol_id: GOV-PROTOCOL-004
+    protocol_version: 0.2.0
+    prompt_id: GOV-PROMPT-009
+    prompt_version: 0.1.0
+    prompt_sha256: e3fc76034a4ebb39291ab0380d9b0ebbb66e80047e8c5b356020ded0c169c795
+  correction:
+    identity_convention: <BASE_RUN_ID>-R<N>
+    owner_authorization: HP-PROMPT-015/0.1.0
+    base_input_package_sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
+    base_output_package_sha256: 10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a
+    evaluation_package_sha256: 1c2167a093ec5d7bf636fe2ab25202e714e5375389ec4464653b0eefd45ed39e
+    evaluation_result: RETURN_FOR_VERSIONED_CORRECTION
+    material_challenges:
+    - IE-MC-001
+    - IE-MC-002
+    - IE-MC-003
+  formal_inputs:
+    artifact_count: 13
+    artifacts:
+    - group: immutable_base_packages
+      package_member: packages/HugePlanning-KGR-006-formal-input-package.zip
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/packages/HugePlanning-KGR-006-formal-input-package.zip
+      origin: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/input/HugePlanning-KGR-006-formal-input-package.zip
+      sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
+      size: 188271
+    - group: immutable_base_packages
+      package_member: packages/HugePlanning-KGR-006-minimum-enforcement-analysis-v0.1.0.zip
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/packages/HugePlanning-KGR-006-minimum-enforcement-analysis-v0.1.0.zip
+      origin: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/output/HugePlanning-KGR-006-minimum-enforcement-analysis-v0.1.0.zip
+      sha256: 10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a
+      size: 26190
+    - group: immutable_base_packages
+      package_member: packages/HugePlanning-KGR-006-independent-evaluation-v0.1.0.zip
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/packages/HugePlanning-KGR-006-independent-evaluation-v0.1.0.zip
+      origin: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/evaluation/HugePlanning-KGR-006-independent-evaluation-v0.1.0.zip
+      sha256: 1c2167a093ec5d7bf636fe2ab25202e714e5375389ec4464653b0eefd45ed39e
+      size: 9544
+    - group: owner_authorization
+      package_member: owner/HP-PROMPT-015.md
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/owner/HP-PROMPT-015.md
+      origin: governance/prompts/orchestration/HP-PROMPT-015-kgr-006-provenance-reconciliation-and-correction-preparation-v0.1.0.md
+      sha256: 8a8f2753d15143fdff3db96fa293fb1fbf5004706083e72096f10df50a549887
+      size: 8323
+    - group: provenance
+      package_member: provenance/GOV-ATT-001.yaml
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/provenance/GOV-ATT-001.yaml
+      origin: governance/runs/KGR-006-enforcement-analysis/provenance/retrospective-execution-authorization-attestation-v0.1.0.yaml
+      sha256: a0e62ac2d0f2340ded92ac646fe5879736a57c5d1d71b781d264594768d9c61e
+      size: 2296
+    - group: provenance
+      package_member: provenance/GOV-VAL-004.yaml
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/provenance/GOV-VAL-004.yaml
+      origin: governance/reviews/gov-5-provenance-reconciliation/kgr-006-import-validation-v0.1.0.yaml
+      sha256: 3a11b002ee03c02737d70ffeddc1dd3eaa286e1f02654afddbd211478ab3f166
+      size: 3910
+    - group: correction_contract
+      package_member: control/canonical-clause-route-anchors.yaml
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/control/canonical-clause-route-anchors.yaml
+      origin: governance/runs/KGR-006-R1-enforcement-analysis-correction/control/canonical-clause-route-anchors.yaml
+      sha256: 1d75ae5e0e43042588633779dae5f55121f1ad4db5099d692280bb208e9c160c
+      size: 1905
+    - group: correction_contract
+      package_member: control/correction-findings.yaml
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/control/correction-findings.yaml
+      origin: governance/runs/KGR-006-R1-enforcement-analysis-correction/control/correction-findings.yaml
+      sha256: c6040334cefa32738dbcdad1df0be828b723b33256d0d9e408776195de1f20ac
+      size: 2270
+    - group: correction_contract
+      package_member: contract/output-contract.yaml
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/contract/output-contract.yaml
+      origin: governance/runs/KGR-006-R1-enforcement-analysis-correction/output-contract.yaml
+      sha256: 0842cbabf2d470c19ae8adcb283020ce10e6c2502d6f364ae72813614917a0a5
+      size: 4053
+    - group: correction_contract
+      package_member: prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
+      origin: governance/runs/KGR-006-R1-enforcement-analysis-correction/prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
+      sha256: e3fc76034a4ebb39291ab0380d9b0ebbb66e80047e8c5b356020ded0c169c795
+      size: 4173
+    - group: methodology
+      package_member: methodology/project-operating-contract.md
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/methodology/project-operating-contract.md
+      origin: governance/methodology/project-operating-contract.md
+      sha256: cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa
+      size: 11788
+    - group: schemas
+      package_member: schemas/corrected-clause-implication-matrix.schema.json
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/schemas/corrected-clause-implication-matrix.schema.json
+      origin: governance/schemas/protocols/GOV-PROTOCOL-004/0.2.0/corrected-clause-implication-matrix.schema.json
+      sha256: 923591b7d5047a6ea2ab0b26bdeaece8e768b6378d4980cd602072e3fa5742f3
+      size: 6556
+    - group: schemas
+      package_member: schemas/enforcement-analysis-correction-output-contract.schema.json
+      custody_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/schemas/enforcement-analysis-correction-output-contract.schema.json
+      origin: governance/schemas/protocols/GOV-PROTOCOL-004/0.2.0/enforcement-analysis-correction-output-contract.schema.json
+      sha256: f4c0c5706702ea80cf45781b1b8c2ab0db7c78fd2554bf8843e01b0247103f34
+      size: 2654
+  expected_output_members:
+  - 00-enforcement-analysis-basis.md
+  - 01-clause-implication-matrix.yaml
+  - 02-existing-capability-inventory.md
+  - 03-feasibility-coverage-and-gap-assessment.md
+  - 04-owner-decisions-and-residual-risks.md
+  - 05-minimum-executable-package-recommendation.md
+  - 06-ratification-decision-handoff.md
+  authorization_gate:
+    required_before_execution: true
+    record_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
+    current_status: NOT_AUTHORIZED
+  independent_evaluation:
+    required_after_completed_output_validation: true
+    outside_corrected_engineer_unilateral_control: true
+    current_status: NOT_STARTED
+  authority:
+    gov_5: IN_PROGRESS
+    gov_6_through_gov_9: INACTIVE
+    kernel: PROPOSED_NOT_RATIFIED
+    risk_accepted: false

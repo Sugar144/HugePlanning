@@ -1,7 +1,7 @@
 registry:
-  version: '0.9'
-  generated_for: GOV_5_CONTRACT_PREPARATION
-  base_commit: 8e761801fb9bfd8a8e5e817d5c332a11456f77d8
+  version: '0.10'
+  generated_for: KGR_006_R1_CONTRACT_PREPARATION
+  base_commit: f4d16304a0560813191d1a7a32a726be6db380e5
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -370,7 +370,7 @@ artifacts:
 
   - id: GOV-METHOD-003
     title: Project Operating Contract
-    version: 0.2.1
+    version: 0.3.0
     status: IMPLEMENTED_LOCALLY_PENDING_PROJECT_OWNER_REVIEW
     authority: governance_operating_method_not_execution_or_constitutional_authority
     path: governance/methodology/project-operating-contract.md
@@ -386,7 +386,8 @@ artifacts:
       - governance/AGENTS.md
     notes:
       - Defines authority, status, record, deterministic-routing, output-artifact, immutability, traceability, handoff, and anti-recursion semantics.
-      - Version 0.2.1 distinguishes bounded OWNER_PUBLICATION_AUTHORIZATION evidence from material implementation prompts without broadening PR, merge, release, execution, ratification, risk acceptance, or modification authority.
+      - Version 0.3.0 adds the prospective BASE_RUN_ID-RN correction identity and a repository-custodied deterministic execution-authorization gate.
+      - The prior OWNER_PUBLICATION_AUTHORIZATION distinction remains unchanged.
       - Instruction files apply concise behavior rules; this contract does not prove execution, validation, acceptance, ratification, or operation.
 
   - id: GOV-METHOD-004
@@ -1723,26 +1724,29 @@ artifacts:
 
   - id: GOV-PROTOCOL-004
     title: Minimum Enforcement Analysis Protocol
-    version: 0.1.0
-    status: PREPARED_NOT_EXECUTED
+    version: 0.2.0
+    status: PREPARED_CORRECTION_NOT_EXECUTED
     authority: analysis_execution_contract_not_execution_or_constitutional_authority
-    path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md
+    path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
     source_path: null
     source_sha256: null
-    produced_by: GOV-5_CONTRACT_PREPARATION
+    produced_by: KGR_006_R1_CONTRACT_PREPARATION
     artifact_type: role_execution_protocol
     language: English
     canonicality: canonical_methodology
     supersedes: null
     aliases:
+      - governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md
       - governance/runs/KGR-006-enforcement-analysis/prompt/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md
+      - governance/runs/KGR-006-R1-enforcement-analysis-correction/prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
     notes:
       - Requires seven clauses, 20 routes, strict classifications, minimum GOV-7 recommendation, and a separate evaluation handoff.
       - Prohibits Kernel changes, risk acceptance, ratification, control implementation, later-phase activation, and enforceability claims.
+      - Version 0.2.0 prepares KGR-006-R1 only; historical version 0.1.0 remains the immutable KGR-006 execution contract.
 
   - id: GOV-METHOD-005
     title: Enforcement Engineer Mode Registry
-    version: 0.1.0
+    version: 0.2.0
     status: PREPARED_FOR_FUTURE_EXECUTION
     authority: governance_methodology_not_execution_evidence
     path: governance/methodology/roles/enforcement-engineer/enforcement-engineer-modes.yaml
@@ -1754,7 +1758,7 @@ artifacts:
     canonicality: canonical_methodology
     supersedes: null
     aliases: []
-    notes: [Defines only MINIMUM_ENFORCEMENT_ANALYSIS and grants no execution or human authority.]
+    notes: [Defines MINIMUM_ENFORCEMENT_ANALYSIS and its KGR-006-R1 correction binding; grants no execution or human authority.]
 
   - id: GOV-PROMPT-008
     title: KGR-006 Enforcement Engineer Prompt Snapshot
@@ -1995,3 +1999,105 @@ artifacts:
       - Preserves the RETROSPECTIVE_PROJECT_OWNER_ATTESTATION and its non-contemporaneous evidence limit.
       - Prospectively authorizes the BASE_RUN_ID-RN convention and preparation, but not execution, of KGR-006-R1.
       - Authorizes two separate local commits and no push, PR, merge, release, acceptance, risk decision, or ratification.
+
+  - id: KGR-006-R1
+    title: KGR-006 First Versioned Correction Run Manifest
+    version: 0.1.0
+    status: PREPARED_NOT_EXECUTED
+    authority: correction_contract_preparation_not_execution_acceptance_or_ratification
+    path: governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: KGR_006_R1_CONTRACT_PREPARATION
+    artifact_type: run_manifest
+    language: English
+    canonicality: exact_run_preparation
+    supersedes: null
+    aliases: []
+    notes:
+      - Applies the prospective BASE_RUN_ID-RN convention without replacing KGR-006 or consuming another KGR identity.
+      - Execution authorization and corrected outputs are absent; GOV-5 remains in progress and GOV-6 through GOV-9 remain inactive.
+      - Requires deterministic completed-output validation and a new independent evaluation outside the corrected source role's unilateral control.
+
+  - id: GOV-PROMPT-009
+    title: KGR-006-R1 Enforcement Engineer Correction Prompt Snapshot
+    version: 0.1.0
+    status: PREPARED_NOT_EXECUTED
+    authority: exact_correction_run_contract_not_execution_acceptance_or_ratification
+    path: governance/runs/KGR-006-R1-enforcement-analysis-correction/prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
+    source_path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
+    source_sha256: null
+    produced_by: KGR_006_R1_CONTRACT_PREPARATION
+    artifact_type: run_prompt_snapshot
+    language: English
+    canonicality: exact_run_snapshot
+    supersedes: null
+    aliases: []
+    notes: [Execution requires a later repository-custodied Project Owner authorization that passes the deterministic gate.]
+
+  - id: GOV-INPUT-004
+    title: KGR-006-R1 Formal Correction Input Envelope
+    version: 0.2.0
+    status: VALIDATED_PREPARED_NOT_EXECUTED
+    authority: correction_input_custody_not_execution_acceptance_or_ratification
+    path: governance/runs/KGR-006-R1-enforcement-analysis-correction/input-envelope.yaml
+    source_path: /tmp/HugePlanning-KGR-006-R1-formal-input-package.zip
+    source_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
+    produced_by: KGR_006_R1_CONTRACT_PREPARATION
+    artifact_type: formal_input_envelope
+    language: English
+    canonicality: exact_run_input_contract
+    supersedes: null
+    aliases: []
+    notes: [Binds 13 inputs plus the envelope, including all three immutable packages, three challenges, controls, schemas, prompt, methodology, provenance, and Owner instruction.]
+
+  - id: GOV-OUTPUT-CONTRACT-002
+    title: KGR-006-R1 Corrected Enforcement Analysis Output Contract
+    version: 0.1.0
+    status: PREPARED_NOT_EXECUTED
+    authority: correction_output_contract_not_execution_or_substantive_result
+    path: governance/runs/KGR-006-R1-enforcement-analysis-correction/output-contract.yaml
+    source_path: null
+    source_sha256: null
+    produced_by: KGR_006_R1_CONTRACT_PREPARATION
+    artifact_type: formal_output_contract
+    language: English
+    canonicality: exact_run_output_contract
+    supersedes: GOV-OUTPUT-CONTRACT-001
+    aliases:
+      - governance/schemas/protocols/GOV-PROTOCOL-004/0.2.0/corrected-clause-implication-matrix.schema.json
+      - governance/schemas/protocols/GOV-PROTOCOL-004/0.2.0/enforcement-analysis-correction-output-contract.schema.json
+    notes: [Requires exact seven outputs, 46 applicable canonical pairs, 20 routes, four canonical dependencies, six Owner decisions, one ER-012 boundary, and recommendation-only GOV-7 framing.]
+
+  - id: GOV-VAL-005
+    title: KGR-006-R1 Contract Preparation Validation
+    version: 0.1.0
+    status: VALIDATED_PREPARATION_NOT_EXECUTED
+    authority: deterministic_readiness_not_execution_acceptance_or_ratification
+    path: governance/reviews/kgr-006-r1-contract-preparation/kgr-006-r1-readiness-v0.1.0.yaml
+    source_path: /tmp/HugePlanning-KGR-006-R1-formal-input-package.zip
+    source_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
+    produced_by: KGR_006_R1_CONTRACT_PREPARATION
+    artifact_type: governance_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: null
+    aliases: []
+    notes: [Readiness is READY_FOR_SEPARATE_EXECUTION_AUTHORIZATION; the execution gate is closed.]
+
+  - id: GOV-REVIEW-010
+    title: KGR-006-R1 Correction Contract Preparation Report
+    version: 0.1.0
+    status: PREPARED_VALIDATED_NOT_EXECUTED
+    authority: preparation_evidence_not_execution_acceptance_or_ratification
+    path: governance/reviews/kgr-006-r1-contract-preparation/implementation-report-v0.1.0.md
+    source_path: null
+    source_sha256: null
+    produced_by: KGR_006_R1_CONTRACT_PREPARATION
+    artifact_type: implementation_validation_report
+    language: English
+    canonicality: preserved_implementation_evidence
+    supersedes: null
+    aliases:
+      - governance/reviews/kgr-006-r1-contract-preparation/review-bundle-profile-v0.1.0.yaml
+    notes: [Records the prospective identity, bounded contract, deterministic validation, closed execution gate, and exact next action.]

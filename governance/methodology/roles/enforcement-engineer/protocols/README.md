@@ -1,3 +1,4 @@
 # Enforcement Engineer protocols
 
-- `minimum-analysis/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md` — `MINIMUM_ENFORCEMENT_ANALYSIS`, protocol `GOV-PROTOCOL-004` version `0.1.0`, prepared for KGR-006 and not executed.
+- `minimum-analysis/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md` — immutable historical `KGR-006` execution contract, protocol `GOV-PROTOCOL-004/0.1.0`; execution is supported only by retrospective attestation and the result was returned for correction.
+- `minimum-analysis/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md` — prepared `KGR-006-R1` correction contract, protocol `GOV-PROTOCOL-004/0.2.0`; not authorized or executed.

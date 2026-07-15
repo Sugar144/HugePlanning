@@ -1,0 +1,115 @@
+schema_version: 0.1.0
+repository:
+  expected_branch: governance/kernel-designer-revision-v0.1
+  base_head: f4d16304a0560813191d1a7a32a726be6db380e5
+  require_changes: true
+  require_empty_staging: true
+scope:
+  enforce_exact: true
+  paths:
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/CURRENT_STATE.md
+    - governance/DECISION_LOG.md
+    - governance/GOVERNANCE_MASTER_PLAN.md
+    - governance/learning/FAILURE_AND_LESSONS_INDEX.md
+    - governance/learning/events/HP-FAIL-014/HP-FAIL-014-E001.yaml
+    - governance/learning/events/HP-FAIL-014/HP-FAIL-014-E002.yaml
+    - governance/methodology/project-operating-contract.md
+    - governance/methodology/roles/enforcement-engineer/README.md
+    - governance/methodology/roles/enforcement-engineer/enforcement-engineer-modes.yaml
+    - governance/methodology/roles/enforcement-engineer/protocols/README.md
+    - governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
+    - governance/reviews/kgr-006-r1-contract-preparation/implementation-report-v0.1.0.md
+    - governance/reviews/kgr-006-r1-contract-preparation/kgr-006-r1-readiness-v0.1.0.yaml
+    - governance/reviews/kgr-006-r1-contract-preparation/review-bundle-profile-v0.1.0.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/README.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/control/canonical-clause-route-anchors.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/control/correction-findings.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/input-envelope.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/input-inventory.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/contract/output-contract.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/control/canonical-clause-route-anchors.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/control/correction-findings.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/methodology/project-operating-contract.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/owner/HP-PROMPT-015.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/packages/HugePlanning-KGR-006-formal-input-package.zip
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/packages/HugePlanning-KGR-006-independent-evaluation-v0.1.0.zip
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/packages/HugePlanning-KGR-006-minimum-enforcement-analysis-v0.1.0.zip
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/provenance/GOV-ATT-001.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/provenance/GOV-VAL-004.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/schemas/corrected-clause-implication-matrix.schema.json
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/inputs/formal/schemas/enforcement-analysis-correction-output-contract.schema.json
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/output-contract.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/README.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/prompt/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+    - governance/schemas/protocols/GOV-PROTOCOL-004/0.2.0/corrected-clause-implication-matrix.schema.json
+    - governance/schemas/protocols/GOV-PROTOCOL-004/0.2.0/enforcement-analysis-correction-output-contract.schema.json
+    - governance/tests/test_kgr_006_r1_contract_preparation.py
+    - governance/tools/prepare_enforcement_correction.py
+validations:
+  - id: build-correction-input
+    argv: [python3, governance/tools/prepare_enforcement_correction.py, build]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: correction-preparation
+    argv: [python3, governance/tools/prepare_enforcement_correction.py, validate-preparation]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: closed-execution-authorization-gate
+    argv:
+      - python3
+      - -c
+      - "from pathlib import Path; import sys; sys.path.insert(0,'governance/tools'); from prepare_enforcement_correction import validate_authorization; r=validate_authorization(Path('.').resolve(),Path('/tmp/HugePlanning-KGR-006-R1-formal-input-package.zip')); assert r['result']=='INVALID' and r['diagnostics']==['repository-side execution authorization record is absent']; print('authorization gate correctly closed')"
+    cwd: .
+    required: true
+    timeout_seconds: 60
+  - id: kgr-006-r1-targeted-tests
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -m, pytest, -q, -p, no:cacheprovider, governance/tests/test_kgr_006_r1_contract_preparation.py, governance/tests/test_kgr_006_provenance_reconciliation.py, governance/tests/test_gov_5_contract_preparation.py, governance/tests/test_phase_2_4_contracts.py]
+    cwd: .
+    required: true
+    timeout_seconds: 180
+  - id: full-governance-suite
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -m, pytest, -q, -p, no:cacheprovider, governance/tests]
+    cwd: .
+    required: true
+    timeout_seconds: 300
+  - id: prompt-custody
+    argv: [governance/tests/run-prompt-custody-tests.sh]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: learning-validation
+    argv: [python3, governance/tools/manage_learning.py, validate]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: strict-preparation-records
+    argv:
+      - python3
+      - -c
+      - "from pathlib import Path; import json,jsonschema,sys; sys.path.insert(0,'governance/tools'); from _lib.strict_yaml import load; root=Path('.'); contract=load(root/'governance/runs/KGR-006-R1-enforcement-analysis-correction/output-contract.yaml'); schema=json.loads((root/'governance/schemas/protocols/GOV-PROTOCOL-004/0.2.0/enforcement-analysis-correction-output-contract.schema.json').read_text()); jsonschema.Draft202012Validator(schema).validate(contract); ready=load(root/'governance/reviews/kgr-006-r1-contract-preparation/kgr-006-r1-readiness-v0.1.0.yaml'); rs=json.loads((root/'governance/schemas/governance-validation-record.schema.json').read_text()); jsonschema.Draft202012Validator(rs).validate(ready); print('strict correction records valid')"
+    cwd: .
+    required: true
+    timeout_seconds: 60
+  - id: whitespace
+    argv: [git, diff, --check]
+    cwd: .
+    required: true
+    timeout_seconds: 60
+dependencies:
+  - id: python-version
+    argv: [python3, --version]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+  - id: test-package-versions
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -c, "from importlib.metadata import version; print(f'jsonschema={version(\"jsonschema\")} pytest={version(\"pytest\")} hypothesis={version(\"hypothesis\")} PyYAML={version(\"PyYAML\")}')"]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+bundle:
+  root_directory: kgr-006-r1-contract-preparation-review

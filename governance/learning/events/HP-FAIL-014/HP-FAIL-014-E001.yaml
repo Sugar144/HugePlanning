@@ -1,0 +1,32 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-014-E001
+  record_id: HP-FAIL-014
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CONTAINED
+  status_to: CORRECTED
+  summary: Prospective formal-run methodology and the KGR-006-R1 contract now require a repository-custodied deterministic execution-authorization gate.
+  rationale: The operating contract requires exact run, role, mode, protocol, package hash, execution count, and forbidden-action binding before formal execution. The correction validator rejects the deliberately absent KGR-006-R1 authorization record, so preparation cannot be treated as authority.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/methodology/project-operating-contract.md
+      anchor: Formal execution, orchestration, and output contract
+      sha256: null
+      availability: PRESERVED
+      note: Prospective repository-custody and deterministic-gate requirement for every formal execution.
+    - type: REPOSITORY_PATH
+      locator: governance/tools/prepare_enforcement_correction.py
+      anchor: validate_authorization
+      sha256: null
+      availability: PRESERVED
+      note: Exact KGR-006-R1 pre-execution stop condition.
+    - type: REPOSITORY_PATH
+      locator: governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+      anchor: execution
+      sha256: null
+      availability: PRESERVED
+      note: Authorization absent and execution not started.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-015-kgr-006-provenance-reconciliation-and-correction-preparation-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

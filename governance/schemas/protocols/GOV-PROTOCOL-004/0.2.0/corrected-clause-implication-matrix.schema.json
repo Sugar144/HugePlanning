@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hugeplanning.local/governance/schemas/GOV-PROTOCOL-004/0.2.0/corrected-clause-implication-matrix.schema.json",
+  "$defs": {
+    "dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "requirement_id", "trigger", "affected_clause", "affected_effect_or_requirement", "why_general_analysis_is_insufficient", "required_specialist_type", "blocking_or_nonblocking", "safe_interim_boundary", "later_phase_destination"],
+      "properties": {
+        "id": {"pattern": "^SD-00[1-4]$"},
+        "requirement_id": {"enum": ["ER-007", "ER-012", "ER-015", "ER-019"]},
+        "trigger": {"type": "string", "minLength": 1},
+        "affected_clause": {"pattern": "^K-00[1-7]$"},
+        "affected_effect_or_requirement": {"type": "string", "minLength": 1},
+        "why_general_analysis_is_insufficient": {"type": "string", "minLength": 1},
+        "required_specialist_type": {"type": "string", "minLength": 1},
+        "blocking_or_nonblocking": {"enum": ["BLOCKING", "NONBLOCKING_WITH_EXPLICIT_UNSUPPORTED_BOUNDARY"]},
+        "safe_interim_boundary": {"type": "string", "minLength": 1},
+        "later_phase_destination": {"enum": ["GOV-7", "GOV-8", "GOV-9", "PRE_RATIFICATION_OWNER_DECISION"]}
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "required": ["id", "kind", "statement", "timing", "lower_layers", "capability_status", "evidence_refs", "feasibility_limit", "cost_and_burden", "residual_risk", "reserved_human_decision", "scope_posture", "specialist_dependency_id"],
+      "properties": {
+        "id": {"pattern": "^ER-[0-9]{3}$"},
+        "kind": {"enum": ["DERIVED_REQUIREMENT", "CANDIDATE_MECHANISM"]},
+        "statement": {"type": "string", "minLength": 1},
+        "timing": {"type": "string", "minLength": 1},
+        "lower_layers": {"type": "array", "minItems": 1, "uniqueItems": true},
+        "capability_status": {"type": "string", "minLength": 1},
+        "evidence_refs": {"type": "array", "minItems": 1},
+        "feasibility_limit": {"type": "string", "minLength": 1},
+        "cost_and_burden": {"type": "string", "minLength": 1},
+        "residual_risk": {"type": "string", "minLength": 1},
+        "reserved_human_decision": {"type": "string", "minLength": 1},
+        "scope_posture": {"type": "string", "minLength": 1},
+        "specialist_dependency_id": {"type": ["string", "null"], "pattern": "^SD-00[1-4]$"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["enforcement_analysis"],
+  "properties": {
+    "enforcement_analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "run", "base_run", "role", "mode", "protocol", "status", "kernel", "correction", "clauses", "routing_coverage", "capability_summary", "specialist_dependencies", "owner_decisions", "minimum_gov_7_package", "parity"],
+      "properties": {
+        "schema_version": {"const": "0.2.0"},
+        "run": {"const": "KGR-006-R1"},
+        "base_run": {"const": "KGR-006"},
+        "role": {"const": "Enforcement Engineer"},
+        "mode": {"const": "MINIMUM_ENFORCEMENT_ANALYSIS"},
+        "protocol": {"const": {"id": "GOV-PROTOCOL-004", "version": "0.2.0"}},
+        "status": {"const": "CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION"},
+        "kernel": {"const": {"version": "0.2.0-proposed", "status": "PROPOSED_NOT_RATIFIED", "ratified": false, "enforceable": false, "implemented": false, "operational": false}},
+        "correction": {
+          "type": "object",
+          "required": ["base_input_package_sha256", "base_output_package_sha256", "evaluation_package_sha256", "evaluation_result", "material_challenges", "canonical_anchor_source"],
+          "properties": {
+            "base_input_package_sha256": {"const": "d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7"},
+            "base_output_package_sha256": {"const": "10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a"},
+            "evaluation_package_sha256": {"const": "1c2167a093ec5d7bf636fe2ab25202e714e5375389ec4464653b0eefd45ed39e"},
+            "evaluation_result": {"const": "RETURN_FOR_VERSIONED_CORRECTION"},
+            "material_challenges": {"const": ["IE-MC-001", "IE-MC-002", "IE-MC-003"]},
+            "canonical_anchor_source": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": false
+        },
+        "clauses": {
+          "type": "array", "minItems": 7, "maxItems": 7,
+          "items": {
+            "type": "object", "required": ["clause_id", "effect_families", "requirements"],
+            "properties": {
+              "clause_id": {"pattern": "^K-00[1-7]$"},
+              "effect_families": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["name", "routing_ids"], "properties": {"name": {"type": "string", "minLength": 1}, "routing_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"pattern": "^LLR-(00[1-9]|01[0-9]|020)$"}}}, "additionalProperties": true}},
+              "requirements": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/requirement"}}
+            },
+            "additionalProperties": false
+          }
+        },
+        "routing_coverage": {"type": "array", "minItems": 20, "maxItems": 20, "items": {"type": "object", "required": ["route_id", "applicability", "justification", "later_phase_destination"], "properties": {"route_id": {"pattern": "^LLR-(00[1-9]|01[0-9]|020)$"}, "applicability": {"enum": ["APPLICABLE_TO_GOV_5_EXECUTION", "NOT_APPLICABLE_TO_GOV_5_EXECUTION"]}, "justification": {"type": "string", "minLength": 1}, "later_phase_destination": {"type": ["string", "null"]}}, "additionalProperties": false}},
+        "capability_summary": {"type": "object"},
+        "specialist_dependencies": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"$ref": "#/$defs/dependency"}},
+        "owner_decisions": {"type": "array", "minItems": 6, "maxItems": 6, "items": {"type": "object", "required": ["id", "status"], "properties": {"id": {"pattern": "^OD-00[1-6]$"}, "status": {"type": "string", "minLength": 1}}, "additionalProperties": true}},
+        "minimum_gov_7_package": {"type": "object", "required": ["posture"], "properties": {"posture": {"const": "RECOMMENDATION_ONLY"}}, "additionalProperties": true},
+        "parity": {"type": "object", "additionalProperties": {"const": true}, "minProperties": 1}
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 registry:
   id: GOV-METHOD-005
-  version: 0.1.0
+  version: 0.2.0
   status: PREPARED_FOR_FUTURE_EXECUTION
   authority: GOVERNANCE_METHODOLOGY_NOT_EXECUTION_RATIFICATION_OR_ENFORCEMENT_AUTHORITY
 
@@ -17,6 +17,7 @@ modes:
     protocol_version: 0.1.0
     intended_run:
       - KGR-006
+      - KGR-006-R1
     canonical_protocol:
       path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/06-enforcement-engineer-minimum-analysis-prompt-v0.1.0.md
     output_contract:
@@ -31,3 +32,11 @@ modes:
       - NO_ENFORCEABILITY_DECLARATION
       - NO_PRODUCT_OR_RUNTIME_MODIFICATION
       - NO_SELF_ALLOCATION_OF_AUTHORITY
+    versioned_correction:
+      identity: KGR-006-R1
+      protocol_version: 0.2.0
+      canonical_protocol_path: governance/methodology/roles/enforcement-engineer/protocols/minimum-analysis/07-enforcement-engineer-minimum-analysis-correction-prompt-v0.2.0.md
+      output_contract_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/output-contract.yaml
+      preparation_status: PREPARED_NOT_EXECUTED
+      execution_authorization_required: true
+      new_independent_evaluation_required: true

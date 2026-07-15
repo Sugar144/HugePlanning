@@ -1,0 +1,63 @@
+run:
+  id: KGR-006-R1
+  base_run: KGR-006
+  correction_index: 1
+  role: Enforcement Engineer
+  mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  phase: GOV-5
+  status: PREPARED_NOT_EXECUTED
+  preparation_status: VALIDATED
+  readiness: READY_FOR_SEPARATE_EXECUTION_AUTHORIZATION
+execution:
+  authorized: false
+  authorization_record: governance/runs/KGR-006-R1-enforcement-analysis-correction/authorization/execution-authorization.yaml
+  repository_authorization_gate_required: true
+  started: false
+  completed: false
+  output_validation: NOT_RUN
+correction:
+  identity_convention: <BASE_RUN_ID>-R<N>
+  owner_authorization: HP-PROMPT-015/0.1.0
+  base_formal_input_package:
+    path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/input/HugePlanning-KGR-006-formal-input-package.zip
+    sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
+  base_output_package:
+    path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/output/HugePlanning-KGR-006-minimum-enforcement-analysis-v0.1.0.zip
+    sha256: 10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a
+  independent_evaluation_package:
+    path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006/evaluation/HugePlanning-KGR-006-independent-evaluation-v0.1.0.zip
+    sha256: 1c2167a093ec5d7bf636fe2ab25202e714e5375389ec4464653b0eefd45ed39e
+    result: RETURN_FOR_VERSIONED_CORRECTION
+    material_challenges: [IE-MC-001, IE-MC-002, IE-MC-003]
+inputs:
+  envelope_id: GOV-INPUT-004
+  envelope_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/input-envelope.yaml
+  formal_package_path: /tmp/HugePlanning-KGR-006-R1-formal-input-package.zip
+  formal_package_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
+  member_count: 14
+  artifact_count: 13
+outputs:
+  status: ABSENT
+  required_count: 7
+  contract_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/output-contract.yaml
+  expected_artifacts:
+    - 00-enforcement-analysis-basis.md
+    - 01-clause-implication-matrix.yaml
+    - 02-existing-capability-inventory.md
+    - 03-feasibility-coverage-and-gap-assessment.md
+    - 04-owner-decisions-and-residual-risks.md
+    - 05-minimum-executable-package-recommendation.md
+    - 06-ratification-decision-handoff.md
+independent_evaluation:
+  required: true
+  evaluator_must_be_outside_corrected_engineer_unilateral_control: true
+  status: NOT_STARTED
+authority:
+  gov_5: IN_PROGRESS
+  gov_6_activated: false
+  gov_7_activated: false
+  gov_8_activated: false
+  gov_9_activated: false
+  kernel_ratified: false
+  risk_accepted: false
+  constitutional_authority: NONE
