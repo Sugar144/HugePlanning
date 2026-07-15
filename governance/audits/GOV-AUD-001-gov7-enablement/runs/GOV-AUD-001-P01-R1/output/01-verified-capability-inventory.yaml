@@ -1,0 +1,193 @@
+capability_inventory:
+  audit_id: GOV-AUD-001
+  run_id: GOV-AUD-001-P01-R1
+  pass_id: PASS-01
+  status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+  method: VERIFIED_IMPLEMENTATION_OR_EXECUTION_EVIDENCE_ONLY
+  capability_family_count: 9
+  capability_families:
+    - capability_id: CAP-001
+      label: Material prompt custody and identity validation
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_CAPABILITY
+      description: Versioned orchestration-prompt records and a deterministic validator enforce identity uniqueness, lifecycle vocabulary, exact-text hashing, formal-run references and executed-prompt immutability.
+      owning_component_or_path: governance/prompts/orchestration and governance/tools/validate_prompts.py
+      evidence_paths:
+        - governance/tools/validate_prompts.py
+        - governance/ARTIFACT_REGISTRY.yaml
+      current_use: The registry contains the executed HP-PROMPT lineage through HP-PROMPT-023 at the starting HEAD, and the validator implements exact-text and immutability checks.
+      limitations:
+        - It validates repository custody; it does not prove execution quality, comprehension, competent authority or acceptance.
+        - Formal-run prompt snapshots require a separate authoritative run path and manifest binding.
+      reuse_assessment: REUSE_AS_IS_WITH_RUN_SPECIFIC_BINDING
+      apparent_gaps_already_solved:
+        - Do not create a second prompt catalogue or delegate prompt hashing and duplicate detection to semantic review.
+
+    - capability_id: CAP-002
+      label: Prospective formal-run custody and preparation
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_CAPABILITY
+      description: A completed correction run demonstrates prospective authorization, exact role/mode/run/package binding, one-execution custody, hashed input inventory, declared outputs and terminal authorization consumption.
+      owning_component_or_path: governance/runs/KGR-006-R1-enforcement-analysis-correction and governance/tools/prepare_enforcement_correction.py
+      evidence_paths:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/input-inventory.yaml
+        - governance/tools/prepare_enforcement_correction.py
+        - governance/skills/formal-governance-run-preparer/SKILL.md
+      current_use: KGR-006-R1 consumed GOV-AUTH-001 exactly once and bound a 14-member formal input package before execution.
+      limitations:
+        - The demonstrated builder and authorization validation are specialized to the enforcement-analysis correction workflow.
+        - Human authority, competence and semantic sufficiency remain outside deterministic proof.
+      reuse_assessment: REUSE_PATTERN_AND_PRIMITIVES_NOT_RUN_SPECIFIC_ASSUMPTIONS
+      apparent_gaps_already_solved:
+        - Prospective authorization records, exact prompt/package hashes and one-execution accounting do not need to be reinvented.
+
+    - capability_id: CAP-003
+      label: Safe package, hash, import and byte-identity validation
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_CAPABILITY
+      description: Repository tools and validation records demonstrate safe package inspection, strict structured parsing, schema checks, exact-member inventories, SHA-256 custody, selected semantic parity and byte-identical import checks.
+      owning_component_or_path: governance/tools/validate_run_package.py and imported-run validation records
+      evidence_paths:
+        - governance/tools/validate_run_package.py
+        - governance/reviews/phase-2-4-formal-result-import/kgr-005-import-validation-v0.1.0.yaml
+        - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml
+      current_use: GOV-VAL-002 validated and imported eight KGR-005 members; GOV-VAL-007 validated seven corrected outputs and three evaluation artifacts with zero diagnostics and byte identity.
+      limitations:
+        - Semantic checks are profile-specific rather than universal.
+        - Hash equality proves byte identity, not freshness, correctness or semantic fidelity.
+      reuse_assessment: REUSE_DETERMINISTIC_CORE_EXTEND_ONLY_FOR_DECLARED_PROFILE
+      apparent_gaps_already_solved:
+        - Generic hashing, safe ZIP checks, exact member counting and import byte comparison are already implemented.
+
+    - capability_id: CAP-004
+      label: Narrow Controller transition, dry-run and replay
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_CAPABILITY
+      description: A bounded Controller calculates, dry-runs, applies and replays an allowed kernel-closure transition with counters, guards and recordable-state semantics.
+      owning_component_or_path: governance/tools/apply_loop_transition.py and governance/runs/KGR-005-kernel-adversary-targeted-closure
+      evidence_paths:
+        - governance/tools/apply_loop_transition.py
+        - governance/runs/KGR-005-kernel-adversary-targeted-closure/run-manifest.yaml
+        - governance/learning/records/HP-FAIL-008.yaml
+        - governance/learning/records/HP-FAIL-009.yaml
+        - governance/learning/records/HP-FAIL-013.yaml
+      current_use: KGR-005 records a zero-diagnostic dry-run followed by one real CLOSURE_CONFIRMED transition and durable replay/counter evidence.
+      limitations:
+        - It owns one governance loop, not a general project, pilot or GOV-7 state machine.
+        - Three corrected failures show that canonical path resolution, replay bridges and property-model persistence required hardening.
+      reuse_assessment: REUSE_STATE_AND_RECORDING_PRINCIPLES_WITHOUT_PLATFORM_EXPANSION
+      apparent_gaps_already_solved:
+        - A new general workflow engine is not required to reproduce the already supported KGR-005 closure transition.
+
+    - capability_id: CAP-005
+      label: Cross-surface governance-state reconciliation
+      statement_label: VERIFIED_FACT
+      classification: PARTIAL_CAPABILITY
+      description: A deterministic validator compares current governance state, decisions, run and authorization records, registry entries, plans and immutable hashes for the KGR-006-R1 through OD-005 state.
+      owning_component_or_path: governance/tools/validate_governance_state.py
+      evidence_paths:
+        - governance/tools/validate_governance_state.py
+        - governance/learning/records/HP-FAIL-017.yaml
+        - governance/learning/records/HP-FAIL-019.yaml
+        - governance/learning/records/HP-FAIL-020.yaml
+      current_use: The validator protects the ratified Kernel 0.2.0, closed GOV-5/GOV-6, consumed KGR-006-R1 authorization, accepted OD-005 direction, unresolved OD-006 and inactive GOV-7 state.
+      limitations:
+        - The implementation hard-codes the current KGR-006-R1/GOV-7 direction surfaces and is not a generic audit-pass lifecycle validator.
+        - Historical-state wording and terminal authorization profiles caused corrected regressions.
+      reuse_assessment: REUSE_COMPARISON_PATTERN_EXTEND_ONLY_FOR_NEW_DECLARED_STATE_SURFACES
+      apparent_gaps_already_solved:
+        - The current Kernel/GOV-5/GOV-6/GOV-7/OD-006 baseline should not be re-decided or semantically reconstructed.
+
+    - capability_id: CAP-006
+      label: Validated learning-record lifecycle
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_CAPABILITY
+      description: Structured failure records, append-only events, a deterministic manager and a validated index preserve failures, corrections, evidence limits and candidate system changes.
+      owning_component_or_path: governance/learning and governance/tools/manage_learning.py
+      evidence_paths:
+        - governance/tools/manage_learning.py
+        - governance/learning/FAILURE_AND_LESSONS_INDEX.md
+        - governance/learning/records/HP-FAIL-007.yaml
+        - governance/learning/records/HP-FAIL-020.yaml
+      current_use: At execution, deterministic validation reported 20 valid records and 25 valid events; PASS-01 uses HP-FAIL-007 through HP-FAIL-020 as the recent failure window.
+      limitations:
+        - Automatic category synthesis is deferred; the index is discovery, not inferred causal analysis.
+        - Historical token, duration, human-time and model-run fields are generally null.
+      reuse_assessment: REUSE_AS_CANONICAL_FAILURE_EVIDENCE
+      apparent_gaps_already_solved:
+        - Do not create a parallel incident/lesson log or invent uncaptured historical metrics.
+
+    - capability_id: CAP-007
+      label: Review packaging and controlled import workflows
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_CAPABILITY
+      description: Deterministic bundle construction and bounded skills standardize review-package preparation, formal-run preparation and result import while keeping dry-run, validation and authority gates explicit.
+      owning_component_or_path: governance/tools/build_review_bundle.py and governance/skills
+      evidence_paths:
+        - governance/tools/build_review_bundle.py
+        - governance/skills/formal-governance-run-preparer/SKILL.md
+        - governance/skills/governance-result-importer/SKILL.md
+        - governance/skills/governance-review-packager/SKILL.md
+      current_use: The workflows supported KGR-005 import and KGR-006-R1 preparation/review custody without granting execution, acceptance or phase authority.
+      limitations:
+        - They orchestrate declared work; they do not perform independent semantic judgment.
+        - Existing profiles remain bounded to repository conventions and named work units.
+      reuse_assessment: REUSE_BEFORE_PROPOSING_NEW_ORCHESTRATION
+      apparent_gaps_already_solved:
+        - Do not rebuild review bundling, run preparation or import orchestration as a new layer without a controlling failure.
+
+    - capability_id: CAP-008
+      label: Canonical route and requirement accounting
+      statement_label: VERIFIED_FACT
+      classification: PARTIAL_CAPABILITY
+      description: The corrected KGR-006-R1 matrix and validation evidence provide unique ER-001 through ER-020 records, all 46 canonical clause-route pairs and four canonical specialist dependencies.
+      owning_component_or_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs
+      evidence_paths:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/02-independent-evaluation-report.md
+        - governance/learning/records/HP-FAIL-011.yaml
+        - governance/learning/records/HP-FAIL-015.yaml
+        - governance/learning/records/HP-FAIL-016.yaml
+      current_use: The accepted analysis accounts for 20 requirements as seven partial, nine gaps, three specialist dependencies and one provider-test dependency.
+      limitations:
+        - It is requirements and analysis evidence, not GOV-7 implementation evidence.
+        - The original KGR-006 package required versioned correction for omitted anchors and duplicated boundary text.
+      reuse_assessment: REUSE_AS_BOUNDED_REQUIREMENT_INPUT_ONLY
+      apparent_gaps_already_solved:
+        - Do not regenerate ER-001 through ER-020 or their accepted clause-route accounting in PASS-02.
+
+    - capability_id: CAP-009
+      label: Independent evaluation and explicit Owner disposition custody
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_CAPABILITY
+      description: Separate evaluation reports and versioned decision records distinguish structural validation, independent suitability, Project Owner acceptance, ratification and direction decisions.
+      owning_component_or_path: governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation and governance/reviews
+      evidence_paths:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/02-independent-evaluation-report.md
+        - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.2.0.yaml
+        - governance/reviews/gov-6-ratification/kernel-ratification-decision-record-v0.1.0.yaml
+        - governance/reviews/gov-7-direction/od-005-gov-7-direction-decision-record-v0.1.0.yaml
+      current_use: KGR-006-R1 received independent suitability, then separate Owner acceptance; Kernel ratification and OD-005 direction are preserved in later distinct records.
+      limitations:
+        - Human judgment and independence cannot be automated or inferred from file presence.
+        - The current decision records do not authorize PASS-02, GOV-7 activation, implementation or OD-006 resolution.
+      reuse_assessment: RETAIN_HUMAN_AND_INDEPENDENT_GATES
+      apparent_gaps_already_solved:
+        - Do not merge validation, evaluation, acceptance, ratification and implementation into one status or automated gate.
+
+  non_capability_boundaries:
+    - statement_label: VERIFIED_FACT
+      item: S0a-S9 architecture, information, quality, roadmap and skill-catalog documents exist as read-only design inputs.
+      evidence_paths:
+        - planning/v2/01_architecture_and_operating_model.md
+        - planning/v2/06_artifact_and_information_architecture.md
+        - planning/v2/10_testing_and_quality_architecture.md
+        - planning/v2/13_mvp_scope_and_implementation_roadmap.md
+        - planning/v2/14_agent_skill_rule_and_knowledge_catalog.md
+      boundary: Their presence does not prove runtime implementation, adoption, operation or GOV-7 integration.
+    - statement_label: VERIFIED_FACT
+      item: ER-001 through ER-020 are accepted bounded analysis inputs.
+      evidence_paths:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+      boundary: Zero of the 20 requirements was classified fully supported by evidence in KGR-006-R1.

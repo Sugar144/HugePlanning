@@ -1,7 +1,7 @@
 registry:
-  version: '0.16'
-  generated_for: GOV_7_AUDIT_PROGRAM_SCAFFOLD
-  base_commit: fb8379235933cc82eb74cccbde5711406688122b
+  version: '0.17'
+  generated_for: GOV_AUD_001_PASS_01_EXECUTION
+  base_commit: 2af090ccf00f2cf8fb6d49972f4dacf5e3ddea38
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
     - Exact duplicate source names are aliases, not additional authority.
@@ -2497,8 +2497,8 @@ artifacts:
   - id: GOV-AUD-001
     title: GOV-7 Enablement, Cross-Layer Architecture and Empirical Validation Audit Program Scaffold
     version: 0.1.0
-    status: PLANNED_NOT_EXECUTED
-    authority: scaffold_planning_and_custody_only_not_audit_execution_gov_7_activation_or_implementation
+    status: IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+    authority: audit_program_index_with_pass_01_execution_evidence_not_acceptance_gov_7_activation_or_implementation
     path: governance/audits/GOV-AUD-001-gov7-enablement/00-audit-charter.md
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/GOV-AUD-PROMPT-000-audit-program-scaffold-v0.2.0.md
     source_sha256: 7ea731bb822d88328c26bfe69b5280a84a37153bc525f963d051fb74b6033b07
@@ -2516,7 +2516,7 @@ artifacts:
       - governance/audits/GOV-AUD-001-gov7-enablement/06-model-routing-policy.md
       - governance/audits/GOV-AUD-001-gov7-enablement/prompt-registry.yaml
     notes:
-      - Plans seven dependent audit passes and three explicit Project Owner checkpoints; no pass is executed.
+      - Plans seven dependent audit passes and three explicit Project Owner checkpoints; PASS-01 is executed and validated pending Project Owner disposition, exactly one pass is executed, PASS-02 is unexecuted and CHECKPOINT-A is pending.
       - Requires a typed cross-layer relationship model while leaving graph technology unselected.
       - Covers controlled system and infrastructure self-hosting, interviewer testing, prompt lifecycle, open-ended tool discovery and AI-first effort without implementation authority.
 
@@ -2551,3 +2551,131 @@ artifacts:
     supersedes: null
     aliases: [governance/tests/test_gov_7_audit_scaffold.py]
     notes: [Validates exact prompt custody, IDs, dependencies, contracts, prompt templates, planning-only state, baseline prerequisites, referenced paths, YAML/Markdown and absence of fake execution artifacts; it cannot execute an audit or make semantic/Owner decisions.]
+
+  - id: GOV-AUD-001-P01-R1
+    title: GOV-AUD-001 PASS-01 Repository Capability and Gap Audit Run
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+    authority: pass_01_analysis_and_validation_evidence_not_acceptance_later_pass_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/manifest.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/input/input-manifest.yaml
+    source_sha256: null
+    produced_by: REPOSITORY_CAPABILITY_AND_GAP_AUDITOR
+    artifact_type: completed_audit_pass_run
+    language: English
+    canonicality: immutable_audit_run_evidence_after_commit
+    supersedes: null
+    aliases: []
+    notes: [Executes only PASS-01; exactly four substantive outputs; PASS-02 unexecuted; CHECKPOINT-A pending; recommendations unaccepted; GOV-7 inactive; implementation unauthorized.]
+
+  - id: GOV-AUD-AUTH-001
+    title: GOV-AUD-001 PASS-01 Project Owner Authorization
+    version: 0.1.0
+    status: CONSUMED_1_OF_1_NONE_REMAINING
+    authority: exact_project_owner_pass_01_execution_commit_and_non_force_push_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/authorization/GOV-AUD-AUTH-001-v0.1.0.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/prompt/GOV-AUD-PROMPT-011-pass-01-repository-capability-gap-audit-v0.2.0.md
+    source_sha256: 03c436d9610d45ce9d434abe36f3bd8438778be6cd1f76107ff6ecf1fa5fe9b6
+    produced_by: PROJECT_OWNER
+    artifact_type: prospective_execution_authorization
+    language: English
+    canonicality: exact_authorization_snapshot_with_terminal_consumption_in_run_manifest
+    supersedes: null
+    aliases: []
+    notes: [Authorizes exactly one PASS-01 execution, validation, bounded commit and non-force push; prohibits later passes, external research, architecture/tool selection, GOV-7 work, risk acceptance and PR creation.]
+
+  - id: HP-PROMPT-024
+    title: GOV-AUD-001 PASS-01 Repository Capability and Gap Audit Prompt
+    version: 0.2.0
+    status: EXECUTED
+    authority: exact_bounded_pass_01_execution_contract_not_acceptance_or_later_pass_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/prompt/GOV-AUD-PROMPT-011-pass-01-repository-capability-gap-audit-v0.2.0.md
+    source_path: null
+    source_sha256: 03c436d9610d45ce9d434abe36f3bd8438778be6cd1f76107ff6ecf1fa5fe9b6
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_audit_run_prompt
+    language: English
+    canonicality: authoritative_audit_run_prompt_snapshot
+    supersedes: null
+    aliases: [GOV-AUD-PROMPT-011]
+    notes: [Executes only PASS-01 and authorizes the exact write, validation, commit and push boundary; no prompt duplicate is created under governance/prompts/orchestration.]
+
+  - id: GOV-AUD-OUT-001
+    title: PASS-01 Verified Capability Inventory
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+    authority: audit_analysis_output_not_acceptance_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/01-verified-capability-inventory.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/input/input-manifest.yaml
+    source_sha256: null
+    produced_by: REPOSITORY_CAPABILITY_AND_GAP_AUDITOR
+    artifact_type: audit_capability_inventory
+    language: English
+    canonicality: immutable_pass_output_after_commit
+    supersedes: null
+    aliases: []
+    notes: [Records nine aggregated capability families with evidence, limitations, reuse boundaries and already-solved apparent gaps.]
+
+  - id: GOV-AUD-OUT-002
+    title: PASS-01 Repetition, Waste and Burden Analysis
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+    authority: audit_analysis_output_not_acceptance_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/02-repetition-waste-and-burden-analysis.md
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/input/input-manifest.yaml
+    source_sha256: null
+    produced_by: REPOSITORY_CAPABILITY_AND_GAP_AUDITOR
+    artifact_type: audit_burden_analysis
+    language: English
+    canonicality: immutable_pass_output_after_commit
+    supersedes: null
+    aliases: []
+    notes: [Records eight material repeated-work items, six stop-doing conclusions and explicit historical metric limitations.]
+
+  - id: GOV-AUD-OUT-003
+    title: PASS-01 Ranked Gap Register
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+    authority: audit_analysis_output_not_acceptance_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/03-ranked-gap-register.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/input/input-manifest.yaml
+    source_sha256: null
+    produced_by: REPOSITORY_CAPABILITY_AND_GAP_AUDITOR
+    artifact_type: audit_ranked_gap_register
+    language: English
+    canonicality: immutable_pass_output_after_commit
+    supersedes: null
+    aliases: []
+    notes: [Records 14 classified entries, including three demonstrated gaps; rankings and leverage estimates remain provisional and unaccepted.]
+
+  - id: GOV-AUD-OUT-004
+    title: PASS-01 Findings and Handoff
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+    authority: audit_handoff_not_pass_02_checkpoint_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/04-pass-01-findings-and-handoff.md
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/input/input-manifest.yaml
+    source_sha256: null
+    produced_by: REPOSITORY_CAPABILITY_AND_GAP_AUDITOR
+    artifact_type: audit_pass_handoff
+    language: English
+    canonicality: immutable_pass_output_after_commit
+    supersedes: null
+    aliases: []
+    notes: [Bounds candidate inputs for a separately accepted and authorized PASS-02; no automatic acceptance or checkpoint completion.]
+
+  - id: GOV-AUD-VAL-001
+    title: PASS-01 Deterministic Validation Report
+    version: 0.1.0
+    status: VALIDATED
+    authority: deterministic_pass_validation_not_independent_evaluation_acceptance_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/pass-01-validation-report.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/manifest.yaml
+    source_sha256: null
+    produced_by: PASS_01_DETERMINISTIC_VALIDATION
+    artifact_type: audit_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: null
+    aliases: []
+    notes: [Validates prompt/authorization identity, hashes, inputs, four outputs, rankings, evidence paths, scope and unchanged governance boundaries; it is not independent evaluation.]

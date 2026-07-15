@@ -2,8 +2,8 @@ audit_program:
   audit_id: GOV-AUD-001
   title: HugePlanning GOV-7 Enablement, Cross-Layer Architecture and Empirical Validation Audit
   version: 0.1.0
-  status: PLANNED_NOT_EXECUTED
-  authority: SCAFFOLD_CREATION_ONLY
+  status: IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+  authority: PASS_01_ONLY_PROJECT_OWNER_AUTHORIZATION_CONSUMED
   root: governance/audits/GOV-AUD-001-gov7-enablement
   reasoning_principles:
     - REPOSITORY_FIRST_GAP_DRIVEN
@@ -16,7 +16,7 @@ audit_program:
     - OPEN_EVIDENCE_LED_TOOL_DISCOVERY
   statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
   sequence:
-    - {id: PASS-01, depends_on: [], checkpoint_before: null, status: PLANNED_NOT_EXECUTED}
+    - {id: PASS-01, depends_on: [], checkpoint_before: null, status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION}
     - {id: PASS-02, depends_on: [PASS-01], checkpoint_before: null, status: PLANNED_NOT_EXECUTED}
     - {id: CHECKPOINT-A, depends_on: [PASS-01, PASS-02], checkpoint_before: null, status: PENDING_OWNER_DECISION}
     - {id: PASS-03, depends_on: [CHECKPOINT-A], checkpoint_before: CHECKPOINT-A, status: PLANNED_NOT_EXECUTED}
@@ -27,7 +27,7 @@ audit_program:
     - {id: PASS-07, depends_on: [PASS-06], checkpoint_before: CHECKPOINT-B, status: PLANNED_NOT_EXECUTED}
     - {id: CHECKPOINT-C, depends_on: [PASS-07], checkpoint_before: null, status: PENDING_OWNER_DECISION}
   execution_rule: EACH_PASS_REQUIRES_SEPARATE_OWNER_AUTHORIZATION_EXACT_INSTANTIATED_PROMPT_AND_HASHED_INPUT_MANIFEST
-  passes_executed: 0
+  passes_executed: 1
   checkpoints_approved: 0
   gov_7_activated: false
   recommendations_accepted: false

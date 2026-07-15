@@ -1,0 +1,87 @@
+run:
+  audit_id: GOV-AUD-001
+  pass_id: PASS-01
+  run_id: GOV-AUD-001-P01-R1
+  role: Repository Capability and Gap Auditor
+  mode: REPOSITORY_FIRST_CAPABILITY_GAP_AUDIT
+  status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+  lifecycle: EXECUTED
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_local_head: 2af090ccf00f2cf8fb6d49972f4dacf5e3ddea38
+  starting_remote_head: 2af090ccf00f2cf8fb6d49972f4dacf5e3ddea38
+  local_remote_aligned_at_start: true
+  clean_worktree_at_start: true
+  empty_staging_at_start: true
+  execution_count_limit: 1
+  execution_count_consumed: 1
+authorization:
+  id: GOV-AUD-AUTH-001
+  version: 0.1.0
+  authority: PROJECT_OWNER
+  status: CONSUMED
+  path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/authorization/GOV-AUD-AUTH-001-v0.1.0.yaml
+  sha256: f96654f87b99518cc439500c73ce389a66c82682f520c697d0f5399c56b8dae9
+prompt:
+  prompt_id: GOV-AUD-PROMPT-011
+  catalog_prompt_id: HP-PROMPT-024
+  version: 0.2.0
+  lifecycle: EXECUTED
+  exact_text_preserved: true
+  path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/prompt/GOV-AUD-PROMPT-011-pass-01-repository-capability-gap-audit-v0.2.0.md
+  sha256: 03c436d9610d45ce9d434abe36f3bd8438778be6cd1f76107ff6ecf1fa5fe9b6
+contract:
+  pass_contract_path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-01/contract.yaml
+  pass_contract_sha256: 192c28e479c101d07c6a64b3e89873b8d606a927f9080f0cada361a3509fc6ac
+  audit_charter_path: governance/audits/GOV-AUD-001-gov7-enablement/00-audit-charter.md
+  custody_contract_path: governance/audits/GOV-AUD-001-gov7-enablement/04-artifact-and-custody-contract.md
+input:
+  manifest_id: GOV-AUD-001-P01-R1-INPUT-001
+  manifest_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/input/input-manifest.yaml
+  manifest_sha256: b5dcb824c355b45e6886c05a46c57086d25d3f40a58d7b5c8f70c2aded31d636
+  inventory_complete_for_declared_analysis: true
+  member_hashes_bound: true
+execution_environment:
+  model: Codex agent based on GPT-5
+  reasoning_mode: NOT_EXPOSED
+  external_research: NONE_PERFORMED
+output_contract:
+  substantive_output_count: 4
+  status_on_success: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+  required_outputs:
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/01-verified-capability-inventory.yaml, format: YAML, sha256: 0e1ae26cfd8201e781768eec81045c056b1bc1cd557b0ab1f9fbcae1d47cb124}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/02-repetition-waste-and-burden-analysis.md, format: MARKDOWN, sha256: 57cbd6fc8d151d6c338a14c9c6f51e702f9a8519136d5dde5b2d20b2327f900f}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/03-ranked-gap-register.yaml, format: YAML, sha256: 8a485a3df850d6f9b37c4490435980715ddd84c689567ad3a94be89dca674cde}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/04-pass-01-findings-and-handoff.md, format: MARKDOWN, sha256: fd3e035812150b61f1dc54ad33412d5d8c09dcb31abe5a8ddaebd34e8323d2ff}
+  validation_report:
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/pass-01-validation-report.yaml
+    evidence_class: SOURCE_RUN_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_EVALUATION
+  required_statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+  ranking:
+    evidence_priority: frequency_x_current_burden_x_failure_risk
+    factor_scale: ORDINAL_1_TO_5_OR_UNKNOWN
+    preliminary_leverage: [LOW, MEDIUM, HIGH, UNKNOWN]
+authority_boundary:
+  permitted_execution: PASS_01_ONLY
+  recommendations_accepted: false
+  implementation_authorized: false
+  gov_7_activated: false
+  pass_02_authorized_or_executed: false
+  independent_evaluation_created: false
+stopping_conditions:
+  - branch or starting HEAD mismatch
+  - local and remote divergence
+  - unclean worktree or nonempty staging at startup
+  - identity or authority conflict
+  - missing required canonical input
+  - inability to distinguish fact from inference
+  - broad external research becomes necessary
+  - required write outside authorized scope
+  - output validation failure
+  - material defect making ranking unreliable
+  - Kernel or phase-state change
+  - GOV-7 activation or implementation detected
+next_checkpoint:
+  id: CHECKPOINT-A
+  status: PENDING_OWNER_DECISION
+  pass_02_remains_unexecuted: true

@@ -16,6 +16,8 @@ Raw sources show what was received. Run directories reconstruct what a function 
 
 The current Kernel is `0.2.0 / RATIFIED` for HugePlanning level 3 under the Kernel scope rules. GOV-0 through GOV-6 are complete; KGR-005 completed with `CLOSURE_CONFIRMED`, and KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, OD-004 as `RATIFY_EXACT_KERNEL_0_2_0`, and OD-005 as `ACCEPT_MINIMUM_GOV_7_DIRECTION`; OD-006 remains unresolved trigger-gated. GOV-7 is `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`; GOV-8 and GOV-9 are inactive. The minimum GOV-7 package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`; no risk is accepted and no enforcement implementation has occurred.
 
+GOV-AUD-001 is in progress: PASS-01 is `EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION`, exactly one pass is executed, PASS-02 is unexecuted, CHECKPOINT-A is pending, and no audit finding or recommendation is accepted.
+
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml
 governance_state:

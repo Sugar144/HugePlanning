@@ -19,3 +19,14 @@ prompt_registry:
     - {prompt_id: GOV-AUD-PROMPT-050, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-05, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-050-pass-05-gov7-strategy-v0.1.0.md}
     - {prompt_id: GOV-AUD-PROMPT-060, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-06, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-060-pass-06-synthesis-v0.1.0.md}
     - {prompt_id: GOV-AUD-PROMPT-070, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-07, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-070-pass-07-independent-evaluation-v0.1.0.md}
+    - prompt_id: GOV-AUD-PROMPT-011
+      catalog_prompt_id: HP-PROMPT-024
+      version: 0.2.0
+      lifecycle: EXECUTED
+      pass_id: PASS-01
+      run_id: GOV-AUD-001-P01-R1
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/prompt/GOV-AUD-PROMPT-011-pass-01-repository-capability-gap-audit-v0.2.0.md
+      exact_text_sha256: 03c436d9610d45ce9d434abe36f3bd8438778be6cd1f76107ff6ecf1fa5fe9b6
+      audit_pass_executed: true
+      recommendations_accepted: false
+      pass_02_authorized_or_executed: false

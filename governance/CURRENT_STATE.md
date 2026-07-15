@@ -14,12 +14,13 @@
 | Controller guards | zero blocking findings; no repeated findings; none exhausted |
 | GOV-5 status | `COMPLETED / CLOSED`; KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`; closure review remains `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION` |
 | GOV-6 status | `COMPLETED / CLOSED`; OD-004 ratified exact Kernel `0.2.0` |
+| GOV-AUD-001 status | `IN_PROGRESS`; PASS-01 is `EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION`; exactly one pass executed, PASS-02 unexecuted, CHECKPOINT-A pending |
 | Enforcement Engineering gate | `CLOSED`; GOV-AUTH-001 consumed exactly 1 of 1, with no remaining execution |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
 | Human ratification | `RATIFIED` — exact Kernel `0.2.0`, recorded in `GOV-DECISION-RECORD-002/0.1.0` |
 | Owner decisions required | OD-001 satisfied for the evaluation context; OD-002 `CONFIRM_EXACT_SCOPE`, OD-003 `PACKET_SUFFICIENT`, OD-004 `RATIFY_EXACT_KERNEL_0_2_0`, and OD-005 `ACCEPT_MINIMUM_GOV_7_DIRECTION` resolved; OD-006 unresolved trigger-gated |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | OD-006 and the separately authorized GOV-7 audit/design-or-implementation boundaries remain unresolved; the next action is the read-only GOV-7 enablement, tooling and empirical-validation audit |
+| Known blockers | OD-006 and separate authority for later audit passes or GOV-7 design/implementation remain unresolved; the next action is Project Owner disposition of validated PASS-01 and a separate PASS-02 authorization decision |
 | Phase-transition boundary | GOV-6 is closed after the Project Owner ratified exact Kernel `0.2.0`; GOV-7 remains inactive pending audit and separate design or implementation authority |
 
 ## KGR-006 execution and independent-evaluation reconciliation
@@ -180,6 +181,14 @@ GOV-7:
   decision: OD-005
   direction_record: GOV-DECISION-RECORD-003/0.1.0
   minimum_package: DIRECTION_ACCEPTED_NOT_IMPLEMENTED
+GOV-AUD-001:
+  status: IN_PROGRESS
+  passes_executed: 1
+  PASS-01: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+  PASS-02: PLANNED_NOT_EXECUTED
+  CHECKPOINT-A: PENDING_OWNER_DECISION
+  recommendations_accepted: false
+  implementation_authorized: false
 GOV-8: {status: INACTIVE}
 GOV-9: {status: INACTIVE}
 ```
@@ -209,3 +218,5 @@ governance_state:
 ## Authority boundary
 
 KGR-006-R1 execution, controlled import and independent evaluation establish validated correction evidence and consume GOV-AUTH-001. The Project Owner accepted the bounded KGR-006-R1 result and closed GOV-5 as recorded in `GOV-DECISION-RECORD-001/0.2.0`. The Project Owner then ratified exact Kernel `0.2.0` and closed GOV-6 as recorded in `GOV-DECISION-RECORD-002/0.1.0`. The Project Owner resolved OD-005 only as the direction recorded in `GOV-DECISION-RECORD-003/0.1.0`. This does not resolve OD-006, accept residual risk, establish enforceability, implement or operate governance, activate GOV-7, authorize GOV-7 design or implementation, or authorize runtime integration.
+
+GOV-AUD-001 PASS-01 is executed and deterministically validated under `GOV-AUD-AUTH-001`, pending Project Owner disposition. Its findings and rankings are unaccepted; PASS-02 and CHECKPOINT-A remain unexecuted, and this audit result creates no GOV-7 design, implementation, activation or risk authority.

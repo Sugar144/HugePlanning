@@ -16,18 +16,22 @@ governance_baseline:
     status: UNRESOLVED_TRIGGER_GATED
 audit:
   id: GOV-AUD-001
-  status: PLANNED_NOT_EXECUTED
-  authority: SCAFFOLD_CREATION_ONLY
-  passes_executed: 0
+  status: IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+  authority: PASS_01_ONLY_PROJECT_OWNER_AUTHORIZATION_CONSUMED
+  passes_executed: 1
   checkpoints_completed: 0
   gov_7_activated: false
   recommendations_accepted: false
   implementation_authorized: false
   audit_execution_authorized: false
+  pass_01_execution_authorized: true
+  pass_01_authorization_consumed: true
+  pass_01_status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+  pass_02_status: PLANNED_NOT_EXECUTED
   graph_implemented: false
   telemetry_implemented: false
   interviewer_simulation_implemented: false
   self_hosting_implemented: false
   owner_decision_inferred: false
-  last_completed_step: SCAFFOLD_PLANNING_ONLY
-  next_action: PROJECT_OWNER_REVIEW_AND_SEPARATE_PASS_01_AUTHORIZATION_DECISION
+  last_completed_step: PASS_01_EXECUTED_AND_VALIDATED
+  next_action: PROJECT_OWNER_PASS_01_DISPOSITION_AND_SEPARATE_PASS_02_AUTHORIZATION_DECISION

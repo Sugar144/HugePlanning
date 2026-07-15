@@ -1,0 +1,114 @@
+validation_report:
+  record_id: GOV-AUD-VAL-001
+  version: 0.1.0
+  audit_id: GOV-AUD-001
+  run_id: GOV-AUD-001-P01-R1
+  pass_id: PASS-01
+  evidence_class: SOURCE_RUN_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_EVALUATION
+  status: VALIDATED
+  result: VALID
+  starting_head: 2af090ccf00f2cf8fb6d49972f4dacf5e3ddea38
+  prompt:
+    prompt_id: GOV-AUD-PROMPT-011
+    catalog_prompt_id: HP-PROMPT-024
+    version: 0.2.0
+    sha256: 03c436d9610d45ce9d434abe36f3bd8438778be6cd1f76107ff6ecf1fa5fe9b6
+    identity_and_hash: PASS
+  authorization:
+    authorization_id: GOV-AUD-AUTH-001
+    version: 0.1.0
+    sha256: f96654f87b99518cc439500c73ce389a66c82682f520c697d0f5399c56b8dae9
+    identity_and_scope: PASS
+    terminal_consumption_evidence: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/manifest.yaml
+    execution_count: 1/1
+    remaining_execution: NONE
+  input_manifest:
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/input/input-manifest.yaml
+    sha256: b5dcb824c355b45e6886c05a46c57086d25d3f40a58d7b5c8f70c2aded31d636
+    validation_method: Compare tracked inputs with bytes at starting HEAD and newly instantiated run inputs with current custodied bytes.
+    member_hashes: PASS
+  run_manifest:
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/manifest.yaml
+    sha256_before_validation_report_creation: bae554ec7879da9c88b73041223282b5f3340fe7644675d027de6a0d38592c7f
+    identity_status_and_authority_boundary: PASS
+  outputs:
+    required_count: 4
+    actual_count: 4
+    exact_required_set: PASS
+    members:
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/01-verified-capability-inventory.yaml, sha256: 0e1ae26cfd8201e781768eec81045c056b1bc1cd557b0ab1f9fbcae1d47cb124, format: YAML, result: PASS}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/02-repetition-waste-and-burden-analysis.md, sha256: 57cbd6fc8d151d6c338a14c9c6f51e702f9a8519136d5dde5b2d20b2327f900f, format: MARKDOWN, result: PASS}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/03-ranked-gap-register.yaml, sha256: 8a485a3df850d6f9b37c4490435980715ddd84c689567ad3a94be89dca674cde, format: YAML, result: PASS}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/04-pass-01-findings-and-handoff.md, sha256: fd3e035812150b61f1dc54ad33412d5d8c09dcb31abe5a8ddaebd34e8323d2ff, format: MARKDOWN, result: PASS}
+  checks:
+    - {id: VAL-001, subject: prompt_and_authorization_identity, result: PASS}
+    - {id: VAL-002, subject: exact_prompt_sha256, result: PASS}
+    - {id: VAL-003, subject: bound_input_manifest_hashes, result: PASS}
+    - {id: VAL-004, subject: starting_local_and_remote_head, result: PASS}
+    - {id: VAL-005, subject: required_output_set_and_count, result: PASS}
+    - {id: VAL-006, subject: strict_yaml_and_markdown_sanity, result: PASS}
+    - {id: VAL-007, subject: unique_capability_ids, result: PASS, observed_count: 9}
+    - {id: VAL-008, subject: unique_gap_ids, result: PASS, observed_count: 14}
+    - {id: VAL-009, subject: evidence_path_existence, result: PASS, unique_path_count: 45}
+    - {id: VAL-010, subject: required_ranking_fields_and_arithmetic, result: PASS}
+    - {id: VAL-011, subject: explicit_missing_data_markers, result: PASS}
+    - {id: VAL-012, subject: required_statement_label_vocabulary, result: PASS}
+    - {id: VAL-013, subject: no_broad_external_tool_research, result: PASS}
+    - {id: VAL-014, subject: no_tool_graph_architecture_or_gov_7_strategy_selection, result: PASS}
+    - {id: VAL-015, subject: no_pass_02_or_later_pass_execution, result: PASS}
+    - {id: VAL-016, subject: no_fake_acceptance_or_independent_evaluation, result: PASS}
+    - {id: VAL-017, subject: kernel_and_governance_phase_unchanged, result: PASS}
+    - {id: VAL-018, subject: gov_7_still_inactive, result: PASS}
+    - {id: VAL-019, subject: od_006_still_unresolved_trigger_gated, result: PASS}
+    - {id: VAL-020, subject: no_planning_product_or_runtime_modification, result: PASS}
+    - {id: VAL-021, subject: recommendations_unaccepted_and_implementation_unauthorized, result: PASS}
+    - {id: VAL-022, subject: registry_ids_unique_and_registered_paths_exist, result: PASS}
+  targeted_validation:
+    - command: python3 governance/tools/validate_audit_scaffold.py
+      execution_root: detached worktree at starting HEAD 2af090ccf00f2cf8fb6d49972f4dacf5e3ddea38
+      result: VALID_ZERO_DIAGNOSTICS
+      qualification: The tool is explicitly a planning-only scaffold validator; it rejects instantiated run artifacts by design and is not used as the completed PASS-01 validator.
+    - command: python3 governance/tools/validate_prompts.py --root repository
+      result: VALID_23_PROMPTS_23_LINEAGES
+    - command: bash governance/tests/run-prompt-custody-tests.sh
+      result: VALID_12_PASSED_0_FAILED
+    - command: python3 governance/tools/manage_learning.py validate
+      result: VALID_20_RECORDS_25_EVENTS
+    - command: sha256sum -c governance/SOURCE_CHECKSUMS.sha256
+      result: VALID_ALL_DECLARED_RAW_AND_BOUND_SOURCE_CHECKSUMS
+    - command: python3 governance/tools/validate_governance_state.py
+      result: PASS_ON_FINAL_REPLAY
+    - command: direct PASS-01 strict-YAML, hash, output-contract, ID, evidence-path, ranking and scope checks
+      result: PASS_ON_FINAL_REPLAY
+  full_governance_suite:
+    performed: false
+    reason:
+      - No shared validator, schema, registry logic or state-validation logic was modified.
+      - Targeted validation did not indicate a cross-surface regression requiring the full suite.
+      - The environment does not provide the pytest module; direct canonical validators cover the changed state surfaces.
+  pre_validation_diagnostics:
+    - diagnostic: The first input-hash check exposed two transposed characters in the copied GOV-6 decision SHA-256.
+      disposition: Corrected in the unexecuted input manifest before output analysis; all bound hashes then passed.
+      material_failure: false
+    - diagnostic: The first strict-YAML parse found unquoted question marks in five flow-sequence strings in the draft gap register.
+      disposition: Converted to block lists before final validation; strict parsing and arithmetic checks passed.
+      material_failure: false
+    - diagnostic: Current-tree scaffold validation reports instantiated run/output/evaluation paths as forbidden placeholders.
+      disposition: Expected scope mismatch because GOV-TOOL-004 is registered only for planning artifacts; the starting scaffold was validated in a detached starting-HEAD worktree and current run content received direct PASS-01 validation.
+      material_failure: false
+    - diagnostic: An early state-validation replay reported the not-yet-created GOV-AUD-VAL-001 path missing.
+      disposition: Sequencing diagnostic; rerun after report creation is required and recorded above.
+      material_failure: false
+    - diagnostic: pytest executable and module are unavailable.
+      disposition: No dependency installation was authorized or required; direct canonical state validation and prompt tests were used.
+      material_failure: false
+  external_research_performed: false
+  independent_evaluation_performed: false
+  recommendations_accepted: false
+  implementation_authorized: false
+  pass_02_executed: false
+  checkpoint_a_completed: false
+  gov_7_status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+  od_006_status: UNRESOLVED_TRIGGER_GATED
+  kernel_status: 0.2.0/RATIFIED_NOT_IMPLEMENTED_NOT_ENFORCEABLE_NOT_OPERATIONAL
+  authority_limit: VALIDATION_IS_NOT_PROJECT_OWNER_DISPOSITION_ACCEPTANCE_RISK_AUTHORITY_LATER_PASS_AUTHORITY_OR_IMPLEMENTATION
