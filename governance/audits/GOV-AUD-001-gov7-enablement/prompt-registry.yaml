@@ -13,6 +13,13 @@ prompt_registry:
     - HP-PROMPT-030/0.3.0
   identity_resolution_rule: RESOLVE_FROM_CANONICAL_REGISTRIES_VERIFY_UNUSED_AND_RECORD_EVIDENCE_BEFORE_BINDING
   pass_contracts:
+    PASS-03:
+      contract_id: GOV-AUD-001-PASS-03-CONTRACT
+      version: 0.2.0
+      status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+      path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/contract.yaml
+      sha256: a08e83c5f4a7342b8b2ee2893ddf70be809614cc8ef3b167a83b3b6275be6f65
+      predecessor_sha256: a41aef15eeb22f0ce779356f92abd761dfaf52db5082247ca75e7b4b3bcea00c
     PASS-02:
       contract_id: GOV-AUD-001-PASS-02-CONTRACT
       version: 0.2.0
@@ -41,7 +48,8 @@ prompt_registry:
     - {prompt_id: GOV-AUD-PROMPT-010, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-01, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-010-pass-01-capability-gap-v0.1.0.md}
     - {prompt_id: GOV-AUD-PROMPT-020, version: 0.1.0, lifecycle: SUPERSEDED, pass_id: PASS-02, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.1.0.md, superseded_by: GOV-AUD-PROMPT-020/0.2.0}
     - {prompt_id: GOV-AUD-PROMPT-020, version: 0.2.0, lifecycle: TEMPLATE, pass_id: PASS-02, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.2.0.md}
-    - {prompt_id: GOV-AUD-PROMPT-030, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-03, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-030-pass-03-measurement-interviewer-evaluation-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-030, version: 0.1.0, lifecycle: SUPERSEDED, pass_id: PASS-03, superseded_by: GOV-AUD-PROMPT-030/0.2.0, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-030-pass-03-measurement-interviewer-evaluation-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-030, version: 0.2.0, lifecycle: TEMPLATE, pass_id: PASS-03, contract_id: GOV-AUD-001-PASS-03-CONTRACT, contract_version: 0.2.0, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-030-pass-03-observable-learning-requirements-v0.2.0.md, exact_text_sha256: 0608eb4eeaf49e9351a77bd376704296e450ed79859cd1cf6cdcf25b78115f9f}
     - {prompt_id: GOV-AUD-PROMPT-040, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-04, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-040-pass-04-targeted-tooling-v0.1.0.md}
     - {prompt_id: GOV-AUD-PROMPT-050, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-05, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-050-pass-05-gov7-strategy-v0.1.0.md}
     - {prompt_id: GOV-AUD-PROMPT-060, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-06, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-060-pass-06-synthesis-v0.1.0.md}

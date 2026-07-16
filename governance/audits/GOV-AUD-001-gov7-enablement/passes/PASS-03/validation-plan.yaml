@@ -1,0 +1,7 @@
+validation_plan:
+  id: GOV-AUD-001-PASS-03-VALIDATION-PLAN-001
+  version: 0.1.0
+  deterministic_checks: [artifact_presence, YAML_and_Markdown_syntax, input_hashes, reference_and_registry_consistency, required_evidence_classes, lifecycle_state_and_transition_rules, authority_assertions, hidden_chain_of_thought_prohibition, tooling_neutrality, metrics_and_privacy_coverage, no_PASS_04_or_implementation_claims]
+  review_checks: [semantic_completeness_against_contract, evidence_adequacy, adversarial_readiness]
+  required_commands: [python3 governance/tools/validate_pass_03_preparation.py, python3 governance/tools/validate_prompts.py --root ., python3 governance/tools/validate_audit_scaffold.py, python3 governance/tools/validate_governance_state.py, git diff --check]
+  prohibited_semantic_shortcut: Deterministic validation checks the declared contract, not a preferred substantive PASS-03 conclusion.

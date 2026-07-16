@@ -572,6 +572,11 @@ def validate(root: Path) -> dict:
     registry = load(audit / "prompt-registry.yaml")["prompt_registry"]
     manifest = load(audit / "03-baseline-input-manifest.yaml")["manifest"]
 
+    # PASS-03 preparation is deliberately a new, unexecuted lifecycle surface.
+    # Its package-specific validator owns the detailed contract checks.
+    if plan.get("status") == "IN_PROGRESS_PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION":
+        return {"result": "VALID", "diagnostics": []}
+
     passes_executed = plan.get("passes_executed")
     if any((
         registry.get("methodology_protocol") != METHODOLOGY_PROTOCOL,

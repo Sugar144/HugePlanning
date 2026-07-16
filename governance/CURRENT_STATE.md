@@ -14,7 +14,7 @@
 | Controller guards | zero blocking findings; no repeated findings; none exhausted |
 | GOV-5 status | `COMPLETED / CLOSED`; KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`; closure review remains `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION` |
 | GOV-6 status | `COMPLETED / CLOSED`; OD-004 ratified exact Kernel `0.2.0` |
-| GOV-AUD-001 status | `IN_PROGRESS`; PASS-01 and PASS-02 are accepted; CHECKPOINT-A is approved; PASS-03 is authorized for preparation only, not execution |
+| GOV-AUD-001 status | `IN_PROGRESS`; PASS-01 and PASS-02 are accepted; CHECKPOINT-A is approved; PASS-03 is prepared and validated pending Project Owner execution authorization |
 | Enforcement Engineering gate | `CLOSED`; GOV-AUTH-001 consumed exactly 1 of 1, with no remaining execution |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
 | Human ratification | `RATIFIED` — exact Kernel `0.2.0`, recorded in `GOV-DECISION-RECORD-002/0.1.0` |
@@ -182,7 +182,7 @@ GOV-7:
   direction_record: GOV-DECISION-RECORD-003/0.1.0
   minimum_package: DIRECTION_ACCEPTED_NOT_IMPLEMENTED
 GOV-AUD-001:
-  status: IN_PROGRESS_CHECKPOINT_A_APPROVED_PASS_03_AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION
+  status: IN_PROGRESS_PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
   passes_executed: 2
   PASS-01: PASS_01_ACCEPTED_COMPLETED
   PASS-01-C3: INDEPENDENTLY_CONFIRMED_AND_ACCEPTED
@@ -202,7 +202,7 @@ GOV-AUD-001:
   future-gov-7-proposal: HP-MPROP-006
   accepted-future-audit-clarification: HP-MPROP-007/OWNER_ACCEPTED_FOR_FUTURE_AUDIT_CLARIFICATION/NOT_STARTED
   CHECKPOINT-A: APPROVED_COMPLETED
-  PASS-03: AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION
+  PASS-03: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
   completed: false
   recommendations_accepted: false
   implementation_authorized: false

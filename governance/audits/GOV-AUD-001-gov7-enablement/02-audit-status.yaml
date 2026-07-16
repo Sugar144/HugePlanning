@@ -16,7 +16,7 @@ governance_baseline:
     status: UNRESOLVED_TRIGGER_GATED
 audit:
   id: GOV-AUD-001
-  status: IN_PROGRESS_CHECKPOINT_A_APPROVED_PASS_03_AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION
+  status: IN_PROGRESS_PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
   authority: CHECKPOINT_A_PROJECT_OWNER_APPROVAL_RECORDED
   passes_executed: 2
   checkpoints_completed: 1
@@ -34,13 +34,16 @@ audit:
   pass_02_status: ACCEPTED_COMPLETED
   checkpoint_a_completed: true
   pass_03_preparation_authorized: true
+  pass_03_preparation_status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+  pass_03_execution_authorized: false
+  pass_03_executed: false
   graph_implemented: false
   telemetry_implemented: false
   interviewer_simulation_implemented: false
   self_hosting_implemented: false
   owner_decision_inferred: false
   last_completed_step: CHECKPOINT_A_APPROVED
-  next_action: PREPARE_PASS_03_ONLY_UNDER_SEPARATE_BOUNDARY_NO_EXECUTION_CONTRACT_OR_PROMPT_EXISTS
+  next_action: PROJECT_OWNER_REVIEW_AND_AUTHORIZATION_OF_PASS_03_EXECUTION_DO_NOT_EXECUTE_AUTOMATICALLY
   methodology_correction:
     protocol_id: GOV-AUD-001-METHOD-001
     version: 0.3.0
