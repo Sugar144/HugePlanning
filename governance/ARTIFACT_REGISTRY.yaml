@@ -2500,7 +2500,7 @@ artifacts:
   - id: GOV-AUD-001
     title: GOV-7 Enablement, Cross-Layer Architecture and Empirical Validation Audit Program Scaffold
     version: 0.2.0
-    status: IN_PROGRESS_PASS_02_EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    status: IN_PROGRESS_CHECKPOINT_A_APPROVED_PASS_03_AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION
     authority: audit_program_index_with_pass_01_acceptance_and_unaccepted_pass_02_execution_evidence_not_checkpoint_gov_7_or_implementation_authority
     path: governance/audits/GOV-AUD-001-gov7-enablement/00-audit-charter.md
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/GOV-AUD-PROMPT-000-audit-program-scaffold-v0.2.0.md
@@ -2740,7 +2740,7 @@ artifacts:
   - id: GOV-AUD-001-P01-R1-C2
     title: PASS-01 Bounded Substantive Output Correction
     version: 0.1.0
-    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    status: ACCEPTED_COMPLETED
     authority: bounded_substantive_source_correction_not_acceptance_later_pass_gov_7_or_implementation_authority
     path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/manifest.yaml
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/input/input-manifest.yaml
@@ -2970,12 +2970,12 @@ artifacts:
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/input/input-manifest.yaml
     source_sha256: bc5c9764ab0a30a2c96665e09c4d3e720d20be35631e4ad06aa7c10dd656f239
     produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
-    artifact_type: completed_unaccepted_audit_pass_run
+    artifact_type: completed_accepted_audit_pass_run
     language: English
     canonicality: source_run_custody
     supersedes: null
     aliases: []
-    notes: [Defines a technology-neutral unimplemented cross-layer architecture candidate; CHECKPOINT-A remains pending and PASS-03 remains unauthorized.]
+    notes: [Defines a technology-neutral unimplemented cross-layer architecture candidate; accepted by GOV-AUD-DECISION-003 after independent result PASS_02_R1_CONFIRMED; PASS-03 preparation only is authorized.]
 
   - id: GOV-AUD-AUTH-002
     title: PASS-02 Project Owner Execution Authorization
@@ -3346,3 +3346,51 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Authorizes acceptance and bounded publication of the independently confirmed methodology correction only; prohibits PASS-02 acceptance, CHECKPOINT-A, later passes, GOV-7 activation, Kernel amendment and OD-006 resolution.]
+
+  - id: GOV-AUD-001-P02-IER-002
+    title: PASS-02 R1 Final Independent Substantive Evaluation
+    version: 0.1.0
+    status: EXECUTED_CUSTODIED
+    authority: independent_substantive_review_not_owner_disposition_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/evaluation/GOV-AUD-001-P02-IER-002-final-independent-substantive-evaluation.md
+    source_path: null
+    source_sha256: 88979463951f8171feff17388bd6dadd82cd64959bf37b5b3028a4efd2024dd1
+    produced_by: INDEPENDENT_SUBSTANTIVE_REVIEWER
+    artifact_type: audit_independent_substantive_review
+    language: English
+    canonicality: immutable_review_evidence
+    supersedes: GOV-AUD-001-P02-REVIEW-CUSTODY-001
+    aliases: []
+    notes: [Records PASS_02_R1_CONFIRMED with no R2 required; does not itself accept PASS-02 or approve CHECKPOINT-A.]
+
+  - id: GOV-AUD-DECISION-003
+    title: PASS-02 Acceptance and CHECKPOINT-A Approval
+    version: 0.1.0
+    status: ACCEPTED_COMPLETED
+    authority: project_owner_checkpoint_disposition
+    path: governance/audits/GOV-AUD-001-gov7-enablement/decisions/GOV-AUD-DECISION-003-pass-02-checkpoint-a-approval-v0.1.0.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-033-approve-checkpoint-a-pass-02-v0.1.0.md
+    source_sha256: 142c16a70079013591a0b010df0fbe93410f650302a7f673fe8f91d1552f1496
+    produced_by: PROJECT_OWNER
+    artifact_type: audit_owner_decision
+    language: English
+    canonicality: append_only_checkpoint_disposition
+    supersedes: null
+    aliases: []
+    notes: [Accepts PASS-02 and approves CHECKPOINT-A; authorizes PASS-03 preparation only, not contract creation or execution.]
+
+  - id: HP-PROMPT-033
+    title: Approve PASS-02 and CHECKPOINT-A
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_project_owner_checkpoint_approval_and_publication
+    path: governance/prompts/orchestration/HP-PROMPT-033-approve-checkpoint-a-pass-02-v0.1.0.md
+    source_path: null
+    source_sha256: 142c16a70079013591a0b010df0fbe93410f650302a7f673fe8f91d1552f1496
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: []
+    notes: [Authorizes only final review custody, PASS-02 acceptance, CHECKPOINT-A approval, PASS-03 preparation-only authority, validation, one commit and non-force push.]

@@ -210,7 +210,7 @@ def validate(root: Path) -> dict[str, Any]:
         "audit_id": "GOV-AUD-001",
         "pass_id": "PASS-02",
         "run_id": "GOV-AUD-001-P02-R1",
-        "status": "EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION",
+        "status": "ACCEPTED_COMPLETED",
         "lifecycle": "EXECUTED",
         "execution_count_limit": 1,
         "execution_count_consumed": 1,
@@ -422,20 +422,19 @@ def validate(root: Path) -> dict[str, Any]:
         "audit"
     ]
     sequence = {item["id"]: item["status"] for item in plan.get("sequence", [])}
-    if sequence.get("PASS-02") != "EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION":
+    if sequence.get("PASS-02") != "ACCEPTED_COMPLETED":
         errors.append("PASS-02 terminal lifecycle status mismatch")
-    if sequence.get("CHECKPOINT-A") != "PENDING_PROJECT_OWNER_DISPOSITION":
+    if sequence.get("CHECKPOINT-A") != "APPROVED_COMPLETED":
         errors.append("CHECKPOINT-A completed or changed")
-    if sequence.get("PASS-03") != "PLANNED_NOT_EXECUTED":
+    if sequence.get("PASS-03") != "AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION":
         errors.append("PASS-03 executed or authorized")
     if any(
         (
             plan.get("passes_executed") != 2,
             plan.get("completed") is not False,
             plan.get("gov_7_activated") is not False,
-            status.get("pass_02_status")
-            != "EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION",
-            status.get("checkpoint_a_completed", False) is not False,
+            status.get("pass_02_status") != "ACCEPTED_COMPLETED",
+            status.get("checkpoint_a_completed") is not True,
             status.get("gov_7_activated") is not False,
         )
     ):
@@ -451,8 +450,6 @@ def validate(root: Path) -> dict[str, Any]:
 
     boundary = manifest.get("authority_boundary", {})
     for field in (
-        "pass_02_accepted",
-        "checkpoint_a_completed",
         "pass_03_authorized_or_executed",
         "recommendations_accepted",
         "architecture_selected",
@@ -463,6 +460,10 @@ def validate(root: Path) -> dict[str, Any]:
     ):
         if boundary.get(field) is not False:
             errors.append(f"manifest authority boundary mismatch: {field}")
+    if boundary.get("pass_02_accepted") is not True or boundary.get("checkpoint_a_completed") is not True:
+        errors.append("manifest checkpoint disposition mismatch")
+    if boundary.get("pass_03_preparation_authorized") is not True:
+        errors.append("manifest PASS-03 preparation authority mismatch")
 
     return {"result": "VALID" if not errors else "INVALID", "diagnostics": errors}
 

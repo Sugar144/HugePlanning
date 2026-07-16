@@ -122,3 +122,13 @@ prompt_registry:
       pass_02_accepted: false
       checkpoint_a_completed: false
       pass_03_authorized_or_executed: false
+    - prompt_id: HP-PROMPT-033
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_02_ACCEPTANCE_AND_CHECKPOINT_A_APPROVAL
+      path: governance/prompts/orchestration/HP-PROMPT-033-approve-checkpoint-a-pass-02-v0.1.0.md
+      exact_text_sha256: 142c16a70079013591a0b010df0fbe93410f650302a7f673fe8f91d1552f1496
+      pass_02_accepted: true
+      checkpoint_a_completed: true
+      pass_03_preparation_authorized: true
+      pass_03_execution_authorized: false

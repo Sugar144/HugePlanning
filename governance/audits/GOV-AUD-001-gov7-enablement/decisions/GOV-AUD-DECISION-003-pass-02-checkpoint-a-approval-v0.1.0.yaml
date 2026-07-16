@@ -1,0 +1,37 @@
+project_owner_decision:
+  decision_id: GOV-AUD-DECISION-003
+  version: 0.1.0
+  date: '2026-07-17'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_PASS_02_AND_APPROVE_CHECKPOINT_A
+  audit_id: GOV-AUD-001
+  reviewed_run: GOV-AUD-001-P02-R1
+  review_artifact:
+    id: GOV-AUD-001-P02-IER-002
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/evaluation/GOV-AUD-001-P02-IER-002-final-independent-substantive-evaluation.md
+    sha256: 88979463951f8171feff17388bd6dadd82cd64959bf37b5b3028a4efd2024dd1
+    result: PASS_02_R1_CONFIRMED
+    r2_required: false
+  disposition:
+    pass_02: ACCEPTED_COMPLETED
+    checkpoint_a: APPROVED_COMPLETED
+    pass_03: AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION
+  acceptance_scope: PASS_02_EVIDENCE_SUPPORTED_TECHNOLOGY_NEUTRAL_UNIMPLEMENTED_ARCHITECTURE_DESIGN_BASIS
+  preserved_boundaries:
+    pass_02_r1_immutable: true
+    pass_02_r2_exists: false
+    pass_03_contract_or_prompt_created: false
+    pass_03_executed: false
+    pass_04_authorized_or_executed: false
+    gov_7_activated: false
+    kernel_amended_or_implemented: false
+    od_006_resolved: false
+    risk_accepted: false
+  publication:
+    commit_authorized: true
+    push_without_force_authorized: true
+    pull_request_authorized: false
+    merge_authorized: false
+    tag_authorized: false
+    release_authorized: false
+    deployment_authorized: false
