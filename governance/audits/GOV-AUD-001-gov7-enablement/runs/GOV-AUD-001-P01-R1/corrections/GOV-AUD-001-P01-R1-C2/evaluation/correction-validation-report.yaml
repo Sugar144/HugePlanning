@@ -1,0 +1,103 @@
+validation_report:
+  record_id: GOV-AUD-C2-VAL-001
+  version: 0.1.0
+  audit_id: GOV-AUD-001
+  pass_id: PASS-01
+  source_run_id: GOV-AUD-001-P01-R1
+  correction_id: GOV-AUD-001-P01-R1-C2
+  evidence_class: SOURCE_CORRECTION_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_EVALUATION
+  status: VALIDATED
+  result: VALID
+  starting_head: 22b66c97851316b4c461077f057fc3f1bc2de851
+  prompt_and_authorization:
+    prompt_identity: GOV-AUD-PROMPT-013/HP-PROMPT-026/0.1.0
+    prompt_sha256: 0075610713cf0ce9dbb530693bdb518a509098e3bfd6b4c0af3694f12d78d1a0
+    authorization_identity: GOV-AUD-CORR-AUTH-002/0.1.0
+    authorization_sha256: 9fcc990418e4ae9f0f65ab25bda0cf811a83e1247dc5b2cf5999d3f9d24b9a41
+    identity_and_scope: PASS
+  input_manifest:
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/input/input-manifest.yaml
+    sha256: c804b3309126cc2aba7bf9f6cf42f24f49a8e2ad6fe4d83eaa9b9d0441effb4a
+    member_count: 92
+    member_hashes: PASS
+  outputs:
+    required_count: 4
+    actual_count: 4
+    hashes_and_formats: PASS
+  immutable_evidence:
+    original_r1_outputs: PASS_BYTE_IDENTICAL
+    prior_correction_c1: PASS_BYTE_IDENTICAL
+  checks:
+    - {id: C2-VAL-001, subject: starting_branch_head_remote_alignment_and_clean_state, result: PASS}
+    - {id: C2-VAL-002, subject: identity_collision_gate, result: PASS}
+    - {id: C2-VAL-003, subject: prompt_and_authorization_identity_hash_and_scope, result: PASS}
+    - {id: C2-VAL-004, subject: input_manifest_exact_92_member_inventory_and_hashes, result: PASS}
+    - {id: C2-VAL-005, subject: required_corrected_output_set_count_format_and_hashes, result: PASS}
+    - {id: C2-VAL-006, subject: four_immutable_R1_output_hashes, result: PASS_BYTE_IDENTICAL}
+    - {id: C2-VAL-007, subject: all_C1_artifact_hashes, result: PASS_BYTE_IDENTICAL}
+    - {id: C2-VAL-008, subject: corrected_capability_family_ids_and_count, result: PASS, observed_count: 14}
+    - {id: C2-VAL-009, subject: GAP_001_through_GAP_014_traceability_and_uniqueness, result: PASS, observed_count: 14}
+    - {id: C2-VAL-010, subject: ranking_arithmetic_and_UNKNOWN_handling, result: PASS}
+    - {id: C2-VAL-011, subject: NOT_A_GAP_leverage_semantics, result: PASS}
+    - {id: C2-VAL-012, subject: provider_legal_recovery_and_usability_trigger_priorities, result: PASS}
+    - {id: C2-VAL-013, subject: zero_of_ER_001_through_ER_020_fully_supported_by_implementation_evidence, result: PASS}
+    - {id: C2-VAL-014, subject: evidence_path_existence, result: PASS}
+    - {id: C2-VAL-015, subject: strict_YAML_Markdown_fences_and_local_links, result: PASS}
+    - {id: C2-VAL-016, subject: global_registry_ID_uniqueness_and_paths, result: PASS}
+    - {id: C2-VAL-017, subject: planning_only_C1_and_C2_lifecycle_regressions, result: PASS}
+    - {id: C2-VAL-018, subject: no_planning_product_or_released_runtime_change, result: PASS}
+    - {id: C2-VAL-019, subject: PASS_02_unexecuted_CHECKPOINT_A_pending_GOV_7_inactive, result: PASS}
+    - {id: C2-VAL-020, subject: OD_006_unresolved_and_Kernel_ratified_not_implemented_enforceable_or_operational, result: PASS}
+    - {id: C2-VAL-021, subject: no_recommendation_risk_acceptance_or_implementation_authority, result: PASS}
+    - {id: C2-VAL-022, subject: authored_diff_check_and_empty_staging, result: PASS}
+  commands:
+    - command: python3 governance/tools/validate_audit_scaffold.py
+      result: VALID_ZERO_DIAGNOSTICS
+    - command: python3 governance/tools/validate_prompts.py --root repository
+      result: FAILED_PRECONDITION_LITERAL_REPOSITORY_SUBDIRECTORY_NOT_PRESENT
+      diagnostic: ERROR no material prompt custody records found
+      qualification: The supplied root token was interpreted literally from the repository root; the same validator passed against the actual repository root below.
+    - command: python3 governance/tools/validate_prompts.py --root .
+      result: VALID_23_PROMPTS_23_LINEAGES
+    - command: bash governance/tests/run-prompt-custody-tests.sh
+      result: VALID_12_PASSED_0_FAILED
+    - command: python3 governance/tools/manage_learning.py validate
+      result: VALID_22_RECORDS_27_EVENTS_AFTER_HP_FAIL_022_VALIDATION_EVENT
+    - command: python3 governance/tools/validate_governance_state.py
+      result: VALID_ZERO_DIAGNOSTICS
+    - command: sha256sum -c governance/SOURCE_CHECKSUMS.sha256
+      result: VALID_ALL_DECLARED_SOURCE_CHECKSUMS
+    - command: /tmp/hp-phase-2-1-venv/bin/python -m pytest -q -p no:cacheprovider governance/tests/test_gov_7_audit_scaffold.py
+      result: PASSED_17_TESTS
+    - command: python -m pytest -q -p no:cacheprovider governance/tests
+      result: FAILED_PRECONDITION_PYTEST_NOT_INSTALLED_IN_SYSTEM_PYTHON
+      diagnostic: /usr/bin/python No module named pytest
+      qualification: No test executed; the repository-supported isolated environment passed the full suite below.
+    - command: /tmp/hp-phase-2-1-venv/bin/python -m pytest -q -p no:cacheprovider governance/tests
+      result: PASSED_158_TESTS
+    - command: tests/run-tests.sh
+      result: PASSED_224_CHECKS_0_FAILED
+    - command: git diff --check
+      result: PASS
+  full_governance_suite:
+    performed: true
+    result: PASSED
+    passed_tests: 158
+    failed_tests: 0
+    execution_environment: /tmp/hp-phase-2-1-venv/bin/python
+  released_runtime_suite:
+    performed: true
+    result: PASSED
+    passed_checks: 224
+    failed_checks: 0
+  independent_evaluation_performed: false
+  pass_01_accepted: false
+  checkpoint_a_completed: false
+  pass_02_authorized_or_executed: false
+  gov_7_status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+  od_006_status: UNRESOLVED_TRIGGER_GATED
+  kernel_status: 0.2.0_RATIFIED_NOT_IMPLEMENTED_NOT_ENFORCEABLE_NOT_OPERATIONAL
+  recommendations_accepted: false
+  risk_accepted: false
+  implementation_authorized: false
+  authority_limit: DETERMINISTIC_SOURCE_CORRECTION_VALIDATION_ONLY_NOT_INDEPENDENT_EVALUATION_OR_PROJECT_OWNER_DISPOSITION

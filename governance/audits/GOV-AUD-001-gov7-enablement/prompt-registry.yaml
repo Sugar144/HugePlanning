@@ -1,6 +1,6 @@
 prompt_registry:
   audit_id: GOV-AUD-001
-  version: 0.2.0
+  version: 0.5.0
   lifecycle_states: [TEMPLATE, INSTANTIATED_NOT_EXECUTED, EXECUTED, EVALUATED, SUPERSEDED]
   custody_rule: FINAL_INSTANTIATED_PROMPT_MUST_BE_PRESERVED_AND_HASH_BOUND_BEFORE_EXECUTION
   prompts:
@@ -42,4 +42,38 @@ prompt_registry:
       audit_pass_reexecuted: false
       substantive_outputs_changed: false
       recommendations_accepted: false
+      pass_02_authorized_or_executed: false
+    - prompt_id: GOV-AUD-PROMPT-013
+      catalog_prompt_id: HP-PROMPT-026
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_01_BOUNDED_SUBSTANTIVE_OUTPUT_CORRECTION
+      run_id: GOV-AUD-001-P01-R1
+      correction_id: GOV-AUD-001-P01-R1-C2
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/prompt/GOV-AUD-PROMPT-013-correct-pass-01-substantive-outputs-v0.1.0.md
+      exact_text_sha256: 0075610713cf0ce9dbb530693bdb518a509098e3bfd6b4c0af3694f12d78d1a0
+      original_outputs_modified: false
+      prior_correction_modified: false
+      independent_evaluation_completed: false
+      recommendations_accepted: false
+      pass_02_authorized_or_executed: false
+    - prompt_id: GOV-AUD-PROMPT-015
+      catalog_prompt_id: HP-PROMPT-027
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_01_C2_CLASSIFICATION_AND_TEMPORAL_SEMANTICS_CORRECTION
+      run_id: GOV-AUD-001-P01-R1
+      correction_id: GOV-AUD-001-P01-R1-C3
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/prompt/GOV-AUD-PROMPT-015-correct-pass-01-c2-classification-and-temporal-semantics-v0.1.0.md
+      exact_text_sha256: 51db9c0f18b94b4cc806898077de8d7fbb8033272d21161669757ccac314b547
+      pass_01_accepted: false
+      pass_02_authorized_or_executed: false
+    - prompt_id: GOV-AUD-PROMPT-016
+      catalog_prompt_id: HP-PROMPT-028
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_01_PROJECT_OWNER_ACCEPTANCE_AND_PUBLICATION
+      path: governance/prompts/orchestration/HP-PROMPT-028-accept-gov-aud-001-pass-01-v0.1.0.md
+      exact_text_sha256: 1192572a14204307c5bcb63b50f29479df7ba3930f7e55b9aed8c6fdda43447a
+      pass_01_accepted: true
       pass_02_authorized_or_executed: false

@@ -1,0 +1,476 @@
+gap_register:
+  audit_id: GOV-AUD-001
+  source_run_id: GOV-AUD-001-P01-R1
+  correction_id: GOV-AUD-001-P01-R1-C2
+  pass_id: PASS-01
+  status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+  original_gap_entry_count: 14
+  corrected_gap_entry_count: 14
+  current_demonstrated_residual_gap_identities: [GAP-002, GAP-003]
+  ranking_method:
+    evidence_priority_formula: frequency_x_current_burden_x_failure_risk
+    factor_scale:
+      frequency:
+        1: one observed occurrence
+        2: two observed occurrences
+        3: three to four observed occurrences
+        4: five to seven observed occurrences
+        5: eight or more observed occurrences
+      current_burden:
+        1: negligible bounded correction
+        2: local correction without workflow blocking
+        3: one material rerun or correction cycle
+        4: multi-artifact package or review correction
+        5: authority durable-state or phase-publication blocking burden
+      failure_risk:
+        1: cosmetic only
+        2: local nonmaterial defect
+        3: work-unit or publication blockage
+        4: custody coverage or semantic near miss
+        5: authority durable-state unsafe-effect or irreversible-effect risk
+    unknown_rule: If frequency, current burden or risk lacks evidence, score is UNKNOWN and no substitute value is inferred.
+    heterogeneous_rule: An identity split into materially different subproblems has no aggregate score unless a common response and comparable factors are demonstrated.
+    preliminary_leverage_vocabulary: [LOW, MEDIUM, HIGH, UNKNOWN]
+  implementation_coverage_baseline:
+    source: governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+    requirements: ER-001_THROUGH_ER-020
+    fully_supported_by_implementation_evidence: 0
+    partial: 7
+    gap: 9
+    dependent_on_specialist: 3
+    dependent_on_provider_test: 1
+    qualification: Requirement traceability in this register is analysis coverage only and never implies implementation coverage.
+  entries:
+    - gap_id: GAP-001
+      original_label: Reusable prospective execution and authorization lifecycle gate
+      correction_action: NARROWED
+      statement_label: VERIFIED_FACT
+      classification: DEMONSTRATED_HISTORICAL_FAILURE_WITH_SPECIALIZED_CURRENT_CAPABILITY_GENERIC_NEED_UNPROVEN
+      correction: Separates the KGR-006 custody failure, the KGR-006-R1 specialized correction capability and the unproven proposition that one generic gate is currently required.
+      historical_failure:
+        fact: KGR-006 executed without contemporaneous repository authorization custody.
+        evidence:
+          - governance/learning/records/HP-FAIL-014.yaml
+        evidence_priority:
+          frequency: {value: 1, basis: one preserved materially distinct custody failure}
+          current_burden: {value: 5, basis: retrospective attestation and a separately authorized correction path were required}
+          failure_risk: {value: 5, basis: prospective execution authority could not be established from repository custody}
+          score: 25
+        confidence: HIGH
+      specialized_current_capability:
+        fact: KGR-006-R1 has a prospective one-execution authorization and preparation gate.
+        evidence:
+          - governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+          - governance/tools/prepare_enforcement_correction.py
+        confidence: HIGH
+      current_residual_gap:
+        proposition: HugePlanning requires one generic execution-lifecycle gate across materially distinct workflows.
+        status: UNKNOWN_NOT_DEMONSTRATED
+        evidence_priority:
+          frequency: {value: UNKNOWN, basis: no second materially distinct workflow demonstrates the same generic need}
+          current_burden: {value: UNKNOWN, basis: genericization burden and avoided burden are unmeasured}
+          failure_risk: {value: 5, basis: authority-custody failure remains high consequence if a relevant workflow lacks a gate}
+          score: UNKNOWN
+        confidence: LOW
+      preliminary_leverage: UNKNOWN
+      leverage_status: INSUFFICIENT_MULTI_WORKFLOW_EVIDENCE
+      priority: DEFER
+      conditional_priority: P0_IF_MULTIPLE_MATERIALLY_DISTINCT_WORKFLOWS_DEMONSTRATE_THE_SAME_GENERIC_NEED
+      missing_data_markers:
+        - frequency outside the single preserved KGR-006 failure is UNKNOWN
+        - generic implementation and maintenance burden is UNKNOWN
+        - exact Owner and operator effort is UNKNOWN
+      neutral_capability_need_class: REUSABLE_SEMANTIC_WORKFLOW_CANDIDATE
+      authority_boundary: No mechanism may create, infer, reuse or approve Project Owner authority.
+
+    - gap_id: GAP-002
+      original_label: Declared cross-surface lifecycle reconciliation
+      correction_action: NARROWED_AND_REBASELINED_AFTER_C1
+      statement_label: VERIFIED_FACT
+      classification: DEMONSTRATED_RESIDUAL_PROFILE_COVERAGE_GAP
+      correction: The historical planning-only audit-validator limitation is corrected by C1; the residual is limited to explicit profile extension when a new authorized lifecycle surface is introduced.
+      historical_failure:
+        evidence:
+          - governance/learning/records/HP-FAIL-017.yaml
+          - governance/learning/records/HP-FAIL-019.yaml
+          - governance/learning/records/HP-FAIL-020.yaml
+          - governance/learning/records/HP-FAIL-021.yaml
+        evidence_priority:
+          frequency: {value: 3, basis: four direct lifecycle or state validation failures}
+          current_burden: {value: 5, basis: failures blocked validation or publication and could leave authority or state divergent}
+          failure_risk: {value: 5, basis: stale lifecycle state can imply incorrect authority or phase status}
+          score: 75
+        confidence: HIGH
+      current_capability_after_c1:
+        evidence:
+          - governance/tools/validate_audit_scaffold.py
+          - governance/tests/test_gov_7_audit_scaffold.py
+          - governance/tools/validate_governance_state.py
+        fact: The planning-only and one-pass-executed audit states plus the current governance history are deterministically reconciled.
+      current_residual_gap:
+        fact: Validators remain declared-profile implementations; no reusable projection is demonstrated for an unmodeled future lifecycle.
+        evidence_priority:
+          frequency: {value: UNKNOWN, basis: no post-C1 residual failure sample exists}
+          current_burden: {value: UNKNOWN, basis: burden for the next separately authorized lifecycle is not observed}
+          failure_risk: {value: 5, basis: incorrect authority or phase state remains high consequence}
+          score: UNKNOWN
+        confidence: MEDIUM
+      preliminary_leverage: UNKNOWN
+      leverage_status: CURRENT_PROFILE_IMPLEMENTED_RESIDUAL_FREQUENCY_UNOBSERVED
+      priority: DEFER
+      conditional_priority: P0_IF_A_SEPARATELY_AUTHORIZED_NEW_STATUS_BEARING_LIFECYCLE_IS_INTRODUCED
+      missing_data_markers:
+        - post-C1 residual frequency is UNKNOWN
+        - next-lifecycle extension and maintenance burden is UNKNOWN
+      neutral_capability_need_class: DETERMINISTIC_AUTOMATION_CANDIDATE
+      authority_boundary: Reconciliation compares declared facts and cannot decide acceptance, constitutional sufficiency or phase transition.
+
+    - gap_id: GAP-003
+      original_label: Canonical-source and meaning-bearing parity enforcement
+      correction_action: SPLIT_WITH_ORIGINAL_ID_RETAINED
+      statement_label: VERIFIED_FACT
+      classification: DEMONSTRATED_HETEROGENEOUS_RESIDUAL_PATTERN
+      correction: Six distinct problem classes retain traceability under GAP-003; no single parity mechanism or aggregate score is asserted.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: heterogeneous subproblem frequencies are not combined}
+        current_burden: {value: UNKNOWN, basis: smallest sufficient response differs by subproblem}
+        failure_risk: {value: UNKNOWN, basis: risks range from brittle wording to safety-boundary divergence}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: HETEROGENEOUS_RESPONSES_REQUIRE_SEPARATE_ASSESSMENT
+      confidence: HIGH_FOR_PATTERN_MEDIUM_FOR_COMMON_RESIDUAL
+      priority: DEFER
+      conditional_priority: P0_ONLY_FOR_A_SUBPROBLEM_TRIGGERING_A_MATERIAL_BOUNDARY_IN_SELECTED_SCOPE
+      subproblems:
+        - subproblem_id: GAP-003-A
+          label: Incomplete package or import validation profiles
+          status: RETAINED_PROFILE_SPECIFIC
+          evidence: [governance/learning/records/HP-FAIL-007.yaml]
+          evidence_priority:
+            frequency: {value: 1, basis: one direct completed-output import-profile failure}
+            current_burden: {value: 4, basis: validator and import workflow correction was required}
+            failure_risk: {value: 4, basis: invalid completed output could pass an incomplete profile}
+            score: 16
+          smallest_supported_response: Extend only the named package profile for a demonstrated missing invariant.
+          semantic_review_required: false
+        - subproblem_id: GAP-003-B
+          label: Brittle assertions tied to mutable wording or frozen state
+          status: RETAINED_AND_NARROWED
+          evidence:
+            - governance/learning/records/HP-FAIL-010.yaml
+            - governance/learning/records/HP-FAIL-012.yaml
+            - governance/learning/records/HP-FAIL-017.yaml
+          evidence_priority:
+            frequency: {value: 3, basis: three direct wording or frozen-state assertion failures}
+            current_burden: {value: 4, basis: validator tests and state wording required correction}
+            failure_risk: {value: 4, basis: legitimate lifecycle changes can be rejected or stale facts accepted}
+            score: 48
+          smallest_supported_response: Assert structured invariants or stable identifiers instead of incidental prose.
+          semantic_review_required: false
+        - subproblem_id: GAP-003-C
+          label: Canonical counts copied from prose
+          status: RETAINED
+          evidence: [governance/learning/records/HP-FAIL-011.yaml]
+          evidence_priority:
+            frequency: {value: 1, basis: one direct canonical-count mismatch}
+            current_burden: {value: 4, basis: canonical recount and parity correction were required}
+            failure_risk: {value: 4, basis: prose count can omit required canonical items}
+            score: 16
+          smallest_supported_response: Derive counts from the canonical structured source.
+          semantic_review_required: false
+        - subproblem_id: GAP-003-D
+          label: Omitted canonical relationship anchors
+          status: RETAINED
+          evidence: [governance/learning/records/HP-FAIL-015.yaml]
+          evidence_priority:
+            frequency: {value: 1, basis: one independent finding covering omitted canonical anchors}
+            current_burden: {value: 4, basis: a versioned multi-output correction and review were required}
+            failure_risk: {value: 4, basis: omitted applicable routes can overstate coverage}
+            score: 16
+          smallest_supported_response: Compare declared applicability against the canonical relationship inventory.
+          semantic_review_required: true
+        - subproblem_id: GAP-003-E
+          label: Duplicated meaning-bearing safety boundaries
+          status: RETAINED
+          evidence: [governance/learning/records/HP-FAIL-016.yaml]
+          evidence_priority:
+            frequency: {value: 1, basis: one direct divergent duplicated safe-boundary finding}
+            current_burden: {value: 4, basis: canonicalization and versioned correction were required}
+            failure_risk: {value: 5, basis: divergent safety wording can permit unsafe interpretation}
+            score: 20
+          smallest_supported_response: Use one canonical boundary or exact generated projection with bounded semantic review.
+          semantic_review_required: true
+        - subproblem_id: GAP-003-F
+          label: Validation-profile conflict between immutable and authored files
+          status: RETAINED
+          evidence: [governance/learning/records/HP-FAIL-018.yaml]
+          evidence_priority:
+            frequency: {value: 1, basis: one direct immutable-versus-authored validation conflict}
+            current_burden: {value: 4, basis: profile separation and regression correction were required}
+            failure_risk: {value: 4, basis: a repair can silently mutate evidence or reject legitimate authored files}
+            score: 16
+          smallest_supported_response: Declare separate immutable and authored validation profiles with explicit path ownership.
+          semantic_review_required: false
+      missing_data_markers:
+        - recurrence after each correction is UNKNOWN
+        - semantic review time and effectiveness are UNKNOWN
+        - a common implementation and maintenance burden is UNKNOWN
+      neutral_capability_need_class: MULTIPLE_BOUNDED_DETERMINISTIC_AND_SEMANTIC_RESPONSES
+      authority_boundary: Exact checks validate consistency only; semantic or independent review remains required for non-machine-settleable meaning.
+
+    - gap_id: GAP-004
+      original_label: General managed non-success, containment and recovery lifecycle
+      correction_action: CONDITIONALLY_DEFERRED
+      statement_label: INFERENCE
+      classification: PARTIAL_CAPABILITY_AND_TRIGGER_GATED_REQUIREMENT
+      correction: Preserves narrow Controller evidence but removes an unconditional general-lifecycle implication before a transition is selected.
+      historical_evidence_priority:
+        frequency: {value: 3, basis: three Controller path replay or persistence failures}
+        current_burden: {value: 4, basis: authorized transition or bundle validation was blocked}
+        failure_risk: {value: 5, basis: incorrect persistence or replay can corrupt durable lifecycle truth}
+        score: 60
+      current_residual_evidence_priority:
+        frequency: {value: UNKNOWN, basis: no future governed transition is selected}
+        current_burden: {value: UNKNOWN, basis: non-success and recovery surface are unknown}
+        failure_risk: {value: 5, basis: uncontrolled residual effects may be irreversible}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: TRIGGER_AND_TRANSITION_NOT_SELECTED
+      confidence: MEDIUM
+      priority: DEFER
+      conditional_priority: P0_IF_SELECTED_SCOPE_HAS_MATERIAL_NON_SUCCESS_CONTAINMENT_OR_RECOVERY_EFFECTS
+      missing_data_markers: [selected transition, non-success states, residual effects, recovery effectiveness]
+      neutral_capability_need_class: REUSABLE_SEMANTIC_WORKFLOW_CANDIDATE
+      authority_boundary: C2 selects no state machine, recovery mechanism or transition.
+
+    - gap_id: GAP-005
+      original_label: Governed-effect, deviation and cumulative-related-effect accounting
+      correction_action: RETAINED_WITH_IMPLEMENTATION_BOUNDARY
+      statement_label: VERIFIED_FACT
+      classification: REQUIREMENT_WITHOUT_IMPLEMENTATION
+      correction: Retained as requirement analysis; no framework, taxonomy or implementation is inferred.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: no bounded governed pilot occurrence data exists}
+        current_burden: {value: UNKNOWN, basis: implementation and operational burden are not observed}
+        failure_risk: {value: 5, basis: unknown or cumulative governed effects can bypass authority boundaries}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: PROVISIONAL_FOR_LATER_AUTHORIZED_ASSESSMENT
+      confidence: HIGH_FOR_REQUIREMENT_ZERO_FOR_IMPLEMENTATION_COVERAGE
+      priority: P0_BEFORE_MATERIAL_GOV_7_WORK
+      conditional_priority: NOT_APPLICABLE
+      missing_data_markers: [frequency, false_positive_rate, implementation_burden, maintenance_burden]
+      neutral_capability_need_class: REUSABLE_SEMANTIC_WORKFLOW_CANDIDATE
+      authority_boundary: C2 selects no effect taxonomy, authorization model or implementation.
+
+    - gap_id: GAP-006
+      original_label: Assumption dependencies, claim lineage and qualified acceptance
+      correction_action: RETAINED_WITH_IMPLEMENTATION_BOUNDARY
+      statement_label: VERIFIED_FACT
+      classification: REQUIREMENT_WITHOUT_IMPLEMENTATION
+      correction: Repository custody is partial evidence; a general cross-layer query capability remains unimplemented and unselected.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: no cross-layer pilot occurrence data exists}
+        current_burden: {value: UNKNOWN, basis: operational burden is unmeasured}
+        failure_risk: {value: 4, basis: stale assumptions or fragmented claims can support invalid acceptance}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: PROVISIONAL_FOR_LATER_AUTHORIZED_ASSESSMENT
+      confidence: HIGH_FOR_REQUIREMENT_ZERO_FOR_IMPLEMENTATION_COVERAGE
+      priority: P1_FIRST_APPROVED_IMPLEMENTATION_INCREMENT
+      conditional_priority: NOT_APPLICABLE
+      missing_data_markers: [assumption_churn, claim_volume, review_burden]
+      neutral_capability_need_class: QUERY_CAPABILITY_CANDIDATE
+      authority_boundary: C2 selects no graph, data architecture or query technology.
+
+    - gap_id: GAP-007
+      original_label: Prospective operational burden and protective-value evidence
+      correction_action: RETAINED_AND_DEFERRED
+      statement_label: VERIFIED_FACT
+      classification: REQUIREMENT_WITHOUT_IMPLEMENTATION
+      correction: Historical precision remains unavailable; prospective evidence follows an authorized bounded use.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: no governed operational sample exists}
+        current_burden: {value: UNKNOWN, basis: time token cost and Owner effort were not captured}
+        failure_risk: {value: 3, basis: controls may persist without demonstrated protective value}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: PROVISIONAL_FOR_LATER_AUTHORIZED_ASSESSMENT
+      confidence: HIGH_FOR_MISSING_EVIDENCE_ZERO_FOR_IMPLEMENTATION_COVERAGE
+      priority: P2_AFTER_INITIAL_EMPIRICAL_EVIDENCE
+      conditional_priority: NOT_APPLICABLE
+      missing_data_markers: [false_positives, false_negatives, Owner_burden, time, monetary_value]
+      neutral_capability_need_class: EVENT_AUTOMATION_CANDIDATE
+      authority_boundary: C2 defines no telemetry and authorizes no pilot.
+
+    - gap_id: GAP-008
+      original_label: Provider capability evidence
+      correction_action: CONDITIONALLY_DEFERRED
+      statement_label: VERIFIED_FACT
+      classification: TRIGGER_GATED_RESEARCH_REQUIREMENT
+      correction: No provider work is universal P0 before a provider and effect scope are selected.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: no provider or effect class was selected or tested}
+        current_burden: {value: UNKNOWN, basis: test scope is unknown}
+        failure_risk: {value: 5, basis: untested provider behavior can invalidate stop or recovery claims}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: TRIGGER_NOT_ACTIVATED
+      confidence: HIGH_FOR_TRIGGER_DEPENDENCY_ZERO_FOR_SELECTED_SCOPE
+      priority: DEFER
+      conditional_priority: P0_IF_PROVIDER_AND_MATERIAL_EFFECT_SCOPE_ARE_SELECTED
+      missing_data_markers: [provider_identity, effect_classes, official_capability_evidence, empirical_results]
+      neutral_capability_need_class: RESEARCH_REQUIRED
+      authority_boundary: C2 performs no provider research or selection.
+
+    - gap_id: GAP-009
+      original_label: Legal, privacy and security evidence lifecycle boundary
+      correction_action: CONDITIONALLY_DEFERRED
+      statement_label: VERIFIED_FACT
+      classification: TRIGGER_GATED_SPECIALIST_REQUIREMENT
+      correction: Competent scope-specific analysis becomes P0 only if selected data, purpose, location, provider or threat scope activates the preserved trigger.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: no sensitive or regulated pilot scope is authorized}
+        current_burden: {value: UNKNOWN, basis: jurisdiction and data scope are unknown}
+        failure_risk: {value: 5, basis: unsafe real-data processing can create irreversible harm}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: TRIGGER_NOT_ACTIVATED
+      confidence: HIGH_FOR_TRIGGER_BOUNDARY_ZERO_FOR_SELECTED_SCOPE
+      priority: DEFER
+      conditional_priority: P0_IF_SELECTED_SCOPE_ACTIVATES_LEGAL_PRIVACY_OR_SECURITY_TRIGGER
+      missing_data_markers: [data_classes, purpose, jurisdiction, provider, threat_model]
+      neutral_capability_need_class: RESEARCH_REQUIRED
+      authority_boundary: C2 cannot narrow the safe boundary or authorize real-data processing.
+
+    - gap_id: GAP-010
+      original_label: High-consequence decision-packet usability evidence
+      correction_action: CONDITIONALLY_DEFERRED
+      statement_label: VERIFIED_FACT
+      classification: TRIGGER_GATED_HUMAN_REVIEW_REQUIREMENT
+      correction: OD-003 remains context-specific; independent usability work is P0 only for a materially complex sole-basis high-consequence packet.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: no future high-consequence packet population is defined}
+        current_burden: {value: UNKNOWN, basis: attention and comprehension burden were not measured}
+        failure_risk: {value: 4, basis: incomprehensible packets can undermine competent judgment}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: TRIGGER_NOT_ACTIVATED
+      confidence: MEDIUM
+      priority: DEFER
+      conditional_priority: P0_IF_SELECTED_PACKET_IS_SOLE_BASIS_FOR_A_HIGH_CONSEQUENCE_DECISION
+      missing_data_markers: [future_packet_size, decision_consequence, usability_evidence]
+      neutral_capability_need_class: HUMAN_JUDGMENT_REQUIRED
+      authority_boundary: Usability review cannot make the Owner decision or accept risk.
+
+    - gap_id: GAP-011
+      original_label: Transition-specific recovery and continuity evidence
+      correction_action: CONDITIONALLY_DEFERRED
+      statement_label: VERIFIED_FACT
+      classification: TRIGGER_GATED_RESEARCH_REQUIREMENT
+      correction: Recovery evidence is transition-specific and cannot be universal P0 before a transition and effects are selected.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: no bounded governed transition is selected or rehearsed}
+        current_burden: {value: UNKNOWN, basis: recovery surface and rehearsal cost are unknown}
+        failure_risk: {value: 5, basis: repository restoration cannot reverse disclosure reliance communication or spent cost}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: TRIGGER_NOT_ACTIVATED
+      confidence: HIGH_FOR_TRIGGER_DEPENDENCY_ZERO_FOR_SELECTED_TRANSITION
+      priority: DEFER
+      conditional_priority: P0_IF_SELECTED_TRANSITION_HAS_MATERIAL_RESIDUAL_OR_IRREVERSIBLE_EFFECTS
+      missing_data_markers: [transition, provider, residual_effects, recovery_objectives, rehearsal_evidence]
+      neutral_capability_need_class: RESEARCH_REQUIRED
+      authority_boundary: C2 selects or rehearses no transition and accepts no residual risk.
+
+    - gap_id: GAP-012
+      original_label: Exact clause-by-effect implementation coverage evidence
+      correction_action: RETAINED_WITH_PROMINENT_ZERO_COVERAGE_BASELINE
+      statement_label: VERIFIED_FACT
+      classification: REQUIREMENT_WITHOUT_IMPLEMENTATION
+      correction: Requirement mapping remains analysis only; KGR-006-R1 found zero ER-001 through ER-020 fully supported by implementation evidence.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: no implementation coverage assessment exists for a selected transition}
+        current_burden: {value: UNKNOWN, basis: exact transition and control set are unselected}
+        failure_risk: {value: 5, basis: omitted effects or weak evidence can overstate governed capability}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: PROVISIONAL_FOR_LATER_AUTHORIZED_IMPLEMENTATION_ASSESSMENT
+      confidence: HIGH_FOR_ZERO_BASELINE_ZERO_FOR_FUTURE_IMPLEMENTATION_COVERAGE
+      priority: P1_FIRST_APPROVED_IMPLEMENTATION_INCREMENT
+      conditional_priority: NOT_APPLICABLE
+      missing_data_markers: [exact_transition, effects, controls, independent_evidence, coverage_result]
+      neutral_capability_need_class: QUERY_CAPABILITY_CANDIDATE
+      authority_boundary: C2 selects no controls and claims no implementation coverage.
+
+    - gap_id: GAP-013
+      original_label: Exact retrospective effort and cost reconstruction
+      correction_action: REJECTED
+      statement_label: REJECTED
+      classification: NOT_A_GAP
+      correction: Unavailable history is a missing-data boundary, not a capability gap; prospective ER-017 evidence is separate.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: requests for unavailable reconstruction are not durably counted}
+        current_burden: {value: UNKNOWN, basis: no reliable reconstruction effort can be estimated}
+        failure_risk: {value: 4, basis: invented precision would corrupt audit evidence}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: NOT_APPLICABLE_NOT_A_GAP
+      confidence: HIGH
+      priority: REJECT
+      conditional_priority: NOT_APPLICABLE
+      missing_data_markers: [historical_tokens, duration, cost, tool_calls, retries, model_runs, human_time]
+      neutral_capability_need_class: STOP_DOING
+      authority_boundary: No actor may reconstruct unavailable metrics as historical fact.
+
+    - gap_id: GAP-014
+      original_label: Absence of a new framework, graph or workflow platform
+      correction_action: REJECTED
+      statement_label: REJECTED
+      classification: NOT_A_GAP
+      correction: Absence of a named technology remains no controlling failure; no-new-tool remains mandatory in any later authorized comparison.
+      evidence_priority:
+        frequency: {value: UNKNOWN, basis: no framework-caused failure is recorded}
+        current_burden: {value: UNKNOWN, basis: no candidate solution is in C2 scope}
+        failure_risk: {value: 3, basis: premature selection risks duplicate layers and maintenance}
+        score: UNKNOWN
+      preliminary_leverage: UNKNOWN
+      leverage_status: NOT_APPLICABLE_NOT_A_GAP
+      confidence: HIGH
+      priority: REJECT
+      conditional_priority: NOT_APPLICABLE
+      missing_data_markers: [candidate_mechanisms, comparative_evidence, maintenance_burden]
+      neutral_capability_need_class: STOP_DOING
+      authority_boundary: C2 performs no architecture, tool, graph or GOV-7 strategy selection.
+  requirement_coverage:
+    evidence_kind: REQUIREMENT_ANALYSIS_TRACEABILITY_ONLY
+    implementation_coverage_claimed: false
+    fully_supported_by_implementation_evidence: 0
+    mappings:
+      ER-001: [CAP-002, GAP-001]
+      ER-002: [GAP-005]
+      ER-003: [CAP-009, GAP-010]
+      ER-004: [GAP-005]
+      ER-005: [GAP-005]
+      ER-006: [GAP-005]
+      ER-007: [GAP-008]
+      ER-008: [CAP-009]
+      ER-009: [GAP-006]
+      ER-010: [CAP-003, CAP-008]
+      ER-011: [GAP-006]
+      ER-012: [GAP-009]
+      ER-013: [CAP-003, GAP-003]
+      ER-014: [GAP-006]
+      ER-015: [GAP-010]
+      ER-016: [CAP-004, GAP-004]
+      ER-017: [GAP-007]
+      ER-018: [GAP-004]
+      ER-019: [GAP-011]
+      ER-020: [GAP-012]
+  authority_boundary:
+    high_or_conditional_priority_is_not_implementation_authority: true
+    recommendations_accepted: false
+    risk_accepted: false
+    gov_7_activated: false
+    pass_02_authorized_or_executed: false
+    checkpoint_a_completed: false

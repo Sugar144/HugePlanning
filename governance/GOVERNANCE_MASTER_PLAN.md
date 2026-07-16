@@ -13,7 +13,7 @@ This is the governance-specific roadmap. It complements the existing S0a–S9 im
 | GOV-4 Designer revision and adversarial closure | `COMPLETED` — KGR-005 imported with `CLOSURE_CONFIRMED` and one validated Controller transition |
 | GOV-5 Enforcement analysis and derived governance requirements | `COMPLETED / CLOSED` — KGR-006-R1 accepted by the Project Owner; closure review evidence retained |
 | GOV-6 Human ratification | `COMPLETED / CLOSED` — Project Owner ratified exact Kernel `0.2.0` under OD-004; no enforceability or implementation claim |
-| GOV-7 Minimum executable governance bootstrap | `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY` — minimum package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`; GOV-AUD-001 PASS-01 is executed and validated pending Project Owner disposition, with PASS-02 unexecuted |
+| GOV-7 Minimum executable governance bootstrap | `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY` — minimum package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`; GOV-AUD-001 PASS-01 is `PASS_01_ACCEPTED_COMPLETED`, while PASS-02 remains unexecuted and unauthorized |
 | GOV-8 Honest S0a–S1 adoption and regularization | `PLANNED` |
 | GOV-9 S2 governed pilot | `PLANNED` |
 | GOV-10 Continuous governance evolution | `PLANNED` |
@@ -133,7 +133,7 @@ governance_state:
 - Role/owner: authorized governance implementation roles and repository owner.
 - Entry conditions: ratified Kernel and explicit write paths/task contract.
 - Completion gate: minimum controls pass deterministic and appropriate independent validation; enforceability claims remain claim-specific.
-- Current status: `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`; the minimum package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`. GOV-AUD-001 PASS-01 is `EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION`, exactly one pass is executed, PASS-02 remains unexecuted and CHECKPOINT-A remains pending. OD-005 accepts direction only; every later audit pass and any material GOV-7 design or implementation require separate authority.
+- Current status: `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`; the minimum package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`. GOV-AUD-001 PASS-01 is `PASS_01_ACCEPTED_COMPLETED` following the exact independently confirmed C3 evidence, exactly one pass is executed, PASS-02 remains unexecuted and unauthorized, and CHECKPOINT-A remains pending Project Owner disposition. R1, C1, C2 and C3 remain immutable. This bounded acceptance selects no architecture, technology, tool, self-hosting model or GOV-7 strategy; OD-005 accepts direction only, and every later audit pass and any material GOV-7 design or implementation require separate authority.
 - Dependencies: GOV-6.
 - Explicit non-goals: a complete future governance platform, unauthorized runtime edits, or operational/maturity claims.
 

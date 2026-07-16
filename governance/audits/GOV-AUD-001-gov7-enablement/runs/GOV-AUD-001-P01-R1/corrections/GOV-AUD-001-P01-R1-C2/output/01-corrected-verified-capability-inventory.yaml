@@ -1,0 +1,422 @@
+capability_inventory:
+  audit_id: GOV-AUD-001
+  source_run_id: GOV-AUD-001-P01-R1
+  correction_id: GOV-AUD-001-P01-R1-C2
+  pass_id: PASS-01
+  status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+  method: IMPLEMENTATION_OR_EXECUTION_EVIDENCE_ONLY_AGGREGATED_BY_CAPABILITY_FAMILY
+  starting_head: 22b66c97851316b4c461077f057fc3f1bc2de851
+  capability_family_count: 14
+  classification_vocabulary:
+    - EXISTING_IMPLEMENTED_CAPABILITY
+    - EXISTING_EXECUTED_CAPABILITY
+    - PARTIAL_CAPABILITY
+    - PLANNED_ONLY_NOT_CAPABILITY
+    - HISTORICAL_CAPABILITY_SUPERSEDED_BY_CURRENT_IMPLEMENTATION
+  authority_boundary:
+    gov_7_implementation_claimed: false
+    runtime_modified: false
+    planning_or_product_modified: false
+    requirement_coverage_is_implementation_coverage: false
+  capability_families:
+    - capability_id: CAP-001
+      label: Material prompt custody and deterministic identity validation
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_IMPLEMENTED_CAPABILITY
+      layer: GOVERNANCE_LOCAL
+      owning_components:
+        - governance/prompts/orchestration
+        - governance/tools/validate_prompts.py
+        - governance/ARTIFACT_REGISTRY.yaml
+      evidence_paths:
+        - governance/tools/validate_prompts.py
+        - governance/ARTIFACT_REGISTRY.yaml
+      current_use: Versioned prompts are registered with unique identities, lifecycle vocabulary, custody paths and execution boundaries.
+      limitations:
+        - Custody does not prove execution quality, comprehension, competent authority or acceptance.
+        - Formal-run prompt snapshots still require run-specific manifest and authorization binding.
+      reuse_boundary: REUSE_EXISTING_CATALOGUE_AND_VALIDATOR_WITH_RUN_SPECIFIC_BINDING
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - duplicate prompt catalogues
+        - semantic review of exact prompt identity and hash facts
+
+    - capability_id: CAP-002
+      label: Specialized prospective formal-run authorization and custody
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: GOVERNANCE_LOCAL
+      owning_components:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction
+        - governance/tools/prepare_enforcement_correction.py
+        - governance/skills/formal-governance-run-preparer/SKILL.md
+      evidence_paths:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/run-manifest.yaml
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/input-inventory.yaml
+        - governance/tools/prepare_enforcement_correction.py
+        - governance/skills/formal-governance-run-preparer/SKILL.md
+      current_use: KGR-006-R1 demonstrates prospective authorization, exact package and prompt binding, a one-execution limit and terminal consumption.
+      limitations:
+        - The demonstrated preparation and gate are specialized to KGR-006-R1.
+        - Human authority, competence and semantic sufficiency are not machine-settleable.
+        - One specialized execution does not demonstrate a need for one generic lifecycle gate.
+      reuse_boundary: REUSE_PRIMITIVES_AND_SPECIALIZED_PATTERN_WITHOUT_INFERRING_GENERICIZATION
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - KGR-006-R1 prospective correction custody
+        - exact one-execution authorization accounting for that workflow
+
+    - capability_id: CAP-003
+      label: Safe package, hash, strict parsing, import and byte-identity validation
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: GOVERNANCE_LOCAL
+      owning_components:
+        - governance/tools/validate_run_package.py
+        - governance/reviews/phase-2-4-formal-result-import
+        - governance/reviews/kgr-006-r1-controlled-import-and-owner-review
+      evidence_paths:
+        - governance/tools/validate_run_package.py
+        - governance/reviews/phase-2-4-formal-result-import/kgr-005-import-validation-v0.1.0.yaml
+        - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml
+      current_use: Named profiles validate safe members, hashes, structured syntax, schemas, selected parity and byte-identical imports.
+      limitations:
+        - Profiles are work-unit-specific, not universal.
+        - Hash equality proves byte identity, not freshness, correctness or semantic fidelity.
+      reuse_boundary: REUSE_DETERMINISTIC_CORE_AND_ADD_ONLY_DECLARED_PROFILE_CHECKS
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - generic hashing and exact member counting
+        - safe ZIP and import byte comparison for declared profiles
+
+    - capability_id: CAP-004
+      label: Narrow Controller transition, dry-run, persistence and replay
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: GOVERNANCE_LOCAL
+      owning_components:
+        - governance/tools/apply_loop_transition.py
+        - governance/runs/KGR-005-kernel-adversary-targeted-closure
+      evidence_paths:
+        - governance/tools/apply_loop_transition.py
+        - governance/runs/KGR-005-kernel-adversary-targeted-closure/run-manifest.yaml
+        - governance/learning/records/HP-FAIL-008.yaml
+        - governance/learning/records/HP-FAIL-009.yaml
+        - governance/learning/records/HP-FAIL-013.yaml
+      current_use: One allowed kernel-closure transition has dry-run, apply, counter, guard and replay evidence.
+      limitations:
+        - It is not a general project, audit, recovery or GOV-7 workflow engine.
+        - Its corrected failures demonstrate why reuse must preserve canonical-path and replay invariants.
+      reuse_boundary: REUSE_NARROW_INVARIANTS_NOT_PLATFORM_SCOPE
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - the already executed KGR-005 closure transition
+        - need to introduce a general workflow engine for that transition
+
+    - capability_id: CAP-005
+      label: Governance-state and audit-lifecycle reconciliation
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: GOVERNANCE_LOCAL
+      owning_components:
+        - governance/tools/validate_governance_state.py
+        - governance/tools/validate_audit_scaffold.py
+        - governance/tests/test_gov_7_audit_scaffold.py
+      evidence_paths:
+        - governance/tools/validate_governance_state.py
+        - governance/tools/validate_audit_scaffold.py
+        - governance/tests/test_gov_7_audit_scaffold.py
+        - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/manifest.yaml
+        - governance/learning/records/HP-FAIL-021.yaml
+      historical_capability_at_r1_execution:
+        classification: HISTORICAL_CAPABILITY_SUPERSEDED_BY_CURRENT_IMPLEMENTATION
+        fact: The audit validator validated only the planning scaffold and rejected instantiated run artifacts; the separate governance-state validator reconciled the then-current KGR-006-R1 through OD-005 history.
+        limitation: PASS-01 publication exposed three full-suite failures because the audit lifecycle contract froze the bootstrap snapshot.
+      current_capability_after_c1:
+        classification: EXISTING_EXECUTED_CAPABILITY
+        fact: C1 validates both the coherent zero-pass planning state and the one-executed-PASS-01 state with C1 custody, while preserving non-acceptance, pending checkpoint, inactive GOV-7 and immutable R1 outputs.
+      remaining_demonstrated_residual_gap:
+        classification: PARTIAL_CAPABILITY
+        fact: Both validators remain bounded to declared repository histories and require explicit profile extension when a new status-bearing lifecycle surface is introduced.
+        post_c1_failure_frequency: UNKNOWN_NO_OBSERVED_SAMPLE
+      current_use: Deterministically reconciles the ratified Kernel/GOV-5/GOV-6/GOV-7 baseline and the planning plus one-pass audit lifecycle.
+      limitations:
+        - It does not implement a generic lifecycle projection.
+        - It cannot decide acceptance, checkpoint sufficiency, authority or phase activation.
+      reuse_boundary: EXTEND_DECLARED_INVARIANTS_ONLY_FOR_AN_AUTHORIZED_NEW_REACHABLE_STATE
+      existed_at_r1_execution: true
+      added_by_c1: true
+      apparent_gaps_already_solves:
+        - the historical planning-only audit-validator limitation
+        - manual validation of the exact current PASS-01/C1 lifecycle
+
+    - capability_id: CAP-006
+      label: Validated append-only learning lifecycle
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: GOVERNANCE_LOCAL
+      owning_components:
+        - governance/learning
+        - governance/tools/manage_learning.py
+      evidence_paths:
+        - governance/tools/manage_learning.py
+        - governance/learning/FAILURE_AND_LESSONS_INDEX.md
+        - governance/learning/records/HP-FAIL-021.yaml
+      current_use: Structured base records, append-only events and a generated index preserve failure, cause, correction, evidence limits and validation status.
+      limitations:
+        - Generated views are discovery aids, not independent causal analysis.
+        - Historical token, duration, cost and Owner-time values remain unavailable.
+      reuse_boundary: REUSE_CANONICAL_RECORD_EVENT_AND_INDEX_TOOLING
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - parallel failure logs
+        - retrospective invention of uncaptured metrics
+
+    - capability_id: CAP-007
+      label: Review packaging, formal-run preparation and controlled import workflows
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: GOVERNANCE_LOCAL
+      owning_components:
+        - governance/tools/build_review_bundle.py
+        - governance/skills/formal-governance-run-preparer/SKILL.md
+        - governance/skills/governance-result-importer/SKILL.md
+        - governance/skills/governance-review-packager/SKILL.md
+      evidence_paths:
+        - governance/tools/build_review_bundle.py
+        - governance/skills/formal-governance-run-preparer/SKILL.md
+        - governance/skills/governance-result-importer/SKILL.md
+        - governance/skills/governance-review-packager/SKILL.md
+      current_use: Existing bounded workflows supported KGR-005 import and KGR-006-R1 preparation and review custody.
+      limitations:
+        - Orchestration does not perform independent semantic judgment.
+        - Existing profiles remain bounded to named repository work units.
+      reuse_boundary: CHECK_AND_REUSE_BEFORE_CREATING_NEW_ORCHESTRATION
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - duplicate review-bundle and result-import procedures for supported profiles
+
+    - capability_id: CAP-008
+      label: Canonical route and derived-requirement accounting
+      statement_label: VERIFIED_FACT
+      classification: PARTIAL_CAPABILITY
+      layer: GOVERNANCE_LOCAL
+      owning_components:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs
+      evidence_paths:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/02-existing-capability-inventory.md
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/03-feasibility-coverage-and-gap-assessment.md
+      current_use: Provides unique ER-001 through ER-020 records, 46 canonical clause-route pairs and four specialist dependencies as bounded requirements analysis.
+      implementation_evidence_summary:
+        fully_supported: 0
+        partial: 7
+        gap: 9
+        dependent_on_specialist: 3
+        dependent_on_provider_test: 1
+      limitations:
+        - Zero of ER-001 through ER-020 was fully supported by implementation evidence in KGR-006-R1.
+        - Requirements and relationship accounting are not implementation coverage.
+      reuse_boundary: REUSE_AS_REQUIREMENT_INPUT_ONLY_AND_REQUIRE_NEW_IMPLEMENTATION_EVIDENCE_FOR_COVERAGE
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - regeneration of the accepted 20-requirement and 46-pair analysis
+
+    - capability_id: CAP-009
+      label: Independent-evaluation and Project Owner decision custody
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: GOVERNANCE_LOCAL
+      owning_components:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation
+        - governance/reviews
+      evidence_paths:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/02-independent-evaluation-report.md
+        - governance/reviews/kgr-006-r1-controlled-import-and-owner-review/project-owner-decision-record-v0.2.0.yaml
+        - governance/reviews/gov-6-ratification/kernel-ratification-decision-record-v0.1.0.yaml
+        - governance/reviews/gov-7-direction/od-005-gov-7-direction-decision-record-v0.1.0.yaml
+      current_use: Separates deterministic validation, independent suitability, Owner acceptance, ratification and direction decisions.
+      limitations:
+        - Presence of records cannot prove comprehension or substitute for competent judgment.
+        - No existing decision accepts C2, authorizes PASS-02, resolves OD-006 or activates GOV-7.
+      reuse_boundary: RETAIN_SEPARATE_INDEPENDENT_AND_OWNER_GATES
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - conflation of validation, evaluation, acceptance, ratification and implementation
+
+    - capability_id: CAP-010
+      label: Atomic client-repository bootstrap and methodology-lock binding
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: RUNTIME_LOCAL
+      owning_components:
+        - scripts/new-client.sh
+        - templates/client-repo
+        - schemas/methodology-lock.schema.json
+      evidence_paths:
+        - scripts/new-client.sh
+        - templates/client-repo/project.yaml
+        - templates/client-repo/methodology.lock.yaml
+        - schemas/methodology-lock.schema.json
+        - tests/run-tests.sh
+        - reports/experiments/s0a/EXPERIMENT_S0A_REPORT.md
+      current_use: Builds in staging, binds full methodology commit and version, validates before the initial commit, refuses non-empty targets and publishes only a clean one-commit client repository.
+      limitations:
+        - Remote repository creation, push and branch protection remain manual external steps.
+        - Lock upgrade automation is not implemented at the released stage.
+      reuse_boundary: REUSE_FOR_CLIENT_BOOTSTRAP_WITHOUT_REBUILDING_LOCK_OR_ATOMIC_STAGING_LOGIC
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - duplicate client-tree assembly
+        - committing an invalid generated client
+        - lock binding to dirty methodology bytes
+
+    - capability_id: CAP-011
+      label: Clean-checkout, guarded session launch, methodology drift and deny protection
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: CROSS_LAYER
+      owning_components:
+        - scripts/check-methodology-clean.sh
+        - scripts/start-agent.sh
+        - scripts/lib/check-deny-rules.py
+        - templates/client-repo/.claude/settings.json
+      evidence_paths:
+        - scripts/check-methodology-clean.sh
+        - scripts/start-agent.sh
+        - scripts/lib/check-deny-rules.py
+        - templates/client-repo/.claude/settings.json
+        - tests/run-tests.sh
+        - reports/experiments/s0a/EXPERIMENT_S0A_REPORT.md
+      current_use: Refuses dirty methodology launch, validates the client before launch, verifies agent presence, warns on lock mismatch, attaches methodology read-only and detects post-session methodology drift; template deny rules block Write/Edit tool paths.
+      limitations:
+        - Deny rules do not constrain arbitrary subprocess writes; the before/after drift guard is compensating detection.
+        - A lock mismatch is a warning, not a hard refusal.
+      reuse_boundary: REUSE_THE_LAUNCH_ENTRYPOINT_AND_GUARDS_FOR_SUPPORTED_CLIENT_SESSIONS
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - unvalidated client-session launch
+        - silent dirty-methodology launch
+        - undetected methodology drift at the launcher boundary
+
+    - capability_id: CAP-012
+      label: Progressive client validation with schemas, IDs/references and profile-aware presence
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: RUNTIME_LOCAL
+      owning_components:
+        - scripts/validate.sh
+        - scripts/lib/schema-validate.py
+        - scripts/lib/check-ids.py
+        - schemas
+      evidence_paths:
+        - scripts/validate.sh
+        - scripts/lib/schema-validate.py
+        - scripts/lib/check-ids.py
+        - schemas/project.schema.json
+        - schemas/methodology-lock.schema.json
+        - schemas/open-questions.schema.json
+        - schemas/requirements.schema.json
+        - schemas/solution-context.schema.json
+        - schemas/interview-state.schema.json
+        - schemas/handoff.schema.json
+        - tests/run-tests.sh
+        - CHANGELOG.md
+      current_use: One progressive validator enforces required structure, deny rules, locked schemas, dynamic interview/handoff instances, duplicate and dangling ID rules, counters, handoff filename identity and discovery artifacts after the G1 boundary.
+      limitations:
+        - Profile matrix v0 covers discovery rows only.
+        - References to later-stage registries are intentionally deferred until those schemas exist.
+      reuse_boundary: EXTEND_THE_EXISTING_PROGRESSIVE_VALIDATOR_AT_THE_FIRST_REAL_CONSUMER
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - separate replacement validators for S0a and S0b
+        - schema, current ID/reference and discovery-profile checks delegated to free-form review
+
+    - capability_id: CAP-013
+      label: Read-only derived client status reporting
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: RUNTIME_LOCAL
+      owning_components:
+        - scripts/status.sh
+        - scripts/lib/derive-status.py
+      evidence_paths:
+        - scripts/status.sh
+        - scripts/lib/derive-status.py
+        - tests/run-tests.sh
+        - CHANGELOG.md
+      current_use: Derives stage, latest gate records, requirement status histogram, question/contradiction counts and pending risk triggers without writing a second state store.
+      limitations:
+        - It reports available artifacts and does not validate them.
+        - Later-stage dashboard rows are not implemented.
+      reuse_boundary: REUSE_DERIVED_VIEW_AND_KEEP_SOURCE_FACTS_IN_CANONICAL_ARTIFACTS
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - duplicated stored dashboard state for the released S0b surface
+
+    - capability_id: CAP-014
+      label: Runtime deterministic suite, smoke checks, CI and bounded scenario evidence
+      statement_label: VERIFIED_FACT
+      classification: EXISTING_EXECUTED_CAPABILITY
+      layer: CROSS_LAYER
+      owning_components:
+        - tests/run-tests.sh
+        - scripts/spk-01-smoke-check.sh
+        - .github/workflows/methodology-ci.yml
+        - reports/experiments/s0a/EXPERIMENT_S0A_REPORT.md
+        - product
+      evidence_paths:
+        - tests/run-tests.sh
+        - scripts/spk-01-smoke-check.sh
+        - .github/workflows/methodology-ci.yml
+        - reports/experiments/s0a/EXPERIMENT_S0A_REPORT.md
+        - product/requirements.yaml
+        - product/backlog.yaml
+        - CHANGELOG.md
+      current_use: The deterministic suite exercises syntax, schema meta-validation, valid/invalid fixtures, bootstrap, progressive-validator red/green cases, status derivation, launch guards, deny behavior with a fake runtime and product-support integrity; SPK-01 has recorded live agent, skill, context and deny checks.
+      limitations:
+        - S1 interviewer scenarios TASK-016 through TASK-021 remain backlog items and are not execution evidence.
+        - Historical SPK-01 context loading includes a model self-report limitation.
+        - CI configuration is implementation; this correction does not independently verify every historical remote CI run.
+      reuse_boundary: REUSE_CURRENT_SUITE_AND_ADD_SCENARIOS_ONLY_WHEN_THEIR_RUNTIME_CAPABILITY_EXISTS
+      existed_at_r1_execution: true
+      added_by_c1: false
+      apparent_gaps_already_solves:
+        - rebuilding S0a/S0b regression coverage
+        - treating S1 planned scenarios as implemented evidence
+  non_capability_boundaries:
+    - item_id: NCB-001
+      statement_label: VERIFIED_FACT
+      classification: PLANNED_ONLY_NOT_CAPABILITY
+      item: S1 client-discovery production skills, agent replacement and six behavioral scenarios.
+      evidence_paths:
+        - product/requirements.yaml
+        - product/backlog.yaml
+      boundary: TASK-010 through TASK-013 and TASK-015 through TASK-021 are backlog work; TASK-014 is cancelled after decomposition. Their task descriptions and templates are not implementation or execution evidence.
+    - item_id: NCB-002
+      statement_label: VERIFIED_FACT
+      classification: PLANNED_ONLY_NOT_CAPABILITY
+      item: Planning, roadmap and unexecuted template descriptions outside the released runtime.
+      evidence_paths:
+        - README.md
+        - product/README.md
+      boundary: Described future behavior is not a current capability unless supported by implementation or execution evidence above.
+    - item_id: NCB-003
+      statement_label: VERIFIED_FACT
+      classification: PARTIAL_CAPABILITY
+      item: ER-001 through ER-020 requirement accounting.
+      evidence_paths:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+      boundary: KGR-006-R1 found zero of the 20 requirements fully supported by implementation evidence; requirement coverage mappings in C2 do not change that fact.

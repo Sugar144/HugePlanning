@@ -1,0 +1,178 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-022
+  date: '2026-07-16'
+  recorded_on: '2026-07-16'
+  title: PASS-01 outputs became stale after lifecycle correction and omitted material
+    implemented runtime capabilities
+  context:
+    phase: GOV-7 audit preparation
+    run: GOV-AUD-001-P01-R1-C2
+    component: PASS-01 capability inventory, gap ranking and handoff
+    branch: governance/kernel-designer-revision-v0.1
+    commit: 22b66c97851316b4c461077f057fc3f1bc2de851
+    environment: Project Owner evidence review of validated but unaccepted PASS-01
+      outputs after C1
+  primary_classification: OWNER_CORRECTION
+  classification:
+  - OWNER_CORRECTION
+  - PROCESS_DEFECT
+  severity: HIGH
+  status: CORRECTED
+  expected_behavior: PASS-01 outputs remain current enough for disposition, inspect
+    all materially relevant implemented or execution-backed repository surfaces, and
+    separate a demonstrated failure from any generalized solution proposition.
+  observed_behavior: The validated outputs retained a planning-only validator description
+    after C1, excluded most released runtime and product-support implementation evidence,
+    generalized one prospective-custody failure into a generic-gate gap, aggregated
+    distinct parity problems, overstated unconditional priorities and qualified source-rereading
+    too broadly.
+  impact: PASS-01 could not be accepted or used for PASS-02 disposition because its
+    capability baseline, residual gaps, ranking semantics and handoff reservations
+    were materially incomplete or stale; no recommendation or later-pass authority
+    was accepted.
+  detection_method: Project Owner evidence review returned PASS-01 for the six bounded
+    substantive defects preserved in GOV-AUD-PROMPT-013 and GOV-AUD-CORR-AUTH-002.
+  root_cause:
+    immediate: The original input manifest excluded released runtime surfaces, and
+      the immutable outputs were not re-baselined after C1 changed the audit validator
+      lifecycle.
+    systemic: Capability-audit scope and correction semantics did not require a post-change
+      freshness check or explicit separation of observed failure, specialized correction
+      and generalized capability need before ranking.
+    contributing_factors:
+    - Requirement-analysis coverage was easy to read as stronger than the documented
+      zero fully supported implementation baseline.
+    - Heterogeneous validation failures were grouped under one parity label before
+      determining their distinct controlling sources and smallest responses.
+    - Trigger-gated specialist and transition needs reused unconditional priority
+      language.
+  response:
+    containment: Keep PASS-01 unaccepted, preserve R1 and C1 byte-identically, prohibit
+      PASS-02 and GOV-7 progression, and create a new versioned correction rather
+      than rewriting historical output.
+    correction: Create C2 with an expanded implementation-backed capability inventory,
+      C1 lifecycle re-baseline, narrowed GAP-001, split GAP-003, corrected leverage
+      and trigger semantics, qualified rereading rule and explicit zero-of-20 implementation
+      baseline.
+    prevention:
+    - Every capability audit must inspect current released implementation and execution
+      evidence across all materially relevant repository layers, not only the initiating
+      governance package.
+    - Re-run freshness checks when implementation or validators change after an analytical
+      output is produced.
+    - Separate observed failure, specialized existing capability and generalized solution
+      proposition before scoring or recommending reuse.
+    - Split heterogeneous failure classes before selecting a smallest sufficient response.
+    - Express provider, legal, recovery and usability priorities as trigger- and scope-conditional.
+    accountable_owner: Project Owner
+    validation_required:
+    - Validate C2 prompt, authorization, input hashes, output hashes, evidence paths,
+      YAML, Markdown, IDs and ranking arithmetic.
+    - Verify all R1 outputs and all C1 artifacts remain byte-identical.
+    - Run focused audit lifecycle tests, prompt custody, learning, governance-state
+      and source-checksum validation.
+    - Run the complete governance suite and released runtime suite.
+    - Confirm no planning, product or released runtime substance changed and no authority
+      boundary advanced.
+  learning:
+    reusable_lesson: Capability audits must re-baseline after implementation changes
+      and distinguish demonstrated failures from specialized corrections and unproven
+      generalized solutions before ranking.
+    candidate_system_changes:
+    - VALIDATION
+    - TEST
+    - WORKFLOW_PATTERN
+    - DOCUMENTATION
+    applicable_future_phases:
+    - GOV-AUD-001 PASS-01 disposition
+    - Future capability audits
+    - Future audit corrections
+    - Any separately authorized PASS-02 preparation
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One bounded correction cycle, one corrected output set and the exact starting
+      repository state are observable; tokens, model-run count, elapsed time, cost,
+      tool calls and Owner minutes are unavailable.
+  evidence_refs:
+  - type: OWNER_STATEMENT
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/prompt/GOV-AUD-PROMPT-013-correct-pass-01-substantive-outputs-v0.1.0.md
+    anchor: Project Owner authorization and DEFECT-01 through DEFECT-06
+    sha256: 0075610713cf0ce9dbb530693bdb518a509098e3bfd6b4c0af3694f12d78d1a0
+    availability: PRESERVED
+    note: Exact correction prompt and evidence-review disposition.
+  - type: RUN_ARTIFACT
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/01-corrected-verified-capability-inventory.yaml
+    anchor: corrected capability families and CAP-005 timeline
+    sha256: d099e9bcbec6b5fc27e405759360909b9c29c982b6faed3465d75148bc0047b9
+    availability: PRESERVED
+    note: Adds current runtime evidence and distinguishes R1, C1 and residual capability.
+  - type: RUN_ARTIFACT
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/03-corrected-ranked-gap-register.yaml
+    anchor: corrected GAP-001 through GAP-014
+    sha256: d79018cb99728edac9095698e2a91f3b5d9d49ab62229f371d0482408927f5f0
+    availability: PRESERVED
+    note: Narrows GAP-001, splits GAP-003 and corrects trigger and leverage semantics.
+  - type: RUN_ARTIFACT
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/manifest.yaml
+    anchor: C1 current validator capability and immutable-output proof
+    sha256: f1b5c2c5b60761907999ea86bfb10da4d505aae71bacebb7583a15bdaa0ce857
+    availability: PRESERVED
+    note: Demonstrates that validation capability changed after the R1 outputs.
+  related_records:
+  - HP-FAIL-014
+  - HP-FAIL-015
+  - HP-FAIL-016
+  - HP-FAIL-021
+  subfindings:
+  - title: Stale post-C1 claims
+    description: The R1 handoff continued to describe the audit validator as planning-only
+      after C1 implemented and validated the one-pass lifecycle.
+    evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tools/validate_audit_scaffold.py
+      anchor: planning-only and one-pass lifecycle validation at starting HEAD
+      sha256: 4342e31f7965a57aa3e7cd5b87016aaae5d3febabee4b0e02a01c8aac9b03a6f
+      availability: PRESERVED
+      note: Current implementation evidence superseding the historical limitation.
+  - title: Incomplete capability scope
+    description: The R1 input manifest explicitly excluded runtime and product surfaces
+      even though released client bootstrap, guards, validation, status, smoke and
+      test mechanisms materially affect gap and burden conclusions.
+    evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: README.md
+      anchor: released methodology runtime map and operations
+      sha256: 6efdbdc0a5cb129abffb6e5a24fef7a6c547ecc7ba19cf925366804d448e2110
+      availability: PRESERVED
+      note: Current released-runtime orientation and capability map.
+    - type: REPOSITORY_PATH
+      locator: tests/run-tests.sh
+      anchor: deterministic runtime suite
+      sha256: cc8e729a3d3543c57dbf75ba9cd0bbe8065fc17741af7b41751735f47a2a6dc9
+      availability: PRESERVED
+      note: Execution-backed runtime validation and bounded scenario surface.
+  - title: Demonstrated failure was not separated from generalized solution
+    description: One preserved KGR-006 custody failure and one specialized KGR-006-R1
+      correction do not establish that all materially distinct workflows require one
+      generic lifecycle gate.
+    evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/learning/records/HP-FAIL-014.yaml
+      anchor: one preserved KGR-006 prospective-custody failure
+      sha256: 3133b728fd5c265ac25e478156a914522d4a12cc67aed16280145e446fd30d17
+      availability: PRESERVED
+      note: Failure evidence retained without genericization.
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

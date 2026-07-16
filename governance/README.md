@@ -16,7 +16,7 @@ Raw sources show what was received. Run directories reconstruct what a function 
 
 The current Kernel is `0.2.0 / RATIFIED` for HugePlanning level 3 under the Kernel scope rules. GOV-0 through GOV-6 are complete; KGR-005 completed with `CLOSURE_CONFIRMED`, and KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, OD-004 as `RATIFY_EXACT_KERNEL_0_2_0`, and OD-005 as `ACCEPT_MINIMUM_GOV_7_DIRECTION`; OD-006 remains unresolved trigger-gated. GOV-7 is `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`; GOV-8 and GOV-9 are inactive. The minimum GOV-7 package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`; no risk is accepted and no enforcement implementation has occurred.
 
-GOV-AUD-001 is in progress: PASS-01 is `EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION`, exactly one pass is executed, PASS-02 is unexecuted, CHECKPOINT-A is pending, and no audit finding or recommendation is accepted.
+GOV-AUD-001 remains in progress: PASS-01 is `PASS_01_ACCEPTED_COMPLETED` after the independently confirmed C3 evidence; exactly one pass is executed, PASS-02 is unexecuted and unauthorized, and CHECKPOINT-A is pending Project Owner disposition. The audit program is incomplete. No implementation recommendation or residual risk is accepted. R1, C1, C2 and C3 remain immutable.
 
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml
@@ -46,7 +46,7 @@ Methodology describes how governance work is performed; `runs/` records actual e
 
 The repository root and `.claude/`, `schemas/`, `scripts/`, `templates/`, and `tests/` contain or support the released methodology runtime. `product/` specifies in-flight methodology work, and `planning/v2/` is the existing product roadmap. This governance area complements those structures and does not replace or reorganize them.
 
-Governance has not been projected into runtime. Runtime or planning changes require a later explicit integration or adoption task. Existing S1 work continues independently.
+Governance has not been projected into runtime. C2 inspected the released runtime as evidence but did not modify or adopt it into governance. Runtime or planning changes require a later explicit integration or adoption task. Existing S1 work continues independently.
 
 ## Content classes
 

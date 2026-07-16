@@ -1,0 +1,14 @@
+independent_review:
+  review_id: GOV-AUD-001-P01-C2-IER-001
+  reviewed_candidate: GOV-AUD-001-P01-R1-C2
+  finding_id: GOV-AUD-001-P01-C2-IER-F001
+  result: RETURN_FOR_BOUNDED_VERSIONED_CORRECTION
+  source: PROJECT_OWNER_SUPPLIED_EXACT_REVIEW_OUTPUT
+  execution_origin: SEPARATELY_CONTROLLED_READ_ONLY_SESSION
+  import_status: IMPORTED_NOT_REEXECUTED
+  exact_result_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/GOV-AUD-001-P01-C2-IER-001/output/independent-review-result.md
+  exact_result_sha256: 03e9374f604a3d398e42b05d6040f4b66a598a5090b827ceb459f5742df3f7aa
+  import_authorization_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/GOV-AUD-001-P01-C2-IER-001/authorization/owner-import-authorization.yaml
+  import_authorization_sha256: 1f8bbcbc262ef59ebefc7d56c5a15b331237eccebe2a52257ea217c55172e4b7
+  validation_scope: CUSTODY_AND_HASH_BINDING_ONLY
+  independently_revalidated: false

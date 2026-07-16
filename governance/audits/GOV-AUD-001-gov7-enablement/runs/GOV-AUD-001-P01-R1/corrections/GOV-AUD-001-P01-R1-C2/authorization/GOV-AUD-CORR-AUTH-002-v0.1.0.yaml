@@ -1,0 +1,85 @@
+authorization:
+  authorization_id: GOV-AUD-CORR-AUTH-002
+  correction_id: GOV-AUD-001-P01-R1-C2
+  version: 0.1.0
+  evidence_class: CONTEMPORANEOUS_PROJECT_OWNER_CORRECTION_AUTHORIZATION_AND_EVIDENCE_REVIEW_DISPOSITION
+  authority: PROJECT_OWNER
+  status: AUTHORIZED_FOR_ONE_BOUNDED_SUBSTANTIVE_CORRECTION
+  source_audit_id: GOV-AUD-001
+  source_pass_id: PASS-01
+  source_run_id: GOV-AUD-001-P01-R1
+  prior_correction_id: GOV-AUD-001-P01-R1-C1
+  role: Repository Capability and Gap Audit Corrector
+  mode: BOUNDED_SUBSTANTIVE_OUTPUT_CORRECTION
+  execution_count_limit: 1
+  execution_count_consumed: 0
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_local_head: 22b66c97851316b4c461077f057fc3f1bc2de851
+  starting_remote_head: 22b66c97851316b4c461077f057fc3f1bc2de851
+  local_remote_aligned_at_start: true
+  clean_worktree_and_empty_staging_at_start: true
+  evidence_review_disposition:
+    result: RETURN_PASS_01_FOR_BOUNDED_SUBSTANTIVE_CORRECTION
+    pass_01_accepted: false
+    defects:
+      - DEFECT-01_STALE_POST_C1_CAPABILITY_DESCRIPTION
+      - DEFECT-02_MATERIALLY_INCOMPLETE_CAPABILITY_SCOPE
+      - DEFECT-03_GAP_001_OVERGENERALIZATION
+      - DEFECT-04_GAP_003_OVERAGGREGATION
+      - DEFECT-05_RANKING_AND_TRIGGER_SEMANTICS
+      - DEFECT-06_OVERBROAD_STOP_REREADING_RECOMMENDATION
+    source_evidence: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/prompt/GOV-AUD-PROMPT-013-correct-pass-01-substantive-outputs-v0.1.0.md
+  prompt_identity: GOV-AUD-PROMPT-013/0.1.0
+  catalog_prompt_identity: HP-PROMPT-026/0.1.0
+  prompt_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/prompt/GOV-AUD-PROMPT-013-correct-pass-01-substantive-outputs-v0.1.0.md
+  prompt_sha256: 0075610713cf0ce9dbb530693bdb518a509098e3bfd6b4c0af3694f12d78d1a0
+  prior_authorizations:
+    - authorization_id: GOV-AUD-AUTH-001
+      status: CONSUMED_1_OF_1_NONE_REMAINING
+      reusable: false
+    - authorization_id: GOV-AUD-CORR-AUTH-001
+      status: CONSUMED_1_OF_1_NONE_REMAINING
+      reusable: false
+  authorized_actions:
+    - inspect repository evidence read-only
+    - create one versioned substantive correction with four corrected outputs
+    - perform bounded corrective analysis for the six named defects
+    - perform deterministic validation
+    - update directly necessary audit lifecycle, registry, state, learning, validator and regression-test surfaces
+    - modify the local worktree within the declared write scope
+  authorized_write_scope:
+    - governance/audits/GOV-AUD-001-gov7-enablement/**
+    - governance/tools/validate_audit_scaffold.py
+    - governance/tests/test_gov_7_audit_scaffold.py
+    - governance/prompts/orchestration/**
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/learning/**
+    - governance/CURRENT_STATE.md
+    - governance/GOVERNANCE_MASTER_PLAN.md
+    - governance/README.md
+    - directly affected governance state or checksum surfaces required by deterministic validation
+  immutable_evidence:
+    original_pass_01_outputs:
+      - path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/01-verified-capability-inventory.yaml
+        sha256: 0e1ae26cfd8201e781768eec81045c056b1bc1cd557b0ab1f9fbcae1d47cb124
+      - path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/02-repetition-waste-and-burden-analysis.md
+        sha256: 57cbd6fc8d151d6c338a14c9c6f51e702f9a8519136d5dde5b2d20b2327f900f
+      - path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/03-ranked-gap-register.yaml
+        sha256: 8a485a3df850d6f9b37c4490435980715ddd84c689567ad3a94be89dca674cde
+      - path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/04-pass-01-findings-and-handoff.md
+        sha256: fd3e035812150b61f1dc54ad33412d5d8c09dcb31abe5a8ddaebd34e8323d2ff
+    prior_correction_root: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1
+  not_authorized:
+    - modify any immutable PASS-01 R1 or C1 evidence
+    - accept PASS-01 or any recommendation or residual risk
+    - authorize or execute PASS-02 or complete CHECKPOINT-A
+    - activate, design or implement GOV-7
+    - select architecture, graph technology, provider, framework, workflow engine or GOV-7 strategy
+    - resolve OD-006
+    - modify Kernel substance or ratification evidence
+    - modify planning, product or released runtime substance
+    - stage, commit or push
+    - open or update a pull request
+    - merge, tag, release or deploy
+  authority_limit: ONE_UNCOMMITTED_BOUNDED_SUBSTANTIVE_CORRECTION_CANDIDATE_ONLY

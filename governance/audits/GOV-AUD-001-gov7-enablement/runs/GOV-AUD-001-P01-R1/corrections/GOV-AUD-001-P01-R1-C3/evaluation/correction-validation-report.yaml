@@ -1,0 +1,18 @@
+validation_report:
+  record_id: GOV-AUD-C3-VAL-001
+  correction_id: GOV-AUD-001-P01-R1-C3
+  finding_addressed: GOV-AUD-001-P01-C2-IER-F001
+  status: VALIDATED
+  result: VALID
+  checks:
+    - {id: C3-VAL-001, subject: closed_canonical_classification_vocabulary, result: PASS}
+    - {id: C3-VAL-002, subject: historical_current_conditional_temporal_separation, result: PASS}
+    - {id: C3-VAL-003, subject: no_current_residual_claim_from_historical_corrected_only_evidence, result: PASS}
+    - {id: C3-VAL-004, subject: historical_ranking_time_basis, result: PASS}
+    - {id: C3-VAL-005, subject: handoff_register_agreement, result: PASS}
+    - {id: C3-VAL-006, subject: R1_C1_C2_immutability, result: PASS_BYTE_IDENTICAL}
+  independent_evaluation_performed: false
+  pass_01_accepted: false
+  pass_02_authorized_or_executed: false
+  gov_7_status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+  od_006_status: UNRESOLVED_TRIGGER_GATED

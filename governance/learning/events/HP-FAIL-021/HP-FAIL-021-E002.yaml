@@ -1,0 +1,26 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-021-E002
+  record_id: HP-FAIL-021
+  date: '2026-07-16'
+  event_type: NEW_EVIDENCE
+  status_from: null
+  status_to: null
+  summary: Acceptance-profile regression fixtures initially retained accepted PASS-01 fields when deriving earlier lifecycle profiles.
+  rationale: The complete governance suite found two invalid derived fixtures after the acceptance profile was added. The production acceptance state remained valid; the failure showed that the lifecycle fixture mutation must explicitly clear acceptance-only fields and remove C3-only registry custody when replaying C1 or planning-only states.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_gov_7_audit_scaffold.py
+    anchor: c1_only and planning_only lifecycle profile builders
+    sha256: null
+    availability: PRESERVED
+    note: The two failures were reproduced by the complete governance suite and corrected in the profile builders.
+  - type: REPOSITORY_PATH
+    locator: governance/tools/validate_audit_scaffold.py
+    anchor: accepted PASS-01 profile requirements
+    sha256: null
+    availability: PRESERVED
+    note: The validator continues to require explicit acceptance custody for the accepted profile.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-028-accept-gov-aud-001-pass-01-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

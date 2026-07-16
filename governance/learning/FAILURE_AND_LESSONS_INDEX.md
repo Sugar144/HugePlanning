@@ -1,7 +1,7 @@
 # Failure and Lessons Index
 
 > GENERATED FILE — source of truth: `records/` plus append-only `events/`.
-> Tool version: `0.1.0`. Deterministic input digest: `9e4f669909f2998870404f107e3d8fd1c1bfbb8fcea0d9882522b26cf5db262c`.
+> Tool version: `0.1.0`. Deterministic input digest: `b65ee3311b7c8c6010aa3632ae66a74393cf79ed8e72216bd938424c446377d9`.
 > Manual edits will be overwritten by `--apply` or rejected as generated-view drift.
 
 | ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |
@@ -27,3 +27,4 @@
 | HP-FAIL-019 | 2026-07-15 | KGR-006-R1 authorization validator represented only the pre-execution open state | TOOLING_GAP | MEDIUM | VALIDATED | Execution-authorization consumption reconciliation | GOV-5 controlled import/KGR-006-R1 | no | PARTIAL | A one-execution authorization gate needs a deterministic terminal consumption profile; validating that authority was open does not prove that it was consumed once and cannot be reused. |
 | HP-FAIL-020 | 2026-07-15 | Material governance completion left status-bearing surfaces divergent | PROCESS_DEFECT | HIGH | VALIDATED | Durable cross-surface governance state | GOV-5/KGR-006-R1 | no | PARTIAL | A locally correct governance artifact can still leave the repository operationally false; material completion requires one canonical comparison of every affected durable status surface. |
 | HP-FAIL-021 | 2026-07-16 | Audit scaffold validation froze the planning-only lifecycle snapshot | TOOLING_GAP | HIGH | VALIDATED | Audit scaffold lifecycle validation | GOV-7 audit preparation/GOV-AUD-001-P01-R1 | no | PARTIAL | State validation must derive expectations from canonical lifecycle status rather than permanently encode one phase snapshot. |
+| HP-FAIL-022 | 2026-07-16 | PASS-01 outputs became stale after lifecycle correction and omitted material implemented runtime capabilities | OWNER_CORRECTION | HIGH | VALIDATED | PASS-01 capability inventory, gap ranking and handoff | GOV-7 audit preparation/GOV-AUD-001-P01-R1-C2 | no | PARTIAL | Capability audits must re-baseline after implementation changes and distinguish demonstrated failures from specialized corrections and unproven generalized solutions before ranking. |

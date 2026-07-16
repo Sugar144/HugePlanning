@@ -18,19 +18,40 @@ from _lib.strict_yaml import load, loads
 AUDIT_REL = Path("governance/audits/GOV-AUD-001-gov7-enablement")
 PROMPT_HASH = "7ea731bb822d88328c26bfe69b5280a84a37153bc525f963d051fb74b6033b07"
 CORRECTION_PROMPT_HASH = "7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea569119f5c4edc5d"
+C2_PROMPT_HASH = "0075610713cf0ce9dbb530693bdb518a509098e3bfd6b4c0af3694f12d78d1a0"
+C2_AUTHORIZATION_HASH = "9fcc990418e4ae9f0f65ab25bda0cf811a83e1247dc5b2cf5999d3f9d24b9a41"
+C2_INPUT_HASH = "c804b3309126cc2aba7bf9f6cf42f24f49a8e2ad6fe4d83eaa9b9d0441effb4a"
 PASS_IDS = [f"PASS-{number:02d}" for number in range(1, 8)]
 SCAFFOLD_PROMPT_IDS = ["GOV-AUD-PROMPT-000"] + [f"GOV-AUD-PROMPT-{number:03d}" for number in range(10, 71, 10)]
 RUN_ID = "GOV-AUD-001-P01-R1"
 RUN_REL = AUDIT_REL / "runs" / RUN_ID
 CORRECTION_ID = "GOV-AUD-001-P01-R1-C1"
 CORRECTION_REL = RUN_REL / "corrections" / CORRECTION_ID
+SUBSTANTIVE_CORRECTION_ID = "GOV-AUD-001-P01-R1-C2"
+SUBSTANTIVE_CORRECTION_REL = RUN_REL / "corrections" / SUBSTANTIVE_CORRECTION_ID
 PASS_01_EXECUTED_STATUS = "EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION"
 AUDIT_IN_PROGRESS_STATUS = "IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION"
+C2_STATUS = "EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION"
+C2_AUDIT_STATUS = "IN_PROGRESS_PASS_01_CORRECTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION"
+ACCEPTED_AUDIT_STATUS = "IN_PROGRESS_PASS_01_ACCEPTED_COMPLETED"
+ACCEPTED_PASS_01_STATUS = "PASS_01_ACCEPTED_COMPLETED"
+ACCEPTANCE_REL = AUDIT_REL / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"
 OUTPUT_HASHES = {
     "01-verified-capability-inventory.yaml": "0e1ae26cfd8201e781768eec81045c056b1bc1cd557b0ab1f9fbcae1d47cb124",
     "02-repetition-waste-and-burden-analysis.md": "57cbd6fc8d151d6c338a14c9c6f51e702f9a8519136d5dde5b2d20b2327f900f",
     "03-ranked-gap-register.yaml": "8a485a3df850d6f9b37c4490435980715ddd84c689567ad3a94be89dca674cde",
     "04-pass-01-findings-and-handoff.md": "fd3e035812150b61f1dc54ad33412d5d8c09dcb31abe5a8ddaebd34e8323d2ff",
+}
+C2_OUTPUT_HASHES = {
+    "01-corrected-verified-capability-inventory.yaml": "d099e9bcbec6b5fc27e405759360909b9c29c982b6faed3465d75148bc0047b9",
+    "02-corrected-repetition-waste-and-burden-analysis.md": "df5f310afc64b666eea32385f14163fcee75d4871676e0759b893e7c951c5a00",
+    "03-corrected-ranked-gap-register.yaml": "d79018cb99728edac9095698e2a91f3b5d9d49ab62229f371d0482408927f5f0",
+    "04-corrected-pass-01-findings-and-handoff.md": "401c313f96bf705b39a66e389d1028161df3e73e73b4619ac94e4af19638cb42",
+}
+C1_ARTIFACT_HASHES = {
+    "authorization/GOV-AUD-CORR-AUTH-001-v0.1.0.yaml": "0aac29d22a7eb4556869a8c2b6bc2cb19f2baf6b69da7e470bf52f5d2af1a269",
+    "manifest.yaml": "f1b5c2c5b60761907999ea86bfb10da4d505aae71bacebb7583a15bdaa0ce857",
+    "prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md": CORRECTION_PROMPT_HASH,
 }
 LABELS = ["VERIFIED_FACT", "INFERENCE", "PROPOSAL", "RECOMMENDATION", "OWNER_DECISION_REQUIRED", "DEFERRED", "REJECTED"]
 PRINCIPLES = {
@@ -271,6 +292,242 @@ def validate_correction_custody(root: Path, registry: dict, errors: list[str]) -
         errors.append("correction prompt registry mismatch")
 
 
+def validate_bound_c2_inputs(root: Path, manifest: dict, errors: list[str]) -> None:
+    inputs = manifest.get("inputs", [])
+    paths = [item.get("path") for item in inputs]
+    if len(inputs) != 92 or len(paths) != len(set(paths)):
+        errors.append("C2 input manifest count or path uniqueness mismatch")
+    starting_head = manifest.get("starting_local_head")
+    current_prefix = SUBSTANTIVE_CORRECTION_REL.as_posix() + "/"
+    current_suffixes = ("/prompt/", "/authorization/")
+    for item in inputs:
+        relative = item.get("path", "")
+        if not isinstance(relative, str) or not item.get("role"):
+            errors.append("C2 input manifest path or role missing")
+            continue
+        path = root / relative
+        if relative.startswith(current_prefix) and any(part in relative for part in current_suffixes):
+            actual = sha256(path) if path.is_file() else None
+        else:
+            result = subprocess.run(
+                ["git", "-C", str(root), "show", f"{starting_head}:{relative}"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            )
+            actual = hashlib.sha256(result.stdout).hexdigest() if result.returncode == 0 else None
+        if actual != item.get("sha256"):
+            errors.append(f"C2 bound input hash mismatch: {relative}")
+
+
+def validate_ranking_node(node, errors: list[str], label: str = "gap register") -> None:
+    if isinstance(node, dict):
+        if {"frequency", "current_burden", "failure_risk", "score"} <= set(node):
+            values = [node[field].get("value") for field in ("frequency", "current_burden", "failure_risk")]
+            expected = values[0] * values[1] * values[2] if all(isinstance(value, int) for value in values) else "UNKNOWN"
+            if node.get("score") != expected:
+                errors.append(f"C2 ranking arithmetic mismatch: {label}")
+        for key, value in node.items():
+            validate_ranking_node(value, errors, f"{label}.{key}")
+    elif isinstance(node, list):
+        for index, value in enumerate(node):
+            validate_ranking_node(value, errors, f"{label}[{index}]")
+
+
+def validate_c2_evidence_paths(root: Path, node, errors: list[str]) -> None:
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key in {"evidence", "evidence_paths"} and isinstance(value, list):
+                for relative in value:
+                    if isinstance(relative, str) and not (root / relative).exists():
+                        errors.append(f"C2 evidence path missing: {relative}")
+            validate_c2_evidence_paths(root, value, errors)
+    elif isinstance(node, list):
+        for value in node:
+            validate_c2_evidence_paths(root, value, errors)
+
+
+def validate_c3_classification_and_temporal_semantics(root: Path, errors: list[str]) -> None:
+    """Prospectively reject classification/temporal conflation in a C3 package."""
+    path = root / RUN_REL / "corrections/GOV-AUD-001-P01-R1-C3/output/03-corrected-ranked-gap-register.yaml"
+    if not path.is_file():
+        return
+    register = load(path).get("gap_register", {})
+    vocabulary = {"EXISTING_CAPABILITY", "PARTIAL_CAPABILITY", "DEMONSTRATED_GAP", "REQUIREMENT_WITHOUT_IMPLEMENTATION", "RESEARCH_REQUIRED", "OWNER_DECISION_REQUIRED", "NOT_A_GAP"}
+    entries = register.get("entries", [])
+    for entry in entries:
+        classification = entry.get("classification")
+        if classification not in vocabulary or "_HISTORICAL_" in str(classification) or "_RESIDUAL_" in str(classification):
+            errors.append(f"C3 noncanonical or compound classification: {entry.get('gap_id')}")
+        temporal_fields = {"temporal_status", "current_residual_status", "recurrence_status", "future_extension_status"}
+        if temporal_fields & set(entry):
+            if not temporal_fields <= set(entry):
+                errors.append(f"C3 temporal fields missing: {entry.get('gap_id')}")
+            if (
+                entry.get("temporal_status") == "HISTORICAL_CORRECTED"
+                and entry.get("recurrence_status") == "UNKNOWN"
+                and entry.get("current_residual_status") == "DEMONSTRATED"
+            ):
+                errors.append(f"C3 historical corrected item asserted as current residual: {entry.get('gap_id')}")
+        for subproblem in entry.get("subproblems", []):
+            if subproblem.get("classification") not in vocabulary:
+                errors.append(f"C3 subproblem classification mismatch: {subproblem.get('subproblem_id')}")
+            if subproblem.get("temporal_status") == "HISTORICAL_CORRECTED":
+                if subproblem.get("recurrence_status") != "UNKNOWN":
+                    errors.append(f"C3 historical corrected recurrence mismatch: {subproblem.get('subproblem_id')}")
+                if subproblem.get("current_residual_status") == "DEMONSTRATED":
+                    errors.append(f"C3 historical corrected subproblem asserted as current residual: {subproblem.get('subproblem_id')}")
+            priority = subproblem.get("evidence_priority", {})
+            if subproblem.get("temporal_status") == "HISTORICAL_CORRECTED" and priority.get("score") != "UNKNOWN" and priority.get("time_basis") != "HISTORICAL":
+                errors.append(f"C3 ranking time basis missing: {subproblem.get('subproblem_id')}")
+
+
+def validate_substantive_correction_custody(root: Path, registry: dict, errors: list[str]) -> None:
+    correction_root = root / SUBSTANTIVE_CORRECTION_REL
+    if not correction_root.exists():
+        return
+    prompt_path = correction_root / "prompt/GOV-AUD-PROMPT-013-correct-pass-01-substantive-outputs-v0.1.0.md"
+    authorization_path = correction_root / "authorization/GOV-AUD-CORR-AUTH-002-v0.1.0.yaml"
+    input_path = correction_root / "input/input-manifest.yaml"
+    manifest_path = correction_root / "manifest.yaml"
+    report_path = correction_root / "evaluation/correction-validation-report.yaml"
+    if not prompt_path.is_file() or sha256(prompt_path) != C2_PROMPT_HASH:
+        errors.append("C2 prompt custody or hash mismatch")
+    if not authorization_path.is_file() or sha256(authorization_path) != C2_AUTHORIZATION_HASH:
+        errors.append("C2 authorization custody or hash mismatch")
+    else:
+        authorization = load(authorization_path).get("authorization", {})
+        if any((
+            authorization.get("authorization_id") != "GOV-AUD-CORR-AUTH-002",
+            authorization.get("correction_id") != SUBSTANTIVE_CORRECTION_ID,
+            authorization.get("source_run_id") != RUN_ID,
+            authorization.get("prior_correction_id") != CORRECTION_ID,
+            authorization.get("prompt_identity") != "GOV-AUD-PROMPT-013/0.1.0",
+            authorization.get("catalog_prompt_identity") != "HP-PROMPT-026/0.1.0",
+            authorization.get("prompt_sha256") != C2_PROMPT_HASH,
+            authorization.get("execution_count_limit") != 1,
+            authorization.get("evidence_review_disposition", {}).get("result") != "RETURN_PASS_01_FOR_BOUNDED_SUBSTANTIVE_CORRECTION",
+            any(item.get("reusable") is not False for item in authorization.get("prior_authorizations", [])),
+        )):
+            errors.append("C2 authorization identity, disposition or boundary mismatch")
+    if not input_path.is_file() or sha256(input_path) != C2_INPUT_HASH:
+        errors.append("C2 input manifest custody or hash mismatch")
+    else:
+        input_manifest = load(input_path).get("manifest", {})
+        if any((
+            input_manifest.get("manifest_id") != "GOV-AUD-001-P01-R1-C2-INPUT-001",
+            input_manifest.get("branch") != "governance/kernel-designer-revision-v0.1",
+            input_manifest.get("starting_local_head") != "22b66c97851316b4c461077f057fc3f1bc2de851",
+            input_manifest.get("starting_remote_head") != "22b66c97851316b4c461077f057fc3f1bc2de851",
+            input_manifest.get("prompt", {}).get("sha256") != C2_PROMPT_HASH,
+            input_manifest.get("authorization", {}).get("sha256") != C2_AUTHORIZATION_HASH,
+        )):
+            errors.append("C2 input manifest identity or starting-state mismatch")
+        validate_bound_c2_inputs(root, input_manifest, errors)
+    if not manifest_path.is_file():
+        errors.append("C2 manifest custody missing")
+        return
+    correction = load(manifest_path).get("correction", {})
+    if any((
+        correction.get("correction_id") != SUBSTANTIVE_CORRECTION_ID,
+        correction.get("source_run_id") != RUN_ID,
+        correction.get("prior_correction_id") != CORRECTION_ID,
+        correction.get("status") != C2_STATUS,
+        correction.get("execution_count_limit") != 1,
+        correction.get("execution_count_consumed") != 1,
+        correction.get("prompt", {}).get("sha256") != C2_PROMPT_HASH,
+        correction.get("authorization", {}).get("sha256") != C2_AUTHORIZATION_HASH,
+        correction.get("authorization", {}).get("execution_count_consumed") != 1,
+        correction.get("authorization", {}).get("prior_authorizations_reused") is not False,
+        correction.get("input", {}).get("sha256") != C2_INPUT_HASH,
+        correction.get("input", {}).get("member_count") != 92,
+        correction.get("immutable_evidence", {}).get("original_outputs_modified") is not False,
+        correction.get("immutable_evidence", {}).get("prior_correction_artifacts_modified") is not False,
+    )):
+        errors.append("C2 manifest identity, custody or status mismatch")
+    boundary = correction.get("authority_boundary", {})
+    for field in (
+        "pass_01_accepted", "independent_evaluation_completed", "checkpoint_a_completed",
+        "pass_02_authorized_or_executed", "gov_7_activated", "recommendations_accepted",
+        "implementation_authorized", "risk_accepted", "architecture_or_technology_selected",
+        "kernel_substance_modified", "planning_product_or_runtime_modified", "publication_performed",
+    ):
+        if boundary.get(field) is not False:
+            errors.append(f"C2 authority boundary mismatch: {field}")
+    if boundary.get("od_006_status") != "UNRESOLVED_TRIGGER_GATED":
+        errors.append("C2 OD-006 boundary mismatch")
+    declared_outputs = {
+        Path(item.get("path", "")).name: item.get("sha256")
+        for item in correction.get("output_contract", {}).get("outputs", [])
+    }
+    if correction.get("output_contract", {}).get("corrected_output_count") != 4 or declared_outputs != C2_OUTPUT_HASHES:
+        errors.append("C2 output contract identity or count mismatch")
+    for name, expected in C2_OUTPUT_HASHES.items():
+        path = correction_root / "output" / name
+        if not path.is_file() or sha256(path) != expected:
+            errors.append(f"C2 output custody or hash mismatch: {name}")
+    for name, expected in OUTPUT_HASHES.items():
+        if sha256(root / RUN_REL / "output" / name) != expected:
+            errors.append(f"C2 immutable R1 output mismatch: {name}")
+    for relative, expected in C1_ARTIFACT_HASHES.items():
+        if sha256(root / CORRECTION_REL / relative) != expected:
+            errors.append(f"C2 immutable C1 artifact mismatch: {relative}")
+    capability = load(correction_root / "output/01-corrected-verified-capability-inventory.yaml")
+    families = capability.get("capability_inventory", {}).get("capability_families", [])
+    if len(families) != 14 or len({item.get("capability_id") for item in families}) != 14:
+        errors.append("C2 capability family count or ID uniqueness mismatch")
+    gap_document = load(correction_root / "output/03-corrected-ranked-gap-register.yaml")
+    gap_register = gap_document.get("gap_register", {})
+    entries = gap_register.get("entries", [])
+    if [item.get("gap_id") for item in entries] != [f"GAP-{number:03d}" for number in range(1, 15)]:
+        errors.append("C2 gap identity or traceability mismatch")
+    if gap_register.get("implementation_coverage_baseline", {}).get("fully_supported_by_implementation_evidence") != 0:
+        errors.append("C2 zero-of-20 implementation baseline mismatch")
+    for entry in entries:
+        if entry.get("classification") == "NOT_A_GAP" and (
+            entry.get("preliminary_leverage") != "UNKNOWN"
+            or entry.get("leverage_status") != "NOT_APPLICABLE_NOT_A_GAP"
+        ):
+            errors.append(f"C2 NOT_A_GAP leverage mismatch: {entry.get('gap_id')}")
+    for gap_id in ("GAP-008", "GAP-009", "GAP-010", "GAP-011"):
+        item = next((entry for entry in entries if entry.get("gap_id") == gap_id), {})
+        if item.get("priority") != "DEFER" or not str(item.get("conditional_priority", "")).startswith("P0_IF_"):
+            errors.append(f"C2 trigger priority mismatch: {gap_id}")
+    validate_ranking_node(gap_register, errors)
+    validate_c2_evidence_paths(root, capability, errors)
+    validate_c2_evidence_paths(root, gap_document, errors)
+    if not report_path.is_file():
+        errors.append("C2 deterministic validation report missing")
+    else:
+        report = load(report_path).get("validation_report", {})
+        if any((
+            report.get("record_id") != "GOV-AUD-C2-VAL-001",
+            report.get("correction_id") != SUBSTANTIVE_CORRECTION_ID,
+            report.get("evidence_class") != "SOURCE_CORRECTION_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_EVALUATION",
+            report.get("status") != "VALIDATED",
+            report.get("result") != "VALID",
+            report.get("independent_evaluation_performed") is not False,
+            report.get("pass_01_accepted") is not False,
+            report.get("checkpoint_a_completed") is not False,
+            report.get("pass_02_authorized_or_executed") is not False,
+            report.get("recommendations_accepted") is not False,
+            report.get("risk_accepted") is not False,
+            report.get("implementation_authorized") is not False,
+        )):
+            errors.append("C2 validation report identity, result or authority boundary mismatch")
+    prompt_records = {item.get("prompt_id"): item for item in registry.get("prompts", [])}
+    c2_prompt = prompt_records.get("GOV-AUD-PROMPT-013", {})
+    if any((
+        c2_prompt.get("catalog_prompt_id") != "HP-PROMPT-026",
+        c2_prompt.get("correction_id") != SUBSTANTIVE_CORRECTION_ID,
+        c2_prompt.get("lifecycle") != "EXECUTED",
+        c2_prompt.get("exact_text_sha256") != C2_PROMPT_HASH,
+        c2_prompt.get("independent_evaluation_completed") is not False,
+        c2_prompt.get("pass_02_authorized_or_executed") is not False,
+    )):
+        errors.append("C2 prompt registry mismatch")
+
+
 def validate(root: Path) -> dict:
     errors: list[str] = []
     audit = root / AUDIT_REL
@@ -294,18 +551,28 @@ def validate(root: Path) -> dict:
     passes_executed = plan.get("passes_executed")
     if plan.get("audit_id") != "GOV-AUD-001" or passes_executed not in (0, 1):
         errors.append("audit identity or supported lifecycle state mismatch")
-    expected_plan_status = "PLANNED_NOT_EXECUTED" if passes_executed == 0 else AUDIT_IN_PROGRESS_STATUS
+    correction_present = (root / CORRECTION_REL).exists()
+    c2_present = (root / SUBSTANTIVE_CORRECTION_REL).exists()
+    acceptance_path = root / ACCEPTANCE_REL
+    accepted = acceptance_path.is_file()
+    expected_plan_status = (
+        "PLANNED_NOT_EXECUTED" if passes_executed == 0
+        else ACCEPTED_AUDIT_STATUS if accepted
+        else C2_AUDIT_STATUS if c2_present
+        else AUDIT_IN_PROGRESS_STATUS
+    )
     if plan.get("status") != expected_plan_status:
         errors.append("audit plan lifecycle status mismatch")
-    correction_present = (root / CORRECTION_REL).exists()
     expected_correction_id = CORRECTION_ID if correction_present else None
     if plan.get("validation_correction_id") != expected_correction_id:
         errors.append("audit plan validation correction identity mismatch")
+    if plan.get("substantive_correction_id") != (SUBSTANTIVE_CORRECTION_ID if c2_present else None):
+        errors.append("audit plan substantive correction identity mismatch")
     for key, expected in {
         "checkpoints_approved": 0, "gov_7_activated": False,
         "recommendations_accepted": False, "implementation_authorized": False,
         "graph_technology_selected": False, "vertical_slice_selected": False,
-        "audit_executed": False, "completed": False, "pass_01_accepted": False,
+        "audit_executed": False, "completed": False, "pass_01_accepted": accepted,
     }.items():
         if plan.get(key) != expected:
             errors.append(f"audit plan {key} mismatch")
@@ -322,14 +589,14 @@ def validate(root: Path) -> dict:
     sequence_by_id = {item.get("id"): item for item in sequence}
     for item in sequence:
         if item.get("id") == "PASS-01" and passes_executed == 1:
-            expected_status = PASS_01_EXECUTED_STATUS
+            expected_status = ACCEPTED_PASS_01_STATUS if accepted else C2_STATUS if c2_present else PASS_01_EXECUTED_STATUS
         else:
-            expected_status = "PENDING_OWNER_DECISION" if item.get("id", "").startswith("CHECKPOINT") else "PLANNED_NOT_EXECUTED"
+            expected_status = "PENDING_PROJECT_OWNER_DISPOSITION" if accepted and item.get("id") == "CHECKPOINT-A" else "PENDING_OWNER_DECISION" if item.get("id", "").startswith("CHECKPOINT") else "PLANNED_NOT_EXECUTED"
         if item.get("status") != expected_status:
             errors.append(f"sequence status mismatch: {item.get('id')}")
     if sequence_by_id.get("PASS-02", {}).get("status") != "PLANNED_NOT_EXECUTED":
         errors.append("PASS-02 executed before CHECKPOINT-A disposition")
-    if sequence_by_id.get("CHECKPOINT-A", {}).get("status") != "PENDING_OWNER_DECISION":
+    if sequence_by_id.get("CHECKPOINT-A", {}).get("status") != ("PENDING_PROJECT_OWNER_DISPOSITION" if accepted else "PENDING_OWNER_DECISION"):
         errors.append("CHECKPOINT-A must remain pending after PASS-01")
 
     audit_status = status.get("audit", {})
@@ -340,11 +607,15 @@ def validate(root: Path) -> dict:
         "audit_execution_authorized": False, "graph_implemented": False,
         "telemetry_implemented": False, "interviewer_simulation_implemented": False,
         "self_hosting_implemented": False, "owner_decision_inferred": False,
-        "completed": False, "pass_01_accepted": False,
+        "completed": False, "pass_01_accepted": accepted,
     }.items():
         if audit_status.get(key) != expected:
             errors.append(f"audit status {key} mismatch")
-    expected_pass_01_status = "PLANNED_NOT_EXECUTED" if passes_executed == 0 else PASS_01_EXECUTED_STATUS
+    expected_pass_01_status = (
+        "PLANNED_NOT_EXECUTED" if passes_executed == 0
+        else ACCEPTED_PASS_01_STATUS if accepted else C2_STATUS if c2_present
+        else PASS_01_EXECUTED_STATUS
+    )
     if audit_status.get("pass_01_status") != expected_pass_01_status:
         errors.append("audit status PASS-01 lifecycle mismatch")
     if audit_status.get("pass_02_status") != "PLANNED_NOT_EXECUTED":
@@ -365,6 +636,41 @@ def validate(root: Path) -> dict:
             errors.append("audit status validation correction mismatch")
     elif correction_status is not None:
         errors.append("planning-only state contains validation correction status")
+    substantive_status = audit_status.get("substantive_output_correction")
+    if c2_present:
+        if any((
+            not isinstance(substantive_status, dict),
+            isinstance(substantive_status, dict) and substantive_status.get("correction_id") != SUBSTANTIVE_CORRECTION_ID,
+            isinstance(substantive_status, dict) and substantive_status.get("status") != C2_STATUS,
+            isinstance(substantive_status, dict) and substantive_status.get("original_outputs_modified") is not False,
+            isinstance(substantive_status, dict) and substantive_status.get("prior_correction_modified") is not False,
+            isinstance(substantive_status, dict) and substantive_status.get("independent_evaluation_completed") is not accepted,
+            isinstance(substantive_status, dict) and substantive_status.get("pass_01_accepted") is not accepted,
+            isinstance(substantive_status, dict) and substantive_status.get("pass_02_authorized_or_executed") is not False,
+            isinstance(substantive_status, dict) and substantive_status.get("checkpoint_a_completed") is not False,
+            isinstance(substantive_status, dict) and substantive_status.get("gov_7_activated") is not False,
+        )):
+            errors.append("audit status substantive correction mismatch")
+    elif substantive_status is not None:
+        errors.append("pre-C2 state contains substantive correction status")
+    if accepted:
+        decision = load(acceptance_path).get("project_owner_decision", {})
+        if any((
+            decision.get("decision_id") != "GOV-AUD-DECISION-001",
+            decision.get("final_status") != ACCEPTED_PASS_01_STATUS,
+            decision.get("accepted_evidence", {}).get("independent_confirmation") != "GOV-AUD-001-P01-C3-IER-001",
+            decision.get("accepted_evidence", {}).get("independent_result") != "CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION",
+            decision.get("audit_program_completed") is not False,
+            decision.get("pass_02_status") != "PLANNED_NOT_EXECUTED_UNAUTHORIZED",
+            decision.get("checkpoint_a_status") != "PENDING_PROJECT_OWNER_DISPOSITION",
+            decision.get("gov_7_status") != "INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY",
+            decision.get("od_006_status") != "UNRESOLVED_TRIGGER_GATED",
+            decision.get("immutable_evidence") != {"R1": True, "C1": True, "C2": True, "C3": True, "independent_review_evidence": True, "prompts_manifests_outputs_and_learning_records": True},
+        )):
+            errors.append("PASS-01 acceptance decision boundary mismatch")
+        confirmation = root / RUN_REL / "evaluation/GOV-AUD-001-P01-C3-IER-001/output/independent-confirmation.md"
+        if not confirmation.is_file() or confirmation.read_text() != "CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION\n":
+            errors.append("PASS-01 independent confirmation custody mismatch")
     baseline = status.get("governance_baseline", {})
     if baseline.get("kernel") != {"version": "0.2.0", "status": "RATIFIED", "implemented": False, "enforceability_claimed": False, "operational": False}:
         errors.append("Kernel baseline mismatch")
@@ -384,6 +690,12 @@ def validate(root: Path) -> dict:
         expected_prompt_ids.append("GOV-AUD-PROMPT-011")
     if correction_present:
         expected_prompt_ids.append("GOV-AUD-PROMPT-012")
+    if c2_present:
+        expected_prompt_ids.append("GOV-AUD-PROMPT-013")
+    if (root / RUN_REL / "corrections/GOV-AUD-001-P01-R1-C3").exists():
+        expected_prompt_ids.append("GOV-AUD-PROMPT-015")
+    if accepted:
+        expected_prompt_ids.append("GOV-AUD-PROMPT-016")
     identities = [(item.get("prompt_id"), str(item.get("version"))) for item in prompts]
     if [item[0] for item in identities] != expected_prompt_ids or len(identities) != len(set(identities)):
         errors.append("prompt registry identity/order mismatch")
@@ -470,12 +782,15 @@ def validate(root: Path) -> dict:
         else:
             validate_registered_pass_01(root, registry, errors)
             validate_correction_custody(root, registry, errors)
+            validate_substantive_correction_custody(root, registry, errors)
+            validate_c3_classification_and_temporal_semantics(root, errors)
 
     run_members = sorted(path.relative_to(audit / "runs").as_posix() for path in (audit / "runs").rglob("*") if path.is_file())
     decision_members = sorted(path.relative_to(audit / "decisions").as_posix() for path in (audit / "decisions").rglob("*") if path.is_file())
     if passes_executed == 0 and run_members != ["README.md"]:
         errors.append("planning-only state contains execution artifacts")
-    if decision_members != ["README.md"]:
+    expected_decision_members = sorted(["README.md"] + (["GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"] if accepted else []))
+    if decision_members != expected_decision_members:
         errors.append("unexpected decision artifacts detected")
     forbidden_names = {"output", "outputs", "evaluation", "telemetry", "projection", "graph"}
     if passes_executed == 0:
@@ -500,6 +815,14 @@ def validate(root: Path) -> dict:
         required_ids.extend(("GOV-AUD-001-P01-R1", "GOV-AUD-AUTH-001", "HP-PROMPT-024", "GOV-AUD-VAL-001"))
     if correction_present:
         required_ids.extend((CORRECTION_ID, "GOV-AUD-CORR-AUTH-001", "HP-PROMPT-025"))
+    if c2_present:
+        required_ids.extend((
+            SUBSTANTIVE_CORRECTION_ID, "GOV-AUD-CORR-AUTH-002", "HP-PROMPT-026",
+            "GOV-AUD-C2-OUT-001", "GOV-AUD-C2-OUT-002", "GOV-AUD-C2-OUT-003",
+            "GOV-AUD-C2-OUT-004", "GOV-AUD-C2-VAL-001",
+        ))
+    if accepted:
+        required_ids.extend(("HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001", "GOV-AUD-DECISION-001", "HP-PROMPT-028"))
     for required_id in required_ids:
         if required_id not in artifact_ids:
             errors.append(f"global artifact registration missing: {required_id}")

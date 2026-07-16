@@ -1,0 +1,42 @@
+project_owner_decision:
+  decision_id: GOV-AUD-DECISION-001
+  version: 0.1.0
+  date: '2026-07-16'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_PASS_01
+  audit_id: GOV-AUD-001
+  pass_id: PASS-01
+  final_status: PASS_01_ACCEPTED_COMPLETED
+  accepted_evidence:
+    source_run: GOV-AUD-001-P01-R1
+    corrections: [GOV-AUD-001-P01-R1-C1, GOV-AUD-001-P01-R1-C2, GOV-AUD-001-P01-R1-C3]
+    independent_confirmation: GOV-AUD-001-P01-C3-IER-001
+    independent_result: CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION
+  acceptance_scope: BOUNDED_PASS_01_AUDIT_RESULT_ONLY
+  audit_program_completed: false
+  checkpoint_a_status: PENDING_PROJECT_OWNER_DISPOSITION
+  pass_02_status: PLANNED_NOT_EXECUTED_UNAUTHORIZED
+  gov_7_status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+  od_006_status: UNRESOLVED_TRIGGER_GATED
+  accepted: [PASS_01_COMPLETION_ONLY]
+  not_accepted:
+    - implementation_recommendations
+    - architecture_selection
+    - graph_technology_selection
+    - tool_selection
+    - self_hosting_model_selection
+    - gov_7_strategy
+    - pass_02_authorization_or_execution
+    - checkpoint_a_completion
+    - gov_7_activation_or_implementation
+    - od_006_resolution
+    - residual_risk
+    - kernel_implementation_enforceability_operational_compliance_or_maturity_claim
+  immutable_evidence:
+    R1: true
+    C1: true
+    C2: true
+    C3: true
+    independent_review_evidence: true
+    prompts_manifests_outputs_and_learning_records: true
+  publication: {commit_authorized: true, push_without_force_authorized: true, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

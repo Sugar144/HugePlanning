@@ -1,0 +1,11 @@
+authorization:
+  authorization_id: GOV-AUD-CORR-AUTH-003
+  version: 0.1.0
+  authority: PROJECT_OWNER_EXPLICIT
+  correction_id: GOV-AUD-001-P01-R1-C3
+  source_run_id: GOV-AUD-001-P01-R1
+  prior_correction_id: GOV-AUD-001-P01-R1-C2
+  independent_review: GOV-AUD-001-P01-C2-IER-001
+  finding_id: GOV-AUD-001-P01-C2-IER-F001
+  authorized_scope: [classification_and_temporal_semantics, directly_affected_handoff_and_validation, minimal_lifecycle_registry_validator_and_test]
+  prohibited_actions: [modify_R1_C1_C2, reexecute_pass_01, execute_pass_02, activate_gov_7, resolve_OD_006, commit, push]

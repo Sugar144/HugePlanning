@@ -1,0 +1,44 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-022-E001
+  record_id: HP-FAIL-022
+  date: '2026-07-16'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: C2 custody, corrected outputs, immutable evidence, rankings, lifecycle
+    state and released-runtime evidence passed the declared deterministic validation
+    without advancing authority.
+  rationale: Seventeen focused audit tests, 158 complete governance tests, 224 released-runtime
+    checks, audit, prompt, learning, state and checksum validators, exact 92-member
+    input replay, ranking checks and byte-identity comparisons establish the bounded
+    correction; independent evaluation and Project Owner disposition remain pending.
+  evidence_refs:
+  - type: VALIDATION_RECORD
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/evaluation/correction-validation-report.yaml
+    anchor: GOV-AUD-C2-VAL-001
+    sha256: null
+    availability: PRESERVED
+    note: Deterministic source-correction validation, not independent substantive
+      evaluation.
+  - type: RUN_ARTIFACT
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/manifest.yaml
+    anchor: GOV-AUD-001-P01-R1-C2
+    sha256: null
+    availability: PRESERVED
+    note: Terminal correction status and unchanged authority boundaries.
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_gov_7_audit_scaffold.py
+    anchor: planning-only C1 C2 immutability input ranking and transition regressions
+    sha256: null
+    availability: PRESERVED
+    note: Focused result was 17 passed and 0 failed.
+  - type: REPOSITORY_PATH
+    locator: tests/run-tests.sh
+    anchor: released methodology runtime suite
+    sha256: cc8e729a3d3543c57dbf75ba9cd0bbe8065fc17741af7b41751735f47a2a6dc9
+    availability: PRESERVED
+    note: Runtime result was 224 passed and 0 failed; runtime bytes were not modified.
+  owner_decision_ref: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/authorization/GOV-AUD-CORR-AUTH-002-v0.1.0.yaml
+  accepted_risk: null
+  supersedes: null

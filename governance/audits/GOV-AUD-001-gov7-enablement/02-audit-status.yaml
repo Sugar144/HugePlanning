@@ -16,29 +16,40 @@ governance_baseline:
     status: UNRESOLVED_TRIGGER_GATED
 audit:
   id: GOV-AUD-001
-  status: IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+  status: IN_PROGRESS_PASS_01_ACCEPTED_COMPLETED
   authority: PASS_01_ONLY_PROJECT_OWNER_AUTHORIZATION_CONSUMED
   passes_executed: 1
   checkpoints_completed: 0
   completed: false
-  pass_01_accepted: false
+  pass_01_accepted: true
   gov_7_activated: false
   recommendations_accepted: false
   implementation_authorized: false
   audit_execution_authorized: false
   pass_01_execution_authorized: true
   pass_01_authorization_consumed: true
-  pass_01_status: EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION
+  pass_01_status: PASS_01_ACCEPTED_COMPLETED
   pass_02_status: PLANNED_NOT_EXECUTED
   graph_implemented: false
   telemetry_implemented: false
   interviewer_simulation_implemented: false
   self_hosting_implemented: false
   owner_decision_inferred: false
-  last_completed_step: PASS_01_EXECUTED_AND_VALIDATED
-  next_action: PROJECT_OWNER_PASS_01_DISPOSITION_AND_SEPARATE_PASS_02_AUTHORIZATION_DECISION
+  last_completed_step: PASS_01_ACCEPTED_COMPLETED
+  next_action: PROJECT_OWNER_CHECKPOINT_A_DISPOSITION_AND_SEPARATE_PASS_02_AUTHORIZATION_DECISION
   validation_lifecycle_correction:
     correction_id: GOV-AUD-001-P01-R1-C1
     initial_full_suite: {result: FAILED, passed_tests: 141, failed_tests: 3}
     corrected_full_suite: {result: PASSED, passed_tests: 152, failed_tests: 0}
     substantive_outputs_changed: false
+  substantive_output_correction:
+    correction_id: GOV-AUD-001-P01-R1-C2
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    original_outputs_modified: false
+    prior_correction_modified: false
+    independent_evaluation_completed: true
+    independent_confirmation: GOV-AUD-001-P01-C3-IER-001
+    pass_01_accepted: true
+    pass_02_authorized_or_executed: false
+    checkpoint_a_completed: false
+    gov_7_activated: false

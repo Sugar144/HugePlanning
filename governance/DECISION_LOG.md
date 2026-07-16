@@ -300,3 +300,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: GOV-7 remains `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`; its minimum package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`. OD-006 remains `UNRESOLVED_TRIGGER_GATED`; no residual risk is accepted and enforcement implementation remains `NOT_PERFORMED`.
 - Authority boundary: This does not implement or activate GOV-7; perform the audit; design the seven components; resolve OD-006; adopt technology or a framework; use a provider; process real data; execute a pilot; accept residual risk; modify product/runtime files; open a pull request, merge, release, or deploy.
 - Supersedes: none
+
+## GOV-DEC-027 — GOV-AUD-001 PASS-01 Project Owner acceptance
+
+- Date: 2026-07-16
+- Status: PASS_01_ACCEPTED_COMPLETED
+- Statement: Accept `GOV-AUD-001 PASS-01` as the bounded completed audit pass, based on the independently confirmed C3 evidence.
+- Rationale: The exact independently confirmed result is `CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION` under `GOV-AUD-001-P01-C3-IER-001`.
+- Source: Project Owner instruction `HP-PROMPT-028/0.1.0` and `GOV-AUD-DECISION-001/0.1.0`.
+- Consequences: PASS-01 is accepted and completed; the audit program remains incomplete; CHECKPOINT-A is pending Project Owner disposition; PASS-02 remains unexecuted and unauthorized; GOV-7 remains inactive; OD-006 remains unresolved trigger-gated; residual risk and implementation recommendations remain unaccepted.
+- Authority boundary: This does not select architecture, graph technology, tool, self-hosting model or GOV-7 strategy; authorize PASS-02; complete CHECKPOINT-A; activate or implement GOV-7; resolve OD-006; accept residual risk; claim the Kernel is implemented, enforceable, operational, compliant or mature; modify product, planning or runtime artifacts; open a pull request, merge, tag, release or deploy.
+- Supersedes: none

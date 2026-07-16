@@ -1,0 +1,14 @@
+correction:
+  correction_id: GOV-AUD-001-P01-R1-C3
+  version: 0.1.0
+  source_run_id: GOV-AUD-001-P01-R1
+  prior_correction_id: GOV-AUD-001-P01-R1-C2
+  status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+  finding_addressed: GOV-AUD-001-P01-C2-IER-F001
+  independent_review: GOV-AUD-001-P01-C2-IER-001
+  immutable_evidence: {R1_modified: false, C1_modified: false, C2_modified: false}
+  output_contract:
+    outputs:
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/output/03-corrected-ranked-gap-register.yaml, sha256: 0c6563dc94edbb3bdf9ec490665b7a97012e56cb68c669ecabe7adf3cf523a2a}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/output/04-corrected-pass-01-findings-and-handoff.md, sha256: 4f2abd592a9813a25b9e68edbe70d4364fba03f9f4f251ea735dc957f9a35fde}
+  authority_boundary: {pass_01_accepted: false, pass_02_authorized_or_executed: false, gov_7_activated: false, od_006_status: UNRESOLVED_TRIGGER_GATED, commit_performed: false, push_performed: false}
