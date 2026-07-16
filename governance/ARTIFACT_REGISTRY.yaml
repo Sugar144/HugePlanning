@@ -3137,6 +3137,38 @@ artifacts:
     aliases: []
     notes: [Records generic structural and semantic invariants and focused tests; it is not independent evaluation or Project Owner disposition.]
 
+  - id: GOV-AUD-001-P02-REVIEW-CUSTODY-001
+    title: PASS-02 Independent Review Documentary Custody
+    version: 0.1.0
+    status: CUSTODIED_LIMITED_OWNER_REPORT_EVIDENCE
+    authority: documentary_custody_not_review_reexecution_or_pass_acceptance
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/evaluation/GOV-AUD-001-P02-REVIEW-CUSTODY-001.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-032-pass-02-independent-review-custody-v0.1.0.md
+    source_sha256: 47fdb54663c94d1a9f16052c1f6daee3c805aad755c31d023869711b7eb9419e
+    produced_by: PROJECT_OWNER_REPORT_CUSTODY
+    artifact_type: documentary_review_custody
+    language: English
+    canonicality: bounded_existing_evidence_custody
+    supersedes: null
+    aliases: []
+    notes: [Custodies only the existing report that review occurred; exact review output, reviewer identity, findings and conclusion are not reconstructed and remain non-blocking documentary debt.]
+
+  - id: HP-PROMPT-032
+    title: PASS-02 Independent Review Custody Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_project_owner_documentary_custody_and_publication
+    path: governance/prompts/orchestration/HP-PROMPT-032-pass-02-independent-review-custody-v0.1.0.md
+    source_path: null
+    source_sha256: 47fdb54663c94d1a9f16052c1f6daee3c805aad755c31d023869711b7eb9419e
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: []
+    notes: [Authorizes only existing PASS-02 review-evidence custody and bounded publication; no review reexecution, PASS-02 acceptance or later-pass authority.]
+
   - id: GOV-TOOL-005
     title: PASS-02 Generic Architecture Candidate Validator
     version: 0.1.0

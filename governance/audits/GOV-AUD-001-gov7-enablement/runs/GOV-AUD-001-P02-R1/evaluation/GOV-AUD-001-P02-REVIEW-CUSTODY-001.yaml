@@ -1,0 +1,28 @@
+pass_02_review_custody:
+  record_id: GOV-AUD-001-P02-REVIEW-CUSTODY-001
+  version: 0.1.0
+  status: CUSTODIED_LIMITED_OWNER_REPORT_EVIDENCE
+  authority: documentary_custody_only_not_review_reexecution_or_pass_acceptance
+  audited_run: GOV-AUD-001-P02-R1
+  reviewed_candidate_manifest_sha256: 03b5a19764d424268bcd5285a410fabaf5109e88eaa4a6c402d5eaefe1a4ee87
+  review_identity: NOT_PRESERVED
+  review_completion: OWNER_REPORTED_COMPLETED
+  conclusion: NOT_RECONSTRUCTED
+  existing_evidence:
+    type: PROJECT_OWNER_REPORT
+    path: governance/prompts/orchestration/HP-PROMPT-030-gov-aud-001-audit-methodology-correction-v0.3.0.md
+    sha256: b47cce4e96daf09657cedfd918a3b47f9ab461ecdc3c55b559fffa1b9fdaad81
+    statement: The Project Owner reported that PASS-02 was independently reviewed.
+  evidence_completeness: LIMITED_OWNER_REPORT_WITHOUT_EXACT_REVIEW_OUTPUT_OR_CONCLUSION
+  documentary_debt:
+    status: NON_BLOCKING
+    missing: [exact_review_output, reviewer_identity_and_independence_basis, review_findings, review_conclusion]
+    rule: No missing content is reconstructed or attributed to the prior reviewer.
+  preserved_boundaries:
+    pass_02_r1_modified: false
+    pass_02_accepted: false
+    checkpoint_a_completed: false
+    pass_03_prepared_or_executed: false
+    gov_7_activated: false
+    kernel_amended: false
+    od_006_resolved: false

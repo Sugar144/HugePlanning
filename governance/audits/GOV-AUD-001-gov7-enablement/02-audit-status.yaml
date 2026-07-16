@@ -78,8 +78,9 @@ audit:
     independent_evaluation_completed: false
     owner_reported_independent_review: true
     owner_report_custody: HP-PROMPT-030
-    independent_review_artifact_custody: NOT_PRESERVED
+    independent_review_artifact_custody: GOV-AUD-001-P02-REVIEW-CUSTODY-001
     independent_review_result: NOT_RECONSTRUCTED
+    independent_review_documentary_debt: NON_BLOCKING_EXACT_OUTPUT_AND_CONCLUSION_NOT_PRESERVED
     pass_02_accepted: false
     checkpoint_a_completed: false
     pass_03_authorized_or_executed: false
