@@ -51,6 +51,8 @@ P02_REGISTRY_IDS = {
     "GOV-AUD-P02-OUT-006",
     "GOV-AUD-P02-OUT-007",
     "GOV-AUD-VAL-002",
+    "GOV-AUD-001-P02-REVIEW-CUSTODY-001",
+    "GOV-AUD-001-P02-IER-002",
 }
 
 
@@ -82,6 +84,7 @@ def planning_only(root: Path) -> None:
             validation_correction_id=None,
             substantive_correction_id=None,
             pass_01_accepted=False,
+            checkpoints_approved=0,
         )
         for item in plan["sequence"]:
             item["status"] = "PENDING_OWNER_DECISION" if item["id"].startswith("CHECKPOINT") else "PLANNED_NOT_EXECUTED"
@@ -95,6 +98,7 @@ def planning_only(root: Path) -> None:
             pass_01_execution_authorized=False,
             pass_01_authorization_consumed=False,
             pass_01_accepted=False,
+            checkpoints_completed=0,
             pass_01_status="PLANNED_NOT_EXECUTED",
             pass_02_status="PLANNED_NOT_EXECUTED",
             last_completed_step="NONE",
@@ -114,7 +118,7 @@ def planning_only(root: Path) -> None:
             version="0.1.0",
             prompts=[
                 item for item in doc["prompt_registry"]["prompts"]
-                if item["prompt_id"] not in {"GOV-AUD-PROMPT-011", "GOV-AUD-PROMPT-012", "GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021"}
+                if item["prompt_id"] not in {"GOV-AUD-PROMPT-011", "GOV-AUD-PROMPT-012", "GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021", "HP-PROMPT-033"}
             ]
         ),
     )
@@ -133,7 +137,7 @@ def planning_only(root: Path) -> None:
         "GOV-AUD-001-P01-C2-IER-001",
         "GOV-AUD-001-P01-R1-C3", "HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001",
         "GOV-AUD-DECISION-001", "HP-PROMPT-028",
-    } | C2_REGISTRY_IDS | P02_REGISTRY_IDS
+    } | C2_REGISTRY_IDS | P02_REGISTRY_IDS | {"GOV-AUD-DECISION-003", "HP-PROMPT-033", "GOV-AUD-001-PASS-03-CONTRACT", "GOV-AUD-P03-PREP-INPUT-001", "GOV-AUD-P03-OUTPUT-SPEC-001", "GOV-AUD-P03-VALIDATION-PLAN-001", "GOV-AUD-P03-ADVERSARIAL-PLAN-001"}
 
     def registry_mutation(doc: dict) -> None:
         doc["artifacts"] = [item for item in doc["artifacts"] if item["id"] not in run_and_correction_ids]
@@ -143,6 +147,7 @@ def planning_only(root: Path) -> None:
     runs_readme = audit / "runs/README.md"
     runs_readme.write_text(runs_readme.read_text().split("## Registered runs", 1)[0] + "## Registered runs\n\n- None.\n")
     (audit / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml").unlink()
+    (audit / "decisions/GOV-AUD-DECISION-003-pass-02-checkpoint-a-approval-v0.1.0.yaml").unlink()
     shutil.rmtree(root / RUN_REL)
     shutil.rmtree(root / P02_REL)
 
@@ -158,10 +163,12 @@ def c1_only(root: Path) -> None:
             passes_executed=1,
             substantive_correction_id=None,
             pass_01_accepted=False,
+            checkpoints_approved=0,
         )
         next(item for item in plan["sequence"] if item["id"] == "PASS-01")["status"] = "EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION"
         next(item for item in plan["sequence"] if item["id"] == "PASS-02")["status"] = "PLANNED_NOT_EXECUTED"
         next(item for item in plan["sequence"] if item["id"] == "CHECKPOINT-A")["status"] = "PENDING_OWNER_DECISION"
+        next(item for item in plan["sequence"] if item["id"] == "PASS-03")["status"] = "PLANNED_NOT_EXECUTED"
 
     def status_mutation(doc: dict) -> None:
         status = doc["audit"]
@@ -172,6 +179,10 @@ def c1_only(root: Path) -> None:
             pass_01_status="EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION",
             pass_02_status="PLANNED_NOT_EXECUTED",
             pass_01_accepted=False,
+            checkpoints_completed=0,
+            pass_03_preparation_status=None,
+            pass_03_execution_authorized=False,
+            pass_03_executed=False,
             last_completed_step="PASS_01_EXECUTED_AND_VALIDATED",
             next_action="PROJECT_OWNER_PASS_01_DISPOSITION_AND_SEPARATE_PASS_02_AUTHORIZATION_DECISION",
         )
@@ -186,16 +197,18 @@ def c1_only(root: Path) -> None:
         audit / "prompt-registry.yaml",
         lambda doc: doc["prompt_registry"].update(
             version="0.2.0",
-            prompts=[item for item in doc["prompt_registry"]["prompts"] if item["prompt_id"] not in {"GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021"}],
+            prompts=[item for item in doc["prompt_registry"]["prompts"] if item["prompt_id"] not in {"GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021", "HP-PROMPT-033"}],
         ),
     )
 
     def registry_mutation(doc: dict) -> None:
-        doc["artifacts"] = [item for item in doc["artifacts"] if item["id"] not in C2_REGISTRY_IDS | P02_REGISTRY_IDS | {"GOV-AUD-001-P01-R1-C3", "HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001", "GOV-AUD-DECISION-001", "HP-PROMPT-028"}]
+        removed = C2_REGISTRY_IDS | P02_REGISTRY_IDS | {"GOV-AUD-001-P01-R1-C3", "HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001", "GOV-AUD-DECISION-001", "HP-PROMPT-028", "GOV-AUD-DECISION-003", "HP-PROMPT-033", "GOV-AUD-001-PASS-03-CONTRACT", "GOV-AUD-P03-PREP-INPUT-001", "GOV-AUD-P03-OUTPUT-SPEC-001", "GOV-AUD-P03-VALIDATION-PLAN-001", "GOV-AUD-P03-ADVERSARIAL-PLAN-001"}
+        doc["artifacts"] = [item for item in doc["artifacts"] if item["id"] not in removed]
         next(item for item in doc["artifacts"] if item["id"] == "GOV-AUD-001")["status"] = "IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION"
 
     rewrite_yaml(root / "governance/ARTIFACT_REGISTRY.yaml", registry_mutation)
     (audit / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml").unlink()
+    (audit / "decisions/GOV-AUD-DECISION-003-pass-02-checkpoint-a-approval-v0.1.0.yaml").unlink()
     shutil.rmtree(root / C3_REL)
     shutil.rmtree(root / C2_REL)
     shutil.rmtree(root / P02_REL)
@@ -242,7 +255,8 @@ def test_exact_prompt_hashes_and_substantive_output_hashes() -> None:
 def test_pass_contracts_remain_planned_and_run_is_registered() -> None:
     for pass_id in PASS_IDS:
         contract = yaml.safe_load((AUDIT / f"passes/{pass_id}/contract.yaml").read_text())["pass"]
-        assert contract["status"] == "PLANNED_NOT_EXECUTED"
+        expected = "PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION" if pass_id == "PASS-03" else "PLANNED_NOT_EXECUTED"
+        assert contract["status"] == expected
     run_dirs = sorted(path.name for path in (AUDIT / "runs").iterdir() if path.is_dir())
     assert run_dirs == ["GOV-AUD-001-P01-R1", "GOV-AUD-001-P02-R1"]
 
@@ -250,6 +264,7 @@ def test_pass_contracts_remain_planned_and_run_is_registered() -> None:
 def test_only_affected_pass_contracts_have_bindable_versions() -> None:
     expected = {
         "PASS-02": "GOV-AUD-001-PASS-02-CONTRACT",
+        "PASS-03": "GOV-AUD-001-PASS-03-CONTRACT",
         "PASS-07": "GOV-AUD-001-PASS-07-CONTRACT",
     }
     for pass_id in PASS_IDS:
@@ -258,7 +273,8 @@ def test_only_affected_pass_contracts_have_bindable_versions() -> None:
         if pass_id in expected:
             assert identity["contract_id"] == expected[pass_id]
             assert identity["version"] == "0.2.0"
-            assert identity["prompt_binding_rule"] == "INSTANTIATED_PROMPT_MUST_BIND_CONTRACT_ID_VERSION_AND_SHA256"
+            if pass_id != "PASS-03":
+                assert identity["prompt_binding_rule"] == "INSTANTIATED_PROMPT_MUST_BIND_CONTRACT_ID_VERSION_AND_SHA256"
         else:
             assert identity is None
 

@@ -109,6 +109,11 @@ VERSIONED_CONTRACTS = {
         "version": "0.2.0",
         "predecessor_sha256": "e2caa6f2ba67261e3c76e53342d848856642b5793fd4e49ede172d63825f50bb",
     },
+    "PASS-03": {
+        "contract_id": "GOV-AUD-001-PASS-03-CONTRACT",
+        "version": "0.2.0",
+        "predecessor_sha256": "a41aef15eeb22f0ce779356f92abd761dfaf52db5082247ca75e7b4b3bcea00c",
+    },
 }
 
 
@@ -572,12 +577,8 @@ def validate(root: Path) -> dict:
     registry = load(audit / "prompt-registry.yaml")["prompt_registry"]
     manifest = load(audit / "03-baseline-input-manifest.yaml")["manifest"]
 
-    # PASS-03 preparation is deliberately a new, unexecuted lifecycle surface.
-    # Its package-specific validator owns the detailed contract checks.
-    if plan.get("status") == "IN_PROGRESS_PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION":
-        return {"result": "VALID", "diagnostics": []}
-
     passes_executed = plan.get("passes_executed")
+    pass_03_prepared = plan.get("status") == "IN_PROGRESS_PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION"
     if any((
         registry.get("methodology_protocol") != METHODOLOGY_PROTOCOL,
         registry.get("methodology_correction_prompt") != METHODOLOGY_CORRECTION_PROMPT,
@@ -594,7 +595,7 @@ def validate(root: Path) -> dict:
         if any((
             record.get("contract_id") != expected["contract_id"],
             str(record.get("version")) != expected["version"],
-            record.get("status") != "ACTIVE_FOR_FUTURE_INSTANTIATION",
+            record.get("status") != ("PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION" if pass_id == "PASS-03" else "ACTIVE_FOR_FUTURE_INSTANTIATION"),
             record.get("path") != contract_path.relative_to(root).as_posix(),
             not contract_path.is_file(),
             contract_path.is_file() and record.get("sha256") != sha256(contract_path),
@@ -612,6 +613,8 @@ def validate(root: Path) -> dict:
     acceptance_path = root / ACCEPTANCE_REL
     accepted = acceptance_path.is_file()
     expected_plan_status = (
+        "IN_PROGRESS_PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION" if pass_03_prepared
+        else
         "PLANNED_NOT_EXECUTED" if passes_executed == 0
         else PASS_02_AUDIT_STATUS if passes_executed == 2
         else ACCEPTED_AUDIT_STATUS if accepted
@@ -635,7 +638,7 @@ def validate(root: Path) -> dict:
     if plan.get("substantive_correction_id") != (SUBSTANTIVE_CORRECTION_ID if c2_present else None):
         errors.append("audit plan substantive correction identity mismatch")
     for key, expected in {
-        "checkpoints_approved": 0, "gov_7_activated": False,
+        "checkpoints_approved": 1 if pass_03_prepared else 0, "gov_7_activated": False,
         "recommendations_accepted": False, "implementation_authorized": False,
         "graph_technology_selected": False, "vertical_slice_selected": False,
         "audit_executed": False, "completed": False, "pass_01_accepted": accepted,
@@ -657,20 +660,24 @@ def validate(root: Path) -> dict:
         if item.get("id") == "PASS-01" and passes_executed >= 1:
             expected_status = ACCEPTED_PASS_01_STATUS if accepted else C2_STATUS if c2_present else PASS_01_EXECUTED_STATUS
         elif item.get("id") == "PASS-02" and passes_executed == 2:
-            expected_status = PASS_02_STATUS
+            expected_status = "ACCEPTED_COMPLETED" if pass_03_prepared else PASS_02_STATUS
+        elif item.get("id") == "CHECKPOINT-A" and pass_03_prepared:
+            expected_status = "APPROVED_COMPLETED"
+        elif item.get("id") == "PASS-03" and pass_03_prepared:
+            expected_status = "PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION"
         else:
             expected_status = "PENDING_PROJECT_OWNER_DISPOSITION" if accepted and item.get("id") == "CHECKPOINT-A" else "PENDING_OWNER_DECISION" if item.get("id", "").startswith("CHECKPOINT") else "PLANNED_NOT_EXECUTED"
         if item.get("status") != expected_status:
             errors.append(f"sequence status mismatch: {item.get('id')}")
     if passes_executed < 2 and sequence_by_id.get("PASS-02", {}).get("status") != "PLANNED_NOT_EXECUTED":
         errors.append("PASS-02 status is inconsistent with executed-pass count")
-    if sequence_by_id.get("CHECKPOINT-A", {}).get("status") != ("PENDING_PROJECT_OWNER_DISPOSITION" if accepted else "PENDING_OWNER_DECISION"):
+    if sequence_by_id.get("CHECKPOINT-A", {}).get("status") != ("APPROVED_COMPLETED" if pass_03_prepared else "PENDING_PROJECT_OWNER_DISPOSITION" if accepted else "PENDING_OWNER_DECISION"):
         errors.append("CHECKPOINT-A must remain pending after PASS-01")
 
     audit_status = status.get("audit", {})
     for key, expected in {
         "id": "GOV-AUD-001", "status": expected_plan_status, "passes_executed": passes_executed,
-        "checkpoints_completed": 0, "gov_7_activated": False,
+        "checkpoints_completed": 1 if pass_03_prepared else 0, "gov_7_activated": False,
         "recommendations_accepted": False, "implementation_authorized": False,
         "audit_execution_authorized": False, "graph_implemented": False,
         "telemetry_implemented": False, "interviewer_simulation_implemented": False,
@@ -686,7 +693,7 @@ def validate(root: Path) -> dict:
     )
     if audit_status.get("pass_01_status") != expected_pass_01_status:
         errors.append("audit status PASS-01 lifecycle mismatch")
-    expected_pass_02_status = PASS_02_STATUS if passes_executed == 2 else "PLANNED_NOT_EXECUTED"
+    expected_pass_02_status = ("ACCEPTED_COMPLETED" if pass_03_prepared else PASS_02_STATUS) if passes_executed == 2 else "PLANNED_NOT_EXECUTED"
     if audit_status.get("pass_02_status") != expected_pass_02_status:
         errors.append("audit status PASS-02 lifecycle mismatch")
     if audit_status.get("pass_01_execution_authorized") is not (passes_executed >= 1):
@@ -798,6 +805,8 @@ def validate(root: Path) -> dict:
         expected_executed_prompt_ids.append("GOV-AUD-PROMPT-016")
     if passes_executed == 2:
         expected_executed_prompt_ids.append("GOV-AUD-PROMPT-021")
+    if pass_03_prepared:
+        expected_executed_prompt_ids.append("HP-PROMPT-033")
     identities = [(item.get("prompt_id"), str(item.get("version"))) for item in prompts]
     if len(identities) != len(set(identities)):
         errors.append("prompt registry contains duplicate prompt identity/version")
@@ -831,6 +840,11 @@ def validate(root: Path) -> dict:
             errors.append(f"missing pass contract: {pass_id}")
             continue
         contract = load(contract_path).get("pass", {})
+        if pass_id == "PASS-03" and contract.get("status") == "PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION":
+            identity = contract.get("contract_identity", {})
+            if identity.get("contract_id") != "GOV-AUD-001-PASS-03-CONTRACT" or str(identity.get("version")) != "0.2.0":
+                errors.append("versioned contract binding mismatch: PASS-03")
+            continue
         if REQUIRED_CONTRACT_FIELDS - set(contract):
             errors.append(f"contract fields missing: {pass_id}")
         if contract.get("id") != pass_id or contract.get("status") != "PLANNED_NOT_EXECUTED":
@@ -959,8 +973,9 @@ def validate(root: Path) -> dict:
             validate_correction_custody(root, registry, errors)
             validate_substantive_correction_custody(root, registry, errors)
             validate_c3_classification_and_temporal_semantics(root, errors)
-            pass_02_result = validate_pass_02(root)
-            errors.extend(f"PASS-02: {item}" for item in pass_02_result["diagnostics"])
+            if not pass_03_prepared:
+                pass_02_result = validate_pass_02(root)
+                errors.extend(f"PASS-02: {item}" for item in pass_02_result["diagnostics"])
     methodology_result = validate_audit_methodology(root)
     errors.extend(f"AUDIT-METHODOLOGY: {item}" for item in methodology_result["diagnostics"])
 
@@ -968,7 +983,7 @@ def validate(root: Path) -> dict:
     decision_members = sorted(path.relative_to(audit / "decisions").as_posix() for path in (audit / "decisions").rglob("*") if path.is_file())
     if passes_executed == 0 and run_members != ["README.md"]:
         errors.append("planning-only state contains execution artifacts")
-    expected_decision_members = sorted(["README.md"] + (["GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"] if accepted else []) + (["GOV-AUD-DECISION-002-methodology-acceptance-v0.1.0.yaml"] if methodology_acceptance.is_file() else []))
+    expected_decision_members = sorted(["README.md"] + (["GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"] if accepted else []) + (["GOV-AUD-DECISION-002-methodology-acceptance-v0.1.0.yaml"] if methodology_acceptance.is_file() else []) + (["GOV-AUD-DECISION-003-pass-02-checkpoint-a-approval-v0.1.0.yaml"] if pass_03_prepared else []))
     if decision_members != expected_decision_members:
         errors.append("unexpected decision artifacts detected")
     forbidden_names = {"output", "outputs", "evaluation", "telemetry", "projection", "graph"}
