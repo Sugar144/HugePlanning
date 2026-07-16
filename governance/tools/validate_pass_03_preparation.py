@@ -25,7 +25,7 @@ def main():
     manifest=load(BASE/'preparation-input-manifest.yaml')['manifest']
     for item in manifest.get('inputs',[]):
         p=ROOT / item['path']
-        result=subprocess.run(['git','-C',str(ROOT),'show','HEAD:'+item['path']], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=False)
+        result=subprocess.run(['git','-C',str(ROOT),'show',manifest['starting_head']+':'+item['path']], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=False)
         actual=hashlib.sha256(result.stdout).hexdigest() if result.returncode == 0 else (hashlib.sha256(p.read_bytes()).hexdigest() if p.is_file() else None)
         if actual != item.get('sha256'): errors.append('input hash mismatch: '+item['path'])
     spec=load(BASE/'output-artifact-specification.yaml')['output_specification']

@@ -155,7 +155,7 @@ P02_HASHES = {
     "authorization/owner-authorization.yaml": "efec5e415e9fadb25e33d6693e83b29a6df3f282d16976a3f43d99711450a376",
     "evaluation/pass-02-validation-report.yaml": "ecc2bf4d4d6c5b3d07af34ea79b716e3c1c2c6063f39cc9e8b79d85584d69e8e",
     "input/input-manifest.yaml": "bc5c9764ab0a30a2c96665e09c4d3e720d20be35631e4ad06aa7c10dd656f239",
-    "manifest.yaml": "03b5a19764d424268bcd5285a410fabaf5109e88eaa4a6c402d5eaefe1a4ee87",
+    "manifest.yaml": "f787316566c717ecda62bfc2a7bd449d830228507d0fcc57b1c0943583ecce28",
     "output/01-bounded-context-and-ownership-model.yaml": "8ee03f87ca792fc41c366f0150abebc9a3d718441fe7669955baf0d827132742",
     "output/02-cross-layer-interface-and-contract-assessment.md": "ac92b827e6a8ffc3245a792a8ac12de1a6beba3297e0dd65a5b31709232e5415",
     "output/03-typed-relationship-and-query-model.yaml": "71122a28793a24f3debfbf586ce5b17357ab397a11b0dda2454bcaaf8b3e8e14",
@@ -781,13 +781,14 @@ def validate(root: Path) -> dict:
     if status_path.is_file():
         audit_status = load(status_path).get("audit", {})
         execution = audit_status.get("pass_02_execution", {})
+        preparation_state = audit_status.get("pass_03_preparation_status")
         execution_crossed = bool(execution) and any((
-            execution.get("pass_02_accepted") is not False,
-            execution.get("checkpoint_a_completed") is not False,
+            execution.get("pass_02_accepted") is not True,
+            execution.get("checkpoint_a_completed") is not True,
             execution.get("pass_03_authorized_or_executed") is not False,
             execution.get("gov_7_activated") is not False,
         ))
-        if execution_crossed or audit_status.get("implementation_authorized") is not False:
+        if execution_crossed or audit_status.get("implementation_authorized") is not False or preparation_state not in {None, "PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION"}:
             errors.append("methodology correction crossed audit authority boundary")
 
     return {"result": "VALID" if not errors else "INVALID", "diagnostics": errors}
