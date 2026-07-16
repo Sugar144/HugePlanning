@@ -1,0 +1,52 @@
+authorization:
+  authorization_id: GOV-AUD-AUTH-002
+  version: 0.1.0
+  evidence_class: CONTEMPORANEOUS_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+  authority: PROJECT_OWNER
+  status: AUTHORIZED_NOT_YET_CONSUMED
+  authorized_run: GOV-AUD-001-P02-R1
+  authorized_pass: PASS-02
+  role: Cross-Layer Architecture Auditor
+  mode: EVIDENCE_SUPPORTED_ARCHITECTURE_SYNTHESIS
+  execution_count_limit: 1
+  execution_count_consumed: 0
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_head: a4cbc500b2ca864b2eb35e9354df88c8c3d97a3e
+  prompt_identity: GOV-AUD-PROMPT-021/0.1.0
+  catalog_prompt_identity: HP-PROMPT-029/0.1.0
+  prospective_amendment:
+    prior_conflicting_catalog_prompt_identity: HP-PROMPT-028
+    replacement_catalog_prompt_identity: HP-PROMPT-029
+    collision_check: PASSED_UNUSED_ACROSS_CANONICAL_ID_SURFACES
+    failed_startup_created_execution_evidence: false
+  authorized_actions:
+    - inspect repository evidence within the declared read scope
+    - create exact PASS-02 authorization, prompt custody and input manifest
+    - execute PASS-02 analysis
+    - create the seven declared outputs and validation evidence
+    - update the minimum audit lifecycle and registries needed to represent an unaccepted PASS-02 candidate
+    - run applicable validation and tests
+  authorized_write_scope:
+    - governance/audits/GOV-AUD-001-gov7-enablement/**
+    - governance/prompts/orchestration/**
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/CURRENT_STATE.md
+    - governance/GOVERNANCE_MASTER_PLAN.md
+    - governance/DECISION_LOG.md
+    - governance/tests/**
+    - governance/tools/**
+  not_authorized:
+    - commit
+    - push
+    - accept PASS-02
+    - complete CHECKPOINT-A
+    - execute PASS-03
+    - select or adopt tools
+    - select a graph database
+    - implement graph, projection, services, Controller changes, MCP, runtime integration or self-hosting
+    - activate or implement GOV-7
+    - resolve OD-006
+    - accept risk
+    - modify product, planning or published runtime artifacts
+  authority_limit: ONE_BOUNDED_PASS_02_EXECUTION_WITHOUT_PUBLICATION

@@ -1,17 +1,18 @@
 ---
 audit_id: GOV-AUD-001
-version: 0.1.0
-status: PLANNED_NOT_EXECUTED
-authority: SCAFFOLD_CREATION_ONLY
+version: 0.2.0
+status: IN_PROGRESS_METHODOLOGY_CORRECTED_PROSPECTIVELY
+authority: AUDIT_PROGRAM_AND_PROSPECTIVE_METHODOLOGY_CONTROL_ONLY
+supersedes: GOV-AUD-001/0.1.0
 ---
 
 # GOV-7 Enablement, Cross-Layer Architecture and Empirical Validation Audit Charter
 
 ## Mandate and boundary
 
-This program plans a bounded, repository-first audit of HugePlanning's current capabilities, cross-layer architecture, empirical evaluation needs, and evidence-supported GOV-7 options. The scaffold exists under `governance/audits/GOV-AUD-001-gov7-enablement/` because the repository had no prior audit-program convention and this path keeps planning evidence separate from completed formal runs, reviews, decisions, and runtime artifacts.
+This program plans a bounded, repository-first audit of HugePlanning's current capabilities, cross-layer architecture, empirical evaluation needs, and evidence-supported GOV-7 options. The scaffold exists under `governance/audits/GOV-AUD-001-gov7-enablement/` because the repository had no prior audit-program convention and this path keeps planning evidence separate from completed formal runs, reviews, decisions, and runtime artifacts. The prospective finding, materiality, deviation, review-type, instruction-conflict and identity controls are canonical in `07-audit-methodology-and-review-protocol.yaml`.
 
-The audit is `PLANNED_NOT_EXECUTED`. It creates no governance authority, activates no phase, selects no GOV-7 strategy, implements no recommendation, accepts no risk, and supports no claim of enforceability, operation, compliance, readiness, or maturity. Every analytical pass requires separate Project Owner authorization and an exact instantiated prompt bound to a hashed input manifest before execution.
+PASS-01 is accepted and completed. PASS-02 R1 is executed and deterministically validated but unaccepted; its Project Owner-reported independent review is not durably custodied and is not reconstructed or treated as formal evaluation evidence. The audit remains incomplete. The Project Owner accepted `GOV-AUD-001-METHOD-001/0.3.0` prospectively in `GOV-AUD-DECISION-002/0.1.0` after focused independent confirmation, preserving the prior controls and completed evidence. `HP-MPROP-007` is an Owner-accepted future audit clarification with implementation not started; it requires a bounded contract clarification after CHECKPOINT-A and before PASS-03. This methodology correction creates no governance authority, activates no phase, selects no GOV-7 strategy, implements no recommendation, accepts no risk, and supports no claim of enforceability, operation, compliance, readiness, or maturity. Every future analytical or review execution requires separate Project Owner authorization and an exact instantiated prompt bound to a hashed input manifest before execution.
 
 ## Durable baseline
 
@@ -32,6 +33,11 @@ The audit is `PLANNED_NOT_EXECUTED`. It creates no governance authority, activat
 6. **Required relationship model, neutral technology:** produce a typed cross-layer relationship graph or equivalent formal model, but do not predetermine storage or graph technology. It must be derived, regenerable, provenance-rich, and non-authoritative.
 7. **Controlled self-hosting:** assess system self-hosting separately from infrastructure self-hosting. Protect the trust root, version and release boundaries, independent evaluation, rollback, manual escape paths, and the prohibition on self-certification, self-ratification, and retrospective evidence rewriting.
 8. **Open, evidence-led discovery:** named technologies are an initial candidate pool, not an adoption list. Every comparison includes `NO_NEW_TOOL`, a repository-native extension, and the smallest custom component.
+9. **Explicit support basis:** every material finding identifies one or more canonical bases. `MODEL_INFERENCE_ONLY` is visible, is never a verified fact, and requires a defined follow-up.
+10. **Root cause before invalidity:** a deviation is analyzed through authority, conflict, alternatives, causal layer, evidence impact and materiality before any execution-validity conclusion.
+11. **Review-type integrity:** deterministic validation, targeted confirmation, independent substantive review and adversarial review use distinct purposes, conclusions, independence and evidence contracts. Adversarial review attempts refutation.
+12. **Bounded materiality:** only material effects on the canonical blocking dimensions block a pass; style and optional polish do not.
+13. **Canonical identity resolution:** repository identities are resolved from current canonical allocation sources and verified unused before custody or modification, never assigned from chat memory.
 
 ## Sequence and checkpoints
 
@@ -42,6 +48,8 @@ Checkpoints require explicit Project Owner disposition; silence is never approva
 ## Required statement labels
 
 Future outputs must label material statements as `VERIFIED_FACT`, `INFERENCE`, `PROPOSAL`, `RECOMMENDATION`, `OWNER_DECISION_REQUIRED`, `DEFERRED`, or `REJECTED`.
+
+Material findings additionally satisfy the basis, support, materiality, disposition and traceability contract in `07-audit-methodology-and-review-protocol.yaml`.
 
 ## Global prohibitions for every pass
 

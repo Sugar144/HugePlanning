@@ -1,7 +1,7 @@
 # Failure and Lessons Index
 
 > GENERATED FILE — source of truth: `records/` plus append-only `events/`.
-> Tool version: `0.1.0`. Deterministic input digest: `b65ee3311b7c8c6010aa3632ae66a74393cf79ed8e72216bd938424c446377d9`.
+> Tool version: `0.1.0`. Deterministic input digest: `75b7a49da362a7668c8ce7a8e163b2d82a3d02183f63df253229f4c289039ea8`.
 > Manual edits will be overwritten by `--apply` or rejected as generated-view drift.
 
 | ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |
@@ -28,3 +28,5 @@
 | HP-FAIL-020 | 2026-07-15 | Material governance completion left status-bearing surfaces divergent | PROCESS_DEFECT | HIGH | VALIDATED | Durable cross-surface governance state | GOV-5/KGR-006-R1 | no | PARTIAL | A locally correct governance artifact can still leave the repository operationally false; material completion requires one canonical comparison of every affected durable status surface. |
 | HP-FAIL-021 | 2026-07-16 | Audit scaffold validation froze the planning-only lifecycle snapshot | TOOLING_GAP | HIGH | VALIDATED | Audit scaffold lifecycle validation | GOV-7 audit preparation/GOV-AUD-001-P01-R1 | no | PARTIAL | State validation must derive expectations from canonical lifecycle status rather than permanently encode one phase snapshot. |
 | HP-FAIL-022 | 2026-07-16 | PASS-01 outputs became stale after lifecycle correction and omitted material implemented runtime capabilities | OWNER_CORRECTION | HIGH | VALIDATED | PASS-01 capability inventory, gap ranking and handoff | GOV-7 audit preparation/GOV-AUD-001-P01-R1-C2 | no | PARTIAL | Capability audits must re-baseline after implementation changes and distinguish demonstrated failures from specialized corrections and unproven generalized solutions before ranking. |
+| HP-FAIL-023 | 2026-07-16 | PASS-02 execution prompt initially reused the assigned HP-PROMPT-028 identity | OWNER_CORRECTION | MEDIUM | VALIDATED | PASS-02 prompt identity and prospective custody | GOV-7 audit PASS-02 startup/GOV-AUD-001-P02-R1 | no | PARTIAL | Material prompt identities must be collision-checked against the latest canonical registries immediately before custody; a correct startup stop preserves authority and creates no execution evidence. |
+| HP-FAIL-024 | 2026-07-16 | Audit findings and reviews lacked explicit support, causality, review-type and materiality contracts | OWNER_CORRECTION | HIGH | VALIDATED | GOV-AUD-001 finding and review methodology | GOV-7 audit methodology correction/GOV-AUD-001 | no | PARTIAL | Audit conclusions are trustworthy only when support basis, review method, causal layer and materiality are explicit before disposition; durable identity and instruction-conflict controls prevent process evidence from silently expanding authority.  |

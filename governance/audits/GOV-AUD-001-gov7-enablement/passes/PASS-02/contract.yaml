@@ -1,9 +1,19 @@
 pass:
   id: PASS-02
+  contract_identity:
+    contract_id: GOV-AUD-001-PASS-02-CONTRACT
+    version: 0.2.0
+    status: ACTIVE_FOR_FUTURE_INSTANTIATION
+    supersession:
+      status: SUPERSEDES_PREVIOUS_UNVERSIONED_SNAPSHOT
+      predecessor_path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-02/contract.yaml
+      predecessor_sha256: 9fa786dfad87b4612671928fc9985e07fcb31aafc366487550fed2a262d3a496
+    prompt_binding_rule: INSTANTIATED_PROMPT_MUST_BIND_CONTRACT_ID_VERSION_AND_SHA256
   title: Cross-Layer Architecture, Graph, Versioning and Controlled Self-Hosting
   status: PLANNED_NOT_EXECUTED
   purpose: Define evidence-supported interaction among governance derivation, methodology construction, client lifecycle and information architecture.
   authority: SEPARATE_PROJECT_OWNER_EXECUTION_AUTHORIZATION_REQUIRED
+  methodology_protocol: GOV-AUD-001-METHOD-001/0.3.0
   required_predecessors: [PASS-01]
   checkpoint_dependency: null
   governance_phase_prerequisites:
@@ -47,8 +57,16 @@ pass:
     format: VERSIONED_ARCHITECTURE_REPORT_PLUS_TYPED_RELATIONSHIP_MODEL
     statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
     required_axes: [governance_derivation, methodology_construction, client_lifecycle, information_architecture]
-  required_evidence: [PASS-01 gap IDs, canonical repository paths, ownership/version records, explicit inference and unresolved-decision markers]
-  validation: [relationship type and endpoint validation, source-path existence, query coverage, compatibility-matrix completeness, authority-boundary review, output-contract validation]
+  review_contract:
+    allowed_review_types: [DETERMINISTIC_VALIDATION, TARGETED_CONFIRMATION, INDEPENDENT_SUBSTANTIVE_REVIEW, ADVERSARIAL_REVIEW]
+    allowed_conclusions_by_review_type:
+      DETERMINISTIC_VALIDATION: [VALID_AGAINST_DECLARED_MACHINE_CONTRACT, INVALID_AGAINST_DECLARED_MACHINE_CONTRACT]
+      TARGETED_CONFIRMATION: [CONFIRMED_WITHIN_TARGETED_SCOPE, NOT_CONFIRMED_WITHIN_TARGETED_SCOPE, INSUFFICIENT_EVIDENCE_FOR_TARGETED_CONFIRMATION]
+      INDEPENDENT_SUBSTANTIVE_REVIEW: [SUITABLE_FOR_PROJECT_OWNER_DISPOSITION, RETURN_FOR_BOUNDED_VERSIONED_CORRECTION, INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS, INSUFFICIENT_EVIDENCE_FOR_SUBSTANTIVE_CONCLUSION]
+      ADVERSARIAL_REVIEW: [SURVIVED_RECORDED_ADVERSARIAL_ATTACKS, MATERIAL_ADVERSARIAL_FINDINGS_REQUIRE_CORRECTION, INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS, INSUFFICIENT_EVIDENCE_FOR_ADVERSARIAL_CONCLUSION]
+    conclusion_to_result: {}
+  required_evidence: [PASS-01 gap IDs, canonical repository paths, ownership/version records, explicit finding basis and support classification, explicit inference and unresolved-decision markers, materiality and traceability]
+  validation: [relationship type and endpoint validation, source-path existence, query coverage, compatibility-matrix completeness, finding-contract validation, authority-boundary review, output-contract validation]
   stopping_conditions: [PASS-01 not accepted or bounded, architecture requires GOV-7 activation, graph technology selection becomes necessary without evidence, trust-root or authority conflict, missing canonical owner]
   prohibited_actions: [modify repository during analysis without separate authority, implement graph/projection/services/controllers/self-hosting, select technology during planning, accept recommendations, resolve Owner decisions, rewrite PASS-01, treat chat memory as durable truth]
   prohibited_claims: [approved architecture, implemented graph, GOV-7 readiness, enforceability, operation, compliance, maturity, risk acceptance]

@@ -1,0 +1,102 @@
+run:
+  audit_id: GOV-AUD-001
+  pass_id: PASS-02
+  run_id: GOV-AUD-001-P02-R1
+  role: Cross-Layer Architecture Auditor
+  mode: EVIDENCE_SUPPORTED_ARCHITECTURE_SYNTHESIS
+  status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+  lifecycle: EXECUTED
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_local_head: a4cbc500b2ca864b2eb35e9354df88c8c3d97a3e
+  starting_remote_head: a4cbc500b2ca864b2eb35e9354df88c8c3d97a3e
+  local_remote_aligned_at_start: true
+  clean_worktree_at_start: true
+  empty_staging_at_start: true
+  identity_collision_check:
+    GOV-AUD-001-P02-R1: UNUSED_AT_START
+    GOV-AUD-AUTH-002: UNUSED_AT_START
+    GOV-AUD-PROMPT-021: UNUSED_AT_START
+    HP-PROMPT-029: UNUSED_AT_START
+    replaced_conflicting_candidate: HP-PROMPT-028
+  failed_startup_attempt_execution_evidence: NONE
+  execution_count_limit: 1
+  execution_count_consumed: 1
+authorization:
+  id: GOV-AUD-AUTH-002
+  version: 0.1.0
+  authority: PROJECT_OWNER
+  status: CONSUMED
+  path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/authorization/owner-authorization.yaml
+  sha256: efec5e415e9fadb25e33d6693e83b29a6df3f282d16976a3f43d99711450a376
+prompt:
+  prompt_id: GOV-AUD-PROMPT-021
+  catalog_prompt_id: HP-PROMPT-029
+  version: 0.1.0
+  lifecycle: EXECUTED
+  exact_text_preserved: true
+  prospective_catalog_identity_amendment_applied: true
+  path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/prompt/GOV-AUD-PROMPT-021-pass-02-execution-v0.1.0.md
+  sha256: b41cafb36922839781a334b4d851c00c80a253bc5ab7ecf96dd84955501e669c
+contract:
+  pass_contract_path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-02/contract.yaml
+  pass_contract_starting_sha256: 9fa786dfad87b4612671928fc9985e07fcb31aafc366487550fed2a262d3a496
+  audit_charter_path: governance/audits/GOV-AUD-001-gov7-enablement/00-audit-charter.md
+  custody_contract_path: governance/audits/GOV-AUD-001-gov7-enablement/04-artifact-and-custody-contract.md
+input:
+  manifest_id: GOV-AUD-001-P02-R1-INPUT-001
+  manifest_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/input/input-manifest.yaml
+  manifest_sha256: bc5c9764ab0a30a2c96665e09c4d3e720d20be35631e4ad06aa7c10dd656f239
+  input_package_sha256: 4d78ebaa00f620f7383105a632bf828c502a1370b7a89d8b44e619a98d0bbe4c
+  member_count: 61
+  inventory_complete_for_declared_analysis: true
+  member_hashes_bound: true
+execution_environment:
+  model: Codex agent based on GPT-5
+  reasoning_mode: NOT_EXPOSED
+  external_research: NONE_PERFORMED
+output_contract:
+  substantive_output_count: 7
+  status_on_success: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+  required_outputs:
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/01-bounded-context-and-ownership-model.yaml, format: YAML, sha256: 8ee03f87ca792fc41c366f0150abebc9a3d718441fe7669955baf0d827132742}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/02-cross-layer-interface-and-contract-assessment.md, format: MARKDOWN, sha256: ac92b827e6a8ffc3245a792a8ac12de1a6beba3297e0dd65a5b31709232e5415}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/03-typed-relationship-and-query-model.yaml, format: YAML, sha256: 71122a28793a24f3debfbf586ce5b17357ab397a11b0dda2454bcaaf8b3e8e14}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/04-version-migration-and-impact-model.md, format: MARKDOWN, sha256: 52e155f1a3f2817f5ae9f5113eba6c73dbe6ed239cd0376b76b987f0ea2ac0d0}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/05-controlled-self-hosting-and-trust-boundaries.md, format: MARKDOWN, sha256: 4858fd98661ae274ef382a51e1de4a0e5c5d919db763db0a6ef8591b5fbdbed0}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/06-architecture-style-comparison.yaml, format: YAML, sha256: f00845265751fce8bb22e082abc0547312469043bc01f923c2af551d4a50bd67}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/07-pass-02-findings-and-checkpoint-a-handoff.md, format: MARKDOWN, sha256: 459e339b6849f32a3d2fed205247af33880f69059e08059998ba49521a6e1f6e}
+  validation_report:
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/evaluation/pass-02-validation-report.yaml
+    sha256: ecc2bf4d4d6c5b3d07af34ea79b716e3c1c2c6063f39cc9e8b79d85584d69e8e
+    evidence_class: SOURCE_RUN_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_EVALUATION
+  required_statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+authority_boundary:
+  permitted_execution: PASS_02_ONLY
+  pass_01_immutable: true
+  pass_02_accepted: false
+  checkpoint_a_completed: false
+  pass_03_authorized_or_executed: false
+  recommendations_accepted: false
+  architecture_selected: false
+  implementation_authorized: false
+  gov_7_activated: false
+  od_006_status: UNRESOLVED_TRIGGER_GATED
+  commit_authorized: false
+  push_authorized: false
+stopping_conditions:
+  - branch or starting HEAD mismatch
+  - local and remote divergence
+  - unclean worktree or nonempty staging at startup
+  - identity or authority conflict
+  - missing required canonical input
+  - inability to distinguish fact from inference
+  - required write outside authorized scope
+  - output validation failure
+  - Kernel or phase-state change outside the authorized PASS-02 lifecycle update
+  - architecture, technology, graph or service selection
+  - GOV-7 activation or implementation
+next_checkpoint:
+  id: CHECKPOINT-A
+  status: PENDING_PROJECT_OWNER_DISPOSITION
+  independent_review_required_before_disposition: true

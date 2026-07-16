@@ -1,6 +1,6 @@
 ---
 document_id: GOV-METHODOLOGY-BACKLOG-001
-version: 0.1.0
+version: 0.3.0
 status: ACTIVE_NON_AUTHORITATIVE_PROPOSAL_REGISTER
 authority: NONE
 ---
@@ -219,3 +219,140 @@ proposal:
 ```
 
 These candidates are preserved because they were explicitly requested for phase-readiness review. Each requires a separate evidence basis, Owner disposition, and implementation authorization before any repository or operational change.
+
+## HP-MPROP-006 — Formal instruction-conflict policy derivation for future GOV-7
+
+```yaml
+proposal:
+  id: HP-MPROP-006
+  title: Derive a formal instruction-conflict policy, standard and procedure for future GOV-7
+  status: DOCUMENTED_CANDIDATE_NOT_ADOPTED
+  authority: NONE
+  source:
+    observed_event: >
+      GOV-AUD-001 exposed a conflict between mandatory durable learning capture
+      and bounded run write authority.
+    learning_record: HP-FAIL-024
+    temporary_control: GOV-AUD-001-METHOD-001/0.1.0
+  candidate_classification:
+    - GOVERNANCE_POLICY_GAP
+    - OPERATING_PROTOCOL_GAP
+    - AMBIGUOUS_OR_CONFLICTING_AUTHORITY
+  future_target: GOV-7_POLICY_STANDARD_AND_PROCEDURE_DERIVATION
+  required_questions:
+    - Which durable obligations may operate inside a bounded run without expanding substantive authority?
+    - Which append-only evidence classes are safe exceptions, and which require a stop and new Owner authority?
+    - How are instruction hierarchy, conflict detection, exception custody, review, rollback and Owner burden controlled?
+  current_temporary_rule: >
+    Durable instructions do not silently expand run authority, and run prompts do
+    not silently suppress durable obligations. Append-only learning evidence caused
+    by the current run may be preserved only when it changes no authority, accepted
+    state, prior evidence, implementation or risk; otherwise stop and request
+    Project Owner authority.
+  non_goals:
+    - This entry is not an adopted policy, standard or procedure.
+    - It does not amend the Kernel.
+    - It does not activate GOV-7.
+    - It does not authorize policy design or implementation beyond this proposal custody.
+    - It does not retroactively validate or invalidate PASS-02 R1.
+```
+
+The temporary audit prompt rule is an operating containment only. Formal derivation, review, adoption and implementation require separate future Project Owner authority.
+
+## HP-MPROP-007 — Execution Insight Capture and Learning Promotion Pipeline
+
+```yaml
+proposal:
+  id: HP-MPROP-007
+  title: Execution Insight Capture and Learning Promotion Pipeline
+  classification: METHODOLOGY_PROPOSAL
+  scope: GOV-AUD-001
+  status: OWNER_ACCEPTED_FOR_FUTURE_AUDIT_CLARIFICATION
+  implementation_status: NOT_STARTED
+  incorporation_point: AFTER_CHECKPOINT_A_BEFORE_PASS_03
+  target_passes:
+    - PASS-03
+    - PASS-04
+    - PASS-06
+    - PASS-07
+
+  future_audit_requirement: >
+    The audit will explicitly assess a minimal pipeline from observable execution
+    data and explicit model outputs through verified learning, controlled procedural
+    promotion, selective retrieval and effectiveness measurement.
+
+  minimal_pipeline:
+    - observable execution event
+    - visible execution insight
+    - hypothesis
+    - planned verification
+    - confirmed, refuted, partially confirmed or unresolved conclusion
+    - learning candidate
+    - evidence-aware triage
+    - durable destination
+    - procedural promotion
+    - selective retrieval
+    - effectiveness measurement
+
+  pipeline_notation: >
+    observable execution event → visible execution insight → hypothesis →
+    planned verification → confirmed, refuted, partially confirmed or unresolved conclusion → learning candidate →
+    evidence-aware triage → durable destination → procedural promotion → selective retrieval →
+    effectiveness measurement
+
+  boundaries:
+    - No hidden chain-of-thought collection.
+    - Visible model updates, hypotheses and conclusions are distinct from hidden chain-of-thought and may be captured only when observable.
+    - Operational telemetry, model inference, verified repository evidence, durable learning, methodology proposals, Owner decisions, and implemented procedural controls remain distinct evidence classes.
+    - Repository evidence remains canonical.
+    - Traces are non-authoritative.
+    - Hypotheses remain distinct from verified conclusions.
+    - No silent procedural promotion.
+    - No automatic governance or Kernel modification.
+    - No automatic risk acceptance.
+    - Material learning requires human or independent disposition.
+    - Low-value and duplicate learning must be controlled.
+    - Effectiveness must include recurrence reduction and retrieval usefulness.
+    - Executor self-assertion is not sufficient verification.
+    - Operational traces are non-authoritative and repository evidence remains canonical.
+    - Define privacy, redaction, retention, rollback, telemetry disablement, and manual-fallback boundaries before any implementation.
+
+  observable_data_design:
+    include_when_observable: [run and session identity, prompt ID version and hash, input-package hash, model and reasoning mode, visible model updates, tool calls and results, commands and validations, changed files, retries and correction cycles, Owner interventions, stop reason, artifact inventory, tokens cost and duration]
+    unavailable_data_rule: Record explicit unavailable-data markers rather than inferring missing telemetry.
+
+  verification_states: [HYPOTHESIS_PENDING_VERIFICATION, CONFIRMED, REFUTED, PARTIALLY_CONFIRMED, UNRESOLVED]
+  verification_rule: Refuted and unresolved items must not become accepted procedural learning.
+  candidate_destinations: [operational observation, formal-run evidence, failure or lesson record, methodology proposal, Owner decision candidate, tooling candidate, prompt candidate, skill candidate, validator candidate, regression-test candidate, control candidate, research required, duplicate/link to existing record, discard]
+  candidate_extraction_boundary: Candidate extraction cannot decide authority, risk acceptance, ratification, phase transitions, or implementation approval.
+  promotion_targets: [repository instructions, prompt contracts, schemas, validators, regression tests, scripts, hooks, skills, routing rules, deterministic queries, model-selection rules, formal-run protocols, adversarial-review attack cases, Owner checklists]
+  promotion_states: [captured, implemented, validated, shown effective]
+  selective_retrieval_dimensions: [phase or pass, role, component, operation, artifact type, failure class, risk class, authority boundary, validation type, model or execution mode]
+  retrieval_rule: Use small justified context packages linked to durable evidence; do not inject all learning records into every run.
+  effectiveness_metrics: [recurrence rate, repeated Owner corrections, repeated manual repairs, correction cycles, lessons promoted into controls, promoted controls independently validated, relevant lessons retrieved, irrelevant-context rate, false-learning rate, duplicate-learning rate, added token burden, added Owner burden, failures prevented, candidates discarded as noise]
+  effectiveness_rule: Record volume alone is not successful learning.
+  tooling_boundary: trace capture ≠ insight extraction ≠ evidence verification ≠ candidate triage ≠ procedural promotion ≠ selective retrieval ≠ effectiveness evaluation
+  tooling_options_for_future_comparison: [REPOSITORY_NATIVE_MVP, PILOT_EXTERNAL_FRAMEWORK, HYBRID_REPOSITORY_AND_FRAMEWORK, NO_ACTION, DEFER_PENDING_RUNTIME_CONTROL]
+  candidate_technologies: [repository-native JSONL, Codex hooks/events, OpenTelemetry, OpenInference, Phoenix, Langfuse, Braintrust, PromptLayer, Promptfoo, Opik, other evidence-supported alternatives]
+
+  future_allocation:
+    PASS-03: telemetry, insight representation, verification, metrics and retrieval requirements.
+    PASS-04: repository-native and external tooling comparison.
+    PASS-06: synthesis, minimum scope and adoption sequence.
+    PASS-07: independent evaluation of usefulness, safety, burden and bureaucracy risk.
+
+  contract_clarification_requirement: >
+    Perform a bounded contract clarification after CHECKPOINT-A and before PASS-03
+    instantiation. That separately authorized clarification may update the directly
+    affected future pass contracts and templates; this proposal does not modify
+    PASS-03 or PASS-04 contracts now and does not authorize their execution.
+
+  authority_boundary:
+    checkpoint_a_completed: false
+    pass_03_or_later_execution_authorized: false
+    methodology_implemented: false
+    governance_or_kernel_modification_authorized: false
+    risk_acceptance_authorized: false
+```
+
+This Owner-accepted prospective audit clarification is durable input to a later bounded contract clarification only. It is not started, implemented, validated, operational, adopted as GOV-7 policy, or authority to execute CHECKPOINT-A or any later pass.

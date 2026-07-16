@@ -1,0 +1,452 @@
+bounded_context_model:
+  audit_id: GOV-AUD-001
+  run_id: GOV-AUD-001-P02-R1
+  pass_id: PASS-02
+  version: 0.1.0
+  status: PROPOSED_UNACCEPTED_ARCHITECTURE_MODEL
+  statement_label: PROPOSAL
+  context_count: 11
+  authority_boundary:
+    statement_label: VERIFIED_FACT
+    architecture_selected: false
+    implementation_authorized: false
+    projection_authoritative: false
+    gov_7_activated: false
+    checkpoint_a_completed: false
+    source_basis:
+      - governance/methodology/project-operating-contract.md
+      - governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml
+      - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+      - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/output/03-corrected-ranked-gap-register.yaml
+      - planning/v2/01_architecture_and_operating_model.md
+      - planning/v2/06_artifact_and_information_architecture.md
+  ownership_principles:
+    - id: OWN-PR-001
+      statement_label: VERIFIED_FACT
+      rule: Canonical authority remains with the source artifact and competent owner; a relationship index or view is derived and non-authoritative.
+    - id: OWN-PR-002
+      statement_label: VERIFIED_FACT
+      rule: Proposal, authorization, execution, validation, independent evaluation, acceptance, release and ratification remain distinguishable functions.
+    - id: OWN-PR-003
+      statement_label: PROPOSAL
+      rule: Cross-context writes occur only through a versioned contract or append-only event that names the target owner and authority.
+    - id: OWN-PR-004
+      statement_label: PROPOSAL
+      rule: A context may reject an input at its boundary without mutating the source context.
+    - id: OWN-PR-005
+      statement_label: RECOMMENDATION
+      rule: Reuse existing custody, hashing, schemas and narrow replay primitives before introducing another platform layer.
+  contexts:
+    - context_id: BC-01
+      name: Kernel and Constitutional Authority
+      statement_label: PROPOSAL
+      purpose: Preserve constitutional meaning, reserved human authority, amendment, ratification and adoption-state boundaries.
+      canonical_owner: Project Owner acting as competent Human Constitutional Authority
+      owned_state_and_artifacts:
+        - ratified Kernel version and clauses
+        - constitutional amendment and ratification decisions
+        - reserved authority and serious residual-risk decisions
+      accepted_inputs:
+        - independently challenged amendment proposals
+        - enforcement and migration impact evidence
+        - explicit human decision basis
+      produced_outputs:
+        - ratification, rejection, return or amendment decision
+        - current constitutional version and supersession effect
+      allowed_writers: [Project Owner through explicit constitutional decision records]
+      allowed_readers: [all lower contexts, auditors, independent evaluators]
+      authority_level: CONSTITUTIONAL
+      source_of_truth:
+        - governance/reviews/gov-6-ratification/kernel-ratification-decision-record-v0.1.0.yaml
+        - governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md
+        - governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml
+      derived_non_authoritative_projections:
+        - clause indexes
+        - clause-to-requirement views
+        - impact reports
+      failure_boundary: A missing, conflicting or non-human constitutional decision has no constitutional force.
+      stopping_condition: Unratified amendment, disputed authority hierarchy, prohibited self-ratification or material constitutional conflict.
+      recovery_path: Restore the last valid ratified state, preserve disputed evidence and route a versioned decision package to competent authority.
+      manual_escape_path: Project Owner issues an explicit bounded decision outside automated execution.
+
+    - context_id: BC-02
+      name: Governance Derivation
+      statement_label: PROPOSAL
+      purpose: Derive enforceable requirements, policies, standards, procedures or contracts and controls without altering Kernel meaning.
+      canonical_owner: Authorized governance design owner for the named derivation layer
+      owned_state_and_artifacts:
+        - derived governance requirements
+        - policy and standard candidates
+        - governance-application contracts
+        - control specifications and applicability records
+      accepted_inputs:
+        - ratified Kernel clauses
+        - current Owner decisions
+        - hazards, findings and implementation evidence
+      produced_outputs:
+        - provenance-bound derived requirements
+        - applicability and control contracts
+        - unresolved decision and specialist dependency records
+      allowed_writers:
+        - authorized governance designers
+        - deterministic generators limited to declared projections
+      allowed_readers: [methodology definition, audit, validation, project governance application, query projection]
+      authority_level: NORMATIVE_LOWER_LAYER_PROPOSED_UNTIL_SEPARATELY_ADOPTED
+      source_of_truth:
+        - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+        - future explicitly adopted policy, standard and contract artifacts
+      derived_non_authoritative_projections:
+        - coverage matrices
+        - relationship graphs
+        - stage applicability views
+      failure_boundary: A derivation may be invalid without invalidating the Kernel; dependent lower-layer use stops.
+      stopping_condition: Missing clause provenance, contradiction with higher authority, unowned requirement, silent applicability assumption or unsupported compatibility claim.
+      recovery_path: Return the defective derivation for versioned correction and revalidation while preserving prior versions.
+      manual_escape_path: Project Owner or named governance owner bounds, rejects, defers or requests research.
+
+    - context_id: BC-03
+      name: Audit and Evidence Custody
+      statement_label: PROPOSAL
+      purpose: Preserve exact authorizations, prompts, inputs, outputs, evaluations, hashes, status and immutable historical evidence.
+      canonical_owner: Audit Custodian under the applicable Project Owner authorization
+      owned_state_and_artifacts:
+        - audit charter, pass contracts and run manifests
+        - exact prompt and authorization custody
+        - hashed input manifests
+        - source outputs, validation reports and separate evaluation evidence
+      accepted_inputs:
+        - exact authorized execution contract
+        - canonical repository evidence
+        - generated source-role outputs
+        - independently produced evaluation results
+      produced_outputs:
+        - immutable run custody
+        - validation evidence
+        - checkpoint handoff without inferred acceptance
+      allowed_writers:
+        - authorized source-run custodian
+        - separately controlled evaluator to its evaluation subtree
+        - Project Owner to append-only decisions
+      allowed_readers: [all audit participants, validators, Project Owner, future reviewers]
+      authority_level: EVIDENTIARY_NOT_CONSTITUTIONAL
+      source_of_truth:
+        - governance/audits/GOV-AUD-001-gov7-enablement
+        - governance/ARTIFACT_REGISTRY.yaml
+      derived_non_authoritative_projections:
+        - audit dashboards
+        - run indexes
+        - review bundles
+      failure_boundary: Custody failure invalidates the affected evidence claim, not the underlying external event unless evidence cannot establish it.
+      stopping_condition: Missing prospective authority, hash mismatch, identity collision, mutable completed evidence or absent required package member.
+      recovery_path: Stop, preserve bytes, create a prospective versioned correction or explicit evidence limitation and revalidate.
+      manual_escape_path: Project Owner disposes the blocked run without fabricating missing evidence.
+
+    - context_id: BC-04
+      name: Methodology Definition
+      statement_label: PROPOSAL
+      purpose: Define the versioned S0a-S9 method, roles, skills, rules, schemas, templates and assurance floors.
+      canonical_owner: Methodology Owner
+      owned_state_and_artifacts:
+        - methodology versions and changelog
+        - stage definitions and gate contracts
+        - roles, skills, rules, schemas, templates and knowledge
+        - methodology release and migration notes
+      accepted_inputs:
+        - governance-application requirements
+        - observed client and runtime evidence
+        - learning records and accepted change decisions
+      produced_outputs:
+        - versioned methodology release candidate
+        - migration contract and compatibility declaration
+        - runtime-neutral procedural definitions
+      allowed_writers: [authorized methodology maintainers outside client sessions]
+      allowed_readers: [methodology runtime, client projects, validators, auditors]
+      authority_level: METHOD_NORMATIVE_WITHIN_ADOPTED_VERSION
+      source_of_truth:
+        - planning/v2
+        - released methodology repository artifacts
+      derived_non_authoritative_projections:
+        - knowledge indexes
+        - stage checklists
+        - generated documentation
+      failure_boundary: A methodology defect does not amend governance or client evidence; it blocks affected method use or release.
+      stopping_condition: Contract inconsistency, unvalidated schema change, duplicated normative meaning, or unresolved governance applicability.
+      recovery_path: Versioned methodology correction, regression evidence, migration notes and new release review.
+      manual_escape_path: Methodology Owner selects a bounded manual procedure while preserving required authority and evidence floors.
+
+    - context_id: BC-05
+      name: Methodology Runtime and Distribution
+      statement_label: PROPOSAL
+      purpose: Load and execute a locked methodology version read-only for a client repository.
+      canonical_owner: Runtime Operator for execution; Methodology Owner for distributed release bytes
+      owned_state_and_artifacts:
+        - launcher preconditions and runtime configuration
+        - methodology lock resolution
+        - released validator and deterministic scripts
+        - runtime drift and availability observations
+      accepted_inputs:
+        - released methodology version
+        - client methodology lock
+        - client project state
+      produced_outputs:
+        - bounded agent or script invocation
+        - validation diagnostics
+        - runtime drift or unavailability finding
+      allowed_writers:
+        - release pipeline to released runtime artifacts
+        - runtime execution only to the client repository
+      allowed_readers: [client agents, operator, validation, audit]
+      authority_level: EXECUTION_MECHANISM_NO_DECISION_AUTHORITY
+      source_of_truth:
+        - scripts/start-agent.sh
+        - scripts/validate.sh
+        - schemas/methodology-lock.schema.json
+      derived_non_authoritative_projections:
+        - status output
+        - lock mismatch warnings
+      failure_boundary: Runtime failure stops the affected invocation and must not mutate the methodology or infer project acceptance.
+      stopping_condition: Dirty methodology, invalid client state, lock mismatch requiring disposition, missing tool or detected methodology drift.
+      recovery_path: Restore a clean locked checkout, validate the client repository and resume from persisted client state.
+      manual_escape_path: Operator uses a documented manual procedure against the same locked contracts.
+
+    - context_id: BC-06
+      name: Client and Project State
+      statement_label: PROPOSAL
+      purpose: Own one client's evidence, canonical structured data, lifecycle, approvals, implementation and operational history.
+      canonical_owner: Project Owner for gates and client-scoped authority; artifact-specific owners for content integrity
+      owned_state_and_artifacts:
+        - client evidence and confirmations
+        - project.yaml and methodology.lock.yaml
+        - requirements, design, backlog, traceability and release records
+        - code, tests, operations, changes and incidents
+      accepted_inputs:
+        - client evidence
+        - locked methodology release
+        - adopted governance-application contracts
+        - explicit gate decisions
+      produced_outputs:
+        - canonical project state and artifacts
+        - gate records
+        - implementation, release and operational evidence
+        - project-specific findings
+      allowed_writers:
+        - authorized project roles within field-level ownership
+        - Project Owner at gates
+        - deterministic scripts within declared contracts
+      allowed_readers: [project roles, validators, auditors, client-facing document generators subject to privacy]
+      authority_level: CLIENT_PROJECT_OPERATIONAL
+      source_of_truth:
+        - client repository evidence and canonical layer-2 artifacts
+        - append-only gate and release records
+      derived_non_authoritative_projections:
+        - Jira
+        - dashboards and status reports
+        - generated layer-3 documents
+      failure_boundary: A client-project defect is contained to that project unless evidence proves a methodology or governance defect.
+      stopping_condition: Invalid authority, gate failure, canonical conflict, privacy boundary breach, unsupported lock combination or unowned blocked state.
+      recovery_path: Preserve client evidence, revert or compensate governed effects, restore from release or project checkpoints and route the finding.
+      manual_escape_path: Project Owner pauses, scopes down, rejects or terminates the project action.
+
+    - context_id: BC-07
+      name: Agent and Skill Execution
+      statement_label: PROPOSAL
+      purpose: Execute one bounded role or procedure against explicit inputs, permissions, outputs and stop conditions.
+      canonical_owner: Owner of the invoking work unit; role contract owner for reusable definition
+      owned_state_and_artifacts:
+        - task or run execution state
+        - role outputs and declared findings
+        - execution-local checkpoints
+      accepted_inputs:
+        - exact role or skill contract
+        - authorized scope and permissions
+        - versioned context package
+      produced_outputs:
+        - proposed changes or formal role artifacts
+        - explicit blocked or non-success state
+        - findings requiring another owner
+      allowed_writers: [the authorized executor within the named write scope]
+      allowed_readers: [reviewers, validators, work-unit owner, audit]
+      authority_level: DELEGATED_EXECUTION_ONLY
+      source_of_truth:
+        - exact task or run package
+        - versioned agent and skill definition
+        - resulting repository artifacts
+      derived_non_authoritative_projections:
+        - execution summaries
+        - agent capability indexes
+      failure_boundary: Executor failure does not decide acceptance and cannot mutate its own authority or evaluation criteria.
+      stopping_condition: Scope expansion, missing context, exhausted correction loop, unresolvable conflict, unavailable model/tool or prohibited effect.
+      recovery_path: Persist state, classify the failure, resume under the same contract or issue a versioned correction.
+      manual_escape_path: Human owner performs or reassigns the bounded procedure.
+
+    - context_id: BC-08
+      name: Validation and Independent Evaluation
+      statement_label: PROPOSAL
+      purpose: Separate deterministic conformance from independent semantic suitability and Owner acceptance.
+      canonical_owner: Validator owner for deterministic checks; independent evaluator for evaluation judgment
+      owned_state_and_artifacts:
+        - validation profiles and test definitions
+        - validation results and diagnostics
+        - independent findings and disposition recommendation
+      accepted_inputs:
+        - exact claim and criteria
+        - immutable or identified subject artifacts
+        - declared evidence set
+      produced_outputs:
+        - VALID or INVALID conformance result
+        - independent evaluation result
+        - findings routed to accountable owners
+      allowed_writers:
+        - deterministic validator to validation evidence
+        - independent evaluator to separate evaluation custody
+      allowed_readers: [source role, Project Owner, audit, release and migration owners]
+      authority_level: EVALUATION_NO_SELF_ACCEPTANCE
+      source_of_truth:
+        - validator code, schemas and test evidence
+        - separately custodied independent evaluation artifacts
+      derived_non_authoritative_projections:
+        - quality dashboards
+        - pass/fail summaries
+      failure_boundary: Validation defects invalidate the validation claim; evaluation conflicts return the subject for disposition.
+      stopping_condition: Missing criteria, evaluator dependence, contradictory evidence, invalid fixture, stale profile or self-certification.
+      recovery_path: Correct the validator or subject under separate ownership, rerun validation and obtain new independent evaluation where required.
+      manual_escape_path: Project Owner records an explicit bounded decision without relabeling invalid evidence as valid.
+
+    - context_id: BC-09
+      name: Learning and Feedback
+      statement_label: PROPOSAL
+      purpose: Route failures, defects, research needs, ideas and burden evidence upward without automatic authority change.
+      canonical_owner: Owner named by the finding taxonomy and learning contract
+      owned_state_and_artifacts:
+        - failure and lesson records
+        - append-only events
+        - methodology proposals and research needs
+        - feedback routing status
+      accepted_inputs:
+        - operational evidence
+        - audit or review findings
+        - owner corrections
+        - measured burden and recurrence
+      produced_outputs:
+        - classified finding with canonical owner
+        - proposed change, research task or closure evidence
+      allowed_writers:
+        - authorized record creator
+        - append-only event writers under the learning contract
+      allowed_readers: [governance, methodology, project, validation, Project Owner]
+      authority_level: ADVISORY_AND_EVIDENTIARY
+      source_of_truth:
+        - governance/learning/records
+        - governance/learning/events
+        - explicit decision or proposal records
+      derived_non_authoritative_projections:
+        - failure indexes
+        - category summaries
+        - trend views
+      failure_boundary: A feedback record may propose change but cannot alter its target authority layer.
+      stopping_condition: Unclassified material finding, missing accountable owner, attempted automatic closure or self-certified authority change.
+      recovery_path: Reclassify with evidence, route to the correct owner and require separate closure validation.
+      manual_escape_path: Project Owner assigns, defers, rejects or accepts bounded residual risk where constitutionally permitted.
+
+    - context_id: BC-10
+      name: Release, Compatibility and Migration
+      statement_label: PROPOSAL
+      purpose: Declare version compatibility, migration, supersession, release, rollback and revalidation for identified scopes.
+      canonical_owner: Owner of the released component; Project Owner for project adoption and release gates
+      owned_state_and_artifacts:
+        - version and compatibility declarations
+        - migration contracts and project lock updates
+        - release manifests, rollback and revalidation evidence
+        - supersession lineage
+      accepted_inputs:
+        - validated release candidate
+        - compatibility evidence
+        - affected-project inventory
+        - explicit release or adoption decision
+      produced_outputs:
+        - release and migration records
+        - supported and unsupported combination declarations
+        - rollback or compensation boundary
+      allowed_writers:
+        - authorized component release owner
+        - Project Owner for adoption and production release decisions
+      allowed_readers: [runtime, client projects, validation, audit, query projection]
+      authority_level: RELEASE_AND_ADOPTION_WITHIN_EXPLICIT_SCOPE
+      source_of_truth:
+        - versioned release artifacts
+        - methodology.lock.yaml
+        - release manifests and migration records
+      derived_non_authoritative_projections:
+        - compatibility matrices
+        - migration queues
+        - affected-project reports
+      failure_boundary: An unsupported combination blocks adoption but does not rewrite historical releases.
+      stopping_condition: Silent compatibility claim, missing migration path, untested rollback, unknown affected projects or incompatible evidence format.
+      recovery_path: Hold the prior lock, issue migration or adapter, revalidate and release a new compatible version.
+      manual_escape_path: Project Owner pins the prior supported version, pauses migration or terminates support explicitly.
+
+    - context_id: BC-11
+      name: Projection and Query
+      statement_label: PROPOSAL
+      purpose: Regenerate provenance-rich cross-layer views and impact answers without becoming a source of authority.
+      canonical_owner: Projection Definition Owner; source owners retain data authority
+      owned_state_and_artifacts:
+        - entity and relationship vocabulary
+        - query contracts
+        - generation and freshness metadata
+        - invalidation diagnostics
+      accepted_inputs:
+        - canonical versioned artifacts
+        - explicit ownership and relationship declarations
+        - validation and supersession events
+      produced_outputs:
+        - traceability, impact, compatibility and ownership views
+        - unknown or incomplete-impact reports
+      allowed_writers:
+        - deterministic projection generator
+        - authorized maintainer of projection definitions
+      allowed_readers: [all contexts subject to source access controls]
+      authority_level: DERIVED_NON_AUTHORITATIVE
+      source_of_truth:
+        - canonical source paths referenced by every projected record
+        - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/03-typed-relationship-and-query-model.yaml
+      derived_non_authoritative_projections:
+        - every materialized query or graph representation
+      failure_boundary: Projection loss or corruption is recoverable from sources; a stale projection must not drive a gate.
+      stopping_condition: Missing provenance, unknown source version, orphan endpoint, stale generation basis or attempted write-back to authoritative state.
+      recovery_path: Discard the projection, regenerate from validated canonical inputs and compare generation diagnostics.
+      manual_escape_path: Inspect canonical artifacts directly and record the evidence limitation.
+  cross_context_write_contract:
+    statement_label: PROPOSAL
+    required_fields:
+      - contract_id
+      - source_context
+      - target_context
+      - source_artifact_and_version
+      - target_owner
+      - permitted_effect
+      - authority_reference
+      - validation_method
+      - failure_route
+      - compatibility_basis
+      - expiry_or_supersession
+    prohibited_behavior:
+      - direct projection write-back
+      - automatic higher-authority mutation
+      - silent compatibility declaration
+      - self-acceptance or self-ratification
+  finding_ownership_taxonomy:
+    - {category: PROJECT_SPECIFIC_DEFECT, statement_label: PROPOSAL, canonical_owner: Project Owner and artifact owner, permitted_actions: [contain, correct project artifact, add regression evidence], escalation: project gate or incident route, lower_layer_may_propose: true, closure_validator: independent reviewer or gate owner proportional to risk, residual_risk_acceptor: competent Project Owner}
+    - {category: METHODOLOGY_DEFECT, statement_label: PROPOSAL, canonical_owner: Methodology Owner, permitted_actions: [record failure, prepare versioned methodology correction, add regression scenario], escalation: methodology release review, lower_layer_may_propose: true, closure_validator: methodology validator plus bounded independent review, residual_risk_acceptor: Project Owner within constitutional limits}
+    - {category: GOVERNANCE_APPLICATION_DEFECT, statement_label: PROPOSAL, canonical_owner: Governance Derivation Owner, permitted_actions: [block affected application, correct application contract, revalidate affected scope], escalation: governance design review, lower_layer_may_propose: true, closure_validator: independent governance evaluator, residual_risk_acceptor: competent Project Owner}
+    - {category: GOVERNANCE_REQUIREMENT_DEFECT, statement_label: PROPOSAL, canonical_owner: Owner of the affected policy or Kernel layer, permitted_actions: [preserve finding, propose amendment or lower-layer correction], escalation: constitutional route when Kernel meaning is affected, lower_layer_may_propose: true, closure_validator: independent reviewer outside beneficiary control, residual_risk_acceptor: constitutional human authority where reserved}
+    - {category: TOOLING_DEFECT, statement_label: PROPOSAL, canonical_owner: Tool maintainer, permitted_actions: [contain use, correct tool, add deterministic regression], escalation: owning release gate, lower_layer_may_propose: true, closure_validator: tool tests and affected workflow replay, residual_risk_acceptor: owner of the affected governed effect}
+    - {category: PROMPT_OR_AGENT_DEFECT, statement_label: PROPOSAL, canonical_owner: Prompt or agent contract owner, permitted_actions: [stop reuse, version correction, add evaluation case], escalation: work-unit owner and methodology owner, lower_layer_may_propose: true, closure_validator: independent evaluator for material semantic changes, residual_risk_acceptor: competent work-unit owner}
+    - {category: EVIDENCE_OR_MEASUREMENT_DEFECT, statement_label: PROPOSAL, canonical_owner: Evidence custodian or measurement owner, permitted_actions: [mark limitation, correct prospectively, remeasure, invalidate dependent claim], escalation: affected gate owner, lower_layer_may_propose: true, closure_validator: independent evidence review, residual_risk_acceptor: competent decision owner}
+    - {category: OWNER_DECISION, statement_label: OWNER_DECISION_REQUIRED, canonical_owner: Project Owner, permitted_actions: [accept, bound, return, reject, defer, request research], escalation: constitutional authority when reserved, lower_layer_may_propose: true, closure_validator: decision custody and later outcome evidence, residual_risk_acceptor: Project Owner only within authority}
+    - {category: RESEARCH_NEED, statement_label: DEFERRED, canonical_owner: Named research owner, permitted_actions: [define question, collect evidence, report limits], escalation: decision owner that needs the evidence, lower_layer_may_propose: true, closure_validator: evidence review, residual_risk_acceptor: not applicable until decision}
+    - {category: PERSONAL_OR_CROSS_PROJECT_IDEA, statement_label: DEFERRED, canonical_owner: Methodology backlog owner, permitted_actions: [park, compare with observed evidence, reject or promote], escalation: none until demonstrated need, lower_layer_may_propose: true, closure_validator: not applicable until instantiated, residual_risk_acceptor: not applicable}
+  unresolved_owner_decisions:
+    - {decision_id: OD-P02-001, statement_label: OWNER_DECISION_REQUIRED, question: Whether this bounded-context partition is accepted as a CHECKPOINT-A design basis without selecting an implementation architecture.}
+    - {decision_id: OD-P02-002, statement_label: OWNER_DECISION_REQUIRED, question: Which governance-application contract scope should be piloted first if later GOV-7 design authority is granted.}
+    - {decision_id: OD-P02-003, statement_label: OWNER_DECISION_REQUIRED, question: Which finding categories require independent closure versus Owner-only disposition at each criticality level.}

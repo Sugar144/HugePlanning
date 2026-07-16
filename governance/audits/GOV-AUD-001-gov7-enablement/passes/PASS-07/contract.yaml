@@ -1,9 +1,19 @@
 pass:
   id: PASS-07
+  contract_identity:
+    contract_id: GOV-AUD-001-PASS-07-CONTRACT
+    version: 0.2.0
+    status: ACTIVE_FOR_FUTURE_INSTANTIATION
+    supersession:
+      status: SUPERSEDES_PREVIOUS_UNVERSIONED_SNAPSHOT
+      predecessor_path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-07/contract.yaml
+      predecessor_sha256: e2caa6f2ba67261e3c76e53342d848856642b5793fd4e49ede172d63825f50bb
+    prompt_binding_rule: INSTANTIATED_PROMPT_MUST_BIND_CONTRACT_ID_VERSION_AND_SHA256
   title: Independent Evaluation
   status: PLANNED_NOT_EXECUTED
   purpose: Evaluate the audit package independently of the synthesis author's unilateral control.
   authority: SEPARATE_PROJECT_OWNER_EXECUTION_AUTHORIZATION_REQUIRED
+  methodology_protocol: GOV-AUD-001-METHOD-001/0.3.0
   required_predecessors: [PASS-06]
   checkpoint_dependency: CHECKPOINT-B
   governance_phase_prerequisites:
@@ -25,6 +35,9 @@ pass:
     controlled_self_hosting: test trust root, independence and self-certification protections
     open_tool_discovery: test whether alternatives and minimal options were genuinely considered
   required_questions:
+    - Which review type is being executed, and are its allowed conclusions, independence, evidence and claim limits satisfied?
+    - For every alleged invalidity, was the deviation traced through authority, conflict, alternatives, root cause, evidence impact and materiality before the conclusion?
+    - If adversarial review is selected, which genuine refutation attempts and attack dimensions were exercised?
     - Is the audit faithful to repository evidence, complete, coherent, feasible and explicit about unresolved Owner decisions?
     - Is the relationship model non-authoritative, technology-neutral, provenance-rich and compatible with version/migration requirements?
     - Does controlled self-hosting prevent self-modification, self-certification, circular authority and loss of recovery/manual fallback?
@@ -39,10 +52,29 @@ pass:
   output_structure:
     format: INDEPENDENT_EVALUATION_PACKAGE
     statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
-    permitted_results: [SUITABLE_FOR_PROJECT_OWNER_DECISION, RETURN_FOR_BOUNDED_VERSIONED_CORRECTION, INVALID_AUDIT_EXECUTION]
+    disposition_review_types: [INDEPENDENT_SUBSTANTIVE_REVIEW, ADVERSARIAL_REVIEW]
+    auxiliary_review_types_without_disposition_authority: [DETERMINISTIC_VALIDATION, TARGETED_CONFIRMATION]
+    result_mapping: GOV-AUD-001-METHOD-001/0.3.0#review_contract.pass_result_contracts.PASS-07
+    permitted_results: [SUITABLE_FOR_PROJECT_OWNER_DECISION, RETURN_FOR_BOUNDED_VERSIONED_CORRECTION, INVALID_AUDIT_EXECUTION, INSUFFICIENT_EVIDENCE_FOR_PASS_07_DISPOSITION]
     exactly_one_result: true
-  required_evidence: [immutable artifact hashes, evaluator identity and independence basis, cited finding paths, validation results, limitations]
-  validation: [evaluator-independence check, complete criterion coverage, exactly one permitted result, finding evidence resolution, output-contract validation]
+  review_contract:
+    allowed_review_types: [INDEPENDENT_SUBSTANTIVE_REVIEW, ADVERSARIAL_REVIEW]
+    allowed_conclusions_by_review_type:
+      INDEPENDENT_SUBSTANTIVE_REVIEW: [SUITABLE_FOR_PROJECT_OWNER_DISPOSITION, RETURN_FOR_BOUNDED_VERSIONED_CORRECTION, INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS, INSUFFICIENT_EVIDENCE_FOR_SUBSTANTIVE_CONCLUSION]
+      ADVERSARIAL_REVIEW: [SURVIVED_RECORDED_ADVERSARIAL_ATTACKS, MATERIAL_ADVERSARIAL_FINDINGS_REQUIRE_CORRECTION, INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS, INSUFFICIENT_EVIDENCE_FOR_ADVERSARIAL_CONCLUSION]
+    conclusion_to_result:
+      INDEPENDENT_SUBSTANTIVE_REVIEW:
+        SUITABLE_FOR_PROJECT_OWNER_DISPOSITION: SUITABLE_FOR_PROJECT_OWNER_DECISION
+        RETURN_FOR_BOUNDED_VERSIONED_CORRECTION: RETURN_FOR_BOUNDED_VERSIONED_CORRECTION
+        INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS: INVALID_AUDIT_EXECUTION
+        INSUFFICIENT_EVIDENCE_FOR_SUBSTANTIVE_CONCLUSION: INSUFFICIENT_EVIDENCE_FOR_PASS_07_DISPOSITION
+      ADVERSARIAL_REVIEW:
+        SURVIVED_RECORDED_ADVERSARIAL_ATTACKS: SUITABLE_FOR_PROJECT_OWNER_DECISION
+        MATERIAL_ADVERSARIAL_FINDINGS_REQUIRE_CORRECTION: RETURN_FOR_BOUNDED_VERSIONED_CORRECTION
+        INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS: INVALID_AUDIT_EXECUTION
+        INSUFFICIENT_EVIDENCE_FOR_ADVERSARIAL_CONCLUSION: INSUFFICIENT_EVIDENCE_FOR_PASS_07_DISPOSITION
+  required_evidence: [review type identity, immutable artifact hashes, evaluator identity and independence basis, attempted checks or attacks, cited finding basis and paths, root-cause and materiality analysis where applicable, validation results, limitations]
+  validation: [review-type contract, evaluator-independence check, complete criterion coverage, root-cause-before-invalidity, adversarial-refutation evidence when applicable, exactly one permitted result, finding evidence resolution, output-contract validation]
   stopping_conditions: [independence absent, synthesis package mutates, required evidence missing, evaluator is asked to accept risk or make Owner decisions, substantive conflict cannot be bounded]
   prohibited_actions: [modify repository during analysis without separate authority, rewrite or change synthesis outputs, accept or implement recommendations, resolve Owner decisions, activate GOV-7, self-ratify, treat generated evidence as independent evidence, treat chat memory as durable truth]
   prohibited_claims: [Project Owner acceptance, implementation authority, GOV-7 activation, enforceability, operation, compliance, maturity, risk acceptance]

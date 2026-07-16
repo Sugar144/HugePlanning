@@ -169,17 +169,35 @@ def parse_bytes(raw: bytes, label: str) -> tuple[dict, str, bytes]:
 def validate(root: Path) -> dict:
     prompt_root = root / "governance/prompts"
     paths = sorted(path for path in prompt_root.rglob("*.md") if path.name != "README.md")
+    registry = loads((root / "governance/ARTIFACT_REGISTRY.yaml").read_text(encoding="utf-8"), "governance/ARTIFACT_REGISTRY.yaml")
+    artifacts = registry.get("artifacts", [])
+    if not isinstance(artifacts, list):
+        raise PromptError("governance/ARTIFACT_REGISTRY.yaml: artifacts must be a list")
     identities: dict[tuple[str, str], Path] = {}
     lineage_versions: dict[str, set[str]] = {}
     for path in paths:
-        metadata, body, raw = parse_file(path)
-        validate_metadata(root, path, metadata, body)
-        identity = (metadata["prompt_id"], metadata["version"])
+        raw = path.read_bytes()
+        if raw.startswith(b"---\n"):
+            metadata, body, raw = parse_file(path)
+            validate_metadata(root, path, metadata, body)
+            identity = (metadata["prompt_id"], metadata["version"])
+            validate_immutability(root, path, raw)
+        else:
+            relative = path.relative_to(root).as_posix()
+            matches = [item for item in artifacts if item.get("path") == relative and item.get("artifact_type") == "exact_orchestration_prompt"]
+            if len(matches) != 1:
+                raise PromptError(f"{path}: verbatim prompt requires exactly one exact_orchestration_prompt registry entry")
+            item = matches[0]
+            prompt_id, version, expected = item.get("id"), item.get("version"), item.get("source_sha256")
+            if not isinstance(prompt_id, str) or not PROMPT_RE.fullmatch(prompt_id) or not isinstance(version, str) or not VERSION_RE.fullmatch(version):
+                raise PromptError(f"{path}: verbatim prompt registry identity is invalid")
+            if not isinstance(expected, str) or not SHA_RE.fullmatch(expected) or hashlib.sha256(raw).hexdigest() != expected:
+                raise PromptError(f"{path}: verbatim prompt registry hash mismatch")
+            identity = (prompt_id, version)
         if identity in identities:
             raise PromptError(f"duplicate prompt identity {identity[0]} v{identity[1]}: {identities[identity]} and {path}")
         identities[identity] = path
-        lineage_versions.setdefault(metadata["prompt_id"], set()).add(metadata["version"])
-        validate_immutability(root, path, raw)
+        lineage_versions.setdefault(identity[0], set()).add(identity[1])
     if not paths:
         raise PromptError("no material prompt custody records found")
     return {"prompts": len(paths), "lineages": len(lineage_versions), "valid": True}

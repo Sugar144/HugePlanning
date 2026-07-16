@@ -1,0 +1,428 @@
+audit_methodology:
+  document_id: GOV-AUD-001-METHOD-001
+  version: 0.3.0
+  status: ACCEPTED_PROSPECTIVE_AUDIT_METHODOLOGY
+  authority: AUDIT_METHODOLOGY_AND_REVIEW_CONTROL_ONLY
+  supersedes: GOV-AUD-001-METHOD-001/0.2.0
+  applies_to: NEW_OR_VERSIONED_GOV_AUD_001_FINDINGS_REVIEWS_AND_PROMPTS
+  historical_evidence_rule: COMPLETED_RUNS_REVIEWS_PROMPTS_INPUTS_OUTPUTS_MANIFESTS_AND_HASHES_REMAIN_IMMUTABLE
+  policy_boundary:
+    kernel_amendment: false
+    gov_7_policy_adopted: false
+    gov_7_activated: false
+    temporary_operating_control_only: true
+
+  finding_contract:
+    required_for_material_findings:
+      - finding_id
+      - statement_and_scope
+      - finding_basis
+      - evidence_refs_or_reasoning
+      - support_classification
+      - materiality
+      - disposition_class
+      - traceability
+    finding_basis:
+      - NORMATIVE_REQUIREMENT
+      - ACCEPTED_OWNER_DIRECTION
+      - REPOSITORY_FACT_OR_CONTRADICTION
+      - OBSERVED_FAILURE_OR_BURDEN
+      - ARCHITECTURAL_INVARIANT
+      - EXTERNAL_EVIDENCE
+      - ADVERSARIAL_COUNTEREXAMPLE
+      - MODEL_INFERENCE_ONLY
+    support_classification:
+      - VERIFIED_FACT
+      - EVIDENCE_SUPPORTED_INFERENCE
+      - MODEL_INFERENCE_ONLY
+    model_inference_only:
+      must_be_explicit: true
+      may_be_represented_as_verified_fact: false
+      required_follow_up_one_or_more:
+        - ADVERSARIAL_TESTING
+        - EXTERNAL_VALIDATION
+        - EMPIRICAL_EVIDENCE
+        - PROJECT_OWNER_DISPOSITION
+      rule: A finding supported only by model reasoning remains visibly MODEL_INFERENCE_ONLY until one required follow-up supplies stronger evidence or the Project Owner explicitly disposes it.
+
+  deviation_and_validity_contract:
+    required_reasoning_sequence:
+      - OBSERVED_DEVIATION
+      - APPLICABLE_INSTRUCTION_AND_AUTHORITY_SOURCES
+      - HIERARCHY_OR_CONFLICT_ANALYSIS
+      - AVAILABLE_COMPLIANT_ALTERNATIVES
+      - ROOT_CAUSE_LAYER
+      - AUTHORITY_AND_EVIDENCE_IMPACT
+      - MATERIALITY
+      - EXECUTION_VALIDITY_CONCLUSION
+    root_cause_layer:
+      - AGENT_EXECUTION_DEFECT
+      - RUN_PROMPT_DEFECT
+      - OPERATING_PROTOCOL_GAP
+      - GOVERNANCE_POLICY_GAP
+      - TOOLING_DEFECT
+      - AMBIGUOUS_OR_CONFLICTING_AUTHORITY
+      - INSUFFICIENT_EVIDENCE
+    agent_action_value:
+      - BENEFICIAL
+      - NEUTRAL
+      - HARMFUL
+    formal_conformance:
+      - CONFORMANT
+      - NONCONFORMANT
+      - AMBIGUOUS
+    invalidity_rule: A deviation alone is insufficient for INVALID execution; the review must complete the required reasoning sequence and show a material authority or evidence impact.
+
+  review_contract:
+    required_sections:
+      - REVIEW_IDENTITY_AND_TYPE
+      - PURPOSE_SCOPE_AND_ALLOWED_CONCLUSIONS
+      - INDEPENDENCE_BASIS
+      - IMMUTABLE_CANDIDATE_AND_INPUT_HASHES
+      - METHOD_CHECKS_OR_ATTACKS_ATTEMPTED
+      - FINDINGS_WITH_BASIS_ROOT_CAUSE_AND_MATERIALITY
+      - LIMITATIONS_AND_UNRESOLVED_EVIDENCE
+      - CONCLUSION_AND_AUTHORITY_BOUNDARY
+    review_types:
+      - review_type: DETERMINISTIC_VALIDATION
+        purpose: Reproducibly test declared machine-checkable structure, identity, hashes, schemas, invariants, and state constraints.
+        allowed_conclusions:
+          - VALID_AGAINST_DECLARED_MACHINE_CONTRACT
+          - INVALID_AGAINST_DECLARED_MACHINE_CONTRACT
+        required_independence: May run within the source workflow when the checks are deterministic, reproducible, and do not make substantive or Owner judgments.
+        minimum_evidence:
+          - exact validator identity and command
+          - immutable or identified inputs
+          - diagnostics and exit result
+          - declared machine contract
+        must_not_claim:
+          - substantive correctness
+          - independent substantive evaluation
+          - adversarial survival
+          - Project Owner acceptance
+          - implementation or operational status
+        may_produce_pass_disposition: false
+
+      - review_type: TARGETED_CONFIRMATION
+        purpose: Confirm a bounded named correction, fact, or criterion without reopening the full candidate.
+        allowed_conclusions:
+          - CONFIRMED_WITHIN_TARGETED_SCOPE
+          - NOT_CONFIRMED_WITHIN_TARGETED_SCOPE
+          - INSUFFICIENT_EVIDENCE_FOR_TARGETED_CONFIRMATION
+        required_independence: The confirmer must not be under the corrected source author's unilateral control when the confirmation is used for Owner disposition.
+        minimum_evidence:
+          - exact target and immutable candidate identity
+          - bounded confirmation criteria
+          - evidence examined
+          - explicit out-of-scope limitations
+        must_not_claim:
+          - full substantive review
+          - adversarial review
+          - correctness outside the named target
+          - Project Owner acceptance
+        may_produce_pass_disposition: false
+
+      - review_type: INDEPENDENT_SUBSTANTIVE_REVIEW
+        purpose: Evaluate material correctness, coherence, evidence support, completeness, authority boundaries, and decision fitness across the contracted scope.
+        allowed_conclusions:
+          - SUITABLE_FOR_PROJECT_OWNER_DISPOSITION
+          - RETURN_FOR_BOUNDED_VERSIONED_CORRECTION
+          - INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS
+          - INSUFFICIENT_EVIDENCE_FOR_SUBSTANTIVE_CONCLUSION
+        required_independence: The decisive evaluation chain, including criteria, evidence selection, evaluator, and interpretation, must be outside the source author's unilateral control.
+        minimum_evidence:
+          - immutable candidate and input hashes
+          - evaluator identity and independence basis
+          - criterion-by-criterion evidence
+          - material findings and limitations
+          - completed deviation and validity reasoning for any invalidity conclusion
+        must_not_claim:
+          - adversarial attack unless refutation was actually attempted
+          - Project Owner acceptance
+          - risk acceptance
+          - implementation or operation
+        may_produce_pass_disposition: true
+
+      - review_type: ADVERSARIAL_REVIEW
+        purpose: Attempt to refute the candidate, expose counterexamples and rival designs, and test whether material claims survive hostile but evidence-bounded challenge.
+        allowed_conclusions:
+          - SURVIVED_RECORDED_ADVERSARIAL_ATTACKS
+          - MATERIAL_ADVERSARIAL_FINDINGS_REQUIRE_CORRECTION
+          - INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS
+          - INSUFFICIENT_EVIDENCE_FOR_ADVERSARIAL_CONCLUSION
+        required_independence: The attacker and decisive attack criteria must be outside the candidate author's unilateral control.
+        minimum_evidence:
+          - immutable candidate and input hashes
+          - evaluator identity and independence basis
+          - attacks attempted and evidence for each result
+          - concrete counterexamples or an explicit record that a dimension did not yield one
+          - material findings, limitations, and surviving claims
+        must_not_claim:
+          - compliance confirmation as a substitute for attempted refutation
+          - invented findings
+          - Project Owner acceptance
+          - exhaustive proof against unknown unknowns
+        may_produce_pass_disposition: true
+        method: ATTEMPT_TO_REFUTE_THE_CANDIDATE
+        required_attack_dimensions_when_applicable:
+          - CONCRETE_COUNTEREXAMPLES
+          - SMALLEST_SUFFICIENT_RIVAL_DESIGN
+          - AUTHORITY_LEAKAGE_OR_CIRCULAR_AUTHORITY
+          - EVIDENCE_LOSS_CONTRADICTION_REWRITING_OR_PROVENANCE_FAILURE
+          - VERSION_MIGRATION_COMPATIBILITY_AND_ROLLBACK_FAILURE
+          - RECOVERY_AND_MANUAL_ESCAPE_FAILURE
+          - SELF_HOSTING_CAPTURE_OR_SELF_CERTIFICATION
+          - EXCESSIVE_OWNER_BURDEN_OR_OPERATIONAL_BUREAUCRACY
+          - UNSUPPORTED_ASSUMPTIONS_AND_REASONABLE_UNKNOWN_UNKNOWNS
+        survival_rule: A candidate may be reported as surviving only after the attempted attacks and supporting evidence are recorded; no finding is required when a genuine attack does not expose one.
+
+    pass_result_contracts:
+      PASS-07:
+        disposition_review_types:
+          - INDEPENDENT_SUBSTANTIVE_REVIEW
+          - ADVERSARIAL_REVIEW
+        auxiliary_review_types_without_disposition_authority:
+          - DETERMINISTIC_VALIDATION
+          - TARGETED_CONFIRMATION
+        permitted_results:
+          - SUITABLE_FOR_PROJECT_OWNER_DECISION
+          - RETURN_FOR_BOUNDED_VERSIONED_CORRECTION
+          - INVALID_AUDIT_EXECUTION
+          - INSUFFICIENT_EVIDENCE_FOR_PASS_07_DISPOSITION
+        insufficient_evidence_result: INSUFFICIENT_EVIDENCE_FOR_PASS_07_DISPOSITION
+        exactly_one_result: true
+        mapping:
+          INDEPENDENT_SUBSTANTIVE_REVIEW:
+            SUITABLE_FOR_PROJECT_OWNER_DISPOSITION: SUITABLE_FOR_PROJECT_OWNER_DECISION
+            RETURN_FOR_BOUNDED_VERSIONED_CORRECTION: RETURN_FOR_BOUNDED_VERSIONED_CORRECTION
+            INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS: INVALID_AUDIT_EXECUTION
+            INSUFFICIENT_EVIDENCE_FOR_SUBSTANTIVE_CONCLUSION: INSUFFICIENT_EVIDENCE_FOR_PASS_07_DISPOSITION
+          ADVERSARIAL_REVIEW:
+            SURVIVED_RECORDED_ADVERSARIAL_ATTACKS: SUITABLE_FOR_PROJECT_OWNER_DECISION
+            MATERIAL_ADVERSARIAL_FINDINGS_REQUIRE_CORRECTION: RETURN_FOR_BOUNDED_VERSIONED_CORRECTION
+            INVALID_EXECUTION_AFTER_ROOT_CAUSE_AND_MATERIALITY_ANALYSIS: INVALID_AUDIT_EXECUTION
+            INSUFFICIENT_EVIDENCE_FOR_ADVERSARIAL_CONCLUSION: INSUFFICIENT_EVIDENCE_FOR_PASS_07_DISPOSITION
+        rule: DETERMINISTIC_VALIDATION and TARGETED_CONFIRMATION may support PASS-07 but cannot independently produce its substantive disposition.
+
+  pass_contract_discovery:
+    canonical_root: governance/audits/GOV-AUD-001-gov7-enablement/passes
+    contract_filename: contract.yaml
+    resolution_rule: DISCOVER_BY_CANONICAL_PASS_DIRECTORY_AND_VERIFY_UNIQUE_PASS_ID_AND_CONTRACT_ID
+    required_contract_fields: [id, contract_identity, output_structure]
+    required_binding_fields: [contract_id, version, sha256]
+    failure_rule: MISSING_AMBIGUOUS_DUPLICATE_OR_MISMATCHED_CONTRACT_BINDING_IS_INVALID
+    supersession_rule: A declared supersession must identify a prior version or immutable predecessor hash and must not claim to replace historical run custody.
+
+  materiality:
+    blocking_when_materially_affecting_one_or_more:
+      - AUTHORITY
+      - TRUST_ROOT
+      - EVIDENCE_INTEGRITY
+      - CANONICAL_OWNERSHIP
+      - TRACEABILITY
+      - DECISION_VALIDITY
+      - COMPATIBILITY_OR_MIGRATION
+      - RECOVERY_OR_ROLLBACK
+      - INDEPENDENT_EVALUATION
+      - SCOPE_DISCIPLINE
+      - REQUIRED_CONTRACTED_OUTPUT
+      - PROJECT_OWNER_CHECKPOINT_DECISION
+    non_blocking_classes:
+      - NON_BLOCKING
+      - OPTIONAL_IMPROVEMENT
+      - FOLLOW_UP_CANDIDATE
+      - RESEARCH_REQUIRED
+      - OWNER_DECISION_REQUIRED
+    non_blocking_rule: Stylistic preferences, optional refinements, speculative improvements, and non-material documentation polish do not block a pass unless they demonstrably affect a blocking dimension.
+
+  instance_validation_contract:
+    applies_to: FUTURE_STRUCTURED_FINDINGS_AND_REVIEWS_GOVERNED_BY_THIS_PROTOCOL
+    root_key: methodology_instance
+    protocol_binding: GOV-AUD-001-METHOD-001/0.3.0
+    finding_instances:
+      collection_key: findings
+      required_fields:
+        - finding_id
+        - statement_and_scope
+        - finding_basis
+        - evidence_refs_or_reasoning
+        - support_classification
+        - verified_fact
+        - materiality
+        - disposition_class
+        - traceability
+      materiality_required_fields:
+        - classification
+        - dimensions
+        - analysis
+      model_inference_rule: MODEL_INFERENCE_ONLY requires verified_fact false and at least one allowed follow-up; it cannot be mixed with a verified-fact support classification.
+    review_instances:
+      root_key: review
+      required_fields:
+        - review_id
+        - review_type
+        - pass_id
+        - contract_binding
+        - method_checks_or_attacks_attempted
+        - findings
+        - deviations
+        - review_conclusions
+        - pass_results
+      contract_binding_required_fields:
+        - contract_id
+        - version
+        - sha256
+      exactly_one_review_conclusion: true
+      exactly_one_pass_result_for_pass_disposition: true
+      adversarial_attack_attempt_required: true
+      adversarial_attack_record_required_fields:
+        - attack_id
+        - attack_dimension
+        - target_claim_or_assumption
+        - attack_method
+        - counterexample_or_failure_scenario
+        - evidence_examined
+        - result
+        - impact
+      adversarial_attack_dimensions:
+        - ASSUMPTION_REFUTATION
+        - COUNTEREXAMPLE_CONSTRUCTION
+        - AUTHORITY_CIRCULARITY_ATTACK
+        - FAILURE_MODE_ATTACK
+        - MINIMALITY_CHALLENGE
+        - MIGRATION_OR_ROLLBACK_ATTACK
+        - EVIDENCE_LOSS_OR_CONTRADICTION_ATTACK
+        - INDEPENDENCE_OR_SELF_CERTIFICATION_ATTACK
+        - OWNER_BURDEN_OR_BUREAUCRACY_CHALLENGE
+        - RIVAL_ARCHITECTURE_CHALLENGE
+      adversarial_nominal_evidence_rule: An attack must name a falsifiable target, a specific method, evidence examined, and a counterexample or failure scenario; generic criticism, restated acceptance criteria, declarations, and unsupported assertions are invalid.
+      adversarial_survival_rule: A survival conclusion requires one or more meaningful attempted refutations with recorded results; non-empty prose alone is not evidence.
+      invalidity_analysis_required_fields:
+        - observed_deviation
+        - applicable_instruction_and_authority_sources
+        - hierarchy_or_conflict_analysis
+        - available_compliant_alternatives
+        - root_cause_layer
+        - causal_analysis
+        - authority_and_evidence_impact
+        - materiality
+        - execution_validity_conclusion
+    implementation_boundary: This is a bounded validator contract for GOV-AUD-001 instances, not a universal repository artifact framework.
+
+  temporary_instruction_conflict_control:
+    status: TEMPORARY_OPERATING_CONTROL_PENDING_FUTURE_GOV_7_DERIVATION
+    run_rule: >-
+      Instruction conflicts: Durable instructions do not silently expand run authority,
+      and run prompts do not silently suppress durable obligations. Append-only learning
+      evidence caused by the current run may be preserved when it changes no authority,
+      accepted state, prior evidence, implementation, or risk; record the exception.
+      Otherwise stop before acting and request Project Owner authority.
+    reviewer_rule: Before declaring an execution invalid, determine whether the deviation arose from an agent defect, prompt defect, protocol gap, governance gap, tooling defect, or unresolved instruction conflict.
+    future_route: HP-MPROP-006
+    not_an_adopted_policy: true
+    not_a_kernel_amendment: true
+
+  canonical_identity_control:
+    rule: Never assign repository identities from chat memory. Resolve and verify the next available identity from canonical repository registries before prospective custody or repository modification.
+    allocation_evidence_required:
+      - canonical registry or allocation source inspected
+      - next available compatible identity determined
+      - repository-wide unused check passed
+      - resolution evidence recorded before prospective binding
+    second_identity_authority_created: false
+
+  deferred_observations:
+    - observation: Methodology propagation across many artifacts.
+      route: PASS-06_COST_INTEGRATION_OWNER_BURDEN_AND_PROPORTIONALITY
+      status: DEFERRED_NOT_SOLVED_BY_THIS_CORRECTION
+    - observation: Duplicate custody and maintenance cost.
+      route: PASS-06_COST_INTEGRATION_OWNER_BURDEN_AND_PROPORTIONALITY
+      status: DEFERRED_NOT_SOLVED_BY_THIS_CORRECTION
+    - observation: Hardcoded historical hashes in validator code.
+      route: PASS-06_COST_INTEGRATION_OWNER_BURDEN_AND_PROPORTIONALITY
+      status: DEFERRED_NOT_SOLVED_BY_THIS_CORRECTION
+    - observation: Execution time and Project Owner burden of small methodology changes.
+      route: PASS-06_AND_PASS-07_PROPORTIONALITY_CHALLENGE
+      status: DEFERRED_NOT_SOLVED_BY_THIS_CORRECTION
+
+  finding_traceability:
+    required_chain:
+      - OBSERVED_EVENT_OR_PROBLEM
+      - METHODOLOGY_REQUIREMENT
+      - CHANGED_CANONICAL_ARTIFACT
+      - VALIDATOR_OR_REVIEW_CONTROL_WHERE_APPLICABLE
+      - VALIDATION_EVIDENCE
+      - FUTURE_GOV_7_PROPOSAL_OR_DEFERRAL_WHERE_APPLICABLE
+    correction_map:
+      - observed_problem: Audit finding basis was not uniformly explicit.
+        methodology_requirement: finding_contract.finding_basis
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+        validator_or_review_control: governance/tools/validate_audit_methodology.py
+        validation_evidence: GOV-AUD-VAL-003
+        future_route: null
+      - observed_problem: Model inference could appear beside stronger evidence without uniform support classification.
+        methodology_requirement: finding_contract.model_inference_only
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+        validator_or_review_control: governance/tools/validate_audit_methodology.py
+        validation_evidence: GOV-AUD-VAL-003
+        future_route: null
+      - observed_problem: Reviewers could classify invalidity before root-cause, authority, and materiality analysis.
+        methodology_requirement: deviation_and_validity_contract
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-070-pass-07-independent-evaluation-v0.2.0.md
+        validator_or_review_control: governance/tools/validate_audit_methodology.py
+        validation_evidence: GOV-AUD-VAL-003
+        future_route: HP-MPROP-006
+      - observed_problem: Validation, confirmation, substantive review, and adversarial review were not sufficiently separated.
+        methodology_requirement: review_contract.review_types
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+        validator_or_review_control: governance/tools/validate_audit_methodology.py
+        validation_evidence: GOV-AUD-VAL-003
+        future_route: null
+      - observed_problem: Adversarial review did not uniformly require attempted refutation.
+        methodology_requirement: review_contract.review_types.ADVERSARIAL_REVIEW
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-070-pass-07-independent-evaluation-v0.2.0.md
+        validator_or_review_control: governance/tools/validate_audit_methodology.py
+        validation_evidence: GOV-AUD-VAL-003
+        future_route: null
+      - observed_problem: Blocking materiality was insufficiently explicit.
+        methodology_requirement: materiality
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+        validator_or_review_control: governance/tools/validate_audit_methodology.py
+        validation_evidence: GOV-AUD-VAL-003
+        future_route: null
+      - observed_problem: Repository identities had been proposed from chat memory instead of canonical registries.
+        methodology_requirement: canonical_identity_control
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.2.0.md
+        validator_or_review_control: governance/tools/validate_audit_methodology.py
+        validation_evidence: GOV-AUD-VAL-003
+        future_route: null
+      - observed_problem: Durable learning obligations and bounded run write authority conflicted.
+        methodology_requirement: temporary_instruction_conflict_control
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+        validator_or_review_control: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.2.0.md
+        validation_evidence: GOV-AUD-VAL-004
+        future_route: HP-MPROP-006
+      - observed_problem: PASS-02 and PASS-07 contracts lacked an explicit bindable version and supersession identity.
+        methodology_requirement: contract_identity_and_prompt_binding
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-02/contract.yaml
+        validator_or_review_control: governance/tools/validate_audit_scaffold.py
+        validation_evidence: GOV-AUD-VAL-004
+        future_route: null
+      - observed_problem: Review-type conclusions and PASS-07 result tokens were not coherently mapped.
+        methodology_requirement: review_contract.pass_result_contracts.PASS-07
+        changed_canonical_artifact: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-07/contract.yaml
+        validator_or_review_control: governance/tools/validate_audit_methodology.py
+        validation_evidence: GOV-AUD-VAL-004
+        future_route: null
+      - observed_problem: Methodology validation checked the protocol but not future structured finding and review instances.
+        methodology_requirement: instance_validation_contract
+        changed_canonical_artifact: governance/tools/validate_audit_methodology.py
+        validator_or_review_control: governance/tests/test_audit_methodology_protocol.py
+        validation_evidence: GOV-AUD-VAL-004
+        future_route: null
+      - observed_problem: Execution-insight learning promotion needed prospective audit custody without changing later pass contracts before CHECKPOINT-A.
+        methodology_requirement: methodology_backlog.HP-MPROP-007
+        changed_canonical_artifact: governance/methodology/METHODOLOGY_BACKLOG.md
+        validator_or_review_control: governance/tools/validate_audit_methodology.py
+        validation_evidence: GOV-AUD-VAL-004
+        future_route: HP-MPROP-007

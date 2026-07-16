@@ -16,9 +16,9 @@ governance_baseline:
     status: UNRESOLVED_TRIGGER_GATED
 audit:
   id: GOV-AUD-001
-  status: IN_PROGRESS_PASS_01_ACCEPTED_COMPLETED
-  authority: PASS_01_ONLY_PROJECT_OWNER_AUTHORIZATION_CONSUMED
-  passes_executed: 1
+  status: IN_PROGRESS_PASS_02_EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+  authority: PASS_02_PROJECT_OWNER_AUTHORIZATION_CONSUMED
+  passes_executed: 2
   checkpoints_completed: 0
   completed: false
   pass_01_accepted: true
@@ -29,14 +29,30 @@ audit:
   pass_01_execution_authorized: true
   pass_01_authorization_consumed: true
   pass_01_status: PASS_01_ACCEPTED_COMPLETED
-  pass_02_status: PLANNED_NOT_EXECUTED
+  pass_02_execution_authorized: true
+  pass_02_authorization_consumed: true
+  pass_02_status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
   graph_implemented: false
   telemetry_implemented: false
   interviewer_simulation_implemented: false
   self_hosting_implemented: false
   owner_decision_inferred: false
-  last_completed_step: PASS_01_ACCEPTED_COMPLETED
-  next_action: PROJECT_OWNER_CHECKPOINT_A_DISPOSITION_AND_SEPARATE_PASS_02_AUTHORIZATION_DECISION
+  last_completed_step: PASS_02_EXECUTED_AND_VALIDATED
+  next_action: CONDUCT_ONE_FOCUSED_READ_ONLY_INDEPENDENT_CONFIRMATION_OF_THE_THREE_CORRECTED_FINDINGS_DO_NOT_REOPEN_METHODOLOGY_SCOPE_EXECUTE_CHECKPOINT_A_PREPARE_PASS_03_COMMIT_OR_PUSH
+  methodology_correction:
+    protocol_id: GOV-AUD-001-METHOD-001
+    version: 0.3.0
+    status: ACCEPTED_PROSPECTIVE_AUDIT_METHODOLOGY
+    validation_record: GOV-AUD-VAL-005
+    bounded_review_result: CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION
+    acceptance_record: GOV-AUD-DECISION-002/0.1.0
+    accepted_future_audit_clarification: HP-MPROP-007
+    historical_pass_02_r1_modified: false
+    pass_02_r2_prepared: false
+    checkpoint_a_completed: false
+    pass_03_authorized_or_executed: false
+    gov_7_policy_adopted: false
+    kernel_amended: false
   validation_lifecycle_correction:
     correction_id: GOV-AUD-001-P01-R1-C1
     initial_full_suite: {result: FAILED, passed_tests: 141, failed_tests: 3}
@@ -52,4 +68,21 @@ audit:
     pass_01_accepted: true
     pass_02_authorized_or_executed: false
     checkpoint_a_completed: false
+    gov_7_activated: false
+  pass_02_execution:
+    run_id: GOV-AUD-001-P02-R1
+    authorization_id: GOV-AUD-AUTH-002
+    prompt_id: GOV-AUD-PROMPT-021
+    catalog_prompt_id: HP-PROMPT-029
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    independent_evaluation_completed: false
+    owner_reported_independent_review: true
+    owner_report_custody: HP-PROMPT-030
+    independent_review_artifact_custody: NOT_PRESERVED
+    independent_review_result: NOT_RECONSTRUCTED
+    pass_02_accepted: false
+    checkpoint_a_completed: false
+    pass_03_authorized_or_executed: false
+    architecture_selected: false
+    implementation_authorized: false
     gov_7_activated: false

@@ -13,6 +13,8 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _lib.strict_yaml import load, loads
+from validate_audit_methodology import validate as validate_audit_methodology
+from validate_pass_02 import validate as validate_pass_02
 
 
 AUDIT_REL = Path("governance/audits/GOV-AUD-001-gov7-enablement")
@@ -21,6 +23,10 @@ CORRECTION_PROMPT_HASH = "7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea56911
 C2_PROMPT_HASH = "0075610713cf0ce9dbb530693bdb518a509098e3bfd6b4c0af3694f12d78d1a0"
 C2_AUTHORIZATION_HASH = "9fcc990418e4ae9f0f65ab25bda0cf811a83e1247dc5b2cf5999d3f9d24b9a41"
 C2_INPUT_HASH = "c804b3309126cc2aba7bf9f6cf42f24f49a8e2ad6fe4d83eaa9b9d0441effb4a"
+METHODOLOGY_PROTOCOL = "GOV-AUD-001-METHOD-001/0.3.0"
+METHODOLOGY_CORRECTION_PROMPT = "HP-PROMPT-030/0.3.0"
+METHODOLOGY_CORRECTION_PROMPT_PATH = "governance/prompts/orchestration/HP-PROMPT-030-gov-aud-001-audit-methodology-correction-v0.3.0.md"
+METHODOLOGY_CORRECTION_PROMPT_HASH = "b47cce4e96daf09657cedfd918a3b47f9ab461ecdc3c55b559fffa1b9fdaad81"
 PASS_IDS = [f"PASS-{number:02d}" for number in range(1, 8)]
 SCAFFOLD_PROMPT_IDS = ["GOV-AUD-PROMPT-000"] + [f"GOV-AUD-PROMPT-{number:03d}" for number in range(10, 71, 10)]
 RUN_ID = "GOV-AUD-001-P01-R1"
@@ -35,7 +41,12 @@ C2_STATUS = "EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER
 C2_AUDIT_STATUS = "IN_PROGRESS_PASS_01_CORRECTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION"
 ACCEPTED_AUDIT_STATUS = "IN_PROGRESS_PASS_01_ACCEPTED_COMPLETED"
 ACCEPTED_PASS_01_STATUS = "PASS_01_ACCEPTED_COMPLETED"
+PASS_02_RUN_ID = "GOV-AUD-001-P02-R1"
+PASS_02_RUN_REL = AUDIT_REL / "runs" / PASS_02_RUN_ID
+PASS_02_STATUS = "EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION"
+PASS_02_AUDIT_STATUS = "IN_PROGRESS_PASS_02_EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION"
 ACCEPTANCE_REL = AUDIT_REL / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"
+METHODOLOGY_ACCEPTANCE_REL = AUDIT_REL / "decisions/GOV-AUD-DECISION-002-methodology-acceptance-v0.1.0.yaml"
 OUTPUT_HASHES = {
     "01-verified-capability-inventory.yaml": "0e1ae26cfd8201e781768eec81045c056b1bc1cd557b0ab1f9fbcae1d47cb124",
     "02-repetition-waste-and-burden-analysis.md": "57cbd6fc8d151d6c338a14c9c6f51e702f9a8519136d5dde5b2d20b2327f900f",
@@ -78,14 +89,26 @@ EXPECTED_CHECKPOINT = {
     "PASS-04": "CHECKPOINT-A", "PASS-05": "CHECKPOINT-B",
     "PASS-06": "CHECKPOINT-B", "PASS-07": "CHECKPOINT-B",
 }
-TEMPLATE_NAMES = {
+ACTIVE_TEMPLATE_NAMES = {
     "PASS-01": "GOV-AUD-PROMPT-010-pass-01-capability-gap-v0.1.0.md",
-    "PASS-02": "GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.1.0.md",
+    "PASS-02": "GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.2.0.md",
     "PASS-03": "GOV-AUD-PROMPT-030-pass-03-measurement-interviewer-evaluation-v0.1.0.md",
     "PASS-04": "GOV-AUD-PROMPT-040-pass-04-targeted-tooling-v0.1.0.md",
     "PASS-05": "GOV-AUD-PROMPT-050-pass-05-gov7-strategy-v0.1.0.md",
     "PASS-06": "GOV-AUD-PROMPT-060-pass-06-synthesis-v0.1.0.md",
-    "PASS-07": "GOV-AUD-PROMPT-070-pass-07-independent-evaluation-v0.1.0.md",
+    "PASS-07": "GOV-AUD-PROMPT-070-pass-07-independent-evaluation-v0.2.0.md",
+}
+VERSIONED_CONTRACTS = {
+    "PASS-02": {
+        "contract_id": "GOV-AUD-001-PASS-02-CONTRACT",
+        "version": "0.2.0",
+        "predecessor_sha256": "9fa786dfad87b4612671928fc9985e07fcb31aafc366487550fed2a262d3a496",
+    },
+    "PASS-07": {
+        "contract_id": "GOV-AUD-001-PASS-07-CONTRACT",
+        "version": "0.2.0",
+        "predecessor_sha256": "e2caa6f2ba67261e3c76e53342d848856642b5793fd4e49ede172d63825f50bb",
+    },
 }
 
 
@@ -534,7 +557,8 @@ def validate(root: Path) -> dict:
     required = [
         "00-audit-charter.md", "01-audit-plan.yaml", "02-audit-status.yaml",
         "03-baseline-input-manifest.yaml", "04-artifact-and-custody-contract.md",
-        "05-owner-checkpoints.md", "06-model-routing-policy.md", "prompt-registry.yaml",
+        "05-owner-checkpoints.md", "06-model-routing-policy.md",
+        "07-audit-methodology-and-review-protocol.yaml", "prompt-registry.yaml",
         "runs/README.md", "decisions/README.md",
     ]
     for relative in required:
@@ -549,7 +573,34 @@ def validate(root: Path) -> dict:
     manifest = load(audit / "03-baseline-input-manifest.yaml")["manifest"]
 
     passes_executed = plan.get("passes_executed")
-    if plan.get("audit_id") != "GOV-AUD-001" or passes_executed not in (0, 1):
+    if any((
+        registry.get("methodology_protocol") != METHODOLOGY_PROTOCOL,
+        registry.get("methodology_correction_prompt") != METHODOLOGY_CORRECTION_PROMPT,
+        registry.get("methodology_correction_prompt_path") != METHODOLOGY_CORRECTION_PROMPT_PATH,
+        registry.get("methodology_correction_prompt_sha256") != METHODOLOGY_CORRECTION_PROMPT_HASH,
+        sha256(root / METHODOLOGY_CORRECTION_PROMPT_PATH) != METHODOLOGY_CORRECTION_PROMPT_HASH,
+        registry.get("identity_resolution_rule") != "RESOLVE_FROM_CANONICAL_REGISTRIES_VERIFY_UNUSED_AND_RECORD_EVIDENCE_BEFORE_BINDING",
+    )):
+        errors.append("audit prompt registry methodology or identity-resolution binding mismatch")
+    registry_contracts = registry.get("pass_contracts", {})
+    for pass_id, expected in VERSIONED_CONTRACTS.items():
+        record = registry_contracts.get(pass_id, {})
+        contract_path = audit / f"passes/{pass_id}/contract.yaml"
+        if any((
+            record.get("contract_id") != expected["contract_id"],
+            str(record.get("version")) != expected["version"],
+            record.get("status") != "ACTIVE_FOR_FUTURE_INSTANTIATION",
+            record.get("path") != contract_path.relative_to(root).as_posix(),
+            not contract_path.is_file(),
+            contract_path.is_file() and record.get("sha256") != sha256(contract_path),
+            (
+                record.get("historical_run_binding_preserved", {}).get("predecessor_sha256")
+                if pass_id == "PASS-02"
+                else record.get("predecessor_sha256")
+            ) != expected["predecessor_sha256"],
+        )):
+            errors.append(f"audit prompt registry contract binding mismatch: {pass_id}")
+    if plan.get("audit_id") != "GOV-AUD-001" or passes_executed not in (0, 1, 2):
         errors.append("audit identity or supported lifecycle state mismatch")
     correction_present = (root / CORRECTION_REL).exists()
     c2_present = (root / SUBSTANTIVE_CORRECTION_REL).exists()
@@ -557,12 +608,22 @@ def validate(root: Path) -> dict:
     accepted = acceptance_path.is_file()
     expected_plan_status = (
         "PLANNED_NOT_EXECUTED" if passes_executed == 0
+        else PASS_02_AUDIT_STATUS if passes_executed == 2
         else ACCEPTED_AUDIT_STATUS if accepted
         else C2_AUDIT_STATUS if c2_present
         else AUDIT_IN_PROGRESS_STATUS
     )
     if plan.get("status") != expected_plan_status:
         errors.append("audit plan lifecycle status mismatch")
+    methodology_binding = plan.get("methodology_protocol", {})
+    if methodology_binding != {
+        "id": "GOV-AUD-001-METHOD-001",
+        "version": "0.3.0",
+        "path": "governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml",
+        "applies_prospectively": True,
+        "historical_runs_modified": False,
+    }:
+        errors.append("audit methodology binding mismatch")
     expected_correction_id = CORRECTION_ID if correction_present else None
     if plan.get("validation_correction_id") != expected_correction_id:
         errors.append("audit plan validation correction identity mismatch")
@@ -588,14 +649,16 @@ def validate(root: Path) -> dict:
         errors.append("duplicate sequence ID")
     sequence_by_id = {item.get("id"): item for item in sequence}
     for item in sequence:
-        if item.get("id") == "PASS-01" and passes_executed == 1:
+        if item.get("id") == "PASS-01" and passes_executed >= 1:
             expected_status = ACCEPTED_PASS_01_STATUS if accepted else C2_STATUS if c2_present else PASS_01_EXECUTED_STATUS
+        elif item.get("id") == "PASS-02" and passes_executed == 2:
+            expected_status = PASS_02_STATUS
         else:
             expected_status = "PENDING_PROJECT_OWNER_DISPOSITION" if accepted and item.get("id") == "CHECKPOINT-A" else "PENDING_OWNER_DECISION" if item.get("id", "").startswith("CHECKPOINT") else "PLANNED_NOT_EXECUTED"
         if item.get("status") != expected_status:
             errors.append(f"sequence status mismatch: {item.get('id')}")
-    if sequence_by_id.get("PASS-02", {}).get("status") != "PLANNED_NOT_EXECUTED":
-        errors.append("PASS-02 executed before CHECKPOINT-A disposition")
+    if passes_executed < 2 and sequence_by_id.get("PASS-02", {}).get("status") != "PLANNED_NOT_EXECUTED":
+        errors.append("PASS-02 status is inconsistent with executed-pass count")
     if sequence_by_id.get("CHECKPOINT-A", {}).get("status") != ("PENDING_PROJECT_OWNER_DISPOSITION" if accepted else "PENDING_OWNER_DECISION"):
         errors.append("CHECKPOINT-A must remain pending after PASS-01")
 
@@ -618,12 +681,17 @@ def validate(root: Path) -> dict:
     )
     if audit_status.get("pass_01_status") != expected_pass_01_status:
         errors.append("audit status PASS-01 lifecycle mismatch")
-    if audit_status.get("pass_02_status") != "PLANNED_NOT_EXECUTED":
-        errors.append("audit status PASS-02 must remain unexecuted")
-    if audit_status.get("pass_01_execution_authorized") is not (passes_executed == 1):
+    expected_pass_02_status = PASS_02_STATUS if passes_executed == 2 else "PLANNED_NOT_EXECUTED"
+    if audit_status.get("pass_02_status") != expected_pass_02_status:
+        errors.append("audit status PASS-02 lifecycle mismatch")
+    if audit_status.get("pass_01_execution_authorized") is not (passes_executed >= 1):
         errors.append("PASS-01 execution authorization lifecycle mismatch")
-    if audit_status.get("pass_01_authorization_consumed") is not (passes_executed == 1):
+    if audit_status.get("pass_01_authorization_consumed") is not (passes_executed >= 1):
         errors.append("PASS-01 authorization consumption lifecycle mismatch")
+    if audit_status.get("pass_02_execution_authorized", False) is not (passes_executed == 2):
+        errors.append("PASS-02 execution authorization lifecycle mismatch")
+    if audit_status.get("pass_02_authorization_consumed", False) is not (passes_executed == 2):
+        errors.append("PASS-02 authorization consumption lifecycle mismatch")
     correction_status = audit_status.get("validation_lifecycle_correction")
     if correction_present:
         if any((
@@ -671,6 +739,33 @@ def validate(root: Path) -> dict:
         confirmation = root / RUN_REL / "evaluation/GOV-AUD-001-P01-C3-IER-001/output/independent-confirmation.md"
         if not confirmation.is_file() or confirmation.read_text() != "CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION\n":
             errors.append("PASS-01 independent confirmation custody mismatch")
+    methodology_acceptance = root / METHODOLOGY_ACCEPTANCE_REL
+    if methodology_acceptance.is_file():
+        decision = load(methodology_acceptance).get("project_owner_decision", {})
+        if any((
+            decision.get("decision_id") != "GOV-AUD-DECISION-002",
+            decision.get("decision") != "ACCEPT_GOV_AUD_001_METHOD_001_0_3_0",
+            decision.get("accepted_artifact", {}).get("id") != "GOV-AUD-001-METHOD-001",
+            str(decision.get("accepted_artifact", {}).get("version")) != "0.3.0",
+            decision.get("accepted_artifact", {}).get("independent_confirmation") != "CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION",
+            decision.get("preserved_boundaries", {}).get("pass_02_r1_immutable") is not True,
+            decision.get("preserved_boundaries", {}).get("pass_02_accepted") is not False,
+            decision.get("preserved_boundaries", {}).get("checkpoint_a_completed") is not False,
+            decision.get("preserved_boundaries", {}).get("pass_03_prepared_or_executed") is not False,
+            decision.get("preserved_boundaries", {}).get("gov_7_activated") is not False,
+            decision.get("preserved_boundaries", {}).get("kernel_amended") is not False,
+            decision.get("preserved_boundaries", {}).get("od_006_resolved") is not False,
+        )):
+            errors.append("methodology acceptance decision boundary mismatch")
+        methodology = load(audit / "07-audit-methodology-and-review-protocol.yaml").get("audit_methodology", {})
+        correction = audit_status.get("methodology_correction", {})
+        if any((
+            methodology.get("status") != "ACCEPTED_PROSPECTIVE_AUDIT_METHODOLOGY",
+            correction.get("status") != "ACCEPTED_PROSPECTIVE_AUDIT_METHODOLOGY",
+            correction.get("bounded_review_result") != "CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION",
+            correction.get("acceptance_record") != "GOV-AUD-DECISION-002/0.1.0",
+        )):
+            errors.append("methodology acceptance state mismatch")
     baseline = status.get("governance_baseline", {})
     if baseline.get("kernel") != {"version": "0.2.0", "status": "RATIFIED", "implemented": False, "enforceability_claimed": False, "operational": False}:
         errors.append("Kernel baseline mismatch")
@@ -685,20 +780,29 @@ def validate(root: Path) -> dict:
     if not raw_prompt.is_file() or sha256(raw_prompt) != PROMPT_HASH:
         errors.append("exact scaffold prompt hash mismatch")
     prompts = registry.get("prompts", [])
-    expected_prompt_ids = list(SCAFFOLD_PROMPT_IDS)
-    if passes_executed == 1:
-        expected_prompt_ids.append("GOV-AUD-PROMPT-011")
+    expected_executed_prompt_ids = ["GOV-AUD-PROMPT-000"]
+    if passes_executed >= 1:
+        expected_executed_prompt_ids.append("GOV-AUD-PROMPT-011")
     if correction_present:
-        expected_prompt_ids.append("GOV-AUD-PROMPT-012")
+        expected_executed_prompt_ids.append("GOV-AUD-PROMPT-012")
     if c2_present:
-        expected_prompt_ids.append("GOV-AUD-PROMPT-013")
+        expected_executed_prompt_ids.append("GOV-AUD-PROMPT-013")
     if (root / RUN_REL / "corrections/GOV-AUD-001-P01-R1-C3").exists():
-        expected_prompt_ids.append("GOV-AUD-PROMPT-015")
+        expected_executed_prompt_ids.append("GOV-AUD-PROMPT-015")
     if accepted:
-        expected_prompt_ids.append("GOV-AUD-PROMPT-016")
+        expected_executed_prompt_ids.append("GOV-AUD-PROMPT-016")
+    if passes_executed == 2:
+        expected_executed_prompt_ids.append("GOV-AUD-PROMPT-021")
     identities = [(item.get("prompt_id"), str(item.get("version"))) for item in prompts]
-    if [item[0] for item in identities] != expected_prompt_ids or len(identities) != len(set(identities)):
-        errors.append("prompt registry identity/order mismatch")
+    if len(identities) != len(set(identities)):
+        errors.append("prompt registry contains duplicate prompt identity/version")
+    executed_prompt_ids = [
+        item.get("prompt_id")
+        for item in prompts
+        if item.get("lifecycle") not in {"TEMPLATE", "SUPERSEDED"}
+    ]
+    if executed_prompt_ids != expected_executed_prompt_ids:
+        errors.append("prompt registry executed identity/order mismatch")
     for item in prompts:
         path = root / item.get("path", "")
         if not path.is_file():
@@ -706,8 +810,15 @@ def validate(root: Path) -> dict:
         if item.get("prompt_id") == "GOV-AUD-PROMPT-000":
             if item.get("lifecycle") != "EXECUTED" or item.get("exact_text_sha256") != PROMPT_HASH or item.get("audit_pass_executed") is not False:
                 errors.append("scaffold prompt registry metadata mismatch")
-        elif item.get("prompt_id") in SCAFFOLD_PROMPT_IDS and item.get("lifecycle") != "TEMPLATE":
-            errors.append(f"future prompt not TEMPLATE: {item.get('prompt_id')}")
+    for index, pass_id in enumerate(PASS_IDS, 1):
+        expected_prompt = f"GOV-AUD-PROMPT-{index * 10:03d}"
+        lineage = [item for item in prompts if item.get("prompt_id") == expected_prompt]
+        active = [item for item in lineage if item.get("lifecycle") == "TEMPLATE"]
+        if len(active) != 1 or active[0].get("pass_id") != pass_id:
+            errors.append(f"active prompt template registry mismatch: {pass_id}")
+        for item in lineage:
+            if item.get("lifecycle") not in {"TEMPLATE", "SUPERSEDED"}:
+                errors.append(f"future prompt lifecycle invalid: {expected_prompt}")
 
     for index, pass_id in enumerate(PASS_IDS, 1):
         contract_path = audit / f"passes/{pass_id}/contract.yaml"
@@ -719,6 +830,22 @@ def validate(root: Path) -> dict:
             errors.append(f"contract fields missing: {pass_id}")
         if contract.get("id") != pass_id or contract.get("status") != "PLANNED_NOT_EXECUTED":
             errors.append(f"contract identity/status mismatch: {pass_id}")
+        expected_contract = VERSIONED_CONTRACTS.get(pass_id)
+        if expected_contract:
+            identity = contract.get("contract_identity", {})
+            supersession = identity.get("supersession", {})
+            if any((
+                identity.get("contract_id") != expected_contract["contract_id"],
+                str(identity.get("version")) != expected_contract["version"],
+                identity.get("status") != "ACTIVE_FOR_FUTURE_INSTANTIATION",
+                supersession.get("status") != "SUPERSEDES_PREVIOUS_UNVERSIONED_SNAPSHOT",
+                supersession.get("predecessor_sha256") != expected_contract["predecessor_sha256"],
+                identity.get("prompt_binding_rule") != "INSTANTIATED_PROMPT_MUST_BIND_CONTRACT_ID_VERSION_AND_SHA256",
+                contract.get("methodology_protocol") != METHODOLOGY_PROTOCOL,
+            )):
+                errors.append(f"versioned contract binding mismatch: {pass_id}")
+        elif "contract_identity" in contract:
+            errors.append(f"unrelated pass contract was versioned by bounded correction: {pass_id}")
         if contract.get("required_predecessors") != EXPECTED_PREDECESSORS[pass_id]:
             errors.append(f"contract predecessor mismatch: {pass_id}")
         if contract.get("checkpoint_dependency") != EXPECTED_CHECKPOINT[pass_id]:
@@ -737,7 +864,7 @@ def validate(root: Path) -> dict:
         if prereq.get("gov_7") != "INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY":
             errors.append(f"GOV-7 prerequisite mismatch: {pass_id}")
 
-        template = audit / "prompts/templates" / TEMPLATE_NAMES[pass_id]
+        template = audit / "prompts/templates" / ACTIVE_TEMPLATE_NAMES[pass_id]
         if not template.is_file():
             errors.append(f"missing prompt template: {pass_id}")
             continue
@@ -750,6 +877,40 @@ def validate(root: Path) -> dict:
                 errors.append(f"anti-bloat classification missing ({classification}): {pass_id}")
         if "not an executable prompt" not in body.lower() or "Required instantiation bindings" not in body:
             errors.append(f"template instantiation boundary missing: {pass_id}")
+        registry_active = next(
+            (
+                item for item in prompts
+                if item.get("prompt_id") == expected_prompt and item.get("lifecycle") == "TEMPLATE"
+            ),
+            {},
+        )
+        if registry_active.get("path") != template.relative_to(root).as_posix() or str(registry_active.get("version")) != str(metadata.get("version")):
+            errors.append(f"active template registry/path mismatch: {pass_id}")
+        if expected_contract:
+            for binding_name in ("PASS_CONTRACT_ID", "PASS_CONTRACT_VERSION", "PASS_CONTRACT_SHA256"):
+                if binding_name not in body:
+                    errors.append(f"contract binding missing ({binding_name}): {pass_id}")
+
+    pass_07_contract = load(audit / "passes/PASS-07/contract.yaml").get("pass", {})
+    pass_07_output = pass_07_contract.get("output_structure", {})
+    if any((
+        set(pass_07_output.get("disposition_review_types", [])) != {
+            "INDEPENDENT_SUBSTANTIVE_REVIEW",
+            "ADVERSARIAL_REVIEW",
+        },
+        set(pass_07_output.get("auxiliary_review_types_without_disposition_authority", [])) != {
+            "DETERMINISTIC_VALIDATION",
+            "TARGETED_CONFIRMATION",
+        },
+        set(pass_07_output.get("permitted_results", [])) != {
+            "SUITABLE_FOR_PROJECT_OWNER_DECISION",
+            "RETURN_FOR_BOUNDED_VERSIONED_CORRECTION",
+            "INVALID_AUDIT_EXECUTION",
+            "INSUFFICIENT_EVIDENCE_FOR_PASS_07_DISPOSITION",
+        },
+        pass_07_output.get("exactly_one_result") is not True,
+    )):
+        errors.append("PASS-07 review-type or result contract mismatch")
 
     starting_head = manifest.get("starting_head")
     for item in manifest.get("inputs", []):
@@ -784,12 +945,25 @@ def validate(root: Path) -> dict:
             validate_correction_custody(root, registry, errors)
             validate_substantive_correction_custody(root, registry, errors)
             validate_c3_classification_and_temporal_semantics(root, errors)
+    if passes_executed == 2:
+        expected_runs = sorted([RUN_ID, PASS_02_RUN_ID])
+        if run_directories != expected_runs or registered_runs != expected_runs:
+            errors.append("two-pass state must contain exactly the registered PASS-01 and PASS-02 runs")
+        else:
+            validate_registered_pass_01(root, registry, errors)
+            validate_correction_custody(root, registry, errors)
+            validate_substantive_correction_custody(root, registry, errors)
+            validate_c3_classification_and_temporal_semantics(root, errors)
+            pass_02_result = validate_pass_02(root)
+            errors.extend(f"PASS-02: {item}" for item in pass_02_result["diagnostics"])
+    methodology_result = validate_audit_methodology(root)
+    errors.extend(f"AUDIT-METHODOLOGY: {item}" for item in methodology_result["diagnostics"])
 
     run_members = sorted(path.relative_to(audit / "runs").as_posix() for path in (audit / "runs").rglob("*") if path.is_file())
     decision_members = sorted(path.relative_to(audit / "decisions").as_posix() for path in (audit / "decisions").rglob("*") if path.is_file())
     if passes_executed == 0 and run_members != ["README.md"]:
         errors.append("planning-only state contains execution artifacts")
-    expected_decision_members = sorted(["README.md"] + (["GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"] if accepted else []))
+    expected_decision_members = sorted(["README.md"] + (["GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"] if accepted else []) + (["GOV-AUD-DECISION-002-methodology-acceptance-v0.1.0.yaml"] if methodology_acceptance.is_file() else []))
     if decision_members != expected_decision_members:
         errors.append("unexpected decision artifacts detected")
     forbidden_names = {"output", "outputs", "evaluation", "telemetry", "projection", "graph"}
@@ -810,8 +984,13 @@ def validate(root: Path) -> dict:
     audit_entry = next((item for item in artifacts if item.get("id") == "GOV-AUD-001"), {})
     if audit_entry.get("status") != expected_plan_status:
         errors.append("global audit registry lifecycle status mismatch")
-    required_ids = ["GOV-AUD-001", "HP-PROMPT-023", "GOV-TOOL-004"]
-    if passes_executed == 1:
+    required_ids = [
+        "GOV-AUD-001", "GOV-AUD-001-METHOD-001", "HP-PROMPT-023",
+        "HP-PROMPT-030", "GOV-AUD-VAL-003", "GOV-AUD-VAL-004",
+        "GOV-AUD-001-PASS-02-CONTRACT", "GOV-AUD-001-PASS-07-CONTRACT",
+        "GOV-TOOL-004", "GOV-TOOL-006",
+    ]
+    if passes_executed >= 1:
         required_ids.extend(("GOV-AUD-001-P01-R1", "GOV-AUD-AUTH-001", "HP-PROMPT-024", "GOV-AUD-VAL-001"))
     if correction_present:
         required_ids.extend((CORRECTION_ID, "GOV-AUD-CORR-AUTH-001", "HP-PROMPT-025"))
@@ -823,6 +1002,15 @@ def validate(root: Path) -> dict:
         ))
     if accepted:
         required_ids.extend(("HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001", "GOV-AUD-DECISION-001", "HP-PROMPT-028"))
+    if passes_executed == 2:
+        required_ids.extend((
+            "GOV-AUD-001-P02-R1", "GOV-AUD-AUTH-002", "HP-PROMPT-029",
+            "GOV-AUD-P02-OUT-001", "GOV-AUD-P02-OUT-002", "GOV-AUD-P02-OUT-003",
+            "GOV-AUD-P02-OUT-004", "GOV-AUD-P02-OUT-005", "GOV-AUD-P02-OUT-006",
+            "GOV-AUD-P02-OUT-007", "GOV-AUD-VAL-002", "GOV-TOOL-005",
+        ))
+    if methodology_acceptance.is_file():
+        required_ids.extend(("GOV-AUD-VAL-005", "GOV-AUD-DECISION-002", "HP-PROMPT-031"))
     for required_id in required_ids:
         if required_id not in artifact_ids:
             errors.append(f"global artifact registration missing: {required_id}")

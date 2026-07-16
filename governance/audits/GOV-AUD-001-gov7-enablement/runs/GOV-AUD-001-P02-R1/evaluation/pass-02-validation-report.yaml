@@ -1,0 +1,99 @@
+validation_report:
+  record_id: GOV-AUD-VAL-002
+  version: 0.1.0
+  audit_id: GOV-AUD-001
+  run_id: GOV-AUD-001-P02-R1
+  pass_id: PASS-02
+  evidence_class: SOURCE_RUN_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_EVALUATION
+  status: VALIDATED
+  result: VALID
+  validator:
+    path: governance/tools/validate_pass_02.py
+    generic_invariants_only: true
+  custody:
+    authorization_sha256: efec5e415e9fadb25e33d6693e83b29a6df3f282d16976a3f43d99711450a376
+    prompt_sha256: b41cafb36922839781a334b4d851c00c80a253bc5ab7ecf96dd84955501e669c
+    input_manifest_sha256: bc5c9764ab0a30a2c96665e09c4d3e720d20be35631e4ad06aa7c10dd656f239
+    input_package_sha256: 4d78ebaa00f620f7383105a632bf828c502a1370b7a89d8b44e619a98d0bbe4c
+    input_member_count: 61
+  structural_results:
+    exact_prompt_and_authorization_custody: PASS
+    input_hashes_and_package: PASS
+    required_output_set: PASS
+    unique_ids: PASS
+    source_path_existence: PASS
+    statement_labels: PASS
+    bounded_context_ownership_completeness: PASS
+    relationship_endpoint_validity: PASS
+    orphan_relationship_types: PASS
+    required_query_coverage: PASS
+    compatibility_matrix_completeness: PASS
+    authority_and_trust_root_boundaries: PASS
+    system_infrastructure_self_hosting_distinction: PASS
+    graph_technology_selection_absent: PASS
+    architecture_implementation_absent: PASS
+    architecture_winner_absent: PASS
+    pass_03_execution_absent: PASS
+    checkpoint_a_completion_absent: PASS
+    kernel_gov_7_od_006_unchanged: PASS
+  counts:
+    bounded_contexts: 11
+    relationship_types: 26
+    required_queries: 16
+    compatibility_domains: 11
+    compatibility_mechanisms: 7
+    compatibility_combinations: 77
+    architecture_styles: 8
+    owner_decisions: 17
+  focused_tests:
+    command: UV_CACHE_DIR=/tmp/uv-cache uv run --with pytest --with hypothesis python -m pytest governance/tests/test_gov_7_audit_scaffold.py governance/tests/test_pass_02_architecture.py -q
+    result: PASSED
+    passed: 31
+    failed: 0
+    pass_02_generic_mutation_tests: {passed: 10, failed: 0}
+  validation_execution:
+    pass_02_generic_validator:
+      command: python3 governance/tools/validate_pass_02.py
+      result: VALID
+      diagnostics: 0
+    audit_lifecycle_and_markdown_reference_validator:
+      command: python3 governance/tools/validate_audit_scaffold.py
+      result: VALID
+      diagnostics: 0
+    prompt_custody:
+      command: python3 governance/tools/validate_prompts.py --root .
+      result: VALID
+      prompt_count: 24
+      lineage_count: 24
+    governance_state:
+      command: python3 governance/tools/validate_governance_state.py
+      result: VALID
+      diagnostics: 0
+    source_checksums:
+      command: sha256sum -c governance/SOURCE_CHECKSUMS.sha256
+      result: PASSED
+    yaml_markdown_references:
+      result: PASSED_BY_AUDIT_LIFECYCLE_VALIDATOR
+    git_diff_check:
+      command: git diff --check
+      result: PASSED
+    full_governance_suite:
+      command: UV_CACHE_DIR=/tmp/uv-cache uv run --with pytest --with hypothesis --with jsonschema --with pyyaml python -m pytest governance/tests -q
+      result: PASSED
+      passed: 172
+      failed: 0
+      duration_seconds: 60.09
+    published_runtime_suite:
+      result: NOT_RUN_NOT_REQUIRED
+      reason: No published runtime support, product or planning executable surface was modified.
+  independent_evaluation_performed: false
+  pass_02_accepted: false
+  checkpoint_a_completed: false
+  pass_03_authorized_or_executed: false
+  architecture_selected: false
+  graph_technology_selected: false
+  implementation_authorized: false
+  gov_7_activated: false
+  risk_accepted: false
+  commit_performed: false
+  push_performed: false

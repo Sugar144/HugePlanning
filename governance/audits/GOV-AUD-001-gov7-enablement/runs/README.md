@@ -1,6 +1,6 @@
 # Audit Run Custody
 
-The completed PASS-01 source run is indexed below. Future separately authorized executions use:
+The completed PASS-01 and executed, validated, unaccepted PASS-02 source runs are indexed below. Future separately authorized executions use:
 
 ```text
 runs/<audit-run-id>/
@@ -19,4 +19,5 @@ The run must reuse the canonical formal-run requirements in `governance/methodol
 - `GOV-AUD-001-P01-R1` — PASS-01 source execution; authorization `GOV-AUD-AUTH-001` consumed exactly once.
 - `GOV-AUD-001-P01-R1-C1` — bounded validation-lifecycle correction; preserves the initial `141 passed / 3 failed` evidence and leaves all four source outputs byte-unchanged.
 - `GOV-AUD-001-P01-R1-C2` — bounded substantive correction; its independent review is preserved under `GOV-AUD-001-P01-C2-IER-001`.
-- `GOV-AUD-001-P01-R1-C3` — bounded classification and temporal-semantics correction; `GOV-AUD-001-P01-C3-IER-001` is preserved as the exact independently confirmed result. The Project Owner accepted PASS-01 as `PASS_01_ACCEPTED_COMPLETED` in `GOV-AUD-DECISION-001`; PASS-02 remains unexecuted and unauthorized.
+- `GOV-AUD-001-P01-R1-C3` — bounded classification and temporal-semantics correction; `GOV-AUD-001-P01-C3-IER-001` is preserved as the exact independently confirmed result. The Project Owner accepted PASS-01 as `PASS_01_ACCEPTED_COMPLETED` in `GOV-AUD-DECISION-001`.
+- `GOV-AUD-001-P02-R1` — PASS-02 source execution under `GOV-AUD-AUTH-002` and exact amended prompt `GOV-AUD-PROMPT-021` / `HP-PROMPT-029`; executed and validated, not independently evaluated or accepted. CHECKPOINT-A remains pending and PASS-03 remains unauthorized. The separate prospective methodology acceptance `GOV-AUD-DECISION-002/0.1.0` does not alter this run.

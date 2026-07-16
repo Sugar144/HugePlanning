@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[2]
 AUDIT_REL = Path("governance/audits/GOV-AUD-001-gov7-enablement")
 AUDIT = ROOT / AUDIT_REL
 RUN_REL = AUDIT_REL / "runs/GOV-AUD-001-P01-R1"
+P02_REL = AUDIT_REL / "runs/GOV-AUD-001-P02-R1"
 C2_REL = RUN_REL / "corrections/GOV-AUD-001-P01-R1-C2"
 C3_REL = RUN_REL / "corrections/GOV-AUD-001-P01-R1-C3"
 ACCEPTANCE_REL = AUDIT_REL / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"
@@ -38,11 +39,24 @@ C2_REGISTRY_IDS = {
     "GOV-AUD-C2-OUT-004",
     "GOV-AUD-C2-VAL-001",
 }
+P02_REGISTRY_IDS = {
+    "GOV-AUD-001-P02-R1",
+    "GOV-AUD-AUTH-002",
+    "HP-PROMPT-029",
+    "GOV-AUD-P02-OUT-001",
+    "GOV-AUD-P02-OUT-002",
+    "GOV-AUD-P02-OUT-003",
+    "GOV-AUD-P02-OUT-004",
+    "GOV-AUD-P02-OUT-005",
+    "GOV-AUD-P02-OUT-006",
+    "GOV-AUD-P02-OUT-007",
+    "GOV-AUD-VAL-002",
+}
 
 
 def isolated(tmp_path: Path) -> Path:
     target = tmp_path / "repository"
-    shutil.copytree(ROOT, target)
+    shutil.copytree(ROOT, target, ignore=shutil.ignore_patterns(".agents", ".codex", "__pycache__"))
     return target
 
 
@@ -86,6 +100,9 @@ def planning_only(root: Path) -> None:
             last_completed_step="NONE",
             next_action="SEPARATE_PROJECT_OWNER_PASS_01_AUTHORIZATION_REQUIRED",
         )
+        status.pop("pass_02_execution_authorized", None)
+        status.pop("pass_02_authorization_consumed", None)
+        status.pop("pass_02_execution", None)
         status.pop("validation_lifecycle_correction", None)
         status.pop("substantive_output_correction", None)
 
@@ -97,7 +114,7 @@ def planning_only(root: Path) -> None:
             version="0.1.0",
             prompts=[
                 item for item in doc["prompt_registry"]["prompts"]
-                if item["prompt_id"] not in {"GOV-AUD-PROMPT-011", "GOV-AUD-PROMPT-012", "GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016"}
+                if item["prompt_id"] not in {"GOV-AUD-PROMPT-011", "GOV-AUD-PROMPT-012", "GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021"}
             ]
         ),
     )
@@ -116,7 +133,7 @@ def planning_only(root: Path) -> None:
         "GOV-AUD-001-P01-C2-IER-001",
         "GOV-AUD-001-P01-R1-C3", "HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001",
         "GOV-AUD-DECISION-001", "HP-PROMPT-028",
-    } | C2_REGISTRY_IDS
+    } | C2_REGISTRY_IDS | P02_REGISTRY_IDS
 
     def registry_mutation(doc: dict) -> None:
         doc["artifacts"] = [item for item in doc["artifacts"] if item["id"] not in run_and_correction_ids]
@@ -127,6 +144,7 @@ def planning_only(root: Path) -> None:
     runs_readme.write_text(runs_readme.read_text().split("## Registered runs", 1)[0] + "## Registered runs\n\n- None.\n")
     (audit / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml").unlink()
     shutil.rmtree(root / RUN_REL)
+    shutil.rmtree(root / P02_REL)
 
 
 def c1_only(root: Path) -> None:
@@ -136,21 +154,30 @@ def c1_only(root: Path) -> None:
         plan = doc["audit_program"]
         plan.update(
             status="IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION",
+            authority="PASS_01_ONLY_PROJECT_OWNER_AUTHORIZATION_CONSUMED",
+            passes_executed=1,
             substantive_correction_id=None,
             pass_01_accepted=False,
         )
         next(item for item in plan["sequence"] if item["id"] == "PASS-01")["status"] = "EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION"
+        next(item for item in plan["sequence"] if item["id"] == "PASS-02")["status"] = "PLANNED_NOT_EXECUTED"
         next(item for item in plan["sequence"] if item["id"] == "CHECKPOINT-A")["status"] = "PENDING_OWNER_DECISION"
 
     def status_mutation(doc: dict) -> None:
         status = doc["audit"]
         status.update(
             status="IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION",
+            authority="PASS_01_ONLY_PROJECT_OWNER_AUTHORIZATION_CONSUMED",
+            passes_executed=1,
             pass_01_status="EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION",
+            pass_02_status="PLANNED_NOT_EXECUTED",
             pass_01_accepted=False,
             last_completed_step="PASS_01_EXECUTED_AND_VALIDATED",
             next_action="PROJECT_OWNER_PASS_01_DISPOSITION_AND_SEPARATE_PASS_02_AUTHORIZATION_DECISION",
         )
+        status.pop("pass_02_execution_authorized", None)
+        status.pop("pass_02_authorization_consumed", None)
+        status.pop("pass_02_execution", None)
         status.pop("substantive_output_correction", None)
 
     rewrite_yaml(audit / "01-audit-plan.yaml", plan_mutation)
@@ -159,21 +186,22 @@ def c1_only(root: Path) -> None:
         audit / "prompt-registry.yaml",
         lambda doc: doc["prompt_registry"].update(
             version="0.2.0",
-            prompts=[item for item in doc["prompt_registry"]["prompts"] if item["prompt_id"] not in {"GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016"}],
+            prompts=[item for item in doc["prompt_registry"]["prompts"] if item["prompt_id"] not in {"GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021"}],
         ),
     )
 
     def registry_mutation(doc: dict) -> None:
-        doc["artifacts"] = [item for item in doc["artifacts"] if item["id"] not in C2_REGISTRY_IDS | {"GOV-AUD-001-P01-R1-C3", "HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001", "GOV-AUD-DECISION-001", "HP-PROMPT-028"}]
+        doc["artifacts"] = [item for item in doc["artifacts"] if item["id"] not in C2_REGISTRY_IDS | P02_REGISTRY_IDS | {"GOV-AUD-001-P01-R1-C3", "HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001", "GOV-AUD-DECISION-001", "HP-PROMPT-028"}]
         next(item for item in doc["artifacts"] if item["id"] == "GOV-AUD-001")["status"] = "IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION"
 
     rewrite_yaml(root / "governance/ARTIFACT_REGISTRY.yaml", registry_mutation)
     (audit / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml").unlink()
     shutil.rmtree(root / C3_REL)
     shutil.rmtree(root / C2_REL)
+    shutil.rmtree(root / P02_REL)
 
 
-def test_canonical_one_pass_executed_state_is_valid() -> None:
+def test_canonical_two_pass_executed_state_is_valid() -> None:
     assert validate(ROOT) == {"result": "VALID", "diagnostics": []}
 
 
@@ -216,7 +244,42 @@ def test_pass_contracts_remain_planned_and_run_is_registered() -> None:
         contract = yaml.safe_load((AUDIT / f"passes/{pass_id}/contract.yaml").read_text())["pass"]
         assert contract["status"] == "PLANNED_NOT_EXECUTED"
     run_dirs = sorted(path.name for path in (AUDIT / "runs").iterdir() if path.is_dir())
-    assert run_dirs == ["GOV-AUD-001-P01-R1"]
+    assert run_dirs == ["GOV-AUD-001-P01-R1", "GOV-AUD-001-P02-R1"]
+
+
+def test_only_affected_pass_contracts_have_bindable_versions() -> None:
+    expected = {
+        "PASS-02": "GOV-AUD-001-PASS-02-CONTRACT",
+        "PASS-07": "GOV-AUD-001-PASS-07-CONTRACT",
+    }
+    for pass_id in PASS_IDS:
+        contract = yaml.safe_load((AUDIT / f"passes/{pass_id}/contract.yaml").read_text())["pass"]
+        identity = contract.get("contract_identity")
+        if pass_id in expected:
+            assert identity["contract_id"] == expected[pass_id]
+            assert identity["version"] == "0.2.0"
+            assert identity["prompt_binding_rule"] == "INSTANTIATED_PROMPT_MUST_BIND_CONTRACT_ID_VERSION_AND_SHA256"
+        else:
+            assert identity is None
+
+
+def test_rejects_pass_contract_without_bindable_version(tmp_path: Path) -> None:
+    root = isolated(tmp_path)
+    path = root / AUDIT_REL / "passes/PASS-07/contract.yaml"
+    rewrite_yaml(path, lambda doc: doc["pass"].pop("contract_identity"))
+    assert "versioned contract binding mismatch: PASS-07" in diagnostics(root)
+
+
+def test_rejects_pass_07_without_insufficient_evidence_result(tmp_path: Path) -> None:
+    root = isolated(tmp_path)
+    path = root / AUDIT_REL / "passes/PASS-07/contract.yaml"
+    rewrite_yaml(
+        path,
+        lambda doc: doc["pass"]["output_structure"]["permitted_results"].remove(
+            "INSUFFICIENT_EVIDENCE_FOR_PASS_07_DISPOSITION"
+        ),
+    )
+    assert "PASS-07 review-type or result contract mismatch" in diagnostics(root)
 
 
 def test_rejects_executed_pass_count_without_registered_run(tmp_path: Path) -> None:
@@ -235,14 +298,14 @@ def test_rejects_registered_run_without_coherent_pass_status(tmp_path: Path) -> 
     assert "sequence status mismatch: PASS-01" in diagnostics(root)
 
 
-def test_rejects_pass_02_execution_before_checkpoint_a(tmp_path: Path) -> None:
+def test_rejects_pass_03_execution_before_checkpoint_a(tmp_path: Path) -> None:
     root = isolated(tmp_path)
     path = root / AUDIT_REL / "01-audit-plan.yaml"
     rewrite_yaml(
         path,
-        lambda doc: next(item for item in doc["audit_program"]["sequence"] if item["id"] == "PASS-02").update(status="EXECUTED"),
+        lambda doc: next(item for item in doc["audit_program"]["sequence"] if item["id"] == "PASS-03").update(status="EXECUTED"),
     )
-    assert "PASS-02 executed before CHECKPOINT-A disposition" in diagnostics(root)
+    assert "sequence status mismatch: PASS-03" in diagnostics(root)
 
 
 def test_rejects_automatic_pass_01_acceptance_without_decision(tmp_path: Path) -> None:

@@ -1,0 +1,37 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-023-E001
+  record_id: HP-FAIL-023
+  date: '2026-07-16'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The corrected HP-PROMPT-029 identity, exact PASS-02 custody and absence
+    of failed-start execution evidence passed prompt, audit lifecycle, PASS-02 and
+    full governance validation.
+  rationale: Prompt custody reports 24 unique prompts and lineages; the generic PASS-02
+    validator and audit lifecycle validator return zero diagnostics; 31 focused tests
+    and 172 complete governance tests pass; PASS-02 remains unaccepted and CHECKPOINT-A
+    remains pending.
+  evidence_refs:
+  - type: VALIDATION_RECORD
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/evaluation/pass-02-validation-report.yaml
+    anchor: GOV-AUD-VAL-002
+    sha256: ecc2bf4d4d6c5b3d07af34ea79b716e3c1c2c6063f39cc9e8b79d85584d69e8e
+    availability: PRESERVED
+    note: Deterministic source-run validation, not independent evaluation or acceptance.
+  - type: REPOSITORY_PATH
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/prompt-registry.yaml
+    anchor: GOV-AUD-PROMPT-021 and HP-PROMPT-029
+    sha256: null
+    availability: PRESERVED
+    note: Canonical prompt registry binds the corrected local and catalog identities.
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_gov_7_audit_scaffold.py
+    anchor: two-pass lifecycle regression
+    sha256: null
+    availability: PRESERVED
+    note: Focused lifecycle and PASS-02 test result was 31 passed and 0 failed.
+  owner_decision_ref: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/authorization/owner-authorization.yaml
+  accepted_risk: null
+  supersedes: null

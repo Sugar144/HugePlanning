@@ -9,6 +9,7 @@ Start with:
 3. The applicable `runs/*/run-manifest.yaml`.
 4. `ARTIFACT_REGISTRY.yaml` and `SOURCE_CHECKSUMS.sha256` for provenance.
 5. `methodology/` for current reusable role and protocol contracts.
+6. `audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml` for the prospective GOV-AUD-001 finding and review controls.
 
 ## Authority and status
 
@@ -16,7 +17,7 @@ Raw sources show what was received. Run directories reconstruct what a function 
 
 The current Kernel is `0.2.0 / RATIFIED` for HugePlanning level 3 under the Kernel scope rules. GOV-0 through GOV-6 are complete; KGR-005 completed with `CLOSURE_CONFIRMED`, and KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`. OD-002 is resolved as `CONFIRM_EXACT_SCOPE`, OD-003 as `PACKET_SUFFICIENT` for the current context, OD-004 as `RATIFY_EXACT_KERNEL_0_2_0`, and OD-005 as `ACCEPT_MINIMUM_GOV_7_DIRECTION`; OD-006 remains unresolved trigger-gated. GOV-7 is `INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY`; GOV-8 and GOV-9 are inactive. The minimum GOV-7 package is `DIRECTION_ACCEPTED_NOT_IMPLEMENTED`; no risk is accepted and no enforcement implementation has occurred.
 
-GOV-AUD-001 remains in progress: PASS-01 is `PASS_01_ACCEPTED_COMPLETED` after the independently confirmed C3 evidence; exactly one pass is executed, PASS-02 is unexecuted and unauthorized, and CHECKPOINT-A is pending Project Owner disposition. The audit program is incomplete. No implementation recommendation or residual risk is accepted. R1, C1, C2 and C3 remain immutable.
+GOV-AUD-001 remains in progress: PASS-01 is `PASS_01_ACCEPTED_COMPLETED` after the independently confirmed C3 evidence; PASS-02 is `EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION`; exactly two passes are executed, CHECKPOINT-A is pending Project Owner disposition, and PASS-03 remains unauthorized and unexecuted. The Project Owner accepted `GOV-AUD-001-METHOD-001/0.3.0` prospectively after focused independent confirmation, preserving the prior finding, review, invalidity, adversarial, materiality, conflict and identity controls and leaving PASS-02 R1 unchanged. `HP-MPROP-007` is Owner-accepted only as a future audit clarification after CHECKPOINT-A and before PASS-03; implementation has not started. The Project Owner reports that PASS-02 was independently reviewed, but no exact review artifact is in repository custody, so the review result is not reconstructed or treated as formal evaluation evidence. The audit program is incomplete. No architecture, technology, implementation recommendation or residual risk is accepted. PASS-01 R1, C1, C2 and C3 and PASS-02 R1 remain immutable.
 
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml

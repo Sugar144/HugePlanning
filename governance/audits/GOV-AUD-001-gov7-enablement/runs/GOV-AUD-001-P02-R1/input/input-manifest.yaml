@@ -1,0 +1,91 @@
+manifest:
+  manifest_id: GOV-AUD-001-P02-R1-INPUT-001
+  version: 0.1.0
+  status: BOUND_BEFORE_SUBSTANTIVE_ANALYSIS
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_local_head: a4cbc500b2ca864b2eb35e9354df88c8c3d97a3e
+  starting_remote_head: a4cbc500b2ca864b2eb35e9354df88c8c3d97a3e
+  prompt_sha256: b41cafb36922839781a334b4d851c00c80a253bc5ab7ecf96dd84955501e669c
+  authorization_sha256: efec5e415e9fadb25e33d6693e83b29a6df3f282d16976a3f43d99711450a376
+  hash_algorithm: SHA-256
+  path_base: REPOSITORY_ROOT
+  member_count: 61
+  package_hash_method: SHA256_OF_LEXICOGRAPHICALLY_PATH_SORTED_SHA256SUM_LINES
+  input_package_sha256: 4d78ebaa00f620f7383105a632bf828c502a1370b7a89d8b44e619a98d0bbe4c
+  baseline_hash_semantics: TRACKED_INPUTS_ARE_HASHED_AT_STARTING_HEAD; NEW_AUTHORIZATION_AND_PROMPT_ARE_HASHED_FROM_PROSPECTIVE_WORKTREE_CUSTODY
+  inputs:
+    - {path: .claude/agents/client-discovery.md, sha256: 7c6dd912c4271e27474b4aced813e4b3aca88ea823154fbc8b6e85bc6a641f25, role: RELEASED_AGENT_SURFACE}
+    - {path: .claude/rules/client-data-separation.md, sha256: bba5e22a188f9065662a1ec8e67c08c9b1cbd117e53119c87c1535b6e4d912a8, role: CLIENT_AUTHORITY_BOUNDARY}
+    - {path: .claude/rules/traceability.md, sha256: 10689d8e2c56a305db4dde290698a60502c965e0f911d4762815d4c3e5184c0c, role: RELEASED_TRACEABILITY_RULE}
+    - {path: .claude/settings.json, sha256: 7de6cd97fbb0a9676eb2640ec8a2d6e081f6defd7a94f72d2b9da4382561c918, role: RELEASED_HOOK_AND_PERMISSION_SURFACE}
+    - {path: governance/CURRENT_STATE.md, sha256: 757dd46a05025b630b09094453e3c9463e52022db55c101b547f2ca5bfbb60a5, role: STARTING_GOVERNANCE_STATE}
+    - {path: governance/DECISION_LOG.md, sha256: 757bd3e274c81b0a650f2c5fe3019d14e523b2c9c8db8d74c1be18b4bfb74529, role: AUTHORITY_AND_DECISION_HISTORY}
+    - {path: governance/GOVERNANCE_MASTER_PLAN.md, sha256: 5c4388b79db33dfa278affcec8662c67f9df140c2e6021c1ae3e588aa6fde453, role: GOVERNANCE_PHASE_PLAN}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/00-audit-charter.md, sha256: 7c2027fc8d573ae9796f7e5356dd707411e0183ebafa48975bb3ccaa288f09c4, role: AUDIT_CHARTER}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/01-audit-plan.yaml, sha256: 9e376e216402962c6046914787625409a6db7867245a6bc12182bf07936592e4, role: STARTING_AUDIT_PLAN}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/02-audit-status.yaml, sha256: 29fe180452b7c2224e5a279beb65b28a0b9e45b449651b76318be82aadcbe98e, role: STARTING_AUDIT_STATUS}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/04-artifact-and-custody-contract.md, sha256: 3e5a2c41027c900eab1a65f5600ba0a0091ef227b44675254a10d81f5f79a624, role: AUDIT_CUSTODY_CONTRACT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml, sha256: 334ac85ab175655a41d946b5ac1e060332ecf09c5c2013de7591f458f196faa5, role: PASS_01_ACCEPTANCE_RECORD}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-02/contract.yaml, sha256: 9fa786dfad87b4612671928fc9985e07fcb31aafc366487550fed2a262d3a496, role: PASS_02_CONTRACT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/prompt-registry.yaml, sha256: 76d8efce15bb2e15707aa50f949e111c20a9aae5998073ec85167e8c545866e2, role: STARTING_PROMPT_REGISTRY}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/01-corrected-verified-capability-inventory.yaml, sha256: d099e9bcbec6b5fc27e405759360909b9c29c982b6faed3465d75148bc0047b9, role: ACCEPTED_PASS_01_EFFECTIVE_CAPABILITY_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/02-corrected-repetition-waste-and-burden-analysis.md, sha256: df5f310afc64b666eea32385f14163fcee75d4871676e0759b893e7c951c5a00, role: ACCEPTED_PASS_01_EFFECTIVE_BURDEN_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/output/03-corrected-ranked-gap-register.yaml, sha256: 0c6563dc94edbb3bdf9ec490665b7a97012e56cb68c669ecabe7adf3cf523a2a, role: ACCEPTED_PASS_01_C3_GAP_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/output/04-corrected-pass-01-findings-and-handoff.md, sha256: 4f2abd592a9813a25b9e68edbe70d4364fba03f9f4f251ea735dc957f9a35fde, role: ACCEPTED_PASS_01_C3_HANDOFF}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/GOV-AUD-001-P01-C3-IER-001/output/independent-confirmation.md, sha256: e6528c323e09df48bb889d86140decaa7905f78f7354f97c9efef0be55dda27f, role: PASS_01_C3_INDEPENDENT_CONFIRMATION}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/authorization/owner-authorization.yaml, sha256: efec5e415e9fadb25e33d6693e83b29a6df3f282d16976a3f43d99711450a376, role: PROJECT_OWNER_AUTHORIZATION}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/prompt/GOV-AUD-PROMPT-021-pass-02-execution-v0.1.0.md, sha256: b41cafb36922839781a334b4d851c00c80a253bc5ab7ecf96dd84955501e669c, role: EXACT_AMENDED_EXECUTION_PROMPT}
+    - {path: governance/learning/FAILURE_AND_LESSONS_INDEX.md, sha256: 4a3d7e252c22e9a3c48e840e958887028e33ca01f65532b6592352675eb2e8ed, role: LEARNING_INDEX}
+    - {path: governance/learning/README.md, sha256: c272ab694a6cb3c3064c09c54d3db6c878c670d7626f3b8abc878949af58a531, role: LEARNING_ROUTING_CONTRACT}
+    - {path: governance/learning/records/HP-FAIL-007.yaml, sha256: ea5ff0e4212c6be1fcf77a8dedb0e4879d649cd7b89d5428036a029d819f27d1, role: VALIDATION_GAP_EVIDENCE}
+    - {path: governance/learning/records/HP-FAIL-008.yaml, sha256: df617c0e6f075d0709ab49f0c28c01f86ef3f415a2d19b2729e3d13d541d42f4, role: CONTROLLER_WRITE_PATH_FAILURE_EVIDENCE}
+    - {path: governance/learning/records/HP-FAIL-009.yaml, sha256: d7d5515de45aac6a5df6b7de0877501a8fd514a3b97b330185ec7a4d21699aaf, role: STATE_REPLAY_CONTRADICTION_EVIDENCE}
+    - {path: governance/learning/records/HP-FAIL-014.yaml, sha256: 3133b728fd5c265ac25e478156a914522d4a12cc67aed16280145e446fd30d17, role: AUTHORIZATION_CUSTODY_FAILURE_EVIDENCE}
+    - {path: governance/learning/records/HP-FAIL-021.yaml, sha256: 3e42cdf3c1f829e9aaf726c30734312b3271dbf944592035f9244b15cd36c954, role: AUDIT_VALIDATION_AND_STATUS_FAILURE_EVIDENCE}
+    - {path: governance/methodology/loops/kernel-design-closure/kernel-design-closure-loop-v0.1.0.yaml, sha256: cf7855a85d4ab9f3d4bb42c14ebbb0e735abcde938796f88284160904031fbe1, role: STATE_MACHINE_AND_LOOP_BOUNDARY}
+    - {path: governance/methodology/project-operating-contract.md, sha256: cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa, role: GOVERNANCE_OPERATING_CONTRACT}
+    - {path: governance/reviews/gov-6-ratification/kernel-ratification-decision-record-v0.1.0.yaml, sha256: 4b4efd10e6c09df7a9050509aeca8abe589b01a76f7f59e8f71b956e2c65c284, role: KERNEL_RATIFICATION_DECISION}
+    - {path: governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md, sha256: 0dba205609e0b3c2df2fdfa6ee5b393174a9bffb1b12c5a24a2eecd4820b8545, role: RATIFIED_KERNEL_MARKDOWN_SOURCE}
+    - {path: governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml, sha256: 0b48212543b54eb775e4bd5e6688dae3ff19eabb11f89ee4750b11faf7dd2ca1, role: RATIFIED_KERNEL_STRUCTURED_SOURCE}
+    - {path: governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml, sha256: 16094b2afdb38f8623867a3904fd61ec71473a988d70c1be0b962485a2402d19, role: ER_001_THROUGH_ER_020}
+    - {path: governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/05-minimum-executable-package-recommendation.md, sha256: 51d751b9463909c5f0732c844fb3b4f49d9fe0c50f276bce7a846cd418a7d488, role: ACCEPTED_DIRECTION_SOURCE_NOT_IMPLEMENTATION}
+    - {path: governance/schemas/controller-transition.schema.json, sha256: 817b8f50535e3d5b4500f81117a0a51fdf8e324d45d04d8e05a4c43a6cb187e1, role: CONTROLLER_TRANSITION_SCHEMA}
+    - {path: governance/skills/agent-session-reviewer/SKILL.md, sha256: de22a532822d4c03464c7574137dd73a175de23b83a3ab908a8eb2fbff6ed18b, role: INDEPENDENT_REVIEW_SKILL}
+    - {path: governance/skills/formal-governance-run-preparer/SKILL.md, sha256: 22babd813598d79100e51f6240774d85e50a3d2f1935b8c5148248b2b4bdd36b, role: RUN_PREPARATION_SKILL}
+    - {path: governance/skills/governance-result-importer/SKILL.md, sha256: fb672761eda84e57d81fe86b59c67372a203868c0537bb54e435511b7e3efbba, role: RESULT_IMPORT_SKILL}
+    - {path: governance/tools/apply_loop_transition.py, sha256: b76e6f60c411f420eba3e829d870d7736fb2d04c445a7f6185248fc68826dd9b, role: CONTROLLER_IMPLEMENTATION_EVIDENCE}
+    - {path: governance/tools/validate_audit_scaffold.py, sha256: 9721c7bef19172696830a71e5764025ff9fb472bfe153a1e67550ad0373b21c9, role: AUDIT_VALIDATOR}
+    - {path: governance/tools/validate_governance_state.py, sha256: 4c94d4343e112d26e076f7c239ec0d815062f19667566207ed1ae0953487588c, role: STATE_RECONCILIATION_VALIDATOR}
+    - {path: governance/tools/validate_prompts.py, sha256: 107837d188ccb48ce5a137f0712782d563209b1970bf7050f10f308133494c2c, role: PROMPT_CUSTODY_VALIDATOR}
+    - {path: planning/v2/01_architecture_and_operating_model.md, sha256: 3e01600d08c2898b3cbcede26d3c947be4c1a54353be79fa9532841f8c765604, role: S0A_S9_ARCHITECTURE}
+    - {path: planning/v2/02_methodology_repository_design.md, sha256: f793e9936296000a0fe1dbe4ffaea3c672b353c3fa6885a55fa84408b5db5d72, role: METHODOLOGY_CONSTRUCTION_MODEL}
+    - {path: planning/v2/03_client_repository_design.md, sha256: 5216b628b1b42f9eb8d8a1257cbc32653f97146be88b07a2ba2dcc4e4fede1fc, role: CLIENT_PROJECT_STATE_MODEL}
+    - {path: planning/v2/06_artifact_and_information_architecture.md, sha256: 2159158a1fc310f5f1ad4df3b5cb8e88bf102c90f2d1588a5ec267f772797104, role: INFORMATION_ARCHITECTURE}
+    - {path: planning/v2/07_requirements_and_specification_pipeline.md, sha256: 55a34b63f6a1f9636115475cf3ab4d271b127f36fb7bd114212c7d1f88a7e073, role: REQUIREMENT_AND_SPECIFICATION_FLOW}
+    - {path: planning/v2/09_implementation_agent_workflow.md, sha256: 553937c880cd4c8f2314bc02ec0fe6fef000024d03899885d92d9e9141c16583, role: AGENT_EXECUTION_FLOW}
+    - {path: planning/v2/10_testing_and_quality_architecture.md, sha256: c116c2e67007e627499ef773e527242c67f8f9cd85b5fccfc1b6c7fa0cc6ba38, role: VALIDATION_AND_EVALUATION_FLOW}
+    - {path: planning/v2/11_git_github_ci_cd_and_deployment.md, sha256: fdd432eda47b8c9ca3b88ae7e0b7e2c270d5b9b9efb1989cf6c5a471eba5e903, role: RELEASE_AND_DELIVERY_FLOW}
+    - {path: planning/v2/12_operations_change_management_and_maintenance.md, sha256: b0b21e0cd23ed1a17eae263a94dd0aaed3efaa84f438fe5d62ac3477f914a681, role: OPERATION_AND_MAINTENANCE_FLOW}
+    - {path: planning/v2/13_mvp_scope_and_implementation_roadmap.md, sha256: 510fb6fe05e66578214c9f2eaa2def3e6b2379da7071d2be55ed7515cc3ae90a, role: S0A_S9_STAGE_ROADMAP}
+    - {path: planning/v2/14_agent_skill_rule_and_knowledge_catalog.md, sha256: 1958201b9d440ea6cc4a43eeca920a2c2f7fa2183792679dbb21b299342dfdd2, role: AGENT_SKILL_AND_KNOWLEDGE_MODEL}
+    - {path: planning/v2/17_knowledge_architecture_and_authoring_standard.md, sha256: c8d389579d8e98a86442e89511f04ccbecfcf72d53570f8273aeb941e0c8079e, role: KNOWLEDGE_AUTHORITY_AND_PROJECTION_MODEL}
+    - {path: schemas/handoff.schema.json, sha256: 7c5531a0e4e4632f3871be036bf3703aa769105b268eac8d1db0b1b76f2536d8, role: HANDOFF_SCHEMA}
+    - {path: schemas/methodology-lock.schema.json, sha256: 2d3c88497699e10d89bf8160d8e4efccd5e930344f0cff21ae4312992552d3bf, role: METHODOLOGY_LOCK_SCHEMA}
+    - {path: schemas/project.schema.json, sha256: 81ea3e365377e48678e68c2dd8732e07933b23c0d02d0aedafef6bfac25aed4e, role: CLIENT_PROJECT_SCHEMA}
+    - {path: schemas/requirements.schema.json, sha256: 62cffbeacb162674347846d97c1e482405421bfc5977ead0873d4eee8bc7bc2a, role: REQUIREMENTS_SCHEMA}
+    - {path: scripts/start-agent.sh, sha256: 88730bd53a9cc0ec23e3dc883ebdb30cc795851d2fbf550df73c34deae2ca769, role: AGENT_ENTRYPOINT}
+    - {path: scripts/validate.sh, sha256: a43c8c7e346c1fc8c68ba0216ae964177c5a4086a23d1258892b4db79b97bada, role: RELEASED_RUNTIME_VALIDATION}
+  explicit_exclusions:
+    - broad external research and tool selection
+    - full historical governance reread
+    - product artifacts
+    - modification of planning or published runtime surfaces
+    - graph database or service implementation evidence
+    - PASS-03 and later pass evidence
+  missing_or_unavailable_evidence:
+    - {field: operational_governance_runtime_evidence, status: UNAVAILABLE_NOT_IMPLEMENTED}
+    - {field: system_self_hosting_operation_evidence, status: UNAVAILABLE_NOT_IMPLEMENTED}
+    - {field: infrastructure_self_hosting_inventory_and_service_levels, status: UNAVAILABLE_NOT_ESTABLISHED}
+    - {field: cross_project_migration_history, status: UNAVAILABLE_NO_GOVERNED_MIGRATION_EXECUTED}
+    - {field: distributed_architecture_load_or_failure_measurements, status: UNAVAILABLE_NO_DISTRIBUTED_ARCHITECTURE_IMPLEMENTED}

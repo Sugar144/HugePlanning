@@ -1,0 +1,418 @@
+relationship_model:
+  audit_id: GOV-AUD-001
+  run_id: GOV-AUD-001-P02-R1
+  pass_id: PASS-02
+  version: 0.1.0
+  status: PROPOSED_DERIVED_NON_AUTHORITATIVE
+  statement_label: PROPOSAL
+  technology_neutral: true
+  storage_technology_selected: false
+  regenerable: true
+  provenance_required: true
+  relationship_type_count: 26
+  required_query_count: 16
+  authority_semantics:
+    statement_label: VERIFIED_FACT
+    rule: Relationship records may report authoritative source facts, but the relationship projection itself is derived and cannot authorize, accept, ratify, release or modify source artifacts.
+  entity_kinds:
+    - {kind: KERNEL_CLAUSE, canonical_owner_context: BC-01, version_required: true}
+    - {kind: OWNER_DECISION, canonical_owner_context: BC-01, version_required: true}
+    - {kind: HAZARD_OR_INTAKE_DECISION, canonical_owner_context: BC-01, version_required: true}
+    - {kind: GOVERNANCE_REQUIREMENT, canonical_owner_context: BC-02, version_required: true}
+    - {kind: POLICY, canonical_owner_context: BC-02, version_required: true}
+    - {kind: STANDARD, canonical_owner_context: BC-02, version_required: true}
+    - {kind: PROCEDURE_OR_CONTRACT, canonical_owner_context: BC-02, version_required: true}
+    - {kind: CONTROL, canonical_owner_context: BC-02, version_required: true}
+    - {kind: EXCEPTION, canonical_owner_context: BC-02, version_required: true}
+    - {kind: AUDIT_RUN, canonical_owner_context: BC-03, version_required: true}
+    - {kind: EVIDENCE_ARTIFACT, canonical_owner_context: BC-03, version_required: true}
+    - {kind: FINDING, canonical_owner_context: BC-09, version_required: true}
+    - {kind: METHODOLOGY_STAGE, canonical_owner_context: BC-04, version_required: true}
+    - {kind: CLIENT_STAGE, canonical_owner_context: BC-06, version_required: true}
+    - {kind: GATE_OR_TRANSITION, canonical_owner_context: BC-06, version_required: true}
+    - {kind: PROJECT, canonical_owner_context: BC-06, version_required: true}
+    - {kind: PROJECT_ARTIFACT, canonical_owner_context: BC-06, version_required: true}
+    - {kind: SCHEMA, canonical_owner_context: BC-04, version_required: true}
+    - {kind: AGENT, canonical_owner_context: BC-04, version_required: true}
+    - {kind: SKILL, canonical_owner_context: BC-04, version_required: true}
+    - {kind: SCRIPT_OR_HOOK, canonical_owner_context: BC-05, version_required: true}
+    - {kind: VALIDATOR, canonical_owner_context: BC-08, version_required: true}
+    - {kind: TEST_OR_EVALUATION, canonical_owner_context: BC-08, version_required: true}
+    - {kind: RELEASE, canonical_owner_context: BC-10, version_required: true}
+    - {kind: MIGRATION_CONTRACT, canonical_owner_context: BC-10, version_required: true}
+    - {kind: VERSION_LOCK, canonical_owner_context: BC-10, version_required: true}
+    - {kind: PROJECTION_OR_VIEW, canonical_owner_context: BC-11, version_required: true}
+    - {kind: PROVIDER_OR_INFRA_CAPABILITY, canonical_owner_context: BC-10, version_required: true}
+    - {kind: RELATIONSHIP_MODEL, canonical_owner_context: BC-11, version_required: true}
+    - {kind: COMPATIBILITY_DECLARATION, canonical_owner_context: BC-10, version_required: true}
+  common_relationship_fields:
+    - relationship_id
+    - relationship_type
+    - source_entity_id
+    - source_entity_kind
+    - target_entity_id
+    - target_entity_kind
+    - source_paths
+    - source_hashes
+    - asserted_by
+    - observed_at_version
+    - valid_from
+    - valid_until
+    - superseded_by
+    - confidence
+    - generation_basis
+  relationship_types:
+    - type_name: DERIVES_REQUIREMENT_FROM
+      statement_label: PROPOSAL
+      source_entity_kinds: [GOVERNANCE_REQUIREMENT]
+      target_entity_kinds: [KERNEL_CLAUSE, HAZARD_OR_INTAKE_DECISION]
+      direction: SOURCE_TO_BASIS
+      cardinality: MANY_TO_MANY
+      required_provenance: [source_path, source_hash, derivation_rationale, applicable_version]
+      validity_version_fields: [source_version, target_version, valid_from, valid_until]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Every requirement has at least one existing authoritative basis and no unresolved contradictory clause.
+      invalidation_or_supersession: Invalidate on source amendment, requirement supersession or provenance loss; preserve prior edge historically.
+
+    - type_name: REFINES_AS_POLICY
+      statement_label: PROPOSAL
+      source_entity_kinds: [POLICY]
+      target_entity_kinds: [GOVERNANCE_REQUIREMENT, KERNEL_CLAUSE]
+      direction: SOURCE_TO_BASIS
+      cardinality: MANY_TO_MANY
+      required_provenance: [adoption_record, source_path, applicable_scope]
+      validity_version_fields: [policy_version, basis_version, valid_from, valid_until]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Adopted policy cannot contradict or silently narrow its basis.
+      invalidation_or_supersession: Superseded policy edges remain historical and are excluded from current applicability.
+
+    - type_name: REFINES_AS_STANDARD
+      statement_label: PROPOSAL
+      source_entity_kinds: [STANDARD]
+      target_entity_kinds: [POLICY, GOVERNANCE_REQUIREMENT]
+      direction: SOURCE_TO_BASIS
+      cardinality: MANY_TO_MANY
+      required_provenance: [adoption_record, source_path, criteria_scope]
+      validity_version_fields: [standard_version, basis_version, valid_from, valid_until]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Standard criteria identify the requirement or policy they refine and their compatibility basis.
+      invalidation_or_supersession: Invalidate current use on criteria change until compatibility and migration are declared.
+
+    - type_name: IMPLEMENTS_AS_PROCEDURE
+      statement_label: PROPOSAL
+      source_entity_kinds: [PROCEDURE_OR_CONTRACT]
+      target_entity_kinds: [STANDARD, POLICY, GOVERNANCE_REQUIREMENT]
+      direction: SOURCE_TO_BASIS
+      cardinality: MANY_TO_MANY
+      required_provenance: [contract_version, owner, applicability, source_path]
+      validity_version_fields: [contract_version, basis_version, valid_from, expiry]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Procedure names owner, stage or transition, evidence, failure route and prohibited effects.
+      invalidation_or_supersession: Expiry, source change or incompatible stage version blocks current applicability.
+
+    - type_name: APPLIES_AT_STAGE
+      statement_label: PROPOSAL
+      source_entity_kinds: [GOVERNANCE_REQUIREMENT, PROCEDURE_OR_CONTRACT, CONTROL]
+      target_entity_kinds: [METHODOLOGY_STAGE, CLIENT_STAGE]
+      direction: SOURCE_TO_APPLICATION_POINT
+      cardinality: MANY_TO_MANY
+      required_provenance: [applicability_predicate, contract_id, source_path]
+      validity_version_fields: [source_version, stage_version, valid_from, valid_until]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Applicability is explicit, testable and may be false; absence is UNKNOWN, not NOT_APPLICABLE.
+      invalidation_or_supersession: Stage or source version change triggers impact review and possible revalidation.
+
+    - type_name: GOVERNS_TRANSITION
+      statement_label: PROPOSAL
+      source_entity_kinds: [PROCEDURE_OR_CONTRACT, CONTROL]
+      target_entity_kinds: [GATE_OR_TRANSITION]
+      direction: SOURCE_TO_GOVERNED_TRANSITION
+      cardinality: MANY_TO_MANY
+      required_provenance: [transition_contract, authority_reference, criteria]
+      validity_version_fields: [contract_version, transition_version, valid_from, valid_until]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Transition has one accountable decision owner and explicit non-success behavior.
+      invalidation_or_supersession: Contract or gate criteria change blocks reliance until replay or revalidation.
+
+    - type_name: REALIZED_BY_CONTROL
+      statement_label: PROPOSAL
+      source_entity_kinds: [GOVERNANCE_REQUIREMENT, POLICY, STANDARD, PROCEDURE_OR_CONTRACT]
+      target_entity_kinds: [CONTROL]
+      direction: SOURCE_TO_CONTROL
+      cardinality: MANY_TO_MANY
+      required_provenance: [coverage_claim, effect_classes, control_owner]
+      validity_version_fields: [source_version, control_version, valid_from, valid_until]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Coverage is scoped and does not imply full implementation or enforceability.
+      invalidation_or_supersession: Control supersession or changed effect class marks coverage UNKNOWN until revalidated.
+
+    - type_name: EXECUTED_BY
+      statement_label: PROPOSAL
+      source_entity_kinds: [CONTROL, PROCEDURE_OR_CONTRACT, GATE_OR_TRANSITION]
+      target_entity_kinds: [AGENT, SKILL, SCRIPT_OR_HOOK]
+      direction: SOURCE_TO_EXECUTOR
+      cardinality: MANY_TO_MANY
+      required_provenance: [executor_version, delegated_scope, permissions, source_path]
+      validity_version_fields: [control_version, executor_version, valid_from, valid_until]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Executor contract does not exceed delegated effects and cannot self-authorize.
+      invalidation_or_supersession: Executor change triggers capability and permission review.
+
+    - type_name: VALIDATED_BY
+      statement_label: PROPOSAL
+      source_entity_kinds: [CONTROL, PROCEDURE_OR_CONTRACT, PROJECT_ARTIFACT, GATE_OR_TRANSITION, RELATIONSHIP_MODEL]
+      target_entity_kinds: [VALIDATOR, TEST_OR_EVALUATION]
+      direction: SOURCE_TO_VALIDATOR
+      cardinality: MANY_TO_MANY
+      required_provenance: [claim, criteria_version, validator_version, evidence_scope]
+      validity_version_fields: [subject_version, validator_version, criteria_version, valid_from]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Validation claim and criteria are exact; structural validation is not semantic acceptance.
+      invalidation_or_supersession: Subject, validator, fixture or criteria change triggers declared revalidation.
+
+    - type_name: PROVED_BY_EVIDENCE
+      statement_label: PROPOSAL
+      source_entity_kinds: [CONTROL, GATE_OR_TRANSITION, TEST_OR_EVALUATION, FINDING, OWNER_DECISION]
+      target_entity_kinds: [EVIDENCE_ARTIFACT]
+      direction: SOURCE_TO_EVIDENCE
+      cardinality: MANY_TO_MANY
+      required_provenance: [claim, evidence_path, evidence_hash, scope]
+      validity_version_fields: [claim_version, evidence_format_version, observed_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Evidence exists, is attributable and supports the exact bounded claim.
+      invalidation_or_supersession: Evidence correction appends a new record and invalidates only dependent claims.
+
+    - type_name: BLOCKED_BY_GATE
+      statement_label: PROPOSAL
+      source_entity_kinds: [METHODOLOGY_STAGE, CLIENT_STAGE, PROJECT, GATE_OR_TRANSITION]
+      target_entity_kinds: [GATE_OR_TRANSITION, FINDING]
+      direction: SOURCE_TO_BLOCKER
+      cardinality: MANY_TO_MANY
+      required_provenance: [blocking_condition, owner, review_condition]
+      validity_version_fields: [source_version, blocker_version, observed_at, resolved_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Every material block has an accountable owner, reason and review or terminal condition.
+      invalidation_or_supersession: Resolution appends closure evidence; historical blocked state remains traceable.
+
+    - type_name: ROUTES_FINDING_TO
+      statement_label: PROPOSAL
+      source_entity_kinds: [FINDING]
+      target_entity_kinds: [OWNER_DECISION, METHODOLOGY_STAGE, PROJECT, GOVERNANCE_REQUIREMENT, POLICY, STANDARD, CONTROL, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR]
+      direction: SOURCE_TO_ACCOUNTABLE_OWNER_OR_SUBJECT
+      cardinality: MANY_TO_MANY
+      required_provenance: [finding_category, evidence, routing_rationale, accountable_owner]
+      validity_version_fields: [finding_version, target_version, routed_at, closed_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Exactly one primary canonical owner is named; additional affected subjects are separate edges.
+      invalidation_or_supersession: Rerouting requires an append-only event and cannot erase prior ownership.
+
+    - type_name: REQUIRES_DECISION_BY
+      statement_label: PROPOSAL
+      source_entity_kinds: [FINDING, GATE_OR_TRANSITION, EXCEPTION, MIGRATION_CONTRACT]
+      target_entity_kinds: [OWNER_DECISION]
+      direction: SOURCE_TO_DECISION
+      cardinality: MANY_TO_ONE
+      required_provenance: [reserved_authority, decision_scope, evidence_basis]
+      validity_version_fields: [subject_version, decision_version, due_or_trigger]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Decision authority is competent for the scope and is not inferred from silence.
+      invalidation_or_supersession: New material basis can require a new decision; prior decision remains historical.
+
+    - type_name: DEPENDS_ON
+      statement_label: PROPOSAL
+      source_entity_kinds: [GOVERNANCE_REQUIREMENT, PROCEDURE_OR_CONTRACT, CONTROL, METHODOLOGY_STAGE, CLIENT_STAGE, PROJECT_ARTIFACT, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, RELEASE]
+      target_entity_kinds: [GOVERNANCE_REQUIREMENT, PROCEDURE_OR_CONTRACT, CONTROL, METHODOLOGY_STAGE, CLIENT_STAGE, PROJECT_ARTIFACT, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, PROVIDER_OR_INFRA_CAPABILITY]
+      direction: SOURCE_TO_DEPENDENCY
+      cardinality: MANY_TO_MANY
+      required_provenance: [dependency_reason, criticality, source_path]
+      validity_version_fields: [source_version, target_version, valid_from, valid_until]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: No self-cycle unless explicitly allowed and bounded; missing critical dependency blocks.
+      invalidation_or_supersession: Target change creates direct or probable impact according to dependency criticality.
+
+    - type_name: SUPERSEDES
+      statement_label: PROPOSAL
+      source_entity_kinds: [KERNEL_CLAUSE, GOVERNANCE_REQUIREMENT, POLICY, STANDARD, PROCEDURE_OR_CONTRACT, CONTROL, PROJECT_ARTIFACT, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, RELEASE]
+      target_entity_kinds: [KERNEL_CLAUSE, GOVERNANCE_REQUIREMENT, POLICY, STANDARD, PROCEDURE_OR_CONTRACT, CONTROL, PROJECT_ARTIFACT, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, RELEASE]
+      direction: NEW_TO_OLD
+      cardinality: MANY_TO_ONE
+      required_provenance: [supersession_record, reason, migration_effect]
+      validity_version_fields: [new_version, old_version, effective_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Source and target kinds match and old history remains addressable.
+      invalidation_or_supersession: A later supersession extends the chain; cycles are invalid.
+
+    - type_name: COMPATIBLE_WITH
+      statement_label: PROPOSAL
+      source_entity_kinds: [KERNEL_CLAUSE, GOVERNANCE_REQUIREMENT, PROCEDURE_OR_CONTRACT, CONTROL, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, RELEASE, VERSION_LOCK]
+      target_entity_kinds: [KERNEL_CLAUSE, GOVERNANCE_REQUIREMENT, PROCEDURE_OR_CONTRACT, CONTROL, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, RELEASE, VERSION_LOCK]
+      direction: SOURCE_TO_SUPPORTED_TARGET
+      cardinality: MANY_TO_MANY
+      required_provenance: [compatibility_declarer, evidence, scope, mechanism]
+      validity_version_fields: [source_version, target_version_or_range, declared_at, expires_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Compatibility mechanism is explicit and evidence-backed; absence means UNKNOWN.
+      invalidation_or_supersession: Component or evidence change expires the declaration or triggers revalidation.
+
+    - type_name: MIGRATES_TO
+      statement_label: PROPOSAL
+      source_entity_kinds: [PROJECT, PROJECT_ARTIFACT, VERSION_LOCK, RELEASE]
+      target_entity_kinds: [PROJECT, PROJECT_ARTIFACT, VERSION_LOCK, RELEASE, MIGRATION_CONTRACT]
+      direction: OLD_TO_NEW
+      cardinality: MANY_TO_MANY
+      required_provenance: [migration_contract, authority, before_state, after_state, evidence]
+      validity_version_fields: [from_version, to_version, migrated_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Migration is explicit, reversible or compensatable as declared, and revalidated.
+      invalidation_or_supersession: Failed migration preserves prior state and records partial effects without rewriting history.
+
+    - type_name: LOCKS_VERSION_OF
+      statement_label: PROPOSAL
+      source_entity_kinds: [VERSION_LOCK, PROJECT]
+      target_entity_kinds: [RELEASE, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, PROCEDURE_OR_CONTRACT, CONTROL]
+      direction: LOCK_TO_COMPONENT
+      cardinality: ONE_TO_MANY
+      required_provenance: [lock_path, exact_version_or_commit, applied_at]
+      validity_version_fields: [lock_version, target_version, applied_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Locked component exists and exact lock or declared range semantics are machine-readable.
+      invalidation_or_supersession: Lock upgrade creates a new record and migration/revalidation obligations.
+
+    - type_name: PROJECTS_AS_VIEW
+      statement_label: PROPOSAL
+      source_entity_kinds: [PROJECTION_OR_VIEW]
+      target_entity_kinds: [KERNEL_CLAUSE, GOVERNANCE_REQUIREMENT, CONTROL, PROJECT, PROJECT_ARTIFACT, EVIDENCE_ARTIFACT, FINDING, RELEASE]
+      direction: VIEW_TO_SOURCE
+      cardinality: MANY_TO_MANY
+      required_provenance: [generation_basis, source_paths, source_hashes, generated_at]
+      validity_version_fields: [projection_version, source_versions, generated_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Every projection element resolves to a canonical source and carries freshness metadata.
+      invalidation_or_supersession: Any source change marks the projection stale until regeneration.
+
+    - type_name: DERIVED_FROM
+      statement_label: PROPOSAL
+      source_entity_kinds: [PROJECT_ARTIFACT, EVIDENCE_ARTIFACT, PROJECTION_OR_VIEW, TEST_OR_EVALUATION, FINDING]
+      target_entity_kinds: [PROJECT_ARTIFACT, EVIDENCE_ARTIFACT, KERNEL_CLAUSE, GOVERNANCE_REQUIREMENT, CONTROL]
+      direction: DERIVED_TO_SOURCE
+      cardinality: MANY_TO_MANY
+      required_provenance: [source_path, source_hash, derivation_method]
+      validity_version_fields: [derived_version, source_version, generated_or_authored_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Derived artifact does not silently author new normative meaning.
+      invalidation_or_supersession: Source movement or semantic change triggers regeneration or explicit drift status.
+
+    - type_name: INVALIDATED_BY
+      statement_label: PROPOSAL
+      source_entity_kinds: [GOVERNANCE_REQUIREMENT, POLICY, STANDARD, PROCEDURE_OR_CONTRACT, CONTROL, PROJECT_ARTIFACT, TEST_OR_EVALUATION, PROJECTION_OR_VIEW, COMPATIBILITY_DECLARATION]
+      target_entity_kinds: [FINDING, OWNER_DECISION, RELEASE, SCHEMA, VALIDATOR, EVIDENCE_ARTIFACT]
+      direction: SUBJECT_TO_INVALIDATOR
+      cardinality: MANY_TO_MANY
+      required_provenance: [invalidation_reason, evidence, affected_claim]
+      validity_version_fields: [subject_version, invalidator_version, invalidated_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Invalidation is scoped to dependent claims and does not erase historical evidence.
+      invalidation_or_supersession: Closure creates new validity evidence; invalidation record remains historical.
+
+    - type_name: EXCEPTION_TO
+      statement_label: PROPOSAL
+      source_entity_kinds: [EXCEPTION]
+      target_entity_kinds: [POLICY, STANDARD, PROCEDURE_OR_CONTRACT, CONTROL]
+      direction: EXCEPTION_TO_RULE
+      cardinality: MANY_TO_ONE
+      required_provenance: [competent_authority, scope, rationale, compensating_controls, expiry, cumulative_lineage]
+      validity_version_fields: [exception_version, target_version, valid_from, expiry]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Exception cannot waive constitutional prohibitions and must expire or receive explicit renewal.
+      invalidation_or_supersession: Expiry blocks continued use; renewal is a new cumulative record.
+
+    - type_name: TRIGGERS_REVALIDATION_OF
+      statement_label: PROPOSAL
+      source_entity_kinds: [KERNEL_CLAUSE, GOVERNANCE_REQUIREMENT, POLICY, STANDARD, PROCEDURE_OR_CONTRACT, CONTROL, METHODOLOGY_STAGE, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, RELEASE]
+      target_entity_kinds: [PROCEDURE_OR_CONTRACT, CONTROL, PROJECT, PROJECT_ARTIFACT, TEST_OR_EVALUATION, COMPATIBILITY_DECLARATION, PROJECTION_OR_VIEW]
+      direction: CHANGED_SOURCE_TO_REVALIDATION_TARGET
+      cardinality: MANY_TO_MANY
+      required_provenance: [change_record, trigger_rule, impact_class]
+      validity_version_fields: [changed_version, target_version, triggered_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Trigger is declared prospectively or reported as UNKNOWN impact.
+      invalidation_or_supersession: Revalidation result closes or expands the impact set.
+
+    - type_name: AFFECTS
+      statement_label: PROPOSAL
+      source_entity_kinds: [KERNEL_CLAUSE, GOVERNANCE_REQUIREMENT, POLICY, STANDARD, PROCEDURE_OR_CONTRACT, CONTROL, METHODOLOGY_STAGE, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, RELEASE, FINDING]
+      target_entity_kinds: [GOVERNANCE_REQUIREMENT, POLICY, STANDARD, PROCEDURE_OR_CONTRACT, CONTROL, METHODOLOGY_STAGE, CLIENT_STAGE, PROJECT, PROJECT_ARTIFACT, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, RELEASE]
+      direction: SOURCE_TO_IMPACTED
+      cardinality: MANY_TO_MANY
+      required_provenance: [impact_reason, impact_class, path_basis]
+      validity_version_fields: [source_version, target_version, assessed_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Impact is DIRECT, PROBABLE or UNKNOWN with path or evidence basis.
+      invalidation_or_supersession: Reassessment may refine impact class but preserves previous assessment history.
+
+    - type_name: RELEASED_AS
+      statement_label: PROPOSAL
+      source_entity_kinds: [METHODOLOGY_STAGE, PROCEDURE_OR_CONTRACT, CONTROL, SCHEMA, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR]
+      target_entity_kinds: [RELEASE]
+      direction: COMPONENT_TO_RELEASE
+      cardinality: MANY_TO_MANY
+      required_provenance: [release_manifest, component_hash, validation_evidence]
+      validity_version_fields: [component_version, release_version, released_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Released bytes and declared component versions are exact and validation evidence is linked.
+      invalidation_or_supersession: Release supersession preserves component membership of historical releases.
+
+    - type_name: REQUIRES_CAPABILITY_OF
+      statement_label: PROPOSAL
+      source_entity_kinds: [GOVERNANCE_REQUIREMENT, CONTROL, PROCEDURE_OR_CONTRACT, PROJECT, RELEASE]
+      target_entity_kinds: [AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, PROVIDER_OR_INFRA_CAPABILITY]
+      direction: REQUIREMENT_TO_CAPABILITY
+      cardinality: MANY_TO_MANY
+      required_provenance: [capability_claim, effect_class, evidence_requirement]
+      validity_version_fields: [source_version, capability_version, assessed_at]
+      authority: DERIVED_NON_AUTHORITATIVE
+      validation_rule: Capability is declared and evidenced for the applicable effect class; provider possession alone is insufficient.
+      invalidation_or_supersession: Capability change or missing provider evidence marks the dependency unsupported.
+  endpoint_constraints:
+    - {constraint_id: EC-001, statement_label: PROPOSAL, rule: Every source_entity_kind and target_entity_kind must exist in entity_kinds.}
+    - {constraint_id: EC-002, statement_label: PROPOSAL, rule: Every relationship record must name one declared relationship type and carry all common provenance fields.}
+    - {constraint_id: EC-003, statement_label: PROPOSAL, rule: SUPERSEDES edges are acyclic and preserve the superseded entity.}
+    - {constraint_id: EC-004, statement_label: PROPOSAL, rule: Projection and query entities cannot be the canonical owner of a source entity.}
+    - {constraint_id: EC-005, statement_label: PROPOSAL, rule: OWNER_DECISION and constitutional changes cannot be generated from lower-layer relationship traversal.}
+    - {constraint_id: EC-006, statement_label: PROPOSAL, rule: UNKNOWN applicability or compatibility remains explicit and blocks claims that require certainty.}
+  query_contracts:
+    - {query_id: Q-01, statement_label: PROPOSAL, coverage_tag: CLAUSE_TO_CONTROLS, question: "Which controls derive from this Kernel clause?", start_kinds: [KERNEL_CLAUSE], traversals: [DERIVES_REQUIREMENT_FROM, REALIZED_BY_CONTROL], result_kinds: [GOVERNANCE_REQUIREMENT, CONTROL], required_output: [paths, versions, provenance, gaps, confidence]}
+    - {query_id: Q-02, statement_label: PROPOSAL, coverage_tag: REQUIREMENT_TO_STAGES, question: "Which methodology or client stages apply this requirement?", start_kinds: [GOVERNANCE_REQUIREMENT], traversals: [APPLIES_AT_STAGE], result_kinds: [METHODOLOGY_STAGE, CLIENT_STAGE], required_output: [applicability_predicate, contract, versions, unknowns]}
+    - {query_id: Q-03, statement_label: PROPOSAL, coverage_tag: CONTROL_TO_EXECUTOR_VALIDATOR, question: "Which agent, skill, script, hook or validator executes or validates this control?", start_kinds: [CONTROL], traversals: [EXECUTED_BY, VALIDATED_BY], result_kinds: [AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, TEST_OR_EVALUATION], required_output: [versions, delegated_scope, claim, independence]}
+    - {query_id: Q-04, statement_label: PROPOSAL, coverage_tag: CLAIM_TO_EVIDENCE_TEST, question: "Which artifact or test proves the bounded claim?", start_kinds: [CONTROL, GATE_OR_TRANSITION, TEST_OR_EVALUATION], traversals: [PROVED_BY_EVIDENCE, VALIDATED_BY], result_kinds: [EVIDENCE_ARTIFACT, TEST_OR_EVALUATION], required_output: [claim_scope, evidence_hash, observed_version, limitations]}
+    - {query_id: Q-05, statement_label: PROPOSAL, coverage_tag: TRANSITION_TO_BLOCKING_GATE, question: "Which gate or finding blocks progression?", start_kinds: [METHODOLOGY_STAGE, CLIENT_STAGE, PROJECT], traversals: [BLOCKED_BY_GATE], result_kinds: [GATE_OR_TRANSITION, FINDING], required_output: [owner, reason, review_condition, dependencies]}
+    - {query_id: Q-06, statement_label: PROPOSAL, coverage_tag: FINDING_TO_OWNER, question: "Which findings route back to which accountable owner or decision?", start_kinds: [FINDING], traversals: [ROUTES_FINDING_TO, REQUIRES_DECISION_BY], result_kinds: [OWNER_DECISION, PROJECT, METHODOLOGY_STAGE, GOVERNANCE_REQUIREMENT, CONTROL, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR], required_output: [category, primary_owner, escalation, closure_authority]}
+    - {query_id: Q-07, statement_label: PROPOSAL, coverage_tag: SCHEMA_CHANGE_IMPACT, question: "What changes if this schema version changes?", start_kinds: [SCHEMA], traversals: [AFFECTS, TRIGGERS_REVALIDATION_OF, DEPENDS_ON, LOCKS_VERSION_OF], result_kinds: [PROJECT, PROJECT_ARTIFACT, VALIDATOR, AGENT, SKILL, VERSION_LOCK], required_output: [direct, probable, unknown, migration, revalidation]}
+    - {query_id: Q-08, statement_label: PROPOSAL, coverage_tag: REQUIREMENT_CHANGE_IMPACT, question: "What changes if this Kernel clause or governance requirement changes?", start_kinds: [KERNEL_CLAUSE, GOVERNANCE_REQUIREMENT], traversals: [DERIVES_REQUIREMENT_FROM, REALIZED_BY_CONTROL, APPLIES_AT_STAGE, AFFECTS, TRIGGERS_REVALIDATION_OF], result_kinds: [GOVERNANCE_REQUIREMENT, CONTROL, METHODOLOGY_STAGE, CLIENT_STAGE, PROJECT, PROJECT_ARTIFACT], required_output: [direct, probable, unknown, compatibility, owner]}
+    - {query_id: Q-09, statement_label: PROPOSAL, coverage_tag: PROJECT_MIGRATION_SET, question: "Which projects or artifacts need migration?", start_kinds: [RELEASE, VERSION_LOCK, MIGRATION_CONTRACT], traversals: [LOCKS_VERSION_OF, MIGRATES_TO, AFFECTS], result_kinds: [PROJECT, PROJECT_ARTIFACT, VERSION_LOCK], required_output: [current_lock, target, migration_contract, status, revalidation]}
+    - {query_id: Q-10, statement_label: PROPOSAL, coverage_tag: HISTORICAL_CORRECTION_LINEAGE, question: "How is historical evidence corrected without rewriting it?", start_kinds: [EVIDENCE_ARTIFACT, PROJECT_ARTIFACT, FINDING], traversals: [SUPERSEDES, DERIVED_FROM, INVALIDATED_BY, PROVED_BY_EVIDENCE], result_kinds: [EVIDENCE_ARTIFACT, PROJECT_ARTIFACT, FINDING, OWNER_DECISION], required_output: [original, correction, limitation, supersession, current_claim]}
+    - {query_id: Q-11, statement_label: PROPOSAL, coverage_tag: COMPATIBILITY_CHECK, question: "Is this exact combination supported and who declared it?", start_kinds: [VERSION_LOCK, RELEASE, SCHEMA, AGENT, SKILL, CONTROL, VALIDATOR], traversals: [COMPATIBLE_WITH, LOCKS_VERSION_OF, REQUIRES_CAPABILITY_OF], result_kinds: [RELEASE, SCHEMA, AGENT, SKILL, CONTROL, VALIDATOR, PROVIDER_OR_INFRA_CAPABILITY], required_output: [mechanism, declarer, evidence, scope, expiry, unsupported_reason]}
+    - {query_id: Q-12, statement_label: PROPOSAL, coverage_tag: METHODOLOGY_STAGE_CHANGE_IMPACT, question: "What is impacted by changing a methodology stage or gate?", start_kinds: [METHODOLOGY_STAGE, GATE_OR_TRANSITION], traversals: [APPLIES_AT_STAGE, GOVERNS_TRANSITION, DEPENDS_ON, AFFECTS, TRIGGERS_REVALIDATION_OF], result_kinds: [PROCEDURE_OR_CONTRACT, CONTROL, CLIENT_STAGE, PROJECT, PROJECT_ARTIFACT, TEST_OR_EVALUATION], required_output: [direct, probable, unknown, owners, migrations]}
+    - {query_id: Q-13, statement_label: PROPOSAL, coverage_tag: AGENT_SKILL_CHANGE_IMPACT, question: "What is impacted by changing an agent or skill?", start_kinds: [AGENT, SKILL], traversals: [EXECUTED_BY, DEPENDS_ON, RELEASED_AS, AFFECTS, TRIGGERS_REVALIDATION_OF], result_kinds: [CONTROL, PROCEDURE_OR_CONTRACT, PROJECT, PROJECT_ARTIFACT, TEST_OR_EVALUATION, RELEASE], required_output: [contracts, permissions, evidence, projects, revalidation]}
+    - {query_id: Q-14, statement_label: PROPOSAL, coverage_tag: VALIDATOR_CHANGE_IMPACT, question: "What is impacted by changing a validator or its criteria?", start_kinds: [VALIDATOR, TEST_OR_EVALUATION], traversals: [VALIDATED_BY, DEPENDS_ON, AFFECTS, TRIGGERS_REVALIDATION_OF], result_kinds: [CONTROL, PROJECT_ARTIFACT, GATE_OR_TRANSITION, RELEASE, EVIDENCE_ARTIFACT], required_output: [claims, fixtures, historical_results, revalidation, unknowns]}
+    - {query_id: Q-15, statement_label: PROPOSAL, coverage_tag: CONTROL_SUPERSESSION_IMPACT, question: "What changes when a control is superseded?", start_kinds: [CONTROL], traversals: [SUPERSEDES, REALIZED_BY_CONTROL, EXECUTED_BY, VALIDATED_BY, AFFECTS, TRIGGERS_REVALIDATION_OF], result_kinds: [GOVERNANCE_REQUIREMENT, PROCEDURE_OR_CONTRACT, AGENT, SKILL, SCRIPT_OR_HOOK, VALIDATOR, PROJECT], required_output: [old_control, new_control, compatibility, migrations, revalidation]}
+    - {query_id: Q-16, statement_label: PROPOSAL, coverage_tag: INDEPENDENCE_CHAIN_AUDIT, question: "Does one beneficiary unilaterally control proposal, execution, criteria, evaluation, exception and acceptance?", start_kinds: [AUDIT_RUN, CONTROL, PROJECT, RELEASE], traversals: [EXECUTED_BY, VALIDATED_BY, REQUIRES_DECISION_BY, PROVED_BY_EVIDENCE], result_kinds: [AGENT, SKILL, VALIDATOR, TEST_OR_EVALUATION, OWNER_DECISION, EVIDENCE_ARTIFACT], required_output: [function_owners, shared_dependencies, conflicts, decisive_authority, result]}
+  query_result_contract:
+    required_fields: [query_id, query_version, source_snapshot, generated_at, paths, direct_results, probable_results, unknown_results, provenance, limitations]
+    impact_classes:
+      DIRECT: A validated typed path reaches the target using authoritative source identifiers.
+      PROBABLE: Evidence indicates dependency or shared contract but the typed path is incomplete or applicability is conditional.
+      UNKNOWN: Provenance, endpoint, compatibility or applicability is missing or stale.
+    empty_result_semantics: EMPTY_IS_NOT_PROOF_OF_NO_IMPACT_UNLESS_COVERAGE_VALIDATION_PASSED
+  validation_rules:
+    - {rule_id: RM-VAL-001, statement_label: PROPOSAL, rule: Entity kinds and relationship type names are unique.}
+    - {rule_id: RM-VAL-002, statement_label: PROPOSAL, rule: Every relationship endpoint kind exists and every query traversal names a declared relationship type.}
+    - {rule_id: RM-VAL-003, statement_label: PROPOSAL, rule: Every required query coverage tag appears exactly once.}
+    - {rule_id: RM-VAL-004, statement_label: PROPOSAL, rule: Relationship projections carry provenance, source versions and explicit authority DERIVED_NON_AUTHORITATIVE.}
+    - {rule_id: RM-VAL-005, statement_label: PROPOSAL, rule: No projection or query result may write to authoritative sources.}
+    - {rule_id: RM-VAL-006, statement_label: PROPOSAL, rule: Unknown impact and compatibility remain visible and cannot be coerced to no impact or supported.}
+    - {rule_id: RM-VAL-007, statement_label: PROPOSAL, rule: Supersession is acyclic and historical entities remain resolvable.}
+    - {rule_id: RM-VAL-008, statement_label: PROPOSAL, rule: Decision and constitutional authority cannot be inferred by traversal.}
+  owner_decisions:
+    - {decision_id: OD-P02-006, statement_label: OWNER_DECISION_REQUIRED, question: "What minimum relationship coverage and unknown-impact threshold is required before later pilot adoption?"}
+    - {decision_id: OD-P02-011, statement_label: OWNER_DECISION_REQUIRED, question: "Which owner may publish compatibility declarations for cross-owner component combinations?"}

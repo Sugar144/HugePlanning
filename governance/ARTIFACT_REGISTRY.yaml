@@ -392,7 +392,7 @@ artifacts:
 
   - id: GOV-METHOD-004
     title: Methodology Backlog
-    version: 0.1.0
+    version: 0.3.0
     status: ACTIVE_NON_AUTHORITATIVE_PROPOSAL_REGISTER
     authority: methodology_proposals_only_not_implementation_or_execution_authority
     path: governance/methodology/METHODOLOGY_BACKLOG.md
@@ -409,6 +409,9 @@ artifacts:
       - HP-MPROP-002 is locally implemented pending review through two bounded Phase 2.2 skills, the Phase 2.3 formal-governance-run-preparer skill, and the Phase 2.4 governance-result-importer skill.
       - HP-MPROP-003 is locally implemented pending review through GOV-TOOL-003 and GOV-SKILL-001.
       - HP-MPROP-004 is locally implemented pending review through GOV-SKILL-002 and remains limited to observable evidence.
+      - HP-MPROP-005 preserves non-adopted phase-transition candidates.
+      - HP-MPROP-006 routes formal instruction-conflict policy, standard and procedure derivation to future GOV-7 without adoption, implementation or activation.
+      - HP-MPROP-007 is Owner-accepted only as a future GOV-AUD-001 clarification after CHECKPOINT-A and before PASS-03; implementation has not started.
       - Backlog approval is not implementation authorization, implemented state, execution evidence, constitutional authority, ratification, or Enforcement Engineering authorization.
       - Superseded proposals remain preserved and marked rather than deleted.
 
@@ -2496,16 +2499,16 @@ artifacts:
 
   - id: GOV-AUD-001
     title: GOV-7 Enablement, Cross-Layer Architecture and Empirical Validation Audit Program Scaffold
-    version: 0.1.0
-    status: IN_PROGRESS_PASS_01_ACCEPTED_COMPLETED
-    authority: audit_program_index_with_pass_01_execution_evidence_not_acceptance_gov_7_activation_or_implementation
+    version: 0.2.0
+    status: IN_PROGRESS_PASS_02_EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    authority: audit_program_index_with_pass_01_acceptance_and_unaccepted_pass_02_execution_evidence_not_checkpoint_gov_7_or_implementation_authority
     path: governance/audits/GOV-AUD-001-gov7-enablement/00-audit-charter.md
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/GOV-AUD-PROMPT-000-audit-program-scaffold-v0.2.0.md
     source_sha256: 7ea731bb822d88328c26bfe69b5280a84a37153bc525f963d051fb74b6033b07
     produced_by: AUDIT_PROGRAM_ARCHITECT
     artifact_type: audit_program_scaffold
     language: English
-    canonicality: planning_only_audit_program_index
+    canonicality: active_audit_program_index
     supersedes: null
     aliases:
       - governance/audits/GOV-AUD-001-gov7-enablement/01-audit-plan.yaml
@@ -2514,9 +2517,15 @@ artifacts:
       - governance/audits/GOV-AUD-001-gov7-enablement/04-artifact-and-custody-contract.md
       - governance/audits/GOV-AUD-001-gov7-enablement/05-owner-checkpoints.md
       - governance/audits/GOV-AUD-001-gov7-enablement/06-model-routing-policy.md
+      - governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+      - governance/audits/GOV-AUD-001-gov7-enablement/08-methodology-correction-validation.yaml
+      - governance/audits/GOV-AUD-001-gov7-enablement/09-methodology-bounded-correction-validation.yaml
       - governance/audits/GOV-AUD-001-gov7-enablement/prompt-registry.yaml
     notes:
-      - Plans seven dependent audit passes and three explicit Project Owner checkpoints; PASS-01 C2 is executed and deterministically validated pending separately controlled evidence review and Project Owner disposition, exactly one pass is executed, PASS-02 is unexecuted and CHECKPOINT-A is pending.
+      - Plans seven dependent audit passes and three explicit Project Owner checkpoints; PASS-01 is accepted and PASS-02 is executed and validated pending separately controlled independent evaluation and Project Owner disposition, exactly two passes are executed, and CHECKPOINT-A remains pending.
+      - Version 0.2.0 adds prospective finding-basis, review-type, root-cause-before-invalidity, adversarial-refutation, materiality, temporary instruction-conflict and canonical identity-resolution controls while preserving PASS-02 R1 unchanged.
+      - GOV-AUD-001-METHOD-001/0.3.0 prospectively resolves the three focused methodology findings while preserving prior controls and PASS-02 R1 unchanged.
+      - The Project Owner reports that PASS-02 was independently reviewed, but no exact review artifact or result is durably custodied; no review text or result is reconstructed.
       - Requires a typed cross-layer relationship model while leaving graph technology unselected.
       - Covers controlled system and infrastructure self-hosting, interviewer testing, prompt lifecycle, open-ended tool discovery and AI-first effort without implementation authority.
 
@@ -2538,8 +2547,8 @@ artifacts:
 
   - id: GOV-TOOL-004
     title: GOV-7 Audit Program Scaffold Validator
-    version: 0.2.0
-    status: IMPLEMENTED_AND_VALIDATED_FOR_PLANNING_ONE_PASS_C1_AND_C2_LIFECYCLES
+    version: 0.5.0
+    status: IMPLEMENTED_AND_VALIDATED_FOR_PLANNING_ONE_PASS_TWO_PASS_AND_VERSIONED_METHODOLOGY_CONTROL
     authority: deterministic_audit_lifecycle_validation_not_audit_execution_acceptance_activation_or_implementation
     path: governance/tools/validate_audit_scaffold.py
     source_path: null
@@ -2550,7 +2559,7 @@ artifacts:
     canonicality: reusable_validation_support
     supersedes: null
     aliases: [governance/tests/test_gov_7_audit_scaffold.py]
-    notes: [Validates exact prompt custody, IDs, dependencies, contracts, prompt templates, the coherent planning-only, one-pass C1 and one-pass C2 lifecycle states, registered PASS-01 and correction custody, immutable evidence, inputs, corrected outputs, ranking arithmetic, referenced paths, YAML/Markdown and direct invalid transitions; it cannot execute an audit, independently evaluate outputs or make semantic/Owner decisions.]
+    notes: [Validates exact prompt custody, IDs, dependencies, bindable PASS-02/PASS-07 contract identities and hashes, PASS-07 result coherence, versioned active prompt templates, coherent planning, PASS-01 and PASS-02 lifecycle states, registered run custody, immutable evidence, inputs, outputs, referenced paths, YAML/Markdown and direct invalid transitions; it delegates PASS-02 structural semantics to GOV-TOOL-005 and prospective methodology semantics to GOV-TOOL-006 and cannot execute an audit, independently evaluate outputs or make semantic/Owner decisions.]
 
   - id: GOV-AUD-001-P01-R1
     title: GOV-AUD-001 PASS-01 Repository Capability and Gap Audit Run
@@ -2951,3 +2960,357 @@ artifacts:
     supersedes: null
     aliases: [GOV-AUD-PROMPT-016]
     notes: [Authorizes only the bounded PASS-01 acceptance, validation, one commit and non-force push.]
+
+  - id: GOV-AUD-001-P02-R1
+    title: GOV-AUD-001 PASS-02 Cross-Layer Architecture Audit Run
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    authority: pass_02_analysis_and_validation_evidence_not_acceptance_checkpoint_architecture_selection_gov_7_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/manifest.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/input/input-manifest.yaml
+    source_sha256: bc5c9764ab0a30a2c96665e09c4d3e720d20be35631e4ad06aa7c10dd656f239
+    produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: completed_unaccepted_audit_pass_run
+    language: English
+    canonicality: source_run_custody
+    supersedes: null
+    aliases: []
+    notes: [Defines a technology-neutral unimplemented cross-layer architecture candidate; CHECKPOINT-A remains pending and PASS-03 remains unauthorized.]
+
+  - id: GOV-AUD-AUTH-002
+    title: PASS-02 Project Owner Execution Authorization
+    version: 0.1.0
+    status: CONSUMED_1_OF_1
+    authority: project_owner_one_execution_pass_02_authorization
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/authorization/owner-authorization.yaml
+    source_path: null
+    source_sha256: efec5e415e9fadb25e33d6693e83b29a6df3f282d16976a3f43d99711450a376
+    produced_by: PROJECT_OWNER
+    artifact_type: execution_authorization
+    language: English
+    canonicality: immutable_execution_authorization
+    supersedes: null
+    aliases: []
+    notes: [Binds exactly one PASS-02 execution and records the prospective replacement of conflicting HP-PROMPT-028 with collision-free HP-PROMPT-029; no execution remains.]
+
+  - id: HP-PROMPT-029
+    title: PASS-02 Cross-Layer Architecture Execution Prompt
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_pass_02_execution_contract_without_commit_or_push
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/prompt/GOV-AUD-PROMPT-021-pass-02-execution-v0.1.0.md
+    source_path: null
+    source_sha256: b41cafb36922839781a334b4d851c00c80a253bc5ab7ecf96dd84955501e669c
+    produced_by: PROJECT_OWNER_AND_CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: material_prompt
+    language: English
+    canonicality: immutable_execution_contract
+    supersedes: null
+    aliases: [GOV-AUD-PROMPT-021]
+    notes: [Uses the prospective collision-free catalog identity selected after HP-PROMPT-028 was confirmed assigned to PASS-01; authorizes only PASS-02 analysis and validation.]
+
+  - id: GOV-AUD-P02-OUT-001
+    title: PASS-02 Bounded Context and Ownership Model
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    authority: proposed_architecture_output_not_approved_or_implemented
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/01-bounded-context-and-ownership-model.yaml
+    source_path: null
+    source_sha256: 8ee03f87ca792fc41c366f0150abebc9a3d718441fe7669955baf0d827132742
+    produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: audit_architecture_model
+    language: English
+    canonicality: unaccepted_source_output
+    supersedes: null
+    aliases: []
+    notes: [Defines eleven ownership-based bounded contexts, failure boundaries, recovery and finding ownership without selecting implementation.]
+
+  - id: GOV-AUD-P02-OUT-002
+    title: PASS-02 Cross-Layer Interface and Contract Assessment
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    authority: proposed_architecture_output_not_approved_or_implemented
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/02-cross-layer-interface-and-contract-assessment.md
+    source_path: null
+    source_sha256: ac92b827e6a8ffc3245a792a8ac12de1a6beba3297e0dd65a5b31709232e5415
+    produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: audit_interface_assessment
+    language: English
+    canonicality: unaccepted_source_output
+    supersedes: null
+    aliases: []
+    notes: [Maps four axes and assesses conditional versioned governance-application contracts for S0a through S9.]
+
+  - id: GOV-AUD-P02-OUT-003
+    title: PASS-02 Typed Relationship and Query Model
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    authority: derived_non_authoritative_relationship_model_not_graph_selection
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/03-typed-relationship-and-query-model.yaml
+    source_path: null
+    source_sha256: 71122a28793a24f3debfbf586ce5b17357ab397a11b0dda2454bcaaf8b3e8e14
+    produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: audit_relationship_and_query_model
+    language: English
+    canonicality: unaccepted_source_output
+    supersedes: null
+    aliases: []
+    notes: [Defines 26 technology-neutral relationship types and 16 query contracts; all projections remain regenerable and non-authoritative.]
+
+  - id: GOV-AUD-P02-OUT-004
+    title: PASS-02 Version, Migration and Impact Model
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    authority: proposed_compatibility_and_migration_model_not_adoption
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/04-version-migration-and-impact-model.md
+    source_path: null
+    source_sha256: 52e155f1a3f2817f5ae9f5113eba6c73dbe6ed239cd0376b76b987f0ea2ac0d0
+    produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: audit_version_migration_impact_model
+    language: English
+    canonicality: unaccepted_source_output
+    supersedes: null
+    aliases: []
+    notes: [Defines 77 compatibility-domain/mechanism combinations, migration, supersession, revalidation and direct/probable/unknown impact semantics.]
+
+  - id: GOV-AUD-P02-OUT-005
+    title: PASS-02 Controlled Self-Hosting and Trust Boundaries
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    authority: proposed_self_hosting_boundary_not_implementation_or_adoption
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/05-controlled-self-hosting-and-trust-boundaries.md
+    source_path: null
+    source_sha256: 4858fd98661ae274ef382a51e1de4a0e5c5d919db763db0a6ef8591b5fbdbed0
+    produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: audit_self_hosting_trust_model
+    language: English
+    canonicality: unaccepted_source_output
+    supersedes: null
+    aliases: []
+    notes: [Separates system from infrastructure self-hosting and preserves trust root, independence, rollback, recovery and manual fallback.]
+
+  - id: GOV-AUD-P02-OUT-006
+    title: PASS-02 Architecture Style Comparison
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    authority: proposed_comparison_without_selected_winner_or_technology
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/06-architecture-style-comparison.yaml
+    source_path: null
+    source_sha256: f00845265751fce8bb22e082abc0547312469043bc01f923c2af551d4a50bd67
+    produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: audit_architecture_style_comparison
+    language: English
+    canonicality: unaccepted_source_output
+    supersedes: null
+    aliases: []
+    notes: [Compares eight options including NO_DISTRIBUTION_YET and selects no winner.]
+
+  - id: GOV-AUD-P02-OUT-007
+    title: PASS-02 Findings and CHECKPOINT-A Handoff
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    authority: unaccepted_checkpoint_handoff_not_checkpoint_completion_or_later_pass_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/07-pass-02-findings-and-checkpoint-a-handoff.md
+    source_path: null
+    source_sha256: 459e339b6849f32a3d2fed205247af33880f69059e08059998ba49521a6e1f6e
+    produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: audit_pass_handoff
+    language: English
+    canonicality: unaccepted_source_output
+    supersedes: null
+    aliases: []
+    notes: [Identifies 17 Owner decisions and exact CHECKPOINT-A disposition boundaries; requires separately controlled independent review.]
+
+  - id: GOV-AUD-VAL-002
+    title: PASS-02 Deterministic Validation Report
+    version: 0.1.0
+    status: VALIDATED
+    authority: deterministic_source_run_validation_not_independent_evaluation_acceptance_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/evaluation/pass-02-validation-report.yaml
+    source_path: null
+    source_sha256: ecc2bf4d4d6c5b3d07af34ea79b716e3c1c2c6063f39cc9e8b79d85584d69e8e
+    produced_by: PASS_02_SOURCE_RUN_DETERMINISTIC_VALIDATION
+    artifact_type: audit_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: null
+    aliases: []
+    notes: [Records generic structural and semantic invariants and focused tests; it is not independent evaluation or Project Owner disposition.]
+
+  - id: GOV-TOOL-005
+    title: PASS-02 Generic Architecture Candidate Validator
+    version: 0.1.0
+    status: IMPLEMENTED_AND_VALIDATED
+    authority: deterministic_pass_02_validation_not_architecture_selection_evaluation_acceptance_or_implementation
+    path: governance/tools/validate_pass_02.py
+    source_path: null
+    source_sha256: 655ce2f2d5c0666d8a658b12c7164ab3605a92219a48009284a3a4d6d38e2fbb
+    produced_by: CROSS_LAYER_ARCHITECTURE_AUDITOR
+    artifact_type: deterministic_validation_tool
+    language: English
+    canonicality: reusable_validation_support
+    supersedes: null
+    aliases: [governance/tests/test_pass_02_architecture.py]
+    notes: [Validates generic context ownership, relationship endpoints, query coverage, input hashes, compatibility completeness, self-hosting distinction and authority boundaries without hard-coding named contexts, relationship IDs or an architecture winner.]
+
+  - id: GOV-AUD-001-METHOD-001
+    title: GOV-AUD-001 Finding and Review Methodology Protocol
+    version: 0.3.0
+    status: ACCEPTED_PROSPECTIVE_AUDIT_METHODOLOGY
+    authority: audit_methodology_and_review_control_not_policy_kernel_pass_execution_acceptance_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-030-gov-aud-001-audit-methodology-correction-v0.3.0.md
+    source_sha256: b47cce4e96daf09657cedfd918a3b47f9ab461ecdc3c55b559fffa1b9fdaad81
+    produced_by: AUDIT_METHODOLOGY_CORRECTOR
+    artifact_type: audit_methodology_and_review_protocol
+    language: English
+    canonicality: prospective_audit_methodology
+    supersedes: GOV-AUD-001-METHOD-001/0.2.0
+    aliases:
+      - governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.2.0.md
+      - governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-070-pass-07-independent-evaluation-v0.2.0.md
+    notes: [Accepted prospectively by GOV-AUD-DECISION-002/0.1.0 after focused independent confirmation; defines canonical finding bases, MODEL_INFERENCE_ONLY follow-up, root-cause-before-invalidity, four review types, genuine adversarial attacks, coherent PASS-07 result mapping including insufficient evidence, bounded structured instance validation, materiality, temporary instruction-conflict control, canonical ID resolution and correction traceability; preserves historical runs.]
+
+  - id: HP-PROMPT-030
+    title: GOV-AUD-001 Audit Methodology Correction Prompt
+    version: 0.3.0
+    status: EXECUTED
+    authority: bounded_project_owner_audit_methodology_correction_without_publication_or_later_pass_authority
+    path: governance/prompts/orchestration/HP-PROMPT-030-gov-aud-001-audit-methodology-correction-v0.3.0.md
+    source_path: null
+    source_sha256: b47cce4e96daf09657cedfd918a3b47f9ab461ecdc3c55b559fffa1b9fdaad81
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: HP-PROMPT-030/0.2.0
+    aliases: []
+    notes: [Corrects only MC-1, MC-2 and MC-3, registers HP-MPROP-007, and authorizes focused validation; prohibits PASS-02 R2, CHECKPOINT-A, later-pass execution, Kernel or GOV-7 work, acceptance, commit and push.]
+
+  - id: GOV-AUD-VAL-003
+    title: GOV-AUD-001 Methodology Correction Validation
+    version: 0.1.0
+    status: VALIDATED
+    authority: deterministic_methodology_validation_not_review_acceptance_policy_adoption_or_execution_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/08-methodology-correction-validation.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+    source_sha256: null
+    produced_by: AUDIT_METHODOLOGY_DETERMINISTIC_VALIDATION
+    artifact_type: audit_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: null
+    aliases: []
+    notes: [Records identifier resolution, focused and full validation, immutable PASS-02 R1 hashes and unchanged authority/state boundaries; it is not independent review or Project Owner acceptance.]
+
+  - id: GOV-TOOL-006
+    title: GOV-AUD-001 Methodology and Review Protocol Validator
+    version: 0.2.0
+    status: IMPLEMENTED_AND_VALIDATED
+    authority: deterministic_audit_methodology_validation_not_substantive_review_policy_or_pass_authority
+    path: governance/tools/validate_audit_methodology.py
+    source_path: null
+    source_sha256: null
+    produced_by: AUDIT_METHODOLOGY_CORRECTOR
+    artifact_type: deterministic_validation_tool
+    language: English
+    canonicality: reusable_validation_support
+    supersedes: null
+    aliases: [governance/tests/test_audit_methodology_protocol.py]
+    notes: [Validates canonical finding basis, model-inference marking, review contracts, PASS-07 conclusion-to-result mapping, root-cause-before-invalidity, actual adversarial attacks, exactly-one results, insufficient evidence, bounded structured finding/review instances, materiality, compact conflict and ID rules, traceability, immutable PASS-02 R1 hashes and inactive authority boundaries without hard-coding a future finding ID.]
+
+  - id: GOV-AUD-001-PASS-02-CONTRACT
+    title: GOV-AUD-001 PASS-02 Pass Contract
+    version: 0.2.0
+    status: ACTIVE_FOR_FUTURE_INSTANTIATION
+    authority: pass_contract_not_execution_acceptance_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-02/contract.yaml
+    source_path: null
+    source_sha256: 07c6dce2eebe2e8d56fccaae6a600edcbd374d2e3ec1653e92c45b5a7656f276
+    produced_by: AUDIT_METHODOLOGY_CORRECTOR
+    artifact_type: versioned_audit_pass_contract
+    language: English
+    canonicality: prospective_pass_contract
+    supersedes: UNVERSIONED_SNAPSHOT_SHA256_9fa786dfad87b4612671928fc9985e07fcb31aafc366487550fed2a262d3a496
+    aliases: []
+    notes: [Future instantiated prompts must bind this contract ID, version and file SHA-256; GOV-AUD-001-P02-R1 remains bound to its immutable predecessor hash.]
+
+  - id: GOV-AUD-001-PASS-07-CONTRACT
+    title: GOV-AUD-001 PASS-07 Pass Contract
+    version: 0.2.0
+    status: ACTIVE_FOR_FUTURE_INSTANTIATION
+    authority: pass_contract_not_execution_acceptance_or_implementation_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-07/contract.yaml
+    source_path: null
+    source_sha256: 998550fb2fb4ae517c83f001880eae50a6411275442fd26bdb973a7db73ecfac
+    produced_by: AUDIT_METHODOLOGY_CORRECTOR
+    artifact_type: versioned_audit_pass_contract
+    language: English
+    canonicality: prospective_pass_contract
+    supersedes: UNVERSIONED_SNAPSHOT_SHA256_e2caa6f2ba67261e3c76e53342d848856642b5793fd4e49ede172d63825f50bb
+    aliases: []
+    notes: [Future instantiated prompts must bind this contract ID, version and file SHA-256; only substantive or adversarial review may produce the PASS-07 disposition.]
+
+  - id: GOV-AUD-VAL-004
+    title: GOV-AUD-001 Methodology Bounded Correction Validation
+    version: 0.1.0
+    status: VALIDATED
+    authority: deterministic_methodology_validation_not_review_acceptance_policy_adoption_or_execution_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/09-methodology-bounded-correction-validation.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+    source_sha256: null
+    produced_by: AUDIT_METHODOLOGY_DETERMINISTIC_VALIDATION
+    artifact_type: audit_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: GOV-AUD-VAL-003
+    aliases: []
+    notes: [Will record focused validation of MC-1, MC-2, MC-3, HP-MPROP-007, immutable PASS-02 R1 custody and unchanged authority boundaries.]
+
+  - id: GOV-AUD-VAL-005
+    title: GOV-AUD-001 Methodology Bounded Correction Validation
+    version: 0.1.0
+    status: VALIDATED
+    authority: deterministic_bounded_correction_validation_not_independent_review_or_project_owner_acceptance
+    path: governance/audits/GOV-AUD-001-gov7-enablement/09-methodology-bounded-correction-validation.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+    source_sha256: null
+    produced_by: AUDIT_METHODOLOGY_DETERMINISTIC_VALIDATION
+    artifact_type: audit_validation_record
+    language: English
+    canonicality: supporting_validation_evidence
+    supersedes: GOV-AUD-VAL-004
+    aliases: []
+    notes: [Records validation of GOV-AUD-001-METHOD-001/0.3.0 and its three bounded corrected findings; it is not independent review or Project Owner acceptance.]
+
+  - id: GOV-AUD-DECISION-002
+    title: GOV-AUD-001 Methodology Correction Acceptance
+    version: 0.1.0
+    status: ACCEPTED
+    authority: project_owner_bounded_prospective_methodology_acceptance
+    path: governance/audits/GOV-AUD-001-gov7-enablement/decisions/GOV-AUD-DECISION-002-methodology-acceptance-v0.1.0.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-031-accept-gov-aud-001-methodology-correction-v0.1.0.md
+    source_sha256: 8d1256caff92cafe5cdcffd0e5d28bcf12a164f2087b776e2141d102f979f906
+    produced_by: PROJECT_OWNER
+    artifact_type: audit_owner_decision
+    language: English
+    canonicality: append_only_acceptance_record
+    supersedes: null
+    aliases: []
+    notes: [Accepts only GOV-AUD-001-METHOD-001/0.3.0 prospectively; does not accept PASS-02, complete CHECKPOINT-A, authorize later passes, activate GOV-7, amend the Kernel or resolve OD-006.]
+
+  - id: HP-PROMPT-031
+    title: Accept GOV-AUD-001 Methodology Correction
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_project_owner_methodology_acceptance_and_publication_without_later_pass_authority
+    path: governance/prompts/orchestration/HP-PROMPT-031-accept-gov-aud-001-methodology-correction-v0.1.0.md
+    source_path: null
+    source_sha256: 8d1256caff92cafe5cdcffd0e5d28bcf12a164f2087b776e2141d102f979f906
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: []
+    notes: [Authorizes acceptance and bounded publication of the independently confirmed methodology correction only; prohibits PASS-02 acceptance, CHECKPOINT-A, later passes, GOV-7 activation, Kernel amendment and OD-006 resolution.]

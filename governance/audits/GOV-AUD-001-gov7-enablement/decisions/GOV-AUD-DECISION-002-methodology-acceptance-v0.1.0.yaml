@@ -1,0 +1,37 @@
+project_owner_decision:
+  decision_id: GOV-AUD-DECISION-002
+  version: 0.1.0
+  date: '2026-07-17'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_GOV_AUD_001_METHOD_001_0_3_0
+  audit_id: GOV-AUD-001
+  accepted_artifact:
+    id: GOV-AUD-001-METHOD-001
+    version: 0.3.0
+    status: ACCEPTED_PROSPECTIVE_AUDIT_METHODOLOGY
+    source_prompt: HP-PROMPT-030/0.3.0
+    source_prompt_sha256: b47cce4e96daf09657cedfd918a3b47f9ab461ecdc3c55b559fffa1b9fdaad81
+    independent_confirmation: CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION
+  acceptance_scope: BOUNDED_PROSPECTIVE_AUDIT_METHODOLOGY_ONLY
+  accepted_findings:
+    - MC3-GENERIC-CONTRACT-001
+    - MC3-ADVERSARIAL-EVIDENCE-002
+    - HP-MPROP-007-COMPLETENESS-003
+  preserved_boundaries:
+    pass_02_r1_immutable: true
+    pass_02_accepted: false
+    checkpoint_a_completed: false
+    pass_03_prepared_or_executed: false
+    pass_04_prepared_or_executed: false
+    gov_7_activated: false
+    kernel_amended: false
+    od_006_resolved: false
+  not_accepted:
+    - PASS_02
+    - CHECKPOINT_A
+    - PASS_03_OR_PASS_04
+    - GOV_7_ACTIVATION_OR_IMPLEMENTATION
+    - KERNEL_AMENDMENT
+    - OD_006_RESOLUTION
+    - RISK_ACCEPTANCE
+  publication: {commit_authorized: true, push_without_force_authorized: true, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

@@ -1,0 +1,143 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-024
+  date: '2026-07-16'
+  recorded_on: '2026-07-16'
+  title: Audit findings and reviews lacked explicit support, causality, review-type and materiality contracts
+  context:
+    phase: GOV-7 audit methodology correction
+    run: GOV-AUD-001
+    component: GOV-AUD-001 finding and review methodology
+    branch: governance/kernel-designer-revision-v0.1
+    commit: a4cbc500b2ca864b2eb35e9354df88c8c3d97a3e
+    environment: Project Owner-authorized prospective correction after PASS-02 R1
+  primary_classification: OWNER_CORRECTION
+  classification:
+    - OWNER_CORRECTION
+    - PROCESS_DEFECT
+    - AMBIGUITY
+  severity: HIGH
+  status: CORRECTED
+  expected_behavior: >
+    Material audit findings identify their evidence or reasoning basis and materiality;
+    reviews distinguish deterministic validation, targeted confirmation, independent
+    substantive review and adversarial attack; invalidity follows authority, conflict,
+    alternatives, root-cause, evidence-impact and materiality analysis; identities are
+    resolved canonically; and instruction conflicts have a bounded stop or exception rule.
+  observed_behavior: >
+    GOV-AUD-001 had strong repository-first and gap-driven principles but did not
+    uniformly require explicit finding basis, visible model-inference-only support,
+    root-cause-before-invalidity analysis, separated review contracts, genuine
+    adversarial refutation, bounded blocking materiality, canonical identity allocation,
+    or a compact control for the conflict between durable learning and bounded run writes.
+  impact: >
+    Findings could appear stronger than their support, review conclusions could exceed
+    the method actually performed, deviations could trigger invalidity or correction
+    loops before causal and material analysis, repository identities could collide, and
+    agents could either over-expand run authority or suppress required learning evidence.
+    PASS-02 R1 remains unaccepted; no historical output is changed by this correction.
+  detection_method: >
+    Project Owner review of PASS-02 R1 methodology, repository-wide inspection of the
+    charter, custody contract, pass contracts, prompt templates, validators, prompt and
+    artifact registries, learning system, and absence of a durably custodied PASS-02
+    independent-review artifact.
+  root_cause:
+    immediate: >
+      The audit scaffold used statement labels and generic evidence requirements without
+      one canonical material-finding contract or explicit review-type contracts.
+    systemic: >
+      The audit methodology evolved pass by pass and had not yet consolidated support
+      classification, deviation causality, materiality, adversarial method, instruction
+      conflict handling and identity resolution into one prospective reusable protocol.
+    contributing_factors:
+      - Deterministic validation and substantive review evidence were adjacent in audit lifecycle records.
+      - The audit had no explicit contract for attempts to refute a candidate.
+      - Materiality relied on broad governance semantics rather than an audit-specific blocking boundary.
+      - Material prompt and local audit prompt identities use separate registries that require coordinated allocation.
+      - Durable learning instructions and bounded run write scopes can conflict without a compact exception-and-stop rule.
+  response:
+    containment: >
+      Preserve PASS-02 R1 and all completed review/run evidence unchanged; do not prepare
+      R2, complete CHECKPOINT-A, execute PASS-03, amend the Kernel, adopt policy or
+      activate GOV-7.
+    correction: >
+      Add prospective GOV-AUD-001-METHOD-001/0.1.0; version the PASS-02 and PASS-07
+      templates; strengthen directly affected contracts, state, custody and registries;
+      add deterministic semantic validation; and route formal instruction-conflict
+      policy derivation to HP-MPROP-006.
+    prevention:
+      - Require canonical finding-basis, model-inference, materiality and traceability fields for new material findings.
+      - Require review-type identity, independence, evidence, claim limits and root-cause-before-invalidity for new reviews.
+      - Require recorded adversarial attacks before an adversarial survival conclusion.
+      - Resolve every new repository identity from the canonical allocation source and verify it unused repository-wide.
+      - Apply the compact prompt-level instruction-conflict rule until separately authorized GOV-7 policy derivation.
+    accountable_owner: Project Owner
+    validation_required:
+      - Validate the canonical taxonomies and review contracts semantically.
+      - Validate corrected prompt-template controls and canonical identity rule.
+      - Verify every PASS-02 R1 file remains byte-identical to its pre-correction hash.
+      - Validate CHECKPOINT-A, PASS-03, GOV-7, OD-006 and Kernel boundaries remain unchanged.
+      - Run focused tests, governance validators, prompt and state validation, full governance tests and git diff checks.
+  learning:
+    reusable_lesson: >
+      Audit conclusions are trustworthy only when support basis, review method, causal
+      layer and materiality are explicit before disposition; durable identity and
+      instruction-conflict controls prevent process evidence from silently expanding authority.
+    candidate_system_changes:
+      - PROTOCOL
+      - VALIDATION
+      - TEST
+      - WORKFLOW_PATTERN
+      - DOCUMENTATION
+    applicable_future_phases:
+      - All future GOV-AUD-001 findings and reviews
+      - Future GOV-7 policy, standard and procedure derivation
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: >
+      One bounded methodology correction and one corrected temporary allocation-probe
+      input are observable; exact tokens, model-run count, time, monetary cost and Owner
+      effort are unavailable.
+  evidence_refs:
+    - type: OWNER_STATEMENT
+      locator: governance/prompts/orchestration/HP-PROMPT-030-gov-aud-001-audit-methodology-correction-v0.1.0.md
+      anchor: Problem being corrected and required methodology corrections
+      sha256: null
+      availability: PRESERVED
+      note: Exact Project Owner authorization and problem statement.
+    - type: REPOSITORY_PATH
+      locator: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+      anchor: finding_contract through finding_traceability
+      sha256: null
+      availability: PRESERVED
+      note: Prospective canonical correction; not historical run evidence or adopted policy.
+    - type: REPOSITORY_PATH
+      locator: governance/methodology/METHODOLOGY_BACKLOG.md
+      anchor: HP-MPROP-006
+      sha256: null
+      availability: PRESERVED
+      note: Routes formal conflict-policy derivation to future GOV-7 without adoption or activation.
+    - type: REPOSITORY_PATH
+      locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/manifest.yaml
+      anchor: source-run custody
+      sha256: 03b5a19764d424268bcd5285a410fabaf5109e88eaa4a6c402d5eaefe1a4ee87
+      availability: PRESERVED
+      note: Immutable PASS-02 R1 source-run evidence retained unchanged.
+  related_records:
+    - HP-FAIL-021
+    - HP-FAIL-022
+    - HP-FAIL-023
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []
