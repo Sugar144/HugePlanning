@@ -53,6 +53,6 @@ audit_program:
   audit_executed: false
   pass_03_adversarial_review_execution_package:
     id: GOV-AUD-P03-REVIEW-EXECUTION-PACKAGE-001
-    status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
-    review_execution_authorized: false
+    status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
+    review_execution_authorized: true
     review_executed: false

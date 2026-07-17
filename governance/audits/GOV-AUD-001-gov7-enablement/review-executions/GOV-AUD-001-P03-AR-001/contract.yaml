@@ -1,7 +1,7 @@
 review_execution_contract:
   contract_id: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT
   version: 0.1.0
-  status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+  status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
   purpose: Execute one bounded independent adversarial review of the immutable PASS-03 source run without changing it.
   reviewed_audit: GOV-AUD-001
   reviewed_pass: PASS-03
@@ -18,6 +18,12 @@ review_execution_contract:
     mode: EVIDENCE_BOUNDED_ATTEMPTED_REFUTATION
     execution_count_limit: 1
     execution_count_consumed: 0
+  owner_execution_authorization:
+    authorization_id: GOV-AUD-AUTH-004
+    version: 0.1.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/authorization/owner-authorization.yaml
+    status: AUTHORIZED_NOT_YET_CONSUMED
+    binding_rule: EXACT_AUTHORIZATION_MUST_BIND_THIS_CONTRACT_PROMPT_INPUT_MANIFEST_REVIEWED_RUN_EVIDENCE_PACKAGE_AND_REVIEW_IDENTITY
   allowed_inputs:
     - immutable_evidence_package_members
     - this_contract
@@ -68,7 +74,7 @@ review_execution_contract:
       triggers: [package_integrity_failure, required_evidence_unavailable, independence_not_permitted, attacks_not_genuinely_executed, incomplete_output, interrupted_or_unverifiable_execution]
       pass_03_state_transition: NO_PASS_03_STATE_ADVANCEMENT
       review_opportunity_consumed: false
-  invalid_review_conditions: [package_hash_or_member_hash_mismatch, source_run_mutation, missing_prompt_or_contract_binding, missing_independence_declaration, prohibited_input, incomplete_attack_record, invalid_result, prohibited_acceptance_or_PASS_04_authority]
+  invalid_review_conditions: [package_hash_or_member_hash_mismatch, source_run_mutation, missing_root_or_governance_instruction_binding, missing_owner_execution_authorization, missing_prompt_or_contract_binding, missing_independence_declaration, prohibited_input, incomplete_attack_record, invalid_result, prohibited_acceptance_or_PASS_04_authority]
   validation_requirements: [contract_and_schema, prompt_custody_and_hash, immutable_package_identity_and_hash, input_manifest, independence_declaration_contract, attack_record_structure, result_semantics, state_transitions, authority_boundary, output_specification, registry_reference_checksum_consistency, audit_scaffold, governance_state]
   custody_and_publication:
     review_output_path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output/pass-03-adversarial-review-result.yaml

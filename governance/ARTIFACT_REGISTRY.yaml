@@ -3745,16 +3745,16 @@ artifacts:
     canonicality: exact_instantiated_review_prompt_not_execution_evidence
     supersedes: null
     aliases: [GOV-AUD-PROMPT-032]
-    notes: [Must be bound to separate Project Owner review execution authorization before use.]
+    notes: [Bound by GOV-AUD-AUTH-004/0.1.0 for one pending review execution; prompt custody is not review execution evidence.]
 
   - id: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT
     title: PASS-03 Adversarial Review Execution Contract
     version: 0.1.0
-    status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+    status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
     authority: review_execution_contract_only
     path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/contract.yaml
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/review-package/manifest.yaml
-    source_sha256: 8afc92a961b199830c362f055e820e7df9e3a24f6c0040f1eec3875329289f99
+    source_sha256: d078f7b6d0a7c456dcb23a8b7253c989546bb167c3ed63093b8bf5e918967f94
     produced_by: PROJECT_OWNER_AUTHORIZED_REVIEW_PACKAGE_CORRECTION
     artifact_type: adversarial_review_execution_contract
     language: English
@@ -3766,27 +3766,27 @@ artifacts:
   - id: GOV-AUD-P03-AR-INPUT-001
     title: PASS-03 Adversarial Review Execution Input Manifest
     version: 0.1.0
-    status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+    status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
     authority: evidence_custody_only
     path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/input/input-manifest.yaml
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/contract.yaml
-    source_sha256: 528d2d912c6c8a1566bbbc3fb707f18f3551e81f029e637d096f508b677e9e7e
+    source_sha256: 21c51c7a58ced33ba7cee8a086256464cd7164161560ab1f4c251214643b8418
     produced_by: PROJECT_OWNER_AUTHORIZED_REVIEW_PACKAGE_CORRECTION
     artifact_type: formal_review_input_manifest
     language: English
     canonicality: hash_bound_prospective_review_input
     supersedes: null
     aliases: [GOV-AUD-001-P03-AR-001-INPUT-001]
-    notes: [References the immutable 16-member evidence package by aggregate hash.]
+    notes: [References immutable evidence, root/project instructions and GOV-AUD-AUTH-004 by hash.]
 
   - id: GOV-AUD-P03-AR-OUTPUT-SPEC-001
     title: PASS-03 Adversarial Review Output Specification
     version: 0.1.0
-    status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+    status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
     authority: output_contract_only
     path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output-artifact-specification.yaml
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/contract.yaml
-    source_sha256: 41d2f36fa580668835b8e8b53b3042fe86f99f3543ff24d76549557f95bee875
+    source_sha256: 0ab5cf640003d97519e0cff7e5bdb07a2f8891667f1a5eceb6f570554fa10f43
     produced_by: PROJECT_OWNER_AUTHORIZED_REVIEW_PACKAGE_CORRECTION
     artifact_type: adversarial_review_output_specification
     language: English
@@ -3814,11 +3814,11 @@ artifacts:
   - id: GOV-AUD-001-P03-AR-001
     title: PASS-03 Adversarial Review Execution Preparation
     version: 0.1.0
-    status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+    status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
     authority: review_preparation_only
     path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/manifest.yaml
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/review-package/manifest.yaml
-    source_sha256: 223f7448f75da7d9b28150a8ae3e4507ba1675839e69b6f2aa1d2a7fa88d0820
+    source_sha256: 189ccdfc12d46f3bc5873cbb17e1e9a1fb367eb7d42fd47d8279ea45ed96ae19
     produced_by: PROJECT_OWNER_AUTHORIZED_REVIEW_PACKAGE_CORRECTION
     artifact_type: adversarial_review_execution_preparation
     language: English
@@ -3830,18 +3830,18 @@ artifacts:
   - id: GOV-AUD-P03-REVIEW-EXECUTION-PACKAGE-001
     title: PASS-03 Executable Independent Adversarial Review Package
     version: 0.1.0
-    status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+    status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
     authority: review_execution_input_custody_only
     path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/manifest.yaml
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/review-package/manifest.yaml
-    source_sha256: 223f7448f75da7d9b28150a8ae3e4507ba1675839e69b6f2aa1d2a7fa88d0820
+    source_sha256: 189ccdfc12d46f3bc5873cbb17e1e9a1fb367eb7d42fd47d8279ea45ed96ae19
     produced_by: PROJECT_OWNER_AUTHORIZED_REVIEW_PACKAGE_CORRECTION
     artifact_type: executable_adversarial_review_package
     language: English
     canonicality: prepared_review_execution_package_not_review_result
     supersedes: null
     aliases: []
-    notes: [Uses immutable package GOV-AUD-P03-REVIEW-PACKAGE-001 without modifying it.]
+    notes: [Uses immutable package GOV-AUD-P03-REVIEW-PACKAGE-001 and GOV-AUD-AUTH-004 without modifying the reviewed run.]
 
   - id: GOV-AUD-P03-AR-DIAG-001
     title: PASS-03 Invalid or Incomplete Adversarial Review Diagnostic
@@ -3874,3 +3874,35 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Corrects only formal review-output lifecycle validation; does not execute a review, change PASS-03 outputs or state, create R2, or authorize PASS-04.]
+
+  - id: GOV-AUD-AUTH-004
+    title: PASS-03 Independent Adversarial Review Owner Authorization
+    version: 0.1.0
+    status: AUTHORIZED_NOT_YET_CONSUMED
+    authority: one_bounded_project_owner_review_execution_authorization
+    path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/authorization/owner-authorization.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-039-correct-pass-03-review-startup-evidence-bindings-v0.1.0.md
+    source_sha256: c74b3d64d553201e2717eba136c45973235454a15d8489f294b121df5b4b2ddb
+    produced_by: PROJECT_OWNER
+    artifact_type: prospective_review_execution_authorization
+    language: English
+    canonicality: exact_one_execution_authorization_not_execution_evidence
+    supersedes: null
+    aliases: []
+    notes: [Binds GOV-AUD-001-P03-AR-001, its contract, prompt, input manifest, reviewed run and immutable package; no execution has occurred.]
+
+  - id: HP-PROMPT-039
+    title: Correct PASS-03 Review Startup Evidence Bindings
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_startup_evidence_correction_and_conditional_publication
+    path: governance/prompts/orchestration/HP-PROMPT-039-correct-pass-03-review-startup-evidence-bindings-v0.1.0.md
+    source_path: null
+    source_sha256: f67c2d8e3f15a011130410d4d8580255970e157c475e31d5e7bad787382f9bd5
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_correction_authorization_evidence
+    supersedes: null
+    aliases: []
+    notes: [Corrects only startup-evidence bindings; does not execute the review or advance PASS-03.]

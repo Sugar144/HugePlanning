@@ -32,6 +32,15 @@ def test_rejects_missing_review_prompt(tmp_path: Path) -> None:
     root = isolated(tmp_path); (root / "governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md").unlink()
     assert "instantiated review prompt missing" in diagnostics(root)
 
+def test_rejects_missing_root_instruction_binding(tmp_path: Path) -> None:
+    root = isolated(tmp_path); path = root / PREP_REL / "input/input-manifest.yaml"
+    rewrite(path, lambda d: d["review_input_manifest"].update(members=[item for item in d["review_input_manifest"]["members"] if item["role"] != "ROOT_REPOSITORY_INSTRUCTIONS"], member_count=11))
+    assert "root or project instruction binding missing" in diagnostics(root)
+
+def test_rejects_missing_owner_review_authorization(tmp_path: Path) -> None:
+    root = isolated(tmp_path); (root / PREP_REL / "authorization/owner-authorization.yaml").unlink()
+    assert "review preparation artifact missing: authorization/owner-authorization.yaml" in diagnostics(root)
+
 def test_rejects_invalid_evidence_package_hash(tmp_path: Path) -> None:
     root = isolated(tmp_path); path = root / PREP_REL / "contract.yaml"
     rewrite(path, lambda d: d["review_execution_contract"]["immutable_evidence_package"].update(package_sha256="0" * 64))

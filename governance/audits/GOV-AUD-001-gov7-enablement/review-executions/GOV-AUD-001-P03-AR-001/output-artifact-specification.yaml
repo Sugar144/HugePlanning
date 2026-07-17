@@ -1,7 +1,7 @@
 review_output_specification:
   id: GOV-AUD-001-P03-AR-001-OUTPUT-SPEC-001
   version: 0.1.0
-  status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+  status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
   output_path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output/pass-03-adversarial-review-result.yaml
   output_created: false
   format: YAML

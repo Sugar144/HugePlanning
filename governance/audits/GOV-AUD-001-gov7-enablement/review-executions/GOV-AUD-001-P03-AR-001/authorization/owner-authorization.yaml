@@ -1,0 +1,47 @@
+authorization:
+  authorization_id: GOV-AUD-AUTH-004
+  version: 0.1.0
+  evidence_class: CONTEMPORANEOUS_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+  authority: PROJECT_OWNER
+  status: AUTHORIZED_NOT_YET_CONSUMED
+  authorized_review: GOV-AUD-001-P03-AR-001
+  authorized_pass: PASS-03
+  reviewed_run: GOV-AUD-001-P03-R1
+  reviewed_evidence_package:
+    id: GOV-AUD-P03-REVIEW-PACKAGE-001
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/review-package/manifest.yaml
+    package_sha256: d93c98535e38d952582b59e460d17ac62db8fea3ebfed794383d384a0b9f43fe
+  role: Independent PASS-03 Adversarial Reviewer
+  mode: EVIDENCE_BOUNDED_ATTEMPTED_REFUTATION
+  execution_count_limit: 1
+  execution_count_consumed: 0
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  authorization_head: 8eef4bac2074230d803aa4fcd7573273b3da55f9
+  contract:
+    identity: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT/0.1.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/contract.yaml
+    sha256: d078f7b6d0a7c456dcb23a8b7253c989546bb167c3ed63093b8bf5e918967f94
+  prompt:
+    identity: GOV-AUD-PROMPT-032/0.1.0
+    catalog_identity: HP-PROMPT-037/0.1.0
+    path: governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md
+    sha256: 919b11b868a5ecc04e25a45435fdc96126ef4b3feb1361b157e1fcbc5c740df1
+  input_manifest:
+    identity: GOV-AUD-001-P03-AR-001-INPUT-001/0.1.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/input/input-manifest.yaml
+    formal_input_package_sha256: ac3d91a8116a5b3f161157a2fad0b2a31a783d9b32318d63fb65a4a50c0394db
+    formal_input_member_count: 11
+    hash_basis: ALL_REVIEW_INPUT_MEMBERS_EXCEPT_THE_SELF_REFERENTIAL_AUTHORIZATION_MEMBER
+  authorized_actions:
+    - execute exactly one independent PASS-03 adversarial review using only the bound contract, prompt, input manifest and immutable evidence package
+    - create exactly one review result at the declared output path
+    - validate and preserve that result according to the bound contract
+  not_authorized:
+    - modify the reviewed run, its outputs or immutable evidence package
+    - prepare or execute PASS-03 R2
+    - accept or complete PASS-03
+    - authorize or execute PASS-04
+    - select tools, implement a learning pipeline, activate GOV-7, amend the Kernel, resolve OD-006 or accept risk
+    - commit, push, pull request, merge, tag, release or deploy
+  authority_limit: ONE_BOUND_REVIEW_EXECUTION_ONLY; THIS_CORRECTION_DOES_NOT_EXECUTE_THE_REVIEW

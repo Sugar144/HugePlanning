@@ -1,18 +1,19 @@
 review_execution_package:
   id: GOV-AUD-P03-REVIEW-EXECUTION-PACKAGE-001
   version: 0.1.0
-  status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+  status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
   reviewed_run: GOV-AUD-001-P03-R1
   reviewed_package: GOV-AUD-P03-REVIEW-PACKAGE-001
   reviewed_package_sha256: d93c98535e38d952582b59e460d17ac62db8fea3ebfed794383d384a0b9f43fe
   review_identity: GOV-AUD-001-P03-AR-001
   review_executed: false
   review_opportunity_consumed: false
-  contract: {id: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT, version: 0.1.0, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/contract.yaml, sha256: 8afc92a961b199830c362f055e820e7df9e3a24f6c0040f1eec3875329289f99}
+  contract: {id: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT, version: 0.1.0, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/contract.yaml, sha256: d078f7b6d0a7c456dcb23a8b7253c989546bb167c3ed63093b8bf5e918967f94}
   prompt: {id: GOV-AUD-PROMPT-032, catalog_id: HP-PROMPT-037, version: 0.1.0, path: governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md, sha256: 919b11b868a5ecc04e25a45435fdc96126ef4b3feb1361b157e1fcbc5c740df1}
-  input_manifest: {id: GOV-AUD-001-P03-AR-001-INPUT-001, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/input/input-manifest.yaml, sha256: 528d2d912c6c8a1566bbbc3fb707f18f3551e81f029e637d096f508b677e9e7e}
-  output_specification: {id: GOV-AUD-001-P03-AR-001-OUTPUT-SPEC-001, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output-artifact-specification.yaml, sha256: 41d2f36fa580668835b8e8b53b3042fe86f99f3543ff24d76549557f95bee875}
-  validation_plan: {id: GOV-AUD-001-P03-AR-001-VALIDATION-PLAN-001, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/validation-plan.yaml, sha256: 81eac33a2d117798b568240e609538dfbf57046dbd1aecaf933f8e9112116ba6}
+  owner_execution_authorization: {id: GOV-AUD-AUTH-004, version: 0.1.0, status: AUTHORIZED_NOT_YET_CONSUMED, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/authorization/owner-authorization.yaml, sha256: c74b3d64d553201e2717eba136c45973235454a15d8489f294b121df5b4b2ddb}
+  input_manifest: {id: GOV-AUD-001-P03-AR-001-INPUT-001, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/input/input-manifest.yaml, sha256: 21c51c7a58ced33ba7cee8a086256464cd7164161560ab1f4c251214643b8418}
+  output_specification: {id: GOV-AUD-001-P03-AR-001-OUTPUT-SPEC-001, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output-artifact-specification.yaml, sha256: 0ab5cf640003d97519e0cff7e5bdb07a2f8891667f1a5eceb6f570554fa10f43}
+  validation_plan: {id: GOV-AUD-001-P03-AR-001-VALIDATION-PLAN-001, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/validation-plan.yaml, sha256: 2b25f8ef28789740b865163008d366e3276b4c5ef2e77dcc64a2c2cf9d4fcadf}
   failed_attempt_operational_evidence: {id: GOV-AUD-001-P03-AR-001-OPER-001, path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/operational-evidence/failed-review-attempt-001.yaml, sha256: 6fe96cc9845ea7e24f675a7dd148f41b91b16c0e84be8d4d67d5edaceefe563d}
   authority_boundary: {PASS_03_accepted: false, PASS_03_completed: false, PASS_04_authorized_or_executed: false, tooling_selected: false, learning_pipeline_implemented: false, GOV_7_activated: false, Kernel_changed: false, OD_006_resolved: false, risk_accepted: false}
-  next_action: PROJECT_OWNER_AUTHORIZATION_OF_ONE_INDEPENDENT_ADVERSARIAL_REVIEW_USING_THIS_CONTRACT_AND_PROMPT_DO_NOT_EXECUTE_PASS_04
+  next_action: EXECUTE_ONE_ALREADY_AUTHORIZED_INDEPENDENT_ADVERSARIAL_REVIEW_USING_THIS_CONTRACT_AND_PROMPT_DO_NOT_EXECUTE_PASS_04

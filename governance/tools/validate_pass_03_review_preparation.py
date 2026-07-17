@@ -17,7 +17,7 @@ AUDIT_REL = Path("governance/audits/GOV-AUD-001-gov7-enablement")
 PREP_REL = AUDIT_REL / "review-executions/GOV-AUD-001-P03-AR-001"
 PACKAGE_HASH = "d93c98535e38d952582b59e460d17ac62db8fea3ebfed794383d384a0b9f43fe"
 PENDING = "EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION"
-PREPARED = "PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION"
+PREPARED = "AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION"
 RESULTS = {"PASS_03_CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION", "PASS_03_R2_REQUIRED", "PASS_03_REVIEW_INVALID_OR_INCOMPLETE"}
 ATTACK_FIELDS = {"attack_id", "attack_dimension", "target_claim_or_assumption", "attack_method", "counterexample_or_failure_scenario", "evidence_examined", "result", "impact"}
 RESULT_REL = PREP_REL / "output/pass-03-adversarial-review-result.yaml"
@@ -26,7 +26,7 @@ RESULT_REL = PREP_REL / "output/pass-03-adversarial-review-result.yaml"
 def errors_for(root: Path) -> list[str]:
     errors: list[str] = []
     prep = root / PREP_REL
-    required = ["contract.yaml", "input/input-manifest.yaml", "output-artifact-specification.yaml", "validation-plan.yaml", "custody-and-publication-rules.md", "manifest.yaml", "reviewer-independence-declaration-template.yaml", "operational-evidence/failed-review-attempt-001.yaml"]
+    required = ["contract.yaml", "input/input-manifest.yaml", "output-artifact-specification.yaml", "validation-plan.yaml", "custody-and-publication-rules.md", "manifest.yaml", "reviewer-independence-declaration-template.yaml", "operational-evidence/failed-review-attempt-001.yaml", "authorization/owner-authorization.yaml"]
     for item in required:
         if not (prep / item).is_file(): errors.append(f"review preparation artifact missing: {item}")
     prompt = root / "governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md"
@@ -43,6 +43,10 @@ def errors_for(root: Path) -> list[str]:
         errors.append("review contract identity or status mismatch")
     if contract.get("immutable_evidence_package", {}).get("package_sha256") != PACKAGE_HASH or contract.get("review_identity", {}).get("execution_count_consumed") != 0:
         errors.append("review contract immutable package or execution count mismatch")
+    contract_authorization = contract.get("owner_execution_authorization", {})
+    authorization_path = "governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/authorization/owner-authorization.yaml"
+    if contract_authorization.get("authorization_id") != "GOV-AUD-AUTH-004" or contract_authorization.get("path") != authorization_path or contract_authorization.get("status") != "AUTHORIZED_NOT_YET_CONSUMED":
+        errors.append("review contract owner authorization binding mismatch")
     independence = contract.get("reviewer_independence", {})
     if set(independence.get("required_classifications", [])) != {"INDEPENDENT", "PARTIALLY_INDEPENDENT_WITH_DISCLOSED_LIMITATIONS", "NOT_INDEPENDENT", "UNVERIFIABLE"} or set(independence.get("permitted_to_proceed", [])) != {"INDEPENDENT", "PARTIALLY_INDEPENDENT_WITH_DISCLOSED_LIMITATIONS"}:
         errors.append("reviewer independence classification contract mismatch")
@@ -60,10 +64,45 @@ def errors_for(root: Path) -> list[str]:
     members = manifest.get("members", [])
     if manifest.get("member_count") != len(members) or package_hash(members) != manifest.get("input_package_sha256"):
         errors.append("review input manifest package hash mismatch")
+    member_by_role = {item.get("role"): item for item in members}
+    required_instruction_members = {
+        "ROOT_REPOSITORY_INSTRUCTIONS": "AGENTS.md",
+        "GOVERNANCE_INSTRUCTIONS": "governance/AGENTS.md",
+        "CANONICAL_OPERATING_SEMANTICS": "governance/methodology/project-operating-contract.md",
+    }
+    if any(member_by_role.get(role, {}).get("path") != path for role, path in required_instruction_members.items()):
+        errors.append("root or project instruction binding missing")
+    authorization_member = member_by_role.get("PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION", {})
+    authorization = manifest.get("owner_execution_authorization", {})
+    if any((
+        authorization.get("id") != "GOV-AUD-AUTH-004",
+        authorization.get("path") != authorization_path,
+        authorization_member.get("path") != authorization_path,
+        authorization.get("sha256") != authorization_member.get("sha256"),
+    )):
+        errors.append("review input manifest owner authorization binding mismatch")
     for item in members:
         path = root / item.get("path", "")
         if not path.is_file() or sha256(path) != item.get("sha256"):
             errors.append(f"review input member hash mismatch: {item.get('path')}")
+    owner_authorization = load(prep / "authorization/owner-authorization.yaml").get("authorization", {})
+    core_members = [item for item in members if item.get("role") != "PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION"]
+    if any((
+        owner_authorization.get("authorization_id") != "GOV-AUD-AUTH-004",
+        owner_authorization.get("status") != "AUTHORIZED_NOT_YET_CONSUMED",
+        owner_authorization.get("authorized_review") != "GOV-AUD-001-P03-AR-001",
+        owner_authorization.get("reviewed_run") != "GOV-AUD-001-P03-R1",
+        owner_authorization.get("reviewed_evidence_package", {}).get("package_sha256") != PACKAGE_HASH,
+        owner_authorization.get("contract", {}).get("path") != str(PREP_REL / "contract.yaml"),
+        owner_authorization.get("contract", {}).get("sha256") != sha256(prep / "contract.yaml"),
+        owner_authorization.get("prompt", {}).get("path") != "governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md",
+        owner_authorization.get("prompt", {}).get("sha256") != sha256(prompt),
+        owner_authorization.get("input_manifest", {}).get("path") != str(PREP_REL / "input/input-manifest.yaml"),
+        owner_authorization.get("input_manifest", {}).get("formal_input_package_sha256") != package_hash(core_members),
+        manifest.get("formal_input_package_sha256") != package_hash(core_members),
+        authorization_member.get("sha256") != sha256(prep / "authorization/owner-authorization.yaml"),
+    )):
+        errors.append("owner review execution authorization binding mismatch")
     spec = load(prep / "output-artifact-specification.yaml").get("review_output_specification", {})
     required_fields = {"review_id", "review_contract_id", "review_contract_version", "review_prompt_id", "review_prompt_version", "reviewed_run", "review_package_id", "review_package_sha256", "reviewer_model", "reviewer_mode", "independence_classification", "independence_evidence", "attacks", "material_findings", "non_blocking_observations", "result", "r2_required", "r2_scope", "files_modified", "validation", "timestamp"}
     if set(spec.get("required_fields", [])) != required_fields or set(spec.get("result_rules", {}).get("permitted", [])) != RESULTS:
@@ -77,6 +116,14 @@ def errors_for(root: Path) -> list[str]:
     package = load(prep / "manifest.yaml").get("review_execution_package", {})
     if package.get("status") != PREPARED or package.get("review_executed") is not False or package.get("review_opportunity_consumed") is not False or package.get("reviewed_package_sha256") != PACKAGE_HASH:
         errors.append("review execution package state mismatch")
+    package_authorization = package.get("owner_execution_authorization", {})
+    if any((
+        package_authorization.get("id") != "GOV-AUD-AUTH-004",
+        package_authorization.get("path") != authorization_path,
+        package_authorization.get("sha256") != sha256(prep / "authorization/owner-authorization.yaml"),
+        package.get("input_manifest", {}).get("sha256") != sha256(prep / "input/input-manifest.yaml"),
+    )):
+        errors.append("review execution identity authorization binding mismatch")
     if any(package.get("authority_boundary", {}).get(key) is not False for key in ("PASS_03_accepted", "PASS_03_completed", "PASS_04_authorized_or_executed", "tooling_selected", "learning_pipeline_implemented", "GOV_7_activated", "Kernel_changed", "OD_006_resolved", "risk_accepted")):
         errors.append("review execution package authority boundary mismatch")
     text = prompt.read_text()

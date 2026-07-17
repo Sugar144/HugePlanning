@@ -168,7 +168,9 @@ prompt_registry:
       contract_version: 0.1.0
       path: governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md
       exact_text_sha256: babbf21a06fe6fde08be087bd2985c3e51869756a8835526d2fd20e8f172c9e9
-      review_execution_authorized: false
+      review_execution_authorization_id: GOV-AUD-AUTH-004
+      review_execution_authorization_path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/authorization/owner-authorization.yaml
+      review_execution_authorized: true
       review_executed: false
       pass_03_accepted: false
       pass_04_authorized_or_executed: false
