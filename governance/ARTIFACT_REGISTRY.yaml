@@ -3842,3 +3842,35 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Uses immutable package GOV-AUD-P03-REVIEW-PACKAGE-001 without modifying it.]
+
+  - id: GOV-AUD-P03-AR-DIAG-001
+    title: PASS-03 Invalid or Incomplete Adversarial Review Diagnostic
+    version: 0.1.0
+    status: CUSTODIED_INVALID_OR_INCOMPLETE_NO_STATE_ADVANCEMENT
+    authority: diagnostic_custody_only_no_PASS_03_or_PASS_04_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output/pass-03-adversarial-review-result.yaml
+    source_path: null
+    source_sha256: 1868202d225241880e5990803e5faf0958fcf7ac7a30cba90d7f0f05deb3c4ca
+    produced_by: INVALID_OR_INCOMPLETE_REVIEW_ATTEMPT
+    artifact_type: audit_adversarial_review_diagnostic
+    language: English
+    canonicality: immutable_invalid_review_diagnostic
+    supersedes: null
+    aliases: []
+    notes: [Preserves PASS_03_REVIEW_INVALID_OR_INCOMPLETE as historical evidence; does not consume the valid review opportunity, advance or accept PASS-03, authorize PASS-04, or authorize R2.]
+
+  - id: HP-PROMPT-038
+    title: Correct PASS-03 Adversarial Review Output Lifecycle
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_lifecycle_correction_commit_and_push
+    path: governance/prompts/orchestration/HP-PROMPT-038-correct-pass-03-adversarial-review-output-lifecycle-v0.1.0.md
+    source_path: null
+    source_sha256: 229dbf10b3fb42f471f34d6ab50a5823edccfccad3dd5b26968317c89adba6a1
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_correction_authorization_evidence
+    supersedes: null
+    aliases: []
+    notes: [Corrects only formal review-output lifecycle validation; does not execute a review, change PASS-03 outputs or state, create R2, or authorize PASS-04.]

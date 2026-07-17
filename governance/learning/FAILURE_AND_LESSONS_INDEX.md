@@ -1,7 +1,7 @@
 # Failure and Lessons Index
 
 > GENERATED FILE — source of truth: `records/` plus append-only `events/`.
-> Tool version: `0.1.0`. Deterministic input digest: `22a8579053db4c496a7e598e3941ff816a77cad8336db53207918633e5063104`.
+> Tool version: `0.1.0`. Deterministic input digest: `1f69155a1d9ada24157dad50d6be9829a17d3ddf85df5231974d80c62b335376`.
 > Manual edits will be overwritten by `--apply` or rejected as generated-view drift.
 
 | ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |
@@ -31,3 +31,4 @@
 | HP-FAIL-023 | 2026-07-16 | PASS-02 execution prompt initially reused the assigned HP-PROMPT-028 identity | OWNER_CORRECTION | MEDIUM | VALIDATED | PASS-02 prompt identity and prospective custody | GOV-7 audit PASS-02 startup/GOV-AUD-001-P02-R1 | no | PARTIAL | Material prompt identities must be collision-checked against the latest canonical registries immediately before custody; a correct startup stop preserves authority and creates no execution evidence. |
 | HP-FAIL-024 | 2026-07-16 | Audit findings and reviews lacked explicit support, causality, review-type and materiality contracts | OWNER_CORRECTION | HIGH | VALIDATED | GOV-AUD-001 finding and review methodology | GOV-7 audit methodology correction/GOV-AUD-001 | no | PARTIAL | Audit conclusions are trustworthy only when support basis, review method, causal layer and materiality are explicit before disposition; durable identity and instruction-conflict controls prevent process evidence from silently expanding authority.  |
 | HP-FAIL-025 | 2026-07-17 | PASS-02 validator conflated PASS-03 preparation lifecycle with execution authority | PROCESS_DEFECT | MEDIUM | VALIDATED | PASS-02 architecture validator lifecycle boundary | GOV-AUD-001 PASS-03 preparation/GOV-AUD-001-P02-R1 | no | PARTIAL | Lifecycle preparation states and execution authority must be represented and validated as separate facts. |
+| HP-FAIL-026 | 2026-07-17 | Audit scaffold rejected the canonical PASS-03 review output path | TOOLING_GAP | HIGH | VALIDATED | Audit scaffold formal review-output lifecycle validation | GOV-AUD-001 PASS-03 adversarial review/GOV-AUD-001-P03-AR-001 | no | PARTIAL | Output-directory names cannot establish execution or invalidity; exact registration, hashes, result semantics and authority state must be evaluated separately. |

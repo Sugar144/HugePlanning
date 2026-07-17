@@ -1,0 +1,101 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-026
+  date: '2026-07-17'
+  recorded_on: '2026-07-17'
+  title: Audit scaffold rejected the canonical PASS-03 review output path
+  context:
+    phase: GOV-AUD-001 PASS-03 adversarial review
+    run: GOV-AUD-001-P03-AR-001
+    component: Audit scaffold formal review-output lifecycle validation
+    branch: governance/kernel-designer-revision-v0.1
+    commit: 93c0333a2a60ac45c4444defd3f7447502b7e8b6
+    environment: Codex deterministic governance-suite lifecycle correction
+  primary_classification: TOOLING_GAP
+  classification:
+  - TOOLING_GAP
+  - PROCESS_DEFECT
+  severity: HIGH
+  status: CORRECTED
+  expected_behavior: The scaffold rejects empty or unauthorized placeholder output
+    directories while permitting exact registered and hash-bound formal review results
+    and invalid review diagnostics that do not advance PASS-03.
+  observed_behavior: The planning-state placeholder scan rejected every directory
+    named output, including the contract-declared PASS-03 review result path containing
+    the preserved PASS_03_REVIEW_INVALID_OR_INCOMPLETE diagnostic.
+  impact: The complete governance suite produced a false failure after honest materialization
+    of the required review diagnostic, while the review contract simultaneously required
+    that exact path.
+  detection_method: The failed review attempt recorded governance/tests/test_gov_7_audit_scaffold.py::test_coherent_planning_only_state_is_valid
+    rejecting review-executions/GOV-AUD-001-P03-AR-001/output.
+  root_cause:
+    immediate: Placeholder detection classified directories only by the terminal name
+      output and did not examine contents, artifact registration or exact hashes.
+    systemic: Audit lifecycle validation lacked a generic distinction between placeholder
+      output, registered formal review evidence and invalid review diagnostics with
+      no state advancement.
+    contributing_factors:
+    - The planning-only replay helper retained later review-execution custody, so
+      materializing the contract-declared output exposed the name-only rule.
+    - Earlier formal review-result precedents were registered by path and hash but
+      the placeholder scan did not consult that registry evidence.
+  response:
+    containment: Preserve the existing invalid review diagnostic byte-for-byte, keep
+      PASS-03 pending review and disposition, and keep PASS-04 unauthorized and unexecuted.
+    correction: Classify review output directories using exact registered files and
+      hashes; separately validate the invalid PASS-03 diagnostic identity and no-advancement
+      semantics.
+    prevention:
+    - Test empty and unregistered review outputs as forbidden placeholders.
+    - Test registered valid formal results and registered invalid diagnostics as distinct
+      lifecycle classes.
+    - Retain negative tests for premature PASS-03 acceptance, PASS-04 authority and
+      invalid-review state advancement.
+    accountable_owner: Project Owner
+    validation_required:
+    - Run focused audit-scaffold and PASS-03 adversarial-review preparation tests.
+    - Run the complete governance suite and git diff --check.
+  learning:
+    reusable_lesson: Output-directory names cannot establish execution or invalidity;
+      exact registration, hashes, result semantics and authority state must be evaluated
+      separately.
+    candidate_system_changes:
+    - VALIDATION
+    - TEST
+    - DOCUMENTATION
+    applicable_future_phases:
+    - All formal review and evaluation lifecycles
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One deterministic full-suite failure and one bounded lifecycle correction
+      are observable; time, tokens and cost are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tools/validate_audit_scaffold.py
+    anchor: classify_review_output_directory
+    sha256: null
+    availability: PRESERVED
+    note: Corrected generic placeholder and review-result classification.
+  - type: REPOSITORY_PATH
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output/pass-03-adversarial-review-result.yaml
+    anchor: PASS_03_REVIEW_INVALID_OR_INCOMPLETE
+    sha256: 1868202d225241880e5990803e5faf0958fcf7ac7a30cba90d7f0f05deb3c4ca
+    availability: PRESERVED
+    note: Historical invalid or incomplete review diagnostic preserved unchanged.
+  related_records:
+  - HP-FAIL-021
+  - HP-FAIL-025
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

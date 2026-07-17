@@ -51,6 +51,9 @@ PASS_03_RUN_ID = "GOV-AUD-001-P03-R1"
 PASS_03_RUN_REL = AUDIT_REL / "runs" / PASS_03_RUN_ID
 PASS_03_STATUS = "EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION"
 PASS_03_AUDIT_STATUS = "IN_PROGRESS_PASS_03_EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION"
+EMPTY_OR_UNAUTHORIZED_PLACEHOLDER = "EMPTY_OR_UNAUTHORIZED_PLACEHOLDER"
+REGISTERED_FORMAL_REVIEW_RESULT = "REGISTERED_FORMAL_REVIEW_RESULT"
+INVALID_OR_INCOMPLETE_REVIEW_DIAGNOSTIC = "INVALID_OR_INCOMPLETE_REVIEW_DIAGNOSTIC"
 ACCEPTANCE_REL = AUDIT_REL / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"
 METHODOLOGY_ACCEPTANCE_REL = AUDIT_REL / "decisions/GOV-AUD-DECISION-002-methodology-acceptance-v0.1.0.yaml"
 OUTPUT_HASHES = {
@@ -125,6 +128,39 @@ VERSIONED_CONTRACTS = {
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _registered_formal_review_artifact(path: Path, root: Path, artifacts: list[dict]) -> dict | None:
+    relative = path.relative_to(root).as_posix()
+    digest = sha256(path)
+    for artifact in artifacts:
+        artifact_type = str(artifact.get("artifact_type", "")).lower()
+        canonicality = str(artifact.get("canonicality", "")).lower()
+        if "review" not in artifact_type or "review" not in canonicality or "not_review_result" in canonicality:
+            continue
+        if relative not in {artifact.get("path"), artifact.get("source_path")}:
+            continue
+        if artifact.get("source_sha256") == digest:
+            return artifact
+    return None
+
+
+def classify_review_output_directory(path: Path, root: Path, artifacts: list[dict]) -> str:
+    """Classify materialized review output without granting lifecycle authority."""
+    files = sorted(item for item in path.rglob("*") if item.is_file())
+    if not files:
+        return EMPTY_OR_UNAUTHORIZED_PLACEHOLDER
+    registrations = [_registered_formal_review_artifact(item, root, artifacts) for item in files]
+    if any(item is None for item in registrations):
+        return EMPTY_OR_UNAUTHORIZED_PLACEHOLDER
+    if any(
+        "invalid" in str(item.get("status", "")).lower()
+        or "review_diagnostic" in str(item.get("canonicality", "")).lower()
+        for item in registrations
+        if item is not None
+    ):
+        return INVALID_OR_INCOMPLETE_REVIEW_DIAGNOSTIC
+    return REGISTERED_FORMAL_REVIEW_RESULT
 
 
 def frontmatter(path: Path) -> tuple[dict, str]:
@@ -1012,14 +1048,19 @@ def validate(root: Path) -> dict:
     expected_decision_members = sorted(["README.md"] + (["GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"] if accepted else []) + (["GOV-AUD-DECISION-002-methodology-acceptance-v0.1.0.yaml"] if methodology_acceptance.is_file() else []) + (["GOV-AUD-DECISION-003-pass-02-checkpoint-a-approval-v0.1.0.yaml"] if pass_03_ready else []))
     if decision_members != expected_decision_members:
         errors.append("unexpected decision artifacts detected")
-    forbidden_names = {"output", "outputs", "evaluation", "telemetry", "projection", "graph"}
-    if passes_executed == 0:
-        for path in audit.rglob("*"):
-            if path.is_dir() and path.name.lower() in forbidden_names:
-                errors.append(f"forbidden placeholder implementation/output directory: {path.relative_to(audit)}")
-
     global_registry = load(root / "governance/ARTIFACT_REGISTRY.yaml")
     artifacts = global_registry.get("artifacts", [])
+    forbidden_names = {"output", "outputs", "evaluation", "telemetry", "projection", "graph"}
+    for path in audit.rglob("*"):
+        if not path.is_dir() or path.name.lower() not in forbidden_names:
+            continue
+        relative = path.relative_to(audit)
+        if "review-executions" in relative.parts:
+            if classify_review_output_directory(path, root, artifacts) == EMPTY_OR_UNAUTHORIZED_PLACEHOLDER:
+                errors.append(f"forbidden placeholder implementation/output directory: {relative}")
+        elif passes_executed == 0:
+            errors.append(f"forbidden placeholder implementation/output directory: {relative}")
+
     artifact_ids = [item.get("id") for item in artifacts]
     if len(artifact_ids) != len(set(artifact_ids)):
         errors.append("global artifact registry contains duplicate IDs")

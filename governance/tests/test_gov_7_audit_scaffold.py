@@ -17,6 +17,10 @@ from governance.tools.validate_audit_scaffold import (
     OUTPUT_HASHES,
     PASS_IDS,
     PROMPT_HASH,
+    EMPTY_OR_UNAUTHORIZED_PLACEHOLDER,
+    INVALID_OR_INCOMPLETE_REVIEW_DIAGNOSTIC,
+    REGISTERED_FORMAL_REVIEW_RESULT,
+    classify_review_output_directory,
     validate,
 )
 
@@ -27,6 +31,8 @@ AUDIT = ROOT / AUDIT_REL
 RUN_REL = AUDIT_REL / "runs/GOV-AUD-001-P01-R1"
 P02_REL = AUDIT_REL / "runs/GOV-AUD-001-P02-R1"
 P03_REL = AUDIT_REL / "runs/GOV-AUD-001-P03-R1"
+P03_REVIEW_OUTPUT_REL = AUDIT_REL / "review-executions/GOV-AUD-001-P03-AR-001/output"
+REGISTERED_FORMAL_REVIEW_OUTPUT_REL = AUDIT_REL / "runs/GOV-AUD-001-P01-R1/evaluation/GOV-AUD-001-P01-C2-IER-001/output"
 C2_REL = RUN_REL / "corrections/GOV-AUD-001-P01-R1-C2"
 C3_REL = RUN_REL / "corrections/GOV-AUD-001-P01-R1-C3"
 ACCEPTANCE_REL = AUDIT_REL / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"
@@ -238,6 +244,28 @@ def test_coherent_planning_only_state_is_valid(tmp_path: Path) -> None:
     root = isolated(tmp_path)
     planning_only(root)
     assert validate(root) == {"result": "VALID", "diagnostics": []}
+
+
+def test_registered_invalid_review_diagnostic_is_not_a_placeholder() -> None:
+    artifacts = yaml.safe_load((ROOT / "governance/ARTIFACT_REGISTRY.yaml").read_text())["artifacts"]
+    assert classify_review_output_directory(ROOT / P03_REVIEW_OUTPUT_REL, ROOT, artifacts) == INVALID_OR_INCOMPLETE_REVIEW_DIAGNOSTIC
+
+
+def test_rejects_empty_or_unregistered_review_output(tmp_path: Path) -> None:
+    root = isolated(tmp_path)
+    empty = root / AUDIT_REL / "review-executions/SYNTHETIC-REVIEW/output"
+    empty.mkdir(parents=True)
+    artifacts = yaml.safe_load((root / "governance/ARTIFACT_REGISTRY.yaml").read_text())["artifacts"]
+    assert classify_review_output_directory(empty, root, artifacts) == EMPTY_OR_UNAUTHORIZED_PLACEHOLDER
+    assert "forbidden placeholder implementation/output directory" in diagnostics(root)
+    (empty / "unregistered-result.yaml").write_text("result: UNREGISTERED\n")
+    assert classify_review_output_directory(empty, root, artifacts) == EMPTY_OR_UNAUTHORIZED_PLACEHOLDER
+    assert "forbidden placeholder implementation/output directory" in diagnostics(root)
+
+
+def test_canonical_registered_formal_review_result_can_exist() -> None:
+    artifacts = yaml.safe_load((ROOT / "governance/ARTIFACT_REGISTRY.yaml").read_text())["artifacts"]
+    assert classify_review_output_directory(ROOT / REGISTERED_FORMAL_REVIEW_OUTPUT_REL, ROOT, artifacts) == REGISTERED_FORMAL_REVIEW_RESULT
 
 
 def test_exact_prompt_hashes_and_substantive_output_hashes() -> None:

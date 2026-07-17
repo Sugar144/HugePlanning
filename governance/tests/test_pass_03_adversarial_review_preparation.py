@@ -2,7 +2,7 @@ from pathlib import Path
 import shutil
 import yaml
 
-from governance.tools.validate_pass_03_review_preparation import PREP_REL, validate
+from governance.tools.validate_pass_03_review_preparation import PREP_REL, RESULT_REL, validate
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -19,6 +19,14 @@ def diagnostics(root: Path) -> str:
 
 def test_valid_independent_review_package() -> None:
     assert validate(ROOT) == {"result": "VALID", "diagnostics": []}
+
+def test_invalid_review_diagnostic_preserves_pass_03_state() -> None:
+    result = yaml.safe_load((ROOT / RESULT_REL).read_text())["pass_03_adversarial_review"]
+    package = yaml.safe_load((ROOT / PREP_REL / "manifest.yaml").read_text())["review_execution_package"]
+    assert result["result"] == "PASS_03_REVIEW_INVALID_OR_INCOMPLETE"
+    assert result["r2_required"] is False
+    assert package["review_executed"] is False
+    assert package["review_opportunity_consumed"] is False
 
 def test_rejects_missing_review_prompt(tmp_path: Path) -> None:
     root = isolated(tmp_path); (root / "governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md").unlink()
@@ -48,6 +56,16 @@ def test_rejects_premature_pass_04_authority(tmp_path: Path) -> None:
     root = isolated(tmp_path); path = root / PREP_REL / "manifest.yaml"
     rewrite(path, lambda d: d["review_execution_package"]["authority_boundary"].update(PASS_04_authorized_or_executed=True))
     assert "authority boundary" in diagnostics(root)
+
+def test_rejects_premature_pass_03_acceptance(tmp_path: Path) -> None:
+    root = isolated(tmp_path); path = root / PREP_REL / "manifest.yaml"
+    rewrite(path, lambda d: d["review_execution_package"]["authority_boundary"].update(PASS_03_accepted=True))
+    assert "authority boundary" in diagnostics(root)
+
+def test_rejects_invalid_diagnostic_state_advancement(tmp_path: Path) -> None:
+    root = isolated(tmp_path); path = root / RESULT_REL
+    rewrite(path, lambda d: d["pass_03_adversarial_review"].update(result="PASS_03_CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION"))
+    assert "invalid review diagnostic advanced PASS-03 lifecycle" in diagnostics(root)
 
 def test_rejects_invalid_state_advancement_after_incomplete_review(tmp_path: Path) -> None:
     root = isolated(tmp_path); path = root / PREP_REL / "contract.yaml"

@@ -20,6 +20,7 @@ PENDING = "EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT
 PREPARED = "PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION"
 RESULTS = {"PASS_03_CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION", "PASS_03_R2_REQUIRED", "PASS_03_REVIEW_INVALID_OR_INCOMPLETE"}
 ATTACK_FIELDS = {"attack_id", "attack_dimension", "target_claim_or_assumption", "attack_method", "counterexample_or_failure_scenario", "evidence_examined", "result", "impact"}
+RESULT_REL = PREP_REL / "output/pass-03-adversarial-review-result.yaml"
 
 
 def errors_for(root: Path) -> list[str]:
@@ -81,6 +82,28 @@ def errors_for(root: Path) -> list[str]:
     text = prompt.read_text()
     for required_text in ("GOV-AUD-001-P03-AR-001", "GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT/0.1.0", PACKAGE_HASH, "PASS_03_REVIEW_INVALID_OR_INCOMPLETE", "Do not modify the reviewed run"):
         if required_text not in text: errors.append("instantiated review prompt content mismatch")
+    result_path = root / RESULT_REL
+    if result_path.is_file():
+        result = load(result_path).get("pass_03_adversarial_review", {})
+        if set(result) != required_fields:
+            errors.append("materialized review diagnostic field mismatch")
+        if any((
+            result.get("review_id") != "GOV-AUD-001-P03-AR-001",
+            result.get("review_contract_id") != "GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT",
+            str(result.get("review_contract_version")) != "0.1.0",
+            result.get("reviewed_run") != "GOV-AUD-001-P03-R1",
+            result.get("review_package_id") != "GOV-AUD-P03-REVIEW-PACKAGE-001",
+            result.get("review_package_sha256") != PACKAGE_HASH,
+        )):
+            errors.append("materialized review diagnostic identity mismatch")
+        if any((
+            result.get("result") != "PASS_03_REVIEW_INVALID_OR_INCOMPLETE",
+            result.get("r2_required") is not False,
+            result.get("r2_scope") != "NOT_APPLICABLE_INVALID_REVIEW_DOES_NOT_AUTHORIZE_R2",
+            package.get("review_executed") is not False,
+            package.get("review_opportunity_consumed") is not False,
+        )):
+            errors.append("invalid review diagnostic advanced PASS-03 lifecycle")
     return errors
 
 
