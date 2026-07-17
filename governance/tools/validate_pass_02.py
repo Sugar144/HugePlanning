@@ -56,6 +56,10 @@ QUERY_COVERAGE = {
     "CONTROL_SUPERSESSION_IMPACT",
     "INDEPENDENCE_CHAIN_AUDIT",
 }
+PASS_03_PREPARATION_STATES = {
+    "AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION",
+    "PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION",
+}
 CONTEXT_FIELDS = {
     "context_id",
     "purpose",
@@ -426,8 +430,18 @@ def validate(root: Path) -> dict[str, Any]:
         errors.append("PASS-02 terminal lifecycle status mismatch")
     if sequence.get("CHECKPOINT-A") != "APPROVED_COMPLETED":
         errors.append("CHECKPOINT-A completed or changed")
-    if sequence.get("PASS-03") != "AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION":
+    pass_03_state = sequence.get("PASS-03")
+    if pass_03_state not in PASS_03_PREPARATION_STATES:
         errors.append("PASS-03 executed or authorized")
+    if any(
+        (
+            status.get("pass_03_preparation_authorized") is not True,
+            status.get("pass_03_preparation_status") != pass_03_state,
+            status.get("pass_03_execution_authorized") is not False,
+            status.get("pass_03_executed") is not False,
+        )
+    ):
+        errors.append("PASS-03 execution authority or lifecycle mismatch")
     if any(
         (
             plan.get("passes_executed") != 2,

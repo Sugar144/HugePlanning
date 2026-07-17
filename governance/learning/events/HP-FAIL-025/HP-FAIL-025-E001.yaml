@@ -1,0 +1,30 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-025-E001
+  record_id: HP-FAIL-025
+  date: '2026-07-17'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The PASS-02 lifecycle validator correction passed focused, PASS-03 lifecycle
+    and complete governance-suite validation.
+  rationale: The validator accepts both preparation-only states, rejects execution
+    authority and premature execution, and the complete governance suite passed with
+    199 tests.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_pass_02_architecture.py
+    anchor: PASS-03 lifecycle tests
+    sha256: null
+    availability: PRESERVED
+    note: Focused regression coverage for allowed preparation states and disallowed
+      execution progression.
+  - type: VALIDATION_RECORD
+    locator: governance/tools/validate_pass_02.py
+    anchor: validator result VALID
+    sha256: null
+    availability: PRESERVED
+    note: Deterministic validator returned zero diagnostics.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-034-fix-pass-02-pass-03-preparation-lifecycle-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

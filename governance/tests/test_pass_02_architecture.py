@@ -122,7 +122,38 @@ def test_rejects_bound_input_hash_drift(tmp_path: Path) -> None:
     assert "bound input hash mismatch" in diagnostics(root)
 
 
-def test_rejects_checkpoint_or_pass_03_progression(tmp_path: Path) -> None:
+def test_allows_pass_03_preparation_authority(tmp_path: Path) -> None:
+    root = isolated(tmp_path)
+    plan_path = root / "governance/audits/GOV-AUD-001-gov7-enablement/01-audit-plan.yaml"
+    status_path = root / "governance/audits/GOV-AUD-001-gov7-enablement/02-audit-status.yaml"
+
+    rewrite_yaml(
+        plan_path,
+        lambda doc: next(item for item in doc["audit_program"]["sequence"] if item["id"] == "PASS-03").update(
+            status="AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION"
+        ),
+    )
+    rewrite_yaml(
+        status_path,
+        lambda doc: doc["audit"].update(
+            pass_03_preparation_status="AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION"
+        ),
+    )
+    assert validate(root) == {"result": "VALID", "diagnostics": []}
+
+
+def test_allows_pass_03_prepared_pending_execution_authorization() -> None:
+    assert validate(ROOT) == {"result": "VALID", "diagnostics": []}
+
+
+def test_rejects_pass_03_execution_authority_without_lifecycle_authority(tmp_path: Path) -> None:
+    root = isolated(tmp_path)
+    path = root / "governance/audits/GOV-AUD-001-gov7-enablement/02-audit-status.yaml"
+    rewrite_yaml(path, lambda doc: doc["audit"].update(pass_03_execution_authorized=True))
+    assert "PASS-03 execution authority or lifecycle mismatch" in diagnostics(root)
+
+
+def test_rejects_checkpoint_or_premature_pass_03_execution(tmp_path: Path) -> None:
     root = isolated(tmp_path)
     path = root / "governance/audits/GOV-AUD-001-gov7-enablement/01-audit-plan.yaml"
 
