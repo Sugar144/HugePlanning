@@ -1,0 +1,86 @@
+observable_event_requirements:
+  artifact_id: GOV-AUD-P03-OUT-001
+  version: 0.1.0
+  status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  statement_label: REQUIREMENT
+  authority_boundary:
+    repository_evidence_canonical: true
+    operational_trace_authoritative: false
+    hidden_chain_of_thought_capture: PROHIBITED
+    implementation_selected: false
+  evidence_links:
+    - governance/methodology/METHODOLOGY_BACKLOG.md#hp-mprop-007--execution-insight-capture-and-learning-promotion-pipeline
+    - governance/methodology/project-operating-contract.md
+    - governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/contract.yaml
+    - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/output/04-corrected-pass-01-findings-and-handoff.md
+  availability_classes:
+    REQUIRED: Field must exist; its value may be an explicit unavailable marker.
+    OPTIONAL: Field is collected only when observable, proportionate and permitted.
+    DERIVED: Field is reproducibly computed from referenced observable fields and declares its derivation.
+    UNAVAILABLE: Source did not expose a reliable value; no inference or substitute value is allowed.
+  event_classes:
+    - RUN_LIFECYCLE
+    - SESSION_LIFECYCLE
+    - VISIBLE_MODEL_UPDATE
+    - TOOL_INVOCATION
+    - COMMAND_EXECUTION
+    - VALIDATION_RESULT
+    - REPOSITORY_CHANGE
+    - RETRY_OR_CORRECTION
+    - OWNER_INTERVENTION
+    - OUTPUT_MATERIALIZATION
+    - STOP_OR_TERMINATION
+    - RESOURCE_MEASUREMENT
+  observable_fields:
+    - {field: event_id, availability: REQUIRED, type: STABLE_UNIQUE_ID, source: recorder, purpose: deduplication_and_ordering}
+    - {field: event_schema_version, availability: REQUIRED, type: SEMVER, source: recorder, purpose: interpretation_and_migration}
+    - {field: event_time, availability: REQUIRED, type: TIMESTAMP_OR_UNAVAILABLE, source: recorder, purpose: ordering_and_duration, unavailable_marker_allowed: true}
+    - {field: run_id, availability: REQUIRED, type: STRING_OR_UNAVAILABLE, source: execution_contract, purpose: work_unit_correlation, unavailable_marker_allowed: true}
+    - {field: session_id, availability: REQUIRED, type: STRING_OR_UNAVAILABLE, source: execution_surface, purpose: resume_and_session_correlation, unavailable_marker_allowed: true}
+    - {field: parent_event_id, availability: OPTIONAL, type: ID, source: recorder, purpose: causal_grouping}
+    - {field: role, availability: REQUIRED, type: STRING_OR_UNAVAILABLE, source: execution_contract, purpose: authority_and_task_context, unavailable_marker_allowed: true}
+    - {field: execution_mode, availability: REQUIRED, type: STRING_OR_UNAVAILABLE, source: execution_contract, purpose: mode_specific_evaluation, unavailable_marker_allowed: true}
+    - {field: prompt_id, availability: REQUIRED, type: STRING_OR_UNAVAILABLE, source: prompt_custody, purpose: exact_prompt_identity, unavailable_marker_allowed: true}
+    - {field: prompt_version, availability: REQUIRED, type: SEMVER_OR_UNAVAILABLE, source: prompt_custody, purpose: version_binding, unavailable_marker_allowed: true}
+    - {field: prompt_path, availability: REQUIRED, type: REPOSITORY_PATH_OR_UNAVAILABLE, source: prompt_custody, purpose: canonical_lookup, unavailable_marker_allowed: true}
+    - {field: prompt_sha256, availability: REQUIRED, type: SHA256_OR_UNAVAILABLE, source: deterministic_hash, purpose: byte_identity, unavailable_marker_allowed: true}
+    - {field: input_packages, availability: REQUIRED, type: LIST_OF_ID_PATH_SHA256_OR_UNAVAILABLE, source: input_manifest, purpose: evidence_reproducibility, unavailable_marker_allowed: true}
+    - {field: model_identity, availability: REQUIRED, type: STRING_OR_UNAVAILABLE, source: execution_surface, purpose: applicability_analysis, unavailable_marker_allowed: true}
+    - {field: model_version, availability: OPTIONAL, type: STRING, source: execution_surface, purpose: drift_analysis}
+    - {field: reasoning_mode, availability: REQUIRED, type: DECLARED_MODE_OR_UNAVAILABLE, source: execution_surface, purpose: execution_context_not_reasoning_content, unavailable_marker_allowed: true}
+    - {field: visible_model_update, availability: OPTIONAL, type: OBSERVABLE_TEXT_REFERENCE, source: user_visible_output, purpose: stated_progress_hypothesis_or_conclusion, content_limit: visible_emitted_text_only}
+    - {field: tool_call, availability: OPTIONAL, type: TOOL_NAME_AND_SANITIZED_ARGUMENT_SUMMARY, source: execution_surface, purpose: action_trace}
+    - {field: tool_result, availability: OPTIONAL, type: STATUS_AND_SANITIZED_RESULT_REFERENCE, source: execution_surface, purpose: outcome_trace}
+    - {field: command, availability: OPTIONAL, type: SANITIZED_COMMAND_AND_WORKDIR, source: execution_surface, purpose: reproducibility_and_effect_analysis}
+    - {field: command_result, availability: OPTIONAL, type: EXIT_STATUS_AND_SANITIZED_OUTPUT_REFERENCE, source: execution_surface, purpose: validation_and_failure_analysis}
+    - {field: validation_result, availability: OPTIONAL, type: VALIDATOR_ID_COMMAND_RESULT_DIAGNOSTICS, source: validator, purpose: conformance_evidence}
+    - {field: changed_files, availability: REQUIRED, type: PATH_LIST_OR_UNAVAILABLE, source: repository_diff, purpose: scope_and_effect_analysis, unavailable_marker_allowed: true}
+    - {field: retry_count, availability: REQUIRED, type: INTEGER_OR_UNAVAILABLE, source: recorder, purpose: correction_burden, unavailable_marker_allowed: true}
+    - {field: correction_cycle_count, availability: REQUIRED, type: INTEGER_OR_UNAVAILABLE, source: run_events, purpose: rework_burden, unavailable_marker_allowed: true}
+    - {field: owner_interventions, availability: REQUIRED, type: LIST_OF_TYPED_REFERENCES_OR_UNAVAILABLE, source: preserved_owner_messages_or_decisions, purpose: owner_burden_and_correction_analysis, unavailable_marker_allowed: true}
+    - {field: stop_reason, availability: REQUIRED, type: CONTROLLED_VALUE_AND_DETAIL_OR_UNAVAILABLE, source: executor_or_controller, purpose: terminal_state_interpretation, unavailable_marker_allowed: true}
+    - {field: output_inventory, availability: REQUIRED, type: LIST_OF_ID_PATH_HASH_STATUS_OR_UNAVAILABLE, source: output_manifest, purpose: custody_and_completeness, unavailable_marker_allowed: true}
+    - {field: duration, availability: REQUIRED, type: DURATION_OR_UNAVAILABLE, source: trusted_clock, purpose: execution_burden, unavailable_marker_allowed: true}
+    - {field: input_tokens, availability: REQUIRED, type: INTEGER_OR_UNAVAILABLE, source: provider_metering, purpose: token_burden, unavailable_marker_allowed: true}
+    - {field: output_tokens, availability: REQUIRED, type: INTEGER_OR_UNAVAILABLE, source: provider_metering, purpose: token_burden, unavailable_marker_allowed: true}
+    - {field: monetary_cost, availability: REQUIRED, type: CURRENCY_VALUE_OR_UNAVAILABLE, source: trusted_billing_data, purpose: cost_burden, unavailable_marker_allowed: true}
+    - {field: total_duration, availability: DERIVED, type: DURATION_OR_UNAVAILABLE, source: valid_start_and_stop_events, purpose: work_unit_burden}
+  unavailable_data_markers:
+    required_shape: {status: UNAVAILABLE, reason_code: CONTROLLED_REASON, source_checked: STRING, limitation: STRING}
+    reason_codes: [NOT_EXPOSED, NOT_CAPTURED, REDACTED, COLLECTION_DISABLED, NOT_APPLICABLE, SOURCE_UNTRUSTED, SOURCE_MISSING]
+    rules:
+      - A required field with no reliable value uses the marker; it is never omitted or inferred.
+      - Zero, empty string and false are real values and must not stand for unavailable.
+      - Derived fields are unavailable when any required source is unavailable or invalid.
+  exclusions:
+    - hidden chain-of-thought, internal reasoning tokens, latent activations or private scratchpad
+    - secrets, credentials or full sensitive payloads when a reference or digest suffices
+    - indiscriminate transcript, command-output or tool-payload capture
+    - inferred timestamps, token counts, cost, Owner time or model identity
+  minimum_reliability_controls:
+    - schema version and stable event identity
+    - ordering semantics and duplicate detection
+    - source attribution and redaction state
+    - immutable or append-only preservation for formal evidence
+    - explicit capture-disabled and partial-capture intervals
+    - repository reconciliation before any evidentiary conclusion

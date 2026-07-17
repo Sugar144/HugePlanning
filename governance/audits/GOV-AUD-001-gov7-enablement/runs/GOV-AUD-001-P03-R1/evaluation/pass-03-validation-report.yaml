@@ -1,0 +1,60 @@
+validation_report:
+  record_id: GOV-AUD-P03-VAL-001
+  version: 0.1.0
+  audit_id: GOV-AUD-001
+  pass_id: PASS-03
+  run_id: GOV-AUD-001-P03-R1
+  status: VALIDATED
+  result: VALID
+  evidence_class: SOURCE_RUN_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_ADVERSARIAL_REVIEW
+  contract: GOV-AUD-001-PASS-03-CONTRACT/0.2.0
+  input_manifest: GOV-AUD-001-P03-R1-INPUT-001/0.1.0
+  source_output_count: 9
+  checks:
+    - {check: artifact_presence_and_yaml_markdown_syntax, result: PASS}
+    - {check: reference_checksum_and_input_identity, result: PASS}
+    - {check: lifecycle_state_transition_and_verification_states, result: PASS}
+    - {check: evidence_class_distinction_and_repository_canonicality, result: PASS}
+    - {check: authority_boundaries_and_no_self_acceptance, result: PASS}
+    - {check: hidden_chain_of_thought_prohibition, result: PASS}
+    - {check: tooling_neutrality_and_no_PASS_04_execution, result: PASS}
+    - {check: selective_retrieval_and_no_global_injection, result: PASS}
+    - {check: privacy_retention_deletion_rollback_disablement_and_manual_fallback, result: PASS}
+    - {check: effectiveness_burden_metrics_and_anti_gaming, result: PASS}
+    - {check: prompt_authorization_manifest_and_review_package_custody, result: PASS}
+    - {check: audit_scaffold_and_governance_state_reconciliation, result: PASS}
+    - {check: focused_PASS_03_tests, result: PASS}
+    - {check: complete_governance_suite, result: PASS}
+    - {check: git_diff_check, result: PASS}
+  canonical_commands:
+    - python3 governance/tools/validate_pass_03_preparation.py
+    - python3 governance/tools/validate_pass_03_execution.py
+    - python3 governance/tools/validate_prompts.py --root .
+    - python3 governance/tools/validate_audit_scaffold.py
+    - python3 governance/tools/validate_governance_state.py
+    - python -m pytest governance/tests/test_pass_03_execution.py -q
+    - python -m pytest governance/tests -q
+    - git diff --check
+  observed_results:
+    focused_pass_03_tests: {result: PASS, passed: 9, failed: 0}
+    focused_pass_02_scaffold_and_pass_03_tests: {result: PASS, passed: 46, failed: 0}
+    complete_governance_suite: {result: PASS, passed: 208, failed: 0, workers: 4}
+    canonical_deterministic_validators: {result: PASS, diagnostics: 0}
+    git_diff_check: {result: PASS}
+  self_critique:
+    scope: BOUNDED_SOURCE_ROLE_CONTRACT_CHECK
+    issues_checked: [unsupported_authority, hidden_reasoning_capture, premature_tool_selection, excessive_collection, unverifiable_learning, invalid_transitions, global_context_injection, metric_gaming, privacy_and_deletion_gaps, owner_burden, disproportionate_bureaucracy]
+    direct_defects_remaining: NONE_IDENTIFIED_AFTER_CORRECTION
+    independent_review_performed: false
+    acceptance_or_closure_claimed: false
+  runtime_suite:
+    executed: false
+    reason: NO_RUNTIME_FACING_FILE_MODIFIED
+  authority_boundary:
+    substantive_correctness_claimed: false
+    adversarial_survival_claimed: false
+    pass_03_accepted: false
+    pass_03_completed: false
+    pass_04_authorized_or_executed: false
+    gov_7_activated: false
+    risk_accepted: false

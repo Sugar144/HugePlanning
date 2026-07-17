@@ -1,0 +1,75 @@
+privacy_retention_and_rollback_requirements:
+  artifact_id: GOV-AUD-P03-OUT-007
+  version: 0.1.0
+  status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  statement_label: REQUIREMENT
+  authority_boundary:
+    creates_new_privacy_authority: false
+    makes_legal_conclusions: false
+    specialist_review_triggered_by_selected_sensitive_scope: true
+    hidden_chain_of_thought_capture: PROHIBITED
+    implementation_selected: false
+  evidence_links:
+    - governance/methodology/METHODOLOGY_BACKLOG.md#hp-mprop-007--execution-insight-capture-and-learning-promotion-pipeline
+    - governance/methodology/project-operating-contract.md
+    - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/05-controlled-self-hosting-and-trust-boundaries.md
+  data_classes:
+    - {class: PERSONAL_DATA, examples: [identifiers, communications, behavioral_or_usage_data], default: MINIMIZE_REDACT_RESTRICT, durable_learning_rule: abstract_unless_identity_is_required_and_authorized}
+    - {class: SECRETS_AND_CREDENTIALS, examples: [tokens, keys, passwords, private_endpoints], default: NEVER_CAPTURE_PAYLOAD, durable_learning_rule: record_existence_or_incident_reference_only}
+    - {class: OPERATIONAL_TELEMETRY, examples: [events, tools, commands, timing, resource_use], default: NON_AUTHORITATIVE_MINIMUM_FIELDS, durable_learning_rule: retain_only_needed_aggregates_or_references}
+    - {class: FORMAL_EVIDENCE, examples: [authorizations, prompts, manifests, outputs, validations, decisions], default: REPOSITORY_CUSTODY_UNDER_APPLICABLE_ACCESS, durable_learning_rule: preserve_identity_and_authority_boundary}
+    - {class: DURABLE_LEARNING, examples: [verified_failure, accepted_lesson, control_record], default: ABSTRACTED_PROVENANCE_LINKED, durable_learning_rule: no_raw_sensitive_payload_unless_indispensable_and_authorized}
+  minimization:
+    - Collect only fields tied to a named verification, routing, retrieval or effectiveness purpose.
+    - Prefer event type, digest, status, count or bounded excerpt over full prompt, transcript, command output or tool payload.
+    - Do not collect data merely because the execution surface exposes it.
+    - Reassess necessity before promotion or cross-run retrieval.
+  redaction:
+    required_before: [persistence, indexing, retrieval, export, review_package_creation]
+    controls: [secret_detection, personal_data_filter, path_and_payload_review, least_detail_substitution, redaction_marker_and_reason]
+    rule: Redaction preserves enough provenance to explain the limitation without retaining prohibited content.
+  access_boundaries:
+    requirements: [least_privilege, role_and_purpose_binding, source_access_not_expanded_by_derived_index, access_event_auditability, revocation]
+    failure_rule: Deny access and return a non-revealing unavailable marker.
+  retention:
+    policy_requirements: [class, purpose, owner, start_event, review_interval, expiry_or_trigger, archive_rule, deletion_or_preservation_exception, authority]
+    defaults:
+      operational_telemetry: shortest_period_needed_for_named_analysis_then_delete_or_aggregate
+      formal_evidence: preserve_under_repository_immutability_and_applicable_policy
+      durable_learning: retain_while_valid_and_useful_with_periodic_validity_review
+      secrets: no_retention
+    limitation: Exact periods require later competent policy and selected-scope evidence.
+  deletion:
+    requirements: [authorized_request_or_expiry, locate_primary_and_derived_copies, delete_or_cryptographically_render_inaccessible_where_supported, preserve_minimal_tombstone_when_audit_required, verify_completion, record_unavailable_or_exception]
+    propagation: Deletion or access revocation must reach indexes, caches, exports and retrieval packages.
+    immutable_evidence_conflict: Route to competent Owner and applicable privacy or legal specialist; do not silently erase or retain.
+  rollback:
+    requirements: [disable_capture, disable_retrieval, revoke_access, stop_promotion, restore_last_valid_control_or_manual_process, invalidate_derived_packages, record_residual_copies, verify_dependents]
+    no_claim: Rollback does not guarantee reversal of an already exported or independently retained copy; residual limitations must be explicit.
+  correction:
+    - Append corrections and supersession for immutable formal evidence.
+    - Update or withdraw mutable derived learning while preserving an audit trail.
+    - Reopen affected verification and invalidate dependent retrieval or effectiveness claims.
+  auditability:
+    required_events: [collection_policy_change, access, redaction, export, deletion, disablement, rollback, correction, retention_expiry, manual_fallback]
+    privacy_rule: Audit records must not recreate the sensitive payload they document.
+  disablement:
+    telemetry_disablement: A competent operator can disable optional capture without disabling repository evidence custody.
+    selective_disablement: Disable by source, field, data class, task, project or time interval.
+    status_marker: COLLECTION_DISABLED_WITH_SCOPE_AND_TIME
+    no_penalty_rule: Disabled or unavailable optional telemetry is not treated as executor failure.
+  manual_fallback:
+    requirements: [documented_minimum_evidence, human_recording_template, repository_reconciliation, explicit_unavailable_fields, no_hidden_reasoning_request]
+    trigger_examples: [capture_unavailable, privacy_uncertain, access_denied, retrieval_failed, rollback_in_progress]
+  export_and_portability:
+    requirements: [documented_schema, canonical_ids, provenance, verification_and_authority_state, redaction_state, portable_encoding, integrity_hash, import_validation, deletion_and_revocation_metadata]
+    exit_rule: A later solution must permit verified export without loss of canonical evidence links or authority boundaries.
+  unavailable_data_handling:
+    - Record reason, source checked, time scope and downstream limitation.
+    - Never infer sensitive or missing content.
+    - Propagate unavailable status into derived metrics and conclusions.
+  failure_safe_behavior:
+    - On uncertain sensitivity, deny persistence and use minimal manual fallback.
+    - On redaction or access-control failure, stop export and retrieval.
+    - On deletion-verification failure, mark deletion incomplete and escalate without claiming success.
+    - On trace loss, preserve repository work and declare observability unavailable; do not fabricate a trace.

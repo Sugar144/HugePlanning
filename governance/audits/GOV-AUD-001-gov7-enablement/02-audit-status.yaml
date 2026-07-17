@@ -16,9 +16,9 @@ governance_baseline:
     status: UNRESOLVED_TRIGGER_GATED
 audit:
   id: GOV-AUD-001
-  status: IN_PROGRESS_PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
-  authority: CHECKPOINT_A_PROJECT_OWNER_APPROVAL_RECORDED
-  passes_executed: 2
+  status: IN_PROGRESS_PASS_03_EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  authority: PASS_03_PROJECT_OWNER_EXECUTION_AUTHORIZATION_CONSUMED
+  passes_executed: 3
   checkpoints_completed: 1
   completed: false
   pass_01_accepted: true
@@ -35,15 +35,17 @@ audit:
   checkpoint_a_completed: true
   pass_03_preparation_authorized: true
   pass_03_preparation_status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
-  pass_03_execution_authorized: false
-  pass_03_executed: false
+  pass_03_execution_authorized: true
+  pass_03_authorization_consumed: true
+  pass_03_executed: true
+  pass_03_status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
   graph_implemented: false
   telemetry_implemented: false
   interviewer_simulation_implemented: false
   self_hosting_implemented: false
   owner_decision_inferred: false
-  last_completed_step: CHECKPOINT_A_APPROVED
-  next_action: PROJECT_OWNER_REVIEW_AND_AUTHORIZATION_OF_PASS_03_EXECUTION_DO_NOT_EXECUTE_AUTOMATICALLY
+  last_completed_step: PASS_03_EXECUTED_AND_DETERMINISTICALLY_VALIDATED
+  next_action: CONDUCT_ONE_INDEPENDENT_ADVERSARIAL_REVIEW_OF_PASS_03_USING_THE_PREPARED_IMMUTABLE_REVIEW_PACKAGE_DO_NOT_EXECUTE_PASS_04
   methodology_correction:
     protocol_id: GOV-AUD-001-METHOD-001
     version: 0.3.0
@@ -92,4 +94,21 @@ audit:
     pass_03_preparation_authorized: true
     architecture_selected: false
     implementation_authorized: false
+    gov_7_activated: false
+  pass_03_execution:
+    run_id: GOV-AUD-001-P03-R1
+    authorization_id: GOV-AUD-AUTH-003
+    prompt_id: GOV-AUD-PROMPT-031
+    catalog_prompt_id: HP-PROMPT-035
+    contract: GOV-AUD-001-PASS-03-CONTRACT/0.2.0
+    input_manifest: GOV-AUD-001-P03-R1-INPUT-001/0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    output_count: 9
+    validation_record: GOV-AUD-P03-VAL-001
+    review_package: GOV-AUD-P03-REVIEW-PACKAGE-001
+    independent_adversarial_review_completed: false
+    pass_03_accepted: false
+    pass_04_authorized_or_executed: false
+    tooling_selected: false
+    learning_pipeline_implemented: false
     gov_7_activated: false

@@ -26,6 +26,7 @@ AUDIT_REL = Path("governance/audits/GOV-AUD-001-gov7-enablement")
 AUDIT = ROOT / AUDIT_REL
 RUN_REL = AUDIT_REL / "runs/GOV-AUD-001-P01-R1"
 P02_REL = AUDIT_REL / "runs/GOV-AUD-001-P02-R1"
+P03_REL = AUDIT_REL / "runs/GOV-AUD-001-P03-R1"
 C2_REL = RUN_REL / "corrections/GOV-AUD-001-P01-R1-C2"
 C3_REL = RUN_REL / "corrections/GOV-AUD-001-P01-R1-C3"
 ACCEPTANCE_REL = AUDIT_REL / "decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml"
@@ -53,6 +54,13 @@ P02_REGISTRY_IDS = {
     "GOV-AUD-VAL-002",
     "GOV-AUD-001-P02-REVIEW-CUSTODY-001",
     "GOV-AUD-001-P02-IER-002",
+}
+P03_REGISTRY_IDS = {
+    "GOV-AUD-001-P03-R1", "GOV-AUD-AUTH-003", "HP-PROMPT-035",
+    "GOV-AUD-P03-INPUT-001", "GOV-AUD-P03-OUT-001", "GOV-AUD-P03-OUT-002",
+    "GOV-AUD-P03-OUT-003", "GOV-AUD-P03-OUT-004", "GOV-AUD-P03-OUT-005",
+    "GOV-AUD-P03-OUT-006", "GOV-AUD-P03-OUT-007", "GOV-AUD-P03-OUT-008",
+    "GOV-AUD-P03-OUT-009", "GOV-AUD-P03-VAL-001", "GOV-AUD-P03-REVIEW-PACKAGE-001",
 }
 
 
@@ -118,7 +126,7 @@ def planning_only(root: Path) -> None:
             version="0.1.0",
             prompts=[
                 item for item in doc["prompt_registry"]["prompts"]
-                if item["prompt_id"] not in {"GOV-AUD-PROMPT-011", "GOV-AUD-PROMPT-012", "GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021", "HP-PROMPT-033"}
+                if item["prompt_id"] not in {"GOV-AUD-PROMPT-011", "GOV-AUD-PROMPT-012", "GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021", "HP-PROMPT-033", "GOV-AUD-PROMPT-031"}
             ]
         ),
     )
@@ -137,7 +145,7 @@ def planning_only(root: Path) -> None:
         "GOV-AUD-001-P01-C2-IER-001",
         "GOV-AUD-001-P01-R1-C3", "HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001",
         "GOV-AUD-DECISION-001", "HP-PROMPT-028",
-    } | C2_REGISTRY_IDS | P02_REGISTRY_IDS | {"GOV-AUD-DECISION-003", "HP-PROMPT-033", "GOV-AUD-001-PASS-03-CONTRACT", "GOV-AUD-P03-PREP-INPUT-001", "GOV-AUD-P03-OUTPUT-SPEC-001", "GOV-AUD-P03-VALIDATION-PLAN-001", "GOV-AUD-P03-ADVERSARIAL-PLAN-001"}
+    } | C2_REGISTRY_IDS | P02_REGISTRY_IDS | P03_REGISTRY_IDS | {"GOV-AUD-DECISION-003", "HP-PROMPT-033", "GOV-AUD-001-PASS-03-CONTRACT", "GOV-AUD-P03-PREP-INPUT-001", "GOV-AUD-P03-OUTPUT-SPEC-001", "GOV-AUD-P03-VALIDATION-PLAN-001", "GOV-AUD-P03-ADVERSARIAL-PLAN-001"}
 
     def registry_mutation(doc: dict) -> None:
         doc["artifacts"] = [item for item in doc["artifacts"] if item["id"] not in run_and_correction_ids]
@@ -150,6 +158,7 @@ def planning_only(root: Path) -> None:
     (audit / "decisions/GOV-AUD-DECISION-003-pass-02-checkpoint-a-approval-v0.1.0.yaml").unlink()
     shutil.rmtree(root / RUN_REL)
     shutil.rmtree(root / P02_REL)
+    shutil.rmtree(root / P03_REL)
 
 
 def c1_only(root: Path) -> None:
@@ -197,12 +206,12 @@ def c1_only(root: Path) -> None:
         audit / "prompt-registry.yaml",
         lambda doc: doc["prompt_registry"].update(
             version="0.2.0",
-            prompts=[item for item in doc["prompt_registry"]["prompts"] if item["prompt_id"] not in {"GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021", "HP-PROMPT-033"}],
+            prompts=[item for item in doc["prompt_registry"]["prompts"] if item["prompt_id"] not in {"GOV-AUD-PROMPT-013", "GOV-AUD-PROMPT-015", "GOV-AUD-PROMPT-016", "GOV-AUD-PROMPT-021", "HP-PROMPT-033", "GOV-AUD-PROMPT-031"}],
         ),
     )
 
     def registry_mutation(doc: dict) -> None:
-        removed = C2_REGISTRY_IDS | P02_REGISTRY_IDS | {"GOV-AUD-001-P01-R1-C3", "HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001", "GOV-AUD-DECISION-001", "HP-PROMPT-028", "GOV-AUD-DECISION-003", "HP-PROMPT-033", "GOV-AUD-001-PASS-03-CONTRACT", "GOV-AUD-P03-PREP-INPUT-001", "GOV-AUD-P03-OUTPUT-SPEC-001", "GOV-AUD-P03-VALIDATION-PLAN-001", "GOV-AUD-P03-ADVERSARIAL-PLAN-001"}
+        removed = C2_REGISTRY_IDS | P02_REGISTRY_IDS | P03_REGISTRY_IDS | {"GOV-AUD-001-P01-R1-C3", "HP-PROMPT-027", "GOV-AUD-001-P01-C3-IER-001", "GOV-AUD-DECISION-001", "HP-PROMPT-028", "GOV-AUD-DECISION-003", "HP-PROMPT-033", "GOV-AUD-001-PASS-03-CONTRACT", "GOV-AUD-P03-PREP-INPUT-001", "GOV-AUD-P03-OUTPUT-SPEC-001", "GOV-AUD-P03-VALIDATION-PLAN-001", "GOV-AUD-P03-ADVERSARIAL-PLAN-001"}
         doc["artifacts"] = [item for item in doc["artifacts"] if item["id"] not in removed]
         next(item for item in doc["artifacts"] if item["id"] == "GOV-AUD-001")["status"] = "IN_PROGRESS_PASS_01_EXECUTED_VALIDATED_PENDING_PROJECT_OWNER_DISPOSITION"
 
@@ -212,9 +221,10 @@ def c1_only(root: Path) -> None:
     shutil.rmtree(root / C3_REL)
     shutil.rmtree(root / C2_REL)
     shutil.rmtree(root / P02_REL)
+    shutil.rmtree(root / P03_REL)
 
 
-def test_canonical_two_pass_executed_state_is_valid() -> None:
+def test_canonical_three_pass_executed_state_is_valid() -> None:
     assert validate(ROOT) == {"result": "VALID", "diagnostics": []}
 
 
@@ -258,7 +268,7 @@ def test_pass_contracts_remain_planned_and_run_is_registered() -> None:
         expected = "PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION" if pass_id == "PASS-03" else "PLANNED_NOT_EXECUTED"
         assert contract["status"] == expected
     run_dirs = sorted(path.name for path in (AUDIT / "runs").iterdir() if path.is_dir())
-    assert run_dirs == ["GOV-AUD-001-P01-R1", "GOV-AUD-001-P02-R1"]
+    assert run_dirs == ["GOV-AUD-001-P01-R1", "GOV-AUD-001-P02-R1", "GOV-AUD-001-P03-R1"]
 
 
 def test_only_affected_pass_contracts_have_bindable_versions() -> None:

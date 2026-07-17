@@ -1,0 +1,60 @@
+authorization:
+  authorization_id: GOV-AUD-AUTH-003
+  version: 0.1.0
+  evidence_class: CONTEMPORANEOUS_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+  authority: PROJECT_OWNER
+  status: AUTHORIZED_NOT_YET_CONSUMED
+  authorized_run: GOV-AUD-001-P03-R1
+  authorized_pass: PASS-03
+  role: Observable Learning Requirements Auditor
+  mode: EVIDENCE_AWARE_REQUIREMENTS_SYNTHESIS
+  execution_count_limit: 1
+  execution_count_consumed: 0
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_local_head: e5bdeeafdc2278a2baef67c659eef4a8eab5d867
+  starting_remote_head: e5bdeeafdc2278a2baef67c659eef4a8eab5d867
+  contract_identity: GOV-AUD-001-PASS-03-CONTRACT/0.2.0
+  contract_sha256: a08e83c5f4a7342b8b2ee2893ddf70be809614cc8ef3b167a83b3b6275be6f65
+  prompt_identity: GOV-AUD-PROMPT-031/0.1.0
+  prompt_sha256: 70dd312e123d438d78c7e5947764cfeddb4b6c383cad76e8e6b4aacdcab2c543
+  catalog_prompt_identity: HP-PROMPT-035/0.1.0
+  catalog_prompt_sha256: 131b9e3b2fe8bdb27214ebbae7965d79d8394e5b7e8b5ede606a85545b883eb3
+  input_manifest_identity: GOV-AUD-001-P03-R1-INPUT-001/0.1.0
+  evidence_package_sha256: d8ad0556bf9ece26f3bbe7d42629da26c493744b8ca5661d2111a2c213950ab5
+  evidence_package_member_count: 33
+  authorized_actions:
+    - instantiate and custody the exact PASS-03 run prompt and input manifest
+    - execute one bounded PASS-03 requirements analysis from canonical repository evidence
+    - create exactly nine specified outputs and deterministic validation evidence
+    - create the immutable independent-adversarial-review package without executing the review
+    - reconcile directly dependent audit state, registries and validators
+    - run focused and complete governance validation
+    - stage only the bounded PASS-03 execution change set after all validation passes
+    - commit the bounded change set after staged-diff inspection
+    - push without force to origin/governance/kernel-designer-revision-v0.1
+  authorized_write_scope:
+    - governance/audits/GOV-AUD-001-gov7-enablement/**
+    - governance/prompts/orchestration/HP-PROMPT-035-*
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/CURRENT_STATE.md
+    - governance/GOVERNANCE_MASTER_PLAN.md
+    - governance/README.md
+    - governance/tools/validate_audit_scaffold.py
+    - governance/tools/validate_pass_02.py
+    - governance/tools/validate_pass_03_execution.py
+    - governance/tests/test_gov_7_audit_scaffold.py
+    - governance/tests/test_pass_02_architecture.py
+    - governance/tests/test_pass_03_execution.py
+  not_authorized:
+    - accept or complete PASS-03
+    - execute or authorize PASS-04
+    - execute the independent adversarial review
+    - select, adopt or implement a tooling solution or learning pipeline
+    - activate or implement GOV-7
+    - amend or implement the Kernel
+    - resolve OD-006 or accept risk
+    - modify product, planning or runtime-facing files
+    - open or merge a pull request
+    - tag, release or deploy
+  authority_limit: ONE_BOUNDED_PASS_03_EXECUTION_AND_CONDITIONAL_PUBLICATION

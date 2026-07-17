@@ -14,13 +14,13 @@
 | Controller guards | zero blocking findings; no repeated findings; none exhausted |
 | GOV-5 status | `COMPLETED / CLOSED`; KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`; closure review remains `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION` |
 | GOV-6 status | `COMPLETED / CLOSED`; OD-004 ratified exact Kernel `0.2.0` |
-| GOV-AUD-001 status | `IN_PROGRESS`; PASS-01 and PASS-02 are accepted; CHECKPOINT-A is approved; PASS-03 is prepared and validated pending Project Owner execution authorization |
+| GOV-AUD-001 status | `IN_PROGRESS`; PASS-01 and PASS-02 are accepted; CHECKPOINT-A is approved; PASS-03 is executed and validated pending independent adversarial review and Project Owner disposition |
 | Enforcement Engineering gate | `CLOSED`; GOV-AUTH-001 consumed exactly 1 of 1, with no remaining execution |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
 | Human ratification | `RATIFIED` — exact Kernel `0.2.0`, recorded in `GOV-DECISION-RECORD-002/0.1.0` |
 | Owner decisions required | OD-001 satisfied for the evaluation context; OD-002 `CONFIRM_EXACT_SCOPE`, OD-003 `PACKET_SUFFICIENT`, OD-004 `RATIFY_EXACT_KERNEL_0_2_0`, and OD-005 `ACCEPT_MINIMUM_GOV_7_DIRECTION` resolved; OD-006 unresolved trigger-gated |
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
-| Known blockers | PASS-03 requires a separate preparation scope before any contract or prompt may exist; OD-006 and separate authority for later passes or GOV-7 design/implementation remain unresolved |
+| Known blockers | PASS-03 requires one independent adversarial review and Project Owner disposition; PASS-04 remains unauthorized; OD-006 and separate authority for later passes or GOV-7 design/implementation remain unresolved |
 | Phase-transition boundary | GOV-6 is closed after the Project Owner ratified exact Kernel `0.2.0`; GOV-7 remains inactive pending audit and separate design or implementation authority |
 
 ## KGR-006 execution and independent-evaluation reconciliation
@@ -182,8 +182,8 @@ GOV-7:
   direction_record: GOV-DECISION-RECORD-003/0.1.0
   minimum_package: DIRECTION_ACCEPTED_NOT_IMPLEMENTED
 GOV-AUD-001:
-  status: IN_PROGRESS_PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
-  passes_executed: 2
+  status: IN_PROGRESS_PASS_03_EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  passes_executed: 3
   PASS-01: PASS_01_ACCEPTED_COMPLETED
   PASS-01-C3: INDEPENDENTLY_CONFIRMED_AND_ACCEPTED
   acceptance_record: GOV-AUD-DECISION-001/0.1.0
@@ -200,9 +200,14 @@ GOV-AUD-001:
   methodology-acceptance-record: GOV-AUD-DECISION-002/0.1.0
   temporary-conflict-control: ACTIVE_FOR_FUTURE_AUDIT_PROMPTS_ONLY
   future-gov-7-proposal: HP-MPROP-006
-  accepted-future-audit-clarification: HP-MPROP-007/OWNER_ACCEPTED_FOR_FUTURE_AUDIT_CLARIFICATION/NOT_STARTED
+  accepted-future-audit-clarification: HP-MPROP-007/INCORPORATED_IN_PASS_03_REQUIREMENTS_NOT_IMPLEMENTED
   CHECKPOINT-A: APPROVED_COMPLETED
-  PASS-03: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+  PASS-03: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  PASS-03-run: GOV-AUD-001-P03-R1
+  PASS-03-validation: GOV-AUD-P03-VAL-001/VALID
+  PASS-03-review-package: GOV-AUD-P03-REVIEW-PACKAGE-001/PREPARED_IMMUTABLE_NOT_REVIEWED
+  PASS-03-accepted: false
+  PASS-04: PLANNED_NOT_EXECUTED_UNAUTHORIZED
   completed: false
   recommendations_accepted: false
   implementation_authorized: false
@@ -240,4 +245,4 @@ GOV-AUD-001 PASS-01 executed under `GOV-AUD-AUTH-001`; C1 corrected its validati
 
 GOV-AUD-001 PASS-02 executed once under `GOV-AUD-AUTH-002` and exact prompt `GOV-AUD-PROMPT-021/0.1.0`, catalogued as `HP-PROMPT-029/0.1.0` after the prospective identity correction. Its seven immutable cross-layer architecture outputs were independently reviewed in `GOV-AUD-001-P02-IER-002`, with result `PASS_02_R1_CONFIRMED` and no R2 required. The Project Owner accepted PASS-02 and approved CHECKPOINT-A in `GOV-AUD-DECISION-003/0.1.0`, authorizing PASS-03 preparation only.
 
-The Project Owner accepted `GOV-AUD-001-METHOD-001/0.3.0` prospectively in `GOV-AUD-DECISION-002/0.1.0` after the focused independent confirmation of its three corrected findings, while preserving the existing finding, model-inference, deviation/root-cause, adversarial, materiality, temporary conflict and identity controls. `HP-MPROP-006` still routes formal conflict-policy derivation to future GOV-7. `HP-MPROP-007` remains a future audit clarification requiring separately authorized bounded work before PASS-03 instantiation. None changes PASS-02 R1, prepares R2, executes PASS-03, amends the Kernel, adopts policy or activates GOV-7. The exact next action is separately authorized PASS-03 preparation, if the Project Owner directs it.
+The Project Owner accepted `GOV-AUD-001-METHOD-001/0.3.0` prospectively in `GOV-AUD-DECISION-002/0.1.0` after the focused independent confirmation of its three corrected findings, while preserving the existing finding, model-inference, deviation/root-cause, adversarial, materiality, temporary conflict and identity controls. `HP-MPROP-006` still routes formal conflict-policy derivation to future GOV-7. `HP-MPROP-007` is incorporated into the bounded PASS-03 requirements without implementing a pipeline. PASS-03 executed once under `GOV-AUD-AUTH-003` and `GOV-AUD-PROMPT-031/0.1.0`; its nine outputs and deterministic validation are preserved in `GOV-AUD-001-P03-R1`, and `GOV-AUD-P03-REVIEW-PACKAGE-001` is prepared but not independently reviewed. This does not accept or complete PASS-03, authorize or execute PASS-04, change PASS-02 R1, amend the Kernel, adopt policy, resolve OD-006 or activate GOV-7. The exact next action is one independent adversarial review of PASS-03 using the immutable review package; do not execute PASS-04.

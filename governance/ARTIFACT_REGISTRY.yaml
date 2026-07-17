@@ -2500,7 +2500,7 @@ artifacts:
   - id: GOV-AUD-001
     title: GOV-7 Enablement, Cross-Layer Architecture and Empirical Validation Audit Program Scaffold
     version: 0.2.0
-    status: IN_PROGRESS_PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+    status: IN_PROGRESS_PASS_03_EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
     authority: audit_program_index_with_pass_01_acceptance_and_unaccepted_pass_02_execution_evidence_not_checkpoint_gov_7_or_implementation_authority
     path: governance/audits/GOV-AUD-001-gov7-enablement/00-audit-charter.md
     source_path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/GOV-AUD-PROMPT-000-audit-program-scaffold-v0.2.0.md
@@ -2522,7 +2522,7 @@ artifacts:
       - governance/audits/GOV-AUD-001-gov7-enablement/09-methodology-bounded-correction-validation.yaml
       - governance/audits/GOV-AUD-001-gov7-enablement/prompt-registry.yaml
     notes:
-      - Plans seven dependent audit passes and three explicit Project Owner checkpoints; PASS-01 is accepted and PASS-02 is executed and validated pending separately controlled independent evaluation and Project Owner disposition, exactly two passes are executed, and CHECKPOINT-A remains pending.
+      - Plans seven dependent audit passes and three explicit Project Owner checkpoints; PASS-01 and PASS-02 are accepted, CHECKPOINT-A is approved, and PASS-03 is executed and deterministically validated pending independent adversarial review and Project Owner disposition. PASS-04 remains unauthorized and unexecuted.
       - Version 0.2.0 adds prospective finding-basis, review-type, root-cause-before-invalidity, adversarial-refutation, materiality, temporary instruction-conflict and canonical identity-resolution controls while preserving PASS-02 R1 unchanged.
       - GOV-AUD-001-METHOD-001/0.3.0 prospectively resolves the three focused methodology findings while preserving prior controls and PASS-02 R1 unchanged.
       - The Project Owner reports that PASS-02 was independently reviewed, but no exact review artifact or result is durably custodied; no review text or result is reconstructed.
@@ -3474,3 +3474,243 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Requires independent attempted refutation after execution.]
+
+  - id: GOV-AUD-001-P03-R1
+    title: GOV-AUD-001 PASS-03 Observable Learning Requirements Source Run
+    version: 0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: one_bounded_project_owner_authorized_PASS_03_source_execution
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/contract.yaml
+    source_sha256: d3e1245289a82629de75f106326aeb3d18b4412b43e8218a01fb3b8c480c4165
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_run_manifest
+    language: English
+    canonicality: formal_run_execution_evidence_not_acceptance
+    supersedes: null
+    aliases: []
+    notes: [Exactly nine requirements outputs; no tooling selected, no pipeline implemented, independent adversarial review pending, PASS-03 unaccepted.]
+
+  - id: GOV-AUD-AUTH-003
+    title: GOV-AUD-001 PASS-03 Project Owner Execution Authorization
+    version: 0.1.0
+    status: CONSUMED_BY_GOV_AUD_001_P03_R1
+    authority: project_owner_explicit_single_execution_and_conditional_publication
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/authorization/owner-authorization.yaml
+    source_path: governance/prompts/orchestration/HP-PROMPT-035-execute-gov-aud-001-pass-03-v0.1.0.md
+    source_sha256: cfc2a3e3684c56d64c6e9ccd90c46a224717bf7fb474afc561549e250360c789
+    produced_by: PROJECT_OWNER
+    artifact_type: formal_run_execution_authorization
+    language: English
+    canonicality: prospective_authorization_consumed_exactly_once
+    supersedes: null
+    aliases: []
+    notes: [Does not accept PASS-03, authorize PASS-04, select tooling, activate GOV-7, amend the Kernel, resolve OD-006 or accept risk.]
+
+  - id: HP-PROMPT-035
+    title: Execute GOV-AUD-001 PASS-03
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_PASS_03_execution_validation_commit_and_push
+    path: governance/prompts/orchestration/HP-PROMPT-035-execute-gov-aud-001-pass-03-v0.1.0.md
+    source_path: null
+    source_sha256: 131b9e3b2fe8bdb27214ebbae7965d79d8394e5b7e8b5ede606a85545b883eb3
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_evidence
+    supersedes: null
+    aliases: [GOV-AUD-PROMPT-031]
+    notes: [Instantiates the prepared canonical prompt without substituting this orchestration text; prohibits PASS-04, tooling adoption, independent self-review and acceptance.]
+
+  - id: GOV-AUD-P03-INPUT-001
+    title: GOV-AUD-001 PASS-03 Execution Input Manifest
+    version: 0.1.0
+    status: EXECUTED_BOUND_INPUT
+    authority: evidence_custody_only
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/input/input-manifest.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/preparation-input-manifest.yaml
+    source_sha256: 10d4530c2e2ddbab2791f1090d65511977d187feec18cf14b1eb6f29acab4a7f
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: formal_run_input_manifest
+    language: English
+    canonicality: hash_bound_execution_input_evidence
+    supersedes: null
+    aliases: [GOV-AUD-001-P03-R1-INPUT-001]
+    notes: [Binds 33 canonical evidence members plus prospective authorization and prompt custody.]
+
+  - id: GOV-AUD-P03-OUT-001
+    title: PASS-03 Observable Event Requirements
+    version: 0.1.0
+    status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: requirements_only
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/01-observable-event-requirements.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_sha256: 6f70027f8611a3398e13216c96a69a97990ec8d818d7ea95552e84b009b23f10
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_output
+    language: English
+    canonicality: unaccepted_PASS_03_requirement_candidate
+    supersedes: null
+    aliases: []
+    notes: [Defines minimum observable fields and explicit unavailable markers; prohibits hidden chain-of-thought.]
+
+  - id: GOV-AUD-P03-OUT-002
+    title: PASS-03 Evidence and Authority Model
+    version: 0.1.0
+    status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: requirements_only
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/02-evidence-and-authority-model.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_sha256: a7095a69a056ec8cf3ec8cc12b5a192f28e9bd0ed2929a62c3b8a323eee17ff9
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_output
+    language: English
+    canonicality: unaccepted_PASS_03_requirement_candidate
+    supersedes: null
+    aliases: []
+    notes: [Repository evidence remains canonical; traces and executor assertions remain non-authoritative.]
+
+  - id: GOV-AUD-P03-OUT-003
+    title: PASS-03 Learning Lifecycle and State Machine
+    version: 0.1.0
+    status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: requirements_only
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/03-learning-lifecycle-and-state-machine.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_sha256: 03405a70e2b36680ea7781a7e20a117274eda636a58019eb34ac1ff3d1a6a506
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_output
+    language: English
+    canonicality: unaccepted_PASS_03_requirement_candidate
+    supersedes: null
+    aliases: []
+    notes: [Defines guarded valid and invalid transitions and five verification states; does not implement a loop.]
+
+  - id: GOV-AUD-P03-OUT-004
+    title: PASS-03 Candidate Routing and Promotion Model
+    version: 0.1.0
+    status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: requirements_only
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/04-candidate-routing-and-promotion-model.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_sha256: 3d207693a464154952d5d229555639d997bc28b30f6641f542a09ab355d6de79
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_output
+    language: English
+    canonicality: unaccepted_PASS_03_requirement_candidate
+    supersedes: null
+    aliases: []
+    notes: [Keeps captured, accepted, implemented, validated and shown-effective states distinct.]
+
+  - id: GOV-AUD-P03-OUT-005
+    title: PASS-03 Selective Retrieval Requirements
+    version: 0.1.0
+    status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: requirements_only
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/05-selective-retrieval-requirements.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_sha256: 532513a3295b2b1967c428c8b122c987a7254d849be95e842261431867ca3d39
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_output
+    language: English
+    canonicality: unaccepted_PASS_03_requirement_candidate
+    supersedes: null
+    aliases: []
+    notes: [Requires compact justified packages and prohibits global learning injection.]
+
+  - id: GOV-AUD-P03-OUT-006
+    title: PASS-03 Effectiveness and Burden Metrics
+    version: 0.1.0
+    status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: requirements_only
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/06-effectiveness-and-burden-metrics.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_sha256: d1b10ac3235099dfa1ea4b538046ce480b299cb501ea1535af4c63784b8c0b4e
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_output
+    language: English
+    canonicality: unaccepted_PASS_03_requirement_candidate
+    supersedes: null
+    aliases: []
+    notes: [Defines outcome and burden denominators plus anti-gaming; volume is not success.]
+
+  - id: GOV-AUD-P03-OUT-007
+    title: PASS-03 Privacy Retention and Rollback Requirements
+    version: 0.1.0
+    status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: requirements_only_no_legal_conclusion
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/07-privacy-retention-and-rollback-requirements.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_sha256: fc1579bdd6f68d979efa16ead1c9b1313908788e09508167f6ac8a7265b635c2
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_output
+    language: English
+    canonicality: unaccepted_PASS_03_requirement_candidate
+    supersedes: null
+    aliases: []
+    notes: [Defines minimization through failure-safe handling without creating privacy authority.]
+
+  - id: GOV-AUD-P03-OUT-008
+    title: PASS-03 Tooling-Neutral Capability Model
+    version: 0.1.0
+    status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: requirements_only_no_tool_selection
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/08-tooling-neutral-capability-model.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_sha256: 791e95d53b09482b774f25d7ae9fa69aab19e85ed3aeb6695fa246549e8775f5
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_output
+    language: English
+    canonicality: unaccepted_PASS_03_requirement_candidate
+    supersedes: null
+    aliases: []
+    notes: [Separates seven capabilities and preserves no-action and deferral options.]
+
+  - id: GOV-AUD-P03-OUT-009
+    title: PASS-03 Risks Open Questions and PASS-04 Handoff
+    version: 0.1.0
+    status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    authority: requirements_handoff_only_no_PASS_04_authority
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/09-risks-open-questions-and-pass-04-handoff.md
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml
+    source_sha256: 70d23e50cfbd1488002c7adaf47f8ad70241b5b39e4f0f7d4007854d697abf65
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: audit_source_output
+    language: English
+    canonicality: unaccepted_PASS_03_requirement_candidate
+    supersedes: null
+    aliases: []
+    notes: [Bounds future PASS-04 comparison without preparing, executing or authorizing PASS-04.]
+
+  - id: GOV-AUD-P03-VAL-001
+    title: PASS-03 Deterministic Source Validation Report
+    version: 0.1.0
+    status: VALIDATED
+    authority: deterministic_conformance_only
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/evaluation/pass-03-validation-report.yaml
+    source_path: governance/tools/validate_pass_03_execution.py
+    source_sha256: f976e9761d82f9c01482f4e466f290082f049629300731e4cec5d4e3eae7838f
+    produced_by: DETERMINISTIC_VALIDATOR
+    artifact_type: audit_validation_evidence
+    language: English
+    canonicality: source_validation_not_independent_adversarial_review
+    supersedes: null
+    aliases: []
+    notes: [Does not establish substantive correctness, acceptance, completion or effectiveness.]
+
+  - id: GOV-AUD-P03-REVIEW-PACKAGE-001
+    title: PASS-03 Immutable Independent Adversarial Review Package
+    version: 0.1.0
+    status: PREPARED_IMMUTABLE_NOT_REVIEWED
+    authority: review_input_custody_only
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/review-package/manifest.yaml
+    source_path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/adversarial-review-plan.yaml
+    source_sha256: ff59242ad237509c31a264df9077c6a39c921abf4fb9c9e81c8d3ca2d78e8852
+    produced_by: OBSERVABLE_LEARNING_REQUIREMENTS_AUDITOR
+    artifact_type: independent_review_input_package_manifest
+    language: English
+    canonicality: immutable_review_input_not_review_result
+    supersedes: null
+    aliases: []
+    notes: [Contains 16 hash-bound members and all 13 prepared attack dimensions; independent review not executed.]

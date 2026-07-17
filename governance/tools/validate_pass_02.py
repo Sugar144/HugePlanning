@@ -14,6 +14,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _lib.strict_yaml import load, loads
+from validate_pass_03_execution import SUCCESS as PASS_03_SUCCESS, validate as validate_pass_03_execution
 
 
 RUN_REL = Path(
@@ -431,9 +432,22 @@ def validate(root: Path) -> dict[str, Any]:
     if sequence.get("CHECKPOINT-A") != "APPROVED_COMPLETED":
         errors.append("CHECKPOINT-A completed or changed")
     pass_03_state = sequence.get("PASS-03")
-    if pass_03_state not in PASS_03_PREPARATION_STATES:
-        errors.append("PASS-03 executed or authorized")
-    if any(
+    pass_03_executed = pass_03_state == PASS_03_SUCCESS
+    if pass_03_state not in PASS_03_PREPARATION_STATES and not pass_03_executed:
+        errors.append("PASS-03 executed or authorized without a valid later lifecycle")
+    if pass_03_executed:
+        if any((
+            status.get("pass_03_preparation_authorized") is not True,
+            status.get("pass_03_preparation_status") != "PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION",
+            status.get("pass_03_execution_authorized") is not True,
+            status.get("pass_03_authorization_consumed") is not True,
+            status.get("pass_03_executed") is not True,
+            status.get("pass_03_status") != PASS_03_SUCCESS,
+        )):
+            errors.append("PASS-03 execution authority or lifecycle mismatch")
+        successor = validate_pass_03_execution(root)
+        errors.extend(f"PASS-03 successor: {item}" for item in successor["diagnostics"])
+    elif any(
         (
             status.get("pass_03_preparation_authorized") is not True,
             status.get("pass_03_preparation_status") != pass_03_state,
@@ -444,7 +458,7 @@ def validate(root: Path) -> dict[str, Any]:
         errors.append("PASS-03 execution authority or lifecycle mismatch")
     if any(
         (
-            plan.get("passes_executed") != 2,
+            plan.get("passes_executed") != (3 if pass_03_executed else 2),
             plan.get("completed") is not False,
             plan.get("gov_7_activated") is not False,
             status.get("pass_02_status") != "ACCEPTED_COMPLETED",

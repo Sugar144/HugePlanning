@@ -1,0 +1,73 @@
+learning_lifecycle_and_state_machine:
+  artifact_id: GOV-AUD-P03-OUT-003
+  version: 0.1.0
+  status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  statement_label: REQUIREMENT
+  executor_requirement: Every transition requires the named responsible actor or deterministic mechanism; this specification does not execute transitions.
+  evidence_links:
+    - governance/methodology/METHODOLOGY_BACKLOG.md#hp-mprop-007--execution-insight-capture-and-learning-promotion-pipeline
+    - governance/learning/README.md
+    - governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+  states:
+    - {state: OBSERVABLE_EXECUTION_EVENT, terminal: false, authority: NONE}
+    - {state: VISIBLE_EXECUTION_INSIGHT, terminal: false, authority: NONE}
+    - {state: HYPOTHESIS_PENDING_VERIFICATION, terminal: false, authority: NONE}
+    - {state: PLANNED_VERIFICATION, terminal: false, authority: NONE}
+    - {state: CONFIRMED, terminal: false, authority: BOUNDED_EVIDENTIARY_RESULT}
+    - {state: REFUTED, terminal: true, authority: BOUNDED_EVIDENTIARY_RESULT}
+    - {state: PARTIALLY_CONFIRMED, terminal: false, authority: BOUNDED_EVIDENTIARY_RESULT}
+    - {state: UNRESOLVED, terminal: false, authority: NONE}
+    - {state: LEARNING_CANDIDATE, terminal: false, authority: NONE}
+    - {state: EVIDENCE_AWARE_TRIAGE, terminal: false, authority: ROUTING_ONLY}
+    - {state: DURABLE_DESTINATION, terminal: false, authority: DESTINATION_CONTRACT_ONLY}
+    - {state: PROCEDURAL_PROMOTION, terminal: false, authority: SEPARATE_AUTHORIZATION_REQUIRED}
+    - {state: SELECTIVE_RETRIEVAL, terminal: false, authority: CONTEXT_SUPPLY_ONLY}
+    - {state: EFFECTIVENESS_MEASUREMENT, terminal: false, authority: MEASUREMENT_ONLY}
+    - {state: DISCARDED, terminal: true, authority: NONE}
+    - {state: SUPERSEDED_OR_ROLLED_BACK, terminal: true, authority: BOUNDED_CORRECTION}
+  valid_transitions:
+    - {from: OBSERVABLE_EXECUTION_EVENT, to: VISIBLE_EXECUTION_INSIGHT, responsible: authorized_extractor, guard: event_is_observable_and_source_class_preserved, evidence: event_reference}
+    - {from: VISIBLE_EXECUTION_INSIGHT, to: HYPOTHESIS_PENDING_VERIFICATION, responsible: analyst, guard: falsifiable_claim_and_scope_recorded, evidence: insight_reference_and_hypothesis}
+    - {from: HYPOTHESIS_PENDING_VERIFICATION, to: PLANNED_VERIFICATION, responsible: verification_planner, guard: method_evidence_need_verifier_and_limits_defined, evidence: verification_plan}
+    - {from: PLANNED_VERIFICATION, to: CONFIRMED, responsible: named_verifier_or_deterministic_mechanism, guard: evidence_supports_whole_bounded_hypothesis_and_contradictions_handled, evidence: verification_result}
+    - {from: PLANNED_VERIFICATION, to: REFUTED, responsible: named_verifier_or_deterministic_mechanism, guard: counterevidence_refutes_bounded_hypothesis, evidence: verification_result}
+    - {from: PLANNED_VERIFICATION, to: PARTIALLY_CONFIRMED, responsible: named_verifier_or_deterministic_mechanism, guard: supported_and_unsupported_portions_partitioned, evidence: verification_result_and_unresolved_remainder}
+    - {from: PLANNED_VERIFICATION, to: UNRESOLVED, responsible: named_verifier_or_deterministic_mechanism, guard: evidence_insufficient_conflicting_or_method_failed, evidence: limitations_and_open_verification}
+    - {from: CONFIRMED, to: LEARNING_CANDIDATE, responsible: candidate_extractor, guard: relevance_and_destination_need_stated, evidence: confirmed_conclusion_reference}
+    - {from: PARTIALLY_CONFIRMED, to: LEARNING_CANDIDATE, responsible: candidate_extractor, guard: only_supported_portion_extracted_and_remainder_linked_as_unresolved, evidence: partitioned_result}
+    - {from: LEARNING_CANDIDATE, to: EVIDENCE_AWARE_TRIAGE, responsible: authorized_triager, guard: evidence_authority_duplicate_privacy_and_scope_classified, evidence: candidate_record}
+    - {from: EVIDENCE_AWARE_TRIAGE, to: DURABLE_DESTINATION, responsible: destination_owner_or_routing_mechanism, guard: route_criteria_and_authority_limit_satisfied, evidence: routing_disposition}
+    - {from: EVIDENCE_AWARE_TRIAGE, to: DISCARDED, responsible: authorized_triager, guard: reason_and_evidence_preserved, evidence: discard_disposition}
+    - {from: DURABLE_DESTINATION, to: PROCEDURAL_PROMOTION, responsible: competent_target_owner, guard: learning_accepted_and_separate_implementation_authority_exists, evidence: acceptance_and_change_contract}
+    - {from: PROCEDURAL_PROMOTION, to: SELECTIVE_RETRIEVAL, responsible: retrieval_mechanism, guard: control_implemented_valid_for_task_and_retrieval_contract_satisfied, evidence: control_identity_and_relevance}
+    - {from: SELECTIVE_RETRIEVAL, to: EFFECTIVENESS_MEASUREMENT, responsible: evaluator, guard: outcome_and_burden_denominators_available_or_marked_unavailable, evidence: retrieval_and_outcome_measurement}
+    - {from: EFFECTIVENESS_MEASUREMENT, to: SUPERSEDED_OR_ROLLED_BACK, responsible: competent_control_owner, guard: rollback_or_supersession_authorized_and_auditable, evidence: decision_and_rollback_result}
+    - {from: UNRESOLVED, to: PLANNED_VERIFICATION, responsible: verification_planner, guard: new_method_or_evidence_available, evidence: revised_plan}
+  invalid_transitions:
+    - {from: OBSERVABLE_EXECUTION_EVENT, to: CONFIRMED, reason: observation_is_not_verification}
+    - {from: VISIBLE_EXECUTION_INSIGHT, to: DURABLE_DESTINATION, reason: insight_requires_hypothesis_and_verification}
+    - {from: HYPOTHESIS_PENDING_VERIFICATION, to: LEARNING_CANDIDATE, reason: unverified_hypothesis_cannot_be_procedural_learning}
+    - {from: PLANNED_VERIFICATION, to: LEARNING_CANDIDATE, reason: plan_is_not_result}
+    - {from: REFUTED, to: LEARNING_CANDIDATE, reason: refuted_claim_cannot_be_accepted_as_true_learning}
+    - {from: UNRESOLVED, to: PROCEDURAL_PROMOTION, reason: unresolved_claim_cannot_authorize_control}
+    - {from: PARTIALLY_CONFIRMED, to: LEARNING_CANDIDATE, reason: invalid_if_unsupported_portions_are_not_preserved_as_unresolved}
+    - {from: LEARNING_CANDIDATE, to: PROCEDURAL_PROMOTION, reason: triage_acceptance_destination_and_authority_are_missing}
+    - {from: DURABLE_DESTINATION, to: EFFECTIVENESS_MEASUREMENT, reason: capture_or_acceptance_does_not_establish_implementation_or_exposure}
+    - {from: SELECTIVE_RETRIEVAL, to: CONFIRMED, reason: retrieval_is_context_not_verification}
+  verification_evidence:
+    required_fields: [hypothesis_id, bounded_claim, evidence_references, verification_method, verifier_identity_or_mechanism, result_state, confidence_or_limitation, contradictions_checked, unsupported_portions]
+    contradiction_handling:
+      - Link all material contradictory evidence.
+      - Downgrade to PARTIALLY_CONFIRMED or UNRESOLVED unless the method explicitly resolves the contradiction.
+      - Never delete the losing evidence; record resolution and supersession prospectively.
+  transition_guards:
+    - source evidence class and authority remain attached through every transition
+    - privacy and retention permission checked before capture or reuse
+    - destination owner and schema exist before durable write
+    - no actor may create its own authority or self-accept a material result
+    - refuted and unresolved claims are excluded from accepted procedural learning
+  rollback_or_correction_semantics:
+    - Correct mutable prospective candidates in place only before durable acceptance and with audit history.
+    - Correct accepted or executed evidence by append-only supersession, rollback event or versioned correction.
+    - Rollback disables future use and restores the last valid control where possible; it never erases required historical evidence.
+    - Reopened evidence returns the affected claim to HYPOTHESIS_PENDING_VERIFICATION or UNRESOLVED, not directly to CONFIRMED.

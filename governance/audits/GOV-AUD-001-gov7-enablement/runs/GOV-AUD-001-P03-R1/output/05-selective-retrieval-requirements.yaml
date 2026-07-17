@@ -1,0 +1,78 @@
+selective_retrieval_requirements:
+  artifact_id: GOV-AUD-P03-OUT-005
+  version: 0.1.0
+  status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  statement_label: REQUIREMENT
+  authority_boundary:
+    retrieved_learning_is_context_not_authority: true
+    repository_evidence_remains_canonical: true
+    global_injection_of_all_learning: PROHIBITED
+    retrieval_architecture_selected: false
+  evidence_links:
+    - governance/methodology/METHODOLOGY_BACKLOG.md#hp-mprop-007--execution-insight-capture-and-learning-promotion-pipeline
+    - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/output/04-corrected-pass-01-findings-and-handoff.md
+    - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/03-typed-relationship-and-query-model.yaml
+  dimensions:
+    - PHASE_OR_PASS
+    - ROLE
+    - COMPONENT
+    - OPERATION
+    - ARTIFACT_TYPE
+    - FAILURE_CLASS
+    - RISK_CLASS
+    - AUTHORITY_BOUNDARY
+    - VALIDATION_TYPE
+    - TASK_TYPE
+    - REPOSITORY_AREA
+    - MODEL_OR_EXECUTION_MODE
+  request_contract:
+    required_fields: [task_identity, task_scope, applicable_authority, requested_dimensions, context_budget, validity_time, excluded_sensitive_classes]
+    rule: Missing task scope or authority yields NO_RETRIEVAL_WITH_EXPLICIT_REASON rather than global fallback.
+  compact_package_rules:
+    - Include only the smallest set that materially changes a guard, expected failure, validation method or decision packet.
+    - Prefer canonical record summaries plus direct evidence links; include full content only when exact text is required.
+    - Declare package member count, estimated context size and truncation or unavailable markers.
+    - Keep source class, verification state, effective status, version and supersession with every item.
+    - Separate mandatory controls from advisory examples and unresolved research.
+  relevance_justification:
+    required_per_item: [matched_dimensions, expected_task_effect, canonical_source, verification_state, validity_check, inclusion_reason]
+    rejection_rule: An item without a specific expected task effect is excluded and counted as irrelevant if supplied.
+  context_size_limits:
+    - Caller declares a maximum package size before retrieval.
+    - Mandatory authority and safety controls take precedence over advisory lessons.
+    - If relevant material exceeds the budget, return ranked citations and request an explicit expansion; do not silently truncate a guard.
+    - Measure actual retrieved size and downstream token burden when observable.
+  duplicate_suppression:
+    identity_key: canonical_record_id_plus_effective_version
+    semantic_rule: Link near duplicates to one canonical item and preserve distinct causal deltas.
+    forbidden: silent_merge_or_counting_same_learning_multiple_times
+  stale_conflict_fallback_controls:
+    staleness:
+      checks: [effective_status, superseded_by, validity_interval, component_version, methodology_lock, last_validation, trigger_expiry]
+      action: EXCLUDE_OR_MARK_STALE_AND_ROUTE_REVALIDATION
+    conflict:
+      checks: [contradictory_claims, incompatible_authority, divergent_versions, unresolved_owner_decision]
+      action: RETURN_CONFLICT_SET_WITHOUT_CHOOSING_WINNER
+    contradiction:
+      rule: Include both material sides, provenance and resolution status; unresolved contradiction blocks prescriptive use.
+    recency_and_validity:
+      rule: Recency is a tiebreaker only after authority, applicability and validity; newer is not automatically stronger.
+    nothing_relevant:
+      action: RETURN_EMPTY_PACKAGE
+      required_marker: {status: NO_RELEVANT_LEARNING_FOUND, searched_dimensions: REQUIRED, limitations: REQUIRED}
+      fallback: use_canonical_task_contract_and_normal_validation_without_invented_learning
+    retrieval_failure:
+      action: FAIL_CLOSED_FOR_MANDATORY_CONTROLS_AND_ALLOW_DOCUMENTED_MANUAL_FALLBACK
+  package_output:
+    required_fields: [package_id, task_id, query_dimensions, relevance_policy_version, members, canonical_links, conflicts, stale_exclusions, duplicate_suppressions, context_size, unavailable_fields, no_result_marker]
+    member_fields: [record_id, version, statement, evidence_class, verification_state, effective_status, relevance_justification, source_links, authority_boundary]
+  measurement:
+    relevant_retrieval_rate: confirmed_relevant_items_divided_by_retrieved_items
+    irrelevant_context_rate: items_or_tokens_with_no_demonstrable_task_effect_divided_by_all_retrieved_items_or_tokens
+    duplicate_suppression_rate: suppressed_duplicate_candidates_divided_by_duplicate_candidates_detected
+    stale_retrieval_rate: stale_items_retrieved_divided_by_retrieved_items
+    no_result_quality: empty_result_was_correct_under_later_review
+  privacy_controls:
+    - Apply access checks and redaction before ranking or packaging.
+    - Never reveal the existence, metadata or content of a record outside its access boundary.
+    - Prefer portable identifiers and minimal excerpts over raw telemetry.

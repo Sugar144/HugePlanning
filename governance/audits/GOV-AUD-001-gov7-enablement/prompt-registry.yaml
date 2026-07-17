@@ -1,6 +1,6 @@
 prompt_registry:
   audit_id: GOV-AUD-001
-  version: 0.8.0
+  version: 0.9.0
   lifecycle_states: [TEMPLATE, INSTANTIATED_NOT_EXECUTED, EXECUTED, EVALUATED, SUPERSEDED]
   custody_rule: FINAL_INSTANTIATED_PROMPT_MUST_BE_PRESERVED_AND_HASH_BOUND_BEFORE_EXECUTION
   methodology_protocol: GOV-AUD-001-METHOD-001/0.3.0
@@ -140,3 +140,19 @@ prompt_registry:
       checkpoint_a_completed: true
       pass_03_preparation_authorized: true
       pass_03_execution_authorized: false
+    - prompt_id: GOV-AUD-PROMPT-031
+      catalog_prompt_id: HP-PROMPT-035
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_03_OBSERVABLE_LEARNING_REQUIREMENTS_EXECUTION
+      pass_id: PASS-03
+      run_id: GOV-AUD-001-P03-R1
+      contract_id: GOV-AUD-001-PASS-03-CONTRACT
+      contract_version: 0.2.0
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/prompt/GOV-AUD-PROMPT-031-pass-03-execution-v0.1.0.md
+      exact_text_sha256: 70dd312e123d438d78c7e5947764cfeddb4b6c383cad76e8e6b4aacdcab2c543
+      authorization_id: GOV-AUD-AUTH-003
+      pass_03_executed: true
+      pass_03_accepted: false
+      independent_adversarial_review_completed: false
+      pass_04_authorized_or_executed: false

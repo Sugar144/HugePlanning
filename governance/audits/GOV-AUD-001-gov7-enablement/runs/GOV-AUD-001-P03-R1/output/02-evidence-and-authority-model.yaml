@@ -1,0 +1,92 @@
+evidence_and_authority_model:
+  artifact_id: GOV-AUD-P03-OUT-002
+  version: 0.1.0
+  status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  statement_label: REQUIREMENT
+  evidence_links:
+    - governance/methodology/project-operating-contract.md
+    - governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+    - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/01-bounded-context-and-ownership-model.yaml
+    - governance/learning/README.md
+  evidence_classes:
+    - class: OPERATIONAL_TRACE
+      trust_boundary: NON_AUTHORITATIVE_OBSERVATION
+      may_support: [event_occurred_candidate, chronology_candidate, verification_target, burden_measurement_when_source_valid]
+      must_not_support_alone: [repository_truth, causal_conclusion, acceptance, authority, risk_acceptance, phase_transition]
+    - class: VISIBLE_MODEL_STATEMENT
+      trust_boundary: NON_AUTHORITATIVE_EXECUTOR_ASSERTION
+      may_support: [declared_progress, explicit_hypothesis, stated_limitation, proposed_conclusion_for_verification]
+      must_not_support_alone: [fact, verification_result, execution_success, acceptance, authority]
+    - class: MODEL_INFERENCE
+      trust_boundary: NON_AUTHORITATIVE_ANALYTICAL_CLAIM
+      may_support: [hypothesis, candidate_explanation, planned_verification, research_question]
+      must_not_support_alone: [verified_fact, durable_acceptance, control_validation, effectiveness]
+    - class: HYPOTHESIS
+      trust_boundary: PENDING_VERIFICATION
+      may_support: [verification_plan, evidence_collection_request]
+      must_not_support_alone: [procedural_promotion, accepted_learning, corrective_mutation]
+    - class: PLANNED_VERIFICATION
+      trust_boundary: METHOD_NOT_RESULT
+      may_support: [test_execution, verifier_assignment, evidence_requirements]
+      must_not_support_alone: [confirmation, refutation, acceptance]
+    - class: VERIFICATION_RESULT
+      trust_boundary: METHOD_AND_SCOPE_BOUNDED_RESULT
+      may_support: [confirmed_refuted_partial_or_unresolved_conclusion, candidate_strength, limitation]
+      must_not_support_alone: [Owner_decision, authority_creation, effectiveness_outside_tested_scope]
+    - class: REPOSITORY_EVIDENCE
+      trust_boundary: CANONICAL_WITHIN_DECLARED_SCOPE_AND_VERSION
+      may_support: [durable_state, artifact_identity, recorded_decision, validated_structure, historical_event_in_custody]
+      must_not_support_alone: [facts_outside_scope, operational_effectiveness_without_measurement, legal_conclusion]
+    - class: FORMAL_RUN_EVIDENCE
+      trust_boundary: REPOSITORY_CUSTODIED_ROLE_OUTPUT
+      may_support: [what_authorized_role_produced, bound_input_and_output_identity, declared_result_and_limitations]
+      must_not_support_alone: [independent_evaluation, Owner_acceptance, implementation, operation]
+    - class: LEARNING_CANDIDATE
+      trust_boundary: TRIAGED_PROPOSAL_NOT_DURABLE_AUTHORITY
+      may_support: [routing, duplicate_check, disposition_request]
+      must_not_support_alone: [promotion, instruction_change, risk_acceptance]
+    - class: ACCEPTED_DURABLE_LEARNING
+      trust_boundary: COMPETENTLY_DISPOSED_BOUNDED_LEARNING
+      may_support: [future_retrieval, authorized_promotion_proposal, regression_target]
+      must_not_support_alone: [implementation, validation, effectiveness, constitutional_change]
+    - class: PROCEDURAL_CONTROL
+      trust_boundary: IMPLEMENTED_MECHANISM_WITH_DECLARED_AUTHORITY
+      may_support: [existence_of_control, intended_procedure, implementation_scope]
+      must_not_support_alone: [correctness, independent_validation, effectiveness, operation]
+    - class: INDEPENDENTLY_VALIDATED_CONTROL
+      trust_boundary: CONTROL_CONFORMANCE_VALIDATED_OUTSIDE_IMPLEMENTER_SELF_ASSERTION
+      may_support: [tested_control_behavior_within_criteria, bounded_release_or_adoption_input]
+      must_not_support_alone: [failures_prevented_in_operation, universal_effectiveness, Owner_acceptance]
+    - class: DEMONSTRATED_EFFECTIVENESS
+      trust_boundary: MEASURED_COMPARATIVE_OUTCOME_WITH_LIMITATIONS
+      may_support: [bounded_benefit_claim, retain_modify_or_rollback_recommendation]
+      must_not_support_alone: [risk_acceptance, constitutional_authority, unrelated_scope]
+    - class: OWNER_DECISION
+      trust_boundary: AUTHORITATIVE_ONLY_WITHIN_EXPLICIT_COMPETENCE_AND_SCOPE
+      may_support: [named_acceptance_rejection_deferral_authorization_or_risk_disposition]
+      must_not_support_alone: [fabricated_evidence, competence_outside_owner_scope, implementation_or_effectiveness_not_stated]
+  authority_matrix:
+    - {decision: extract_candidate, permitted_classes: [OPERATIONAL_TRACE, VISIBLE_MODEL_STATEMENT, MODEL_INFERENCE, VERIFICATION_RESULT, REPOSITORY_EVIDENCE, FORMAL_RUN_EVIDENCE], required_guard: preserve_source_class_and_non_authority}
+    - {decision: mark_confirmed, permitted_classes: [VERIFICATION_RESULT], required_guard: method_verifier_evidence_scope_and_contradictions_recorded}
+    - {decision: accept_durable_learning, permitted_classes: [VERIFICATION_RESULT, REPOSITORY_EVIDENCE, FORMAL_RUN_EVIDENCE, OWNER_DECISION], required_guard: competent_disposition_and_destination_contract}
+    - {decision: implement_control, permitted_classes: [ACCEPTED_DURABLE_LEARNING, OWNER_DECISION], required_guard: separate_implementation_authority}
+    - {decision: mark_validated, permitted_classes: [INDEPENDENTLY_VALIDATED_CONTROL], required_guard: immutable_subject_and_declared_criteria}
+    - {decision: mark_shown_effective, permitted_classes: [DEMONSTRATED_EFFECTIVENESS], required_guard: comparative_measurement_and_anti_gaming_review}
+    - {decision: accept_risk_or_change_phase, permitted_classes: [OWNER_DECISION], required_guard: explicit_competent_bounded_decision}
+  canonicality_rules:
+    - Repository evidence and explicit decision records settle durable repository state; a trace never overwrites them.
+    - A hash establishes byte identity only, not correctness, freshness, authority or effectiveness.
+    - Later evidence appends, supersedes or corrects prospectively; it does not rewrite completed evidence.
+    - Conflicts remain explicit and block stronger classification until resolved by the competent mechanism.
+  prohibited_conflations:
+    - OPERATIONAL_TRACE_AS_REPOSITORY_EVIDENCE
+    - EXECUTOR_ASSERTION_AS_VERIFICATION_RESULT
+    - MODEL_INFERENCE_AS_VERIFIED_FACT
+    - VERIFICATION_PLAN_AS_VERIFICATION_RESULT
+    - FORMAL_RUN_OUTPUT_AS_INDEPENDENT_EVALUATION
+    - CAPTURED_CANDIDATE_AS_ACCEPTED_LEARNING
+    - ACCEPTED_LEARNING_AS_IMPLEMENTED_CONTROL
+    - IMPLEMENTED_CONTROL_AS_VALIDATED_CONTROL
+    - VALIDATED_CONTROL_AS_DEMONSTRATED_EFFECTIVENESS
+    - FREQUENCY_AS_AUTHORITY
+    - OWNER_DECISION_AS_FABRICATED_EVIDENCE

@@ -1,0 +1,110 @@
+run:
+  audit_id: GOV-AUD-001
+  pass_id: PASS-03
+  run_id: GOV-AUD-001-P03-R1
+  role: Observable Learning Requirements Auditor
+  mode: EVIDENCE_AWARE_REQUIREMENTS_SYNTHESIS
+  status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  lifecycle: EXECUTED
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_local_head: e5bdeeafdc2278a2baef67c659eef4a8eab5d867
+  starting_remote_head: e5bdeeafdc2278a2baef67c659eef4a8eab5d867
+  local_remote_aligned_at_start: true
+  clean_worktree_at_start: true
+  empty_staging_at_start: true
+  execution_count_limit: 1
+  execution_count_consumed: 1
+  identity_collision_check:
+    GOV-AUD-001-P03-R1: UNUSED_AT_START
+    GOV-AUD-AUTH-003: UNUSED_AT_START
+    GOV-AUD-PROMPT-031: UNUSED_AT_START
+    HP-PROMPT-035: UNUSED_AT_START
+authorization:
+  id: GOV-AUD-AUTH-003
+  version: 0.1.0
+  authority: PROJECT_OWNER
+  status: CONSUMED_BY_THIS_RUN
+  path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/authorization/owner-authorization.yaml
+  sha256: cfc2a3e3684c56d64c6e9ccd90c46a224717bf7fb474afc561549e250360c789
+prompt:
+  prompt_id: GOV-AUD-PROMPT-031
+  catalog_prompt_id: HP-PROMPT-035
+  version: 0.1.0
+  lifecycle: EXECUTED
+  template_binding: GOV-AUD-PROMPT-030/0.2.0
+  exact_text_preserved: true
+  path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/prompt/GOV-AUD-PROMPT-031-pass-03-execution-v0.1.0.md
+  sha256: 70dd312e123d438d78c7e5947764cfeddb4b6c383cad76e8e6b4aacdcab2c543
+  owner_orchestration_prompt:
+    identity: HP-PROMPT-035/0.1.0
+    path: governance/prompts/orchestration/HP-PROMPT-035-execute-gov-aud-001-pass-03-v0.1.0.md
+    sha256: 131b9e3b2fe8bdb27214ebbae7965d79d8394e5b7e8b5ede606a85545b883eb3
+contract:
+  identity: GOV-AUD-001-PASS-03-CONTRACT/0.2.0
+  path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/contract.yaml
+  sha256: a08e83c5f4a7342b8b2ee2893ddf70be809614cc8ef3b167a83b3b6275be6f65
+input:
+  manifest_id: GOV-AUD-001-P03-R1-INPUT-001
+  version: 0.1.0
+  manifest_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/input/input-manifest.yaml
+  manifest_sha256: 10d4530c2e2ddbab2791f1090d65511977d187feec18cf14b1eb6f29acab4a7f
+  input_package_sha256: d8ad0556bf9ece26f3bbe7d42629da26c493744b8ca5661d2111a2c213950ab5
+  member_count: 33
+  inventory_complete_for_declared_analysis: true
+  member_hashes_bound: true
+execution_environment:
+  model: Codex agent based on GPT-5
+  recommended_model_from_owner: Sol High
+  reasoning_mode: NOT_EXPOSED
+  hidden_chain_of_thought_captured: false
+  external_research: NONE_PERFORMED
+  visible_model_updates: OBSERVABLE_IN_SESSION_NOT_REQUIRED_AS_CANONICAL_EVIDENCE
+  duration: {status: UNAVAILABLE, reason_code: NOT_CAPTURED, limitation: no_reliable_end_to_end_meter}
+  input_tokens: {status: UNAVAILABLE, reason_code: NOT_EXPOSED, limitation: provider_metering_not_available}
+  output_tokens: {status: UNAVAILABLE, reason_code: NOT_EXPOSED, limitation: provider_metering_not_available}
+  monetary_cost: {status: UNAVAILABLE, reason_code: NOT_EXPOSED, limitation: billing_data_not_available}
+  owner_interventions: 1
+  retries_and_correction_cycles: {status: AVAILABLE_IN_SESSION_TRACE_NON_AUTHORITATIVE, canonical_value: null}
+  stop_reason: COMPLETED_DECLARED_SOURCE_EXECUTION_PENDING_INDEPENDENT_REVIEW
+output_contract:
+  substantive_output_count: 9
+  status_on_success: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  required_outputs:
+    - {id: GOV-AUD-P03-OUT-001, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/01-observable-event-requirements.yaml, format: YAML, sha256: 6f70027f8611a3398e13216c96a69a97990ec8d818d7ea95552e84b009b23f10}
+    - {id: GOV-AUD-P03-OUT-002, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/02-evidence-and-authority-model.yaml, format: YAML, sha256: a7095a69a056ec8cf3ec8cc12b5a192f28e9bd0ed2929a62c3b8a323eee17ff9}
+    - {id: GOV-AUD-P03-OUT-003, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/03-learning-lifecycle-and-state-machine.yaml, format: YAML, sha256: 03405a70e2b36680ea7781a7e20a117274eda636a58019eb34ac1ff3d1a6a506}
+    - {id: GOV-AUD-P03-OUT-004, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/04-candidate-routing-and-promotion-model.yaml, format: YAML, sha256: 3d207693a464154952d5d229555639d997bc28b30f6641f542a09ab355d6de79}
+    - {id: GOV-AUD-P03-OUT-005, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/05-selective-retrieval-requirements.yaml, format: YAML, sha256: 532513a3295b2b1967c428c8b122c987a7254d849be95e842261431867ca3d39}
+    - {id: GOV-AUD-P03-OUT-006, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/06-effectiveness-and-burden-metrics.yaml, format: YAML, sha256: d1b10ac3235099dfa1ea4b538046ce480b299cb501ea1535af4c63784b8c0b4e}
+    - {id: GOV-AUD-P03-OUT-007, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/07-privacy-retention-and-rollback-requirements.yaml, format: YAML, sha256: fc1579bdd6f68d979efa16ead1c9b1313908788e09508167f6ac8a7265b635c2}
+    - {id: GOV-AUD-P03-OUT-008, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/08-tooling-neutral-capability-model.yaml, format: YAML, sha256: 791e95d53b09482b774f25d7ae9fa69aab19e85ed3aeb6695fa246549e8775f5}
+    - {id: GOV-AUD-P03-OUT-009, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/09-risks-open-questions-and-pass-04-handoff.md, format: MARKDOWN, sha256: 70d23e50cfbd1488002c7adaf47f8ad70241b5b39e4f0f7d4007854d697abf65}
+  validation_report:
+    id: GOV-AUD-P03-VAL-001
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/evaluation/pass-03-validation-report.yaml
+    sha256: f976e9761d82f9c01482f4e466f290082f049629300731e4cec5d4e3eae7838f
+    evidence_class: SOURCE_RUN_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_ADVERSARIAL_REVIEW
+adversarial_review_package:
+  id: GOV-AUD-P03-REVIEW-PACKAGE-001
+  status: PREPARED_IMMUTABLE_NOT_REVIEWED
+  path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/review-package/manifest.yaml
+  sha256: ff59242ad237509c31a264df9077c6a39c921abf4fb9c9e81c8d3ca2d78e8852
+  package_sha256: d93c98535e38d952582b59e460d17ac62db8fea3ebfed794383d384a0b9f43fe
+  independent_review_executed: false
+authority_boundary:
+  pass_01_status: PASS_01_ACCEPTED_COMPLETED
+  pass_02_status: ACCEPTED_COMPLETED
+  checkpoint_a_status: APPROVED_COMPLETED
+  pass_03_accepted: false
+  pass_03_completed: false
+  pass_04_authorized_or_executed: false
+  tooling_selected_or_adopted: false
+  learning_pipeline_implemented: false
+  gov_7_activated: false
+  kernel_changed: false
+  od_006_status: UNRESOLVED_TRIGGER_GATED
+  risk_accepted: false
+  commit_authorized_conditionally_on_validation: true
+  push_authorized_conditionally_on_validation: true
+next_action: Conduct one independent adversarial review of PASS-03 using the prepared immutable review package. Do not execute PASS-04.

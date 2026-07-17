@@ -1,0 +1,65 @@
+effectiveness_and_burden_metrics:
+  artifact_id: GOV-AUD-P03-OUT-006
+  version: 0.1.0
+  status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  statement_label: REQUIREMENT
+  evidence_links:
+    - governance/methodology/METHODOLOGY_BACKLOG.md#hp-mprop-007--execution-insight-capture-and-learning-promotion-pipeline
+    - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/02-corrected-repetition-waste-and-burden-analysis.md
+    - governance/learning/README.md
+  success_rule: Improvement requires bounded outcome evidence net of burden; record count, trace volume and promoted-item count are never success by themselves.
+  metrics:
+    - {metric: recurrence_rate, definition: materially_equivalent_failures_per_eligible_work_unit, numerator: recurrences, denominator: eligible_comparable_work_units, direction: LOWER_IS_BETTER}
+    - {metric: repeated_owner_corrections, definition: owner_corrections_for_previously_addressed_failure_per_eligible_work_unit, numerator: repeated_owner_corrections, denominator: eligible_work_units, direction: LOWER_IS_BETTER}
+    - {metric: repeated_manual_repairs, definition: manual_repairs_for_known_failure_class_per_eligible_work_unit, numerator: repeated_repairs, denominator: eligible_work_units, direction: LOWER_IS_BETTER}
+    - {metric: correction_cycles, definition: material_return_and_rework_cycles_per_work_unit, numerator: correction_cycles, denominator: completed_or_stopped_work_units, direction: LOWER_IS_BETTER}
+    - {metric: promoted_lessons, definition: accepted_lessons_entering_implemented_state, numerator: implemented_promotions, denominator: accepted_lessons, direction: DIAGNOSTIC_NOT_SUCCESS_ALONE}
+    - {metric: independently_validated_controls, definition: implemented_controls_with_valid_independent_or_declared_deterministic_validation, numerator: validated_controls, denominator: implemented_controls, direction: HIGHER_WITH_SCOPE_AND_QUALITY_GUARDS}
+    - {metric: failures_prevented, definition: eligible_counterfactual_failures_blocked_by_attributable_control_evidence, numerator: evidenced_preventions, denominator: eligible_exposures, direction: HIGHER_IS_BETTER, limitation: counterfactual_requires_explicit_method}
+    - {metric: relevant_retrieval_rate, definition: retrieved_items_confirmed_materially_relevant, numerator: relevant_items, denominator: retrieved_items, direction: HIGHER_IS_BETTER}
+    - {metric: irrelevant_context_rate, definition: retrieved_items_or_tokens_without_demonstrable_task_effect, numerator: irrelevant_items_or_tokens, denominator: all_retrieved_items_or_tokens, direction: LOWER_IS_BETTER}
+    - {metric: false_learning_rate, definition: accepted_learning_later_refuted_or_materially_corrected, numerator: false_learning_items, denominator: accepted_learning_items_with_followup, direction: LOWER_IS_BETTER}
+    - {metric: duplicate_learning_rate, definition: new_candidates_that_duplicate_existing_canonical_learning_without_material_delta, numerator: duplicate_candidates, denominator: candidates_triaged, direction: LOWER_IS_BETTER}
+    - {metric: stale_learning_rate, definition: retrieved_or_applied_items_invalid_for_current_scope_or_version, numerator: stale_items_used_or_retrieved, denominator: items_used_or_retrieved, direction: LOWER_IS_BETTER}
+    - {metric: discarded_noise_rate, definition: candidates_discarded_as_non_material_unsupported_or_out_of_scope, numerator: discarded_noise, denominator: candidates_triaged, direction: DIAGNOSTIC_REQUIRES_FALSE_NEGATIVE_SAMPLE}
+    - {metric: rollback_frequency, definition: promoted_controls_rolled_back_or_disabled_for_defect_burden_or_harm, numerator: rollbacks, denominator: promoted_controls_exposed, direction: DIAGNOSTIC_CONTEXT_REQUIRED}
+    - {metric: token_burden, definition: incremental_input_and_output_tokens_attributable_to_capture_retrieval_and_controls, numerator: incremental_tokens, denominator: eligible_work_units, direction: LOWER_FOR_EQUAL_OR_BETTER_OUTCOME}
+    - {metric: execution_time_burden, definition: incremental_elapsed_or_active_execution_time_attributable_to_learning_controls, numerator: incremental_duration, denominator: eligible_work_units, direction: LOWER_FOR_EQUAL_OR_BETTER_OUTCOME}
+    - {metric: owner_burden, definition: incremental_owner_interventions_decisions_and_active_minutes_when_reliably_observable, numerator: interventions_or_minutes, denominator: eligible_work_units, direction: LOWER_FOR_EQUAL_OR_BETTER_OUTCOME}
+  measurement_requirements:
+    - Define eligible comparable work units, failure equivalence and observation window before measurement.
+    - Preserve baseline and post-change cohorts or an explicit alternative causal method.
+    - Report numerator, denominator, exclusions, unavailable values and confidence or limitation.
+    - Separate prevention from non-occurrence; absence of a failure is not attributable prevention without evidence.
+    - Segment by risk, task, role, component and execution mode when aggregation would mislead.
+    - Report burden alongside benefit and distribution, not only averages.
+  unavailable_data_rules:
+    marker: {value: null, measurement_quality: UNAVAILABLE, basis: REQUIRED_REASON}
+    prohibited: [inventing_historical_values, replacing_missing_with_zero, estimating_owner_minutes_without_method, inferring_tokens_or_cost_from_text_length]
+    current_pass_03_baseline:
+      historical_tokens_cost_duration_owner_minutes: UNAVAILABLE_NOT_RELIABLY_CAPTURED
+      operational_effectiveness: UNAVAILABLE_NO_IMPLEMENTED_LEARNING_SYSTEM
+  metric_risks:
+    - denominator_shrinkage
+    - easy_case_selection
+    - failure_reclassification
+    - duplicate_splitting_or_merging
+    - suppressing_owner_corrections
+    - overcapture_to_increase_activity
+    - promotion_volume_as_success
+    - short_observation_window
+    - burden_shift_to_unmeasured_humans
+    - counterfactual_overclaim
+  anti_gaming_controls:
+    - Freeze metric definitions, eligibility and windows before comparison.
+    - Preserve raw canonical event references and independently sample classifications.
+    - Report absolute counts with rates and denominators.
+    - Count reopened, rolled-back, false and stale learning against the same cohort.
+    - Sample discarded candidates for false negatives and retrieved items for relevance.
+    - Separate implemented, validated and shown-effective counts.
+    - Require explicit causal evidence for failures-prevented claims.
+    - Track unmeasured and shifted burden as limitations, not zero.
+    - Permit control disablement when burden is disproportionate to demonstrated benefit.
+  evaluation_gate:
+    shown_effective_requires: [validated_control, eligible_exposure, outcome_measurement, burden_measurement, limitations, comparison_or_causal_method, no_material_metric_integrity_finding]
+    owner_decision_required_for: [risk_tradeoff, material_burden_acceptance, adoption, continued_operation_after_material_limitation]

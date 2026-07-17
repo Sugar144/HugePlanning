@@ -129,27 +129,40 @@ def test_allows_pass_03_preparation_authority(tmp_path: Path) -> None:
 
     rewrite_yaml(
         plan_path,
-        lambda doc: next(item for item in doc["audit_program"]["sequence"] if item["id"] == "PASS-03").update(
-            status="AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION"
+        lambda doc: (
+            doc["audit_program"].update(passes_executed=2),
+            next(item for item in doc["audit_program"]["sequence"] if item["id"] == "PASS-03").update(
+                status="AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION"
+            ),
         ),
     )
     rewrite_yaml(
         status_path,
         lambda doc: doc["audit"].update(
-            pass_03_preparation_status="AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION"
+            passes_executed=2,
+            pass_03_preparation_status="AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION",
+            pass_03_execution_authorized=False,
+            pass_03_authorization_consumed=False,
+            pass_03_executed=False,
+            pass_03_status=None,
         ),
     )
     assert validate(root) == {"result": "VALID", "diagnostics": []}
 
 
-def test_allows_pass_03_prepared_pending_execution_authorization() -> None:
+def test_allows_valid_pass_03_successor_execution() -> None:
     assert validate(ROOT) == {"result": "VALID", "diagnostics": []}
 
 
 def test_rejects_pass_03_execution_authority_without_lifecycle_authority(tmp_path: Path) -> None:
     root = isolated(tmp_path)
-    path = root / "governance/audits/GOV-AUD-001-gov7-enablement/02-audit-status.yaml"
-    rewrite_yaml(path, lambda doc: doc["audit"].update(pass_03_execution_authorized=True))
+    plan = root / "governance/audits/GOV-AUD-001-gov7-enablement/01-audit-plan.yaml"
+    status = root / "governance/audits/GOV-AUD-001-gov7-enablement/02-audit-status.yaml"
+    rewrite_yaml(plan, lambda doc: (
+        doc["audit_program"].update(passes_executed=2),
+        next(item for item in doc["audit_program"]["sequence"] if item["id"] == "PASS-03").update(status="PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION"),
+    ))
+    rewrite_yaml(status, lambda doc: doc["audit"].update(passes_executed=2, pass_03_preparation_status="PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION", pass_03_executed=False))
     assert "PASS-03 execution authority or lifecycle mismatch" in diagnostics(root)
 
 
@@ -165,4 +178,4 @@ def test_rejects_checkpoint_or_premature_pass_03_execution(tmp_path: Path) -> No
     rewrite_yaml(path, mutate)
     diagnostic_text = diagnostics(root)
     assert "CHECKPOINT-A completed or changed" in diagnostic_text
-    assert "PASS-03 executed or authorized" in diagnostic_text
+    assert "PASS-03 executed or authorized without a valid later lifecycle" in diagnostic_text
