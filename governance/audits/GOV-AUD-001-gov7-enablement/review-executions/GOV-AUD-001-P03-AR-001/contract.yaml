@@ -1,0 +1,80 @@
+review_execution_contract:
+  contract_id: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT
+  version: 0.1.0
+  status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+  purpose: Execute one bounded independent adversarial review of the immutable PASS-03 source run without changing it.
+  reviewed_audit: GOV-AUD-001
+  reviewed_pass: PASS-03
+  reviewed_run: GOV-AUD-001-P03-R1
+  immutable_evidence_package:
+    id: GOV-AUD-P03-REVIEW-PACKAGE-001
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/review-package/manifest.yaml
+    package_sha256: d93c98535e38d952582b59e460d17ac62db8fea3ebfed794383d384a0b9f43fe
+    immutability_rule: REVIEWER_MUST_VERIFY_ALL_MEMBERS_AND_MUST_NOT_MODIFY_THE_SOURCE_RUN_OR_PACKAGE
+  review_identity:
+    review_id: GOV-AUD-001-P03-AR-001
+    review_type: ADVERSARIAL_REVIEW
+    role: Independent PASS-03 Adversarial Reviewer
+    mode: EVIDENCE_BOUNDED_ATTEMPTED_REFUTATION
+    execution_count_limit: 1
+    execution_count_consumed: 0
+  allowed_inputs:
+    - immutable_evidence_package_members
+    - this_contract
+    - this_review_input_manifest
+    - exact_instantiated_review_prompt
+    - output_specification
+    - validation_plan
+    - applicable_repository_instructions_and_accepted_methodology_bound_in_input_manifest
+  prohibited_inputs:
+    - chat_memory_as_evidence
+    - hidden_chain_of_thought
+    - unrecorded_operational_telemetry
+    - external_tool_or_product_claims
+    - PASS_04_materials_or_comparisons
+    - modified_or_unhashed_source_outputs
+  reviewer_independence:
+    required_classifications: [INDEPENDENT, PARTIALLY_INDEPENDENT_WITH_DISCLOSED_LIMITATIONS, NOT_INDEPENDENT, UNVERIFIABLE]
+    permitted_to_proceed: [INDEPENDENT, PARTIALLY_INDEPENDENT_WITH_DISCLOSED_LIMITATIONS]
+    required_observable_declaration: [fresh_execution_session, reviewer_model, reviewer_mode, prior_involvement, shared_prompt_model_session_or_authoring_dependencies, unavailable_metadata]
+    rules:
+      - REVIEWER_MUST_USE_A_SEPARATE_FRESH_EXECUTION_SESSION_FROM_GOV_AUD_001_P03_R1
+      - ORIGINAL_PASS_03_EXECUTOR_MUST_NOT_SELF_CERTIFY_INDEPENDENCE
+      - MODEL_IDENTITY_ALONE_DOES_NOT_PROVE_INDEPENDENCE
+      - NO_HIDDEN_CHAIN_OF_THOUGHT_MAY_BE_REQUESTED_OR_CAPTURED
+      - NOT_INDEPENDENT_OR_UNVERIFIABLE_REVIEW_MUST_RETURN_PASS_03_REVIEW_INVALID_OR_INCOMPLETE
+  attack_requirements:
+    minimum_meaningful_attacks: 3
+    attack_dimensions: [false_learning, unsupported_promotion, authority_escalation, privacy_leak, telemetry_overcollection, irrelevant_context, stale_learning, contradiction, metric_gaming, bureaucracy_owner_burden, premature_tool_selection, vendor_lock_in, rollback_or_deletion_failure, unavailable_observability, evidence_canonicality, self_validation_or_circular_verification]
+    dimension_rule: REVIEWER_MUST_SELECT_AND_JUSTIFY_DIMENSIONS_RELEVANT_TO_THE_STRONGEST_PASS_03_CLAIMS; EVERY_OMITTED_DIMENSION_REQUIRES_AN_IRRELEVANCE_OR_UNAVAILABLE_EVIDENCE_RECORD
+    required_attack_fields: [attack_id, attack_dimension, target_claim_or_assumption, attack_method, counterexample_or_failure_scenario, evidence_examined, result, impact]
+    reject: [generic_criticism_without_target, nominal_adversarial_declaration, restated_acceptance_criteria, empty_attack_method, unsupported_conclusion, survival_without_meaningful_attempt]
+  finding_contract:
+    required_fields: [finding_id, classification, affected_artifacts, evidence, materiality, impact, disposition, bounded_r2_scope_or_null]
+    materiality_dimensions: [evidence_or_authority_integrity, lifecycle_correctness, false_learning_prevention, privacy_or_deletion_safety, retrieval_safety, effectiveness_measurement, owner_burden, tooling_neutrality, later_pass_usability]
+    observations_are_not_findings: true
+  result_semantics:
+    exactly_one_terminal_result: true
+    permitted_terminal_results: [PASS_03_CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION, PASS_03_R2_REQUIRED, PASS_03_REVIEW_INVALID_OR_INCOMPLETE]
+    PASS_03_CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION:
+      requires: [genuine_required_attacks, no_remaining_material_finding, sufficient_for_owner_disposition, no_tool_selection_implementation_or_authority_escalation]
+      pass_03_state_transition: REVIEW_EXECUTED_PENDING_PROJECT_OWNER_DISPOSITION
+      does_not_mean: [PASS_03_ACCEPTED, PASS_03_COMPLETED, PASS_04_AUTHORIZED]
+    PASS_03_R2_REQUIRED:
+      requires: [one_or_more_material_findings, finding_ids, affected_artifacts, evidence, impact, bounded_r2_correction_scope, unchanged_surfaces]
+      pass_03_state_transition: REVIEW_COMPLETED_PASS_03_R2_REQUIRED
+      does_not_authorize: [R2_PREPARATION, R2_EXECUTION]
+    PASS_03_REVIEW_INVALID_OR_INCOMPLETE:
+      triggers: [package_integrity_failure, required_evidence_unavailable, independence_not_permitted, attacks_not_genuinely_executed, incomplete_output, interrupted_or_unverifiable_execution]
+      pass_03_state_transition: NO_PASS_03_STATE_ADVANCEMENT
+      review_opportunity_consumed: false
+  invalid_review_conditions: [package_hash_or_member_hash_mismatch, source_run_mutation, missing_prompt_or_contract_binding, missing_independence_declaration, prohibited_input, incomplete_attack_record, invalid_result, prohibited_acceptance_or_PASS_04_authority]
+  validation_requirements: [contract_and_schema, prompt_custody_and_hash, immutable_package_identity_and_hash, input_manifest, independence_declaration_contract, attack_record_structure, result_semantics, state_transitions, authority_boundary, output_specification, registry_reference_checksum_consistency, audit_scaffold, governance_state]
+  custody_and_publication:
+    review_output_path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output/pass-03-adversarial-review-result.yaml
+    output_is_created_only_by_an_authorized_review_execution: true
+    correction_package_is_publishable_after_deterministic_validation: true
+    review_output_requires_separate_owner_execution_authorization: true
+    review_output_and_any_R2_are_prospective_and_immutable_after_publication: true
+  owner_disposition_boundary: REVIEW_MAY_REPORT_SUITABILITY_OR_R2_REQUIREMENT_BUT_MUST_NOT_ACCEPT_PASS_03_AUTHORIZE_PASS_04_ACCEPT_RISK_OR_RATIFY_POLICY
+  correction_relationship: MATERIAL_FINDINGS_MAY_DEFINE_A_BOUNDED_R2_SCOPE_ONLY; A_SEPARATE_PROJECT_OWNER_AUTHORIZATION_AND_NEW_VERSIONED_R2_ARE_REQUIRED

@@ -1,0 +1,40 @@
+review_input_manifest:
+  manifest_id: GOV-AUD-001-P03-AR-001-INPUT-001
+  version: 0.1.0
+  status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  preparation_head: 51b0134353b8670ce8c1b99f2b8c537c6b70829c
+  reviewed_run: GOV-AUD-001-P03-R1
+  reviewed_run_sha256: d3e1245289a82629de75f106326aeb3d18b4412b43e8218a01fb3b8c480c4165
+  immutable_review_package:
+    id: GOV-AUD-P03-REVIEW-PACKAGE-001
+    manifest_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/review-package/manifest.yaml
+    manifest_sha256: ff59242ad237509c31a264df9077c6a39c921abf4fb9c9e81c8d3ca2d78e8852
+    aggregate_sha256: d93c98535e38d952582b59e460d17ac62db8fea3ebfed794383d384a0b9f43fe
+  review_contract:
+    id: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT
+    version: 0.1.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/contract.yaml
+    sha256: 8afc92a961b199830c362f055e820e7df9e3a24f6c0040f1eec3875329289f99
+  review_prompt:
+    id: GOV-AUD-PROMPT-032
+    catalog_id: HP-PROMPT-037
+    version: 0.1.0
+    path: governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md
+    sha256: 919b11b868a5ecc04e25a45435fdc96126ef4b3feb1361b157e1fcbc5c740df1
+  members:
+    - {path: governance/AGENTS.md, sha256: e9a11a5e896555b0a9d3d95e3d94a8597fb42ce73bae3e8682251894b37a8b16, role: GOVERNANCE_INSTRUCTIONS}
+    - {path: governance/methodology/project-operating-contract.md, sha256: cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa, role: CANONICAL_OPERATING_SEMANTICS}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml, sha256: d917e2e00bf26f0f8fbb2b6cb77f19e7aac70834ab589391ab19ec21e3f0e60c, role: ACCEPTED_AUDIT_METHODOLOGY}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/adversarial-review-plan.yaml, sha256: 93439871f3cf6dec210b1eb0407587457e71feaa3674f74e5cc23ed69461bb00, role: ATTACK_PLAN}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/manifest.yaml, sha256: d3e1245289a82629de75f106326aeb3d18b4412b43e8218a01fb3b8c480c4165, role: REVIEWED_RUN_MANIFEST}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/review-package/manifest.yaml, sha256: ff59242ad237509c31a264df9077c6a39c921abf4fb9c9e81c8d3ca2d78e8852, role: IMMUTABLE_REVIEW_PACKAGE_MANIFEST}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/contract.yaml, sha256: 8afc92a961b199830c362f055e820e7df9e3a24f6c0040f1eec3875329289f99, role: REVIEW_EXECUTION_CONTRACT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output-artifact-specification.yaml, sha256: 41d2f36fa580668835b8e8b53b3042fe86f99f3543ff24d76549557f95bee875, role: REVIEW_OUTPUT_SPECIFICATION}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/validation-plan.yaml, sha256: 81eac33a2d117798b568240e609538dfbf57046dbd1aecaf933f8e9112116ba6, role: REVIEW_VALIDATION_PLAN}
+    - {path: governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md, sha256: 919b11b868a5ecc04e25a45435fdc96126ef4b3feb1361b157e1fcbc5c740df1, role: EXACT_INSTANTIATED_REVIEW_PROMPT}
+  member_count: 10
+  package_hash_method: SHA256_OF_LEXICOGRAPHICALLY_PATH_SORTED_SHA256SUM_LINES
+  input_package_sha256: d8a06f64337e40f1b6dd624b2da021e8eba12c38346d8a507ec584b26d524c14
+  exclusions: [chat_memory_as_evidence, hidden_chain_of_thought, unrecorded_telemetry, external_product_claims, PASS_04_materials, modified_source_outputs]

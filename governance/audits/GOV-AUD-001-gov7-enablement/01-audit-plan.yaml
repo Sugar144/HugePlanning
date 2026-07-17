@@ -51,3 +51,8 @@ audit_program:
   graph_technology_selected: false
   vertical_slice_selected: false
   audit_executed: false
+  pass_03_adversarial_review_execution_package:
+    id: GOV-AUD-P03-REVIEW-EXECUTION-PACKAGE-001
+    status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+    review_execution_authorized: false
+    review_executed: false

@@ -16,6 +16,7 @@ from _lib.strict_yaml import load, loads
 from validate_audit_methodology import validate as validate_audit_methodology
 from validate_pass_02 import validate as validate_pass_02
 from validate_pass_03_execution import validate as validate_pass_03_execution
+from validate_pass_03_review_preparation import validate as validate_pass_03_review_preparation
 
 
 AUDIT_REL = Path("governance/audits/GOV-AUD-001-gov7-enablement")
@@ -823,7 +824,7 @@ def validate(root: Path) -> dict:
     executed_prompt_ids = [
         item.get("prompt_id")
         for item in prompts
-        if item.get("lifecycle") not in {"TEMPLATE", "SUPERSEDED"}
+        if item.get("lifecycle") not in {"TEMPLATE", "SUPERSEDED", "INSTANTIATED_NOT_EXECUTED"}
     ]
     if executed_prompt_ids != expected_executed_prompt_ids:
         errors.append("prompt registry executed identity/order mismatch")
@@ -999,6 +1000,8 @@ def validate(root: Path) -> dict:
             errors.extend(f"PASS-02: {item}" for item in pass_02_result["diagnostics"])
             pass_03_result = validate_pass_03_execution(root)
             errors.extend(f"PASS-03: {item}" for item in pass_03_result["diagnostics"])
+            pass_03_review_preparation = validate_pass_03_review_preparation(root)
+            errors.extend(f"PASS-03-REVIEW-PREPARATION: {item}" for item in pass_03_review_preparation["diagnostics"])
     methodology_result = validate_audit_methodology(root)
     errors.extend(f"AUDIT-METHODOLOGY: {item}" for item in methodology_result["diagnostics"])
 
@@ -1059,6 +1062,9 @@ def validate(root: Path) -> dict:
             "GOV-AUD-P03-OUT-003", "GOV-AUD-P03-OUT-004", "GOV-AUD-P03-OUT-005",
             "GOV-AUD-P03-OUT-006", "GOV-AUD-P03-OUT-007", "GOV-AUD-P03-OUT-008",
             "GOV-AUD-P03-OUT-009", "GOV-AUD-P03-VAL-001", "GOV-AUD-P03-REVIEW-PACKAGE-001",
+            "GOV-AUD-P03-REVIEW-EXECUTION-PACKAGE-001", "GOV-AUD-001-P03-AR-001",
+            "GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT", "GOV-AUD-P03-AR-INPUT-001",
+            "GOV-AUD-P03-AR-OUTPUT-SPEC-001", "GOV-AUD-P03-AR-VALIDATION-PLAN-001", "HP-PROMPT-037",
         ))
     if methodology_acceptance.is_file():
         required_ids.extend(("GOV-AUD-VAL-005", "GOV-AUD-DECISION-002", "HP-PROMPT-031"))

@@ -14,7 +14,7 @@
 | Controller guards | zero blocking findings; no repeated findings; none exhausted |
 | GOV-5 status | `COMPLETED / CLOSED`; KGR-006-R1 is `ACCEPTED_BY_PROJECT_OWNER`; closure review remains `EXECUTED_READY_FOR_PROJECT_OWNER_DECISION` |
 | GOV-6 status | `COMPLETED / CLOSED`; OD-004 ratified exact Kernel `0.2.0` |
-| GOV-AUD-001 status | `IN_PROGRESS`; PASS-01 and PASS-02 are accepted; CHECKPOINT-A is approved; PASS-03 is executed and validated pending independent adversarial review and Project Owner disposition |
+| GOV-AUD-001 status | `IN_PROGRESS`; PASS-01 and PASS-02 are accepted; CHECKPOINT-A is approved; PASS-03 is executed and validated pending independent adversarial review and Project Owner disposition; its executable review package is prepared but review remains unauthorized |
 | Enforcement Engineering gate | `CLOSED`; GOV-AUTH-001 consumed exactly 1 of 1, with no remaining execution |
 | Enforcement status | `NOT_DESIGNED_OR_IMPLEMENTED` |
 | Human ratification | `RATIFIED` — exact Kernel `0.2.0`, recorded in `GOV-DECISION-RECORD-002/0.1.0` |
@@ -206,6 +206,10 @@ GOV-AUD-001:
   PASS-03-run: GOV-AUD-001-P03-R1
   PASS-03-validation: GOV-AUD-P03-VAL-001/VALID
   PASS-03-review-package: GOV-AUD-P03-REVIEW-PACKAGE-001/PREPARED_IMMUTABLE_NOT_REVIEWED
+  PASS-03-review-execution-package: GOV-AUD-P03-REVIEW-EXECUTION-PACKAGE-001/PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+  PASS-03-review-id: GOV-AUD-001-P03-AR-001
+  PASS-03-review-executed: false
+  PASS-03-review-opportunity-consumed: false
   PASS-03-accepted: false
   PASS-04: PLANNED_NOT_EXECUTED_UNAUTHORIZED
   completed: false
@@ -245,4 +249,4 @@ GOV-AUD-001 PASS-01 executed under `GOV-AUD-AUTH-001`; C1 corrected its validati
 
 GOV-AUD-001 PASS-02 executed once under `GOV-AUD-AUTH-002` and exact prompt `GOV-AUD-PROMPT-021/0.1.0`, catalogued as `HP-PROMPT-029/0.1.0` after the prospective identity correction. Its seven immutable cross-layer architecture outputs were independently reviewed in `GOV-AUD-001-P02-IER-002`, with result `PASS_02_R1_CONFIRMED` and no R2 required. The Project Owner accepted PASS-02 and approved CHECKPOINT-A in `GOV-AUD-DECISION-003/0.1.0`, authorizing PASS-03 preparation only.
 
-The Project Owner accepted `GOV-AUD-001-METHOD-001/0.3.0` prospectively in `GOV-AUD-DECISION-002/0.1.0` after the focused independent confirmation of its three corrected findings, while preserving the existing finding, model-inference, deviation/root-cause, adversarial, materiality, temporary conflict and identity controls. `HP-MPROP-006` still routes formal conflict-policy derivation to future GOV-7. `HP-MPROP-007` is incorporated into the bounded PASS-03 requirements without implementing a pipeline. PASS-03 executed once under `GOV-AUD-AUTH-003` and `GOV-AUD-PROMPT-031/0.1.0`; its nine outputs and deterministic validation are preserved in `GOV-AUD-001-P03-R1`, and `GOV-AUD-P03-REVIEW-PACKAGE-001` is prepared but not independently reviewed. This does not accept or complete PASS-03, authorize or execute PASS-04, change PASS-02 R1, amend the Kernel, adopt policy, resolve OD-006 or activate GOV-7. The exact next action is one independent adversarial review of PASS-03 using the immutable review package; do not execute PASS-04.
+The Project Owner accepted `GOV-AUD-001-METHOD-001/0.3.0` prospectively in `GOV-AUD-DECISION-002/0.1.0` after the focused independent confirmation of its three corrected findings, while preserving the existing finding, model-inference, deviation/root-cause, adversarial, materiality, temporary conflict and identity controls. `HP-MPROP-006` still routes formal conflict-policy derivation to future GOV-7. `HP-MPROP-007` is incorporated into the bounded PASS-03 requirements without implementing a pipeline. PASS-03 executed once under `GOV-AUD-AUTH-003` and `GOV-AUD-PROMPT-031/0.1.0`; its nine outputs and deterministic validation are preserved in `GOV-AUD-001-P03-R1`. `GOV-AUD-001-P03-AR-001` now binds the immutable package to a review contract, exact prompt, hash-bound inputs, output specification, independence template, validation plan and custody rules. It is prepared only: no review has executed or been consumed, PASS-03 is not accepted or completed, and PASS-04 remains unauthorized. The exact next action is separately authorize one independent adversarial review using that package; do not execute PASS-04.

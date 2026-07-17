@@ -1,0 +1,8 @@
+reviewer_independence_declaration_template:
+  id: GOV-AUD-001-P03-AR-001-INDEPENDENCE-001
+  version: 0.1.0
+  use: COMPLETE_ONLY_DURING_SEPARATELY_AUTHORIZED_REVIEW_EXECUTION
+  required_fields: [fresh_execution_session, reviewer_model, reviewer_mode, prior_involvement, shared_prompt_model_session_or_authoring_dependencies, independence_classification, independence_evidence, unavailable_metadata]
+  permitted_classifications: [INDEPENDENT, PARTIALLY_INDEPENDENT_WITH_DISCLOSED_LIMITATIONS, NOT_INDEPENDENT, UNVERIFIABLE]
+  required_rules: [NO_ORIGINAL_EXECUTOR_SELF_CERTIFICATION, MODEL_IDENTITY_ALONE_INSUFFICIENT, NO_HIDDEN_CHAIN_OF_THOUGHT, EXPLICIT_UNAVAILABLE_MARKERS]
+  execution_value: NOT_CREATED_PENDING_SEPARATE_OWNER_REVIEW_EXECUTION_AUTHORIZATION

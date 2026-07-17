@@ -1,0 +1,17 @@
+review_output_specification:
+  id: GOV-AUD-001-P03-AR-001-OUTPUT-SPEC-001
+  version: 0.1.0
+  status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+  output_path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/output/pass-03-adversarial-review-result.yaml
+  output_created: false
+  format: YAML
+  root_key: pass_03_adversarial_review
+  required_fields: [review_id, review_contract_id, review_contract_version, review_prompt_id, review_prompt_version, reviewed_run, review_package_id, review_package_sha256, reviewer_model, reviewer_mode, independence_classification, independence_evidence, attacks, material_findings, non_blocking_observations, result, r2_required, r2_scope, files_modified, validation, timestamp]
+  unavailable_value_rule: EXPLICIT_UNAVAILABLE_MARKER_REQUIRED_FOR_UNOBSERVABLE_VALUE
+  attack_record_required_fields: [attack_id, attack_dimension, target_claim_or_assumption, attack_method, counterexample_or_failure_scenario, evidence_examined, result, impact]
+  finding_required_fields: [finding_id, classification, affected_artifacts, evidence, materiality, impact, disposition, bounded_r2_scope_or_null]
+  result_rules:
+    exactly_one: true
+    permitted: [PASS_03_CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION, PASS_03_R2_REQUIRED, PASS_03_REVIEW_INVALID_OR_INCOMPLETE]
+    invalid_or_incomplete_requires_no_pass_03_state_advancement: true
+  required_authority_boundary: [no_pass_03_acceptance, no_pass_04_authorization_or_execution, no_tool_selection, no_learning_pipeline_implementation, no_gov_7_activation, no_kernel_amendment, no_od_006_resolution, no_risk_acceptance]

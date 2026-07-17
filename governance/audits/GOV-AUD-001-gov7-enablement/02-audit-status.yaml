@@ -112,3 +112,17 @@ audit:
     tooling_selected: false
     learning_pipeline_implemented: false
     gov_7_activated: false
+  pass_03_adversarial_review_execution_package:
+    package_id: GOV-AUD-P03-REVIEW-EXECUTION-PACKAGE-001
+    review_id: GOV-AUD-001-P03-AR-001
+    status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_REVIEW_EXECUTION_AUTHORIZATION
+    contract: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT/0.1.0
+    prompt_id: GOV-AUD-PROMPT-032
+    catalog_prompt_id: HP-PROMPT-037
+    input_manifest: GOV-AUD-001-P03-AR-001-INPUT-001/0.1.0
+    reviewed_package: GOV-AUD-P03-REVIEW-PACKAGE-001
+    reviewed_package_sha256: d93c98535e38d952582b59e460d17ac62db8fea3ebfed794383d384a0b9f43fe
+    review_execution_authorized: false
+    review_executed: false
+    review_opportunity_consumed: false
+    pass_03_state_advanced: false
