@@ -2,7 +2,7 @@
 # Contract: product/README.md · schema: schemas/product-backlog.schema.json
 # Validated by tests/run-tests.sh (T14). counters = next free number per prefix.
 schema_version: 1.0.0
-counters: { FR: 22, NFR: 2, CON: 4, EP: 3, TASK: 22 }
+counters: { FR: 22, NFR: 2, CON: 4, EP: 3, TASK: 23 }
 epics:
   - id: EP-001
     title: S0b — discovery infrastructure (schemas, validator extension, status, templates, CI)
@@ -196,3 +196,19 @@ tasks:
     depends_on: [TASK-013]
     status: ready
     packet: product/tasks/TASK-021.md
+
+  - id: TASK-022
+    epic: EP-002
+    title: Compact interview working state + deterministic resume/replay validation
+    implements: [FR-015]
+    depends_on: [TASK-011]
+    status: in_review
+    packet: product/tasks/TASK-022.md
+    notes: >-
+      Efficiency refinement of the FR-015 persistence contract. Scenario 03
+      showed the working-state file re-serialized in full at every checkpoint
+      with ~half its bytes verbose per-node narrative (write amplification).
+      Keeps coverage[].notes and resume_hints compact; adds a deterministic
+      replay/resume checker (tests/lib/interview-replay-check.py) + fixtures
+      (tests/interview-replay/) run by tests/run-tests.sh T20. No schema change,
+      no new test platform, no requirement change.

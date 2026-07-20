@@ -32,7 +32,14 @@ interview-strategies sections for the project's profile/archetype loaded;
 3. Update coverage for **every** topic the answer touched (not only the one
    asked about); update registers (CTR/ASM/OQ/scope flags) and, on any risk
    keyword from the question bank, append to `risk_triggers[]` in
-   solution-context with the evidence anchor.
+   solution-context with the evidence anchor. Keep `coverage[].notes` a
+   **compact working annotation** — the open gap, the pending probe, and the
+   anchor ids — not a narrative retelling of the answer. The verbatim record is
+   the transcript; the consolidated per-topic narrative is produced once at
+   close in the completion-report. The full state file is rewritten at every
+   checkpoint (04 §6), so verbose per-node prose multiplies write cost with
+   interview length — compact notes keep resume and checkpointing cheap without
+   losing any evidence (`interview-evidence-capture`).
 4. Detect specials, in priority order: (a) contradiction with anchored
    evidence → register CTR; if severity critical, schedule the neutral
    confrontation within ~2 turns (interrupt); (b) risk keyword on a critical
@@ -85,7 +92,9 @@ memory (the state file is the compaction). Session crash → resume path per
 
 **Must not:** ask more than one question per turn; use leading forms ("¿verdad
 que…?"); propose implementations during elicitation; convert inference to
-fact without a confirming turn; close a module without confirmed playback;
+fact without a confirming turn; accumulate consolidated narrative in
+`coverage[].notes` (they are compact working annotations; the consolidation is
+the close-time completion-report); close a module without confirmed playback;
 propose interview closure while the DoD (`04` §12) fails; continue under a
 revealed trigger without flagging the upgrade proposal; expose block-count
 progress mechanics (modules are adaptive, not a numbered form).

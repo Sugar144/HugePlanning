@@ -38,7 +38,15 @@ state; on resume: the persisted `interview-state.json` and the last page of
 (schema `interview-state.schema.json`) at: every module transition · every
 register entry (CTR/ASM/OQ/scope flag) · every 10 turns · every pause. The
 write is atomic (write temp, then replace) so a crash never leaves a
-truncated state file.
+truncated state file. Because the **whole** file is rewritten each time,
+`interview-state.json` is *working state*, not the evidence archive: keep
+`coverage[].notes` and `resume_hints` **compact working annotations** (the open
+gap + the pending probe + the anchor ids — a soft ceiling of a couple of lines
+per node). The verbatim record already lives in the transcript, and the
+consolidated per-topic narrative is written once at close in the
+completion-report — duplicating either into every checkpoint amplifies write
+cost with interview length without adding evidence. Compactness never drops an
+anchor: every candidate still carries its `source_refs`.
 
 **Procedure — pause.** At a module boundary when possible: set
 `session.status: paused`, fill `resume_hints` (≤5 lines: where, what's

@@ -47,7 +47,7 @@ note "== T1: script syntax =="
 for s in "$REAL_METHOD"/scripts/*.sh "$SCRIPT_DIR/run-tests.sh"; do
   expect_ok "bash -n $(basename "$s")" bash -n "$s"
 done
-for p in "$REAL_METHOD"/scripts/lib/*.py; do
+for p in "$REAL_METHOD"/scripts/lib/*.py "$REAL_METHOD"/tests/lib/*.py; do
   # ast.parse, not py_compile: a syntax check must not write __pycache__
   # into the methodology tree (it would trip check-methodology-clean.sh)
   expect_ok "py-syntax $(basename "$p")" "$PYTHON" -c \
@@ -713,6 +713,42 @@ done
 [[ "$SCEN_COUNT" -ge 6 ]] \
   && t_pass "the six 02 §10 scenarios exist ($SCEN_COUNT found)" \
   || t_fail "expected >= 6 scenarios, found $SCEN_COUNT"
+
+note "== T20: interview replay/resume invariants (FR-015 efficiency floor, TASK-022) =="
+# Deterministic resume/replay checks over recorded (fictitious) working states:
+# anchor integrity, compact working state, bounded resume, next-action-from-
+# state, and no S2/S3 leakage. Reuses the harness Python (stdlib + PyYAML) — no
+# pytest, no Hypothesis, no new dependency.
+REPLAY="$SCRIPT_DIR/lib/interview-replay-check.py"
+for fx in "$SCRIPT_DIR"/interview-replay/valid-*/; do
+  expect_ok "replay valid $(basename "$fx")" "$PYTHON" "$REPLAY" "$fx"
+  expect_out "  reports PASS" "INTERVIEW-REPLAY: PASS"
+done
+for fx in "$SCRIPT_DIR"/interview-replay/invalid-*/; do
+  token="$(tr -d '[:space:]' < "$fx/.expect-error")"
+  if OUT="$("$PYTHON" "$REPLAY" "$fx" 2>&1)"; then
+    t_fail "replay invalid $(basename "$fx") unexpectedly passed"
+  elif grep -qF -- "$token" <<<"$OUT"; then
+    t_pass "replay invalid $(basename "$fx") fails with expected reason ($token)"
+  else
+    t_fail "replay invalid $(basename "$fx") failed for the WRONG reason (wanted '$token')"
+    printf '%s\n' "$OUT" >&2
+  fi
+done
+
+# Structural leakage guarantee: the interview-state schema cannot carry S2/S3
+# output as a first-class field (closed object; no decision/prd/architecture
+# keys) — so S1 state cannot author a technical decision even in principle.
+expect_ok "interview-state schema forbids S2/S3 output fields" \
+  "$PYTHON" - "$REAL_METHOD/schemas/interview-state.schema.json" <<'PYEOF'
+import json, sys
+schema = json.load(open(sys.argv[1], encoding="utf-8"))
+assert schema.get("additionalProperties") is False, "top-level must be closed"
+forbidden = {"decisions", "decision", "prd", "architecture", "adr", "sdd",
+             "delivery_backlog", "requirements"}
+present = set(schema.get("properties", {})) & forbidden
+assert not present, f"interview-state must not define S2/S3 fields: {sorted(present)}"
+PYEOF
 
 note "== T13: suite leaves the real methodology unchanged =="
 REAL_AFTER="$(git -C "$REAL_METHOD" status --porcelain)"
