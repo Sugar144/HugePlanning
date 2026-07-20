@@ -12,15 +12,36 @@ released as `v0.2.0`; S0a bootstrap was `v0.1.0`).
 | Area | Path | What it is |
 |---|---|---|
 | **Released methodology runtime** | `CLAUDE.md`, `.claude/`, `schemas/`, `scripts/`, `templates/`, `tests/`, `knowledge/` | What client sessions actually load and run — versioned (`VERSION`), tagged, tested. Detailed below |
-| **Product spec (this repo's own work)** | `product/` | Requirements, backlog, and task packets for the in-flight methodology stages (S0b/S1) — methodology-internal, suite-validated (R2-37) |
+| **Product spec (development of *this methodology*)** | `product/` | Requirements, backlog, and task packets for the in-flight methodology stages (S0b/S1) — this is how the HugePlanning methodology **itself** is developed; methodology-internal, suite-validated (R2-37). Client product artifacts do **not** live here — they are produced inside each generated client repository |
 | **Current planning corpus** | `planning/v2/` | The V2 plan, 22 numbered files. Plan citations like `02 §6` resolve here — see `planning/README.md` |
 | **Immutable baseline** | `planning/baseline/` | The original V1 plan document (frozen, audited in plan `16`) |
 | **Historical prototypes** | `planning/history/` | Pre-V2 Claude.ai prototype skills — historical, not active runtime, not behaviorally validated (R2-36) |
-| **Experiment reports** | `reports/experiments/` | Evaluation records (e.g. the S0a bootstrap experiment) — evidence, not canonical method |
+| **Reports** | `reports/` | Non-canonical records: `reports/experiments/` (e.g. the S0a bootstrap experiment) and `reports/audits/` (repository/architecture audits) — evidence and analysis, not canonical method |
+| **Governance (project area — see note below)** | `governance/` — on `main`, **not on this branch** | A governance-*development* project area (master plan, decision log, artifact/projection registries). Cross-branch; not runtime-loaded. See **Governance — current state** below |
 
 **Where to start reading:** operating the runtime → stay in this README.
 Understanding or changing the method → `planning/README.md`, then
 `planning/v2/00_final_plan_index.md` for the reading order.
+
+**Governance — current state (do not assume more than this).** `governance/`
+exists on `main` as a governance-*development* project area (master plan,
+decision log, artifact/projection registries). Its extended, in-progress work
+lives on a **separate long-lived branch/worktree**
+(`governance/kernel-designer-revision-v0.1`) and is **not** merged into this S1
+branch. Governance is **not currently runtime-loaded** by client sessions — it is
+not part of the `--add-dir` methodology surface and not listed in any
+`methodology.lock.yaml`. It must **not** be assumed merged, ratified,
+operational, or projected into S1. The current runtime stage (S1, on this branch
+`feat/s1-discovery-interviewer`) is an **independent active workstream** that
+does not depend on governance. Whether governance stays an internal project area,
+becomes a separately released subsystem, or is projected selectively into runtime
+stages is an **open Owner decision**.
+
+**`tests/` layout note.** `tests/golden-artifacts/` currently holds **both**
+golden definitions (`golden-checklist.md`) and per-scenario execution evidence
+(`RESULT.md`). Separating behavioural test *definitions* from execution
+*evidence* is a **recorded cleanup candidate** (repository audit F-05) — noted
+here, not changed in this task.
 
 ## What is here (runtime)
 
