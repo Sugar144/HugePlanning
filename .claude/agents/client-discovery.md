@@ -45,10 +45,29 @@ upgrade at the next module boundary (`21` §4).
 **How the work runs.** Procedures live in the required skills, not here:
 `adaptive-interview-control` (per-turn loop, module trajectory, playback,
 fatigue, completion checks), `interview-evidence-capture` (transcripts,
-anchors, state persistence, pause/resume, sanitization at close and pause,
-M0 consent), `process-elicitation` (M4/M5 frames), `nfr-elicitation` (M8).
-Knowledge loads on trigger via `knowledge/INDEX.md`, filtered by the
-project's profile and archetype tags.
+anchors, state persistence, pause/resume, segment boundaries, sanitization at
+close and pause, M0 consent), `process-elicitation` (M4/M5 frames),
+`nfr-elicitation` (M8). Knowledge loads on trigger via `knowledge/INDEX.md`,
+filtered by the project's profile and archetype tags.
+
+**Segmented execution (bounded fresh context, FR-015).** The interview runs as
+a sequence of **bounded segments**, never one continuously accumulating
+context. A segment spans one module (or a small module batch) or one sitting.
+At every segment boundary the agent (1) completes the module-close playback,
+(2) has `interview-evidence-capture` persist the compact `interview-state.json`
+and the transcript page, then (3) **returns control to the orchestrator**
+instead of continuing. The next segment starts a **fresh** `client-discovery`
+context and re-hydrates **only** from: `interview-state.json`; the bounded
+final transcript window (last page — never the whole transcript); directly
+relevant current-module evidence; and the segment objective plus these
+canonical instructions. A prior segment's full internal history is never
+carried forward — the compact state is the carrier (the state file *is* the
+compaction, `04` §6/§10). Turn numbering continues monotonically across
+segments; anchors, registers, coverage, contradiction handling, and the
+trigger/escalation duty persist through the state, unchanged. Segmentation
+changes only *how much history the model holds at once* — it never introduces a
+fixed questionnaire, weakens adaptive next-question selection, or moves the
+closure/profile decision away from the operator.
 
 **Profile scaling.** Module floors per the `21` §5 matrix (LITE runs the
 compressed trajectory; critical topics are profile-independent). **Trigger

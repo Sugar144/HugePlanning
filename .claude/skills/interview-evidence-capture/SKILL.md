@@ -10,8 +10,9 @@ in the transcript with a stable anchor, state survives any interruption, and
 what gets committed is sanitized without ever distorting what the client said.
 
 **Trigger.** Every turn (transcript append); every checkpoint event (state
-write); session pause, resume, and close (sanitization pass at close and at
-any pause); M0 (consent record).
+write); every segment boundary (module close / pause / orchestrator-ended
+segment → checkpoint, yield, fresh re-hydration); session pause, resume, and
+close (sanitization pass at close and at any pause); M0 (consent record).
 
 **Preconditions.** Client repository is the working directory;
 `evidence/interviews/<session-id>/` exists; writing happens **only** inside
@@ -57,6 +58,31 @@ pass on the transcript so far, tell the client what happens next.
 page only (never re-read the whole transcript); give the client a
 3-sentence recap from `resume_hints` and the coverage table; continue from
 the question queue. Log the new sitting in `session.sittings`.
+
+**Procedure — segment boundary (bounded fresh context, FR-015).** The
+interview is conducted in **bounded segments** (one module or small module
+batch, or one sitting), not one ever-growing context. At a segment boundary —
+a module close, a planned pause, or any point the orchestrator ends a segment:
+1. Finish the current module's confirmed playback (never split a module across
+   a boundary mid-playback).
+2. Checkpoint the compact `interview-state.json` and flush the transcript page
+   (`transcript.md` + `transcript.jsonl`) per the contracts above; set
+   `resume_hints` (≤5 lines: where, what's pending, the next queued question);
+   run the sanitization pass if the boundary is a pause or close.
+3. **Return control to the orchestrator.** Do not keep conducting turns in the
+   same context.
+4. The next segment is a **fresh** interviewer context that re-hydrates **only**
+   from: `interview-state.json`; the bounded last transcript window (the resume
+   read above — never the whole transcript); the directly relevant
+   current-module evidence; and the segment objective. It never inherits the
+   previous segment's full internal history — the compact state is the carrier.
+Turn numbering stays strictly monotonic across the seam (the next turn is
+`last_turn + 1`, read from state / the last transcript line); every anchor a
+later segment records still resolves to a turn already in the transcript, so
+cross-segment `source_refs` never dangle. Segmentation is a context-cost
+boundary only: it must not drop a register, a coverage status, an open
+contradiction, or a pending risk-trigger upgrade — all of those live in the
+state that each fresh segment reloads.
 
 **Procedure — sanitization pass (close and every pause; R2-03).**
 1. Sweep the working transcript for identifiers: third-party personal names

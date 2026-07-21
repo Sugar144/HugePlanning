@@ -17,9 +17,12 @@ Mode, sittings (dates + durations), total turns, modules visited, profile
 and archetype hypothesis at close.
 
 **Run metrics** (observability, not normative): total turns · sittings ·
-resumptions · final `interview-state.json` size (bytes) · playbacks · operator
-relays. These make interview cost measurable across scenarios; record what is
-observable, never an estimated token figure.
+resumptions · segments (bounded fresh-context invocations) · final
+`interview-state.json` size (bytes) · transcript-window size at each
+re-hydration · playbacks · operator relays. These make interview cost
+measurable across scenarios; record what is observable (including per-segment
+context footprint when the runtime exposes it), never an estimated token
+figure.
 
 ## Coverage table
 

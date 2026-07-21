@@ -750,6 +750,29 @@ present = set(schema.get("properties", {})) & forbidden
 assert not present, f"interview-state must not define S2/S3 fields: {sorted(present)}"
 PYEOF
 
+note "== T21: interview segment seam invariants (FR-015 context-amplification fix, TASK-023) =="
+# Deterministic seam checks over recorded (fictitious) multi-segment runs: turn
+# continuity across seams, no full-history carry, bounded re-hydration window,
+# boundary playback, anchor integrity, register/coverage continuity (proposed
+# trigger upgrade survives re-hydration), and no S2/S3 leakage. Reuses the
+# harness Python (stdlib + PyYAML) — no pytest, no new dependency.
+SEAM="$SCRIPT_DIR/lib/interview-segment-seam-check.py"
+for fx in "$SCRIPT_DIR"/interview-segment/valid-*/; do
+  expect_ok "seam valid $(basename "$fx")" "$PYTHON" "$SEAM" "$fx"
+  expect_out "  reports PASS" "INTERVIEW-SEAM: PASS"
+done
+for fx in "$SCRIPT_DIR"/interview-segment/invalid-*/; do
+  token="$(tr -d '[:space:]' < "$fx/.expect-error")"
+  if OUT="$("$PYTHON" "$SEAM" "$fx" 2>&1)"; then
+    t_fail "seam invalid $(basename "$fx") unexpectedly passed"
+  elif grep -qF -- "$token" <<<"$OUT"; then
+    t_pass "seam invalid $(basename "$fx") fails with expected reason ($token)"
+  else
+    t_fail "seam invalid $(basename "$fx") failed for the WRONG reason (wanted '$token')"
+    printf '%s\n' "$OUT" >&2
+  fi
+done
+
 note "== T13: suite leaves the real methodology unchanged =="
 REAL_AFTER="$(git -C "$REAL_METHOD" status --porcelain)"
 if [[ "$REAL_BEFORE" == "$REAL_AFTER" ]]; then

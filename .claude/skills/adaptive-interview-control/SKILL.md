@@ -55,7 +55,14 @@ interview-strategies sections for the project's profile/archetype loaded;
    yes/no/correction (corrections are new evidence turns), state honest
    progress at the boundary ("hemos cubierto X; nos quedan Y") — no fixed
    block-count mechanics — then pick the next module by trajectory and
-   energy (`knowledge/client-discovery/interview-strategies.md`).
+   energy (`knowledge/client-discovery/interview-strategies.md`). A module
+   boundary is also a **segment boundary** (FR-015): after the confirmed
+   playback, checkpoint and **yield to the orchestrator** so the next module
+   runs in a fresh, bounded interviewer context re-hydrated from
+   `interview-state.json` + the last transcript page only
+   (`interview-evidence-capture` — segment boundary). The next module's
+   question is re-selected from the compact state, so adaptiveness is
+   unchanged; the model simply stops carrying the whole prior conversation.
 6. Run the completion check when in or near M11, and every ~15 turns after
    M8; record the result and failing criteria in `completion_check`.
 7. Select the next question: pending interrupts first; otherwise best
@@ -87,8 +94,9 @@ turn ends with one question (or a pause/closure proposal), never zero or two.
 topic `blocked`, escalate to the operator. Client answers only in solutions →
 keep decomposing; if the underlying need stays inaccessible, escalate.
 Context pressure → trust the registers and coverage over conversational
-memory (the state file is the compaction). Session crash → resume path per
-`interview-evidence-capture`.
+memory (the state file is the compaction; segment boundaries make this
+explicit — the fresh segment re-hydrates from state, not from prior
+conversation). Session crash → resume path per `interview-evidence-capture`.
 
 **Must not:** ask more than one question per turn; use leading forms ("¿verdad
 que…?"); propose implementations during elicitation; convert inference to

@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "session": {
+    "id": "client-discovery-01",
+    "mode": "live-assisted",
+    "started_at": "2026-03-02T10:00:00+01:00",
+    "turns": 9,
+    "status": "in_progress",
+    "sittings": [
+      {
+        "started_at": "2026-03-02T10:00:00+01:00",
+        "ended_at": "2026-03-02T10:18:00+01:00",
+        "turns": 9
+      }
+    ]
+  },
+  "phase": "elicitation",
+  "current_module": "M8",
+  "coverage": [
+    {
+      "id": "business.identity",
+      "module": "M1",
+      "importance": "high",
+      "status": "sufficient",
+      "confidence": "medium",
+      "evidence_refs": [
+        "interview:client-discovery-01#turn-001"
+      ],
+      "notes": "Floristería de barrio; ramos y encargos para eventos."
+    },
+    {
+      "id": "process.current",
+      "module": "M5",
+      "importance": "critical",
+      "status": "partial",
+      "confidence": "medium",
+      "evidence_refs": [
+        "interview:client-discovery-01#turn-002"
+      ],
+      "notes": "Encargos por WhatsApp -> libreta. Falta: excepciones."
+    },
+    {
+      "id": "payments.flow",
+      "module": "M6",
+      "importance": "critical",
+      "status": "partial",
+      "confidence": "low",
+      "evidence_refs": [
+        "interview:client-discovery-01#turn-003"
+      ],
+      "notes": "Señal online al reservar. Falta: importe, reembolso."
+    },
+    {
+      "id": "data.entities",
+      "module": "M7",
+      "importance": "high",
+      "status": "sufficient",
+      "confidence": "medium",
+      "evidence_refs": [
+        "interview:client-discovery-01#turn-007"
+      ],
+      "notes": "Cliente = nombre + telefono + direccion de entrega."
+    },
+    {
+      "id": "data.retention",
+      "module": "M7",
+      "importance": "critical",
+      "status": "partial",
+      "confidence": "low",
+      "evidence_refs": [
+        "interview:client-discovery-01#turn-020"
+      ],
+      "notes": "Conserva hasta poco despues del evento; retencion exacta sin confirmar -> OQ-002."
+    }
+  ],
+  "question_queue": [
+    {
+      "qid": "q-004",
+      "topic": "nfr.security",
+      "kind": "seed",
+      "score": 7.5,
+      "text_hint": "expectativas de seguridad dado el cobro online (ligado al trigger)"
+    }
+  ],
+  "registers": {
+    "contradictions": [],
+    "assumptions": [],
+    "open_questions": [
+      {
+        "id": "OQ-001",
+        "topic": "Política de la señal si el cliente cancela con antelación.",
+        "owner": "desarrollador",
+        "blocking": false
+      },
+      {
+        "id": "OQ-002",
+        "topic": "Retención exacta de nombre+teléfono+dirección del cliente.",
+        "owner": "desarrollador",
+        "blocking": false
+      }
+    ],
+    "scope_flags": [
+      {
+        "turn": 3,
+        "note": "PROPOSED UPGRADE (pagos online): cobro de senal por web; el perfil puede subir a high-risk. Decide el operador en G1.",
+        "handled": "pending"
+      }
+    ]
+  },
+  "budget": {
+    "elapsed_min": 18,
+    "soft_limit_min": 90,
+    "fatigue_signals": 0
+  },
+  "completion_check": {
+    "last_run_turn": 9,
+    "result": "not_ready",
+    "failing": [
+      "data.retention",
+      "nfr.security"
+    ]
+  },
+  "resume_hints": "M7 cerrado tras turn-9. Proxima: M8 NFR de seguridad ligado al cobro online (q-004). Trigger de pagos (turn-3) sigue pendiente para G1; OQ-001 y OQ-002 abiertas."
+}
