@@ -123,6 +123,17 @@ scenario fact was altered to obtain a pass.
 
 ## Efficiency metrics and unresolved runtime cost
 
+> **Correction (2026-07-21, authorized by the Owner under the TASK-023
+> disposition — factual evidence correction only).** The `115,594` figure below
+> was originally characterized as "output tokens." That characterization is
+> inaccurate and is corrected here: **`115,594` was the final-turn context
+> footprint reported by Claude Code** (the Agent-tool `totalTokens` for the
+> run's last iteration = input + cache-creation + cache-read + output of that
+> turn), **not** the run's output. **Measured model output across the subagent
+> run was `58,295` tokens.** This correction changes no other content of this
+> RESULT: the functional golden **PASS (11/11)**, the golden scoring, the
+> interview evidence, and the scenario count are all unchanged.
+
 - **88 persisted turns, 2 sittings** — the largest scenario run to date (vs.
   01: fewer turns/1 sitting pattern, 03: ~50 turns/2 sittings, 04: 21
   turns/2 sittings).
@@ -135,20 +146,22 @@ scenario fact was altered to obtain a pass.
   never required the full transcript.
 - 0 live-operator relays (import mode, no live human in this session); 1
   resumption (sitting 2 resuming from the sitting-1 checkpoint).
-- **The client-discovery subagent that ran this interview reported
-  115,594 output tokens for its single continuous run** (Agent-tool runtime
-  usage report — this is an actually-recorded runtime figure, not an
-  estimate).
+- **The client-discovery subagent that ran this interview reported a
+  115,594-token final-turn context footprint for its single continuous run**
+  (Agent-tool `totalTokens` — the last iteration's input + cache-creation +
+  cache-read + output; an actually-recorded runtime figure, not an estimate,
+  and not the run's output). **Measured model output across the run was 58,295
+  tokens.** (See the correction note at the top of this section.)
 - **This is the explicit, unresolved finding of this RESULT: TASK-022's
   compact-state discipline demonstrably fixed the *write-amplification*
   problem it targeted (interview-state.json stayed compact and cheap to
   checkpoint throughout an 88-turn run — 0 ceiling violations, bounded
   resume holds), but this run does not demonstrate acceptable *total*
-  interview runtime cost.** 115.6k output tokens for one scenario's
-  interview conduct is a substantial resource cost that TASK-022 was never
-  scoped to address (it targeted per-checkpoint write cost, not aggregate
-  session token cost) and no efficiency target or budget exists yet against
-  which to judge "acceptable." This RESULT does not certify runtime
+  interview runtime cost.** A ~112k-token peak / 115.6k final-turn context
+  footprint for one scenario's interview conduct is a substantial resource cost
+  that TASK-022 was never scoped to address (it targeted per-checkpoint write
+  cost, not aggregate session context cost) and no efficiency target or budget
+  exists yet against which to judge "acceptable." This RESULT does not certify runtime
   efficiency and flags it as open follow-up work, separate from and not
   blocking the functional golden PASS above.
 
@@ -192,9 +205,10 @@ in the artifacts of record; depth adaptation on the affected payment and
 data topics; a clean non-invention sweep; and a completion report that
 correctly hands the G1 decision to the operator rather than resolving it.
 **Runtime efficiency is explicitly not certified by this PASS** — 88 turns
-and 115.6k reported output tokens for one scenario interview is a real,
-unresolved cost that TASK-022's write-amplification fix did not address and
-that no target yet exists to judge against; this is carried forward as open
-follow-up, not as a blocker to the functional result recorded here.
+and a 115.6k-token final-turn context footprint (measured output 58,295) for
+one scenario interview is a real, unresolved cost that TASK-022's
+write-amplification fix did not address and that no target yet exists to judge
+against; this is carried forward as open follow-up, not as a blocker to the
+functional result recorded here.
 TASK-020 is complete pending the TASK-015 operator review. No further
 scenario execution is authorized by this RESULT.

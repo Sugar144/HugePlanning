@@ -218,7 +218,7 @@ tasks:
     title: Bounded fresh-context interview segments (context-amplification fix)
     implements: [FR-015]
     depends_on: [TASK-022]
-    status: in_review
+    status: approved
     packet: product/tasks/TASK-023.md
     notes: >-
       Realization refinement of the FR-015 resume contract. Scenario 05 ran as
