@@ -12,15 +12,36 @@ released as `v0.2.0`; S0a bootstrap was `v0.1.0`).
 | Area | Path | What it is |
 |---|---|---|
 | **Released methodology runtime** | `CLAUDE.md`, `.claude/`, `schemas/`, `scripts/`, `templates/`, `tests/`, `knowledge/` | What client sessions actually load and run — versioned (`VERSION`), tagged, tested. Detailed below |
-| **Product spec (this repo's own work)** | `product/` | Requirements, backlog, and task packets for the in-flight methodology stages (S0b/S1) — methodology-internal, suite-validated (R2-37) |
+| **Product spec (development of *this methodology*)** | `product/` | Requirements, backlog, and task packets for the in-flight methodology stages (S0b/S1) — this is how the HugePlanning methodology **itself** is developed; methodology-internal, suite-validated (R2-37). Client product artifacts do **not** live here — they are produced inside each generated client repository |
 | **Current planning corpus** | `planning/v2/` | The V2 plan, 22 numbered files. Plan citations like `02 §6` resolve here — see `planning/README.md` |
 | **Immutable baseline** | `planning/baseline/` | The original V1 plan document (frozen, audited in plan `16`) |
 | **Historical prototypes** | `planning/history/` | Pre-V2 Claude.ai prototype skills — historical, not active runtime, not behaviorally validated (R2-36) |
-| **Experiment reports** | `reports/experiments/` | Evaluation records (e.g. the S0a bootstrap experiment) — evidence, not canonical method |
+| **Reports** | `reports/` | Non-canonical records: `reports/experiments/` (e.g. the S0a bootstrap experiment) and `reports/audits/` (repository/architecture audits) — evidence and analysis, not canonical method |
+| **Governance (project area — see note below)** | `governance/` — on `main`, **not on this branch** | A governance-*development* project area (master plan, decision log, artifact/projection registries). Cross-branch; not runtime-loaded. See **Governance — current state** below |
 
 **Where to start reading:** operating the runtime → stay in this README.
 Understanding or changing the method → `planning/README.md`, then
 `planning/v2/00_final_plan_index.md` for the reading order.
+
+**Governance — current state (do not assume more than this).** `governance/`
+exists on `main` as a governance-*development* project area (master plan,
+decision log, artifact/projection registries). Its extended, in-progress work
+lives on a **separate long-lived branch/worktree**
+(`governance/kernel-designer-revision-v0.1`) and is **not** merged into this S1
+branch. Governance is **not currently runtime-loaded** by client sessions — it is
+not part of the `--add-dir` methodology surface and not listed in any
+`methodology.lock.yaml`. It must **not** be assumed merged, ratified,
+operational, or projected into S1. The current runtime stage (S1, on this branch
+`feat/s1-discovery-interviewer`) is an **independent active workstream** that
+does not depend on governance. Whether governance stays an internal project area,
+becomes a separately released subsystem, or is projected selectively into runtime
+stages is an **open Owner decision**.
+
+**`tests/` layout note.** `tests/golden-artifacts/` currently holds **both**
+golden definitions (`golden-checklist.md`) and per-scenario execution evidence
+(`RESULT.md`). Separating behavioural test *definitions* from execution
+*evidence* is a **recorded cleanup candidate** (repository audit F-05) — noted
+here, not changed in this task.
 
 ## What is here (runtime)
 
@@ -28,8 +49,8 @@ Understanding or changing the method → `planning/README.md`, then
 |---|---|
 | `CLAUDE.md` | Methodology invariants (loaded into client sessions) |
 | `.claude/rules/` | 5 always-on rules incl. the conventions rule (ID grammar, status enums, `schema_version` policy) |
-| `.claude/agents/` | `client-discovery` (S0a stub; full contract at S1) |
-| `.claude/skills/` | `methodology-smoke-check` (SPK-01 fixture) |
+| `.claude/agents/` | `client-discovery` — the production discovery interviewer (plan `04` contract, S1) |
+| `.claude/skills/` | `adaptive-interview-control`, `interview-evidence-capture`, `nfr-elicitation`, `process-elicitation` (S1) · `methodology-smoke-check` (SPK-01 fixture) |
 | `schemas/` | S0a: `project`, `methodology-lock` · S0b: `open-questions`, `requirements` 2.0.0, `solution-context`, `interview-state`, `handoff` · internal: `product-*` (draft 2020-12, versioned `$id`s) |
 | `templates/` | `client-repo/` — complete client repository template (`03` §2) · `discovery/` — schema-valid artifact skeletons (S0b) |
 | `scripts/` | `new-client.sh`, `start-agent.sh`, `validate.sh` (progressive — never replaced), `status.sh` (derived dashboard, S0b), `check-methodology-clean.sh`, `spk-01-smoke-check.sh` |
@@ -100,11 +121,13 @@ scripts/spk-01-smoke-check.sh <client-dir>
 
 Checks live: (a) methodology agent resolution, (b) skill invocation,
 (c) CLAUDE.md + rules loading via the env var, (d) deny rules block
-methodology writes while client writes stay allowed. Check (a) passes on the
-`SPK01-AGENT-OK` sentinel **or** on complete semantic evidence (the actual
-client project id + the actual locked methodology version + the stub's exact
-closing statement, verified against the client repo, never leaked into the
-prompt); partial or unrelated output fails. Record the result below and keep
+methodology writes while client writes stay allowed. Check (a) passes on
+complete agent-entry evidence: the actual client project id + the actual
+locked methodology version (both verified against the client repo, never
+leaked into the prompt) together with one of the production agent's two
+mandated markers — the `client-discovery ready:` entry line or the exact
+precondition sentence `Discovery cannot start until the preconditions hold.`
+Partial or unrelated output fails. Record the result below and keep
 `claude_code_version` current in the client lock.
 
 Manual fallback (no CLI): from the client dir run
@@ -117,6 +140,8 @@ then verify (a)–(d) by hand per `02` §5.
 |---|---|---|---|---|---|---|
 | 2026-07-11 | 2.1.207 (Claude Code) | PASS | PASS | PASS | PASS | S0a initial run, executed live (headless `claude -p`). Deny rule blocked the methodology write at the permission level ("directory denied by your permission settings") on a methodology path containing spaces; client control write succeeded; no methodology drift. Details: `reports/experiments/s0a/EXPERIMENT_S0A_REPORT.md` |
 | 2026-07-11 | 2.1.207 (Claude Code) | PASS | PASS | PASS | PASS | S0a audited integration verification: deterministic suite passed twice (122/122 each run); live SPK-01 passed 5/5; methodology remained protected and clean. Commit tested: `09ae1adfa80abacdb0b57f757308aa72786f0e16`. |
+| 2026-07-12 | 2.1.207 (Claude Code) | PASS | PASS | INCONCL. | INCONCL. | S1 production agent + updated check-(a) oracle: (a) and (b) passed live (agent entry evidence: project id + lock version + mandated marker). (c)/(d) inconclusive — ENVIRONMENT per `22` §5 class 3 (CLI session limit hit mid-run) plus a concurrent tracked edit to `product/*.yaml` tripping the drift alarm (PROCESS note: keep the tree quiet during live checks). Full 5/5 re-run required before the S1 tag (TASK-015). Historical record — superseded by the 5/5 run below. |
+| 2026-07-12 | 2.1.207 (Claude Code) | PASS | PASS | PASS | PASS | **S1 live verification, operator-run, 5/5** on a quiet tree: (a) agent entry evidence (project id + lock version + mandated marker) — production `client-discovery`; (b) `SPK01-SKILL-OK`; (c) `SPK01-CLAUDEMD-OK` **and** (c2) `SPK01-RULES-OK`; (d) client write allowed, methodology write blocked, no methodology drift. Tested methodology commit: `16f6788ba46034cd540c4ba88c7c29555671da69` (verified from the scratch client's lock, `/home/sugar/tmp/spk-s1`); `claude_code_version` current in that lock (R-CC3). FR-020-AC-01 live half satisfied; scenario gate still open. |
 
 ## Test the methodology
 

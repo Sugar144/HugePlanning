@@ -2,7 +2,7 @@
 # Contract: product/README.md · schema: schemas/product-backlog.schema.json
 # Validated by tests/run-tests.sh (T14). counters = next free number per prefix.
 schema_version: 1.0.0
-counters: { FR: 22, NFR: 2, CON: 4, EP: 3, TASK: 22 }
+counters: { FR: 22, NFR: 2, CON: 4, EP: 3, TASK: 24 }
 epics:
   - id: EP-001
     title: S0b — discovery infrastructure (schemas, validator extension, status, templates, CI)
@@ -20,7 +20,7 @@ tasks:
     depends_on: []
     status: done
     packet: product/tasks/TASK-001.md
-    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci success @ 3246b68 (main, v0.2.0)"]
   - id: TASK-002
     epic: EP-001
     title: handoff.schema.json 2.0.0 + fixtures
@@ -28,7 +28,7 @@ tasks:
     depends_on: []
     status: done
     packet: product/tasks/TASK-002.md
-    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci success @ 3246b68 (main, v0.2.0)"]
   - id: TASK-003
     epic: EP-001
     title: solution-context.schema.json 1.0.0 (+risk_triggers) + fixtures
@@ -36,7 +36,7 @@ tasks:
     depends_on: []
     status: done
     packet: product/tasks/TASK-003.md
-    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci success @ 3246b68 (main, v0.2.0)"]
   - id: TASK-004
     epic: EP-001
     title: interview-state.schema.json 1.0.0 + fixtures
@@ -44,7 +44,7 @@ tasks:
     depends_on: []
     status: done
     packet: product/tasks/TASK-004.md
-    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci success @ 3246b68 (main, v0.2.0)"]
   - id: TASK-005
     epic: EP-001
     title: requirements.schema.json 2.0.0 (V2 model) + fixtures
@@ -52,7 +52,7 @@ tasks:
     depends_on: []
     status: done
     packet: product/tasks/TASK-005.md
-    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci success @ 3246b68 (main, v0.2.0)"]
   - id: TASK-006
     epic: EP-001
     title: Extend validate.sh — schema checks, ID/dangling checks, profile matrix v0
@@ -60,7 +60,7 @@ tasks:
     depends_on: [TASK-001, TASK-002, TASK-003, TASK-004, TASK-005]
     status: done
     packet: product/tasks/TASK-006.md
-    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci success @ 3246b68 (main, v0.2.0)"]
   - id: TASK-007
     epic: EP-001
     title: status.sh v0 — derived read-only dashboard
@@ -68,7 +68,7 @@ tasks:
     depends_on: [TASK-002]
     status: done
     packet: product/tasks/TASK-007.md
-    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci success @ 3246b68 (main, v0.2.0)"]
   - id: TASK-008
     epic: EP-001
     title: templates/discovery/ skeletons + lock template schema listing
@@ -76,7 +76,7 @@ tasks:
     depends_on: [TASK-001, TASK-002, TASK-003, TASK-004, TASK-005]
     status: done
     packet: product/tasks/TASK-008.md
-    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci success @ 3246b68 (main, v0.2.0)"]
   - id: TASK-009
     epic: EP-001
     title: Methodology CI workflow running the deterministic suite
@@ -84,7 +84,7 @@ tasks:
     depends_on: [TASK-006]
     status: done
     packet: product/tasks/TASK-009.md
-    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci@feat/s0b-discovery-infra"]
+    verified_by: ["changelog:v0.2.0", "tag:v0.2.0", "ci:methodology-ci success @ 3246b68 (main, v0.2.0)"]
 
   # S1 — staged so knowledge/skills are mergeable behind the unchanged stub
   # if usage ends mid-stage (agent replacement is the last runtime switch).
@@ -93,28 +93,28 @@ tasks:
     title: Ten S1 knowledge files (provisional) + INDEX activation tags
     implements: [FR-018]
     depends_on: [TASK-006]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-010.md
   - id: TASK-011
     epic: EP-002
     title: Skills — interview-evidence-capture + adaptive-interview-control
     implements: [FR-014, FR-015]
     depends_on: [TASK-010]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-011.md
   - id: TASK-012
     epic: EP-002
     title: Skills — nfr-elicitation + process-elicitation
     implements: [FR-016, FR-017]
     depends_on: [TASK-010]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-012.md
   - id: TASK-013
     epic: EP-002
     title: client-discovery agent (replaces stub) + SPK oracle update + close templates
     implements: [FR-013, FR-020, FR-021]
     depends_on: [TASK-011, TASK-012]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-013.md
   - id: TASK-014
     epic: EP-002
@@ -144,40 +144,90 @@ tasks:
     title: Scenario 01 clear — baseline coverage and classification (import mode)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-016.md
+    notes: >-
+      Scenario executed (import mode); RESULT recorded PASS in
+      tests/golden-artifacts/01-clear/RESULT.md (committed 53628bc). Self-scored
+      against the golden; FR-019 acceptance stays with the TASK-015 aggregate
+      operator review — not yet verified.
   - id: TASK-017
     epic: EP-002
     title: Scenario 02 contradictory — CTR catch and resolution (live-assisted)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: ready
     packet: product/tasks/TASK-017.md
   - id: TASK-018
     epic: EP-002
     title: Scenario 03 non-technical — solution decomposition (import mode)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-018.md
+    notes: >-
+      Scenario executed (import mode); RESULT recorded PASS in
+      tests/golden-artifacts/03-non-technical/RESULT.md (committed 5584316).
+      Self-scored against the golden; FR-019 acceptance stays with the TASK-015
+      aggregate operator review — not yet verified.
   - id: TASK-019
     epic: EP-002
     title: Scenario 04 LITE — module floor and single sitting (import mode)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: in_review
     packet: product/tasks/TASK-019.md
+    notes: >-
+      Scenario executed (import mode); RESULT recorded PASS in
+      tests/golden-artifacts/04-lite/RESULT.md (committed c375380). Self-scored
+      against the golden; FR-019 acceptance stays with the TASK-015 aggregate
+      operator review — not yet verified.
   - id: TASK-020
     epic: EP-002
     title: Scenario 05 trigger-escalation — flagged profile upgrade (import mode)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: ready
     packet: product/tasks/TASK-020.md
   - id: TASK-021
     epic: EP-002
     title: Scenario 06 PII-bearing — sanitization correctness (live-assisted)
     implements: [FR-019]
     depends_on: [TASK-013]
-    status: backlog
+    status: ready
     packet: product/tasks/TASK-021.md
+
+  - id: TASK-022
+    epic: EP-002
+    title: Compact interview working state + deterministic resume/replay validation
+    implements: [FR-015]
+    depends_on: [TASK-011]
+    status: in_review
+    packet: product/tasks/TASK-022.md
+    notes: >-
+      Efficiency refinement of the FR-015 persistence contract. Scenario 03
+      showed the working-state file re-serialized in full at every checkpoint
+      with ~half its bytes verbose per-node narrative (write amplification).
+      Keeps coverage[].notes and resume_hints compact; adds a deterministic
+      replay/resume checker (tests/lib/interview-replay-check.py) + fixtures
+      (tests/interview-replay/) run by tests/run-tests.sh T20. No schema change,
+      no new test platform, no requirement change.
+
+  - id: TASK-023
+    epic: EP-002
+    title: Bounded fresh-context interview segments (context-amplification fix)
+    implements: [FR-015]
+    depends_on: [TASK-022]
+    status: approved
+    packet: product/tasks/TASK-023.md
+    notes: >-
+      Realization refinement of the FR-015 resume contract. Scenario 05 ran as
+      one continuous subagent whose context grew monotonically to a ~112k-token
+      final-turn footprint (the recorded 115,594 figure is that footprint, not
+      output; measured output 58,295). Runs the interview as bounded fresh
+      segments that re-hydrate from compact state + last transcript window +
+      current-module evidence, yielding to the orchestrator at each module
+      boundary instead of accumulating one context. Adds a deterministic seam
+      checker (tests/lib/interview-segment-seam-check.py) + fixtures
+      (tests/interview-segment/) run by tests/run-tests.sh T21. No schema change,
+      no requirement change; Scenario 05 RESULT.md unchanged.

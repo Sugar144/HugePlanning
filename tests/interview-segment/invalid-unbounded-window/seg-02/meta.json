@@ -1,0 +1,9 @@
+{
+  "order": 2,
+  "module": "M7",
+  "rehydration": {
+    "full_history": false,
+    "window_turns": 12
+  },
+  "opening_playback": true
+}

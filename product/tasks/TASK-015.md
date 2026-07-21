@@ -16,8 +16,8 @@ evidence.
    scenario is one defect class, not N): max 2 correction cycles per class,
    then re-examine the design contract (04), not the output. Re-run only the
    scenarios a fix touches.
-3. Classify every failing check (CODE/TEST/CONTRACT/PROCESS/ENVIRONMENT)
-   before fixing.
+3. Classify every failing check (CODE/TEST/CONTRACT/DATA/OPERATOR/PROCESS/
+   ENVIRONMENT — 22 §5 as extended by R2-39) before fixing.
 4. Deterministic suite green twice; live SPK-01 5/5 on the installed CLI
    (record version in README log).
 5. Release: CHANGELOG entry with the 22 §7 evidence set (tested commit, suite

@@ -1,0 +1,4 @@
+{"turn": 6, "speaker": "interviewer", "text": "Retomamos donde lo dejamos: floristeria, encargos por WhatsApp y la senal online pendiente. Ahora quiero cerrar los datos de los clientes.", "ts": "2026-03-02T10:12:00+01:00", "flags": []}
+{"turn": 7, "speaker": "client", "text": "De cada cliente guardo el nombre, el telefono y la direccion de entrega del evento.", "ts": "2026-03-02T10:14:00+01:00", "flags": []}
+{"turn": 8, "speaker": "client", "text": "Los datos los conservo mientras dura el encargo y un poco despues, por si repiten.", "ts": "2026-03-02T10:16:00+01:00", "flags": []}
+{"turn": 9, "speaker": "interviewer", "text": "Resumen de datos: nombre, telefono y direccion de entrega; los conserva hasta un poco despues del evento. ¿Correcto?", "ts": "2026-03-02T10:18:00+01:00", "flags": []}

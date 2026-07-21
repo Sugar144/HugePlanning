@@ -10,7 +10,7 @@ requirements:
       validate.sh remains the single progressive client-repository validator:
       S0b extends it in place (schema checks, profile matrix, ID checks) and
       no second validator script is ever created.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria: []
     source_refs: [decision:R2-26, "plan:02 §8"]
@@ -21,7 +21,7 @@ requirements:
       Every schema and structured artifact added at S0b/S1 reuses the S0a
       conventions-rule namespace (ID grammar, status enums, schema_version
       policy, versioned $id) — no parallel conventions are introduced.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria: []
     source_refs: [decision:R2-02, "plan:06 §4"]
@@ -32,7 +32,7 @@ requirements:
       The deterministic test suite stays fully offline and repeatable: no live
       CLI or network dependency, green in paths containing spaces, and it
       leaves the real methodology tree byte-for-byte unchanged.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria: []
     source_refs: ["plan:02 §10", "report:reports/experiments/s0a/EXPERIMENT_S0A_REPORT.md"]
@@ -44,7 +44,7 @@ requirements:
       open-questions.schema.json 1.0.0 validates docs/requirements/
       open-questions.yaml: OQ/CLAR question entries and CTR contradiction
       entries per plan 06 §7.3, with their closed status enums.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-001-AC-01
@@ -68,7 +68,7 @@ requirements:
       gate records per plan 06 §7.5: gate, sequence, date, approved_by, result,
       commit, confirmation_ref, artifacts, quality, profile_check, next_stage,
       with the optional nested visual_approval block for G3.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-002-AC-01
@@ -89,7 +89,7 @@ requirements:
       existing_systems/accounts/expected_usage/data/operational/legal_flags
       sections holding facts (value-or-unknown plus source_refs), and the
       machine-readable risk_triggers[] register.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-003-AC-01
@@ -112,7 +112,7 @@ requirements:
       question_queue, registers (contradictions, assumptions, open_questions,
       scope_flags), budget (incl. fatigue_signals), completion_check, and
       resume_hints.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-004-AC-01
@@ -135,7 +135,7 @@ requirements:
       MoSCoW priority, risk, scoped acceptance criteria, approved_in,
       structured NFR fields (metric/target/conditions/measurement/
       verification_level), business_rules, and the assumptions register.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-005-AC-01
@@ -161,7 +161,7 @@ requirements:
       open-questions (replacing the S0a parse-only check), requirements,
       solution-context, interview-state files, and every docs/handoffs/
       G*-*.yaml record.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-006-AC-01
@@ -184,7 +184,7 @@ requirements:
       IDs within a registry, IDs at or above their project.yaml counter, and
       dangling references (requirement→BR/ASM links, OQ blocks lists, handoff
       artifact paths).
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-007-AC-01
@@ -202,7 +202,7 @@ requirements:
       scoped at S0b to discovery-stage rows of plan 21 §5: canonical artifacts
       required for the project's profile are errors when missing once the
       project reaches the discovery-done boundary; optional ones are INFO.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-008-AC-01
@@ -220,7 +220,7 @@ requirements:
       stage and stage status, latest gate state per gate from docs/handoffs/
       sequences, open question/contradiction counts, requirement status
       histogram, and profile with pending risk triggers.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-009-AC-01
@@ -239,7 +239,7 @@ requirements:
       (open-questions already ships empty in the client template), each
       carrying its schema_version and passing its own schema when minimally
       filled.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-010-AC-01
@@ -256,7 +256,7 @@ requirements:
       A methodology CI workflow (.github/workflows/methodology-ci.yml) runs
       tests/run-tests.sh on every push and pull request, failing the build on
       any red check.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-011-AC-01
@@ -273,7 +273,7 @@ requirements:
       The client template's methodology.lock.yaml lists the five S0b schema
       versions (interview-state, requirements, solution-context,
       open-questions, handoff) so new clients pin the discovery contract.
-    status: implemented
+    status: verified
     stage: S0b
     acceptance_criteria:
       - id: FR-012-AC-01
@@ -304,7 +304,7 @@ requirements:
       boundaries list, profile-scaled module floors with the trigger duty,
       content-inventory seeding duty, DoD-gated closure that the operator
       accepts, and the failure/escalation states.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-013-AC-01
@@ -331,7 +331,7 @@ requirements:
       questions, the vagueness gate, the "I don't know" protocol, and the
       fatigue response ladder (fewer questions, options, labeled defaults,
       pause offer).
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-014-AC-01
@@ -358,7 +358,7 @@ requirements:
       (identifiers aliased or removed, never paraphrased; raw original moved
       to evidence-raw/ with raw_ref + SHA-256 stamped; identical turn
       numbering).
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-015-AC-01
@@ -382,7 +382,7 @@ requirements:
       nfr-catalog, records measurable anchors (metric/target/conditions), and
       enters missing profile-floor NFRs as proposed defaults — never silently
       imposed or omitted.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-016-AC-01
@@ -402,7 +402,7 @@ requirements:
       processes in M4/M5 as trigger/actors/steps/exceptions/outcome, hunting
       exceptions explicitly, and marks a process topic sufficient only when
       that frame is filled.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-017-AC-01
@@ -420,7 +420,7 @@ requirements:
       technical-operational-context, process-elicitation), each with the §B
       front matter, and knowledge/INDEX.md lists them with consult-when
       triggers and profile/archetype tags.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-018-AC-01
@@ -464,8 +464,9 @@ requirements:
       - id: FR-019-AC-04
         text: Corrections are bounded (max 2 cycles per defect class, then the
           design contract is re-examined) and every failing check is classified
-          CODE/TEST/CONTRACT/PROCESS/ENVIRONMENT before any fix.
-    source_refs: ["plan:02 §10", "plan:13 §3", "plan:22 §5", decision:R2-23]
+          CODE/TEST/CONTRACT/DATA/OPERATOR/PROCESS/ENVIRONMENT (22 §5, R2-39)
+          before any fix.
+    source_refs: ["plan:02 §10", "plan:13 §3", "plan:22 §5", decision:R2-23, decision:R2-39]
 
   - id: FR-020
     type: functional
@@ -476,7 +477,7 @@ requirements:
       actually emits, and the deterministic fake-runtime oracle cases are
       updated in the same change — a planned TEST-class oracle correction, not
       a reaction to a red run.
-    status: approved
+    status: verified
     stage: S1
     acceptance_criteria:
       - id: FR-020-AC-01
@@ -491,7 +492,7 @@ requirements:
       Discovery close artifacts have templates: completion-report.md (coverage
       table, registers summary, DoR/DoD evaluation with waivers, recommended
       next actions per 04 §12) and the M0 consent confirmation record.
-    status: approved
+    status: implemented
     stage: S1
     acceptance_criteria:
       - id: FR-021-AC-01
