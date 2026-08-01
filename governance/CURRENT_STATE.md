@@ -22,6 +22,7 @@
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
 | Known blockers | PASS-03 requires one independent adversarial review and Project Owner disposition; PASS-04 remains unauthorized; OD-006 and separate authority for later passes or GOV-7 design/implementation remain unresolved |
 | Phase-transition boundary | GOV-6 is closed after the Project Owner ratified exact Kernel `0.2.0`; GOV-7 remains inactive pending audit and separate design or implementation authority |
+| GOV-GEN-AUD-001 status | Firewalled generalization program (`governance/audits/GOV-GEN-AUD-001-governance-generalization/`), independent of the `GOV-n` phases above; G1A `ACCEPTED_BY_PROJECT_OWNER` (no `PENDING_OWNER_ACCEPTANCE` remains); G1B contract `ACCEPTED_AND_AUTHORIZED_FOR_G1B_EXECUTION` — no further Owner authorization gate, one coherent capability-mapping task, not a multi-packet topology; G1B has not yet executed |
 
 ## KGR-006 execution and independent-evaluation reconciliation
 
@@ -218,6 +219,25 @@ GOV-AUD-001:
   implementation_authorized: false
 GOV-8: {status: INACTIVE}
 GOV-9: {status: INACTIVE}
+
+GOV_GEN_AUD_001:
+  status: G0_AND_G1A_ACCEPTED_G1B_AUTHORIZED_READY_FOR_EXECUTION
+  firewalled_from: GOV-AUD-001
+  local_custody: governance/audits/GOV-GEN-AUD-001-governance-generalization/
+  G1A:
+    status: ACCEPTED_BY_PROJECT_OWNER
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-001/0.1.0
+  G1B:
+    status: CONTRACT_ACCEPTED_AND_AUTHORIZED_FOR_EXECUTION_NO_FURTHER_OWNER_GATE
+    contract: GOV-GEN-G1B-CONTRACT-001/0.1.0
+    supersedes: GOV-GEN-G1B-P-CONTRACT-001/0.1.0
+    execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
+    execution_authorized: true
+    execution_authorization_record: GOV-GEN-DECISION-002/0.1.0
+    execution_started: false
+  target_architecture_selected: false
+  hugeplanning_worktree_written_outside_governance_audits_dir: false
 ```
 
 <!-- GOVERNANCE_STATE_V1 -->
@@ -251,3 +271,9 @@ GOV-AUD-001 PASS-01 executed under `GOV-AUD-AUTH-001`; C1 corrected its validati
 GOV-AUD-001 PASS-02 executed once under `GOV-AUD-AUTH-002` and exact prompt `GOV-AUD-PROMPT-021/0.1.0`, catalogued as `HP-PROMPT-029/0.1.0` after the prospective identity correction. Its seven immutable cross-layer architecture outputs were independently reviewed in `GOV-AUD-001-P02-IER-002`, with result `PASS_02_R1_CONFIRMED` and no R2 required. The Project Owner accepted PASS-02 and approved CHECKPOINT-A in `GOV-AUD-DECISION-003/0.1.0`, authorizing PASS-03 preparation only.
 
 The Project Owner accepted `GOV-AUD-001-METHOD-001/0.3.0` prospectively in `GOV-AUD-DECISION-002/0.1.0` after the focused independent confirmation of its three corrected findings, while preserving the existing finding, model-inference, deviation/root-cause, adversarial, materiality, temporary conflict and identity controls. `HP-MPROP-006` still routes formal conflict-policy derivation to future GOV-7. `HP-MPROP-007` is incorporated into the bounded PASS-03 requirements without implementing a pipeline. PASS-03 executed once under `GOV-AUD-AUTH-003` and `GOV-AUD-PROMPT-031/0.1.0`; its nine outputs and deterministic validation are preserved in `GOV-AUD-001-P03-R1`. `GOV-AUD-001-P03-AR-001` now binds the immutable package to a review contract, exact prompt, hash-bound inputs, output specification, independence template, validation plan and custody rules. It is prepared only: no review has executed or been consumed, PASS-03 is not accepted or completed, and PASS-04 remains unauthorized. The exact next action is separately authorize one independent adversarial review using that package; do not execute PASS-04.
+
+## GOV-GEN-AUD-001 — governance generalization (firewalled)
+
+`GOV-GEN-AUD-001` is the HugePlanning Governance Generalization Audit, explicitly firewalled from `GOV-AUD-001` above (G0-08): the two programs share only this repository as evidence, and nothing in this section alters the `GOV-n` phase state, the Kernel, or `GOV-AUD-001`'s own passes. Its canonical local custody is `governance/audits/GOV-GEN-AUD-001-governance-generalization/`; see `00-program-charter.md`.
+
+G1A (679-row deterministic index of this worktree at `1899a3e7b4…`) executed under `GOV-GEN-G1A-CONTRACT-001/0.1.0` and is now `ACCEPTED_BY_PROJECT_OWNER` under `GOV-GEN-DECISION-001/0.1.0`; no `PENDING_OWNER_ACCEPTANCE` state remains for G1A. G1B's proposed preparation-only packet (`GOV-GEN-G1B-P-CONTRACT-001/0.1.0`, which would have gated a further `G1B-X1...Xn` → `G1B-R` → `G1B-V` multi-session topology) is superseded by one coherent `GOV-GEN-G1B-CONTRACT-001/0.1.0` under `GOV-GEN-DECISION-002/0.1.0`. That contract is `ACCEPTED_AND_AUTHORIZED_FOR_G1B_EXECUTION`: `GOV-GEN-DECISION-002/0.1.0` records G1B as the next authorized governance-generalization phase, so no further, separate Owner authorization gate stands between the accepted contract and a future session executing it. It preserves the G1A evidence-family partition, the capability/gap record schema, and the domain-coverage checklist as internal navigation structures for one task producing one Governance Capability Map. No G1B execution has occurred yet — no session has walked its evidence or populated a capability/gap record — and target-architecture selection, kernel repository ownership, kernel extraction/migration, delegated operational authority, and `AGENTS.md`/`CLAUDE.md`/AET/CWG/SVP modification remain outside G1B's authority regardless. The exact next action is a governed G1B session walking `G1B/GOV-GEN-G1B-CONTRACT-001-v0.1.0.md` §3–§8; it does not require a new Owner authorization first.

@@ -1,0 +1,18 @@
+# GOV-GEN-AUD-001 Decision Custody
+
+`GOV-GEN-DECISION-001/0.1.0` accepts only the completed `GOV-GEN-G1A` evidence
+(679-row deterministic index, report, and manifest), canonicalizing the
+disposition first recorded externally in
+`~/Downloads/HugePlanning-Governance-Generalization-G1A-Acceptance-001.md`.
+`GOV-GEN-DECISION-002/0.1.0` authorizes that canonical reconciliation and the
+simplification of the proposed `GOV-GEN-G1B-P-CONTRACT-001/0.1.0`
+multi-packet topology into one coherent `GOV-GEN-G1B-CONTRACT-001/0.1.0`
+capability-mapping contract. Neither record authorizes G1B execution,
+architecture selection, kernel extraction, repository creation, or any
+change to `AGENTS.md`, `CLAUDE.md`, AET, CWG, or SVP.
+
+Future decision records in this program are append-only, attributable,
+versioned, bound to immutable reviewed artifacts, and explicit about
+accepted scope, rejected scope, limitations, unresolved items, and authority
+exclusions. Silence is never approval. Acceptance of a G1B contract does not
+authorize its execution; execution requires a separate Owner authorization.

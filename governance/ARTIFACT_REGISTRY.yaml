@@ -3906,3 +3906,62 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Corrects only startup-evidence bindings; does not execute the review or advance PASS-03.]
+
+  - id: GOV-GEN-AUD-001
+    title: HugePlanning Governance Generalization Audit Program Scaffold
+    version: 0.1.0
+    status: G0_AND_G1A_ACCEPTED_G1B_AUTHORIZED_READY_FOR_EXECUTION
+    authority: program_index_with_g1a_acceptance_and_g1b_execution_authorization_not_architecture_or_extraction_authority
+    path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
+    source_path: governance/prompts/orchestration/HP-PROMPT-040-gov-gen-g1a-close-g1b-simplify-v0.1.0.md
+    source_sha256: 7f3d101bce0d8fe24c64d75ab6b4fb15d3ca0a9d561cedeec9cbd10cb38c43a2
+    produced_by: PROJECT_OWNER
+    artifact_type: audit_program_scaffold
+    language: English
+    canonicality: active_generalization_program_index_firewalled_from_gov_aud_001
+    supersedes: null
+    aliases:
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/01-program-status.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-001-g1a-acceptance-v0.1.0.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-002-g1a-reconciliation-and-g1b-simplification-authorization-v0.1.0.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/README.md
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G1B/GOV-GEN-G1B-CONTRACT-001-v0.1.0.md
+    notes:
+      - Firewalled from GOV-AUD-001 per G0-08; the two programs share only this repository as evidence and neither authority unblocks the other.
+      - G1A (679-row deterministic index, 13/13 validations PASS, reproducibility PASS, 7/7 baseline counts MATCH) is ACCEPTED_BY_PROJECT_OWNER under GOV-GEN-DECISION-001/0.1.0; no PENDING_OWNER_ACCEPTANCE state remains.
+      - G1B's proposed preparation-only packet (GOV-GEN-G1B-P-CONTRACT-001/0.1.0, which would have gated a further G1B-X1...Xn -> G1B-R -> G1B-V multi-session topology) is superseded by one coherent GOV-GEN-G1B-CONTRACT-001/0.1.0 under GOV-GEN-DECISION-002/0.1.0.
+      - The G1B contract is ACCEPTED_AND_AUTHORIZED_FOR_G1B_EXECUTION under GOV-GEN-DECISION-002/0.1.0; no further, separate Owner authorization gate exists before a future governed session executes it. It preserves the G1A evidence-family partition, capability/gap record schema, and domain-coverage checklist as internal navigation structures. No G1B execution, capability/gap record, target-architecture selection, kernel repository ownership decision, new repository, kernel extraction/migration, delegated operational authority, or AGENTS.md/CLAUDE.md/AET/CWG/SVP change has occurred or is authorized outside G1B's own bounded scope.
+      - HP-PROMPT-041/0.1.0 corrects the initial recording of GOV-GEN-DECISION-002, which mistakenly introduced a further Owner-authorization gate before G1B execution that HP-PROMPT-040/0.1.0's own objective had already granted; the correction reconciles already-granted authority and is not a new governance decision.
+      - Full G0/G1A source material (framing documents, the 679-row index, the G1A report and hash manifest) remains at ~/Downloads/HugePlanning-Governance-Generalization-* and ~/Downloads/GOV-GEN-G1A-001/; its own durable-custody disposition is not decided by this reconciliation.
+
+  - id: HP-PROMPT-040
+    title: GOV-GEN-G1A-CLOSE + G1B-SIMPLIFY
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_g1a_acceptance_reconciliation_and_g1b_contract_simplification_one_commit_no_push
+    path: governance/prompts/orchestration/HP-PROMPT-040-gov-gen-g1a-close-g1b-simplify-v0.1.0.md
+    source_path: null
+    source_sha256: 7f3d101bce0d8fe24c64d75ab6b4fb15d3ca0a9d561cedeec9cbd10cb38c43a2
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_and_reconciliation_authorization_evidence
+    supersedes: null
+    aliases: []
+    notes: [Authorizes G1A acceptance reconciliation, G1B multi-packet-to-single-contract simplification, and one bounded commit; forbids push, architecture selection, kernel ownership/extraction, AGENTS.md/CLAUDE.md changes, AET/CWG/SVP changes, and any G1B execution.]
+
+  - id: HP-PROMPT-041
+    title: Correct G1B Authorization Gate Mismatch
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_g1b_authorization_status_correction_amend_existing_commit_no_push
+    path: governance/prompts/orchestration/HP-PROMPT-041-correct-g1b-authorization-gate-mismatch-v0.1.0.md
+    source_path: null
+    source_sha256: 77ab7602d21e134c14f58c62f39f212124b69bfb2132ac308e24c1444a2b78e2
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_correction_authorization_evidence
+    supersedes: null
+    aliases: []
+    notes: [Corrects HP-PROMPT-040's canonical recording of G1B status, which mistakenly introduced a further Owner-authorization gate that HP-PROMPT-040's own objective 3 had already granted; reconciles already-granted authority into GOV-GEN-DECISION-002/0.1.0 and GOV-GEN-G1B-CONTRACT-001/0.1.0. Does not execute G1B, does not push, and amends the still-unpublished HP-PROMPT-040 commit rather than adding a new one.]

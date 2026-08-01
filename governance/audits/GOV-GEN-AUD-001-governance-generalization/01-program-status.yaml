@@ -1,0 +1,82 @@
+program:
+  id: GOV-GEN-AUD-001
+  title: HugePlanning Governance Generalization Audit
+  firewalled_from: GOV-AUD-001
+  firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
+  status: G0_AND_G1A_ACCEPTED_G1B_AUTHORIZED_READY_FOR_EXECUTION
+  phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
+  current_phase: G1B
+  reference_repository: Sugar144/HugePlanning
+  reference_worktree: /home/sugar/Documents/HugePlanning-governance
+  reference_branch: governance/kernel-designer-revision-v0.1
+  reference_head: 1899a3e7b41e9b4930a5d0f7f0b7e9d542fcb8dc
+  worktree_modified_by_this_program: false
+
+G0:
+  status: ACCEPTED
+  canonical_source: EXTERNAL_NOT_YET_MOVED
+  external_location: ~/Downloads/HugePlanning-Governance-Generalization-G0.md, ~/Downloads/HugePlanning-Governance-Generalization-Compact-Conceptual-Baseline-ACCEPTED.md
+
+G1A:
+  status: ACCEPTED_BY_PROJECT_OWNER
+  contract: GOV-GEN-G1A-CONTRACT-001/0.1.0
+  report: GOV-GEN-G1A-REPORT-001
+  report_terminal_status_at_execution: G1A_READY_FOR_OWNER_REVIEW
+  rows_indexed: 679
+  path_families: 14
+  deterministic_validations: 13/13 PASS
+  reproducibility: PASS
+  baseline_counts: 7/7 MATCH
+  acceptance_record: GOV-GEN-DECISION-001/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-02'
+  pending_owner_acceptance: false
+  full_index_and_report_location: ~/Downloads/GOV-GEN-G1A-001/
+  full_index_moved_into_repository: false
+
+G1B:
+  status: CONTRACT_ACCEPTED_AND_AUTHORIZED_FOR_EXECUTION_NO_FURTHER_OWNER_GATE
+  contract: GOV-GEN-G1B-CONTRACT-001/0.1.0
+  contract_location: G1B/GOV-GEN-G1B-CONTRACT-001-v0.1.0.md
+  supersedes: GOV-GEN-G1B-P-CONTRACT-001/0.1.0
+  execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
+  multi_packet_topology_replaced: true
+  principal_result: Governance Capability Map
+  principal_results_count: 1
+  evidence_family_partition_preserved: true
+  capability_gap_schema_preserved: true
+  domain_coverage_checklist_preserved: true
+  capability_records_populated: 0
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-002/0.1.0
+  execution_authorization_basis: HP-PROMPT-040/0.1.0 objective 3 (G1B recorded as the next authorized governance-generalization phase); corrected into this status by HP-PROMPT-041/0.1.0
+  execution_started: false
+  split_condition: >-
+    Split into another governed session only if execution discovers a
+    genuinely independent decision, authority, validation, acceptance, or
+    material-risk boundary. Evidence-family partitioning remains internal
+    navigation and does not by itself justify a split.
+
+G2_through_G6:
+  status: NOT_STARTED
+
+GR:
+  status: NOT_REACHED
+  note: Owner architecture-decision gate; not opened by this program.
+
+decisions:
+  - id: GOV-GEN-DECISION-001
+    version: 0.1.0
+    subject: G1A acceptance
+  - id: GOV-GEN-DECISION-002
+    version: 0.1.0
+    subject: canonical reconciliation and G1B simplification authorization
+
+not_authorized_by_this_program:
+  - target_architecture_selection
+  - kernel_repository_ownership_decision
+  - new_repository_creation
+  - kernel_extraction_or_migration
+  - delegated_operational_authority_implementation
+  - AGENTS_md_or_CLAUDE_md_modification
+  - AET_CWG_or_SVP_modification

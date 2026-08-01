@@ -19,6 +19,8 @@ The current Kernel is `0.2.0 / RATIFIED` for HugePlanning level 3 under the Kern
 
 GOV-AUD-001 remains in progress: PASS-01 is `PASS_01_ACCEPTED_COMPLETED`; PASS-02 is `ACCEPTED_COMPLETED`; CHECKPOINT-A is `APPROVED_COMPLETED`; and PASS-03 is `EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION`. PASS-03 defines requirements only, selects no tooling and has an immutable review package. Its executable review package `GOV-AUD-001-P03-AR-001` is validated and its one-use authorization `GOV-AUD-AUTH-004` is custodied but unconsumed; the independent adversarial review has not executed. PASS-04 remains planned, unexecuted and unauthorized. The audit program is incomplete. No architecture, technology, implementation recommendation or residual risk is accepted. PASS-01 R1, C1, C2 and C3 and PASS-02 R1 remain immutable.
 
+`governance/audits/GOV-GEN-AUD-001-governance-generalization/` holds a second, firewalled program (`GOV-GEN-AUD-001`, per G0-08) asking what generalizes across projects. G1A is `ACCEPTED_BY_PROJECT_OWNER`; its accepted, simplified G1B contract is `ACCEPTED_AND_AUTHORIZED_FOR_G1B_EXECUTION`, with no further Owner authorization gate before a future session executes it. See its `00-program-charter.md`; it does not affect GOV-AUD-001 or any `GOV-n` phase above.
+
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml
 governance_state:

@@ -1,0 +1,57 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-002
+  version: 0.1.0
+  date: '2026-08-02'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_GOV_GEN_G1A_CANONICAL_RECONCILIATION_AND_G1B_SIMPLIFICATION_AND_EXECUTION
+  program_id: GOV-GEN-AUD-001
+  source_prompt: HP-PROMPT-040/0.1.0
+  correction_record: HP-PROMPT-041/0.1.0
+  authorized:
+    - canonical reconciliation of GOV-GEN-DECISION-001 (G1A acceptance) into
+      HugePlanning governance state
+    - removal of stale PENDING_OWNER_ACCEPTANCE state for G1A
+    - simplification of the proposed GOV-GEN-G1B-P-CONTRACT-001/0.1.0
+      multi-packet (G1B-P -> G1B-X1...Xn -> G1B-R -> G1B-V) topology into one
+      coherent GOV-GEN-G1B-CONTRACT-001/0.1.0 capability-mapping contract
+      using progressive evidence navigation instead of automatic packet
+      proliferation
+    - preservation of the G1B evidence-family partition, capability/gap
+      record schema, and domain-coverage checklist as internal navigation
+      structures inside that one contract
+    - G1B as the next authorized governance-generalization phase, meaning
+      execution of GOV-GEN-G1B-CONTRACT-001/0.1.0 §3-§8 by a future governed
+      session, with no further, separate Owner authorization gate required
+      before that session begins
+    - one bounded local commit
+  g1b_execution_authorized: true
+  g1b_execution_authorization_basis: >-
+    HP-PROMPT-040/0.1.0 objective 3 already recorded G1B as the next
+    authorized governance-generalization phase; this decision reconciles
+    that already-granted authority into GOV-GEN-G1B-CONTRACT-001/0.1.0
+    rather than introducing a new authorization requirement. HP-PROMPT-041
+    corrects the initial recording of this decision, which mistakenly
+    stated a further Owner authorization gate was required.
+  g1b_execution_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - target_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - kernel_extraction_or_migration
+    - delegated_operational_authority_implementation
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+  execution_topology_rule: >-
+    context decomposition != task decomposition. The 679-artifact G1A
+    inventory may be partitioned into evidence families for progressive
+    retrieval; those families do not automatically become separate
+    execution packets. G1B produces one accepted result, the Governance
+    Capability Map. A future governed session may split G1B only if
+    execution discovers a genuinely independent decision, authority,
+    validation, acceptance, or material-risk boundary.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  final_status: RECONCILIATION_AND_SIMPLIFICATION_AUTHORIZED_AND_EXECUTED_G1B_AUTHORIZED_FOR_EXECUTION
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

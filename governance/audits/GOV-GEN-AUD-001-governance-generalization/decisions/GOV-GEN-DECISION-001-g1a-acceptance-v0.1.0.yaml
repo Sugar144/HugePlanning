@@ -1,0 +1,42 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-001
+  version: 0.1.0
+  date: '2026-08-02'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_GOV_GEN_G1A_001
+  program_id: GOV-GEN-AUD-001
+  phase: G1A
+  subject_contract: GOV-GEN-G1A-CONTRACT-001/0.1.0
+  subject_report: GOV-GEN-G1A-REPORT-001
+  reviewed_evidence:
+    report_terminal_status_before_acceptance: G1A_READY_FOR_OWNER_REVIEW
+    rows_indexed: 679
+    path_families: 14
+    deterministic_validations: '13/13 PASS'
+    reproducibility: PASS
+    baseline_counts: '7/7 MATCH'
+    non_blocking_parse_issues: 2
+    worktree_clean_before_and_after: true
+    hugeplanning_worktree_file_touched: false
+    manifest: G1A-manifest.sha256
+  final_status: ACCEPTED_BY_PROJECT_OWNER
+  acceptance_scope: BOUNDED_G1A_EVIDENCE_ONLY
+  pending_owner_acceptance_state_removed: true
+  accepted:
+    - G1A index, schema, and report as accepted evidence for G1B
+    - preparation of a G1B execution contract
+  not_accepted:
+    - g1b_packet_execution
+    - target_architecture_selection_or_implementation
+    - governance_kernel_creation_migration_or_extraction
+    - any_hugeplanning_worktree_write
+    - aet_cwg_or_svp_modification
+  external_source_record: ~/Downloads/HugePlanning-Governance-Generalization-G1A-Acceptance-001.md
+  external_source_document_id: GOV-GEN-G1A-ACCEPTANCE-001/0.1.0
+  reconciliation_note: >-
+    This record canonicalizes the disposition first recorded in the external
+    source above into HugePlanning's own governance custody, per
+    HP-PROMPT-040. It does not re-derive or duplicate the G1A evidence; it
+    relies on the G1A report's own disclosed validation results by
+    reference, exactly as the external source does.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}
