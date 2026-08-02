@@ -2,8 +2,8 @@
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
 version: 0.1.0
-status: G0_AND_G1A_ACCEPTED_G1B_AUTHORIZED_READY_FOR_EXECUTION
-authority: PROGRAM_INDEX_WITH_G1A_ACCEPTANCE_AND_G1B_EXECUTION_AUTHORIZATION_NOT_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
+status: G0_G1A_AND_G1B_ACCEPTED_G2_NOT_STARTED_NOT_AUTHORIZED
+authority: PROGRAM_INDEX_WITH_G1A_AND_G1B_ACCEPTANCE_NOT_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
 
@@ -37,12 +37,12 @@ G0 (framing) -> G1A (deterministic index) -> G1B (governance capability map)
   -> G6 (bounded extraction packets, write-authorized only after GR)
 ```
 
-Only G0 and G1A have executed. G1B has an accepted, simplified contract
-(`G1B/GOV-GEN-G1B-CONTRACT-001-v0.1.0.md`) that is already Owner-authorized
-for execution — `GOV-GEN-DECISION-002/0.1.0` records G1B as the next
-authorized governance-generalization phase, so no further, separate Owner
-authorization gate remains before a future session executes it. G2 onward
-have not started. No phase past G1A has executed against this or any
+G0, G1A, and G1B have executed. G1B produced and Owner-accepted its one
+principal deliverable, the Governance Capability Map
+(`G1B/GOV-GEN-G1B-CAPABILITY-MAP-001.md`) — see
+`decisions/GOV-GEN-DECISION-003-g1b-capability-map-acceptance-v0.1.0.yaml`.
+G2 onward have not started: G2 has no contract, scaffold, or Owner
+authorization. No phase past G1B has executed against this or any
 HugePlanning worktree.
 
 ## Durable baseline
@@ -64,25 +64,30 @@ HugePlanning worktree.
   `~/Downloads/GOV-GEN-G1A-001/` as accepted evidence; this program does not
   duplicate that raw index into the repository, only the acceptance
   disposition that makes it discoverable and durable.
-- **G1B** — simplified into one coherent capability-mapping task; see
-  `G1B/GOV-GEN-G1B-CONTRACT-001-v0.1.0.md`. It supersedes the proposed
+- **G1B** — simplified into one coherent capability-mapping task under
+  `G1B/GOV-GEN-G1B-CONTRACT-001-v0.1.0.md`, superseding the proposed
   `GOV-GEN-G1B-P-CONTRACT-001/0.1.0` multi-packet
-  (G1B-P -> G1B-X1...Xn -> G1B-R -> G1B-V) topology, and is **Owner-authorized
-  for execution** under `GOV-GEN-DECISION-002/0.1.0` — no additional
-  authorization gate stands between the accepted contract and a future
-  session executing it. No G1B execution has occurred yet; this
-  reconciliation authored, accepted, and authorized the contract, it did
-  not itself walk the evidence or populate any capability/gap record.
+  (G1B-P -> G1B-X1...Xn -> G1B-R -> G1B-V) topology. It executed under that
+  contract's already-granted authorization (`GOV-GEN-DECISION-002/0.1.0`)
+  and produced one principal deliverable, the Governance Capability Map
+  (`G1B/GOV-GEN-G1B-CAPABILITY-MAP-001.md`): 88 capability records, 6 gap
+  records, 679/679 source-row coverage across all 14 accepted `path_family`
+  entries, 12/12 cross-cutting-domain coverage, and a verified SHA-256
+  manifest, with no §3.2 split triggered. The Project Owner **accepted**
+  this deliverable — see
+  `decisions/GOV-GEN-DECISION-003-g1b-capability-map-acceptance-v0.1.0.yaml`.
+  No `PENDING_OWNER_ACCEPTANCE` state remains for G1B.
 
 ## What this program has not done
 
 No target governance architecture has been selected; no kernel repository
 ownership decided; no repository created; no kernel extracted or migrated;
-no delegated operational authority implemented; no `AGENTS.md`/`CLAUDE.md`
-modified anywhere; no change made to AET, CWG, or SVP; no HugePlanning
-worktree file outside `governance/**` touched. `GOV-AUD-001` and its internal
-`GOV-n` phase state are unaffected by this program and unaffected by this
-reconciliation.
+no delegated operational authority implemented; no recorded G1B gap
+implemented; no `AGENTS.md`/`CLAUDE.md` modified anywhere; no change made to
+AET, CWG, or SVP; no HugePlanning worktree file outside `governance/**`
+touched; G2 has not been opened, scoped, or authorized. `GOV-AUD-001` and its
+internal `GOV-n` phase state are unaffected by this program and unaffected by
+this reconciliation.
 
 ## Local custody
 
@@ -91,7 +96,8 @@ governance/audits/GOV-GEN-AUD-001-governance-generalization/
   00-program-charter.md          this file
   01-program-status.yaml         durable phase/status snapshot
   decisions/                     Owner decision records (GOV-GEN-DECISION-NNN)
-  G1B/                            the accepted, simplified G1B contract
+  G1B/                            the G1B contract, the accepted Governance
+                                  Capability Map, and its hash manifest
 ```
 
 Full G0/G1A source material (framing documents, the 679-row index, the G1A

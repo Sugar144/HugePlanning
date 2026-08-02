@@ -1,0 +1,60 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-003
+  version: 0.1.0
+  date: '2026-08-02'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_GOV_GEN_G1B_CAPABILITY_MAP
+  program_id: GOV-GEN-AUD-001
+  phase: G1B
+  subject_contract: GOV-GEN-G1B-CONTRACT-001/0.1.0
+  subject_deliverable: GOV-GEN-G1B-CAPABILITY-MAP-001/0.1.0
+  source_prompt: HP-PROMPT-042/0.1.0
+  reviewed_evidence:
+    deliverable_terminal_status_before_acceptance: G1B_READY_FOR_OWNER_REVIEW
+    capability_records: 88
+    gap_records: 6
+    path_families_represented: '14/14'
+    cross_cutting_domains_resolved: '12/12'
+    nav_steps_walked: 13
+    self_check_result: 'PASS (contract §9, all 7 checks)'
+    worktree_clean_outside_g1b: true
+    head_before: 4bf4c2d2baa4c9fb7eb83a187c97b668f938d581
+    head_after: 4bf4c2d2baa4c9fb7eb83a187c97b668f938d581
+    manifest: GOV-GEN-G1B-CAPABILITY-MAP-001.manifest.sha256
+    manifest_verified: true
+  final_status: ACCEPTED_BY_PROJECT_OWNER
+  acceptance_scope: BOUNDED_G1B_CAPABILITY_MAP_ONLY
+  pending_owner_acceptance_state_removed: true
+  accepted:
+    - Governance Capability Map (GOV-GEN-G1B-CAPABILITY-MAP-001/0.1.0)
+    - 88 capability records
+    - 6 gap records
+    - 679/679 source-row coverage (14/14 accepted path_family entries via 13 NAV steps)
+    - 12/12 cross-cutting-domain coverage
+    - validated manifest (GOV-GEN-G1B-CAPABILITY-MAP-001.manifest.sha256)
+  not_accepted:
+    - target_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_recorded_gaps
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - g2_phase_authorization
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes Project Owner acceptance of the already
+    executed and self-validated G1B deliverable directly into HugePlanning
+    governance custody. It does not re-review the 679-row G1A corpus or
+    re-analyze the capability map's content; it relies on the deliverable's
+    own disclosed §1 execution verification, §3 domain coverage, §8
+    self-check, and §9 completion disposition by reference, and on the
+    independently reproduced manifest verification performed during this
+    reconciliation.
+  next_governed_state: >-
+    G2 is the next phase in the GOV-GEN-AUD-001 phase plan
+    (G0 -> G1A -> G1B -> G2 -> G3 -> G4 -> G5 -> GR -> G6). G2 has no
+    contract, scaffold, or Owner authorization. This decision does not open,
+    scope, or authorize G2, and does not itself begin the next phase.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}
