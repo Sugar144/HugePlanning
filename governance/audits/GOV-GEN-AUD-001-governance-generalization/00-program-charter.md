@@ -1,9 +1,9 @@
 ---
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
-version: 0.1.0
-status: G0_G1A_AND_G1B_ACCEPTED_G2_NOT_STARTED_NOT_AUTHORIZED
-authority: PROGRAM_INDEX_WITH_G1A_AND_G1B_ACCEPTANCE_NOT_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
+version: 0.2.0
+status: G0_G1A_G1B_ACCEPTED_G2_EXECUTED_PENDING_OWNER_ACCEPTANCE_G3_NOT_STARTED_NOT_AUTHORIZED
+authority: PROGRAM_INDEX_WITH_G1A_AND_G1B_ACCEPTANCE_AND_G2_EXECUTION_NOT_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
 
@@ -41,9 +41,19 @@ G0, G1A, and G1B have executed. G1B produced and Owner-accepted its one
 principal deliverable, the Governance Capability Map
 (`G1B/GOV-GEN-G1B-CAPABILITY-MAP-001.md`) — see
 `decisions/GOV-GEN-DECISION-003-g1b-capability-map-acceptance-v0.1.0.yaml`.
-G2 onward have not started: G2 has no contract, scaffold, or Owner
-authorization. No phase past G1B has executed against this or any
-HugePlanning worktree.
+
+G2 has since executed under `GOV-GEN-G2-CONTRACT-001/0.1.0`, directly
+authorized by the Project Owner in a single governed unit
+(`GOV-GEN-DECISION-004/0.1.0`, `HP-PROMPT-043/0.1.0`). G2 classified all 88
+accepted G1B capabilities and dispositioned all 6 accepted G1B gaps,
+producing `G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.md`:
+54 `UNIVERSAL`, 16 `CROSS_PROJECT_CONFIGURABLE`, 13 `PROJECT_SPECIFIC`, 5
+`EXECUTOR_SPECIFIC`, 0 `UNRESOLVED` by generality; 39 `READY`, 27
+`NEEDS_NORMALIZATION`, 10 `NEEDS_MODEL_CHANGE`, 12 `NOT_REUSABLE_AS_IS` by
+reuse readiness. Its status is `G2_READY_FOR_OWNER_REVIEW` — Owner
+acceptance is a separate, subsequent act not performed by this
+reconciliation. G3 onward have not started: G3 has no contract, scaffold,
+or Owner authorization.
 
 ## Durable baseline
 
@@ -82,12 +92,13 @@ HugePlanning worktree.
 
 No target governance architecture has been selected; no kernel repository
 ownership decided; no repository created; no kernel extracted or migrated;
-no delegated operational authority implemented; no recorded G1B gap
-implemented; no `AGENTS.md`/`CLAUDE.md` modified anywhere; no change made to
-AET, CWG, or SVP; no HugePlanning worktree file outside `governance/**`
-touched; G2 has not been opened, scoped, or authorized. `GOV-AUD-001` and its
-internal `GOV-n` phase state are unaffected by this program and unaffected by
-this reconciliation.
+no delegated operational authority implemented (only evaluated, per G2 §19);
+no recorded G1B gap implemented; no `AGENTS.md`/`CLAUDE.md` modified
+anywhere; no change made to AET, CWG, or SVP; no HugePlanning worktree file
+outside `governance/**` touched; G3 has not been opened, scoped, or
+authorized; the G2 Classification Matrix has not been Owner-accepted.
+`GOV-AUD-001` and its internal `GOV-n` phase state are unaffected by this
+program and unaffected by this reconciliation.
 
 ## Local custody
 
@@ -98,6 +109,8 @@ governance/audits/GOV-GEN-AUD-001-governance-generalization/
   decisions/                     Owner decision records (GOV-GEN-DECISION-NNN)
   G1B/                            the G1B contract, the accepted Governance
                                   Capability Map, and its hash manifest
+  G2/                             the G2 contract, the Classification
+                                  Matrix, and its hash manifest
 ```
 
 Full G0/G1A source material (framing documents, the 679-row index, the G1A

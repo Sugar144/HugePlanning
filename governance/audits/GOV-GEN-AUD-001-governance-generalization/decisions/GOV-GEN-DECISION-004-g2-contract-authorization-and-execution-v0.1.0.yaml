@@ -1,0 +1,108 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-004
+  version: 0.1.0
+  date: '2026-08-02'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_AND_RECORD_GOV_GEN_G2_CONTRACT_DEFINITION_EXECUTION_AND_LOCAL_COMMIT
+  program_id: GOV-GEN-AUD-001
+  phase: G2
+  subject_contract: GOV-GEN-G2-CONTRACT-001/0.1.0
+  subject_deliverable: GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0
+  source_prompt: HP-PROMPT-043/0.1.0
+  authorized:
+    - canonical definition of G2 (Governance Generalization Assessment) as
+      one contract, GOV-GEN-G2-CONTRACT-001/0.1.0
+    - execution of that contract within the same governed unit, with no
+      further, separate Owner authorization gate between contract
+      acceptance and execution
+    - classification of all 88 accepted G1B capabilities and disposition
+      of all 6 accepted G1B gaps
+    - evaluation of Delegated Operational Authority and Provider-Neutral
+      Governance as program requirements for future architecture
+      assessment, explicitly not as implementation of either
+    - creation of the minimum decision/state/index reconciliation
+      artifacts required by existing GOV-GEN conventions
+    - one bounded local commit
+  g2_execution_authorized: true
+  g2_execution_authorization_basis: >-
+    HP-PROMPT-043/0.1.0 itself grants canonical definition, execution, and
+    one bounded local commit directly, in a single governed unit, and
+    explicitly instructs not to request a further Owner authorization gate
+    for contract preparation, validation, staging, deterministic
+    remediation, or commit mechanics. This decision reconciles that
+    already-granted authorization into durable GOV-GEN custody; it does
+    not itself add a new gate.
+  g2_execution_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - target_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - kernel_extraction_or_migration
+    - delegated_operational_authority_implementation
+    - implementation_of_any_recorded_g1b_gap
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+    - g3_phase_authorization
+    - owner_acceptance_of_the_g2_classification_matrix
+  execution_topology_rule: >-
+    Single L1_CLEAN_SESSION, progressive navigation over the G1B map's own
+    NAV-01..NAV-13 order. Evidence volume (88 capabilities, 6 gaps) is
+    explicitly not a session-split trigger; a split is warranted only by a
+    genuinely independent decision, authority, validation, acceptance, or
+    material-risk boundary (unchanged from GOV-GEN-G1B-CONTRACT-001/0.1.0
+    §3.2).
+  final_status: G2_CONTRACT_ACCEPTED_EXECUTED_AND_LOCALLY_COMMITTED_PENDING_OWNER_ACCEPTANCE
+  reviewed_evidence:
+    deliverable_terminal_status: G2_READY_FOR_OWNER_REVIEW
+    capability_records_classified: 88
+    gap_records_dispositioned: 6
+    generality_counts:
+      UNIVERSAL: 54
+      CROSS_PROJECT_CONFIGURABLE: 16
+      PROJECT_SPECIFIC: 13
+      EXECUTOR_SPECIFIC: 5
+      UNRESOLVED: 0
+    reuse_readiness_counts:
+      READY: 39
+      NEEDS_NORMALIZATION: 27
+      NEEDS_MODEL_CHANGE: 10
+      NOT_REUSABLE_AS_IS: 12
+    self_check_result: 'PASS (G2 contract §9, checks 1-7; check 8 recorded separately per repository validator run)'
+    worktree_clean_outside_g2_and_reconciliation_surfaces: true
+    head_before: a0b3c023074edf8bcf49dfe4f1a4b0cfb1f90fd4
+    manifest: GOV-GEN-G2-CLASSIFICATION-MATRIX-001.manifest.sha256
+    manifest_verified: true
+  pending_owner_acceptance_of_g2_result: true
+  not_accepted:
+    - target_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_delegated_operational_authority
+    - implementation_of_any_recorded_gap
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - g3_phase_authorization
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct, single-prompt
+    authorization of G2's canonical definition, execution, and one bounded
+    local commit (HP-PROMPT-043/0.1.0) into durable GOV-GEN-AUD-001
+    custody. Unlike G1B (where contract authorization and Owner acceptance
+    of the deliverable were two separate decisions, GOV-GEN-DECISION-002
+    and GOV-GEN-DECISION-003), the Owner's instruction for G2 combined
+    canonical definition and execution authorization into one governed
+    unit and did not include acceptance of the resulting Classification
+    Matrix. Acceptance of the deliverable remains a separate, subsequent
+    Owner act, not performed by this decision.
+  next_governed_state: >-
+    The Classification Matrix (GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0)
+    is G2_READY_FOR_OWNER_REVIEW. The next governed state is Project Owner
+    review and acceptance (or rejection, or a bounded correction request)
+    of that result; only after such acceptance may the Owner separately
+    authorize G3. This decision does not itself accept the Classification
+    Matrix, and does not open, scope, or authorize G3.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

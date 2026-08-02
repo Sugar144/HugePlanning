@@ -3909,12 +3909,12 @@ artifacts:
 
   - id: GOV-GEN-AUD-001
     title: HugePlanning Governance Generalization Audit Program Scaffold
-    version: 0.1.0
-    status: G0_G1A_AND_G1B_ACCEPTED_G2_NOT_STARTED_NOT_AUTHORIZED
-    authority: program_index_with_g1a_and_g1b_acceptance_not_architecture_or_extraction_authority
+    version: 0.2.0
+    status: G0_G1A_G1B_ACCEPTED_G2_EXECUTED_PENDING_OWNER_ACCEPTANCE_G3_NOT_STARTED_NOT_AUTHORIZED
+    authority: program_index_with_g1a_and_g1b_acceptance_and_g2_execution_not_architecture_or_extraction_authority
     path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
-    source_path: governance/prompts/orchestration/HP-PROMPT-040-gov-gen-g1a-close-g1b-simplify-v0.1.0.md
-    source_sha256: 7f3d101bce0d8fe24c64d75ab6b4fb15d3ca0a9d561cedeec9cbd10cb38c43a2
+    source_path: governance/prompts/orchestration/HP-PROMPT-043-gov-gen-g2-generalization-assessment-v0.1.0.md
+    source_sha256: 5fbba7a7d95258525ef43255176a13f253d46f539213cb8592d85a3510bfcba0
     produced_by: PROJECT_OWNER
     artifact_type: audit_program_scaffold
     language: English
@@ -3925,17 +3925,22 @@ artifacts:
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-001-g1a-acceptance-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-002-g1a-reconciliation-and-g1b-simplification-authorization-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-003-g1b-capability-map-acceptance-v0.1.0.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-004-g2-contract-authorization-and-execution-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/README.md
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G1B/GOV-GEN-G1B-CONTRACT-001-v0.1.0.md
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G1B/GOV-GEN-G1B-CAPABILITY-MAP-001.md
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G1B/GOV-GEN-G1B-CAPABILITY-MAP-001.manifest.sha256
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-CONTRACT-001-v0.1.0.md
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.md
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.manifest.sha256
     notes:
       - Firewalled from GOV-AUD-001 per G0-08; the two programs share only this repository as evidence and neither authority unblocks the other.
       - G1A (679-row deterministic index, 13/13 validations PASS, reproducibility PASS, 7/7 baseline counts MATCH) is ACCEPTED_BY_PROJECT_OWNER under GOV-GEN-DECISION-001/0.1.0; no PENDING_OWNER_ACCEPTANCE state remains.
       - G1B's proposed preparation-only packet (GOV-GEN-G1B-P-CONTRACT-001/0.1.0, which would have gated a further G1B-X1...Xn -> G1B-R -> G1B-V multi-session topology) is superseded by one coherent GOV-GEN-G1B-CONTRACT-001/0.1.0 under GOV-GEN-DECISION-002/0.1.0.
       - HP-PROMPT-041/0.1.0 corrects the initial recording of GOV-GEN-DECISION-002, which mistakenly introduced a further Owner-authorization gate before G1B execution that HP-PROMPT-040/0.1.0's own objective had already granted; the correction reconciles already-granted authority and is not a new governance decision.
       - G1B executed under that already-granted authorization and produced its one principal deliverable, GOV-GEN-G1B-CAPABILITY-MAP-001/0.1.0 (88 capability records, 6 gap records, 679/679 source-row coverage across all 14 accepted path_family entries, 12/12 cross-cutting-domain coverage, verified SHA-256 manifest, no §3.2 split triggered). The Project Owner ACCEPTED this deliverable under GOV-GEN-DECISION-003/0.1.0 (HP-PROMPT-042/0.1.0); no PENDING_OWNER_ACCEPTANCE state remains for G1B.
-      - No target-architecture selection, kernel repository ownership decision, new repository, kernel extraction/migration, delegated operational authority, implementation of any recorded G1B gap, or AGENTS.md/CLAUDE.md/AET/CWG/SVP change has occurred or is authorized. The next phase, G2, has no contract, scaffold, or Owner authorization and is not opened, scoped, or authorized by this acceptance.
+      - G2 (Governance Generalization Assessment) was directly authorized by the Project Owner as one governed unit spanning canonical definition, execution, and one bounded local commit (HP-PROMPT-043/0.1.0, reconciled in GOV-GEN-DECISION-004/0.1.0), with no separate authorization gate between contract acceptance and execution. G2 executed under GOV-GEN-G2-CONTRACT-001/0.1.0 and produced GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0: all 88 accepted G1B capabilities classified by generality (54 UNIVERSAL, 16 CROSS_PROJECT_CONFIGURABLE, 13 PROJECT_SPECIFIC, 5 EXECUTOR_SPECIFIC, 0 UNRESOLVED) and reuse readiness (39 READY, 27 NEEDS_NORMALIZATION, 10 NEEDS_MODEL_CHANGE, 12 NOT_REUSABLE_AS_IS), all 6 accepted gaps dispositioned, Delegated Operational Authority and Provider-Neutral Governance evaluated as program requirements only (neither implemented), and a verified SHA-256 manifest. Status is G2_READY_FOR_OWNER_REVIEW; unlike G1B, this reconciliation does not itself accept the deliverable — Owner review and acceptance remains a separate, subsequent act.
+      - No target-architecture selection, kernel repository ownership decision, new repository, kernel extraction/migration, delegated operational authority implementation, implementation of any recorded gap, or AGENTS.md/CLAUDE.md/AET/CWG/SVP change has occurred or is authorized. The next phase, G3, has no contract, scaffold, or Owner authorization and is not opened, scoped, or authorized by this reconciliation.
       - Full G0/G1A source material (framing documents, the 679-row index, the G1A report and hash manifest) remains at ~/Downloads/HugePlanning-Governance-Generalization-* and ~/Downloads/GOV-GEN-G1A-001/; its own durable-custody disposition is not decided by this reconciliation.
 
   - id: HP-PROMPT-040
@@ -3985,3 +3990,19 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Authorizes canonical recording of the already-executed and self-validated G1B Governance Capability Map as Owner-accepted, custody of the map and its manifest, removal of stale PENDING_OWNER_ACCEPTANCE state for G1B, identification of the next governed state without authorizing architecture work, and one bounded local commit; forbids push, target-architecture selection, kernel ownership/extraction/migration, implementation of any recorded gap, AGENTS.md/CLAUDE.md changes, AET/CWG/SVP changes, re-review of the 679-row G1A corpus or full capability-map content, and opening a new Owner gate for routine formatting/indexing/staging/validation-remediation/commit mechanics.]
+
+  - id: HP-PROMPT-043
+    title: GOV-GEN-G2 — Governance Generalization Assessment
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_g2_contract_definition_execution_and_local_commit_no_push
+    path: governance/prompts/orchestration/HP-PROMPT-043-gov-gen-g2-generalization-assessment-v0.1.0.md
+    source_path: null
+    source_sha256: 5fbba7a7d95258525ef43255176a13f253d46f539213cb8592d85a3510bfcba0
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_and_definition_authorization_evidence
+    supersedes: null
+    aliases: []
+    notes: [Directly authorizes canonical definition of G2 (GOV-GEN-G2-CONTRACT-001/0.1.0), its execution in the same governed unit with no separate authorization gate, and one bounded local commit; requires classification of all 88 accepted G1B capabilities and disposition of all 6 accepted gaps by generality and reuse readiness, evaluation of Delegated Operational Authority and Provider-Neutral Governance as program requirements only, and forbids push, re-reading the 679-row G1A corpus broadly, target-architecture selection, kernel ownership/extraction/migration, delegated-operational-authority implementation, AGENTS.md/CLAUDE.md changes, and AET/CWG/SVP changes.]

@@ -3,7 +3,7 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_AND_G1B_ACCEPTED_G2_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_ACCEPTED_G2_EXECUTED_PENDING_OWNER_ACCEPTANCE_G3_NOT_STARTED_NOT_AUTHORIZED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
   current_phase: G2
   reference_repository: Sugar144/HugePlanning
@@ -72,11 +72,48 @@ G1B:
     navigation and does not by itself justify a split.
 
 G2:
-  status: NOT_STARTED_NO_CONTRACT_NOT_AUTHORIZED
+  status: EXECUTED_READY_FOR_OWNER_REVIEW
+  contract: GOV-GEN-G2-CONTRACT-001/0.1.0
+  contract_location: G2/GOV-GEN-G2-CONTRACT-001-v0.1.0.md
+  execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
+  principal_result: Governance Generalization Assessment / Classification Matrix
+  principal_results_count: 1
+  deliverable: GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0
+  deliverable_location: G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.md
+  manifest_location: G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.manifest.sha256
+  manifest_verified: true
+  capabilities_classified: 88
+  gaps_dispositioned: 6
+  generality_counts:
+    UNIVERSAL: 54
+    CROSS_PROJECT_CONFIGURABLE: 16
+    PROJECT_SPECIFIC: 13
+    EXECUTOR_SPECIFIC: 5
+    UNRESOLVED: 0
+  reuse_readiness_counts:
+    READY: 39
+    NEEDS_NORMALIZATION: 27
+    NEEDS_MODEL_CHANGE: 10
+    NOT_REUSABLE_AS_IS: 12
+  delegated_operational_authority_evaluated: true
+  delegated_operational_authority_implemented: false
+  provider_neutral_governance_evaluated: true
+  provider_neutral_governance_implemented: false
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-004/0.1.0
+  execution_authorization_basis: HP-PROMPT-043/0.1.0 (Project Owner, direct single-unit authorization of definition, execution, and one bounded commit)
+  execution_started: true
+  execution_self_check: PASS
+  split_triggered: false
+  pending_owner_acceptance: true
+  acceptance_record: null
   note: >-
-    Next phase in the GOV-GEN-AUD-001 phase plan after G1B acceptance. No
-    contract, scaffold, or Owner authorization exists for G2. This
-    reconciliation does not open, scope, or authorize G2.
+    Contract definition and execution were authorized and performed in one
+    governed unit per the Project Owner's explicit instruction
+    (HP-PROMPT-043/0.1.0), unlike G1B where contract authorization and
+    execution authorization were reconciled separately. Owner acceptance of
+    the Classification Matrix has not occurred and is a separate,
+    subsequent act.
 
 G3_through_G6:
   status: NOT_STARTED
@@ -95,6 +132,9 @@ decisions:
   - id: GOV-GEN-DECISION-003
     version: 0.1.0
     subject: G1B Governance Capability Map acceptance
+  - id: GOV-GEN-DECISION-004
+    version: 0.1.0
+    subject: G2 contract authorization and execution
 
 not_authorized_by_this_program:
   - target_architecture_selection
@@ -105,4 +145,5 @@ not_authorized_by_this_program:
   - implementation_of_recorded_g1b_gaps
   - AGENTS_md_or_CLAUDE_md_modification
   - AET_CWG_or_SVP_modification
-  - g2_phase_authorization
+  - owner_acceptance_of_g2_classification_matrix
+  - g3_phase_authorization

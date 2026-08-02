@@ -22,8 +22,21 @@ does not select a target architecture, decide kernel ownership, authorize
 extraction or migration, implement any recorded gap, or modify `AGENTS.md`,
 `CLAUDE.md`, AET, CWG, or SVP.
 
+`GOV-GEN-DECISION-004/0.1.0` records the Project Owner's direct
+authorization (`HP-PROMPT-043/0.1.0`) of G2's canonical definition
+(`GOV-GEN-G2-CONTRACT-001/0.1.0`), execution, and one bounded local commit
+as a single governed unit, with no separate authorization gate between
+contract acceptance and execution. G2 classified all 88 accepted G1B
+capabilities and dispositioned all 6 accepted G1B gaps, producing
+`GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0` — `G2_READY_FOR_OWNER_REVIEW`.
+Unlike G1B, this decision does not itself accept that deliverable; Owner
+review and acceptance of the Classification Matrix remains a separate,
+subsequent act, and G3 remains unopened, unscoped, and unauthorized.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority
-exclusions. Silence is never approval. Acceptance of a G1B contract does not
-authorize its execution; execution requires a separate Owner authorization.
+exclusions. Silence is never approval. Acceptance of a contract does not
+authorize its execution unless the Owner explicitly grants both together, as
+in `GOV-GEN-DECISION-004/0.1.0`; absent that, execution requires a separate
+Owner authorization.
