@@ -156,6 +156,39 @@ G2:
       redispose, or redesign G2. The Project Owner accepted this correction as
       the controlling G2 result under GOV-GEN-DECISION-006/0.1.0
       (HP-PROMPT-045/0.1.0, disposition ACCEPT_GOV_GEN_G2_CORRECTED_RESULT).
+  post_baseline_delta:
+    status: G2_POST_BASELINE_DELTA_CUSTODIED
+    id: GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0
+    location: G2/GOV-GEN-G2-POST-BASELINE-DELTA-001.md
+    manifest_location: G2/GOV-GEN-G2-POST-BASELINE-DELTA-001.manifest.sha256
+    manifest_verified: true
+    custody_authorization_record: GOV-GEN-DECISION-007/0.1.0
+    custody_authorization_basis: HP-PROMPT-046/0.1.0 (Project Owner, bounded custody of an already-completed instruction-delta assessment)
+    comparison_range: [1899a3e7b41e9b4930a5d0f7f0b7e9d542fcb8dc, 284ca3eab1965b1feef33fc9ba72f97ab8ac8dfe]
+    pr_reviewed: '#5'
+    pr_changed_files: [AGENTS.md, governance/AGENTS.md]
+    reconciliation_merge_commit: 7e15377cdccbbafb0be94becceb6f5d09dd9c7dc
+    verdict: G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD
+    g2_capability_reclassification_required: false
+    g2_gap_redisposition_required: false
+    unresolved_question_findings:
+      UQ2: {disposition: NEW_EVIDENCE_NARROWS_DECISION_SPACE, resolution_status: STILL_REQUIRES_ARCHITECTURE_DECISION}
+      UQ5: {disposition: NEW_EVIDENCE_NARROWS_DECISION_SPACE, resolution_status: STILL_REQUIRES_ARCHITECTURE_DECISION}
+      UQ7_next_phase_only_contracting_direction: {disposition: NEW_EVIDENCE_NARROWS_DECISION_SPACE}
+      UQ7_enforcement: {resolution_status: STILL_REQUIRES_ARCHITECTURE_DECISION}
+      UQ7_gap_006_defect_vs_convenience_classification: {disposition: UNCHANGED}
+    new_architectural_evidence_areas:
+      - provider_neutral_repository_instructions
+      - scoped_governance_instructions
+      - relationship_with_project_operating_contract_md
+      - separation_between_repository_governance_and_client_facing_methodology_runtime
+    note: >-
+      Informational post-baseline evidence only. Does not correct or
+      reclassify GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0 or its
+      controlling correction GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0,
+      does not constitute a new G2 acceptance, and does not open, scope,
+      define, or authorize G3. G2 remains ACCEPTED_BY_PROJECT_OWNER; G3
+      remains NOT_STARTED_NOT_AUTHORIZED.
 
 G3_through_G6:
   status: NOT_STARTED_NOT_AUTHORIZED
@@ -187,6 +220,9 @@ decisions:
   - id: GOV-GEN-DECISION-006
     version: 0.1.0
     subject: G2 corrected result (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-007
+    version: 0.1.0
+    subject: G2 post-baseline instruction delta evidence custody
 
 not_authorized_by_this_program:
   - target_architecture_selection

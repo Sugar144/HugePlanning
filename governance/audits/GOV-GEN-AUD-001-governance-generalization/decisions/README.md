@@ -66,6 +66,25 @@ implemented, no recorded gap is implemented, no `AGENTS.md`, `CLAUDE.md`, AET,
 CWG, or SVP change occurs, and G3 is not opened, scoped, defined, or
 authorized. No `PENDING_OWNER_ACCEPTANCE` state remains for G2.
 
+`GOV-GEN-DECISION-007/0.1.0` custodies the result of an already-completed,
+bounded, read-only Post-G2 Instruction Delta Assessment comparing the
+accepted G2 baseline (`1899a3e7b4…`) against the merged remote PR #5
+(`284ca3e…`, `governance: normalize HugePlanning instruction architecture
+(#5)`, which changed only `AGENTS.md` and `governance/AGENTS.md`), whose
+history was subsequently reconciled into this branch by a bounded local
+merge at `7e15377c…`. The verdict,
+`G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD`, means no G2
+capability classification or gap disposition requires correction. The
+decision records five carried-forward findings narrowing (without
+resolving) G2 §21 unresolved questions 2, 5, and 7, and four new
+architectural-evidence areas (provider-neutral repository instructions,
+scoped governance instructions, the relationship with
+`methodology/project-operating-contract.md`, and the separation between
+repository governance and the client-facing methodology runtime) for
+whichever future phase the Project Owner separately authorizes to take
+them up. This decision does not correct, reclassify, or redispose G2, does
+not re-accept G2, and does not open, scope, define, or authorize G3.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority

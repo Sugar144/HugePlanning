@@ -3909,7 +3909,7 @@ artifacts:
 
   - id: GOV-GEN-AUD-001
     title: HugePlanning Governance Generalization Audit Program Scaffold
-    version: 0.4.0
+    version: 0.5.0
     status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_NOT_STARTED_NOT_AUTHORIZED
     authority: program_index_with_g1a_g1b_and_g2_acceptance_not_architecture_or_extraction_authority
     path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
@@ -3937,6 +3937,9 @@ artifacts:
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.manifest.sha256
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1.md
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1.manifest.sha256
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-007-g2-post-baseline-instruction-delta-custody-v0.1.0.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-POST-BASELINE-DELTA-001.md
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-POST-BASELINE-DELTA-001.manifest.sha256
     notes:
       - Firewalled from GOV-AUD-001 per G0-08; the two programs share only this repository as evidence and neither authority unblocks the other.
       - G1A (679-row deterministic index, 13/13 validations PASS, reproducibility PASS, 7/7 baseline counts MATCH) is ACCEPTED_BY_PROJECT_OWNER under GOV-GEN-DECISION-001/0.1.0; no PENDING_OWNER_ACCEPTANCE state remains.
@@ -3948,6 +3951,8 @@ artifacts:
       - The Project Owner reviewed the corrected result and issued disposition ACCEPT_GOV_GEN_G2_CORRECTED_RESULT (HP-PROMPT-045/0.1.0). GOV-GEN-DECISION-006/0.1.0 accepts GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0 as the corrected and controlling G2 result; no PENDING_OWNER_ACCEPTANCE state remains for G2. GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0 remains preserved, unmodified, as immutable historical execution evidence, read together with its accepted correction.
       - No target-architecture selection, kernel repository ownership decision, new (including general-governance) repository, kernel extraction/migration, delegated operational authority or provider-neutral governance implementation, resolution of any G2 §21 unresolved question, implementation of any recorded gap, or AGENTS.md/CLAUDE.md/AET/CWG/SVP change has occurred or is authorized. The next phase, G3, has no contract, scaffold, or Owner authorization, is not defined, and is not opened, scoped, or authorized by this reconciliation.
       - Full G0/G1A source material (framing documents, the 679-row index, the G1A report and hash manifest) remains at ~/Downloads/HugePlanning-Governance-Generalization-* and ~/Downloads/GOV-GEN-G1A-001/; its own durable-custody disposition is not decided by this reconciliation.
+      - Local branch history (G0-G2, commit 804d6d77ca35a1c64022d34ad7eeb0b509bd2cb2) and the already-merged remote PR-5 (governance normalize HugePlanning instruction architecture, commit 284ca3eab1965b1feef33fc9ba72f97ab8ac8dfe, changed only AGENTS.md and governance/AGENTS.md) were reconciled by a normal bounded local merge (no rebase, no rewrite, no cherry-pick) at 7e15377cdccbbafb0be94becceb6f5d09dd9c7dc; both commits are ancestors of the merge commit, and the merge touched no path under this program's directory.
+      - GOV-GEN-DECISION-007/0.1.0 (HP-PROMPT-046/0.1.0) custodies GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0, the result of an already-completed, bounded, read-only Post-G2 Instruction Delta Assessment comparing 1899a3e7b4… to 284ca3ea… -- verdict G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD (no G2 capability reclassified, no gap redisposed), narrowing (without resolving) G2 §21 unresolved questions 2, 5, and 7, and recording new architectural evidence on provider-neutral repository instructions, scoped governance instructions, the relationship with methodology/project-operating-contract.md, and the separation between repository governance and the client-facing methodology runtime. This is informational post-baseline evidence only -- it is not a G2 correction, not a new G2 acceptance, and does not open, scope, define, or authorize G3. G2 remains ACCEPTED_BY_PROJECT_OWNER and G3 remains NOT_STARTED_NOT_AUTHORIZED.
 
   - id: HP-PROMPT-040
     title: GOV-GEN-G1A-CLOSE + G1B-SIMPLIFY
@@ -4044,3 +4049,19 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Directly instructs disposition ACCEPT_GOV_GEN_G2_CORRECTED_RESULT, accepting GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0 as the corrected and controlling G2 result while GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0 remains immutable historical evidence; requires reconciling only current/status-bearing GOV-GEN-AUD-001 surfaces to G0 ACCEPTED, G1A/G1B/G2 ACCEPTED_BY_PROJECT_OWNER and G3 NOT_STARTED_NOT_AUTHORIZED, with historical records preserved append-only; forbids target-architecture selection, kernel ownership decision, general-governance repository creation, extraction/migration authorization, G3 authorization or definition, resolution of any G2 §21 unresolved question, delegated-operational-authority/provider-neutral-governance implementation, any G1B gap implementation, AGENTS.md/CLAUDE.md/AET/CWG/SVP or other-repository modification, residual-risk acceptance, and push/PR/merge/tag/release/deployment.]
+
+  - id: HP-PROMPT-046
+    title: GOV-GEN G2 — Post-Baseline Instruction Delta Custody
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_g2_post_baseline_evidence_custody_no_correction_no_reacceptance_no_g3_no_push
+    path: governance/prompts/orchestration/HP-PROMPT-046-gov-gen-g2-post-baseline-instruction-delta-custody-v0.1.0.md
+    source_path: null
+    source_sha256: 09179c48074559060d9571051d4557e06cb7d6ebb16c62f5a19df537fbe0a12c
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_and_custody_authorization_evidence
+    supersedes: null
+    aliases: []
+    notes: [Directly authorizes custody of an already-completed, bounded, read-only Post-G2 Instruction Delta Assessment (comparison 1899a3e7b4…->284ca3ea…, PR-5 changed only AGENTS.md and governance/AGENTS.md, subsequently reconciled by bounded local merge 7e15377c…) as GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0, plus the minimum durable registry/status references, and one bounded local commit; forbids G2 correction, reclassification, gap redisposition, G2 redesign, a new G2 acceptance, G3 definition or authorization, target-architecture selection, kernel ownership decision, extraction/migration authorization, delegated-operational-authority/provider-neutral-governance implementation, any G1B gap implementation, resolution of any G2 §21 unresolved question, AGENTS.md/CLAUDE.md/AET/CWG/SVP or other-repository modification, inflating this into a new phase or audit, and push/PR/merge/tag/release/deployment.]

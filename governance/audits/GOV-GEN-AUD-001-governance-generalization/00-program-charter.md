@@ -1,7 +1,7 @@
 ---
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
-version: 0.4.0
+version: 0.5.0
 status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_NOT_STARTED_NOT_AUTHORIZED
 authority: PROGRAM_INDEX_WITH_G1A_G1B_AND_G2_ACCEPTANCE_NOT_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
 supersedes: null
@@ -72,6 +72,22 @@ correction. G3 onward have not started: G3 has no contract, scaffold, or
 Owner authorization, and is not defined; a separate, explicit Project Owner
 authorization is required before any G3 work.
 
+A bounded, read-only Post-G2 Instruction Delta Assessment subsequently
+compared the accepted G2 baseline (`1899a3e7b4…`) against the already-merged
+remote PR #5 (`284ca3ea…`, changed only `AGENTS.md` and
+`governance/AGENTS.md`), whose history was reconciled into this branch by a
+normal bounded local merge (no rebase, no rewrite, no cherry-pick) at
+`7e15377c…`. `GOV-GEN-DECISION-007/0.1.0` (`HP-PROMPT-046/0.1.0`) custodies
+that result as `G2/GOV-GEN-G2-POST-BASELINE-DELTA-001.md`: verdict
+`G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD`, narrowing
+without resolving G2 §21 unresolved questions 2, 5, and 7, and recording new
+architectural evidence — for future governed work only — on provider-neutral
+repository instructions, scoped governance instructions, the relationship
+with `methodology/project-operating-contract.md`, and the separation between
+repository governance and the client-facing methodology runtime. This is
+informational evidence only: it is not a G2 correction, not a new G2
+acceptance, and does not open, scope, define, or authorize G3.
+
 ## Durable baseline
 
 - **G0** — framing and the compact conceptual baseline are accepted.
@@ -128,7 +144,9 @@ governance/audits/GOV-GEN-AUD-001-governance-generalization/
   G1B/                            the G1B contract, the accepted Governance
                                   Capability Map, and its hash manifest
   G2/                             the G2 contract, the Classification
-                                  Matrix, and its hash manifest
+                                  Matrix, its R1 correction, the post-baseline
+                                  instruction delta evidence, and their hash
+                                  manifests
 ```
 
 Full G0/G1A source material (framing documents, the 679-row index, the G1A
