@@ -3,13 +3,25 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_ACCEPTED_G2_EXECUTED_PENDING_OWNER_ACCEPTANCE_G3_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_ACCEPTED_G2_EXECUTED_CORRECTION_R1_READY_FOR_OWNER_ACCEPTANCE_G3_NOT_STARTED_NOT_AUTHORIZED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
   current_phase: G2
   reference_repository: Sugar144/HugePlanning
+  # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
+  # together describe the frozen snapshot used to build the G1A deterministic
+  # 679-row source index. reference_worktree is a distinct clone/path from the
+  # active worktree this program otherwise runs in; it is not "the current
+  # HugePlanning governance worktree" in general.
   reference_worktree: /home/sugar/Documents/HugePlanning-governance
   reference_branch: governance/kernel-designer-revision-v0.1
   reference_head: 1899a3e7b41e9b4930a5d0f7f0b7e9d542fcb8dc
+  # Scoped to the G1A indexing step only: the reference_worktree above was not
+  # mutated while constructing the deterministic source index. It does NOT
+  # mean GOV-GEN has never modified the active HugePlanning governance
+  # worktree in general — G1B and G2 execution wrote and committed files
+  # under governance/audits/GOV-GEN-AUD-001-governance-generalization/ in
+  # this active worktree, on commits after reference_head. Clarified per G2
+  # correction R1 (GOV-GEN-DECISION-005/0.1.0, finding 7); value unchanged.
   worktree_modified_by_this_program: false
 
 G0:
@@ -114,6 +126,28 @@ G2:
     execution authorization were reconciled separately. Owner acceptance of
     the Classification Matrix has not occurred and is a separate,
     subsequent act.
+  correction:
+    status: G2_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    correction_index: 1
+    id: GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0
+    location: G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1.md
+    manifest_location: G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1.manifest.sha256
+    manifest_verified: true
+    base_deliverable_modified: false
+    corrections_applied: 3
+    correction_authorization_record: GOV-GEN-DECISION-005/0.1.0
+    correction_authorization_basis: HP-PROMPT-044/0.1.0 (Project Owner, bounded correction and evidence reconciliation following Owner review)
+    reclassification_performed: false
+    gap_redisposition_performed: false
+    note: >-
+      Corrects three cross-reference defects in the base deliverable's §19,
+      §20, and §16/GAP-006; reconciles the current-state description of the
+      contract §9 check count (8, not 7); records an honest historical
+      custody gap for check 8 and Owner-review revalidation evidence for
+      candidate bb9c863ea9805f53d06ddabe9040bda2eca34b42; clarifies (does not
+      redefine) worktree_modified_by_this_program above. Does not reclassify,
+      redispose, or redesign G2. Owner acceptance of the correction has not
+      occurred and is a separate, subsequent act.
 
 G3_through_G6:
   status: NOT_STARTED
@@ -135,6 +169,9 @@ decisions:
   - id: GOV-GEN-DECISION-004
     version: 0.1.0
     subject: G2 contract authorization and execution
+  - id: GOV-GEN-DECISION-005
+    version: 0.1.0
+    subject: G2 bounded correction R1 and evidence reconciliation
 
 not_authorized_by_this_program:
   - target_architecture_selection
@@ -146,4 +183,7 @@ not_authorized_by_this_program:
   - AGENTS_md_or_CLAUDE_md_modification
   - AET_CWG_or_SVP_modification
   - owner_acceptance_of_g2_classification_matrix
+  - owner_acceptance_of_g2_correction_r1
+  - reclassification_of_any_capability
+  - redisposition_of_any_g1b_gap
   - g3_phase_authorization

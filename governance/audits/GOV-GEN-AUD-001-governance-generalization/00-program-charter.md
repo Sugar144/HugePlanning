@@ -1,8 +1,8 @@
 ---
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
-version: 0.2.0
-status: G0_G1A_G1B_ACCEPTED_G2_EXECUTED_PENDING_OWNER_ACCEPTANCE_G3_NOT_STARTED_NOT_AUTHORIZED
+version: 0.3.0
+status: G0_G1A_G1B_ACCEPTED_G2_EXECUTED_CORRECTION_R1_READY_FOR_OWNER_ACCEPTANCE_G3_NOT_STARTED_NOT_AUTHORIZED
 authority: PROGRAM_INDEX_WITH_G1A_AND_G1B_ACCEPTANCE_AND_G2_EXECUTION_NOT_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
@@ -52,8 +52,20 @@ producing `G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.md`:
 `NEEDS_NORMALIZATION`, 10 `NEEDS_MODEL_CHANGE`, 12 `NOT_REUSABLE_AS_IS` by
 reuse readiness. Its status is `G2_READY_FOR_OWNER_REVIEW` — Owner
 acceptance is a separate, subsequent act not performed by this
-reconciliation. G3 onward have not started: G3 has no contract, scaffold,
-or Owner authorization.
+reconciliation.
+
+Project Owner review of that deliverable identified bounded defects — three
+internal cross-reference errors, an inaccurate current-state description of
+the contract's §9 check count, and a historical evidence-custody gap for
+check 8 — none touching the substantive classification or gap disposition.
+A bounded prospective correction, `G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1.md`
+(`GOV-GEN-DECISION-005/0.1.0`, `HP-PROMPT-044/0.1.0`), corrects those
+defects without modifying the immutable base deliverable and without
+reclassifying any capability or redisposing any gap. Its status is
+`G2_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE` — Owner acceptance of the
+correction, like acceptance of G2 itself, is a separate, subsequent act not
+performed by this reconciliation. G3 onward have not started: G3 has no
+contract, scaffold, or Owner authorization.
 
 ## Durable baseline
 

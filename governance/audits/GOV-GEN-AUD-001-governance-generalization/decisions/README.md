@@ -33,6 +33,21 @@ Unlike G1B, this decision does not itself accept that deliverable; Owner
 review and acceptance of the Classification Matrix remains a separate,
 subsequent act, and G3 remains unopened, unscoped, and unauthorized.
 
+`GOV-GEN-DECISION-005/0.1.0` records the Project Owner's direct
+authorization (`HP-PROMPT-044/0.1.0`) of a bounded prospective correction to
+the G2 Classification Matrix, following Owner review that confirmed three
+internal cross-reference defects, an inaccurate current-state description of
+the G2 contract's §9 check count, a historical evidence-custody gap for
+check 8, a stale `worktree_modified_by_this_program` field, and a stale
+`governance/README.md` paragraph. The base deliverable
+(`GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0`) is preserved unmodified as
+historical evidence; the correction is a new versioned artifact,
+`GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0`, read together with it. No
+capability is reclassified, no gap is redisposed, and G2 is not redesigned.
+This decision does not accept the corrected result — Owner acceptance
+remains a separate, subsequent act — and does not open, scope, or authorize
+G3.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority
