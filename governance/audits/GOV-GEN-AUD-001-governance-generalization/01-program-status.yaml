@@ -3,7 +3,7 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_ACCEPTED_G2_EXECUTED_CORRECTION_R1_READY_FOR_OWNER_ACCEPTANCE_G3_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_NOT_STARTED_NOT_AUTHORIZED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
   current_phase: G2
   reference_repository: Sugar144/HugePlanning
@@ -84,7 +84,7 @@ G1B:
     navigation and does not by itself justify a split.
 
 G2:
-  status: EXECUTED_READY_FOR_OWNER_REVIEW
+  status: CLASSIFICATION_MATRIX_R1_ACCEPTED_BY_PROJECT_OWNER
   contract: GOV-GEN-G2-CONTRACT-001/0.1.0
   contract_location: G2/GOV-GEN-G2-CONTRACT-001-v0.1.0.md
   execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
@@ -117,17 +117,22 @@ G2:
   execution_started: true
   execution_self_check: PASS
   split_triggered: false
-  pending_owner_acceptance: true
-  acceptance_record: null
+  pending_owner_acceptance: false
+  acceptance_record: GOV-GEN-DECISION-006/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-04'
+  controlling_result: GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0
   note: >-
     Contract definition and execution were authorized and performed in one
     governed unit per the Project Owner's explicit instruction
     (HP-PROMPT-043/0.1.0), unlike G1B where contract authorization and
-    execution authorization were reconciled separately. Owner acceptance of
-    the Classification Matrix has not occurred and is a separate,
-    subsequent act.
+    execution authorization were reconciled separately. The base deliverable
+    (GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0) is preserved unmodified as
+    historical execution evidence; the Project Owner accepted its corrected
+    R1 result as the controlling G2 result under GOV-GEN-DECISION-006/0.1.0.
+    No PENDING_OWNER_ACCEPTANCE state remains for G2.
   correction:
-    status: G2_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    status: G2_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
     correction_index: 1
     id: GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0
     location: G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1.md
@@ -139,6 +144,8 @@ G2:
     correction_authorization_basis: HP-PROMPT-044/0.1.0 (Project Owner, bounded correction and evidence reconciliation following Owner review)
     reclassification_performed: false
     gap_redisposition_performed: false
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-006/0.1.0
     note: >-
       Corrects three cross-reference defects in the base deliverable's §19,
       §20, and §16/GAP-006; reconciles the current-state description of the
@@ -146,11 +153,16 @@ G2:
       custody gap for check 8 and Owner-review revalidation evidence for
       candidate bb9c863ea9805f53d06ddabe9040bda2eca34b42; clarifies (does not
       redefine) worktree_modified_by_this_program above. Does not reclassify,
-      redispose, or redesign G2. Owner acceptance of the correction has not
-      occurred and is a separate, subsequent act.
+      redispose, or redesign G2. The Project Owner accepted this correction as
+      the controlling G2 result under GOV-GEN-DECISION-006/0.1.0
+      (HP-PROMPT-045/0.1.0, disposition ACCEPT_GOV_GEN_G2_CORRECTED_RESULT).
 
 G3_through_G6:
-  status: NOT_STARTED
+  status: NOT_STARTED_NOT_AUTHORIZED
+  note: >-
+    G3 has no contract, scaffold, or Owner authorization and is not defined.
+    A separate, explicit Project Owner authorization is required before any
+    G3 work, including its definition.
 
 GR:
   status: NOT_REACHED
@@ -172,6 +184,9 @@ decisions:
   - id: GOV-GEN-DECISION-005
     version: 0.1.0
     subject: G2 bounded correction R1 and evidence reconciliation
+  - id: GOV-GEN-DECISION-006
+    version: 0.1.0
+    subject: G2 corrected result (R1) Project Owner acceptance
 
 not_authorized_by_this_program:
   - target_architecture_selection
@@ -179,11 +194,12 @@ not_authorized_by_this_program:
   - new_repository_creation
   - kernel_extraction_or_migration
   - delegated_operational_authority_implementation
+  - provider_neutral_governance_implementation
   - implementation_of_recorded_g1b_gaps
   - AGENTS_md_or_CLAUDE_md_modification
   - AET_CWG_or_SVP_modification
-  - owner_acceptance_of_g2_classification_matrix
-  - owner_acceptance_of_g2_correction_r1
   - reclassification_of_any_capability
   - redisposition_of_any_g1b_gap
+  - resolution_of_any_g2_section_21_unresolved_question
+  - g3_phase_definition
   - g3_phase_authorization

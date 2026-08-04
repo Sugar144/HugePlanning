@@ -48,6 +48,24 @@ This decision does not accept the corrected result — Owner acceptance
 remains a separate, subsequent act — and does not open, scope, or authorize
 G3.
 
+`GOV-GEN-DECISION-006/0.1.0` records the Project Owner's direct acceptance
+(`HP-PROMPT-045/0.1.0`, disposition `ACCEPT_GOV_GEN_G2_CORRECTED_RESULT`) of
+`GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0` as the corrected and
+controlling G2 result: classification of all 88 accepted G1B capabilities,
+disposition of all 6 accepted G1B gaps, G2's cross-cutting findings, its
+evaluation of Delegated Operational Authority and Provider-Neutral Governance
+as future architecture requirements only, and the G2 §21 unresolved-question
+set carried forward for later governed work. The original
+`GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0` remains preserved as immutable
+historical execution evidence, read together with its accepted correction. No
+target governance architecture is selected, no kernel repository ownership is
+decided, no `general-governance` repository is created, no repository
+extraction or migration is authorized, no G2 §21 unresolved question is
+resolved, no Delegated Operational Authority or Provider-Neutral Governance is
+implemented, no recorded gap is implemented, no `AGENTS.md`, `CLAUDE.md`, AET,
+CWG, or SVP change occurs, and G3 is not opened, scoped, defined, or
+authorized. No `PENDING_OWNER_ACCEPTANCE` state remains for G2.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority
