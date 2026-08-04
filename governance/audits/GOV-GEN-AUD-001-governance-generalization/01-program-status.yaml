@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_EXECUTED_READY_FOR_PROJECT_OWNER_REVIEW
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G2
+  current_phase: G3
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -190,12 +190,60 @@ G2:
       define, or authorize G3. G2 remains ACCEPTED_BY_PROJECT_OWNER; G3
       remains NOT_STARTED_NOT_AUTHORIZED.
 
-G3_through_G6:
+G3:
+  status: LOGICAL_ARCHITECTURE_EXECUTED_READY_FOR_PROJECT_OWNER_REVIEW
+  contract: GOV-GEN-G3-CONTRACT-001/0.1.0
+  contract_location: G3/GOV-GEN-G3-CONTRACT-001-v0.1.0.md
+  execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
+  principal_result: Logical Architecture and Layering Assessment
+  principal_results_count: 1
+  deliverable: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0
+  deliverable_location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md
+  manifest_location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.manifest.sha256
+  manifest_verified: true
+  capabilities_allocated: 88
+  gaps_allocated: 6
+  layer_counts: {L0: 3, L1: 14, L2: 4, L3: 6, L4: 4, L5: 20, L6: 29, L7: 8}
+  cross_layer_items_named: 7
+  unresolved_question_dispositions:
+    UQ1: DEFER_TO_PHYSICAL_ARCHITECTURE
+    UQ2: LOGICALLY_RESOLVED_BY_G3
+    UQ3: NARROWED_BUT_OWNER_DECISION_REQUIRED
+    UQ4: LOGICALLY_RESOLVED_BY_G3_BOUNDARY_DEFER_MECHANICS_TO_IMPLEMENTATION_DESIGN
+    UQ5: NARROWED_BUT_OWNER_DECISION_REQUIRED
+    UQ6: NARROWED_BUT_OWNER_DECISION_REQUIRED
+    UQ7: MIXED_UNCHANGED_AND_NARROWED_BUT_OWNER_DECISION_REQUIRED
+  candidate_architecture_recommended: true
+  alternatives_recorded: 2
+  targeted_lookups_performed: 1
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-008/0.1.0
+  execution_authorization_basis: HP-PROMPT-047/0.1.0 (Project Owner, direct single-unit authorization of definition, execution, and one bounded commit, mirroring the G2 pattern)
+  execution_started: true
+  execution_self_check: PASS
+  split_triggered: false
+  pending_owner_acceptance: true
+  acceptance_record: null
+  note: >-
+    Contract definition and execution were authorized and performed in one
+    governed unit per the Project Owner's explicit instruction
+    (HP-PROMPT-047/0.1.0), mirroring G2 rather than G1B's two-gate pattern.
+    G3 does not reclassify any G2 capability or redispose any G2 gap; it
+    organizes the accepted G2 classification into a proposed eight-layer
+    logical model and dispositions G2 §21 unresolved questions 1-7 against
+    that model without resolving any of them into an implemented decision.
+    Owner acceptance of the Logical Architecture remains a separate,
+    subsequent act; no PENDING_OWNER_ACCEPTANCE state is removed by this
+    execution.
+
+G4_through_G6:
   status: NOT_STARTED_NOT_AUTHORIZED
   note: >-
-    G3 has no contract, scaffold, or Owner authorization and is not defined.
+    G4 has no contract, scaffold, or Owner authorization and is not defined.
     A separate, explicit Project Owner authorization is required before any
-    G3 work, including its definition.
+    G4 work, including its definition, and before any target physical
+    architecture selection, kernel repository ownership decision, or
+    extraction/migration.
 
 GR:
   status: NOT_REACHED
@@ -223,6 +271,9 @@ decisions:
   - id: GOV-GEN-DECISION-007
     version: 0.1.0
     subject: G2 post-baseline instruction delta evidence custody
+  - id: GOV-GEN-DECISION-008
+    version: 0.1.0
+    subject: G3 contract authorization and execution
 
 not_authorized_by_this_program:
   - target_architecture_selection
@@ -231,11 +282,13 @@ not_authorized_by_this_program:
   - kernel_extraction_or_migration
   - delegated_operational_authority_implementation
   - provider_neutral_governance_implementation
+  - provider_or_executor_adapter_implementation
+  - query_or_projection_tooling_implementation
   - implementation_of_recorded_g1b_gaps
   - AGENTS_md_or_CLAUDE_md_modification
   - AET_CWG_or_SVP_modification
   - reclassification_of_any_capability
   - redisposition_of_any_g1b_gap
   - resolution_of_any_g2_section_21_unresolved_question
-  - g3_phase_definition
-  - g3_phase_authorization
+  - g4_phase_definition
+  - g4_phase_authorization

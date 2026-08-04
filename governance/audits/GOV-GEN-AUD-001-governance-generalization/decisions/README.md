@@ -85,10 +85,32 @@ whichever future phase the Project Owner separately authorizes to take
 them up. This decision does not correct, reclassify, or redispose G2, does
 not re-accept G2, and does not open, scope, define, or authorize G3.
 
+`GOV-GEN-DECISION-008/0.1.0` records the Project Owner's direct
+authorization (`HP-PROMPT-047/0.1.0`) of G3's canonical definition
+(`GOV-GEN-G3-CONTRACT-001/0.1.0`), execution, and one bounded local commit
+as a single governed unit, mirroring the G2 pattern
+(`GOV-GEN-DECISION-004/0.1.0`). G3 organizes, without reclassifying or
+redisposing, all 88 accepted G2 capabilities and all 6 accepted G2 gaps
+into a proposed eight-layer logical model (core, configurable policy,
+optional modules, project-specific projections, provider/executor
+adapters, canonical evidence, deterministic validation/query tooling,
+bounded model/agent context projections), producing
+`GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0` —
+`G3_READY_FOR_PROJECT_OWNER_REVIEW`. It dispositions G2 §21 unresolved
+questions 1-7 against that model without resolving any of them into an
+implemented decision, and recommends one candidate architecture with two
+rejected alternatives. As with G2, this decision does not itself accept
+the resulting deliverable; Owner review and acceptance remains a separate,
+subsequent act, and G4 remains unopened, unscoped, and unauthorized. No
+target physical architecture is selected, no kernel repository ownership
+is decided, no repository is created, no file is extracted or migrated,
+and no Delegated Operational Authority, Provider-Neutral Governance,
+adapter, or query/projection tooling is implemented.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority
 exclusions. Silence is never approval. Acceptance of a contract does not
 authorize its execution unless the Owner explicitly grants both together, as
-in `GOV-GEN-DECISION-004/0.1.0`; absent that, execution requires a separate
-Owner authorization.
+in `GOV-GEN-DECISION-004/0.1.0` and `GOV-GEN-DECISION-008/0.1.0`; absent
+that, execution requires a separate Owner authorization.

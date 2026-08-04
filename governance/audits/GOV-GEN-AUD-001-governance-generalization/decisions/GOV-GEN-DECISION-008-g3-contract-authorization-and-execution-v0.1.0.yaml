@@ -1,0 +1,124 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-008
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_AND_RECORD_GOV_GEN_G3_CONTRACT_DEFINITION_EXECUTION_AND_LOCAL_COMMIT
+  program_id: GOV-GEN-AUD-001
+  phase: G3
+  subject_contract: GOV-GEN-G3-CONTRACT-001/0.1.0
+  subject_deliverable: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0
+  source_prompt: HP-PROMPT-047/0.1.0
+  authorized:
+    - canonical definition of G3 (Logical Architecture and Layering
+      Assessment) as one contract, GOV-GEN-G3-CONTRACT-001/0.1.0
+    - execution of that contract within the same governed unit, with no
+      further, separate Owner authorization gate between contract
+      acceptance and execution
+    - allocation of all 88 accepted G2-classified capabilities and all 6
+      accepted G2-dispositioned gaps to a proposed logical layer model
+    - disposition of G2 §21 unresolved questions 1-7 against that model
+    - a targeted, recorded lookup into the accepted G1B Governance
+      Capability Map for capability obligation/realized_by fields, needed
+      for accurate layer allocation, without rereading the 679-row G1A
+      corpus and without redoing the 88 G2 classifications
+    - creation of the minimum decision/state/index reconciliation
+      artifacts required by existing GOV-GEN conventions
+    - one bounded local commit
+  g3_execution_authorized: true
+  g3_execution_authorization_basis: >-
+    HP-PROMPT-047/0.1.0 itself grants canonical definition, execution, and
+    one bounded local commit directly, in a single governed unit, mirroring
+    the G2 pattern (HP-PROMPT-043/0.1.0, GOV-GEN-DECISION-004/0.1.0). This
+    decision reconciles that already-granted authorization into durable
+    GOV-GEN custody; it does not itself add a new gate.
+  g3_execution_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - kernel_extraction_or_migration
+    - delegated_operational_authority_implementation
+    - provider_neutral_governance_implementation
+    - provider_or_executor_adapter_implementation
+    - query_or_projection_tooling_implementation
+    - implementation_of_any_recorded_g1b_or_g2_gap
+    - reclassification_of_any_g2_capability
+    - redisposition_of_any_g2_gap
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+    - g4_phase_authorization
+    - owner_acceptance_of_the_g3_logical_architecture
+  execution_topology_rule: >-
+    Single L1_CLEAN_SESSION, progressive navigation over the G2
+    NAV-01..NAV-13 classification order. Evidence volume (88 capabilities,
+    6 gaps) is explicitly not a session-split trigger; a split is warranted
+    only by a genuinely independent decision, authority, validation,
+    acceptance, or material-risk boundary (unchanged from
+    GOV-GEN-G2-CONTRACT-001/0.1.0 §3 and GOV-GEN-G1B-CONTRACT-001/0.1.0
+    §3.2).
+  final_status: G3_CONTRACT_ACCEPTED_EXECUTED_AND_LOCALLY_COMMITTED_PENDING_OWNER_ACCEPTANCE
+  reviewed_evidence:
+    deliverable_terminal_status: G3_READY_FOR_PROJECT_OWNER_REVIEW
+    capability_records_allocated: 88
+    gap_records_allocated: 6
+    layer_counts: {L0: 3, L1: 14, L2: 4, L3: 6, L4: 4, L5: 20, L6: 29, L7: 8}
+    cross_layer_items_named: 7
+    unresolved_question_dispositions:
+      UQ1: DEFER_TO_PHYSICAL_ARCHITECTURE
+      UQ2: LOGICALLY_RESOLVED_BY_G3
+      UQ3: NARROWED_BUT_OWNER_DECISION_REQUIRED
+      UQ4: LOGICALLY_RESOLVED_BY_G3_BOUNDARY_DEFER_MECHANICS_TO_IMPLEMENTATION_DESIGN
+      UQ5: NARROWED_BUT_OWNER_DECISION_REQUIRED
+      UQ6: NARROWED_BUT_OWNER_DECISION_REQUIRED
+      UQ7: MIXED_UNCHANGED_AND_NARROWED_BUT_OWNER_DECISION_REQUIRED
+    candidate_architecture_recommended: true
+    alternatives_recorded: 2
+    targeted_lookups_performed: 1
+    self_check_result: 'PASS (G3 contract §6, checks 1-8)'
+    worktree_clean_outside_g3_and_reconciliation_surfaces: true
+    head_before: 2a11f63897301c3457272e60675224094e7d4100
+    manifest: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.manifest.sha256
+    manifest_verified: true
+  pending_owner_acceptance_of_g3_result: true
+  not_accepted:
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_delegated_operational_authority
+    - implementation_of_provider_neutral_governance
+    - implementation_of_any_recorded_gap
+    - resolution_of_any_g2_section_21_unresolved_question
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - g4_phase_authorization
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct, single-prompt
+    authorization of G3's canonical definition, execution, and one bounded
+    local commit (HP-PROMPT-047/0.1.0) into durable GOV-GEN-AUD-001
+    custody, mirroring the G2 pattern under GOV-GEN-DECISION-004/0.1.0.
+    G3 organizes, without reclassifying or redisposing, the 88 accepted G2
+    capabilities and 6 accepted G2 gaps into a proposed eight-layer logical
+    model (L0 core, L1 configurable policy, L2 optional modules, L3
+    project-specific projections, L4 provider/executor adapters, L5
+    canonical evidence, L6 deterministic validation/query tooling, L7
+    bounded model/agent context projections), disposes of G2 §21
+    unresolved questions 1-7 against that model without resolving any of
+    them into an implemented decision, and recommends one candidate
+    architecture with two rejected alternatives. Acceptance of the
+    resulting Logical Architecture deliverable remains a separate,
+    subsequent Owner act, not performed by this decision.
+  next_governed_state: >-
+    The Logical Architecture (GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0) is
+    G3_READY_FOR_PROJECT_OWNER_REVIEW. The next governed state is Project
+    Owner review and acceptance (or rejection, or a bounded correction
+    request) of that result; only after such acceptance may the Owner
+    separately authorize G4. This decision does not itself accept the
+    Logical Architecture, and does not open, scope, or authorize G4 or any
+    physical-architecture work.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

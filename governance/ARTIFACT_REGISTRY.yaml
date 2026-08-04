@@ -1,6 +1,6 @@
 registry:
-  version: '0.18'
-  generated_for: GOV_AUD_001_PASS_01_ACCEPTANCE_COMPLETION
+  version: '0.19'
+  generated_for: GOV_GEN_AUD_001_G3_EXECUTION
   base_commit: 22b66c97851316b4c461077f057fc3f1bc2de851
   notes:
     - Repository-level GOV-* IDs identify custody records only and do not alter IDs inside source artifacts.
@@ -3909,12 +3909,12 @@ artifacts:
 
   - id: GOV-GEN-AUD-001
     title: HugePlanning Governance Generalization Audit Program Scaffold
-    version: 0.5.0
-    status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_NOT_STARTED_NOT_AUTHORIZED
-    authority: program_index_with_g1a_g1b_and_g2_acceptance_not_architecture_or_extraction_authority
+    version: 0.6.0
+    status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_EXECUTED_READY_FOR_PROJECT_OWNER_REVIEW
+    authority: program_index_with_g1a_g1b_g2_acceptance_and_g3_execution_not_physical_architecture_or_extraction_authority
     path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
-    source_path: governance/prompts/orchestration/HP-PROMPT-045-gov-gen-g2-owner-acceptance-reconciliation-v0.1.0.md
-    source_sha256: a38fba9d5cd40df2309b3f8c1d9397f01b14bdd1eb4b7ed91fbd80d509777ff3
+    source_path: governance/prompts/orchestration/HP-PROMPT-047-gov-gen-g3-logical-architecture-v0.1.0.md
+    source_sha256: 6c946f203bb1fddf87a7eb311f5626d5735023f420f9db4d53965a777dfe1a29
     produced_by: PROJECT_OWNER
     artifact_type: audit_program_scaffold
     language: English
@@ -3940,6 +3940,10 @@ artifacts:
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-007-g2-post-baseline-instruction-delta-custody-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-POST-BASELINE-DELTA-001.md
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G2/GOV-GEN-G2-POST-BASELINE-DELTA-001.manifest.sha256
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-008-g3-contract-authorization-and-execution-v0.1.0.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-CONTRACT-001-v0.1.0.md
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.manifest.sha256
     notes:
       - Firewalled from GOV-AUD-001 per G0-08; the two programs share only this repository as evidence and neither authority unblocks the other.
       - G1A (679-row deterministic index, 13/13 validations PASS, reproducibility PASS, 7/7 baseline counts MATCH) is ACCEPTED_BY_PROJECT_OWNER under GOV-GEN-DECISION-001/0.1.0; no PENDING_OWNER_ACCEPTANCE state remains.
@@ -3952,7 +3956,8 @@ artifacts:
       - No target-architecture selection, kernel repository ownership decision, new (including general-governance) repository, kernel extraction/migration, delegated operational authority or provider-neutral governance implementation, resolution of any G2 §21 unresolved question, implementation of any recorded gap, or AGENTS.md/CLAUDE.md/AET/CWG/SVP change has occurred or is authorized. The next phase, G3, has no contract, scaffold, or Owner authorization, is not defined, and is not opened, scoped, or authorized by this reconciliation.
       - Full G0/G1A source material (framing documents, the 679-row index, the G1A report and hash manifest) remains at ~/Downloads/HugePlanning-Governance-Generalization-* and ~/Downloads/GOV-GEN-G1A-001/; its own durable-custody disposition is not decided by this reconciliation.
       - Local branch history (G0-G2, commit 804d6d77ca35a1c64022d34ad7eeb0b509bd2cb2) and the already-merged remote PR-5 (governance normalize HugePlanning instruction architecture, commit 284ca3eab1965b1feef33fc9ba72f97ab8ac8dfe, changed only AGENTS.md and governance/AGENTS.md) were reconciled by a normal bounded local merge (no rebase, no rewrite, no cherry-pick) at 7e15377cdccbbafb0be94becceb6f5d09dd9c7dc; both commits are ancestors of the merge commit, and the merge touched no path under this program's directory.
-      - GOV-GEN-DECISION-007/0.1.0 (HP-PROMPT-046/0.1.0) custodies GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0, the result of an already-completed, bounded, read-only Post-G2 Instruction Delta Assessment comparing 1899a3e7b4… to 284ca3ea… -- verdict G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD (no G2 capability reclassified, no gap redisposed), narrowing (without resolving) G2 §21 unresolved questions 2, 5, and 7, and recording new architectural evidence on provider-neutral repository instructions, scoped governance instructions, the relationship with methodology/project-operating-contract.md, and the separation between repository governance and the client-facing methodology runtime. This is informational post-baseline evidence only -- it is not a G2 correction, not a new G2 acceptance, and does not open, scope, define, or authorize G3. G2 remains ACCEPTED_BY_PROJECT_OWNER and G3 remains NOT_STARTED_NOT_AUTHORIZED.
+      - GOV-GEN-DECISION-007/0.1.0 (HP-PROMPT-046/0.1.0) custodies GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0, the result of an already-completed, bounded, read-only Post-G2 Instruction Delta Assessment comparing 1899a3e7b4… to 284ca3ea… -- verdict G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD (no G2 capability reclassified, no gap redisposed), narrowing (without resolving) G2 §21 unresolved questions 2, 5, and 7, and recording new architectural evidence on provider-neutral repository instructions, scoped governance instructions, the relationship with methodology/project-operating-contract.md, and the separation between repository governance and the client-facing methodology runtime. This is informational post-baseline evidence only -- it is not a G2 correction, not a new G2 acceptance, and does not open, scope, define, or authorize G3.
+      - GOV-GEN-DECISION-008/0.1.0 (HP-PROMPT-047/0.1.0) directly authorizes G3 (Logical Architecture and Layering Assessment) canonical definition (GOV-GEN-G3-CONTRACT-001/0.1.0), execution, and one bounded local commit as a single governed unit, mirroring the G2 pattern. G3 organizes, without reclassifying or redisposing, all 88 accepted G2 capabilities and all 6 accepted G2 gaps into a proposed eight-layer logical model (L0 core=3, L1 configurable policy=14, L2 optional modules=4, L3 project-specific projections=6, L4 provider/executor adapters=4, L5 canonical evidence=20, L6 deterministic validation/query tooling=29, L7 bounded model/agent context projections=8; 7 items named cross-layer/ambiguous rather than forced), producing GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0 -- G3_READY_FOR_PROJECT_OWNER_REVIEW. It includes a boundary model across six named boundary pairs, a MODEL_ENTRYPOINT/QUERY_ON_DEMAND/CANONICAL_MACHINE_SOURCE/HISTORICAL_EVIDENCE_ONLY context-efficiency classification, disposition of G2 §21 unresolved questions 1-7 (UQ2 LOGICALLY_RESOLVED_BY_G3; UQ4 boundary logically resolved, mechanics deferred to implementation design; UQ3/UQ5/UQ6 NARROWED_BUT_OWNER_DECISION_REQUIRED; UQ7 carried forward as UNCHANGED/narrowed; UQ1 DEFER_TO_PHYSICAL_ARCHITECTURE), and one recommended candidate architecture with two rejected alternatives. No target physical architecture is selected, no kernel repository ownership is decided, no repository is created, no file is extracted or migrated, and no Delegated Operational Authority, Provider-Neutral Governance, adapter, or query/projection tooling is implemented. G2 remains ACCEPTED_BY_PROJECT_OWNER; Owner acceptance of G3 is a separate, subsequent act; G4 remains NOT_STARTED_NOT_AUTHORIZED.
 
   - id: HP-PROMPT-040
     title: GOV-GEN-G1A-CLOSE + G1B-SIMPLIFY
@@ -4065,3 +4070,19 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Directly authorizes custody of an already-completed, bounded, read-only Post-G2 Instruction Delta Assessment (comparison 1899a3e7b4…->284ca3ea…, PR-5 changed only AGENTS.md and governance/AGENTS.md, subsequently reconciled by bounded local merge 7e15377c…) as GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0, plus the minimum durable registry/status references, and one bounded local commit; forbids G2 correction, reclassification, gap redisposition, G2 redesign, a new G2 acceptance, G3 definition or authorization, target-architecture selection, kernel ownership decision, extraction/migration authorization, delegated-operational-authority/provider-neutral-governance implementation, any G1B gap implementation, resolution of any G2 §21 unresolved question, AGENTS.md/CLAUDE.md/AET/CWG/SVP or other-repository modification, inflating this into a new phase or audit, and push/PR/merge/tag/release/deployment.]
+
+  - id: HP-PROMPT-047
+    title: GOV-GEN G3 — Logical Architecture and Layering Assessment
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_g3_logical_architecture_definition_and_execution_no_physical_architecture_no_implementation_no_push
+    path: governance/prompts/orchestration/HP-PROMPT-047-gov-gen-g3-logical-architecture-v0.1.0.md
+    source_path: null
+    source_sha256: 6c946f203bb1fddf87a7eb311f5626d5735023f420f9db4d53965a777dfe1a29
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_execution_contract_and_authorization_evidence
+    supersedes: null
+    aliases: []
+    notes: [Directly authorizes canonical definition of G3 (GOV-GEN-G3-CONTRACT-001/0.1.0), its execution in the same governed unit with no separate authorization gate, and one bounded local commit; requires allocation of all 88 accepted G2 capabilities and all 6 accepted G2 gaps to a proposed logical layer model without reclassification or redisposition, a boundary model, a MODEL_ENTRYPOINT/QUERY_ON_DEMAND/CANONICAL_MACHINE_SOURCE/HISTORICAL_EVIDENCE_ONLY context-efficiency classification, disposition of G2 §21 unresolved questions 1-7, and one recommended candidate architecture with only materially distinct alternatives; forbids target physical-architecture selection, kernel ownership/extraction/migration, general-governance or other repository creation, Delegated Operational Authority/Provider-Neutral Governance/adapter/query-tooling implementation, any G1B/G2 gap implementation, G2 capability reclassification or gap redisposition, AGENTS.md/CLAUDE.md/AET/CWG/SVP changes, and push/PR/merge/tag/release/deployment.]

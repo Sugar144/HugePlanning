@@ -1,8 +1,8 @@
 ---
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
-version: 0.5.0
-status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_NOT_STARTED_NOT_AUTHORIZED
+version: 0.6.0
+status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_EXECUTED_READY_FOR_PROJECT_OWNER_REVIEW
 authority: PROGRAM_INDEX_WITH_G1A_G1B_AND_G2_ACCEPTANCE_NOT_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
@@ -88,6 +88,31 @@ repository governance and the client-facing methodology runtime. This is
 informational evidence only: it is not a G2 correction, not a new G2
 acceptance, and does not open, scope, define, or authorize G3.
 
+G3 (Logical Architecture and Layering Assessment) was directly authorized
+by the Project Owner as one governed unit spanning canonical definition,
+execution, and one bounded local commit (`HP-PROMPT-047/0.1.0`, reconciled
+in `GOV-GEN-DECISION-008/0.1.0`), mirroring the G2 pattern. G3 executed
+under `GOV-GEN-G3-CONTRACT-001/0.1.0` and produced
+`GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0`: all 88 accepted G2 capabilities
+and all 6 accepted G2 gaps allocated — without reclassification or
+redisposition — to a proposed eight-layer logical model (canonical
+governance semantics/core, configurable cross-project policy, optional
+governance modules, project-specific projections, provider/executor
+adapters, canonical evidence and historical custody, deterministic
+validation/query tooling, bounded model/agent context projections; layer
+counts L0=3, L1=14, L2=4, L3=6, L4=4, L5=20, L6=29, L7=8), a boundary model
+across the six named boundary pairs, a context-efficiency classification
+(`MODEL_ENTRYPOINT`/`QUERY_ON_DEMAND`/`CANONICAL_MACHINE_SOURCE`/
+`HISTORICAL_EVIDENCE_ONLY`), disposition of G2 §21 unresolved questions 1-7,
+one recommended candidate architecture with two rejected alternatives, and a
+statement of future physical-architecture inputs it does not itself decide.
+No target physical architecture is selected, no kernel repository ownership
+is decided, no repository is created, no file is extracted or migrated, and
+no Delegated Operational Authority, Provider-Neutral Governance, adapter, or
+query/projection tooling is implemented. G3's terminal status is
+`G3_READY_FOR_PROJECT_OWNER_REVIEW`; Owner acceptance is a separate,
+subsequent act, and G4 remains unopened, unscoped, and unauthorized.
+
 ## Durable baseline
 
 - **G0** — framing and the compact conceptual baseline are accepted.
@@ -123,16 +148,19 @@ acceptance, and does not open, scope, define, or authorize G3.
 
 ## What this program has not done
 
-No target governance architecture has been selected; no kernel repository
-ownership decided; no repository (including `general-governance`) created; no
-kernel extracted or migrated; no delegated operational authority or
-provider-neutral governance implemented (both only evaluated, per G2 §19 and
-§20); no G2 §21 unresolved question resolved; no residual risk accepted; no
-recorded G1B gap implemented; no `AGENTS.md`/`CLAUDE.md` modified anywhere; no
-change made to AET, CWG, or SVP; no HugePlanning worktree file outside
-`governance/**` touched; G3 has not been opened, scoped, defined, or
-authorized. `GOV-AUD-001` and its internal `GOV-n` phase state are unaffected
-by this program and unaffected by this reconciliation.
+No target *physical* governance architecture has been selected; no kernel
+repository ownership decided; no repository (including `general-governance`)
+created; no kernel extracted or migrated; no delegated operational authority
+or provider-neutral governance implemented (both only evaluated, per G2 §19
+and §20, and only further logically located, not implemented, by G3 §4/§6);
+no provider/executor adapter or query/projection tooling implemented; no G2
+§21 unresolved question resolved into an implemented decision; no residual
+risk accepted; no recorded G1B/G2 gap implemented; no `AGENTS.md`/`CLAUDE.md`
+modified anywhere; no change made to AET, CWG, or SVP; no HugePlanning
+worktree file outside `governance/**` touched; G4 has not been opened,
+scoped, defined, or authorized; the G3 Logical Architecture is not yet
+Owner-accepted. `GOV-AUD-001` and its internal `GOV-n` phase state are
+unaffected by this program and unaffected by this reconciliation.
 
 ## Local custody
 
@@ -147,6 +175,9 @@ governance/audits/GOV-GEN-AUD-001-governance-generalization/
                                   Matrix, its R1 correction, the post-baseline
                                   instruction delta evidence, and their hash
                                   manifests
+  G3/                             the G3 contract, the Logical Architecture
+                                  and Layering Assessment, and its hash
+                                  manifest
 ```
 
 Full G0/G1A source material (framing documents, the 679-row index, the G1A

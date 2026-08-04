@@ -22,7 +22,7 @@
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
 | Known blockers | PASS-03 requires one independent adversarial review and Project Owner disposition; PASS-04 remains unauthorized; OD-006 and separate authority for later passes or GOV-7 design/implementation remain unresolved |
 | Phase-transition boundary | GOV-6 is closed after the Project Owner ratified exact Kernel `0.2.0`; GOV-7 remains inactive pending audit and separate design or implementation authority |
-| GOV-GEN-AUD-001 status | Firewalled generalization program (`governance/audits/GOV-GEN-AUD-001-governance-generalization/`), independent of the `GOV-n` phases above; G1A `ACCEPTED_BY_PROJECT_OWNER` and G1B Governance Capability Map `ACCEPTED_BY_PROJECT_OWNER` (no `PENDING_OWNER_ACCEPTANCE` remains for either phase) — 88 capability records, 6 gap records, 679/679 source-row coverage, 12/12 cross-cutting-domain coverage, validated manifest; G2 (Governance Generalization Assessment) executed under `GOV-GEN-DECISION-004/0.1.0` — all 88 capabilities classified (54 `UNIVERSAL`, 16 `CROSS_PROJECT_CONFIGURABLE`, 13 `PROJECT_SPECIFIC`, 5 `EXECUTOR_SPECIFIC`) and all 6 gaps dispositioned, validated manifest — and was bounded-corrected without reclassification or gap redisposition by `GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0` (`GOV-GEN-DECISION-005/0.1.0`); the Project Owner accepted that corrected R1 result as the controlling G2 result under `GOV-GEN-DECISION-006/0.1.0` (`ACCEPT_GOV_GEN_G2_CORRECTED_RESULT`) — no `PENDING_OWNER_ACCEPTANCE` remains for G2; the original `GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0` remains preserved as immutable historical evidence; a bounded, read-only Post-G2 Instruction Delta Assessment against the already-merged remote PR #5 (`AGENTS.md`, `governance/AGENTS.md` only) is custodied as `GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0` under `GOV-GEN-DECISION-007/0.1.0` — verdict `G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD`, no G2 correction or reacceptance — narrowing without resolving G2 §21 unresolved questions 2, 5, and 7; G3 is `NOT_STARTED_NOT_AUTHORIZED` and requires a separate Project Owner authorization |
+| GOV-GEN-AUD-001 status | Firewalled generalization program (`governance/audits/GOV-GEN-AUD-001-governance-generalization/`), independent of the `GOV-n` phases above; G1A `ACCEPTED_BY_PROJECT_OWNER` and G1B Governance Capability Map `ACCEPTED_BY_PROJECT_OWNER` (no `PENDING_OWNER_ACCEPTANCE` remains for either phase) — 88 capability records, 6 gap records, 679/679 source-row coverage, 12/12 cross-cutting-domain coverage, validated manifest; G2 (Governance Generalization Assessment) executed under `GOV-GEN-DECISION-004/0.1.0` — all 88 capabilities classified (54 `UNIVERSAL`, 16 `CROSS_PROJECT_CONFIGURABLE`, 13 `PROJECT_SPECIFIC`, 5 `EXECUTOR_SPECIFIC`) and all 6 gaps dispositioned, validated manifest — and was bounded-corrected without reclassification or gap redisposition by `GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0` (`GOV-GEN-DECISION-005/0.1.0`); the Project Owner accepted that corrected R1 result as the controlling G2 result under `GOV-GEN-DECISION-006/0.1.0` (`ACCEPT_GOV_GEN_G2_CORRECTED_RESULT`) — no `PENDING_OWNER_ACCEPTANCE` remains for G2; the original `GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0` remains preserved as immutable historical evidence; a bounded, read-only Post-G2 Instruction Delta Assessment against the already-merged remote PR #5 (`AGENTS.md`, `governance/AGENTS.md` only) is custodied as `GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0` under `GOV-GEN-DECISION-007/0.1.0` — verdict `G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD`, no G2 correction or reacceptance — narrowing without resolving G2 §21 unresolved questions 2, 5, and 7; G3 (Logical Architecture and Layering Assessment) executed under `GOV-GEN-DECISION-008/0.1.0` (`HP-PROMPT-047/0.1.0`) — all 88 accepted G2 capabilities and all 6 accepted G2 gaps allocated, without reclassification or redisposition, to a proposed eight-layer logical model (L0 core=3, L1 configurable policy=14, L2 optional modules=4, L3 project-specific projections=6, L4 provider/executor adapters=4, L5 canonical evidence=20, L6 deterministic validation/query tooling=29, L7 bounded model/agent context projections=8), a boundary model, a context-efficiency classification, disposition of G2 §21 unresolved questions 1–7, and one recommended candidate architecture — producing `GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0`, `G3_READY_FOR_PROJECT_OWNER_REVIEW`; no target physical architecture is selected and G4 requires a separate Project Owner authorization |
 
 ## KGR-006 execution and independent-evaluation reconciliation
 
@@ -221,7 +221,7 @@ GOV-8: {status: INACTIVE}
 GOV-9: {status: INACTIVE}
 
 GOV_GEN_AUD_001:
-  status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_EXECUTED_READY_FOR_PROJECT_OWNER_REVIEW
   firewalled_from: GOV-AUD-001
   local_custody: governance/audits/GOV-GEN-AUD-001-governance-generalization/
   G1A:
@@ -280,6 +280,34 @@ GOV_GEN_AUD_001:
       verdict: G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD
       g2_reclassification_performed: false
       g2_gap_redisposition_performed: false
+  G3:
+    status: LOGICAL_ARCHITECTURE_EXECUTED_READY_FOR_PROJECT_OWNER_REVIEW
+    contract: GOV-GEN-G3-CONTRACT-001/0.1.0
+    execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
+    execution_authorized: true
+    execution_authorization_record: GOV-GEN-DECISION-008/0.1.0
+    execution_authorization_basis: HP-PROMPT-047/0.1.0
+    execution_started: true
+    deliverable: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0
+    capabilities_allocated: 88
+    gaps_allocated: 6
+    layer_counts: {L0: 3, L1: 14, L2: 4, L3: 6, L4: 4, L5: 20, L6: 29, L7: 8}
+    cross_layer_items_named: 7
+    unresolved_question_dispositions:
+      UQ1: DEFER_TO_PHYSICAL_ARCHITECTURE
+      UQ2: LOGICALLY_RESOLVED_BY_G3
+      UQ3: NARROWED_BUT_OWNER_DECISION_REQUIRED
+      UQ4: LOGICALLY_RESOLVED_BY_G3_BOUNDARY_DEFER_MECHANICS_TO_IMPLEMENTATION_DESIGN
+      UQ5: NARROWED_BUT_OWNER_DECISION_REQUIRED
+      UQ6: NARROWED_BUT_OWNER_DECISION_REQUIRED
+      UQ7: MIXED_UNCHANGED_AND_NARROWED_BUT_OWNER_DECISION_REQUIRED
+    candidate_architecture_recommended: true
+    alternatives_recorded: 2
+    manifest_verified: true
+    pending_owner_acceptance: true
+    acceptance_record: null
+    reclassification_of_g2_capabilities: false
+    redisposition_of_g2_gaps: false
   target_architecture_selected: false
   hugeplanning_worktree_written_outside_governance_audits_dir: false
 ```
@@ -331,3 +359,5 @@ Project Owner review of the G2 Classification Matrix confirmed three bounded int
 The Project Owner then reviewed the corrected result and issued disposition `ACCEPT_GOV_GEN_G2_CORRECTED_RESULT` (`HP-PROMPT-045/0.1.0`). `GOV-GEN-DECISION-006/0.1.0` accepts `GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0` as the corrected and controlling G2 result — no `PENDING_OWNER_ACCEPTANCE` state remains for G2. The original `GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0` remains preserved, unmodified, as immutable historical execution evidence, read together with its accepted correction. This acceptance does not select a target governance architecture, decide kernel repository ownership, create `general-governance` or any other repository, authorize repository extraction or migration, resolve any G2 §21 unresolved question, implement Delegated Operational Authority or Provider-Neutral Governance, implement any recorded gap, modify `AGENTS.md`/`CLAUDE.md`/AET/CWG/SVP, or accept residual risk. G3 is `NOT_STARTED_NOT_AUTHORIZED`: it has no contract, scaffold, or Owner authorization, is not defined, and remains unopened and unscoped until a separate, explicit Project Owner authorization.
 
 A bounded, read-only Post-G2 Instruction Delta Assessment subsequently compared the accepted G2 baseline (`1899a3e7b4…`) against the already-merged remote PR #5 (`284ca3ea…`, `governance: normalize HugePlanning instruction architecture`, which changed only `AGENTS.md` and `governance/AGENTS.md`), whose history was reconciled into this branch by a normal bounded local merge — no rebase, no rewrite, no cherry-pick — at `7e15377c…`. `GOV-GEN-DECISION-007/0.1.0` (`HP-PROMPT-046/0.1.0`) custodies that assessment's result as `GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0`: verdict `G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD`, with no G2 capability reclassified and no gap redisposed. It narrows, without resolving, G2 §21 unresolved questions 2 and 5 (both `NEW_EVIDENCE_NARROWS_DECISION_SPACE`/`STILL_REQUIRES_ARCHITECTURE_DECISION`) and question 7 (next-phase-only contracting direction `NEW_EVIDENCE_NARROWS_DECISION_SPACE`, enforcement `STILL_REQUIRES_ARCHITECTURE_DECISION`, retrospective `GAP-006` defect-vs-convenience classification `UNCHANGED`), and records new architectural evidence — for future governed work only — on provider-neutral repository instructions, scoped governance instructions, the relationship with `methodology/project-operating-contract.md`, and the separation between repository governance and the client-facing methodology runtime. This is informational post-baseline evidence only: it is not a G2 correction, not a new G2 acceptance, and does not open, scope, define, or authorize G3.
+
+G3 (Logical Architecture and Layering Assessment) was subsequently directly authorized by the Project Owner as one governed unit spanning canonical definition, execution, and one bounded local commit (`HP-PROMPT-047/0.1.0`, reconciled in `GOV-GEN-DECISION-008/0.1.0`), mirroring the G2 pattern. G3 executed under `GOV-GEN-G3-CONTRACT-001/0.1.0` (`governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/`) and produced its one principal deliverable, `GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0`: all 88 accepted G2 capabilities and all 6 accepted G2 gaps allocated, without reclassification or redisposition, to a proposed eight-layer logical model (L0 canonical governance semantics/core = 3 capabilities; L1 configurable cross-project policy = 14; L2 optional governance modules = 4; L3 project-specific projections = 6; L4 provider/executor adapters = 4; L5 canonical evidence and historical custody = 20; L6 deterministic validation/query tooling = 29; L7 bounded model/agent context projections = 8), a boundary model across the six named boundary pairs, a context-efficiency classification (`MODEL_ENTRYPOINT`/`QUERY_ON_DEMAND`/`CANONICAL_MACHINE_SOURCE`/`HISTORICAL_EVIDENCE_ONLY`), disposition of G2 §21 unresolved questions 1–7 (UQ2 `LOGICALLY_RESOLVED_BY_G3`; UQ4 logically resolved for its boundary principle with mechanics deferred to implementation design; UQ3/UQ5/UQ6/UQ7 `NARROWED_BUT_OWNER_DECISION_REQUIRED` or unchanged; UQ1 deferred to physical architecture), and one recommended candidate architecture with two rejected alternatives. G3 does not select a target physical governance architecture, decide kernel repository ownership, create any repository, extract or migrate any file, or implement Delegated Operational Authority, Provider-Neutral Governance, any adapter, or any query/projection tooling. Its terminal status is `G3_READY_FOR_PROJECT_OWNER_REVIEW`; Owner acceptance is a separate, subsequent act, and G4 is `NOT_STARTED_NOT_AUTHORIZED` pending a separate Project Owner authorization.
