@@ -498,3 +498,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: The selected architecture direction is Option B. G5 and GR evidence remain unmodified. G6 is `NOT_STARTED_NOT_AUTHORIZED`.
 - Authority boundary: This does not define or execute G6; extract or migrate files; create `general-governance` or an Option C repository; execute an Option D pilot; implement AP-1–AP-6; modify `AGENTS.md` or `CLAUDE.md`; push, open a pull request, merge, tag, release, or deploy.
 - Supersedes: none (records the Owner architecture decision within `GOV-GEN-AUD-001`; all prior evidence remains immutable).
+
+## GOV-DEC-045 — GOV-GEN G6 corrected extraction-plan acceptance
+
+- Date: 2026-08-05
+- Status: ACCEPTED_BY_PROJECT_OWNER
+- Statement: Accept `ACCEPT_GOV_GEN_G6_BOUNDED_EXTRACTION_PLAN_001_R1`, making `GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0` the controlling G6 plan.
+- Rationale: The displayed B-01 through B-08 order remains the recommended default serial sequence; each packet's `depends_on` field is the authoritative hard dependency graph. The unchanged Option B empirical-proof gate remains B-02, B-03, B-04, and B-08.
+- Source: Project Owner disposition `ACCEPT_GOV_GEN_G6_BOUNDED_EXTRACTION_PLAN_001_R1`; `GOV-GEN-DECISION-020/0.1.0`; `GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0`.
+- Consequences: `G6_EXTRACTION_PLAN_R1_ACCEPTED_B01_NOT_STARTED_NOT_AUTHORIZED`. B-01 remains `NOT_STARTED_NOT_AUTHORIZED`; B-05, B-06, and B-07 remain planned work but are not prerequisites for the stated empirical-proof gate absent another accepted dependency.
+- Authority boundary: This does not execute or authorize B-01 or any later packet, extraction, migration, AP-1–AP-6 implementation, Option D, Option C or `general-governance` repository creation, `AGENTS.md`/`CLAUDE.md` modification, repair of immutable PASS-03 evidence, push, PR, merge, tag, release, or deployment.
+- Supersedes: none (the base plan and R1 remain preserved; this records Owner acceptance only).

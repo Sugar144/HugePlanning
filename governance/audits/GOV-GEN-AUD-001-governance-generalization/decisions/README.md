@@ -340,3 +340,17 @@ consumer exists, and AP-1–AP-6 have designed resolution paths; Option A
 remains the fallback. This decision does not authorize G6, extraction,
 migration, repository creation, AP-1–AP-6 implementation, or runtime
 instruction changes.
+
+`GOV-GEN-DECISION-020/0.1.0` records the Project Owner disposition
+`ACCEPT_GOV_GEN_G6_BOUNDED_EXTRACTION_PLAN_001_R1`, accepting
+`GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0` as the corrected and
+controlling G6 plan, read together with its immutable base plan. The displayed
+`B-01 → B-02 → B-03 → B-04 → B-05 → B-06 → B-07 → B-08` sequence is the
+recommended default serial order; each packet's `depends_on` field remains the
+authoritative hard dependency graph, and any alternative schedule needs
+explicit authorization. The Option B empirical-proof gate remains exactly
+`B-02 + B-03 + B-04 + B-08`; B-05 through B-07 remain planned work but are
+not prerequisites for that gate absent another accepted dependency. B-01 is
+`NOT_STARTED_NOT_AUTHORIZED`; this acceptance authorizes no packet execution,
+extraction, migration, AP-1–AP-6 implementation, Option D, Option C or
+`general-governance` repository creation, or instruction-surface change.

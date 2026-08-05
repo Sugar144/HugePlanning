@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_EXTRACTION_PLAN_READY_FOR_PROJECT_OWNER_REVIEW
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_EXTRACTION_PLAN_R1_ACCEPTED_B01_NOT_STARTED_NOT_AUTHORIZED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: ARCHITECTURE_DIRECTION_ADOPTED_BY_PROJECT_OWNER
+  current_phase: G6_EXTRACTION_PLAN_R1_ACCEPTED_B01_NOT_STARTED_NOT_AUTHORIZED
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -515,7 +515,7 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: G6_EXTRACTION_PLAN_READY_FOR_PROJECT_OWNER_REVIEW
+  status: G6_EXTRACTION_PLAN_R1_ACCEPTED_B01_NOT_STARTED_NOT_AUTHORIZED
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
@@ -523,13 +523,23 @@ G6:
   deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md
   manifest_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.manifest.sha256
   manifest_verified: true
+  acceptance_record: GOV-GEN-DECISION-020/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-05'
+  pending_owner_acceptance: false
   execution_authorized: true
   execution_authorization_basis: Project Owner direct task GOV-GEN G6 — Bounded Extraction Planning
   extraction_packets: 8
   extraction_executed: false
   independent_review_required_before_packet_execution: true
   context_risk_packets: []
-  next_authority_required: PROJECT_OWNER_REVIEW_AND_ACCEPTANCE_OR_BOUNDED_REVISION_OF_G6_PLAN
+  default_serial_execution_order: [B-01, B-02, B-03, B-04, B-05, B-06, B-07, B-08]
+  authoritative_hard_dependency_graph: per_packet_depends_on_fields_in_base_plan
+  alternative_schedule_requires_explicit_authorization: true
+  option_b_empirical_proof_packets: [B-02, B-03, B-04, B-08]
+  b_05_b_06_b_07_required_for_stated_option_b_empirical_proof_gate: false
+  b_01_status: NOT_STARTED_NOT_AUTHORIZED
+  next_authority_required: SEPARATE_EXPLICIT_PROJECT_OWNER_AUTHORIZATION_FOR_B_01_OR_ANY_ALTERNATIVE_SCHEDULE
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial
@@ -542,7 +552,9 @@ G6:
     boundary. It neither
     extracts nor migrates any artifact, creates a repository or target
     directory, implements AP-1 through AP-6, modifies active instruction
-    surfaces, executes Option D, or accepts the plan on the Owner's behalf.
+    surfaces, or executes Option D. The Project Owner accepted R1 as the
+    controlling plan under GOV-GEN-DECISION-020/0.1.0; B-01 remains
+    NOT_STARTED_NOT_AUTHORIZED.
 
 GR:
   status: REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
@@ -631,6 +643,9 @@ decisions:
   - id: GOV-GEN-DECISION-019
     version: 0.1.0
     subject: Project Owner architecture decision — staged physical architecture adoption
+  - id: GOV-GEN-DECISION-020
+    version: 0.1.0
+    subject: G6 corrected bounded extraction plan (R1) Project Owner acceptance
 
 not_authorized_by_this_program:
   - target_architecture_selection
