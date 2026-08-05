@@ -3909,12 +3909,12 @@ artifacts:
 
   - id: GOV-GEN-AUD-001
     title: HugePlanning Governance Generalization Audit Program Scaffold
-    version: 0.9.0
-    status: G0_G1A_G1B_G2_G3_ACCEPTED_BY_PROJECT_OWNER_G4_EXECUTED_CORRECTED_READY_FOR_PROJECT_OWNER_REVIEW_G5_NOT_STARTED_NOT_AUTHORIZED
-    authority: program_index_with_g1a_g1b_g2_and_g3_acceptance_not_physical_architecture_or_extraction_authority
+    version: 1.0.0
+    status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_NOT_STARTED_NOT_AUTHORIZED
+    authority: program_index_with_g1a_g1b_g2_g3_and_g4_acceptance_not_physical_architecture_or_extraction_authority
     path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
-    source_path: governance/prompts/orchestration/HP-PROMPT-050-gov-gen-g4-consumer-requirements-delta-v0.1.0.md
-    source_sha256: f4a9086e1f34d154f36f734b890b2ff55ee72d450552472f6538487bd9bac068
+    source_path: governance/prompts/orchestration/HP-PROMPT-051-gov-gen-g4-owner-acceptance-reconciliation-v0.1.0.md
+    source_sha256: c1a486f9ab7d07249880b77c77f1990995197aafea473c207331139e65d9e932
     produced_by: PROJECT_OWNER
     artifact_type: audit_program_scaffold
     language: English
@@ -3955,6 +3955,7 @@ artifacts:
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-012-g4-independent-review-correction-r1-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.manifest.sha256
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-013-g4-acceptance-v0.1.0.yaml
     notes:
       - Firewalled from GOV-AUD-001 per G0-08; the two programs share only this repository as evidence and neither authority unblocks the other.
       - G1A (679-row deterministic index, 13/13 validations PASS, reproducibility PASS, 7/7 baseline counts MATCH) is ACCEPTED_BY_PROJECT_OWNER under GOV-GEN-DECISION-001/0.1.0; no PENDING_OWNER_ACCEPTANCE state remains.
@@ -3973,6 +3974,7 @@ artifacts:
       - The Project Owner reviewed the corrected G3 result and issued disposition ACCEPT_GOV_GEN_G3_CORRECTED_RESULT (HP-PROMPT-049/0.1.0). GOV-GEN-DECISION-010/0.1.0 accepts GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0 as the corrected and controlling G3 result; no PENDING_OWNER_ACCEPTANCE state remains for G3. GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0 remains preserved, unmodified, as immutable historical execution evidence, read together with its accepted correction. No target physical architecture is selected, no repository ownership is decided, no general-governance repository is created, no file is extracted or migrated, no eight-layer architecture is implemented, no AGENTS.md/CLAUDE.md change occurs, no provider/executor adapter, Delegated Operational Authority, or query/index/projection tooling is implemented, no G1B gap is implemented, no CWG/AET/SVP integration occurs, and G4 remains NOT_STARTED_NOT_AUTHORIZED: it has no contract, scaffold, or Owner authorization and is not defined.
       - GOV-GEN-DECISION-011/0.1.0 (HP-PROMPT-050/0.1.0) directly authorizes G4 (Cross-Project Consumer Modeling and Requirements Delta) canonical definition (GOV-GEN-G4-CONTRACT-001/0.1.0), execution, an in-unit clean-session independent realism review, any triggered correction, and one bounded local commit as a single governed unit, mirroring the G2/G3 pattern. G4 stress-tests, without reallocating any G3 capability or reclassifying/redisposing any G2 capability or gap, the accepted eight-layer G3 model against three fictitious consumer profiles -- ALPHA (solo single-repository), BETA (concurrent AI-first product team), GAMMA (federated multi-team/multi-repository) -- none a real project, producing GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0, a per-profile L0-L7 stress test re-testing twelve hidden single-project assumptions, a context-efficiency stress test, a 15-entry severity-classified requirements-delta register, a cross-profile synthesis, six architecture pressures carried to G5, and explicitly preserved non-decisions, terminal status G4_READY_FOR_PROJECT_OWNER_REVIEW. No target physical architecture is selected, no kernel repository ownership is decided, no repository is created, no file is extracted or migrated, and no Delegated Operational Authority, Provider-Neutral Governance, adapter, or query/projection tooling is implemented or selected. G3 remains ACCEPTED_BY_PROJECT_OWNER; Owner acceptance of G4 is a separate, subsequent act; G5 remains NOT_STARTED_NOT_AUTHORIZED.
       - A clean-session independent realism review, performed within the same governed unit by an agent with no prior context of the G4 authoring session, returned verdict MATERIAL_FINDINGS_PRESENT -- an accidental physical-architecture comparison in base §8 (corrected to a non-comparative requirement statement); incomplete coverage of the "exactly one Owner/authority domain" hidden assumption (added as register entry RD-C9); and a category-mismatched evidence citation in RD-B3/RD-C6 (re-grounded in GOV-GEN's own observed ID-allocation practice rather than .claude/rules/id-and-status-conventions.md, which G3 §6 itself scopes to a separate, unrelated client-facing methodology system). GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0 (GOV-GEN-DECISION-012/0.1.0) records these corrections without redoing G4, reallocating any G3 capability beyond RD-C9, reclassifying any G2 capability, redisposing any G2 gap, or reopening G2/G3 -- 16 entries after correction (BLOCKS_REUSE 6, REQUIRES_PARAMETERIZATION 6, REQUIRES_IMPLEMENTATION_SUPPORT 4, OPTIONAL_PROFILE_REQUIREMENT 0). GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0 remains preserved as historical evidence, read together with its controlling correction, terminal status G4_READY_FOR_PROJECT_OWNER_REVIEW. Owner acceptance of the corrected G4 result is a separate, subsequent act; G5 remains NOT_STARTED_NOT_AUTHORIZED, with no contract, scaffold, or Owner authorization, and is not defined.
+      - The Project Owner reviewed the corrected G4 result and issued disposition ACCEPT_GOV_GEN_G4_CORRECTED_RESULT (HP-PROMPT-051/0.1.0). GOV-GEN-DECISION-013/0.1.0 accepts GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0 as the corrected and controlling G4 result -- the three fictitious consumer profiles, the corrected 16-entry requirements-delta register, the six architecture pressures carried forward to G5, the four-way architecture_relevance distinction (logical_architecture_defect / current_hugeplanning_realization_limitation / future_implementation_requirement / profile_specific_optional_feature), and the independent-review corrections incorporated into R1; no PENDING_OWNER_ACCEPTANCE state remains for G4. GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0 remains preserved, unmodified beyond completion of its own designated independent-review placeholders, as immutable historical execution evidence, read together with its accepted correction. No target physical architecture is selected, no repository ownership is decided, no general-governance repository is created, no file is extracted or migrated, no G4 requirement or architecture pressure is implemented, no AGENTS.md/CLAUDE.md change occurs, no provider/executor adapter, Delegated Operational Authority, or query/index/projection tooling is implemented, no G1B gap is implemented, no CWG/AET/SVP integration occurs, and G5 remains NOT_STARTED_NOT_AUTHORIZED -- it has no contract, scaffold, or Owner authorization and is not defined.
 
   - id: HP-PROMPT-040
     title: GOV-GEN-G1A-CLOSE + G1B-SIMPLIFY
@@ -4149,3 +4151,19 @@ artifacts:
     supersedes: null
     aliases: []
     notes: [Directly authorizes canonical definition of G4 (GOV-GEN-G4-CONTRACT-001/0.1.0), its execution in the same governed unit with no separate authorization gate, exactly one clean-session independent realism review of the resulting profiles/requirements-delta candidate, a bounded prospective correction if that review returns material findings, and one bounded local commit; requires exactly three fictitious consumer profiles materially diverse from HugePlanning and from each other, a per-profile L0-L7 stress test re-testing twelve named hidden single-project assumptions, a context-efficiency stress test without selecting storage/query technology, a severity-classified requirements-delta register using a closed five-value taxonomy, a cross-profile synthesis, architecture pressures carried to G5, and explicitly preserved non-decisions; forbids target physical-architecture selection, kernel ownership/extraction/migration, general-governance or other repository creation, filesystem/package topology selection, Delegated Operational Authority/Provider-Neutral Governance/adapter/query-tooling implementation or selection, use of a real project as a fictitious profile, G2 capability reclassification or gap redisposition, G3 capability reallocation without a recorded independent-review finding requiring it, G5 definition or authorization, AGENTS.md/CLAUDE.md/AET/CWG/SVP changes, the primary author representing its own judgment as the independent review, and push/PR/merge/tag/release/deployment.]
+
+  - id: HP-PROMPT-051
+    title: GOV-GEN G4 — Project Owner Acceptance
+    version: 0.1.0
+    status: EXECUTED
+    authority: bounded_g4_owner_acceptance_reconciliation_and_local_commit_no_push
+    path: governance/prompts/orchestration/HP-PROMPT-051-gov-gen-g4-owner-acceptance-reconciliation-v0.1.0.md
+    source_path: null
+    source_sha256: c1a486f9ab7d07249880b77c77f1990995197aafea473c207331139e65d9e932
+    produced_by: PROJECT_OWNER
+    artifact_type: exact_orchestration_prompt
+    language: English
+    canonicality: preserved_acceptance_authorization_evidence
+    supersedes: null
+    aliases: []
+    notes: [Directly instructs disposition ACCEPT_GOV_GEN_G4_CORRECTED_RESULT, accepting GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0 as the corrected and controlling G4 result while GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0 remains immutable historical evidence; requires reconciling only current/status-bearing GOV-GEN-AUD-001 surfaces to G4 ACCEPTED_BY_PROJECT_OWNER and G5 NOT_STARTED_NOT_AUTHORIZED, with historical records preserved append-only; forbids defining or executing G5, comparing physical architecture options, selecting repository ownership, creating general-governance, extracting or migrating anything, modifying AGENTS.md or CLAUDE.md, implementing any G4 requirement, and push/PR/merge/tag/release/deployment.]

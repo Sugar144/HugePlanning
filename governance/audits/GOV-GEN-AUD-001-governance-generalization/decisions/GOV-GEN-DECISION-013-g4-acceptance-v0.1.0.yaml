@@ -1,0 +1,92 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-013
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_GOV_GEN_G4_CORRECTED_RESULT
+  program_id: GOV-GEN-AUD-001
+  phase: G4
+  subject_contract: GOV-GEN-G4-CONTRACT-001/0.1.0
+  subject_base_deliverable: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0
+  subject_controlling_result: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+  source_prompt: HP-PROMPT-051/0.1.0
+  reviewed_evidence:
+    base_deliverable_terminal_status_before_acceptance: G4_READY_FOR_PROJECT_OWNER_REVIEW
+    correction_terminal_status_before_acceptance: G4_READY_FOR_PROJECT_OWNER_REVIEW
+    base_deliverable_sha256: 6955973b2278e5b9549c66e6f6fb25835c53885719c1e722e53328b6f77f8b3d
+    correction_sha256: 2a4882c529a82adfbd586ae874fd48efe816f059422cc42be97c49976b1354b8
+    base_manifest: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.manifest.sha256
+    correction_manifest: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.manifest.sha256
+    base_manifest_verified: true
+    correction_manifest_verified: true
+    profiles_defined: 3
+    profile_names: [ALPHA, BETA, GAMMA]
+    profiles_merged_as_redundant: 0
+    requirements_delta_entries_base: 15
+    requirements_delta_entries_corrected: 16
+    severity_counts_corrected: {BLOCKS_REUSE: 6, REQUIRES_PARAMETERIZATION: 6, REQUIRES_IMPLEMENTATION_SUPPORT: 4, OPTIONAL_PROFILE_REQUIREMENT: 0}
+    architecture_pressures_recorded: 6
+    architecture_relevance_categories: [logical_architecture_defect, current_hugeplanning_realization_limitation, future_implementation_requirement, profile_specific_optional_feature]
+    g3_capability_reallocation_performed: false
+    g2_capability_reclassification_performed: false
+    g2_gap_redisposition_performed: false
+    independent_review_performed: true
+    independent_review_mode: CLEAN_SESSION_WITHIN_SAME_GOVERNED_UNIT
+    independent_review_verdict: MATERIAL_FINDINGS_PRESENT
+    independent_review_material_findings: 3
+    independent_review_bounded_observations: 3
+    independent_review_disposition: CORRECTED_IN_R1
+    new_register_entry: RD-C9
+    head_before: 1cc2aa277401a8ef5fbc3a2d9d1be9c2bf7c51f9
+    worktree_clean_before_acceptance: true
+  final_status: ACCEPTED_BY_PROJECT_OWNER
+  acceptance_scope: BOUNDED_G4_CONSUMER_REQUIREMENTS_DELTA_AND_CORRECTED_R1_RESULT_ONLY
+  pending_owner_acceptance_state_removed: true
+  controlling_result: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+  accepted:
+    - the three fictitious consumer profiles (ALPHA solo single-repository low-ceremony; BETA concurrent AI-first product team with branch/worktree concurrency and delegated routine mechanics; GAMMA federated multi-team/multi-repository program with evidence exceeding one agent's context window), none merged as redundant
+    - the corrected 16-entry requirements-delta register (BLOCKS_REUSE 6, REQUIRES_PARAMETERIZATION 6, REQUIRES_IMPLEMENTATION_SUPPORT 4, OPTIONAL_PROFILE_REQUIREMENT 0), including new entry RD-C9 (the federation-level Owner/authority-role naming gap for Profile GAMMA)
+    - the six architecture pressures carried forward to G5 (AP-1 L0 distribution mechanics; AP-2 concurrency-safe ID allocation; AP-3 enforced Delegated Operational Authority boundary; AP-4 deterministic L6 query/index capability; AP-5 a second real executor/provider adapter or provider-neutral L1 binding abstraction; AP-6 program-scoped state/registry/log separation or a federating query layer), none of them decided, designed, or implemented by G4
+    - the distinction, per GOV-GEN-G4-CONTRACT-001/0.1.0 §5.5, between logical_architecture_defect (a defect in the accepted G3 model itself), current_hugeplanning_realization_limitation (a gap specific to this repository's present realization, not the model), future_implementation_requirement (a requirement a later, separately authorized phase must resolve), and profile_specific_optional_feature (a need particular to one profile, not universal)
+    - the independent-review corrections incorporated into R1: the non-comparative restatement of base §8's L0-distribution requirement (removing the accidental "materially worse" physical-architecture comparison); the addition of register entry RD-C9 testing the "exactly one Owner/authority domain" hidden assumption against G3 §4's L0/L3 authority_boundary split; the re-grounding of RD-B3/RD-C6's evidence_refs in GOV-GEN's own observed sequential ID-allocation practice instead of a rule G3 §6 already scopes to an unrelated client-facing methodology system; and the normalization of the non-contract architecture_relevance value architecture_pressure_not_g4_decision to future_implementation_requirement on RD-C1, RD-C3, RD-C4, RD-C5, and RD-C7
+  not_accepted:
+    - target_physical_repository_architecture_selection
+    - repository_ownership_decision
+    - general_governance_repository_creation
+    - repository_extraction_or_migration
+    - implementation_of_any_g4_requirement_or_architecture_pressure
+    - AGENTS_md_or_CLAUDE_md_modification
+    - implementation_of_provider_or_executor_adapters
+    - implementation_of_delegated_operational_authority
+    - implementation_of_query_index_or_projection_tooling
+    - implementation_of_any_g1b_gap
+    - CWG_AET_or_SVP_integration
+    - g5_authorization
+    - g5_definition
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct acceptance
+    (`HP-PROMPT-051/0.1.0`, disposition `ACCEPT_GOV_GEN_G4_CORRECTED_RESULT`)
+    of `GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0` as the corrected
+    and controlling G4 result. The original
+    `GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0` remains preserved,
+    unmodified beyond completion of its own designated independent-review
+    placeholders, as immutable historical execution evidence; it is not
+    itself superseded, deprecated, or rewritten — R1 is read together with
+    it as the controlling description of G4's outcome. This acceptance does
+    not re-review the accepted G3 eight-layer model, the 88-capability
+    allocation, or the 6-gap allocation; it relies on the base deliverable's
+    and R1's own disclosed independent review, self-check, and completion
+    disposition by reference, and on the manifest verification independently
+    reproduced during this reconciliation.
+  next_governed_state: >-
+    G5 is the next phase in the GOV-GEN-AUD-001 phase plan
+    (G0 -> G1A -> G1B -> G2 -> G3 -> G4 -> G5 -> GR -> G6). G5 has no
+    contract, scaffold, or Owner authorization, is not defined, and is not
+    opened, scoped, or authorized by this decision. A separate, explicit
+    Project Owner authorization is required before any G5 work, including
+    its definition, and before any target physical architecture comparison
+    or selection, repository ownership decision, or extraction/migration.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

@@ -1,9 +1,9 @@
 ---
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
-version: 0.8.0
-status: G0_G1A_G1B_G2_G3_ACCEPTED_BY_PROJECT_OWNER_G4_NOT_STARTED_NOT_AUTHORIZED
-authority: PROGRAM_INDEX_WITH_G1A_G1B_G2_AND_G3_ACCEPTANCE_NOT_PHYSICAL_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
+version: 1.0.0
+status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_NOT_STARTED_NOT_AUTHORIZED
+authority: PROGRAM_INDEX_WITH_G1A_G1B_G2_G3_AND_G4_ACCEPTANCE_NOT_PHYSICAL_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
 
@@ -160,13 +160,23 @@ register entries — bounded-corrected without redoing G4, reopening G2/G3, or
 selecting any physical architecture by
 `G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md`
 (`GOV-GEN-DECISION-012/0.1.0`), which adds one register entry (`RD-C9`) and
-brings the corrected total to 16 entries. G4's terminal status is
-`G4_READY_FOR_PROJECT_OWNER_REVIEW`; Owner acceptance is a separate,
-subsequent act, and G5 remains unopened, unscoped, and unauthorized. No
-target physical architecture is selected, no kernel repository ownership is
-decided, no repository is created, no file is extracted or migrated, and no
-Delegated Operational Authority, Provider-Neutral Governance, adapter, or
-query/projection tooling is implemented or selected.
+brings the corrected total to 16 entries. No target physical architecture is
+selected, no kernel repository ownership is decided, no repository is
+created, no file is extracted or migrated, and no Delegated Operational
+Authority, Provider-Neutral Governance, adapter, or query/projection tooling
+is implemented or selected.
+
+The Project Owner then reviewed the corrected result and accepted
+`G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md` as the corrected and
+controlling G4 result (`GOV-GEN-DECISION-013/0.1.0`, `HP-PROMPT-051/0.1.0`,
+disposition `ACCEPT_GOV_GEN_G4_CORRECTED_RESULT`). No
+`PENDING_OWNER_ACCEPTANCE` state remains for G4; the base deliverable
+`G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md` remains preserved,
+unmodified beyond completion of its own designated independent-review
+placeholders, as immutable historical execution evidence, read together with
+its accepted correction. G5 has no contract, scaffold, or Owner
+authorization, is not defined, and remains unopened and unscoped until a
+separate, explicit Project Owner authorization.
 
 ## Durable baseline
 
@@ -212,9 +222,10 @@ no provider/executor adapter or query/projection tooling implemented; no G2
 §21 unresolved question resolved into an implemented decision; no residual
 risk accepted; no recorded G1B/G2 gap implemented; no `AGENTS.md`/`CLAUDE.md`
 modified anywhere; no change made to AET, CWG, or SVP; no HugePlanning
-worktree file outside `governance/**` touched; G4 has not been opened,
-scoped, defined, or authorized. `GOV-AUD-001` and its internal `GOV-n` phase
-state are unaffected by this program and unaffected by this reconciliation.
+worktree file outside `governance/**` touched; no G4 requirement or
+architecture pressure implemented; G5 has not been opened, scoped, defined,
+or authorized. `GOV-AUD-001` and its internal `GOV-n` phase state are
+unaffected by this program and unaffected by this reconciliation.
 
 ## Local custody
 

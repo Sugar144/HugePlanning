@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_ACCEPTED_BY_PROJECT_OWNER_G4_EXECUTED_CORRECTED_READY_FOR_PROJECT_OWNER_REVIEW_G5_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_NOT_STARTED_NOT_AUTHORIZED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G4
+  current_phase: G5
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -276,7 +276,7 @@ G3:
       (HP-PROMPT-049/0.1.0, disposition ACCEPT_GOV_GEN_G3_CORRECTED_RESULT).
 
 G4:
-  status: LOGICAL_ARCHITECTURE_STRESS_TEST_R1_READY_FOR_PROJECT_OWNER_REVIEW
+  status: CONSUMER_REQUIREMENTS_DELTA_R1_ACCEPTED_BY_PROJECT_OWNER
   contract: GOV-GEN-G4-CONTRACT-001/0.1.0
   contract_location: G4/GOV-GEN-G4-CONTRACT-001-v0.1.0.md
   execution_topology: SINGLE_COHERENT_TASK_WITH_THREE_PROFILE_STRESS_TEST_AND_IN_UNIT_INDEPENDENT_REVIEW
@@ -310,7 +310,7 @@ G4:
     bounded_observations: 3
     disposition: CORRECTED_IN_R1
   correction:
-    status: G4_CORRECTION_LOCALLY_COMMITTED_PENDING_OWNER_ACCEPTANCE
+    status: G4_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
     correction_index: 1
     id: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
     location: G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md
@@ -320,7 +320,16 @@ G4:
     base_deliverable_modified: false
     material_findings_corrected: 3
     new_register_entry: RD-C9
-  pending_owner_acceptance: true
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-013/0.1.0
+    note: >-
+      The Project Owner accepted this correction as the controlling G4
+      result under GOV-GEN-DECISION-013/0.1.0 (HP-PROMPT-051/0.1.0,
+      disposition ACCEPT_GOV_GEN_G4_CORRECTED_RESULT).
+  pending_owner_acceptance: false
+  acceptance_record: GOV-GEN-DECISION-013/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-05'
   controlling_result: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
   note: >-
     Contract definition, execution, in-unit independent review, and its
@@ -333,9 +342,10 @@ G4:
     query/projection tooling. The base deliverable
     (GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0) is preserved,
     unmodified beyond completion of its own designated independent-review
-    placeholders, as the record read together with its correction. Owner
-    review and acceptance of the corrected R1 result remains a separate,
-    subsequent act, and G5 remains unopened, unscoped, and unauthorized.
+    placeholders, as historical execution evidence; the Project Owner
+    accepted its corrected R1 result as the controlling G4 result under
+    GOV-GEN-DECISION-013/0.1.0. No PENDING_OWNER_ACCEPTANCE state remains for
+    G4, and G5 remains unopened, unscoped, and unauthorized.
 
 G5_and_G6:
   status: NOT_STARTED_NOT_AUTHORIZED
@@ -388,6 +398,9 @@ decisions:
   - id: GOV-GEN-DECISION-012
     version: 0.1.0
     subject: G4 bounded independent-review correction R1
+  - id: GOV-GEN-DECISION-013
+    version: 0.1.0
+    subject: G4 corrected result (R1) Project Owner acceptance
 
 not_authorized_by_this_program:
   - target_architecture_selection

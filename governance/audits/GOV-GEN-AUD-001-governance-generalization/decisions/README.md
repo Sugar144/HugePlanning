@@ -198,6 +198,31 @@ is reclassified; no G2 gap is redisposed; G2 and G3 are not reopened. This
 decision does not accept the corrected result — Owner acceptance remains a
 separate, subsequent act — and does not open, scope, or authorize G5.
 
+`GOV-GEN-DECISION-013/0.1.0` records the Project Owner's direct acceptance
+(`HP-PROMPT-051/0.1.0`, disposition `ACCEPT_GOV_GEN_G4_CORRECTED_RESULT`) of
+`GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0` as the corrected and
+controlling G4 result: the three fictitious consumer profiles (ALPHA, BETA,
+GAMMA), the corrected 16-entry requirements-delta register, the six
+architecture pressures carried forward to G5, the distinction between
+logical-architecture defects, HugePlanning realization limitations, future
+implementation requirements, and profile-specific optional features, and the
+independent-review corrections incorporated into R1 (the non-comparative
+restatement of base §8, new register entry `RD-C9`, the re-grounded
+`RD-B3`/`RD-C6` evidence citations, and the `architecture_relevance`
+normalization). The original
+`GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0` remains preserved,
+unmodified beyond completion of its own designated independent-review
+placeholders, as immutable historical execution evidence, read together with
+its accepted correction. No target physical repository architecture is
+selected, no repository ownership is decided, no `general-governance`
+repository is created, no file is extracted or migrated, no G4 requirement
+or architecture pressure is implemented, no `AGENTS.md` or `CLAUDE.md`
+change occurs, no provider/executor adapter, Delegated Operational
+Authority, or query/index/projection tooling is implemented, no G1B gap is
+implemented, no CWG/AET/SVP integration occurs, and G5 is not opened,
+scoped, defined, or authorized. No `PENDING_OWNER_ACCEPTANCE` state remains
+for G4.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority
