@@ -133,6 +133,26 @@ unchanged. This decision does not accept the corrected result — Owner
 acceptance remains a separate, subsequent act — and does not open, scope, or
 authorize G4.
 
+`GOV-GEN-DECISION-010/0.1.0` records the Project Owner's direct acceptance
+(`HP-PROMPT-049/0.1.0`, disposition `ACCEPT_GOV_GEN_G3_CORRECTED_RESULT`) of
+`GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0` as the corrected and
+controlling G3 result: the eight-layer logical architecture and its
+88-capability and 6-gap allocation, the boundary model, the target
+context-efficiency model, the distinction between canonical storage and
+bounded model-facing projections, the corrected G2 §21 unresolved-question
+dispositions, the recommended candidate logical architecture as the
+controlling G3 result, and the future physical-architecture inputs G3
+carries forward. The original `GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0`
+remains preserved as immutable historical execution evidence, read together
+with its accepted correction. No target physical repository architecture is
+selected, no repository ownership is decided, no `general-governance`
+repository is created, no file is extracted or migrated, no eight-layer
+architecture is implemented, no `AGENTS.md` or `CLAUDE.md` change occurs, no
+provider/executor adapter, Delegated Operational Authority, or
+query/index/projection tooling is implemented, no G1B gap is implemented, no
+CWG/AET/SVP integration occurs, and G4 is not opened, scoped, defined, or
+authorized. No `PENDING_OWNER_ACCEPTANCE` state remains for G3.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority

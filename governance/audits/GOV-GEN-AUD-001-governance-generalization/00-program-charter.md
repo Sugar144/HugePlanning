@@ -1,9 +1,9 @@
 ---
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
-version: 0.7.0
-status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_EXECUTED_READY_FOR_PROJECT_OWNER_REVIEW
-authority: PROGRAM_INDEX_WITH_G1A_G1B_AND_G2_ACCEPTANCE_NOT_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
+version: 0.8.0
+status: G0_G1A_G1B_G2_G3_ACCEPTED_BY_PROJECT_OWNER_G4_NOT_STARTED_NOT_AUTHORIZED
+authority: PROGRAM_INDEX_WITH_G1A_G1B_G2_AND_G3_ACCEPTANCE_NOT_PHYSICAL_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
 
@@ -125,10 +125,19 @@ correction, `G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md`
 (`GOV-GEN-DECISION-009/0.1.0`, `HP-PROMPT-048/0.1.0`), corrects those
 defects without modifying the immutable base deliverable, reallocating any
 capability, reclassifying any G2 capability, redisposing any G2 gap, or
-reopening G2. `GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0` is
-`G3_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE`; Owner acceptance,
-rejection, or a further bounded correction request remains a separate,
-subsequent act.
+reopening G2.
+
+The Project Owner then reviewed the corrected result and accepted
+`G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md` as the corrected and
+controlling G3 result (`GOV-GEN-DECISION-010/0.1.0`, `HP-PROMPT-049/0.1.0`,
+disposition `ACCEPT_GOV_GEN_G3_CORRECTED_RESULT`). No
+`PENDING_OWNER_ACCEPTANCE` state remains for G3; the base deliverable
+`G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md` remains preserved, unmodified,
+as immutable historical execution evidence, read together with its accepted
+correction. G4 has no contract, scaffold, or Owner authorization, and is not
+defined; a separate, explicit Project Owner authorization is required
+before any G4 work, including any target physical architecture selection,
+repository ownership decision, or extraction or migration.
 
 ## Durable baseline
 
@@ -175,9 +184,8 @@ no provider/executor adapter or query/projection tooling implemented; no G2
 risk accepted; no recorded G1B/G2 gap implemented; no `AGENTS.md`/`CLAUDE.md`
 modified anywhere; no change made to AET, CWG, or SVP; no HugePlanning
 worktree file outside `governance/**` touched; G4 has not been opened,
-scoped, defined, or authorized; the G3 Logical Architecture is not yet
-Owner-accepted. `GOV-AUD-001` and its internal `GOV-n` phase state are
-unaffected by this program and unaffected by this reconciliation.
+scoped, defined, or authorized. `GOV-AUD-001` and its internal `GOV-n` phase
+state are unaffected by this program and unaffected by this reconciliation.
 
 ## Local custody
 

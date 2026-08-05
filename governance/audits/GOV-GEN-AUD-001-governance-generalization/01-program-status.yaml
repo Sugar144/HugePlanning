@@ -3,7 +3,7 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_EXECUTED_READY_FOR_PROJECT_OWNER_REVIEW
+  status: G0_G1A_G1B_G2_G3_ACCEPTED_BY_PROJECT_OWNER_G4_NOT_STARTED_NOT_AUTHORIZED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
   current_phase: G3
   reference_repository: Sugar144/HugePlanning
@@ -227,8 +227,11 @@ G3:
   execution_started: true
   execution_self_check: PASS
   split_triggered: false
-  pending_owner_acceptance: true
-  acceptance_record: null
+  pending_owner_acceptance: false
+  acceptance_record: GOV-GEN-DECISION-010/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-05'
+  controlling_result: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
   note: >-
     Contract definition and execution were authorized and performed in one
     governed unit per the Project Owner's explicit instruction
@@ -237,11 +240,13 @@ G3:
     organizes the accepted G2 classification into a proposed eight-layer
     logical model and dispositions G2 §21 unresolved questions 1-7 against
     that model without resolving any of them into an implemented decision.
-    Owner acceptance of the Logical Architecture remains a separate,
-    subsequent act; no PENDING_OWNER_ACCEPTANCE state is removed by this
-    execution.
+    The base deliverable (GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0) is
+    preserved unmodified as historical execution evidence; the Project Owner
+    accepted its corrected R1 result as the controlling G3 result under
+    GOV-GEN-DECISION-010/0.1.0. No PENDING_OWNER_ACCEPTANCE state remains for
+    G3.
   correction:
-    status: G3_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    status: G3_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
     correction_index: 1
     id: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
     location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md
@@ -254,8 +259,8 @@ G3:
     layer_reallocation_performed: false
     capability_reclassification_performed: false
     gap_redisposition_performed: false
-    pending_owner_acceptance: true
-    acceptance_record: null
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-010/0.1.0
     note: >-
       Reconciles UQ4/UQ7 to the G3 contract's closed enum; clarifies the §7
       context-efficiency model as a target logical model that does not
@@ -266,7 +271,9 @@ G3:
       historical check-8 evidence-custody gap plus fresh Owner-review
       revalidation evidence for candidate d9cc0e74584e1c8c7aa83894621f3d9ede77bdea.
       Does not reallocate any capability, reclassify any G2 capability,
-      redispose any G2 gap, or reopen G2.
+      redispose any G2 gap, or reopen G2. The Project Owner accepted this
+      correction as the controlling G3 result under GOV-GEN-DECISION-010/0.1.0
+      (HP-PROMPT-049/0.1.0, disposition ACCEPT_GOV_GEN_G3_CORRECTED_RESULT).
 
 G4_through_G6:
   status: NOT_STARTED_NOT_AUTHORIZED
@@ -309,6 +316,9 @@ decisions:
   - id: GOV-GEN-DECISION-009
     version: 0.1.0
     subject: G3 bounded correction R1 (Owner-review findings)
+  - id: GOV-GEN-DECISION-010
+    version: 0.1.0
+    subject: G3 corrected result (R1) Project Owner acceptance
 
 not_authorized_by_this_program:
   - target_architecture_selection
