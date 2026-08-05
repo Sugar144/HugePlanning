@@ -318,3 +318,13 @@ final architecture decisions remain preserved. The known pre-existing G3 §10
 `66% ... per G2 §21.2` factual/reference defect is carried forward only; G3 is
 not corrected or reopened. This acceptance does not select a final physical
 architecture and does not open, scope, start, or authorize `GR` or `G6`.
+
+`GOV-GEN-DECISION-018/0.1.0` records the Project Owner disposition
+`ACCEPT_GOV_GEN_G3_R2_CORRECTED_RESULT`, accepting
+`GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0` as the corrected and
+controlling G3 result. The base G3 deliverable and accepted R1 remain immutable
+historical evidence; R2 corrects only base §10's factual/reference defect to
+`49/88` non-`READY` (`55.7%`) per G2 §17.2/§23. It changes neither the
+accepted eight-layer architecture nor any capability/gap allocation or
+authority boundary, and leaves accepted G4/G5 state unchanged. `GR` and `G6`
+remain unopened and unauthorized.

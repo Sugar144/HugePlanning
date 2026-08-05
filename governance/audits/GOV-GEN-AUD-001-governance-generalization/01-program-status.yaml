@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G3_CORRECTION_R2_PENDING_OWNER_ACCEPTANCE_GR_NOT_REACHED_G6_NOT_REACHED
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_NOT_REACHED_G6_NOT_REACHED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G3_CORRECTION_R2
+  current_phase: G5_ACCEPTED_GR_NOT_REACHED
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -191,7 +191,7 @@ G2:
       remains NOT_STARTED_NOT_AUTHORIZED.
 
 G3:
-  status: G3_CORRECTION_R2_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+  status: LOGICAL_ARCHITECTURE_R2_ACCEPTED_BY_PROJECT_OWNER
   contract: GOV-GEN-G3-CONTRACT-001/0.1.0
   contract_location: G3/GOV-GEN-G3-CONTRACT-001-v0.1.0.md
   execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
@@ -227,8 +227,8 @@ G3:
   execution_started: true
   execution_self_check: PASS
   split_triggered: false
-  pending_owner_acceptance: true
-  acceptance_record: GOV-GEN-DECISION-010/0.1.0
+  pending_owner_acceptance: false
+  acceptance_record: GOV-GEN-DECISION-018/0.1.0
   accepted_by: Project Owner
   accepted_on: '2026-08-05'
   controlling_result: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0
@@ -243,9 +243,10 @@ G3:
     The base deliverable (GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0) is
     preserved unmodified as historical execution evidence; the Project Owner
     accepted its corrected R1 result as the controlling G3 result under
-    GOV-GEN-DECISION-010/0.1.0. The Project Owner subsequently directly
-    authorized one minimal prospective factual/reference correction (R2),
-    which is now the pending controlling result for acceptance.
+    GOV-GEN-DECISION-010/0.1.0. The Project Owner subsequently accepted the
+    one minimal prospective factual/reference correction R2 as the
+    controlling G3 result under GOV-GEN-DECISION-018/0.1.0. No
+    PENDING_OWNER_ACCEPTANCE state remains for G3.
   correction_r1:
     status: G3_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
     correction_index: 1
@@ -276,7 +277,7 @@ G3:
       correction as the controlling G3 result under GOV-GEN-DECISION-010/0.1.0
       (HP-PROMPT-049/0.1.0, disposition ACCEPT_GOV_GEN_G3_CORRECTED_RESULT).
   correction_r2:
-    status: G3_CORRECTION_R2_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    status: G3_CORRECTION_R2_ACCEPTED_BY_PROJECT_OWNER
     correction_index: 2
     id: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0
     location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.md
@@ -299,7 +300,10 @@ G3:
     g5_modified: false
     gr_authorized: false
     g6_authorized: false
-    pending_owner_acceptance: true
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-018/0.1.0
+    accepted_by: Project Owner
+    accepted_on: '2026-08-05'
 
 G4:
   status: CONSUMER_REQUIREMENTS_DELTA_R1_ACCEPTED_BY_PROJECT_OWNER
@@ -572,6 +576,9 @@ decisions:
   - id: GOV-GEN-DECISION-017
     version: 0.1.0
     subject: G5 corrected result (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-018
+    version: 0.1.0
+    subject: G3 corrected result (R2) Project Owner acceptance
 
 not_authorized_by_this_program:
   - target_architecture_selection

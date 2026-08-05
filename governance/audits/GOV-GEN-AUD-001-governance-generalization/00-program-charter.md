@@ -287,6 +287,16 @@ G3 §10 factual/reference defect ("66% ... per G2 §21.2") is carried forward
 only; G3 is not corrected or reopened. `GR` and `G6` remain unopened,
 unscoped, and unauthorized.
 
+The Project Owner subsequently accepted the minimal prospective G3 factual/
+reference correction `GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0` as the
+controlling G3 result under `GOV-GEN-DECISION-018/0.1.0`. The G3 base
+deliverable and accepted R1 remain immutable historical evidence; R2 corrects
+only the base §10 reuse-readiness statement to `49/88` non-`READY` (`55.7%`)
+with the valid G2 §17.2/§23 reference. The accepted eight-layer architecture,
+all capability/gap allocations and authority boundaries, and accepted G4/G5
+state are unchanged. `GR` and `G6` remain unopened, unscoped, and
+unauthorized.
+
 ## Durable baseline
 
 - **G0** — framing and the compact conceptual baseline are accepted.

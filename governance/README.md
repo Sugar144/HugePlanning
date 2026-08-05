@@ -29,6 +29,16 @@ preserved for the later Owner gate. The pre-existing G3 `66% ... per G2 §21.2`
 factual/reference defect is carried forward only. G5 is
 `ACCEPTED_BY_PROJECT_OWNER`; `GR` and `G6` remain unauthorized.
 
+The Project Owner subsequently accepted
+`GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0` as the corrected and
+controlling G3 result under `GOV-GEN-DECISION-018/0.1.0`
+(`ACCEPT_GOV_GEN_G3_R2_CORRECTED_RESULT`). The base G3 deliverable and
+accepted R1 remain immutable historical evidence; R2 corrects only the
+carried-forward §10 factual/reference defect to `49/88` non-`READY` (`55.7%`)
+per G2 §17.2/§23. The accepted eight-layer architecture, all allocations and
+authority boundaries, and accepted G4/G5 state are unchanged; `GR` and `G6`
+remain unauthorized.
+
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml
 governance_state:
