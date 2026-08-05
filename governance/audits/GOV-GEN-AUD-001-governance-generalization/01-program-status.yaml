@@ -519,9 +519,9 @@ G6:
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
-  deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001/0.1.0
-  deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md
-  manifest_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.manifest.sha256
+  deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0
+  deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md
+  manifest_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.manifest.sha256
   manifest_verified: true
   execution_authorized: true
   execution_authorization_basis: Project Owner direct task GOV-GEN G6 — Bounded Extraction Planning
@@ -531,7 +531,15 @@ G6:
   context_risk_packets: []
   next_authority_required: PROJECT_OWNER_REVIEW_AND_ACCEPTANCE_OR_BOUNDED_REVISION_OF_G6_PLAN
   note: >-
-    This G6 result plans only the adopted Option B boundary. It neither
+    R1 preserves the base plan as historical evidence and clarifies that its
+    displayed B-01 through B-08 sequence is the recommended default serial
+    execution order, while each packet's depends_on field is the authoritative
+    hard dependency graph. A different dependency-satisfied schedule requires
+    explicit authorization. The unchanged Option B empirical-proof gate is
+    B-02, B-03, B-04, and B-08; B-05, B-06, and B-07 remain planned work but
+    are not prerequisites for that stated gate unless another accepted
+    dependency requires them. This G6 result plans only the adopted Option B
+    boundary. It neither
     extracts nor migrates any artifact, creates a repository or target
     directory, implements AP-1 through AP-6, modifies active instruction
     surfaces, executes Option D, or accepts the plan on the Owner's behalf.
