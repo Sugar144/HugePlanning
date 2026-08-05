@@ -276,6 +276,30 @@ target physical architecture, and does not open, scope, or authorize `GR`
 or `G6`; the next governed state is a separate, explicit Project Owner
 decision on the three material findings.
 
+`GOV-GEN-DECISION-016/0.1.0` records the Project Owner's direct
+authorization (`HP-PROMPT-054/0.1.0`) of a bounded prospective correction to
+`GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0`, following the
+Project Owner's disposition `REQUEST_BOUNDED_G5_CORRECTION` on
+`GOV-GEN-G5-INDEPENDENT-REVIEW-001/0.1.0`'s three material and one minor
+finding. `GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0` corrects
+exactly those four findings: (F1) the unsupported provenance of the G2
+reuse-readiness figures (39/27/10/12), re-grounded by one targeted lookup
+performed during this correction into `GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0`
+§17.2/§23 rather than G3 §10's own separate, unreconciled "66% ... per G2
+§21.2" citation, with `targeted_lookups_performed` corrected from `0` to
+`1`; (F2) both wrong "G3 §21 UQ4" citations corrected to "G3 §8 UQ4"; (F3)
+compliance-matrix cell `RD-C5` × Option C corrected from
+`STRUCTURALLY_ENABLED` to `NOT_ADDRESSED`, since Option C leaves RD-C5's own
+observed evidence — HugePlanning's internal `CURRENT_STATE.md` interleaving
+of `GOV-n` and `GOV-GEN-AUD-001` state — untouched; and (F4) the overstated
+"premature-generalization" attribution to G2's text rephrased as this
+document's own inference. The base deliverable is preserved unmodified; the
+recommended staged sequence (Option B now, Option D as an optional pilot,
+Option C deferred, Option A retained as fallback) is unchanged in substance.
+This decision does not itself accept the corrected G5 result, does not
+independently review the correction, does not select a target physical
+architecture, and does not open, scope, or authorize `GR` or `G6`.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority

@@ -2,8 +2,8 @@
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
 version: 1.0.0
-status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5B_INDEPENDENT_REVIEW_COMPLETE_MATERIAL_FINDINGS_PRESENT
-authority: PROGRAM_INDEX_WITH_G1A_G1B_G2_G3_AND_G4_ACCEPTANCE_PLUS_G5A_PRIMARY_SYNTHESIS_AND_G5B_INDEPENDENT_REVIEW_NOT_PHYSICAL_ARCHITECTURE_SELECTION_CORRECTION_OR_EXTRACTION_AUTHORITY
+status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+authority: PROGRAM_INDEX_WITH_G1A_G1B_G2_G3_AND_G4_ACCEPTANCE_PLUS_G5A_PRIMARY_SYNTHESIS_G5B_INDEPENDENT_REVIEW_AND_G5C_BOUNDED_CORRECTION_NOT_PHYSICAL_ARCHITECTURE_SELECTION_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
 
@@ -249,6 +249,37 @@ governed state is a separate, explicit Project Owner decision on the three
 material findings (a bounded correction, further review, or acceptance
 as-is with findings noted).
 
+G5-C (Bounded Correction) was subsequently directly authorized by the
+Project Owner (`HP-PROMPT-054/0.1.0`, reconciled in
+`GOV-GEN-DECISION-016/0.1.0`), disposition `REQUEST_BOUNDED_G5_CORRECTION`,
+correcting exactly the four G5-B findings. `GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0`
+corrects: (F1) the unsupported provenance of the G2 reuse-readiness figures
+(`39/27/10/12`), re-grounded by one targeted lookup performed during this
+correction into `GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0` §17.2/§23,
+rather than G3 §10's own separate, unreconciled "66% ... per G2 §21.2"
+citation — a pre-existing G3-baseline defect this correction flags, not
+corrects — with `targeted_lookups_performed` corrected from `0` to `1`; (F2)
+both wrong "G3 §21 UQ4" citations corrected to "G3 §8 UQ4"; (F3)
+compliance-matrix cell `RD-C5` × Option C corrected from
+`STRUCTURALLY_ENABLED` to `NOT_ADDRESSED`, since `RD-C5`'s own observed
+evidence — HugePlanning's internal `CURRENT_STATE.md` interleaving `GOV-n`
+and `GOV-GEN-AUD-001` state — remains untouched by extracting L0-L2 into a
+separate repository; and (F4) the overstated "premature-generalization"
+attribution to G2's text rephrased as this document's own inference from
+G2's reuse-readiness counts. The base deliverable is preserved unmodified.
+No option is added, removed, or redefined; no L0–L7 mapping cell beyond the
+`F2` citation fix changes; no G3 capability is reallocated; no G2 capability
+is reclassified; no G2 gap is redisposed; G2/G3/G4 are not reopened; no
+target physical architecture is selected. The recommended staged sequence
+(Option B now, Option D as an optional pilot, Option C deferred, Option A
+retained as fallback) is unchanged in substance. G5-C does not
+independently review this correction and does not accept or reject the G5
+candidate on the Project Owner's behalf. G5 as a whole is
+`G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE`; the next governed state
+is a separate, explicit Project Owner acceptance (or rejection, or a
+further bounded correction request) of the corrected G5 result — not `GR`
+or `G6` directly.
+
 ## Durable baseline
 
 - **G0** — framing and the compact conceptual baseline are accepted.
@@ -294,13 +325,14 @@ no provider/executor adapter or query/projection tooling implemented; no G2
 risk accepted; no recorded G1B/G2 gap implemented; no `AGENTS.md`/`CLAUDE.md`
 modified anywhere; no change made to AET, CWG, or SVP; no HugePlanning
 worktree file outside `governance/**` touched; no G4 requirement or
-architecture pressure implemented; G5-A (primary synthesis) and G5-B
-(independent review of that synthesis) have each executed as their own
-separate governed units, but no correction of the G5-B findings has been
-authorized or performed, no candidate has been accepted or rejected, and
-`GR`/`G6` remain unopened, unscoped, and unauthorized. `GOV-AUD-001` and its
-internal `GOV-n` phase state are unaffected by this program and unaffected
-by this reconciliation.
+architecture pressure implemented; G5-A (primary synthesis), G5-B
+(independent review of that synthesis), and G5-C (bounded correction of the
+G5-B findings) have each executed as their own separate governed units, but
+the G5-C correction has not itself been independently reviewed, no
+candidate or corrected result has been accepted or rejected, and `GR`/`G6`
+remain unopened, unscoped, and unauthorized. `GOV-AUD-001` and its internal
+`GOV-n` phase state are unaffected by this program and unaffected by this
+reconciliation.
 
 ## Local custody
 
@@ -321,9 +353,10 @@ governance/audits/GOV-GEN-AUD-001-governance-generalization/
   G4/                              the G4 contract, the Consumer
                                   Requirements Delta, its R1 correction, and
                                   their hash manifests
-  G5/                              the G5-A contract and the Physical
+  G5/                              the G5-A contract, the Physical
                                   Architecture Synthesis primary candidate,
-                                  and its hash manifest
+                                  the G5-B independent review, the G5-C R1
+                                  correction, and their hash manifests
 ```
 
 Full G0/G1A source material (framing documents, the 679-row index, the G1A

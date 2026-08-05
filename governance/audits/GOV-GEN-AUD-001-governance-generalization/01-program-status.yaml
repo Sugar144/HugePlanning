@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5B_INDEPENDENT_REVIEW_COMPLETE_MATERIAL_FINDINGS_PRESENT
+  status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G5-A
+  current_phase: G5-C
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -348,7 +348,7 @@ G4:
     G4, and G5 remains unopened, unscoped, and unauthorized.
 
 G5:
-  status: G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW
+  status: G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
   contract: GOV-GEN-G5-CONTRACT-001/0.1.0
   contract_location: G5/GOV-GEN-G5-CONTRACT-001-v0.1.0.md
   execution_topology: SINGLE_COHERENT_TASK_PRIMARY_SYNTHESIS_ONLY_NO_IN_UNIT_INDEPENDENT_REVIEW
@@ -411,11 +411,41 @@ G5:
     reviewed_candidate_modified: false
     note: performed as one separate governed unit, per GOV-GEN-G5-CONTRACT-001/0.1.0 §9
   correction:
-    performed: false
-    authorized: false
-    note: pending a separate, explicit Owner disposition of the review's three material findings
+    status: G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    correction_index: 1
+    id: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+    location: G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md
+    manifest_location: G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.manifest.sha256
+    manifest_verified: true
+    base_deliverable_modified: false
+    correction_authorization_record: GOV-GEN-DECISION-016/0.1.0
+    correction_authorization_basis: HP-PROMPT-054/0.1.0 (Project Owner, bounded correction of the four G5-B independent-review findings)
+    findings_corrected: 4
+    finding_ids: [GOV-GEN-G5-IR-001-F1, GOV-GEN-G5-IR-001-F2, GOV-GEN-G5-IR-001-F3, GOV-GEN-G5-IR-001-F4]
+    targeted_lookups_performed_by_this_correction: 1
+    requirements_compliance_cells_changed: 1
+    requirements_compliance_cell_changed_id: RD-C5
+    requirements_compliance_cell_change: STRUCTURALLY_ENABLED_to_NOT_ADDRESSED
+    option_reallocation_performed: false
+    g3_capability_reallocation_performed: false
+    g2_capability_reclassification_performed: false
+    g2_gap_redisposition_performed: false
+    recommendation_shape_unchanged: true
+    pending_owner_acceptance: true
+    acceptance_record: null
+    note: >-
+      Corrects an unsupported G2 reuse-readiness figure provenance
+      (39/27/10/12, re-grounded in G2 §17.2/§23 by one targeted lookup
+      performed during this correction, targeted_lookups_performed 0 -> 1);
+      two wrong "G3 §21 UQ4" citations (corrected to "G3 §8 UQ4"); one
+      requirements-compliance cell (RD-C5 x Option C, STRUCTURALLY_ENABLED ->
+      NOT_ADDRESSED); and one overstated "premature-generalization"
+      attribution to G2's text. Does not reallocate any G3 capability,
+      reclassify any G2 capability, redispose any G2 gap, redo G5-A, or
+      select a target physical architecture. Pending Project Owner
+      acceptance.
   pending_owner_acceptance: true
-  pending_owner_correction_disposition: true
+  pending_owner_correction_disposition: false
   acceptance_record: null
   note: >-
     Contract definition and primary-synthesis execution were authorized and
@@ -434,10 +464,17 @@ G5:
     one compliance-matrix cell crediting Option C with progress it does
     not make on RD-C5's own observed evidence) and one minor observation,
     none blocking and none altering the recommended staged sequence's
-    substance. G5 as a whole remains incomplete: the next governed state
-    is a separate Owner decision on the material findings (bounded
-    correction, further review, or acceptance as-is with findings noted),
-    not Owner acceptance directly.
+    substance. The Project Owner then issued disposition
+    REQUEST_BOUNDED_G5_CORRECTION (HP-PROMPT-054/0.1.0). The resulting
+    correction, GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+    (GOV-GEN-DECISION-016/0.1.0), corrects exactly those four findings
+    without redoing G5-A, reallocating any G3 capability, reclassifying any
+    G2 capability, redisposing any G2 gap, or selecting a target physical
+    architecture; the recommended staged sequence is unchanged in substance.
+    G5 as a whole is G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE: the
+    next governed state is a separate, explicit Project Owner acceptance (or
+    rejection, or a further bounded correction request) of the corrected G5
+    result, not GR or G6 directly.
 
 G6:
   status: NOT_REACHED
@@ -492,6 +529,12 @@ decisions:
   - id: GOV-GEN-DECISION-014
     version: 0.1.0
     subject: G5-A contract authorization and primary-synthesis execution
+  - id: GOV-GEN-DECISION-015
+    version: 0.1.0
+    subject: G5-B independent review authorization and execution
+  - id: GOV-GEN-DECISION-016
+    version: 0.1.0
+    subject: G5 bounded independent-review correction R1
 
 not_authorized_by_this_program:
   - target_architecture_selection
@@ -510,8 +553,7 @@ not_authorized_by_this_program:
   - resolution_of_any_g2_section_21_unresolved_question
   - reallocation_of_any_g3_capability_beyond_rd_c9
   - implementation_of_any_g4_requirement_or_architecture_pressure
-  - independent_or_adversarial_review_of_the_g5a_candidate
-  - correction_of_the_g5a_candidate
-  - project_owner_acceptance_of_the_g5a_candidate
+  - independent_review_of_the_g5_correction_r1
+  - project_owner_acceptance_of_the_g5_candidate_or_its_correction
   - gr_phase_authorization
   - g6_phase_authorization
