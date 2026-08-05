@@ -2,8 +2,8 @@
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
 version: 1.0.0
-status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
-authority: PROGRAM_INDEX_WITH_G1A_G1B_G2_G3_AND_G4_ACCEPTANCE_PLUS_G5A_PRIMARY_SYNTHESIS_G5B_INDEPENDENT_REVIEW_AND_G5C_BOUNDED_CORRECTION_NOT_PHYSICAL_ARCHITECTURE_SELECTION_OR_EXTRACTION_AUTHORITY
+status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_NOT_REACHED_G6_NOT_REACHED
+authority: PROGRAM_INDEX_WITH_G1A_THROUGH_G5_ACCEPTANCE_NOT_PHYSICAL_ARCHITECTURE_SELECTION_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
 
@@ -275,10 +275,17 @@ target physical architecture is selected. The recommended staged sequence
 retained as fallback) is unchanged in substance. G5-C does not
 independently review this correction and does not accept or reject the G5
 candidate on the Project Owner's behalf. G5 as a whole is
-`G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE`; the next governed state
-is a separate, explicit Project Owner acceptance (or rejection, or a
-further bounded correction request) of the corrected G5 result — not `GR`
-or `G6` directly.
+`G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE` before the Owner's later
+acceptance reconciliation.
+
+G5 is now `ACCEPTED_BY_PROJECT_OWNER` under `GOV-GEN-DECISION-017/0.1.0`
+(`HP-PROMPT-055/0.1.0`): the corrected R1 result is controlling, read together
+with the immutable base deliverable. Options A-D, the non-binding staged
+recommendation (B now, optional D pilot, defer C, A fallback), and all seven
+unresolved final architecture decisions are preserved. The known pre-existing
+G3 §10 factual/reference defect ("66% ... per G2 §21.2") is carried forward
+only; G3 is not corrected or reopened. `GR` and `G6` remain unopened,
+unscoped, and unauthorized.
 
 ## Durable baseline
 
@@ -328,9 +335,9 @@ worktree file outside `governance/**` touched; no G4 requirement or
 architecture pressure implemented; G5-A (primary synthesis), G5-B
 (independent review of that synthesis), and G5-C (bounded correction of the
 G5-B findings) have each executed as their own separate governed units, but
-the G5-C correction has not itself been independently reviewed, no
-candidate or corrected result has been accepted or rejected, and `GR`/`G6`
-remain unopened, unscoped, and unauthorized. `GOV-AUD-001` and its internal
+the G5-C correction has not itself been independently reviewed, G5's corrected
+result is accepted by the Project Owner under GOV-GEN-DECISION-017/0.1.0, and
+`GR`/`G6` remain unopened, unscoped, and unauthorized. `GOV-AUD-001` and its internal
 `GOV-n` phase state are unaffected by this program and unaffected by this
 reconciliation.
 

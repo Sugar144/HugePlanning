@@ -1,0 +1,75 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-017
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_GOV_GEN_G5_CORRECTED_RESULT
+  program_id: GOV-GEN-AUD-001
+  phase: G5
+  subject_contract: GOV-GEN-G5-CONTRACT-001/0.1.0
+  subject_base_deliverable: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0
+  subject_controlling_result: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+  source_prompt: HP-PROMPT-055/0.1.0
+  reviewed_evidence:
+    base_deliverable_terminal_status_before_acceptance: G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW
+    correction_terminal_status_before_acceptance: G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    base_deliverable_sha256: a57d34c73e64495214db96278f9d9176898ca68a14263db63bf77b10cd806e2e
+    correction_sha256: 28039b1928c81a3c14a84376ea9276be9d9270409c50d833a36d12af8e99f6d6
+    base_manifest: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001.manifest.sha256
+    correction_manifest: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.manifest.sha256
+    base_manifest_verified: true
+    correction_manifest_verified: true
+    options_preserved: [A_STATUS_QUO, B_REUSABLE_CORE_SEPARATED_IN_PLACE, C_INDEPENDENT_GENERAL_GOVERNANCE_REPOSITORY, D_MINIMAL_BOUNDED_EXTRACTION]
+    recommended_candidate_shape: STAGED_SEQUENCE_B_THEN_OPTIONAL_D_THEN_DEFERRED_C_WITH_A_AS_FALLBACK
+    unresolved_owner_decisions_preserved: 7
+    target_architecture_selected: false
+    head_before: 168694a
+    worktree_clean_before_acceptance: true
+  final_status: ACCEPTED_BY_PROJECT_OWNER
+  acceptance_scope: BOUNDED_G5_PHYSICAL_ARCHITECTURE_SYNTHESIS_AND_CORRECTED_R1_RESULT_ONLY
+  pending_owner_acceptance_state_removed: true
+  controlling_result: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+  accepted:
+    - the corrected G5 result read together with its immutable base deliverable
+    - all four credible physical-architecture options A through D, without selecting among them as the final architecture
+    - the controlling non-binding recommendation: Option B now, optional Option D pilot, defer Option C, Option A fallback
+    - the seven unresolved final architecture decisions for the later Project Owner architecture-decision gate
+  carried_forward_issue:
+    id: G3-REFERENCE-DEFECT-001
+    status: CARRIED_FORWARD_NOT_CORRECTED_OR_REOPENED
+    description: >-
+      G3 §10's incorrect aggregate statement "66% of the map, per G2 §21.2"
+      remains a pre-existing accepted-G3 factual/reference defect: G2 §21.2
+      does not exist and the stated aggregate does not match the G2 counts.
+      This acceptance records the issue only; it does not correct or reopen G3.
+  not_accepted:
+    - final_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - general_governance_repository_creation
+    - repository_extraction_or_migration
+    - implementation_of_any_architecture_or_g4_requirement
+    - delegated_operational_authority_implementation
+    - provider_neutral_governance_implementation
+    - provider_or_executor_adapter_implementation
+    - query_or_projection_tooling_implementation
+    - g3_correction_or_reopening
+    - gr_authorization
+    - g6_authorization
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct acceptance
+    (HP-PROMPT-055/0.1.0, disposition ACCEPT_GOV_GEN_G5_CORRECTED_RESULT) of
+    GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0 as the corrected
+    and controlling G5 result. GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0
+    remains immutable historical execution evidence, read together with R1.
+    The acceptance preserves Options A-D, the non-binding staged recommendation,
+    and all seven unresolved final architecture decisions. It carries forward
+    the pre-existing G3 "66% ... per G2 §21.2" factual/reference defect only;
+    no G3 correction or reopening occurs. GR and G6 remain unopened and
+    unauthorized.
+  next_governed_state: >-
+    G5 is ACCEPTED_BY_PROJECT_OWNER. GR remains the later Project Owner
+    architecture-decision gate and G6 remains NOT_REACHED; neither is opened,
+    scoped, started, or authorized by this acceptance. A separate explicit
+    Project Owner authorization is required before any GR or G6 work.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

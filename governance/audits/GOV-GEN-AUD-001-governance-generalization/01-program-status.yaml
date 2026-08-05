@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_NOT_REACHED_G6_NOT_REACHED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G5-C
+  current_phase: GR
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -348,11 +348,11 @@ G4:
     G4, and G5 remains unopened, unscoped, and unauthorized.
 
 G5:
-  status: G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+  status: ACCEPTED_BY_PROJECT_OWNER
   contract: GOV-GEN-G5-CONTRACT-001/0.1.0
   contract_location: G5/GOV-GEN-G5-CONTRACT-001-v0.1.0.md
   execution_topology: SINGLE_COHERENT_TASK_PRIMARY_SYNTHESIS_ONLY_NO_IN_UNIT_INDEPENDENT_REVIEW
-  sub_gate: G5-A
+  sub_gate: G5-ACCEPTANCE
   sub_gate_note: >-
     The Project Owner split G5 into sub-gates rather than authorizing it as
     one governed unit the way G2/G3/G4 were. G5-A covers canonical
@@ -411,7 +411,7 @@ G5:
     reviewed_candidate_modified: false
     note: performed as one separate governed unit, per GOV-GEN-G5-CONTRACT-001/0.1.0 §9
   correction:
-    status: G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    status: G5_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
     correction_index: 1
     id: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
     location: G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md
@@ -431,8 +431,8 @@ G5:
     g2_capability_reclassification_performed: false
     g2_gap_redisposition_performed: false
     recommendation_shape_unchanged: true
-    pending_owner_acceptance: true
-    acceptance_record: null
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-017/0.1.0
     note: >-
       Corrects an unsupported G2 reuse-readiness figure provenance
       (39/27/10/12, re-grounded in G2 §17.2/§23 by one targeted lookup
@@ -444,9 +444,19 @@ G5:
       reclassify any G2 capability, redispose any G2 gap, redo G5-A, or
       select a target physical architecture. Pending Project Owner
       acceptance.
-  pending_owner_acceptance: true
+  pending_owner_acceptance: false
   pending_owner_correction_disposition: false
-  acceptance_record: null
+  acceptance_record: GOV-GEN-DECISION-017/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-05'
+  controlling_result: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+  carried_forward_issue:
+    id: G3-REFERENCE-DEFECT-001
+    status: CARRIED_FORWARD_NOT_CORRECTED_OR_REOPENED
+    note: >-
+      G3 §10's incorrect "66% ... per G2 §21.2" aggregate statement is a
+      known pre-existing factual/reference defect. It is carried forward only;
+      G3 is neither corrected nor reopened by G5 acceptance.
   note: >-
     Contract definition and primary-synthesis execution were authorized and
     performed in one governed unit per the Project Owner's explicit
@@ -471,10 +481,8 @@ G5:
     without redoing G5-A, reallocating any G3 capability, reclassifying any
     G2 capability, redisposing any G2 gap, or selecting a target physical
     architecture; the recommended staged sequence is unchanged in substance.
-    G5 as a whole is G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE: the
-    next governed state is a separate, explicit Project Owner acceptance (or
-    rejection, or a further bounded correction request) of the corrected G5
-    result, not GR or G6 directly.
+    The Project Owner accepted the corrected result under GOV-GEN-DECISION-017/0.1.0.
+    G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
   status: NOT_REACHED
@@ -535,6 +543,9 @@ decisions:
   - id: GOV-GEN-DECISION-016
     version: 0.1.0
     subject: G5 bounded independent-review correction R1
+  - id: GOV-GEN-DECISION-017
+    version: 0.1.0
+    subject: G5 corrected result (R1) Project Owner acceptance
 
 not_authorized_by_this_program:
   - target_architecture_selection

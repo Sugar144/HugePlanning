@@ -307,3 +307,14 @@ exclusions. Silence is never approval. Acceptance of a contract does not
 authorize its execution unless the Owner explicitly grants both together, as
 in `GOV-GEN-DECISION-004/0.1.0` and `GOV-GEN-DECISION-008/0.1.0`; absent
 that, execution requires a separate Owner authorization.
+
+`GOV-GEN-DECISION-017/0.1.0` records the Project Owner disposition
+`ACCEPT_GOV_GEN_G5_CORRECTED_RESULT` (`HP-PROMPT-055/0.1.0`), accepting
+`GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0` as the corrected and
+controlling G5 result, read together with the immutable base deliverable.
+Options A-D, the non-binding staged recommendation (Option B now, optional
+Option D pilot, Option C deferred, Option A fallback), and the seven unresolved
+final architecture decisions remain preserved. The known pre-existing G3 §10
+`66% ... per G2 §21.2` factual/reference defect is carried forward only; G3 is
+not corrected or reopened. This acceptance does not select a final physical
+architecture and does not open, scope, start, or authorize `GR` or `G6`.

@@ -221,7 +221,7 @@ GOV-8: {status: INACTIVE}
 GOV-9: {status: INACTIVE}
 
 GOV_GEN_AUD_001:
-  status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_NOT_REACHED_G6_NOT_REACHED
   firewalled_from: GOV-AUD-001
   local_custody: governance/audits/GOV-GEN-AUD-001-governance-generalization/
   G1A:
@@ -353,8 +353,8 @@ GOV_GEN_AUD_001:
       pending_owner_acceptance: false
       acceptance_record: GOV-GEN-DECISION-013/0.1.0
   G5:
-    status: G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
-    sub_gate: G5-C
+    status: ACCEPTED_BY_PROJECT_OWNER
+    sub_gate: G5-ACCEPTANCE
     contract: GOV-GEN-G5-CONTRACT-001/0.1.0
     execution_topology: SINGLE_COHERENT_TASK_PRIMARY_SYNTHESIS_ONLY_NO_IN_UNIT_INDEPENDENT_REVIEW
     execution_authorized: true
@@ -387,9 +387,16 @@ GOV_GEN_AUD_001:
     correction_findings_corrected: 4
     correction_targeted_lookups_performed: 1
     correction_recommendation_shape_unchanged: true
-    pending_owner_acceptance: true
+    pending_owner_acceptance: false
     pending_owner_correction_disposition: false
-    acceptance_record: null
+    acceptance_record: GOV-GEN-DECISION-017/0.1.0
+    accepted_by: Project Owner
+    accepted_on: '2026-08-05'
+    controlling_result: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+    carried_forward_issue:
+      id: G3-REFERENCE-DEFECT-001
+      status: CARRIED_FORWARD_NOT_CORRECTED_OR_REOPENED
+      note: G3 §10's incorrect "66% ... per G2 §21.2" statement is carried forward only; G3 is not corrected or reopened.
     target_architecture_selected: false
     g3_capability_reallocation_performed: false
     g2_capability_reclassification_performed: false
