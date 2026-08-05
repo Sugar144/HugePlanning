@@ -1,0 +1,124 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-012
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_AND_RECORD_GOV_GEN_G4_BOUNDED_INDEPENDENT_REVIEW_CORRECTION_R1
+  program_id: GOV-GEN-AUD-001
+  phase: G4
+  subject_base_deliverable: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0
+  subject_correction: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+  source_prompt: HP-PROMPT-050/0.1.0
+  authorized:
+    - correction of an accidental physical-architecture comparison in base
+      §8's cross-profile synthesis (a paragraph that compared two physical
+      L0-distribution options and asserted one "materially worse" than the
+      other), restated as a non-comparative requirement statement
+    - addition of one previously untested hidden assumption, "exactly one
+      Owner/authority domain," as register entry RD-C9, and the
+      corresponding correction of base §4.3's GAMMA L0 row and the base §6
+      severity tally
+    - correction of register entries RD-B3 and RD-C6, whose
+      observed_pressure/evidence_refs cited
+      .claude/rules/id-and-status-conventions.md -- a rule G3 §6 itself
+      already scopes to a separate, unrelated client-facing methodology
+      system -- replaced with evidence grounded in GOV-GEN's own observed
+      sequential ID-allocation practice
+    - normalization of the non-contract architecture_relevance value
+      "architecture_pressure_not_g4_decision" (used on RD-C1, RD-C3, RD-C4,
+      RD-C5, RD-C7, and the corrected RD-C6) to
+      future_implementation_requirement, one of the four categories named
+      by GOV-GEN-G4-CONTRACT-001/0.1.0 §5.5
+    - minimum current-state/index/reference reconciliation required by the
+      above
+    - one bounded local commit
+  g4_correction_authorized: true
+  g4_correction_authorization_basis: >-
+    HP-PROMPT-050/0.1.0 directly authorizes, as part of the same G4 governed
+    unit, exactly one clean-session independent realism review of the G4
+    candidate and a bounded prospective correction if that review returns
+    material findings ("If material findings require correction, preserve
+    the original result and correct prospectively using existing GOV-GEN
+    conventions"). The review, performed by an agent with no prior context
+    of the G4 authoring session, returned VERDICT MATERIAL_FINDINGS_PRESENT
+    with three findings (recorded verbatim in base §13) and three
+    non-material bounded observations. This correction addresses exactly
+    those three findings plus one bounded observation cheap to normalize,
+    following the prospective-correction convention already established by
+    GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0 (GOV-GEN-DECISION-005/0.1.0)
+    and GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
+    (GOV-GEN-DECISION-009/0.1.0). Unlike those two corrections, this one
+    follows a review performed within the same governed unit rather than a
+    later, separate Project Owner review.
+  g4_correction_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - g4_redo_or_reexecution
+    - profile_addition_removal_or_merger
+    - eight_layer_g3_model_change
+    - reallocation_of_any_g3_capability_not_named_by_the_independent_review
+    - reclassification_of_any_g2_capability
+    - redisposition_of_any_g2_gap
+    - g2_or_g3_reopening
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - kernel_extraction_or_migration
+    - delegated_operational_authority_implementation
+    - provider_neutral_governance_implementation
+    - provider_or_executor_adapter_implementation
+    - query_or_projection_tooling_implementation
+    - storage_or_query_technology_selection
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+    - g5_phase_definition_or_authorization
+    - owner_acceptance_of_the_g4_consumer_requirements_delta_or_its_correction
+  final_status: G4_CORRECTION_ACCEPTED_LOCALLY_COMMITTED_PENDING_OWNER_ACCEPTANCE
+  reviewed_evidence:
+    correction_terminal_status: G4_READY_FOR_PROJECT_OWNER_REVIEW
+    independent_review_verdict: MATERIAL_FINDINGS_PRESENT
+    material_findings_corrected: 3
+    bounded_observations_normalized: 1
+    bounded_observations_not_corrected: 2
+    base_deliverable_modified: false
+    base_deliverable_sha256: 6955973b2278e5b9549c66e6f6fb25835c53885719c1e722e53328b6f77f8b3d
+    correction_manifest: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.manifest.sha256
+    requirements_delta_entries_total_after_correction: 16
+    severity_counts_after_correction: {BLOCKS_REUSE: 6, REQUIRES_PARAMETERIZATION: 6, REQUIRES_IMPLEMENTATION_SUPPORT: 4, OPTIONAL_PROFILE_REQUIREMENT: 0}
+    new_register_entry: RD-C9
+  pending_owner_acceptance_of_correction: true
+  not_accepted:
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_delegated_operational_authority
+    - implementation_of_provider_neutral_governance
+    - implementation_of_any_recorded_gap
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - g5_phase_authorization
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes authorization of a bounded prospective
+    correction to GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0
+    (HP-PROMPT-050/0.1.0), following the clean-session independent review
+    that same prompt commissioned. The base deliverable is preserved
+    unmodified as historical evidence, except for the completion of its own
+    §7/§13/§14 placeholders with the review's actual output -- those
+    placeholders were always designated to be filled once the review ran,
+    per GOV-GEN-G4-CONTRACT-001/0.1.0 §3, not left as an open question this
+    correction resolves. The correction itself is a new versioned artifact
+    (GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0) read together with
+    the base.
+  next_governed_state: >-
+    GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0 together with its
+    correction GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0 is
+    G4_READY_FOR_PROJECT_OWNER_REVIEW. The next governed state is Project
+    Owner acceptance (or rejection, or a further bounded correction request)
+    of the corrected G4 result; only after such acceptance may the Owner
+    separately authorize G5. This decision does not itself accept the G4
+    result, and does not open, scope, or authorize G5.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

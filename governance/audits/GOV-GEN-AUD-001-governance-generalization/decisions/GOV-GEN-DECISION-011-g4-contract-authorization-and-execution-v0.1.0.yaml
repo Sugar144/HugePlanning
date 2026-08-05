@@ -1,0 +1,137 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-011
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_AND_RECORD_GOV_GEN_G4_CONTRACT_DEFINITION_EXECUTION_AND_LOCAL_COMMIT
+  program_id: GOV-GEN-AUD-001
+  phase: G4
+  subject_contract: GOV-GEN-G4-CONTRACT-001/0.1.0
+  subject_deliverable: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0
+  source_prompt: HP-PROMPT-050/0.1.0
+  authorized:
+    - canonical definition of G4 (Cross-Project Consumer Modeling and
+      Requirements Delta) as one contract, GOV-GEN-G4-CONTRACT-001/0.1.0
+    - execution of that contract within the same governed unit, with no
+      further, separate Owner authorization gate between contract
+      acceptance and execution
+    - definition of exactly three fictitious consumer profiles (ALPHA
+      solo-repository, BETA concurrent AI-first team, GAMMA federated
+      multi-team/multi-repository), none a real project
+    - a per-profile L0-L7 stress test of the accepted G3 R1 eight-layer
+      model, explicitly re-testing the twelve named hidden single-project
+      assumptions
+    - the context-efficiency stress test (canonical evidence exceeding
+      agent context), without selecting or implementing any storage or
+      query technology
+    - a severity-classified requirements-delta register, cross-profile
+      synthesis, architecture pressures carried to G5, and explicitly
+      preserved non-decisions
+    - exactly one clean-session independent realism review, and, since that
+      review returned material findings, one bounded prospective correction
+      (GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0) recorded and
+      authorized together with this same decision (see
+      GOV-GEN-DECISION-012/0.1.0 for its own dedicated reconciliation)
+    - creation of the minimum decision/state/index reconciliation artifacts
+      required by existing GOV-GEN conventions
+    - one bounded local commit
+  g4_execution_authorized: true
+  g4_execution_authorization_basis: >-
+    HP-PROMPT-050/0.1.0 itself grants canonical definition, execution, and
+    one bounded local commit directly, in a single governed unit, mirroring
+    the G2/G3 pattern (HP-PROMPT-043/0.1.0, GOV-GEN-DECISION-004/0.1.0;
+    HP-PROMPT-047/0.1.0, GOV-GEN-DECISION-008/0.1.0). This decision
+    reconciles that already-granted authorization into durable GOV-GEN
+    custody; it does not itself add a new gate.
+  g4_execution_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - filesystem_or_package_topology_selection
+    - kernel_extraction_or_migration
+    - delegated_operational_authority_implementation
+    - provider_neutral_governance_implementation
+    - provider_or_executor_adapter_implementation
+    - query_or_projection_tooling_implementation
+    - storage_or_query_technology_selection
+    - implementation_of_any_recorded_g1b_or_g2_gap
+    - reclassification_of_any_g2_capability
+    - redisposition_of_any_g2_gap
+    - reallocation_of_any_g3_capability_or_redesign_of_the_eight_layer_model
+    - use_of_a_real_project_as_a_fictitious_profile
+    - g5_phase_definition_or_authorization
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+    - owner_acceptance_of_the_g4_consumer_requirements_delta
+  execution_topology_rule: >-
+    Single L1_CLEAN_SESSION, three-profile progressive stress test, followed
+    by exactly one clean-session independent realism review within the same
+    governed unit (GOV-GEN-G4-CONTRACT-001/0.1.0 §3). Evidence volume (three
+    profiles, eight layers each) is explicitly not a session-split trigger;
+    a split is warranted only by a genuinely independent decision, authority,
+    validation, acceptance, or material-risk boundary (unchanged from
+    GOV-GEN-G2-CONTRACT-001/0.1.0 §3 and GOV-GEN-G3-CONTRACT-001/0.1.0 §3).
+  final_status: G4_CONTRACT_ACCEPTED_EXECUTED_INDEPENDENTLY_REVIEWED_CORRECTED_AND_LOCALLY_COMMITTED_PENDING_OWNER_ACCEPTANCE
+  reviewed_evidence:
+    base_deliverable_terminal_status: G4_READY_FOR_PROJECT_OWNER_REVIEW
+    controlling_result: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+    profiles_defined: 3
+    profiles_merged_as_redundant: 0
+    requirements_delta_entries_after_correction: 16
+    severity_counts_after_correction: {BLOCKS_REUSE: 6, REQUIRES_PARAMETERIZATION: 6, REQUIRES_IMPLEMENTATION_SUPPORT: 4, OPTIONAL_PROFILE_REQUIREMENT: 0}
+    architecture_pressures_recorded: 6
+    independent_review_performed: true
+    independent_review_result: MATERIAL_FINDINGS_PRESENT_CORRECTED_IN_R1
+    targeted_lookups_performed: 0
+    self_check_result: 'PASS (G4 contract §6, checks 1-10)'
+    worktree_clean_outside_g4_and_reconciliation_surfaces: true
+    head_before: abb3efaed8a900bce2c7f308cc6f21783bb53151
+    base_manifest: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.manifest.sha256
+    correction_manifest: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.manifest.sha256
+    manifest_verified: true
+  pending_owner_acceptance_of_g4_result: true
+  not_accepted:
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_delegated_operational_authority
+    - implementation_of_provider_neutral_governance
+    - implementation_of_any_recorded_gap
+    - reallocation_of_any_g3_capability
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - g5_phase_authorization
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct, single-prompt
+    authorization of G4's canonical definition, execution, independent
+    review, bounded correction, and one bounded local commit
+    (HP-PROMPT-050/0.1.0) into durable GOV-GEN-AUD-001 custody, mirroring
+    the G2/G3 pattern under GOV-GEN-DECISION-004/0.1.0 and
+    GOV-GEN-DECISION-008/0.1.0. G4 stress-tests, without reallocating any G3
+    capability or reclassifying/redisposing any G2 capability or gap, the
+    accepted eight-layer G3 model against three fictitious consumer profiles
+    (ALPHA, BETA, GAMMA), derives a 16-entry severity-classified
+    requirements-delta register, six architecture pressures carried to G5,
+    and explicitly preserved non-decisions. A clean-session independent
+    realism review, performed by an agent with no prior context of this
+    session's authorship, returned three material findings; they are
+    corrected prospectively in GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+    (see GOV-GEN-DECISION-012/0.1.0), which is the controlling G4 result.
+    Acceptance of that controlling result remains a separate, subsequent
+    Owner act, not performed by this decision.
+  next_governed_state: >-
+    GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0 together with its
+    controlling correction GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+    is G4_READY_FOR_PROJECT_OWNER_REVIEW. The next governed state is Project
+    Owner review and acceptance (or rejection, or a further bounded
+    correction request) of that result; only after such acceptance may the
+    Owner separately authorize G5. This decision does not itself accept the
+    G4 result, and does not open, scope, or authorize G5 or any
+    physical-architecture work.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

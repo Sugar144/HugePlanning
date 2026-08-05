@@ -153,6 +153,51 @@ query/index/projection tooling is implemented, no G1B gap is implemented, no
 CWG/AET/SVP integration occurs, and G4 is not opened, scoped, defined, or
 authorized. No `PENDING_OWNER_ACCEPTANCE` state remains for G3.
 
+`GOV-GEN-DECISION-011/0.1.0` records the Project Owner's direct
+authorization (`HP-PROMPT-050/0.1.0`) of G4's canonical definition
+(`GOV-GEN-G4-CONTRACT-001/0.1.0`), execution, and one bounded local commit
+as a single governed unit, mirroring the G2/G3 pattern
+(`GOV-GEN-DECISION-004/0.1.0`, `GOV-GEN-DECISION-008/0.1.0`). G4
+stress-tests, without reallocating any G3 capability or
+reclassifying/redisposing any G2 capability or gap, the accepted eight-layer
+G3 model against three fictitious consumer profiles (ALPHA solo-repository,
+BETA concurrent AI-first team, GAMMA federated multi-team/multi-repository),
+producing `GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0` — a 15-entry
+severity-classified requirements-delta register (before correction), a
+cross-profile synthesis, six architecture pressures carried to G5, and
+explicitly preserved non-decisions — `G4_READY_FOR_PROJECT_OWNER_REVIEW`. As
+with G2 and G3, this decision does not itself accept the resulting
+deliverable; Owner review and acceptance remains a separate, subsequent act,
+and G5 remains unopened, unscoped, and unauthorized. No target physical
+architecture is selected, no kernel repository ownership is decided, no
+repository is created, no file is extracted or migrated, and no Delegated
+Operational Authority, Provider-Neutral Governance, adapter, or
+query/projection tooling is implemented, selected, or designed.
+
+`GOV-GEN-DECISION-012/0.1.0` records the Project Owner's direct
+authorization (`HP-PROMPT-050/0.1.0`) of a bounded prospective correction to
+the G4 Consumer Requirements Delta, following a clean-session independent
+realism review performed within the same G4 governed unit (not a later,
+separate Owner review, unlike the G2/G3 correction pattern). The review
+returned `MATERIAL_FINDINGS_PRESENT`: an accidental physical-architecture
+comparison in the base deliverable's §8 cross-profile synthesis; incomplete
+coverage of the "exactly one Owner/authority domain" hidden assumption
+(added as register entry `RD-C9`); and a category-mismatched evidence
+citation in register entries `RD-B3`/`RD-C6` (which had cited
+`.claude/rules/id-and-status-conventions.md`, a rule G3 §6 itself already
+scopes to a separate, unrelated client-facing methodology system, rather
+than GOV-GEN's own observed ID-allocation practice). The base deliverable
+(`GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0`) is preserved unmodified
+as historical evidence; the correction is a new versioned artifact,
+`GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0`, read together with
+it — 16 total requirements-delta entries after correction (`BLOCKS_REUSE` 6,
+`REQUIRES_PARAMETERIZATION` 6, `REQUIRES_IMPLEMENTATION_SUPPORT` 4,
+`OPTIONAL_PROFILE_REQUIREMENT` 0). No profile is added, removed, or merged;
+no G3 capability is reallocated beyond `RD-C9`'s addition; no G2 capability
+is reclassified; no G2 gap is redisposed; G2 and G3 are not reopened. This
+decision does not accept the corrected result — Owner acceptance remains a
+separate, subsequent act — and does not open, scope, or authorize G5.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority

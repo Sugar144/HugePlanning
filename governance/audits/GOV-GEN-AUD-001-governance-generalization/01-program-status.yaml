@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_ACCEPTED_BY_PROJECT_OWNER_G4_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_G2_G3_ACCEPTED_BY_PROJECT_OWNER_G4_EXECUTED_CORRECTED_READY_FOR_PROJECT_OWNER_REVIEW_G5_NOT_STARTED_NOT_AUTHORIZED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G3
+  current_phase: G4
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -275,14 +275,77 @@ G3:
       correction as the controlling G3 result under GOV-GEN-DECISION-010/0.1.0
       (HP-PROMPT-049/0.1.0, disposition ACCEPT_GOV_GEN_G3_CORRECTED_RESULT).
 
-G4_through_G6:
+G4:
+  status: LOGICAL_ARCHITECTURE_STRESS_TEST_R1_READY_FOR_PROJECT_OWNER_REVIEW
+  contract: GOV-GEN-G4-CONTRACT-001/0.1.0
+  contract_location: G4/GOV-GEN-G4-CONTRACT-001-v0.1.0.md
+  execution_topology: SINGLE_COHERENT_TASK_WITH_THREE_PROFILE_STRESS_TEST_AND_IN_UNIT_INDEPENDENT_REVIEW
+  principal_result: Consumer Requirements Delta
+  principal_results_count: 1
+  deliverable: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0
+  deliverable_location: G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md
+  manifest_location: G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.manifest.sha256
+  manifest_verified: true
+  profiles_defined: 3
+  profile_names: [ALPHA, BETA, GAMMA]
+  profiles_merged_as_redundant: 0
+  requirements_delta_entries_base: 15
+  requirements_delta_entries_corrected: 16
+  severity_counts_corrected: {BLOCKS_REUSE: 6, REQUIRES_PARAMETERIZATION: 6, REQUIRES_IMPLEMENTATION_SUPPORT: 4, OPTIONAL_PROFILE_REQUIREMENT: 0}
+  architecture_pressures_recorded: 6
+  g3_capability_reallocation_performed: false
+  g2_capability_reclassification_performed: false
+  g2_gap_redisposition_performed: false
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-011/0.1.0
+  execution_authorization_basis: HP-PROMPT-050/0.1.0 (Project Owner, direct single-unit authorization of definition, execution, in-unit independent review, any triggered correction, and one bounded commit)
+  execution_started: true
+  execution_self_check: PASS
+  split_triggered: false
+  independent_review:
+    performed: true
+    mode: CLEAN_SESSION_WITHIN_SAME_GOVERNED_UNIT
+    verdict: MATERIAL_FINDINGS_PRESENT
+    material_findings: 3
+    bounded_observations: 3
+    disposition: CORRECTED_IN_R1
+  correction:
+    status: G4_CORRECTION_LOCALLY_COMMITTED_PENDING_OWNER_ACCEPTANCE
+    correction_index: 1
+    id: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+    location: G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md
+    manifest_location: G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.manifest.sha256
+    manifest_verified: true
+    correction_authorization_record: GOV-GEN-DECISION-012/0.1.0
+    base_deliverable_modified: false
+    material_findings_corrected: 3
+    new_register_entry: RD-C9
+  pending_owner_acceptance: true
+  controlling_result: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+  note: >-
+    Contract definition, execution, in-unit independent review, and its
+    triggered correction were authorized and performed in one governed unit
+    per the Project Owner's explicit instruction (HP-PROMPT-050/0.1.0),
+    mirroring the G2/G3 pattern. G4 does not select a target physical
+    architecture, decide kernel repository ownership, create any repository,
+    extract or migrate any file, or implement Delegated Operational
+    Authority, Provider-Neutral Governance, any adapter, or any
+    query/projection tooling. The base deliverable
+    (GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0) is preserved,
+    unmodified beyond completion of its own designated independent-review
+    placeholders, as the record read together with its correction. Owner
+    review and acceptance of the corrected R1 result remains a separate,
+    subsequent act, and G5 remains unopened, unscoped, and unauthorized.
+
+G5_and_G6:
   status: NOT_STARTED_NOT_AUTHORIZED
   note: >-
-    G4 has no contract, scaffold, or Owner authorization and is not defined.
+    G5 has no contract, scaffold, or Owner authorization and is not defined.
     A separate, explicit Project Owner authorization is required before any
-    G4 work, including its definition, and before any target physical
+    G5 work, including its definition, and before any target physical
     architecture selection, kernel repository ownership decision, or
-    extraction/migration.
+    extraction/migration. G6 remains further downstream and equally
+    unauthorized.
 
 GR:
   status: NOT_REACHED
@@ -319,6 +382,12 @@ decisions:
   - id: GOV-GEN-DECISION-010
     version: 0.1.0
     subject: G3 corrected result (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-011
+    version: 0.1.0
+    subject: G4 contract authorization and execution
+  - id: GOV-GEN-DECISION-012
+    version: 0.1.0
+    subject: G4 bounded independent-review correction R1
 
 not_authorized_by_this_program:
   - target_architecture_selection
@@ -335,5 +404,6 @@ not_authorized_by_this_program:
   - reclassification_of_any_capability
   - redisposition_of_any_g1b_gap
   - resolution_of_any_g2_section_21_unresolved_question
-  - g4_phase_definition
-  - g4_phase_authorization
+  - reallocation_of_any_g3_capability_beyond_rd_c9
+  - g5_phase_definition
+  - g5_phase_authorization

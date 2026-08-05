@@ -134,10 +134,39 @@ disposition `ACCEPT_GOV_GEN_G3_CORRECTED_RESULT`). No
 `PENDING_OWNER_ACCEPTANCE` state remains for G3; the base deliverable
 `G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md` remains preserved, unmodified,
 as immutable historical execution evidence, read together with its accepted
-correction. G4 has no contract, scaffold, or Owner authorization, and is not
-defined; a separate, explicit Project Owner authorization is required
-before any G4 work, including any target physical architecture selection,
-repository ownership decision, or extraction or migration.
+correction.
+
+G4 (Cross-Project Consumer Modeling and Requirements Delta) was directly
+authorized by the Project Owner as one governed unit spanning canonical
+definition, execution, an in-unit clean-session independent realism review,
+any triggered correction, and one bounded local commit
+(`HP-PROMPT-050/0.1.0`, reconciled in `GOV-GEN-DECISION-011/0.1.0`),
+mirroring the G2/G3 pattern. G4 stress-tested the accepted G3 R1 eight-layer
+model against three fictitious consumer profiles — ALPHA (solo
+single-repository), BETA (concurrent AI-first product team), GAMMA
+(federated multi-team/multi-repository program) — none a real project,
+producing `GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0`: a per-profile
+L0-L7 stress test explicitly re-testing the twelve named hidden
+single-project assumptions, a 15-entry severity-classified
+requirements-delta register, a cross-profile synthesis, six architecture
+pressures carried to G5, and explicitly preserved non-decisions. No G3
+capability was reallocated, no G2 capability was reclassified, and no G2 gap
+was redisposed. A clean-session independent realism review, performed by an
+agent with no prior context of the authoring session, returned
+`MATERIAL_FINDINGS_PRESENT` — an accidental physical-architecture comparison
+in §8, incomplete coverage of the "exactly one Owner/authority domain"
+hidden assumption, and a category-mismatched evidence citation in two
+register entries — bounded-corrected without redoing G4, reopening G2/G3, or
+selecting any physical architecture by
+`G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md`
+(`GOV-GEN-DECISION-012/0.1.0`), which adds one register entry (`RD-C9`) and
+brings the corrected total to 16 entries. G4's terminal status is
+`G4_READY_FOR_PROJECT_OWNER_REVIEW`; Owner acceptance is a separate,
+subsequent act, and G5 remains unopened, unscoped, and unauthorized. No
+target physical architecture is selected, no kernel repository ownership is
+decided, no repository is created, no file is extracted or migrated, and no
+Delegated Operational Authority, Provider-Neutral Governance, adapter, or
+query/projection tooling is implemented or selected.
 
 ## Durable baseline
 
@@ -203,6 +232,9 @@ governance/audits/GOV-GEN-AUD-001-governance-generalization/
   G3/                             the G3 contract, the Logical Architecture
                                   and Layering Assessment, and its hash
                                   manifest
+  G4/                              the G4 contract, the Consumer
+                                  Requirements Delta, its R1 correction, and
+                                  their hash manifests
 ```
 
 Full G0/G1A source material (framing documents, the 679-row index, the G1A
