@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G5
+  current_phase: G5-A
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -347,15 +347,76 @@ G4:
     GOV-GEN-DECISION-013/0.1.0. No PENDING_OWNER_ACCEPTANCE state remains for
     G4, and G5 remains unopened, unscoped, and unauthorized.
 
-G5_and_G6:
-  status: NOT_STARTED_NOT_AUTHORIZED
-  note: >-
-    G5 has no contract, scaffold, or Owner authorization and is not defined.
-    A separate, explicit Project Owner authorization is required before any
-    G5 work, including its definition, and before any target physical
-    architecture selection, kernel repository ownership decision, or
-    extraction/migration. G6 remains further downstream and equally
+G5:
+  status: G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW
+  contract: GOV-GEN-G5-CONTRACT-001/0.1.0
+  contract_location: G5/GOV-GEN-G5-CONTRACT-001-v0.1.0.md
+  execution_topology: SINGLE_COHERENT_TASK_PRIMARY_SYNTHESIS_ONLY_NO_IN_UNIT_INDEPENDENT_REVIEW
+  sub_gate: G5-A
+  sub_gate_note: >-
+    The Project Owner split G5 into sub-gates rather than authorizing it as
+    one governed unit the way G2/G3/G4 were. G5-A covers canonical
+    definition and primary-synthesis execution only; independent/adversarial
+    review, any triggered correction, and Owner acceptance are each reserved
+    to a separate, later, explicit Owner authorization, and GR (the Owner
+    architecture-decision gate) and G6 remain further downstream and
     unauthorized.
+  principal_result: Physical Architecture Synthesis
+  principal_results_count: 1
+  deliverable: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0
+  deliverable_location: G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001.md
+  manifest_location: G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001.manifest.sha256
+  manifest_verified: true
+  physical_architecture_options_evaluated: 4
+  option_names: [A_STATUS_QUO, B_REUSABLE_CORE_SEPARATED_IN_PLACE, C_INDEPENDENT_GENERAL_GOVERNANCE_REPOSITORY, D_MINIMAL_BOUNDED_EXTRACTION]
+  options_retained_as_credible: 4
+  additional_options_manufactured: 0
+  invariant_layers_identified: [L3, L5]
+  requirements_delta_entries_tested: 16
+  blocks_reuse_entries_individually_reasoned: 6
+  recommended_candidate_recorded: true
+  recommended_candidate_shape: STAGED_SEQUENCE_B_THEN_OPTIONAL_D_THEN_DEFERRED_C_WITH_A_AS_FALLBACK
+  unresolved_owner_decisions_recorded: 7
+  target_architecture_selected: false
+  repository_created: false
+  file_extracted_or_migrated: false
+  architecture_or_requirement_implemented: false
+  g3_capability_reallocation_performed: false
+  g2_capability_reclassification_performed: false
+  g2_gap_redisposition_performed: false
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-014/0.1.0
+  execution_authorization_basis: HP-PROMPT-052/0.1.0 (Project Owner, direct single-unit authorization of definition, primary-synthesis execution, and one bounded commit -- explicitly excluding independent review, correction, and acceptance)
+  execution_started: true
+  execution_self_check: PASS
+  split_triggered: false
+  independent_review:
+    performed: false
+    authorized: false
+    note: reserved to a separate, later, explicit Owner authorization
+  correction:
+    performed: false
+  pending_owner_acceptance: true
+  acceptance_record: null
+  note: >-
+    Contract definition and primary-synthesis execution were authorized and
+    performed in one governed unit per the Project Owner's explicit
+    instruction (HP-PROMPT-052/0.1.0), mirroring the G2/G3/G4 pattern but
+    explicitly narrower in scope: unlike G2/G3/G4, independent review,
+    correction, and Owner acceptance are each reserved to a separate, later
+    governed unit rather than bundled into this one. No G3 capability is
+    reallocated, no G2 capability is reclassified, no G2 gap is redisposed,
+    no target physical architecture is selected, no repository is created,
+    and no file is extracted or migrated. G5 as a whole remains incomplete:
+    the next governed state is a separate Owner authorization of an
+    independent/adversarial review of this candidate, not Owner acceptance
+    directly.
+
+G6:
+  status: NOT_REACHED
+  note: >-
+    Bounded extraction packets; write-authorized only after GR. Not opened
+    by this program.
 
 GR:
   status: NOT_REACHED
@@ -401,6 +462,9 @@ decisions:
   - id: GOV-GEN-DECISION-013
     version: 0.1.0
     subject: G4 corrected result (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-014
+    version: 0.1.0
+    subject: G5-A contract authorization and primary-synthesis execution
 
 not_authorized_by_this_program:
   - target_architecture_selection
@@ -418,5 +482,9 @@ not_authorized_by_this_program:
   - redisposition_of_any_g1b_gap
   - resolution_of_any_g2_section_21_unresolved_question
   - reallocation_of_any_g3_capability_beyond_rd_c9
-  - g5_phase_definition
-  - g5_phase_authorization
+  - implementation_of_any_g4_requirement_or_architecture_pressure
+  - independent_or_adversarial_review_of_the_g5a_candidate
+  - correction_of_the_g5a_candidate
+  - project_owner_acceptance_of_the_g5a_candidate
+  - gr_phase_authorization
+  - g6_phase_authorization

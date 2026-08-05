@@ -223,6 +223,34 @@ implemented, no CWG/AET/SVP integration occurs, and G5 is not opened,
 scoped, defined, or authorized. No `PENDING_OWNER_ACCEPTANCE` state remains
 for G4.
 
+`GOV-GEN-DECISION-014/0.1.0` records the Project Owner's direct
+authorization (`HP-PROMPT-052/0.1.0`) of G5-A's canonical definition
+(`GOV-GEN-G5-CONTRACT-001/0.1.0`), primary-synthesis execution, and one
+bounded local commit as a single governed unit, mirroring the G2/G3/G4
+pattern (`GOV-GEN-DECISION-004/0.1.0`, `GOV-GEN-DECISION-008/0.1.0`,
+`GOV-GEN-DECISION-011/0.1.0`) but explicitly narrower: unlike those three,
+this authorization does not extend to independent review, correction, or
+Owner acceptance, each of which `HP-PROMPT-052/0.1.0` itself reserves to a
+separate, later governed unit. G5-A compares four materially distinct
+candidate physical architectures (A status quo, B reusable core separated
+in-place with HugePlanning as adopter/lab, C independent
+`general-governance` repository, D minimal/bounded extraction of the
+already-`READY` L6 infrastructure sublayer) against the accepted G3 R1
+eight-layer model and the accepted G4 R1 sixteen-entry requirements-delta
+register, producing `GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0` —
+`G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW`. It maps L0-L7 to
+physical ownership per option (finding L3 and L5 physically invariant across
+every option), tests all sixteen requirements-delta entries with
+individually reasoned per-option disposition for all six `BLOCKS_REUSE`
+entries, records tradeoffs/failure modes/migration-provenance implications,
+and recommends a staged sequence (Option B now, Option D as an optional
+pilot, Option C deferred, Option A retained as fallback) without selecting,
+implementing, extracting, or migrating anything. No G2 capability is
+reclassified, no G2 gap is redisposed, and no G3 capability is reallocated.
+This decision does not itself accept the resulting candidate, does not
+authorize the independent/adversarial review G5 as a whole still requires,
+and does not open, scope, or authorize `GR` or `G6`.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority

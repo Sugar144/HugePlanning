@@ -2,8 +2,8 @@
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
 version: 1.0.0
-status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5_NOT_STARTED_NOT_AUTHORIZED
-authority: PROGRAM_INDEX_WITH_G1A_G1B_G2_G3_AND_G4_ACCEPTANCE_NOT_PHYSICAL_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
+status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW
+authority: PROGRAM_INDEX_WITH_G1A_G1B_G2_G3_AND_G4_ACCEPTANCE_PLUS_G5A_PRIMARY_SYNTHESIS_NOT_PHYSICAL_ARCHITECTURE_SELECTION_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
 
@@ -174,9 +174,47 @@ disposition `ACCEPT_GOV_GEN_G4_CORRECTED_RESULT`). No
 `G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md` remains preserved,
 unmodified beyond completion of its own designated independent-review
 placeholders, as immutable historical execution evidence, read together with
-its accepted correction. G5 has no contract, scaffold, or Owner
-authorization, is not defined, and remains unopened and unscoped until a
-separate, explicit Project Owner authorization.
+its accepted correction.
+
+G5-A (Physical Architecture Synthesis) was subsequently directly authorized
+by the Project Owner (`HP-PROMPT-052/0.1.0`, reconciled in
+`GOV-GEN-DECISION-014/0.1.0`), mirroring the G2/G3/G4 pattern of one governed
+unit spanning canonical definition, execution, and one bounded local commit —
+but, unlike those three, explicitly narrower: the Project Owner split G5 into
+sub-gates rather than authorizing it as one governed unit, so independent
+review, correction, and Owner acceptance are each reserved to a separate,
+later, explicit Owner authorization, and this contract's own execution
+authorization stops before any of them. G5-A executed under
+`GOV-GEN-G5-CONTRACT-001/0.1.0` (`governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/`)
+and produced its one principal deliverable,
+`GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0`: four materially
+distinct candidate physical architectures compared (A status quo — no
+physical change; B a reusable core separated in-place with HugePlanning as
+first adopter/lab; C an independent `general-governance` repository; D a
+minimal/bounded extraction of the already-`READY` L6 infrastructure
+sublayer), none manufactured beyond the evidence base; the accepted G3 R1
+eight-layer model mapped to physical ownership under each candidate, finding
+L3 and L5 physically invariant across every option; all sixteen accepted G4
+R1 requirements-delta entries tested against every candidate, with
+individually reasoned per-option disposition for all six `BLOCKS_REUSE`
+entries (finding that no option resolves any requirement outright — most
+require separate implementation regardless of physical topology, except
+`RD-C1`'s L0-distribution-mechanics *shape*, which Option C most directly
+resolves); tradeoffs, failure modes, and migration/provenance implications
+per option; a recommended staged sequence (Option B now, Option D as an
+optional low-risk pilot, Option C deferred until a real second consumer and
+a designed `AP-1`–`AP-6` resolution path exist, Option A retained as
+fallback); seven unresolved Owner decisions; and explicit non-decisions.
+G5-A does not select or implement a target physical architecture, does not
+create `general-governance` or any other repository, does not move, extract,
+or migrate any file, does not implement any G4 requirement or architecture
+pressure, and does not reallocate any G3 capability or
+reclassify/redispose any G2 capability or gap. Its terminal status is
+`G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW`; the next governed state
+is a separate, explicit Project Owner authorization of an
+independent/adversarial review of this candidate — not Owner acceptance
+directly, and not `GR` or `G6`, both of which remain unopened, unscoped, and
+unauthorized.
 
 ## Durable baseline
 
@@ -246,6 +284,9 @@ governance/audits/GOV-GEN-AUD-001-governance-generalization/
   G4/                              the G4 contract, the Consumer
                                   Requirements Delta, its R1 correction, and
                                   their hash manifests
+  G5/                              the G5-A contract and the Physical
+                                  Architecture Synthesis primary candidate,
+                                  and its hash manifest
 ```
 
 Full G0/G1A source material (framing documents, the 679-row index, the G1A
