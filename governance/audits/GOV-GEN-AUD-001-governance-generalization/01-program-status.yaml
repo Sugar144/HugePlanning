@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_NOT_REACHED_G6_NOT_REACHED
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION_G6_NOT_REACHED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G5_ACCEPTED_GR_NOT_REACHED
+  current_phase: GR_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -521,8 +521,30 @@ G6:
     by this program.
 
 GR:
-  status: NOT_REACHED
-  note: Owner architecture-decision gate; not opened by this program.
+  status: REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
+  contract: GOV-GEN-GR-CONTRACT-001/0.1.0
+  contract_location: G5/GOV-GEN-GR-CONTRACT-001-v0.1.0.md
+  review_deliverable: GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001/0.1.0
+  review_location: G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md
+  review_manifest_location: G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.manifest.sha256
+  execution_authorized: true
+  execution_authorization_basis: Project Owner direct task GOV-GEN GR — Independent Adversarial Architecture Review
+  execution_started: true
+  reviewer_relationship_to_reviewed_synthesis: CLEAN_SESSION_NOT_THE_G5_AUTHORING_OR_CORRECTION_SESSION
+  targeted_drill_downs_performed: 5
+  findings_blocking: 0
+  findings_material: 0
+  findings_minor: 0
+  verdict: GR_SUPPORTS_OWNER_ARCHITECTURE_DECISION
+  g5_recommendation_survives: true
+  architecture_selected: false
+  g5_modified: false
+  g6_started_or_authorized: false
+  next_authority_required: PROJECT_OWNER_ARCHITECTURE_DECISION
+  note: >-
+    GR independently tested the accepted G5 staged recommendation against the
+    accepted G3 and G4 results. It records no findings and does not select an
+    architecture, correct G5, or authorize G6.
 
 decisions:
   - id: GOV-GEN-DECISION-001

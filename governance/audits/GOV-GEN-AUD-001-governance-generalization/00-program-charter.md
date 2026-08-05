@@ -2,7 +2,7 @@
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
 version: 1.0.0
-status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_NOT_REACHED_G6_NOT_REACHED
+status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION_G6_NOT_REACHED
 authority: PROGRAM_INDEX_WITH_G1A_THROUGH_G5_ACCEPTANCE_NOT_PHYSICAL_ARCHITECTURE_SELECTION_OR_EXTRACTION_AUTHORITY
 supersedes: null
 ---
@@ -347,9 +347,13 @@ architecture pressure implemented; G5-A (primary synthesis), G5-B
 G5-B findings) have each executed as their own separate governed units, but
 the G5-C correction has not itself been independently reviewed, G5's corrected
 result is accepted by the Project Owner under GOV-GEN-DECISION-017/0.1.0, and
-`GR`/`G6` remain unopened, unscoped, and unauthorized. `GOV-AUD-001` and its internal
-`GOV-n` phase state are unaffected by this program and unaffected by this
-reconciliation.
+G6 remains unopened, unscoped, and unauthorized. GR has executed one
+independent adversarial review under `GOV-GEN-GR-CONTRACT-001/0.1.0`, recorded
+in `G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md`. Its verdict,
+`GR_SUPPORTS_OWNER_ARCHITECTURE_DECISION`, records no findings and neither
+selects an architecture nor authorizes G6. The next authority is the Project
+Owner's architecture decision. `GOV-AUD-001` and its internal `GOV-n` phase
+state are unaffected by this program and this reconciliation.
 
 ## Local custody
 
@@ -373,7 +377,8 @@ governance/audits/GOV-GEN-AUD-001-governance-generalization/
   G5/                              the G5-A contract, the Physical
                                   Architecture Synthesis primary candidate,
                                   the G5-B independent review, the G5-C R1
-                                  correction, and their hash manifests
+                                  correction, the GR contract and review, and
+                                  their hash manifests
 ```
 
 Full G0/G1A source material (framing documents, the 679-row index, the G1A
