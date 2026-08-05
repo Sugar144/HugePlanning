@@ -209,10 +209,15 @@ G3:
     UQ1: DEFER_TO_PHYSICAL_ARCHITECTURE
     UQ2: LOGICALLY_RESOLVED_BY_G3
     UQ3: NARROWED_BUT_OWNER_DECISION_REQUIRED
-    UQ4: LOGICALLY_RESOLVED_BY_G3_BOUNDARY_DEFER_MECHANICS_TO_IMPLEMENTATION_DESIGN
+    UQ4: LOGICALLY_RESOLVED_BY_G3
     UQ5: NARROWED_BUT_OWNER_DECISION_REQUIRED
     UQ6: NARROWED_BUT_OWNER_DECISION_REQUIRED
-    UQ7: MIXED_UNCHANGED_AND_NARROWED_BUT_OWNER_DECISION_REQUIRED
+    UQ7: NARROWED_BUT_OWNER_DECISION_REQUIRED
+  # UQ4/UQ7 corrected to the G3 contract's closed five-value enum by G3
+  # correction R1 (GOV-GEN-DECISION-009/0.1.0, finding 1); the base
+  # deliverable's own §12 originally recorded non-enum composite values
+  # here. Per-subcomponent distinctions are preserved in the base
+  # deliverable's §8 body text and restated in the R1 correction §2.
   candidate_architecture_recommended: true
   alternatives_recorded: 2
   targeted_lookups_performed: 1
@@ -235,6 +240,33 @@ G3:
     Owner acceptance of the Logical Architecture remains a separate,
     subsequent act; no PENDING_OWNER_ACCEPTANCE state is removed by this
     execution.
+  correction:
+    status: G3_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    correction_index: 1
+    id: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
+    location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md
+    manifest_location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.manifest.sha256
+    manifest_verified: true
+    base_deliverable_modified: false
+    corrections_applied: 6
+    correction_authorization_record: GOV-GEN-DECISION-009/0.1.0
+    correction_authorization_basis: HP-PROMPT-048/0.1.0 (Project Owner, bounded Owner-review correction)
+    layer_reallocation_performed: false
+    capability_reclassification_performed: false
+    gap_redisposition_performed: false
+    pending_owner_acceptance: true
+    acceptance_record: null
+    note: >-
+      Reconciles UQ4/UQ7 to the G3 contract's closed enum; clarifies the §7
+      context-efficiency model as a target logical model that does not
+      override current governance/AGENTS.md instructions; disambiguates
+      governance/AGENTS.md (CAP-NAV01-011) from root AGENTS.md; corrects a
+      quantitative statement (33/88/38% -> 29/88/~33%) and a schema-count
+      statement (9 schemas -> 8 schema capabilities); and honestly records a
+      historical check-8 evidence-custody gap plus fresh Owner-review
+      revalidation evidence for candidate d9cc0e74584e1c8c7aa83894621f3d9ede77bdea.
+      Does not reallocate any capability, reclassify any G2 capability,
+      redispose any G2 gap, or reopen G2.
 
 G4_through_G6:
   status: NOT_STARTED_NOT_AUTHORIZED
@@ -274,6 +306,9 @@ decisions:
   - id: GOV-GEN-DECISION-008
     version: 0.1.0
     subject: G3 contract authorization and execution
+  - id: GOV-GEN-DECISION-009
+    version: 0.1.0
+    subject: G3 bounded correction R1 (Owner-review findings)
 
 not_authorized_by_this_program:
   - target_architecture_selection

@@ -1,7 +1,7 @@
 ---
 program_id: GOV-GEN-AUD-001
 title: HugePlanning Governance Generalization Audit
-version: 0.6.0
+version: 0.7.0
 status: G0_G1A_G1B_G2_ACCEPTED_BY_PROJECT_OWNER_G3_EXECUTED_READY_FOR_PROJECT_OWNER_REVIEW
 authority: PROGRAM_INDEX_WITH_G1A_G1B_AND_G2_ACCEPTANCE_NOT_ARCHITECTURE_OR_EXTRACTION_AUTHORITY
 supersedes: null
@@ -112,6 +112,23 @@ no Delegated Operational Authority, Provider-Neutral Governance, adapter, or
 query/projection tooling is implemented. G3's terminal status is
 `G3_READY_FOR_PROJECT_OWNER_REVIEW`; Owner acceptance is a separate,
 subsequent act, and G4 remains unopened, unscoped, and unauthorized.
+
+Project Owner review of the G3 Logical Architecture identified six bounded
+defects — a closed-enum violation in the `UQ4`/`UQ7` completion-disposition
+summary, an unclarified current-vs-target relationship for the context-
+efficiency model, an ambiguous `governance/AGENTS.md`-vs-root-`AGENTS.md`
+reference, a quantitative mis-statement, a schema-count mis-statement, and an
+incomplete check-8 self-check evidence pointer — none touching the
+substantive layer model, capability allocation, gap allocation, boundary
+model, or candidate-architecture recommendation. A bounded prospective
+correction, `G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md`
+(`GOV-GEN-DECISION-009/0.1.0`, `HP-PROMPT-048/0.1.0`), corrects those
+defects without modifying the immutable base deliverable, reallocating any
+capability, reclassifying any G2 capability, redisposing any G2 gap, or
+reopening G2. `GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0` is
+`G3_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE`; Owner acceptance,
+rejection, or a further bounded correction request remains a separate,
+subsequent act.
 
 ## Durable baseline
 

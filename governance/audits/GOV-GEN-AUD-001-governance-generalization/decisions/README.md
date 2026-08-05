@@ -107,6 +107,32 @@ is decided, no repository is created, no file is extracted or migrated,
 and no Delegated Operational Authority, Provider-Neutral Governance,
 adapter, or query/projection tooling is implemented.
 
+`GOV-GEN-DECISION-009/0.1.0` records the Project Owner's direct
+authorization (`HP-PROMPT-048/0.1.0`) of a bounded prospective correction to
+the G3 Logical Architecture, following Owner review of six findings: a
+closed-enum violation in the `UQ4`/`UQ7` completion-disposition summary
+(corrected to `LOGICALLY_RESOLVED_BY_G3`/`NARROWED_BUT_OWNER_DECISION_REQUIRED`,
+preserving the base document's already-valid per-subcomponent distinctions);
+an unclarified current-vs-target relationship between the §7 context-
+efficiency model and `governance/AGENTS.md`'s current, unconditional
+`GOVERNANCE_MASTER_PLAN.md` read requirement; an ambiguous bare `AGENTS.md`
+reference conflating `governance/AGENTS.md` (`CAP-NAV01-011`) with root
+`AGENTS.md`; a quantitative mis-statement ("33 of 88 (38%)", corrected to 16
+`CROSS_PROJECT_CONFIGURABLE` + 13 `PROJECT_SPECIFIC` = 29 of 88,
+approximately 33%); a schema-count mis-statement ("all 9 schemas", corrected
+to 8 schema capabilities, `CAP-NAV09-001..008`); and an incomplete check-8
+self-check evidence pointer, now honestly resolved with a recorded
+historical custody gap plus fresh Owner-review revalidation evidence for
+candidate `d9cc0e74584e1c8c7aa83894621f3d9ede77bdea`. The base deliverable
+(`GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0`) is preserved unmodified as
+historical evidence; the correction is a new versioned artifact,
+`GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0`, read together with it. No
+capability is reallocated, no G2 capability is reclassified, no G2 gap is
+redisposed, G2 is not reopened, and the eight-layer architecture is
+unchanged. This decision does not accept the corrected result — Owner
+acceptance remains a separate, subsequent act — and does not open, scope, or
+authorize G4.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority
