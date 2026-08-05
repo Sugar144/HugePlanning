@@ -3910,8 +3910,8 @@ artifacts:
   - id: GOV-GEN-AUD-001
     title: HugePlanning Governance Generalization Audit Program Scaffold
     version: 1.0.0
-    status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION_G6_NOT_REACHED
-    authority: program_index_with_g1a_through_g5_acceptance_not_physical_architecture_selection_or_extraction_authority
+    status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_ARCHITECTURE_DIRECTION_ADOPTED_G6_NOT_STARTED_NOT_AUTHORIZED
+    authority: program_index_with_owner_selected_option_b_direction_not_extraction_or_implementation_authority
     path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
     source_path: governance/prompts/orchestration/HP-PROMPT-052-gov-gen-g5a-physical-architecture-synthesis-v0.1.0.md
     source_sha256: 7dc6c6b9219a010dd0f96c46907f50071d6f5d36fa0ccb47e172bd64eb907979
@@ -3950,6 +3950,7 @@ artifacts:
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.md
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.manifest.sha256
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-018-g3-r2-acceptance-v0.1.0.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-019-project-owner-architecture-decision-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-010-g3-acceptance-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-011-g4-contract-authorization-and-execution-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONTRACT-001-v0.1.0.md
@@ -3999,6 +4000,7 @@ artifacts:
       - The Project Owner subsequently directly authorized one minimal prospective correction of the carried-forward G3 §10 factual/reference defect. GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0 performs one exact targeted lookup into accepted G2 §17.2/§23, corrects the statement to 49/88 non-READY = 55.7%, and replaces the invalid G2 §21.2 reference. It changes no eight-layer architecture element, capability or gap allocation, unresolved-question disposition, boundary/context model, G4, or G5; GR and G6 remain unauthorized. The result is G3_CORRECTION_R2_READY_FOR_PROJECT_OWNER_ACCEPTANCE.
       - The Project Owner accepted GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0 as the corrected and controlling G3 result under GOV-GEN-DECISION-018/0.1.0 (disposition ACCEPT_GOV_GEN_G3_R2_CORRECTED_RESULT). The base G3 deliverable and accepted R1 remain immutable historical evidence; R2 corrects only the §10 factual/reference defect. The eight-layer architecture, all capability/gap allocations and authority boundaries, and accepted G4/G5 state are unchanged. GR and G6 remain unopened and unauthorized.
       - GR independently reviewed the accepted G5 staged recommendation under GOV-GEN-GR-CONTRACT-001/0.1.0. GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001/0.1.0 records verdict GR_SUPPORTS_OWNER_ARCHITECTURE_DECISION with 0 BLOCKING, 0 MATERIAL, and 0 MINOR findings after 5 targeted drill-downs. It does not select an architecture, modify G5, or authorize G6; the next authority is the Project Owner architecture decision.
+      - The Project Owner adopted the staged physical architecture direction under GOV-GEN-DECISION-019/0.1.0: Option B (reusable core separated in place, with HugePlanning as first adopter/lab) is selected; Option D remains separately authorizable only as a bounded extraction/provenance-mechanics pilot; Option C is deferred, not rejected, pending a proven Option B boundary, a real second consumer, and designed AP-1–AP-6 resolution paths; Option A remains the fallback. G6 is NOT_STARTED_NOT_AUTHORIZED. No extraction, migration, repository creation, AP-1–AP-6 implementation, or AGENTS.md/CLAUDE.md change is authorized.
 
   - id: HP-PROMPT-040
     title: GOV-GEN-G1A-CLOSE + G1B-SIMPLIFY

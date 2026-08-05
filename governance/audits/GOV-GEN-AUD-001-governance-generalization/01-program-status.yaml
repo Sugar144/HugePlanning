@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_GR_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION_G6_NOT_REACHED
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_ARCHITECTURE_DIRECTION_ADOPTED_G6_NOT_STARTED_NOT_AUTHORIZED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: GR_REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
+  current_phase: ARCHITECTURE_DIRECTION_ADOPTED_BY_PROJECT_OWNER
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -515,10 +515,11 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: NOT_REACHED
+  status: NOT_STARTED_NOT_AUTHORIZED
   note: >-
-    Bounded extraction packets; write-authorized only after GR. Not opened
-    by this program.
+    The Project Owner selected Option B as the architectural direction but
+    did not authorize G6 definition, execution, extraction, migration, or
+    implementation. Any later G6 work requires separate explicit authority.
 
 GR:
   status: REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
@@ -537,14 +538,17 @@ GR:
   findings_minor: 0
   verdict: GR_SUPPORTS_OWNER_ARCHITECTURE_DECISION
   g5_recommendation_survives: true
-  architecture_selected: false
+  architecture_selected: true
+  architecture_decision_record: GOV-GEN-DECISION-019/0.1.0
+  selected_direction: OPTION_B_REUSABLE_CORE_SEPARATED_IN_PLACE
   g5_modified: false
   g6_started_or_authorized: false
-  next_authority_required: PROJECT_OWNER_ARCHITECTURE_DECISION
+  next_authority_required: SEPARATE_PROJECT_OWNER_AUTHORIZATION_FOR_ANY_G6_OR_IMPLEMENTATION_WORK
   note: >-
     GR independently tested the accepted G5 staged recommendation against the
-    accepted G3 and G4 results. It records no findings and does not select an
-    architecture, correct G5, or authorize G6.
+    accepted G3 and G4 results. The Project Owner subsequently adopted Option
+    B as the architectural direction under GOV-GEN-DECISION-019/0.1.0. GR did
+    not itself select the architecture, correct G5, or authorize G6.
 
 decisions:
   - id: GOV-GEN-DECISION-001
@@ -601,6 +605,9 @@ decisions:
   - id: GOV-GEN-DECISION-018
     version: 0.1.0
     subject: G3 corrected result (R2) Project Owner acceptance
+  - id: GOV-GEN-DECISION-019
+    version: 0.1.0
+    subject: Project Owner architecture decision — staged physical architecture adoption
 
 not_authorized_by_this_program:
   - target_architecture_selection
@@ -620,6 +627,7 @@ not_authorized_by_this_program:
   - reallocation_of_any_g3_capability_beyond_rd_c9
   - implementation_of_any_g4_requirement_or_architecture_pressure
   - independent_review_of_the_g5_correction_r1
-  - project_owner_acceptance_of_the_g5_candidate_or_its_correction
-  - gr_phase_authorization
+  - g6_definition_or_execution
+  - option_d_pilot_execution
+  - option_c_repository_creation
   - g6_phase_authorization

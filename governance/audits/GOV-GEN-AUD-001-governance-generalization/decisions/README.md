@@ -328,3 +328,15 @@ historical evidence; R2 corrects only base §10's factual/reference defect to
 accepted eight-layer architecture nor any capability/gap allocation or
 authority boundary, and leaves accepted G4/G5 state unchanged. `GR` and `G6`
 remain unopened and unauthorized.
+
+`GOV-GEN-DECISION-019/0.1.0` records the Project Owner disposition
+`ADOPT_GOV_GEN_STAGED_PHYSICAL_ARCHITECTURE`. It selects Option B — reusable
+core separated in place, with HugePlanning as first adopter/lab — as the
+architectural direction confirmed by GR's verdict
+`GR_SUPPORTS_OWNER_ARCHITECTURE_DECISION`. Option D remains only a separately
+authorizable bounded extraction/provenance-mechanics pilot; Option C is
+deferred, not rejected, until the Option B boundary is proven, a real second
+consumer exists, and AP-1–AP-6 have designed resolution paths; Option A
+remains the fallback. This decision does not authorize G6, extraction,
+migration, repository creation, AP-1–AP-6 implementation, or runtime
+instruction changes.

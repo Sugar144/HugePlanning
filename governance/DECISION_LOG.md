@@ -487,3 +487,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: G5 is `ACCEPTED_BY_PROJECT_OWNER`; `GR` remains the later Owner architecture-decision gate and `G6` remains not reached. Neither is opened, scoped, started, or authorized. No final physical architecture is selected, no repository is created, no extraction or migration occurs, and no architecture is implemented.
 - Authority boundary: This does not select the final physical architecture; correct or reopen G3; implement architecture; create `general-governance`; extract or migrate files; modify `AGENTS.md` or `CLAUDE.md`; start or authorize `GR` or `G6`; push, open a pull request, merge, tag, release, or deploy.
 - Supersedes: none (records G5 corrected-result acceptance within `GOV-GEN-AUD-001`; G5-A, G5-B, and G5-C historical records remain unmodified).
+
+## GOV-DEC-044 — GOV-GEN-AUD-001 Project Owner architecture decision
+
+- Date: 2026-08-05
+- Status: ARCHITECTURE_DIRECTION_ADOPTED_BY_PROJECT_OWNER
+- Statement: Adopt `ADOPT_GOV_GEN_STAGED_PHYSICAL_ARCHITECTURE`, selecting Option B — reusable core separated in place, with HugePlanning as first adopter/lab — as the architectural direction.
+- Rationale: The Project Owner confirms the accepted G5 recommendation after GR returned `GR_SUPPORTS_OWNER_ARCHITECTURE_DECISION` with no findings. Option D is useful only as a separately authorized bounded extraction/provenance-mechanics experiment. Option C is deferred, not rejected, until the Option B boundary is proven, a real second consumer exists, and AP-1–AP-6 have designed resolution paths. Option A remains the fallback if evidence does not justify reusable separation.
+- Source: Project Owner disposition `ADOPT_GOV_GEN_STAGED_PHYSICAL_ARCHITECTURE`; `GOV-GEN-DECISION-019/0.1.0`; `GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001/0.1.0`.
+- Consequences: The selected architecture direction is Option B. G5 and GR evidence remain unmodified. G6 is `NOT_STARTED_NOT_AUTHORIZED`.
+- Authority boundary: This does not define or execute G6; extract or migrate files; create `general-governance` or an Option C repository; execute an Option D pilot; implement AP-1–AP-6; modify `AGENTS.md` or `CLAUDE.md`; push, open a pull request, merge, tag, release, or deploy.
+- Supersedes: none (records the Owner architecture decision within `GOV-GEN-AUD-001`; all prior evidence remains immutable).

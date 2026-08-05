@@ -39,6 +39,16 @@ per G2 §17.2/§23. The accepted eight-layer architecture, all allocations and
 authority boundaries, and accepted G4/G5 state are unchanged; `GR` and `G6`
 remain unauthorized.
 
+The Project Owner subsequently adopted `ADOPT_GOV_GEN_STAGED_PHYSICAL_ARCHITECTURE`
+under `GOV-GEN-DECISION-019/0.1.0`, selecting Option B (reusable core
+separated in place, with HugePlanning as the first adopter/lab) as the
+architectural direction. Option D remains only a separately authorizable
+bounded extraction/provenance-mechanics pilot; Option C is deferred, not
+rejected, pending a proven Option B boundary, a real second consumer, and
+designed AP-1–AP-6 resolution paths; Option A remains the fallback. G6 is
+`NOT_STARTED_NOT_AUTHORIZED`; this decision authorizes no extraction,
+migration, repository creation, implementation, or runtime-instruction change.
+
 <!-- GOVERNANCE_STATE_V1 -->
 ```yaml
 governance_state:
