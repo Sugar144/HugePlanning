@@ -3,7 +3,7 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_ARCHITECTURE_DIRECTION_ADOPTED_G6_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_EXTRACTION_PLAN_READY_FOR_PROJECT_OWNER_REVIEW
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
   current_phase: ARCHITECTURE_DIRECTION_ADOPTED_BY_PROJECT_OWNER
   reference_repository: Sugar144/HugePlanning
@@ -515,11 +515,26 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: NOT_STARTED_NOT_AUTHORIZED
+  status: G6_EXTRACTION_PLAN_READY_FOR_PROJECT_OWNER_REVIEW
+  contract: GOV-GEN-G6-CONTRACT-001/0.1.0
+  contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
+  principal_result: Bounded Extraction Plan
+  deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001/0.1.0
+  deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md
+  manifest_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.manifest.sha256
+  manifest_verified: true
+  execution_authorized: true
+  execution_authorization_basis: Project Owner direct task GOV-GEN G6 — Bounded Extraction Planning
+  extraction_packets: 8
+  extraction_executed: false
+  independent_review_required_before_packet_execution: true
+  context_risk_packets: []
+  next_authority_required: PROJECT_OWNER_REVIEW_AND_ACCEPTANCE_OR_BOUNDED_REVISION_OF_G6_PLAN
   note: >-
-    The Project Owner selected Option B as the architectural direction but
-    did not authorize G6 definition, execution, extraction, migration, or
-    implementation. Any later G6 work requires separate explicit authority.
+    This G6 result plans only the adopted Option B boundary. It neither
+    extracts nor migrates any artifact, creates a repository or target
+    directory, implements AP-1 through AP-6, modifies active instruction
+    surfaces, executes Option D, or accepts the plan on the Owner's behalf.
 
 GR:
   status: REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
