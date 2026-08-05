@@ -1,0 +1,133 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-015
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_AND_RECORD_GOV_GEN_G5B_INDEPENDENT_REVIEW
+  program_id: GOV-GEN-AUD-001
+  phase: G5-B
+  subject_reviewed_candidate: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0
+  subject_review_result: GOV-GEN-G5-INDEPENDENT-REVIEW-001/0.1.0
+  source_prompt: HP-PROMPT-053/0.1.0
+  authorized:
+    - the separate, later, explicit independent/adversarial review of
+      GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0 that
+      GOV-GEN-G5-CONTRACT-001/0.1.0 §3/§9 and GOV-GEN-DECISION-014/0.1.0
+      both reserved to a separate, later governed unit, performed by a
+      session that did not author the reviewed candidate
+    - targeted lookups into accepted G4-R1, G3 (base), and G2 evidence,
+      each recorded as a named lookup, to verify specific claims in the
+      candidate
+    - recording of material/minor findings using the closed
+      BLOCKING/MATERIAL/MINOR/NO_FINDING vocabulary, distinguishing
+      factual defects from legitimate architecture tradeoffs
+    - one bounded review verdict
+      (G5_READY_FOR_OWNER_REVIEW or G5_REQUIRES_BOUNDED_CORRECTION)
+    - creation of the review deliverable and its manifest under
+      governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/
+    - creation of the minimum decision/state/index reconciliation
+      artifacts required by existing GOV-GEN conventions
+    - one bounded local commit
+  g5b_review_authorized: true
+  g5b_review_authorization_basis: >-
+    HP-PROMPT-053/0.1.0 directly authorizes exactly the independent,
+    clean-session review that GOV-GEN-G5-CONTRACT-001/0.1.0 §9 and
+    GOV-GEN-DECISION-014/0.1.0 both named as G5's necessary next governed
+    state, following the same "separate, later, explicit Owner
+    authorization" posture already used for G2/G3's later Owner-review
+    corrections and G4's in-unit independent review. Unlike those three,
+    this review runs as its own governed unit, entirely separate from and
+    subsequent to the G5-A authoring session, per the Project Owner's own
+    explicit G5 sub-gate split.
+  g5b_review_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - modification_of_the_reviewed_g5_candidate
+    - correction_of_any_finding
+    - owner_acceptance_or_rejection_of_g5_on_the_owners_behalf
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - kernel_extraction_or_migration
+    - delegated_operational_authority_implementation
+    - provider_neutral_governance_implementation
+    - provider_or_executor_adapter_implementation
+    - query_or_projection_tooling_implementation
+    - reclassification_of_any_g2_capability
+    - redisposition_of_any_g2_gap
+    - reallocation_of_any_g3_capability_or_redesign_of_the_eight_layer_model
+    - g2_g3_or_g4_reopening
+    - gr_authorization
+    - g6_authorization
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+  final_status: G5B_INDEPENDENT_REVIEW_ACCEPTED_LOCALLY_COMMITTED_PENDING_OWNER_CORRECTION_DISPOSITION
+  reviewed_evidence:
+    review_terminal_status: G5B_INDEPENDENT_REVIEW_COMPLETE_MATERIAL_FINDINGS_PRESENT
+    review_verdict: G5_REQUIRES_BOUNDED_CORRECTION
+    reviewed_candidate_modified: false
+    reviewed_candidate_sha256: a57d34c73e64495214db96278f9d9176898ca68a14263db63bf77b10cd806e2e
+    targeted_lookups_performed: 3
+    findings_blocking: 0
+    findings_material: 3
+    findings_minor: 1
+    material_finding_ids: [GOV-GEN-G5-IR-001-F1, GOV-GEN-G5-IR-001-F2, GOV-GEN-G5-IR-001-F3]
+    minor_finding_ids: [GOV-GEN-G5-IR-001-F4]
+    recommendation_remains_supportable: true
+    manifest: GOV-GEN-G5-INDEPENDENT-REVIEW-001.manifest.sha256
+    manifest_verified: true
+    validate_prompts_result: '{"lineages":47,"prompts":49,"valid":true}'
+    validate_governance_state_result: '{"diagnostics":[],"result":"VALID"}'
+  pending_owner_correction_disposition: true
+  not_accepted:
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_delegated_operational_authority
+    - implementation_of_provider_neutral_governance
+    - implementation_of_any_g4_requirement_or_architecture_pressure
+    - reallocation_of_any_g3_capability
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - gr_or_g6_authorization
+    - owner_acceptance_of_the_g5_candidate
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct authorization
+    (HP-PROMPT-053/0.1.0) of the independent review GOV-GEN-G5-CONTRACT-001/0.1.0
+    §9 reserved to a separate, later governed unit. The review, performed
+    by a session with no prior authorship context of
+    GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0, returned three
+    material findings -- a G2-evidence citation/provenance defect (§2's
+    reuse-readiness figures credited to a G3 citation that does not
+    actually carry them, alongside an unreconciled "targeted_lookups_performed:
+    0"), a repeated wrong-section citation ("G3 §21 UQ4" where G3's UQ4 is
+    in §8), and one compliance-matrix cell (RD-C5 x Option C) crediting
+    Option C with structural progress toward a requirement whose own
+    observed evidence -- HugePlanning's internal CURRENT_STATE.md
+    interleaving of GOV-n and GOV-GEN-AUD-001 state -- that option leaves
+    untouched -- plus one minor overstated evidentiary attribution in the
+    recommendation's supporting text. None is blocking; none alters the
+    four-option comparison, the L0-L7 mapping, the sixteen-entry
+    compliance matrix's overall shape, or the recommended staged
+    sequence's substance. The reviewed candidate is preserved unmodified;
+    this decision does not correct it, accept or reject it, select a
+    target physical architecture, or open GR/G6.
+  next_governed_state: >-
+    GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0, read together
+    with GOV-GEN-G5-INDEPENDENT-REVIEW-001/0.1.0, is
+    G5B_INDEPENDENT_REVIEW_COMPLETE_MATERIAL_FINDINGS_PRESENT. The next
+    governed state is a separate, explicit Project Owner decision on the
+    three material findings: authorize a bounded correction (following the
+    G2/G3/G4 prospective-correction convention), request further review,
+    or accept the candidate as-is with these findings noted. Only after
+    that disposition and any resulting correction may the Owner review and
+    accept, reject, or request further correction of a G5 result, and only
+    after such acceptance may the Owner separately authorize GR (the
+    architecture-decision gate) or G6. This decision does not itself
+    authorize a correction, does not accept or reject the G5 candidate,
+    and does not open, scope, or authorize GR or G6.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

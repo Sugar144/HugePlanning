@@ -3,7 +3,7 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW
+  status: G0_G1A_G1B_G2_G3_G4_ACCEPTED_BY_PROJECT_OWNER_G5B_INDEPENDENT_REVIEW_COMPLETE_MATERIAL_FINDINGS_PRESENT
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
   current_phase: G5-A
   reference_repository: Sugar144/HugePlanning
@@ -391,12 +391,31 @@ G5:
   execution_self_check: PASS
   split_triggered: false
   independent_review:
-    performed: false
-    authorized: false
-    note: reserved to a separate, later, explicit Owner authorization
+    performed: true
+    authorized: true
+    review_deliverable: GOV-GEN-G5-INDEPENDENT-REVIEW-001/0.1.0
+    review_deliverable_location: G5/GOV-GEN-G5-INDEPENDENT-REVIEW-001.md
+    review_manifest_location: G5/GOV-GEN-G5-INDEPENDENT-REVIEW-001.manifest.sha256
+    review_manifest_verified: true
+    review_authorization_record: GOV-GEN-DECISION-015/0.1.0
+    review_authorization_basis: HP-PROMPT-053/0.1.0 (Project Owner, direct authorization of one independent, clean-session review, performed by a session that did not author the reviewed candidate)
+    reviewer_relationship_to_candidate: NOT_THE_AUTHORING_SESSION
+    verdict: G5_REQUIRES_BOUNDED_CORRECTION
+    targeted_lookups_performed: 3
+    findings_blocking: 0
+    findings_material: 3
+    findings_minor: 1
+    material_finding_ids: [GOV-GEN-G5-IR-001-F1, GOV-GEN-G5-IR-001-F2, GOV-GEN-G5-IR-001-F3]
+    minor_finding_ids: [GOV-GEN-G5-IR-001-F4]
+    recommendation_remains_supportable: true
+    reviewed_candidate_modified: false
+    note: performed as one separate governed unit, per GOV-GEN-G5-CONTRACT-001/0.1.0 §9
   correction:
     performed: false
+    authorized: false
+    note: pending a separate, explicit Owner disposition of the review's three material findings
   pending_owner_acceptance: true
+  pending_owner_correction_disposition: true
   acceptance_record: null
   note: >-
     Contract definition and primary-synthesis execution were authorized and
@@ -407,10 +426,18 @@ G5:
     governed unit rather than bundled into this one. No G3 capability is
     reallocated, no G2 capability is reclassified, no G2 gap is redisposed,
     no target physical architecture is selected, no repository is created,
-    and no file is extracted or migrated. G5 as a whole remains incomplete:
-    the next governed state is a separate Owner authorization of an
-    independent/adversarial review of this candidate, not Owner acceptance
-    directly.
+    and no file is extracted or migrated. The independent review authorized
+    by HP-PROMPT-053/0.1.0 (GOV-GEN-DECISION-015/0.1.0) has since run as
+    its own separate governed unit and returned verdict
+    G5_REQUIRES_BOUNDED_CORRECTION with three material findings (a G2-
+    evidence citation/provenance defect; a repeated wrong-section citation;
+    one compliance-matrix cell crediting Option C with progress it does
+    not make on RD-C5's own observed evidence) and one minor observation,
+    none blocking and none altering the recommended staged sequence's
+    substance. G5 as a whole remains incomplete: the next governed state
+    is a separate Owner decision on the material findings (bounded
+    correction, further review, or acceptance as-is with findings noted),
+    not Owner acceptance directly.
 
 G6:
   status: NOT_REACHED

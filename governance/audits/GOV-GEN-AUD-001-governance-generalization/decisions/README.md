@@ -251,6 +251,31 @@ This decision does not itself accept the resulting candidate, does not
 authorize the independent/adversarial review G5 as a whole still requires,
 and does not open, scope, or authorize `GR` or `G6`.
 
+`GOV-GEN-DECISION-015/0.1.0` records the Project Owner's direct
+authorization (`HP-PROMPT-053/0.1.0`) of G5-B, the independent/adversarial
+review of `GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0` that
+`GOV-GEN-G5-CONTRACT-001/0.1.0` §9 and `GOV-GEN-DECISION-014/0.1.0` both
+reserved to a separate, later governed unit. Unlike G4's in-unit
+independent review, this review ran as its own governed unit, performed by
+a session with no prior authorship context of the G5-A candidate. It
+produced `GOV-GEN-G5-INDEPENDENT-REVIEW-001/0.1.0` — verdict
+`G5_REQUIRES_BOUNDED_CORRECTION` — with three material findings (a
+G2-evidence citation/provenance defect in base §2's reuse-readiness
+figures; a repeated wrong-section citation, "G3 §21 UQ4," where G3's `UQ4`
+is actually in §8; and requirements-compliance cell `RD-C5` × Option C
+crediting Option C with structural progress toward a requirement whose own
+observed evidence — HugePlanning's internal `CURRENT_STATE.md`
+interleaving of `GOV-n` and `GOV-GEN-AUD-001` state — that option leaves
+untouched) and one minor observation (an overstated attribution of a
+"premature-generalization" warning to G2's text), none blocking and none
+altering the four-option comparison, the L0–L7 mapping, or the recommended
+staged sequence's substance. The reviewed candidate is preserved
+unmodified. This decision does not correct any finding, does not accept or
+reject the G5 candidate on the Project Owner's behalf, does not select a
+target physical architecture, and does not open, scope, or authorize `GR`
+or `G6`; the next governed state is a separate, explicit Project Owner
+decision on the three material findings.
+
 Future decision records in this program are append-only, attributable,
 versioned, bound to immutable reviewed artifacts, and explicit about
 accepted scope, rejected scope, limitations, unresolved items, and authority
