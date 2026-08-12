@@ -51,6 +51,12 @@ OPEN|CONTAINED|CORRECTED -> ACCEPTED_RISK
 ACCEPTED_RISK -> OPEN
 ```
 
-After `VALIDATED`, the base record is immutable. All later status transitions, recurrence, correction, new evidence, risk acceptance, risk expiry/reopening, supersession, owner decision, and validation evidence use numbered append-only files at `events/<record-id>/<record-id>-E###.yaml`. Effective status is derived by replay. Accepted risk requires competent owner evidence, bounded scope, residual impact, review date or rationale, triggers, and continuing controls. Tooling never decides risk acceptance.
+After `VALIDATED`, the base record is immutable. Historical records retain their
+existing `HP-FAIL-###` and `<record-id>-E###` identities. New records and
+events request project-namespaced identities from the configured allocator;
+all remain append-only files beneath `events/<record-id>/`. Effective status
+is derived by replay. Accepted risk requires competent owner evidence, bounded
+scope, residual impact, review date or rationale, triggers, and continuing
+controls. Tooling never decides risk acceptance.
 
 Use `python3 governance/tools/manage_learning.py --help` for the dry-run-first CLI. Automatic category summarization is deferred to v0.2.

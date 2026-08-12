@@ -41,7 +41,7 @@
       "required": ["schema_version", "id", "date", "recorded_on", "title", "context", "primary_classification", "classification", "severity", "status", "expected_behavior", "observed_behavior", "impact", "detection_method", "root_cause", "response", "learning", "metrics", "evidence_refs", "related_records", "subfindings", "owner_decision_required", "accepted_risk", "validation"],
       "properties": {
         "schema_version": {"const": "0.1.0"},
-        "id": {"type": "string", "pattern": "^HP-FAIL-[0-9]{3}$"},
+        "id": {"type": "string", "pattern": "^(HP-FAIL-[0-9]{3}|hp\\.hugeplanning\\.learning:FAIL:[0-9]{6,})$"},
         "date": {"type": "string", "format": "date"},
         "recorded_on": {"type": "string", "format": "date"},
         "title": {"type": "string", "minLength": 1},
@@ -83,7 +83,7 @@
           }
         },
         "evidence_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
-        "related_records": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^HP-FAIL-[0-9]{3}$"}},
+        "related_records": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^(HP-FAIL-[0-9]{3}|hp\\.hugeplanning\\.learning:FAIL:[0-9]{6,})$"}},
         "subfindings": {"type": "array", "items": {"$ref": "#/$defs/subfinding"}},
         "owner_decision_required": {"type": "boolean"},
         "accepted_risk": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["owner_decision_ref", "scope", "rationale", "residual_impact", "review_on", "no_review_date_rationale", "reopening_triggers", "mandatory_controls"], "properties": {"owner_decision_ref": {"type": "string", "minLength": 1}, "scope": {"type": "string", "minLength": 1}, "rationale": {"type": "string", "minLength": 1}, "residual_impact": {"type": "string", "minLength": 1}, "review_on": {"type": ["string", "null"], "format": "date"}, "no_review_date_rationale": {"type": ["string", "null"]}, "reopening_triggers": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}, "mandatory_controls": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}}}]},

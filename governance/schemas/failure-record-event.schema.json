@@ -23,8 +23,8 @@
       "required": ["schema_version", "id", "record_id", "date", "event_type", "status_from", "status_to", "summary", "rationale", "evidence_refs", "owner_decision_ref", "accepted_risk", "supersedes"],
       "properties": {
         "schema_version": {"const": "0.1.0"},
-        "id": {"type": "string", "pattern": "^HP-FAIL-[0-9]{3}-E[0-9]{3}$"},
-        "record_id": {"type": "string", "pattern": "^HP-FAIL-[0-9]{3}$"},
+        "id": {"type": "string", "pattern": "^(HP-FAIL-[0-9]{3}-E[0-9]{3}|hp\\.hugeplanning\\.learning:EVENT:[0-9]{6,})$"},
+        "record_id": {"type": "string", "pattern": "^(HP-FAIL-[0-9]{3}|hp\\.hugeplanning\\.learning:FAIL:[0-9]{6,})$"},
         "date": {"type": "string", "format": "date"},
         "event_type": {"enum": ["STATUS_TRANSITION", "RECURRENCE", "CORRECTION", "NEW_EVIDENCE", "RISK_ACCEPTANCE", "RISK_EXPIRY_OR_REOPENING", "SUPERSESSION", "OWNER_DECISION", "VALIDATION_EVIDENCE"]},
         "status_from": {"type": ["string", "null"], "enum": ["OPEN", "CONTAINED", "CORRECTED", "VALIDATED", "ACCEPTED_RISK", null]},

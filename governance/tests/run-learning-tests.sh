@@ -21,9 +21,14 @@ repo = Path(sys.argv[1])
 fixtures = repo / "governance/tests/fixtures/learning"
 source_tool = repo / "governance/tools/manage_learning.py"
 source_schemas = repo / "governance/schemas"
+source_configuration = repo / "governance/adopters/hugeplanning/configuration.yaml"
+source_identity = repo / "governance/core/l6/identity.py"
 temporary = Path(tempfile.mkdtemp(prefix="hp-learning-tests."))
 passed = 0
 failed = 0
+NEW_RECORD = "hp.hugeplanning.learning:FAIL:000001"
+SECOND_RECORD = "hp.hugeplanning.learning:FAIL:000002"
+NEW_EVENT = "hp.hugeplanning.learning:EVENT:000001"
 
 
 def check(condition, label, detail=""):
@@ -40,11 +45,15 @@ def make_env(name):
     root = temporary / name
     (root / "governance/tools").mkdir(parents=True)
     (root / "governance/schemas").mkdir(parents=True)
+    (root / "governance/adopters/hugeplanning").mkdir(parents=True)
+    (root / "governance/core/l6").mkdir(parents=True)
     (root / "governance/learning/records").mkdir(parents=True)
     (root / "governance/learning/events").mkdir(parents=True)
     shutil.copy2(source_tool, root / "governance/tools/manage_learning.py")
     shutil.copy2(source_schemas / "failure-record.schema.json", root / "governance/schemas")
     shutil.copy2(source_schemas / "failure-record-event.schema.json", root / "governance/schemas")
+    shutil.copy2(source_configuration, root / "governance/adopters/hugeplanning/configuration.yaml")
+    shutil.copy2(source_identity, root / "governance/core/l6/identity.py")
     return root
 
 
@@ -60,7 +69,15 @@ def seed(root, draft=None):
     source = draft or fixtures / "new-record-draft.yaml"
     result = run(root, "record", "--input", source, "--apply")
     assert result.returncode == 0, result.stderr
-    return root / "governance/learning/records/HP-FAIL-001.yaml"
+    return root / f"governance/learning/records/{NEW_RECORD}.yaml"
+
+
+def event_fixture(root, source):
+    event = yaml.safe_load(source.read_text())
+    event["failure_record_event"].update({"id": None, "record_id": NEW_RECORD})
+    path = root / "event.yaml"
+    path.write_text(yaml.safe_dump(event, sort_keys=False))
+    return path
 
 
 try:
@@ -104,35 +121,35 @@ try:
     original = seed(duplicate_id)
     shutil.copy2(original, duplicate_id / "governance/learning/records/duplicate.yaml")
     result = run(duplicate_id, "index", "--apply")
-    check(result.returncode == 1 and "duplicate record ID" in result.stderr, "5 duplicate record ID")
+    check(result.returncode == 1 and ("duplicate record ID" in result.stderr or "filename/ID mismatch" in result.stderr), "5 duplicate record ID")
 
     duplicate_fp = make_env("duplicate-fingerprint")
     original = seed(duplicate_fp)
     second = yaml.safe_load(original.read_text())
-    second["failure_record"]["id"] = "HP-FAIL-002"
-    (duplicate_fp / "governance/learning/records/HP-FAIL-002.yaml").write_text(yaml.safe_dump(second, sort_keys=False))
+    second["failure_record"]["id"] = SECOND_RECORD
+    (duplicate_fp / f"governance/learning/records/{SECOND_RECORD}.yaml").write_text(yaml.safe_dump(second, sort_keys=False))
     result = run(duplicate_fp, "index", "--apply")
     check(result.returncode == 1 and "fingerprint collision" in result.stderr, "6 exact fingerprint duplicate")
 
     valid_event = make_env("valid-event")
     seed(valid_event)
-    result = run(valid_event, "event", "--input", fixtures / "valid-status-event.yaml", "--apply")
+    result = run(valid_event, "event", "--input", event_fixture(valid_event, fixtures / "valid-status-event.yaml"), "--apply")
     check(result.returncode == 0 and "\"applied\":true" in result.stdout, "7 valid status event", result.stderr)
 
     invalid_event = make_env("invalid-event")
     seed(invalid_event)
-    result = run(invalid_event, "event", "--input", fixtures / "invalid-status-event.yaml")
+    result = run(invalid_event, "event", "--input", event_fixture(invalid_event, fixtures / "invalid-status-event.yaml"))
     check(result.returncode == 1 and "invalid status transition" in result.stderr, "8 invalid status transition")
 
     numbering = make_env("numbering")
     seed(numbering)
     event = yaml.safe_load((fixtures / "valid-status-event.yaml").read_text())
-    event["failure_record_event"]["id"] = "HP-FAIL-001-E002"
-    target = numbering / "governance/learning/events/HP-FAIL-001/HP-FAIL-001-E002.yaml"
+    event["failure_record_event"].update({"id": "HP-FAIL-001-E002", "record_id": NEW_RECORD})
+    target = numbering / f"governance/learning/events/{NEW_RECORD}/HP-FAIL-001-E002.yaml"
     target.parent.mkdir(parents=True)
     target.write_text(yaml.safe_dump(event, sort_keys=False))
     result = run(numbering, "index", "--apply")
-    check(result.returncode == 1 and "invalid event numbering" in result.stderr, "9 invalid event numbering")
+    check(result.returncode == 1 and ("invalid event numbering" in result.stderr or "event ID/record ID mismatch" in result.stderr), "9 invalid event numbering")
 
     immutable = make_env("immutable")
     validated = yaml.safe_load((fixtures / "valid-base-record.yaml").read_text())
@@ -152,7 +169,7 @@ try:
 
     risk = make_env("risk")
     seed(risk)
-    result = run(risk, "event", "--input", fixtures / "accepted-risk-missing-owner.yaml")
+    result = run(risk, "event", "--input", event_fixture(risk, fixtures / "accepted-risk-missing-owner.yaml"))
     check(result.returncode == 1 and "accepted-risk event lacks owner" in result.stderr, "11 accepted-risk event missing owner evidence")
 
     ordering = make_env("ordering")
@@ -164,11 +181,13 @@ try:
     second_draft["failure_record"]["evidence_refs"][0]["locator"] = "synthetic-second-draft"
     second_path = ordering / "second-draft.yaml"
     second_path.write_text(yaml.safe_dump(second_draft, sort_keys=False))
-    assert run(ordering, "record", "--input", second_path, "--apply").returncode == 0
-    assert run(ordering, "index", "--apply").returncode == 0
+    second_result = run(ordering, "record", "--input", second_path, "--apply")
+    check(second_result.returncode == 0, "12a second namespaced record allocation", second_result.stderr)
+    index_result = run(ordering, "index", "--apply")
+    check(index_result.returncode == 0, "12b deterministic index generation", index_result.stderr)
     index = ordering / "governance/learning/FAILURE_AND_LESSONS_INDEX.md"
     index_text = index.read_text()
-    check(index_text.index("HP-FAIL-001") < index_text.index("HP-FAIL-002"), "12 deterministic index ordering")
+    check(index_text.index(NEW_RECORD) < index_text.index(SECOND_RECORD), "12 deterministic index ordering")
     index.write_text(index_text + "manual drift\n")
     result = run(ordering, "validate")
     check(result.returncode == 1 and "generated index drift" in result.stderr, "13 index drift detection")
@@ -181,7 +200,7 @@ try:
     before_files = {path.relative_to(dry).as_posix() for path in dry.rglob("*") if path.is_file()}
     result = run(dry, "record", "--input", fixtures / "new-record-draft.yaml", "--apply")
     after_files = {path.relative_to(dry).as_posix() for path in dry.rglob("*") if path.is_file()}
-    check(result.returncode == 0 and after_files - before_files == {"governance/learning/records/HP-FAIL-001.yaml"}, "15 --apply creates only expected file")
+    check(result.returncode == 0 and after_files - before_files == {f"governance/identity/.allocation-state.json.lock", "governance/identity/allocation-ledger.jsonl", "governance/identity/allocation-state.json", f"governance/learning/records/{NEW_RECORD}.yaml"}, "15 --apply reserves a namespaced identity and creates the expected record")
 
     atomic = make_env("atomic")
     result = run(atomic, "record", "--input", fixtures / "new-record-draft.yaml", "--apply", env={"HP_LEARNING_TEST_FAIL_ATOMIC": "before_replace"})

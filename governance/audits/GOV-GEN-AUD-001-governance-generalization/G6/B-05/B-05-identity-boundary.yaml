@@ -1,0 +1,40 @@
+document_id: GOV-GEN-G6-B-05-IDENTITY-BOUNDARY-001
+version: 0.1.0
+status: B-05_IDENTITY_BOUNDARY_REVIEW_READY
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B05_IDENTITY_COMPATIBILITY_AND_ALLOCATOR_AUTHORITY
+inputs:
+  b03_review: ../B-03/B-03-independent-review-001.yaml
+  owner_decision: Identity compatibility and allocator authority instruction received 2026-08-12
+  pressure: AP-2
+implementation:
+  core_allocator: governance/core/l6/identity.py
+  request_tool: governance/tools/allocate_identity.py
+  project_consumer: governance/tools/manage_learning.py
+  project_identity_schemas:
+    - governance/schemas/failure-record.schema.json
+    - governance/schemas/failure-record-event.schema.json
+  project_configuration: governance/adopters/hugeplanning/configuration.yaml
+  project_state: governance/identity/allocation-state.json
+  project_ledger: governance/identity/allocation-ledger.jsonl
+  historical_forward_mapping: governance/identity/historical-forward-map.yaml
+invariants:
+  historical_ids_immutable: true
+  retroactive_migration_or_rename: forbidden
+  new_ids_require_explicit_namespace: true
+  agents_request_ids_from_allocator: true
+  allocator_is_atomic_and_process_safe: true
+  allocator_namespace_is_project_owned: true
+  emitted_identity_reassignment_or_recycling: forbidden
+  historical_reference_resolution_without_destructive_translation: true
+  compatibility_mapping_direction: HISTORICAL_TO_NAMESPACED_FORWARD_ONLY
+validation:
+  parallel_allocation_collision_test: governance/tests/test_identity_allocator.py
+  project_consumer_allocation_test: governance/tests/run-learning-tests.sh
+  namespace_grammar_and_uniqueness: governance/core/l6/identity.py
+  historical_reference_resolution: governance/tests/test_identity_allocator.py
+excluded:
+  - historical ID rewrite
+  - migration or rename of records
+  - repository distribution or creation
+  - L5 history relocation
+next_gate: INDEPENDENT_B05_REVIEW_REQUIRED

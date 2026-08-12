@@ -22,6 +22,8 @@ import sys
 import tempfile
 import unicodedata
 
+sys.dont_write_bytecode = True
+
 try:
     import jsonschema
     import yaml
@@ -173,7 +175,48 @@ def root_paths():
         "index": governance / "learning" / "FAILURE_AND_LESSONS_INDEX.md",
         "record_schema": governance / "schemas" / "failure-record.schema.json",
         "event_schema": governance / "schemas" / "failure-record-event.schema.json",
+        "configuration": governance / "adopters" / "hugeplanning" / "configuration.yaml",
     }
+
+
+def is_historical_record_id(identity: str) -> bool:
+    return RECORD_RE.fullmatch(identity) is not None
+
+
+def identity_sort_key(identity: str):
+    if match := RECORD_RE.fullmatch(identity):
+        return (0, int(match.group(1)))
+    root = Path(__file__).resolve().parents[2]
+    if str(root) not in sys.path:
+        sys.path.insert(0, str(root))
+    from governance.core.l6.identity import parse
+    allocation = parse(identity)
+    return (1, allocation.namespace, allocation.kind, allocation.sequence)
+
+
+def configured_allocator(paths: dict):
+    root = paths["root"]
+    if str(root) not in sys.path:
+        sys.path.insert(0, str(root))
+    from governance.core.l6.identity import Allocator, IdentityError
+    config = load_yaml(paths["configuration"])["configuration"]["identity_allocator"]
+    try:
+        return Allocator(
+            namespace=config["namespace"],
+            state_path=root / config["state_path"],
+            ledger_path=root / config["ledger_path"],
+        ), config["kinds"], IdentityError
+    except (KeyError, TypeError) as exc:
+        raise ContractError(f"invalid project identity allocator configuration: {exc}") from exc
+
+
+def allocate_identity(paths: dict, key: str, purpose: str, *, apply: bool) -> str:
+    allocator, kinds, identity_error = configured_allocator(paths)
+    try:
+        kind = kinds[key]
+        return (allocator.allocate(kind, purpose=purpose) if apply else allocator.peek(kind)).identity
+    except (KeyError, identity_error) as exc:
+        raise ContractError(f"identity allocation failed: {exc}") from exc
 
 
 def validated_base_mutation(root: Path, path: Path, data: dict):
@@ -250,8 +293,16 @@ def load_all(paths: dict, record_validator, event_validator):
         event = data["failure_record_event"]
         event_id = event["id"]
         match = EVENT_RE.fullmatch(event_id)
-        if not match or event["record_id"] != match.group(1):
+        if match and event["record_id"] != match.group(1):
             raise ContractError(f"event ID/record ID mismatch: {event_id}")
+        if not match:
+            try:
+                from governance.core.l6.identity import parse
+                parsed = parse(event_id)
+            except ValueError as exc:
+                raise ContractError(f"invalid event identity: {event_id}") from exc
+            if parsed.namespace != "hp.hugeplanning.learning" or parsed.kind != "EVENT":
+                raise ContractError(f"invalid event identity: {event_id}")
         if path.parent.name != event["record_id"] or path.name != f"{event_id}.yaml":
             raise ContractError(f"event path/ID mismatch: {path}")
         if event["record_id"] not in records:
@@ -264,8 +315,9 @@ def load_all(paths: dict, record_validator, event_validator):
 
     effective = {}
     for record_id, record_events in events.items():
-        ordered = sorted(record_events, key=lambda event: int(EVENT_RE.fullmatch(event["id"]).group(3)))
-        for expected, event in enumerate(ordered, 1):
+        ordered = sorted(record_events, key=lambda event: event_sort_key(event["id"]))
+        historical_events = [event for event in ordered if EVENT_RE.fullmatch(event["id"])]
+        for expected, event in enumerate(historical_events, 1):
             actual = int(EVENT_RE.fullmatch(event["id"]).group(3))
             if actual != expected:
                 raise ContractError(f"invalid event numbering for {record_id}: expected E{expected:03d}, got E{actual:03d}")
@@ -311,14 +363,16 @@ def require_owner_risk_evidence(event: dict):
 
 def input_digest(records: dict, events: dict) -> str:
     source = {
-        "records": [records[key] for key in sorted(records, key=id_number)],
-        "events": [event for key in sorted(events, key=id_number) for event in events[key]],
+        "records": [records[key] for key in sorted(records, key=identity_sort_key)],
+        "events": [event for key in sorted(events, key=identity_sort_key) for event in events[key]],
     }
     return hashlib.sha256(canonical_json(source)).hexdigest()
 
 
-def id_number(record_id: str) -> int:
-    return int(RECORD_RE.fullmatch(record_id).group(1))
+def event_sort_key(identity: str):
+    if match := EVENT_RE.fullmatch(identity):
+        return (0, int(match.group(2)), int(match.group(3)))
+    return (1, *identity_sort_key(identity))
 
 
 def index_bytes(records: dict, events: dict, effective: dict) -> bytes:
@@ -333,7 +387,7 @@ def index_bytes(records: dict, events: dict, effective: dict) -> bytes:
         "| ID | Date | Title | Primary classification | Severity | Effective status | Component | Phase/run | Owner decision required | Measurement quality | Reusable lesson |",
         "|---|---|---|---|---|---|---|---|---|---|---|",
     ]
-    for record_id in sorted(records, key=id_number):
+    for record_id in sorted(records, key=identity_sort_key):
         record = records[record_id]
         values = [
             record_id, record["date"], record["title"], record["primary_classification"],
@@ -406,20 +460,13 @@ def command_validate(args, paths, record_validator, event_validator):
     report("validate", False, valid=True, records=len(records), events=sum(map(len, events.values())), input_digest=input_digest(records, events))
 
 
-def next_record_id(records: dict) -> str:
-    highest = max((id_number(record_id) for record_id in records), default=0)
-    if highest >= 999:
-        raise ContractError("record ID space exhausted")
-    return f"HP-FAIL-{highest + 1:03d}"
-
-
 def command_record(args, paths, record_validator, event_validator):
     records, events, effective, fingerprints = load_all(paths, record_validator, event_validator)
     data = load_yaml(Path(args.input).resolve())
     if not isinstance(data, dict) or not isinstance(data.get("failure_record"), dict):
         raise ContractError("record draft must contain failure_record mapping")
     record = data["failure_record"]
-    allocated = next_record_id(records)
+    allocated = allocate_identity(paths, "failure_record", record.get("title", "learning record"), apply=args.apply)
     supplied = record.get("id")
     if supplied not in (None, allocated):
         raise ContractError(f"new record ID must be null/omitted or next monotonic ID {allocated}")
@@ -445,10 +492,6 @@ def command_record(args, paths, record_validator, event_validator):
     report("record", args.apply, record_id=allocated, path=target.relative_to(paths["root"]).as_posix(), fingerprint=value, overlap_warnings=overlaps)
 
 
-def next_event_id(record_id: str, events: dict) -> str:
-    return f"{record_id}-E{len(events[record_id]) + 1:03d}"
-
-
 def command_event(args, paths, record_validator, event_validator):
     records, events, effective, _ = load_all(paths, record_validator, event_validator)
     data = load_yaml(Path(args.input).resolve())
@@ -458,7 +501,7 @@ def command_event(args, paths, record_validator, event_validator):
     record_id = event.get("record_id")
     if record_id not in records:
         raise ContractError(f"event references missing record: {record_id}")
-    allocated = next_event_id(record_id, events)
+    allocated = allocate_identity(paths, "failure_event", event.get("summary", "learning event"), apply=args.apply)
     supplied = event.get("id")
     if supplied not in (None, allocated):
         raise ContractError(f"new event ID must be null/omitted or next event ID {allocated}")
