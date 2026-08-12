@@ -1,0 +1,31 @@
+document_id: GOV-GEN-G6-B-01-INPUT-PROJECTION-REFUSAL-003
+status: B-01_INPUT_PROJECTION_REFUSED
+frozen_revision: 8f08ad2ea47613d8d7dd93976f2563351bc2234e
+failing_rule: R2 §1.3 token measurement must be <= 20000 before B-01 semantic work begins
+path_resolution_correction: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R4/0.1.0
+prior_refusal_002: B-01-input-projection-refusal-002.yaml
+prior_refusal_002_candidates_re_evaluated: 32
+path_classification_summary:
+  EXISTING_REPO_RELATIVE_INPUT: 32
+  EXISTING_DECLARER_RELATIVE_INPUT: 4
+  DECLARED_GENERATED_OUTPUT: 1
+  UNRESOLVED_OR_AMBIGUOUS: 36
+generated_outputs_excluded_from_seed_inputs:
+  - B-01-input-projection-manifest.yaml
+projection_manifest: B-01-input-projection-manifest.yaml
+projection_manifest_sha256: a716a01645014ca1f8bad7eedb47017930ff34c4a3d7f9e1ab8ae4cab00c791c
+rendered_projection: B-01-input-projection.md
+rendered_projection_sha256: c0744e9dcc1acaa4a7d24f292491129c028ee980122053952ad2c8d6f1ef26a4
+measurement:
+  package: tiktoken
+  version: 0.12.0
+  encoding: cl100k_base
+  token_count: 37394
+  limit: 20000
+semantic_work_started: false
+extraction_started: false
+source_or_implementation_mutation: false
+refusal_disposition: >-
+  The projection cannot be trimmed, summarized, substituted, or widened to
+  force the cap. A changed source scope or token limit is a material G6-plan
+  interpretation and requires Project Owner authority.
