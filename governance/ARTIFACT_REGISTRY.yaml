@@ -3910,7 +3910,7 @@ artifacts:
   - id: GOV-GEN-AUD-001
     title: HugePlanning Governance Generalization Audit Program Scaffold
     version: 1.0.0
-    status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B01_REVIEW_PASSED_B02_READY
+    status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B02_MINIMUM_BOUNDARY_REVIEW_READY
     authority: program_index_with_owner_selected_option_b_direction_and_g6_planning_not_extraction_or_implementation_authority
     path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
     source_path: governance/prompts/orchestration/HP-PROMPT-052-gov-gen-g5a-physical-architecture-synthesis-v0.1.0.md
@@ -3989,6 +3989,10 @@ artifacts:
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-01/B-01-sharded-baseline-manifest.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-01/B-01-final-baseline-manifest.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-01/B-01-independent-review-001.yaml
+      - governance/core/project-operating-contract.md
+      - governance/core/core-boundary.yaml
+      - governance/adopters/hugeplanning/core-binding.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-02/B-02-validation-report.yaml
     notes:
       - Firewalled from GOV-AUD-001 per G0-08; the two programs share only this repository as evidence and neither authority unblocks the other.
       - G1A (679-row deterministic index, 13/13 validations PASS, reproducibility PASS, 7/7 baseline counts MATCH) is ACCEPTED_BY_PROJECT_OWNER under GOV-GEN-DECISION-001/0.1.0; no PENDING_OWNER_ACCEPTANCE state remains.
@@ -4022,6 +4026,7 @@ artifacts:
       - GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2/0.1.0 is the minimum prospective, unaccepted correction of those two findings only. It defines B-01's fixed seed set, deterministic source-root/import-closure construction, content-addressed provenance manifest, `tiktoken 0.12.0`/`cl100k_base` pre-execution <=20k measurement, and deterministic refusal if construction cannot satisfy the cap; it also confines deletion to provisional output and preserves an accepted B-01 baseline, manifest, provenance, and review record as immutable historical custody subject only to prospective authorized supersession. B-02 through B-08 are materially unchanged and B-01 remains NOT_STARTED_NOT_AUTHORIZED. The next authority is Project Owner review and acceptance or a further bounded correction.
       - The Project Owner's R5 context-scaling decision preserves the 20k cap and full canonical B-01 source set while replacing only single-projection construction. The deterministic constructor inventories and hashes all 28 canonical units, partitions them into three semantically grouped bounded projections (18,791, 18,204, and 4,887 tokens), records nine cross-shard relationships, and uses a 4,391-token reconciliation projection without reloading the corpus. The shard baselines and final manifest prove 28/28 coverage; no extraction or L3/L5 change occurred. B-01 is B-01_BOUNDARY_BASELINE_REVIEW_READY and B-02 awaits its required independent review.
       - GOV-GEN-G6-B-01-INDEPENDENT-REVIEW-001/0.1.0 independently reproduced B-01 at frozen revision 6fc4fa1, corrected three non-root provenance hashes to that revision, and returned B-01_REVIEW_PASS_B02_AUTHORIZED with no unresolved BLOCKING, MATERIAL, or MINOR finding. B-02 is dependency-ready; no B-01 extraction, L3/L5 change, or runtime mutation occurred.
+      - B-02 established the minimum in-place reusable core using only B-01-approved L0 content: GOV-METHOD-OPERATING-CONTRACT-001 moved byte-identically to governance/core/, with an explicit HugePlanning compatibility/adopter binding retaining its local entrypoint. Deterministic validation confirms semantic equivalence, no HugePlanning literal in core, no L3/L5 candidate, unchanged active instruction surfaces, and retained Git provenance. B-02 is ready for its required independent review; B-03 is not yet dependency-ready.
 
   - id: HP-PROMPT-040
     title: GOV-GEN-G1A-CLOSE + G1B-SIMPLIFY
