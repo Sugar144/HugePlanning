@@ -1,0 +1,21 @@
+document_id: GOV-GEN-G6-CLAUDE-CODE-ADAPTER-001
+version: 0.1.0
+status: ACTIVE_L4_ADAPTER_STATICALLY_VALIDATED
+provider_executor: Claude Code
+logical_layer: L4
+core_contract: ../../core/project-operating-contract.md
+adopter_binding: ../../adopters/hugeplanning/core-binding.yaml
+project_configuration: ../../adopters/hugeplanning/configuration.yaml
+l7_projection_contract: ../../tools/build_g6_b07_projection.py
+context_renderer: ../../tools/render_g6_b08_claude_context.py
+execution_surface: ephemeral_claude_context_markdown
+normative_content: NONE
+ownership:
+  core_semantics: governance/core
+  project_values: governance/adopters/hugeplanning
+  canonical_history: governance/learning
+  provider_translation: governance/adapters/claude
+constraints:
+  persistent_instruction_surface_modified: false
+  external_consumer_claimed: false
+  live_runtime_validation_claimed: false

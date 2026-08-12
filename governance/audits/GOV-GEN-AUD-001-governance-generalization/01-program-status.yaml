@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B08_CODEX_VALIDATED_FIRST_PROVIDER_RESIDUAL
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_COMPLETED_CLOSED_OPTION_B_EMPIRICALLY_PROVEN
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G6_B08_CODEX_VALIDATED_PENDING_OWNER_FIRST_PROVIDER_DECISION
+  current_phase: G6_COMPLETED_CLOSED_READY_FOR_PROJECT_CLOSURE
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -515,7 +515,7 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: G6_B08_CODEX_VALIDATED_OPTION_B_PROOF_RESIDUAL
+  status: G6_COMPLETED_CLOSED_OPTION_B_EMPIRICALLY_PROVEN
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
@@ -588,12 +588,15 @@ G6:
   b_07_query_projection_boundary: G6/B-07/B-07-query-projection-boundary.yaml
   b_07_validation: G6/B-07/B-07-validation-report.yaml
   b_07_status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED
-  b_08_adapter: ../../adapters/codex/binding.yaml
-  b_08_validation: G6/B-08/B-08-validation-report.yaml
-  b_08_status: B-08_CODEX_ADAPTER_VALIDATED_OPTION_B_PROOF_RESIDUAL
+  b_08_adapters: [../../adapters/claude/binding.yaml, ../../adapters/codex/binding.yaml]
+  b_08_validation: G6/B-08/B-08-two-adapter-validation-report.yaml
+  b_08_prior_codex_validation: G6/B-08/B-08-validation-report.yaml
+  b_08_status: B-08_TWO_ADAPTER_CONFORMANCE_VALIDATED
   b_08_independent_review: NOT_REQUIRED_DETERMINISTIC_CONFORMANCE_ADEQUATE
-  option_b_empirical_proof: OPTION_B_EMPIRICAL_PROOF_RESIDUAL_FIRST_PROVIDER_CORE_CONFORMANCE
-  deferred_live_first_provider_validation: DEFERRED_LIVE_FIRST_PROVIDER_VALIDATION
+  option_b_empirical_proof: OPTION_B_EMPIRICALLY_PROVEN
+  deferred_live_claude_runtime_validation: DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION
+  closure_record: G6/GOV-GEN-G6-CLOSURE-001.yaml
+  g6_defined_generalization_extraction_objective: FULFILLED
   b_01_coverage: 28_of_28_ACCEPTED_CANONICAL_UNITS
   b_01_shard_token_counts: [18791, 18204, 4887]
   b_01_reconciliation_token_count: 4391
@@ -605,7 +608,7 @@ G6:
     R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
     artifact has no §4.2 heading. Construction refused before semantic work,
     source mutation, or token measurement.
-  next_authority_required: PROJECT_OWNER_DECISION_ON_FIRST_PROVIDER_CORE_ADAPTER_EVIDENCE
+  next_authority_required: PROJECT_OWNER_PROJECT_CLOSURE_DECISION
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial
@@ -637,14 +640,15 @@ G6:
     every seed source available before failure. The R2 refusal rule prohibits
     a substitute path-normalization rule, trimming, or semantic work. The
     later R4/R5 corrections and direct Project Owner G6 authority enabled
-    execution through B-08. B-08 added and validated the OpenAI Codex L4
-    binding without provider-specific normative duplication. Static inspection
-    found no distinct first-provider adapter bound to the reusable core:
-    CLAUDE.md and .claude/ are explicitly outside the governance L0-L7 model,
-    while agents/openai.yaml is the only existing L4 binding artifact. The
-    two-adapter Option B gate therefore remains a precise residual condition,
-    rather than a claimed proof. Fresh live Claude execution is deferred and
-    cannot resolve that condition without a first-provider core adapter.
+    execution through B-08. B-08 first validated the OpenAI Codex L4 binding.
+    The Project Owner then authorized a distinct Claude Code L4 binding, which
+    resolves exactly the same configured core bytes, preserves project-owned
+    configuration, and renders B-07 bounded projections into ephemeral Claude
+    Markdown without changing CLAUDE.md or .claude/. The deterministic
+    two-adapter comparison proves the accepted Option B gate. Live Claude Code
+    execution remains explicitly DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION and
+    is not claimed. All eight G6 packets are complete; G6 is closed and the
+    defined generalization/extraction objective is fulfilled.
 
 GR:
   status: REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
@@ -753,7 +757,5 @@ not_authorized_by_this_program:
   - reallocation_of_any_g3_capability_beyond_rd_c9
   - implementation_of_any_g4_requirement_or_architecture_pressure
   - independent_review_of_the_g5_correction_r1
-  - g6_definition_or_execution
   - option_d_pilot_execution
   - option_c_repository_creation
-  - g6_phase_authorization
