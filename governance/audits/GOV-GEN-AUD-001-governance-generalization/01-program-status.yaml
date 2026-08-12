@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_R2_READY_FOR_PROJECT_OWNER_REVIEW_B01_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B01_REVIEW_PASSED_B02_READY
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G6_R2_EXTRACTION_PLAN_READY_FOR_PROJECT_OWNER_REVIEW_B01_NOT_STARTED_NOT_AUTHORIZED
+  current_phase: G6_B01_REVIEW_PASSED_B02_READY
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -515,7 +515,7 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: B-01_BOUNDARY_BASELINE_REVIEW_READY
+  status: B-01_REVIEW_PASSED_B02_READY
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
@@ -565,6 +565,7 @@ G6:
   b_01_projection: G6/B-01/B-01-input-projection.md
   b_01_sharded_constructor: G6/B-01/B-01-sharded-baseline-manifest.yaml
   b_01_final_baseline_manifest: G6/B-01/B-01-final-baseline-manifest.yaml
+  b_01_independent_review: G6/B-01/B-01-independent-review-001.yaml
   b_01_coverage: 28_of_28_ACCEPTED_CANONICAL_UNITS
   b_01_shard_token_counts: [18791, 18204, 4887]
   b_01_reconciliation_token_count: 4391
@@ -576,7 +577,7 @@ G6:
     R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
     artifact has no §4.2 heading. Construction refused before semantic work,
     source mutation, or token measurement.
-  next_authority_required: INDEPENDENT_B01_REVIEW_REQUIRED_BEFORE_B02
+  next_authority_required: B-02_EXECUTION_UNDER_DELEGATED_G6_PHASE_AUTHORITY
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial

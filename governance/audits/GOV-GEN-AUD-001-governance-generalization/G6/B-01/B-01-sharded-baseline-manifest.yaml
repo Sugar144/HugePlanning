@@ -638,7 +638,7 @@
         "normalized_canonical_path": "governance/ARTIFACT_REGISTRY.yaml",
         "original_textual_reference": "governance/ARTIFACT_REGISTRY.yaml",
         "resolution_rule": "REPOSITORY_ROOT",
-        "source_sha256": "3ece167a10d7ef3735f673283f305a981ff8af460c1bc3a3f5d855848fe8ae03"
+        "source_sha256": "00d84362bc1bb0a0cdf8c309a45be1fd5139a06c5363a2481d3f7e60dd9c7bf0"
       },
       {
         "classification": "EXISTING_REPO_RELATIVE_INPUT",
@@ -647,7 +647,7 @@
         "normalized_canonical_path": "governance/CURRENT_STATE.md",
         "original_textual_reference": "governance/CURRENT_STATE.md",
         "resolution_rule": "REPOSITORY_ROOT",
-        "source_sha256": "148e20e195f85199e144feb516edcff8d0736e74c23ce5fada1c68a4781df55d"
+        "source_sha256": "2a533f376c23bcd112886318aaacf070ee79d9d4b58e245e2791f93b33df42c8"
       },
       {
         "classification": "EXISTING_REPO_RELATIVE_INPUT",
@@ -683,7 +683,7 @@
         "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/01-program-status.yaml",
         "original_textual_reference": "governance/audits/GOV-GEN-AUD-001-governance-generalization/01-program-status.yaml",
         "resolution_rule": "REPOSITORY_ROOT",
-        "source_sha256": "47b5da31a287c04a148b4c610f957e0f3b91fb2d7ed3192b27bb0ae61a8b273f"
+        "source_sha256": "1e0f608ff33c7a4b38b1c2193b43b2702cdbf7859227c4594bd7d18c277f0ad7"
       },
       {
         "classification": "EXISTING_REPO_RELATIVE_INPUT",
