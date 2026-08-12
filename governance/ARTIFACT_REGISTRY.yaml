@@ -4008,6 +4008,9 @@ artifacts:
       - governance/core/l6/strict_yaml.py
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-04/B-04-l6-sublayer-boundary.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-04/B-04-validation-report.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-05/B-05-identity-boundary.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-05/B-05-validation-report.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-05/B-04-B-05-independent-integration-review-001.yaml
     notes:
       - Firewalled from GOV-AUD-001 per G0-08; the two programs share only this repository as evidence and neither authority unblocks the other.
       - G1A (679-row deterministic index, 13/13 validations PASS, reproducibility PASS, 7/7 baseline counts MATCH) is ACCEPTED_BY_PROJECT_OWNER under GOV-GEN-DECISION-001/0.1.0; no PENDING_OWNER_ACCEPTANCE state remains.
