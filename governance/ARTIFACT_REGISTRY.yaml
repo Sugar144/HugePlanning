@@ -3910,7 +3910,7 @@ artifacts:
   - id: GOV-GEN-AUD-001
     title: HugePlanning Governance Generalization Audit Program Scaffold
     version: 1.0.0
-    status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B03_CONFIG_SEAM_REVIEW_READY
+    status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B03_REVIEW_PASS_B04_AUTHORIZED
     authority: program_index_with_owner_selected_option_b_direction_and_g6_planning_not_extraction_or_implementation_authority
     path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
     source_path: governance/prompts/orchestration/HP-PROMPT-052-gov-gen-g5a-physical-architecture-synthesis-v0.1.0.md
@@ -3998,6 +3998,7 @@ artifacts:
       - governance/adopters/hugeplanning/configuration.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-03/B-03-configuration-boundary.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-03/B-03-validation-report.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-03/B-03-independent-review-001.yaml
     notes:
       - Firewalled from GOV-AUD-001 per G0-08; the two programs share only this repository as evidence and neither authority unblocks the other.
       - G1A (679-row deterministic index, 13/13 validations PASS, reproducibility PASS, 7/7 baseline counts MATCH) is ACCEPTED_BY_PROJECT_OWNER under GOV-GEN-DECISION-001/0.1.0; no PENDING_OWNER_ACCEPTANCE state remains.

@@ -515,7 +515,7 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: B-02_MINIMUM_OPTION_B_BOUNDARY_REVIEW_READY
+  status: B-03_REVIEW_PASS_B04_AUTHORIZED
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
@@ -573,7 +573,8 @@ G6:
   b_02_status: B-02_REVIEW_PASS_B03_AUTHORIZED
   b_03_configuration_boundary: G6/B-03/B-03-configuration-boundary.yaml
   b_03_validation: G6/B-03/B-03-validation-report.yaml
-  b_03_status: B-03_CONFIG_SEAM_REVIEW_READY
+  b_03_independent_review: G6/B-03/B-03-independent-review-001.yaml
+  b_03_status: B-03_REVIEW_PASS_B04_AUTHORIZED
   b_01_coverage: 28_of_28_ACCEPTED_CANONICAL_UNITS
   b_01_shard_token_counts: [18791, 18204, 4887]
   b_01_reconciliation_token_count: 4391
@@ -585,7 +586,7 @@ G6:
     R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
     artifact has no §4.2 heading. Construction refused before semantic work,
     source mutation, or token measurement.
-  next_authority_required: INDEPENDENT_B03_REVIEW_REQUIRED
+  next_authority_required: B-04_READY_L6_SUBLAYER_EXECUTION
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial

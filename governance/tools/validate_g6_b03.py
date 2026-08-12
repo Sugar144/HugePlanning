@@ -8,6 +8,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from _lib.strict_yaml import StrictYAMLError, load
+
 
 ROOT = Path(__file__).resolve().parents[2]
 FROZEN_REVISION = "6fc4fa1a14a665fabfcceb00729222527cd192ba"
@@ -18,31 +20,55 @@ BINDING = ROOT / "governance/adopters/hugeplanning/core-binding.yaml"
 COMPATIBILITY = ROOT / "governance/methodology/project-operating-contract.md"
 INSTRUCTIONS = ("AGENTS.md", "governance/AGENTS.md", "CLAUDE.md")
 
-VALUES = {
-    "configuration.correction_example.base_run_id": "KGR-006",
-    "configuration.correction_example.first_correction_id": "KGR-006-R1",
-    "configuration.paths.formal_run_prompt_snapshots": "governance/runs/<run>/prompt/",
-    "configuration.paths.learning_readme": "../learning/README.md",
-}
-
-
 def git(*args: str) -> str:
     return subprocess.run(["git", "-C", str(ROOT), *args], check=True, text=True, stdout=subprocess.PIPE).stdout
 
 
+def nested_value(mapping: dict, dotted_key: str) -> object:
+    value: object = mapping
+    for segment in dotted_key.split("."):
+        if not isinstance(value, dict) or segment not in value:
+            raise KeyError(dotted_key)
+        value = value[segment]
+    return value
+
+
 def main() -> int:
     errors: list[str] = []
+    try:
+        schema = load(SCHEMA)
+        config_document = load(CONFIG)
+    except StrictYAMLError as exc:
+        errors.append(f"configuration artifact is not strict YAML: {exc}")
+        schema = {}
+        config_document = {}
+    if not isinstance(schema, dict) or not isinstance(config_document, dict):
+        errors.append("configuration artifacts must be mappings")
+        schema = {}
+        config_document = {}
+    required_keys = schema.get("required_configuration_keys", [])
+    configuration = config_document.get("configuration")
+    if not isinstance(required_keys, list) or not all(isinstance(key, str) for key in required_keys):
+        errors.append("configuration schema has no deterministic required-key list")
+        required_keys = []
+    if not isinstance(configuration, dict):
+        errors.append("project configuration has no configuration mapping")
+        configuration = {}
     core = CORE.read_text(encoding="utf-8")
     placeholders = set(re.findall(r"\{\{([^{}]+)\}\}", core))
-    if placeholders != set(VALUES):
+    if placeholders != set(required_keys):
         errors.append("core placeholders do not exactly match the B-03 contract")
     resolved = core
-    for placeholder, value in VALUES.items():
-        resolved = resolved.replace("{{" + placeholder + "}}", value)
-        if placeholder not in SCHEMA.read_text(encoding="utf-8"):
-            errors.append(f"schema omits {placeholder}")
-        if value not in CONFIG.read_text(encoding="utf-8"):
+    for placeholder in required_keys:
+        try:
+            value = nested_value({"configuration": configuration}, placeholder)
+        except KeyError:
             errors.append(f"project configuration omits value for {placeholder}")
+            continue
+        if not isinstance(value, str):
+            errors.append(f"project configuration value for {placeholder} must be a string")
+            continue
+        resolved = resolved.replace("{{" + placeholder + "}}", value)
     frozen = subprocess.run(
         ["git", "-C", str(ROOT), "show", f"{FROZEN_REVISION}:governance/methodology/project-operating-contract.md"],
         check=True, text=True, stdout=subprocess.PIPE,
