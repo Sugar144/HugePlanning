@@ -224,7 +224,7 @@ GOV-8: {status: INACTIVE}
 GOV-9: {status: INACTIVE}
 
 GOV_GEN_AUD_001:
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B04_B05_INTEGRATION_REVIEW_PASS_B06_AUTHORIZED
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B08_CODEX_VALIDATED_FIRST_PROVIDER_RESIDUAL
   firewalled_from: GOV-AUD-001
   local_custody: governance/audits/GOV-GEN-AUD-001-governance-generalization/
   G1A:
@@ -424,14 +424,19 @@ GOV_GEN_AUD_001:
       note: G3 §10's incorrect "66% ... per G2 §21.2" statement is carried forward only; G3 is not corrected or reopened.
     target_architecture_selected: false
   G6:
-    status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED_B08_AUTHORIZED
+    status: G6_B08_CODEX_VALIDATED_OPTION_B_PROOF_RESIDUAL
     b_04_status: B-04_REVIEWED_PASS
     b_05_status: B-05_REVIEWED_PASS
     independent_integration_review: GOV-GEN-G6-B-04-B-05-INDEPENDENT-INTEGRATION-REVIEW-001/0.1.0
     findings: {blocking: 0, material: 0, minor: 0}
     b_06_status: B-06_DOA_ENFORCEMENT_VALIDATED
     b_07_status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED
-    next_authorized_packet: B-08
+    b_08_status: B-08_CODEX_ADAPTER_VALIDATED_OPTION_B_PROOF_RESIDUAL
+    b_08_adapter: governance/adapters/codex/binding.yaml
+    b_08_validation: governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-08/B-08-validation-report.yaml
+    option_b_empirical_proof: OPTION_B_EMPIRICAL_PROOF_RESIDUAL_FIRST_PROVIDER_CORE_CONFORMANCE
+    deferred_live_first_provider_validation: DEFERRED_LIVE_FIRST_PROVIDER_VALIDATION
+    next_authorized_packet: PROJECT_OWNER_DECISION_ON_FIRST_PROVIDER_CORE_ADAPTER_EVIDENCE
     historical_evidence_rewritten: false
     g3_capability_reallocation_performed: false
     g2_capability_reclassification_performed: false

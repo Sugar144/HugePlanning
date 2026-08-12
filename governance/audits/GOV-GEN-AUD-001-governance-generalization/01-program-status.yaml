@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B04_B05_INTEGRATION_REVIEW_PASS_B06_AUTHORIZED
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_B08_CODEX_VALIDATED_FIRST_PROVIDER_RESIDUAL
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G6_B04_B05_INTEGRATION_REVIEW_PASS_B06_AUTHORIZED
+  current_phase: G6_B08_CODEX_VALIDATED_PENDING_OWNER_FIRST_PROVIDER_DECISION
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -515,7 +515,7 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED_B08_AUTHORIZED
+  status: G6_B08_CODEX_VALIDATED_OPTION_B_PROOF_RESIDUAL
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
@@ -542,7 +542,7 @@ G6:
   execution_authorized: true
   execution_authorization_basis: Project Owner direct task GOV-GEN G6 — Bounded Extraction Planning
   extraction_packets: 8
-  extraction_executed: false
+  extraction_executed: true
   independent_review_required_before_packet_execution: true
   context_risk_packets: []
   default_serial_execution_order: [B-01, B-02, B-03, B-04, B-05, B-06, B-07, B-08]
@@ -588,6 +588,12 @@ G6:
   b_07_query_projection_boundary: G6/B-07/B-07-query-projection-boundary.yaml
   b_07_validation: G6/B-07/B-07-validation-report.yaml
   b_07_status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED
+  b_08_adapter: ../../adapters/codex/binding.yaml
+  b_08_validation: G6/B-08/B-08-validation-report.yaml
+  b_08_status: B-08_CODEX_ADAPTER_VALIDATED_OPTION_B_PROOF_RESIDUAL
+  b_08_independent_review: NOT_REQUIRED_DETERMINISTIC_CONFORMANCE_ADEQUATE
+  option_b_empirical_proof: OPTION_B_EMPIRICAL_PROOF_RESIDUAL_FIRST_PROVIDER_CORE_CONFORMANCE
+  deferred_live_first_provider_validation: DEFERRED_LIVE_FIRST_PROVIDER_VALIDATION
   b_01_coverage: 28_of_28_ACCEPTED_CANONICAL_UNITS
   b_01_shard_token_counts: [18791, 18204, 4887]
   b_01_reconciliation_token_count: 4391
@@ -599,7 +605,7 @@ G6:
     R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
     artifact has no §4.2 heading. Construction refused before semantic work,
     source mutation, or token measurement.
-  next_authority_required: B-08_EXECUTION_CONTINUATION_ALREADY_AUTHORIZED
+  next_authority_required: PROJECT_OWNER_DECISION_ON_FIRST_PROVIDER_CORE_ADAPTER_EVIDENCE
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial
@@ -629,9 +635,16 @@ G6:
     including the output manifest not yet created. No semantic baseline or
     packet execution occurred; both refusals are custodied with hashes of
     every seed source available before failure. The R2 refusal rule prohibits
-    a substitute path-normalization rule, trimming, or semantic work; B-02
-    through B-08 are blocked pending a bounded Owner correction or changed
-    execution authority.
+    a substitute path-normalization rule, trimming, or semantic work. The
+    later R4/R5 corrections and direct Project Owner G6 authority enabled
+    execution through B-08. B-08 added and validated the OpenAI Codex L4
+    binding without provider-specific normative duplication. Static inspection
+    found no distinct first-provider adapter bound to the reusable core:
+    CLAUDE.md and .claude/ are explicitly outside the governance L0-L7 model,
+    while agents/openai.yaml is the only existing L4 binding artifact. The
+    two-adapter Option B gate therefore remains a precise residual condition,
+    rather than a claimed proof. Fresh live Claude execution is deferred and
+    cannot resolve that condition without a first-provider core adapter.
 
 GR:
   status: REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
@@ -731,8 +744,6 @@ not_authorized_by_this_program:
   - kernel_extraction_or_migration
   - delegated_operational_authority_implementation
   - provider_neutral_governance_implementation
-  - provider_or_executor_adapter_implementation
-  - query_or_projection_tooling_implementation
   - implementation_of_recorded_g1b_gaps
   - AGENTS_md_or_CLAUDE_md_modification
   - AET_CWG_or_SVP_modification
