@@ -515,15 +515,15 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: B-01_INPUT_PROJECTION_REFUSED_TOKEN_CAP_EXCEEDED
+  status: B-01_BOUNDARY_BASELINE_REVIEW_READY
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
   prior_accepted_controlling_deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0
   prior_accepted_controlling_deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md
-  deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R4/0.1.0
-  deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R4.md
-  manifest_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R4.manifest.sha256
+  deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R5/0.1.0
+  deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R5.md
+  manifest_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R5.manifest.sha256
   manifest_verified: true
   acceptance_record: GOV-GEN-DECISION-020/0.1.0
   accepted_by: Project Owner
@@ -550,18 +550,24 @@ G6:
   alternative_schedule_requires_explicit_authorization: true
   option_b_empirical_proof_packets: [B-02, B-03, B-04, B-08]
   b_05_b_06_b_07_required_for_stated_option_b_empirical_proof_gate: false
-  b_01_status: B-01_INPUT_PROJECTION_REFUSED_TOKEN_CAP_EXCEEDED
+  b_01_status: B-01_BOUNDARY_BASELINE_REVIEW_READY
   b_01_refusal_record: G6/B-01/B-01-input-projection-refusal.yaml
   b_01_refusal_manifest: G6/B-01/B-01-input-projection-refusal.manifest.sha256
   b_01_frozen_revision: 217317664e0708fe5d261661fe938e659f8cfd3e
   b_01_selector_correction: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R3.md
   b_01_path_resolution_correction: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R4.md
+  b_01_context_scaling_correction: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R5.md
   b_01_second_refusal_record: G6/B-01/B-01-input-projection-refusal-002.yaml
   b_01_second_refusal_manifest: G6/B-01/B-01-input-projection-refusal-002.manifest.sha256
   b_01_third_refusal_record: G6/B-01/B-01-input-projection-refusal-003.yaml
   b_01_third_refusal_manifest: G6/B-01/B-01-input-projection-refusal-003.manifest.sha256
   b_01_projection_manifest: G6/B-01/B-01-input-projection-manifest.yaml
   b_01_projection: G6/B-01/B-01-input-projection.md
+  b_01_sharded_constructor: G6/B-01/B-01-sharded-baseline-manifest.yaml
+  b_01_final_baseline_manifest: G6/B-01/B-01-final-baseline-manifest.yaml
+  b_01_coverage: 28_of_28_ACCEPTED_CANONICAL_UNITS
+  b_01_shard_token_counts: [18791, 18204, 4887]
+  b_01_reconciliation_token_count: 4391
   b_01_second_failure: >-
     After R3 corrected the sole invalid G5 selector, R2 §1.2 literal-path
     extraction found 32 bare or context-relative candidates absent at the
@@ -570,7 +576,7 @@ G6:
     R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
     artifact has no §4.2 heading. Construction refused before semantic work,
     source mutation, or token measurement.
-  next_authority_required: PROJECT_OWNER_MATERIAL_DECISION_ON_B01_TOKEN_CAP_OR_SOURCE_SCOPE
+  next_authority_required: INDEPENDENT_B01_REVIEW_REQUIRED_BEFORE_B02
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial

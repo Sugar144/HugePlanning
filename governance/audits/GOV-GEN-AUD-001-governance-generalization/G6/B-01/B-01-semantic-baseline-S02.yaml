@@ -1,0 +1,16 @@
+document_id: GOV-GEN-G6-B-01-SEMANTIC-BASELINE-S02
+status: BASELINE_ESTABLISHED
+shard_id: B-01-S02
+result: >-
+  The consumer pressures AP-1 through AP-6 remain requirements on the adopted
+  Option B sequence, not evidence that any pressure is implemented. B-01
+  establishes provenance and a candidate boundary only; deterministic
+  validation may derive facts but cannot decide authority or move project
+  evidence.
+boundary_findings:
+  - Source hashes, classification, and direct-import closure are required before downstream mutation.
+  - The B-01 baseline does not authorize B-02 implementation or alter the independent-review gate.
+  - L6 helpers may be candidates only where later packet-specific purity and boundary proof succeed.
+cross_shard_dependency_handling: >-
+  S02 receives architecture semantics from S01 and the governing operating
+  contract from S03 through the bounded reconciliation graph.

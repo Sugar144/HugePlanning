@@ -1,0 +1,17 @@
+document_id: GOV-GEN-G6-B-01-SEMANTIC-BASELINE-S03
+status: BASELINE_ESTABLISHED
+shard_id: B-01-S03
+result: >-
+  The corrected G5 synthesis preserves Option B: reusable mechanisms are
+  separated in place while HugePlanning remains the local adopter and first
+  lab. The operating contract preserves explicit authority stages, durable
+  evidence precedence, and prospective correction rather than historical
+  rewrite.
+boundary_findings:
+  - No target repository, distribution mechanism, or active instruction surface is created or changed.
+  - L3/L5 remain project-owned; their treatment is constrained by the S01 architecture allocation.
+  - Cross-shard source references require reconciliation, not full-source duplication.
+cross_shard_dependency_handling: >-
+  S03's physical boundary and operating-contract constraints reconcile with
+  S01's layer model and S02's validation/pressure baseline through the
+  bounded relationship projection.

@@ -1,0 +1,16 @@
+document_id: GOV-GEN-G6-B-01-SEMANTIC-BASELINE-S01
+status: BASELINE_ESTABLISHED
+shard_id: B-01-S01
+result: >-
+  The accepted architecture separates provider-neutral authority and policy
+  mechanisms (L0-L2) from project-owned instantiation (L3), adapters (L4),
+  immutable evidence (L5), deterministic tooling (L6), and derived state
+  projections (L7). Option B is an in-place reusable-core/local-adopter
+  boundary, not a semantic redesign or extraction of L3/L5.
+boundary_findings:
+  - L3 is project-owned and remains excluded from B-01 extraction candidates.
+  - L5 is append-only historical custody and remains excluded from B-01 extraction candidates.
+  - B-01 is evidence/baseline work only; its completed result is a prerequisite for B-02.
+cross_shard_dependency_handling: >-
+  The governance contract and deterministic tooling referenced from this shard
+  are represented in S02/S03 by hash and relationship, not duplicated source loading.

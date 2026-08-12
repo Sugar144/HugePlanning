@@ -1,0 +1,2147 @@
+{
+  "canonical_inventory": [
+    {
+      "family": "architecture-and-allocation",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+      "selection_rule": "\u00a74",
+      "source_byte_count": 44470,
+      "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74"
+    },
+    {
+      "family": "architecture-and-allocation",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+      "selection_rule": "\u00a76",
+      "source_byte_count": 44470,
+      "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a76"
+    },
+    {
+      "family": "architecture-and-allocation",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+      "selection_rule": "\u00a77",
+      "source_byte_count": 44470,
+      "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77"
+    },
+    {
+      "family": "architecture-and-allocation",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+      "selection_rule": "\u00a78",
+      "source_byte_count": 44470,
+      "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a78"
+    },
+    {
+      "family": "architecture-and-allocation",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+      "selection_rule": "\u00a710",
+      "source_byte_count": 44470,
+      "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a710"
+    },
+    {
+      "family": "architecture-and-allocation",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+      "selection_rule": "all",
+      "source_byte_count": 23873,
+      "source_sha256": "fd0294f60fd45249c087448851712721aa8a91b21e22fff35e4d8237faba1eb6",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all"
+    },
+    {
+      "family": "architecture-and-allocation",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.md",
+      "selection_rule": "all",
+      "source_byte_count": 3788,
+      "source_sha256": "afbc1fff8f17dee7329bceb12524efd335ee555465ebaa35a1810d7797f37d35",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.md:all"
+    },
+    {
+      "family": "consumer-requirements",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md",
+      "selection_rule": "\u00a79",
+      "source_byte_count": 46593,
+      "source_sha256": "6955973b2278e5b9549c66e6f6fb25835c53885719c1e722e53328b6f77f8b3d",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md:\u00a79"
+    },
+    {
+      "family": "consumer-requirements",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+      "selection_rule": "\u00a74",
+      "source_byte_count": 20484,
+      "source_sha256": "2a4882c529a82adfbd586ae874fd48efe816f059422cc42be97c49976b1354b8",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a74"
+    },
+    {
+      "family": "consumer-requirements",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+      "selection_rule": "\u00a77",
+      "source_byte_count": 20484,
+      "source_sha256": "2a4882c529a82adfbd586ae874fd48efe816f059422cc42be97c49976b1354b8",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a77"
+    },
+    {
+      "family": "consumer-requirements",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+      "selection_rule": "\u00a78",
+      "source_byte_count": 20484,
+      "source_sha256": "2a4882c529a82adfbd586ae874fd48efe816f059422cc42be97c49976b1354b8",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a78"
+    },
+    {
+      "family": "option-b-physical-architecture",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+      "selection_rule": "\u00a73",
+      "source_byte_count": 22331,
+      "source_sha256": "28039b1928c81a3c14a84376ea9276be9d9270409c50d833a36d12af8e99f6d6",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a73"
+    },
+    {
+      "family": "option-b-physical-architecture",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+      "selection_rule": "\u00a77",
+      "source_byte_count": 22331,
+      "source_sha256": "28039b1928c81a3c14a84376ea9276be9d9270409c50d833a36d12af8e99f6d6",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77"
+    },
+    {
+      "family": "option-b-physical-architecture",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+      "selection_rule": "\u00a78",
+      "source_byte_count": 22331,
+      "source_sha256": "28039b1928c81a3c14a84376ea9276be9d9270409c50d833a36d12af8e99f6d6",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a78"
+    },
+    {
+      "family": "architecture-review",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md",
+      "selection_rule": "\u00a73",
+      "source_byte_count": 8008,
+      "source_sha256": "6451dffdd3b79a559a8150b4bcd3a442d9e569ace7a0d0e499507e4c19705146",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md:\u00a73"
+    },
+    {
+      "family": "architecture-review",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md",
+      "selection_rule": "\u00a74",
+      "source_byte_count": 8008,
+      "source_sha256": "6451dffdd3b79a559a8150b4bcd3a442d9e569ace7a0d0e499507e4c19705146",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md:\u00a74"
+    },
+    {
+      "family": "architecture-review",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md",
+      "selection_rule": "\u00a75",
+      "source_byte_count": 8008,
+      "source_sha256": "6451dffdd3b79a559a8150b4bcd3a442d9e569ace7a0d0e499507e4c19705146",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md:\u00a75"
+    },
+    {
+      "family": "b01-execution-contract",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+      "selection_rule": "\u00a71",
+      "source_byte_count": 15066,
+      "source_sha256": "86aba6ab024c92f4c5e0c8cc0b241a6e26db8f29c0a69687a9e489be4dd0152f",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a71"
+    },
+    {
+      "family": "b01-execution-contract",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+      "selection_rule": "\u00a72",
+      "source_byte_count": 15066,
+      "source_sha256": "86aba6ab024c92f4c5e0c8cc0b241a6e26db8f29c0a69687a9e489be4dd0152f",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a72"
+    },
+    {
+      "family": "b01-execution-contract",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+      "selection_rule": "\u00a73:B-01",
+      "source_byte_count": 15066,
+      "source_sha256": "86aba6ab024c92f4c5e0c8cc0b241a6e26db8f29c0a69687a9e489be4dd0152f",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a73:B-01"
+    },
+    {
+      "family": "b01-execution-contract",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+      "selection_rule": "\u00a74",
+      "source_byte_count": 15066,
+      "source_sha256": "86aba6ab024c92f4c5e0c8cc0b241a6e26db8f29c0a69687a9e489be4dd0152f",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a74"
+    },
+    {
+      "family": "b01-execution-contract",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md",
+      "selection_rule": "all",
+      "source_byte_count": 4445,
+      "source_sha256": "9aa9ea026dc87ea50e02fd57150628fc1e51e60bf8f46aaba33c448b711f7f72",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md:all"
+    },
+    {
+      "family": "b01-execution-contract",
+      "kind": "seed_fragment",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+      "selection_rule": "all",
+      "source_byte_count": 9381,
+      "source_sha256": "13f89f497189451fd2bd8f54ce00d03b114fb24565c55a920ce860328f6a68d3",
+      "subdivision": null,
+      "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all"
+    },
+    {
+      "family": "governance-contract",
+      "kind": "source_root",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2"
+      ],
+      "path": "governance/AGENTS.md",
+      "selection_rule": "EXACT_CLASSIFIED_PATH",
+      "source_byte_count": 6435,
+      "source_sha256": "25c33887afaec51cff3bc40fbcb3dffe0a468181e229bdccafc926a3b7cfffac",
+      "subdivision": null,
+      "unit_id": "source:governance/AGENTS.md"
+    },
+    {
+      "family": "governance-contract",
+      "kind": "source_root",
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2"
+      ],
+      "path": "governance/methodology/project-operating-contract.md",
+      "selection_rule": "EXACT_CLASSIFIED_PATH",
+      "source_byte_count": 11788,
+      "source_sha256": "cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa",
+      "subdivision": null,
+      "unit_id": "source:governance/methodology/project-operating-contract.md"
+    },
+    {
+      "family": "deterministic-tooling",
+      "kind": "import_closure",
+      "logical_layers": [
+        "L6"
+      ],
+      "path": "governance/tools/_lib/strict_yaml.py",
+      "selection_rule": "PYTHON_IMPORT",
+      "source_byte_count": 1748,
+      "source_sha256": "b274e4e49a7981b8871491f630e5b8c877a6392823260f83a2e72946f9f8c424",
+      "subdivision": null,
+      "unit_id": "source:governance/tools/_lib/strict_yaml.py"
+    },
+    {
+      "family": "deterministic-tooling",
+      "kind": "source_root",
+      "logical_layers": [
+        "L6"
+      ],
+      "path": "governance/tools/validate_governance_state.py",
+      "selection_rule": "EXACT_CLASSIFIED_PATH",
+      "source_byte_count": 28758,
+      "source_sha256": "4c94d4343e112d26e076f7c239ec0d815062f19667566207ed1ae0953487588c",
+      "subdivision": null,
+      "unit_id": "source:governance/tools/validate_governance_state.py"
+    },
+    {
+      "family": "deterministic-tooling",
+      "kind": "source_root",
+      "logical_layers": [
+        "L6"
+      ],
+      "path": "governance/tools/validate_prompts.py",
+      "selection_rule": "EXACT_CLASSIFIED_PATH",
+      "source_byte_count": 10516,
+      "source_sha256": "e0a36a8b6456ca470be334353e2347de20f0a061e0e08ba7e90914ab769c0aa7",
+      "subdivision": null,
+      "unit_id": "source:governance/tools/validate_prompts.py"
+    }
+  ],
+  "coverage": {
+    "accepted_canonical_unit_count": 28,
+    "coverage_equality": true,
+    "covered_canonical_unit_count": 28,
+    "uncovered_unit_ids": []
+  },
+  "document_id": "GOV-GEN-G6-B-01-SHARDED-BASELINE-MANIFEST-001",
+  "frozen_revision": "6fc4fa1a14a665fabfcceb00729222527cd192ba",
+  "import_closure": {
+    "governance/tools/_lib/strict_yaml.py": "governance/tools/validate_governance_state.py"
+  },
+  "measurement": {
+    "encoding": "cl100k_base",
+    "hard_limit": 20000,
+    "operational_target": 18000,
+    "package": "tiktoken",
+    "version": "0.12.0"
+  },
+  "path_resolution": {
+    "classifications": [
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "01-program-status.yaml",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "AGENTS.md",
+        "original_textual_reference": "AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "2dcca2003dcb40610b63debc60de062551a0f72b48570aef4074fe006bd58804"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "CLAUDE.md",
+        "original_textual_reference": "CLAUDE.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "5c1ffa6331569abeaf5c446a018502565d25e984c140e815f3a2dd22255d420f"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "CURRENT_STATE.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_DECLARER_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "original_textual_reference": "GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "resolution_rule": "DECLARER_DIRECTORY",
+        "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOVERNANCE_MASTER_PLAN.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "README.md",
+        "original_textual_reference": "README.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "6efdbdc0a5cb129abffb6e5a24fef7a6c547ecc7ba19cf925366804d448e2110"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "RUNTIME_PROJECTION_MAP.yaml",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/AGENTS.md",
+        "original_textual_reference": "governance/AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "25c33887afaec51cff3bc40fbcb3dffe0a468181e229bdccafc926a3b7cfffac"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/ARTIFACT_REGISTRY.yaml",
+        "original_textual_reference": "governance/ARTIFACT_REGISTRY.yaml",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "3ece167a10d7ef3735f673283f305a981ff8af460c1bc3a3f5d855848fe8ae03"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/CURRENT_STATE.md",
+        "original_textual_reference": "governance/CURRENT_STATE.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "148e20e195f85199e144feb516edcff8d0736e74c23ce5fada1c68a4781df55d"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/DECISION_LOG.md",
+        "original_textual_reference": "governance/DECISION_LOG.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "4ec4ab4c244c618af4f40d23ffc3f2a8435a92c73cfaed17cb89e760d4f5a748"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/README.md",
+        "original_textual_reference": "governance/README.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "74f7185c59ec2146c6ab050d41c49aff8768369d913f870f7d1174766812572f"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md",
+        "original_textual_reference": "governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "cfa70824fb4fc2d6e98a3072b42908000df25035f223f60b237149b8f4c7be6e"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/01-program-status.yaml",
+        "original_textual_reference": "governance/audits/GOV-GEN-AUD-001-governance-generalization/01-program-status.yaml",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "47b5da31a287c04a148b4c610f957e0f3b91fb2d7ed3192b27bb0ae61a8b273f"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "original_textual_reference": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-009-g3-correction-r1-v0.1.0.yaml",
+        "original_textual_reference": "governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-009-g3-correction-r1-v0.1.0.yaml",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "9849401f27c8c539704a744eacfdd1449ea41a0ba38ecb973837ab87b996c9ba"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/README.md",
+        "original_textual_reference": "governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/README.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "af9bd1e973895351c216fe93acfb0e879f3876e903e0cb83b3d7518229bf4b58"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/methodology/project-operating-contract.md",
+        "original_textual_reference": "governance/methodology/project-operating-contract.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/tools/validate_governance_state.py",
+        "original_textual_reference": "governance/tools/validate_governance_state.py",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "4c94d4343e112d26e076f7c239ec0d815062f19667566207ed1ae0953487588c"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": "governance/tools/validate_prompts.py",
+        "original_textual_reference": "governance/tools/validate_prompts.py",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "e0a36a8b6456ca470be334353e2347de20f0a061e0e08ba7e90914ab769c0aa7"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "methodology/project-operating-contract.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "project-operating-contract.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "validate_prompts.py",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "validation/README.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": "AGENTS.md",
+        "original_textual_reference": "AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "2dcca2003dcb40610b63debc60de062551a0f72b48570aef4074fe006bd58804"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a76",
+        "normalized_canonical_path": "AGENTS.md",
+        "original_textual_reference": "AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "2dcca2003dcb40610b63debc60de062551a0f72b48570aef4074fe006bd58804"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": "AGENTS.md",
+        "original_textual_reference": "AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "2dcca2003dcb40610b63debc60de062551a0f72b48570aef4074fe006bd58804"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a78",
+        "normalized_canonical_path": "AGENTS.md",
+        "original_textual_reference": "AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "2dcca2003dcb40610b63debc60de062551a0f72b48570aef4074fe006bd58804"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "ARTIFACT_REGISTRY.yaml",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "ARTIFACT_REGISTRY.yaml",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a76",
+        "normalized_canonical_path": "CLAUDE.md",
+        "original_textual_reference": "CLAUDE.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "5c1ffa6331569abeaf5c446a018502565d25e984c140e815f3a2dd22255d420f"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "CURRENT_STATE.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a76",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "CURRENT_STATE.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "CURRENT_STATE.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "DECISION_LOG.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "DECISION_LOG.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "FAILURE_AND_LESSONS_INDEX.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "FAILURE_AND_LESSONS_INDEX.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOVERNANCE_MASTER_PLAN.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "IMPORT_REPORT.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "METHODOLOGY_BACKLOG.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "OPEN_IMPORT_QUESTIONS.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "RUNTIME_PROJECTION_MAP.yaml",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "agents/openai.yaml",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a76",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "agents/openai.yaml",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "archive/README.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "archive/README.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": "governance/AGENTS.md",
+        "original_textual_reference": "governance/AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "25c33887afaec51cff3bc40fbcb3dffe0a468181e229bdccafc926a3b7cfffac"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": "governance/AGENTS.md",
+        "original_textual_reference": "governance/AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "25c33887afaec51cff3bc40fbcb3dffe0a468181e229bdccafc926a3b7cfffac"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": "governance/README.md",
+        "original_textual_reference": "governance/README.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "74f7185c59ec2146c6ab050d41c49aff8768369d913f870f7d1174766812572f"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "normalized_canonical_path": "governance/README.md",
+        "original_textual_reference": "governance/README.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "74f7185c59ec2146c6ab050d41c49aff8768369d913f870f7d1174766812572f"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "kernel/README.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "lessons-by-category.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "methodology/project-operating-contract.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a76",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "project-operating-contract.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a78",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "project-operating-contract.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "validation/README.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a77",
+        "normalized_canonical_path": "AGENTS.md",
+        "original_textual_reference": "AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "2dcca2003dcb40610b63debc60de062551a0f72b48570aef4074fe006bd58804"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a74",
+        "normalized_canonical_path": "CLAUDE.md",
+        "original_textual_reference": "CLAUDE.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "5c1ffa6331569abeaf5c446a018502565d25e984c140e815f3a2dd22255d420f"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "decisions/README.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a77",
+        "normalized_canonical_path": "governance/AGENTS.md",
+        "original_textual_reference": "governance/AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "25c33887afaec51cff3bc40fbcb3dffe0a468181e229bdccafc926a3b7cfffac"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a74",
+        "normalized_canonical_path": "governance/DECISION_LOG.md",
+        "original_textual_reference": "governance/DECISION_LOG.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "4ec4ab4c244c618af4f40d23ffc3f2a8435a92c73cfaed17cb89e760d4f5a748"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a77",
+        "normalized_canonical_path": "governance/tools/validate_governance_state.py",
+        "original_textual_reference": "governance/tools/validate_governance_state.py",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "4c94d4343e112d26e076f7c239ec0d815062f19667566207ed1ae0953487588c"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a77",
+        "normalized_canonical_path": "governance/tools/validate_prompts.py",
+        "original_textual_reference": "governance/tools/validate_prompts.py",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "e0a36a8b6456ca470be334353e2347de20f0a061e0e08ba7e90914ab769c0aa7"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a74",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "project.yaml",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md:\u00a79",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "CURRENT_STATE.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+        "normalized_canonical_path": "AGENTS.md",
+        "original_textual_reference": "AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "2dcca2003dcb40610b63debc60de062551a0f72b48570aef4074fe006bd58804"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a73",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-G2-CLASSIFICATION-MATRIX-001.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a78",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-G2-CLASSIFICATION-MATRIX-001.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a73",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+        "normalized_canonical_path": "governance/AGENTS.md",
+        "original_textual_reference": "governance/AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "25c33887afaec51cff3bc40fbcb3dffe0a468181e229bdccafc926a3b7cfffac"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+        "normalized_canonical_path": "governance/tools/validate_governance_state.py",
+        "original_textual_reference": "governance/tools/validate_governance_state.py",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "4c94d4343e112d26e076f7c239ec0d815062f19667566207ed1ae0953487588c"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+        "normalized_canonical_path": "governance/tools/validate_prompts.py",
+        "original_textual_reference": "governance/tools/validate_prompts.py",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "e0a36a8b6456ca470be334353e2347de20f0a061e0e08ba7e90914ab769c0aa7"
+      },
+      {
+        "classification": "DECLARED_GENERATED_OUTPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "B-01-input-projection-manifest.yaml",
+        "resolution_rule": "B01_PACKET_LOCAL_GENERATED_OUTPUT",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_DECLARER_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md",
+        "original_textual_reference": "GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md",
+        "resolution_rule": "DECLARER_DIRECTORY",
+        "source_sha256": "9aa9ea026dc87ea50e02fd57150628fc1e51e60bf8f46aaba33c448b711f7f72"
+      },
+      {
+        "classification": "EXISTING_DECLARER_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "original_textual_reference": "GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "resolution_rule": "DECLARER_DIRECTORY",
+        "source_sha256": "13f89f497189451fd2bd8f54ce00d03b114fb24565c55a920ce860328f6a68d3"
+      },
+      {
+        "classification": "EXISTING_DECLARER_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+        "original_textual_reference": "GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+        "resolution_rule": "DECLARER_DIRECTORY",
+        "source_sha256": "86aba6ab024c92f4c5e0c8cc0b241a6e26db8f29c0a69687a9e489be4dd0152f"
+      },
+      {
+        "classification": "UNRESOLVED_OR_AMBIGUOUS",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all",
+        "normalized_canonical_path": null,
+        "original_textual_reference": "GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md",
+        "resolution_rule": "NO_SUPPORTED_EXISTING_RESOLUTION",
+        "source_sha256": null
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a73:B-01",
+        "normalized_canonical_path": "AGENTS.md",
+        "original_textual_reference": "AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "2dcca2003dcb40610b63debc60de062551a0f72b48570aef4074fe006bd58804"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a74",
+        "normalized_canonical_path": "AGENTS.md",
+        "original_textual_reference": "AGENTS.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "2dcca2003dcb40610b63debc60de062551a0f72b48570aef4074fe006bd58804"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a73:B-01",
+        "normalized_canonical_path": "CLAUDE.md",
+        "original_textual_reference": "CLAUDE.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "5c1ffa6331569abeaf5c446a018502565d25e984c140e815f3a2dd22255d420f"
+      },
+      {
+        "classification": "EXISTING_REPO_RELATIVE_INPUT",
+        "declaring_artifact": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+        "declaring_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a74",
+        "normalized_canonical_path": "CLAUDE.md",
+        "original_textual_reference": "CLAUDE.md",
+        "resolution_rule": "REPOSITORY_ROOT",
+        "source_sha256": "5c1ffa6331569abeaf5c446a018502565d25e984c140e815f3a2dd22255d420f"
+      }
+    ],
+    "order": [
+      "DECLARED_GENERATED_OUTPUT",
+      "REPOSITORY_ROOT",
+      "DECLARER_DIRECTORY",
+      "UNRESOLVED_OR_AMBIGUOUS"
+    ]
+  },
+  "provenance_graph": {
+    "cross_shard_relationship_count": 9,
+    "relationships": [
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "from_shards": [
+          "B-01-S01"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/AGENTS.md",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/AGENTS.md"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "from_shards": [
+          "B-01-S01"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/methodology/project-operating-contract.md",
+        "to_shards": [
+          "B-01-S03"
+        ],
+        "to_unit_id": "source:governance/methodology/project-operating-contract.md"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "from_shards": [
+          "B-01-S01"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/tools/validate_governance_state.py",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/tools/validate_governance_state.py"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+        "from_shards": [
+          "B-01-S01"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/tools/validate_prompts.py",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/tools/validate_prompts.py"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "from_shards": [
+          "B-01-S01"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/AGENTS.md",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/AGENTS.md"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+        "from_shards": [
+          "B-01-S01"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/AGENTS.md",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/AGENTS.md"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "from_shards": [
+          "B-01-S02"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a77",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/AGENTS.md",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/AGENTS.md"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "from_shards": [
+          "B-01-S02"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a77",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/tools/validate_governance_state.py",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/tools/validate_governance_state.py"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+        "from_shards": [
+          "B-01-S02"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a77",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/tools/validate_prompts.py",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/tools/validate_prompts.py"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "from_shards": [
+          "B-01-S03"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/AGENTS.md",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/AGENTS.md"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "from_shards": [
+          "B-01-S03"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/tools/validate_governance_state.py",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/tools/validate_governance_state.py"
+      },
+      {
+        "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+        "from_shards": [
+          "B-01-S03"
+        ],
+        "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+        "relationship": "CLASSIFIED_SEED_REFERENCE",
+        "to_path": "governance/tools/validate_prompts.py",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/tools/validate_prompts.py"
+      },
+      {
+        "from_path": "governance/tools/validate_governance_state.py",
+        "from_shards": [
+          "B-01-S02"
+        ],
+        "from_unit_id": "source:governance/tools/validate_governance_state.py",
+        "relationship": "PYTHON_IMPORT",
+        "to_path": "governance/tools/_lib/strict_yaml.py",
+        "to_shards": [
+          "B-01-S02"
+        ],
+        "to_unit_id": "source:governance/tools/_lib/strict_yaml.py"
+      }
+    ]
+  },
+  "reconciliation_projection": {
+    "limit": 20000,
+    "path": "B-01-cross-shard-reconciliation-projection.md",
+    "sha256": "c537935f6d84b0cd72e297b902c6b02629687114a1cf45a13bd3f77077b304fb",
+    "token_count": 4391
+  },
+  "shards": [
+    {
+      "capability_families": [
+        "architecture-and-allocation",
+        "architecture-review",
+        "b01-execution-contract"
+      ],
+      "cross_shard_relationships": [
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/AGENTS.md",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/AGENTS.md"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/methodology/project-operating-contract.md",
+          "to_shards": [
+            "B-01-S03"
+          ],
+          "to_unit_id": "source:governance/methodology/project-operating-contract.md"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/tools/validate_governance_state.py",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/tools/validate_governance_state.py"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/tools/validate_prompts.py",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/tools/validate_prompts.py"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/AGENTS.md",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/AGENTS.md"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/AGENTS.md",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/AGENTS.md"
+        }
+      ],
+      "limit": 20000,
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "members": [
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+          "selection_rule": "\u00a74",
+          "source_byte_count": 44470,
+          "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+          "selection_rule": "\u00a76",
+          "source_byte_count": 44470,
+          "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a76"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+          "selection_rule": "\u00a77",
+          "source_byte_count": 44470,
+          "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+          "selection_rule": "\u00a78",
+          "source_byte_count": 44470,
+          "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a78"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+          "selection_rule": "\u00a710",
+          "source_byte_count": 44470,
+          "source_sha256": "be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a710"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+          "selection_rule": "all",
+          "source_byte_count": 23873,
+          "source_sha256": "fd0294f60fd45249c087448851712721aa8a91b21e22fff35e4d8237faba1eb6",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.md",
+          "selection_rule": "all",
+          "source_byte_count": 3788,
+          "source_sha256": "afbc1fff8f17dee7329bceb12524efd335ee555465ebaa35a1810d7797f37d35",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.md:all"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md",
+          "selection_rule": "\u00a73",
+          "source_byte_count": 8008,
+          "source_sha256": "6451dffdd3b79a559a8150b4bcd3a442d9e569ace7a0d0e499507e4c19705146",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md:\u00a73"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md",
+          "selection_rule": "\u00a74",
+          "source_byte_count": 8008,
+          "source_sha256": "6451dffdd3b79a559a8150b4bcd3a442d9e569ace7a0d0e499507e4c19705146",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md:\u00a74"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md",
+          "selection_rule": "\u00a75",
+          "source_byte_count": 8008,
+          "source_sha256": "6451dffdd3b79a559a8150b4bcd3a442d9e569ace7a0d0e499507e4c19705146",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md:\u00a75"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+          "selection_rule": "\u00a71",
+          "source_byte_count": 15066,
+          "source_sha256": "86aba6ab024c92f4c5e0c8cc0b241a6e26db8f29c0a69687a9e489be4dd0152f",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a71"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+          "selection_rule": "\u00a72",
+          "source_byte_count": 15066,
+          "source_sha256": "86aba6ab024c92f4c5e0c8cc0b241a6e26db8f29c0a69687a9e489be4dd0152f",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a72"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+          "selection_rule": "\u00a73:B-01",
+          "source_byte_count": 15066,
+          "source_sha256": "86aba6ab024c92f4c5e0c8cc0b241a6e26db8f29c0a69687a9e489be4dd0152f",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a73:B-01"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md",
+          "selection_rule": "\u00a74",
+          "source_byte_count": 15066,
+          "source_sha256": "86aba6ab024c92f4c5e0c8cc0b241a6e26db8f29c0a69687a9e489be4dd0152f",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001.md:\u00a74"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md",
+          "selection_rule": "all",
+          "source_byte_count": 4445,
+          "source_sha256": "9aa9ea026dc87ea50e02fd57150628fc1e51e60bf8f46aaba33c448b711f7f72",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md:all"
+        }
+      ],
+      "operational_target": 18000,
+      "projection": "b-01-s01-projection.md",
+      "sha256": "7c3524d4bf3bd40814bdebc7cede9c3c2adb73b12398fbef35030721d3fa7ffe",
+      "shard_id": "B-01-S01",
+      "token_count": 18791
+    },
+    {
+      "capability_families": [
+        "b01-execution-contract",
+        "consumer-requirements",
+        "deterministic-tooling",
+        "governance-contract"
+      ],
+      "cross_shard_relationships": [
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/AGENTS.md",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/AGENTS.md"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/tools/validate_governance_state.py",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/tools/validate_governance_state.py"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/tools/validate_prompts.py",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/tools/validate_prompts.py"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a74",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/AGENTS.md",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/AGENTS.md"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md:\u00a77",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/AGENTS.md",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/AGENTS.md"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+          "from_shards": [
+            "B-01-S03"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/AGENTS.md",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/AGENTS.md"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+          "from_shards": [
+            "B-01-S03"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/tools/validate_governance_state.py",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/tools/validate_governance_state.py"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+          "from_shards": [
+            "B-01-S03"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/tools/validate_prompts.py",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/tools/validate_prompts.py"
+        }
+      ],
+      "limit": 20000,
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "members": [
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md",
+          "selection_rule": "all",
+          "source_byte_count": 9381,
+          "source_sha256": "13f89f497189451fd2bd8f54ce00d03b114fb24565c55a920ce860328f6a68d3",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md:all"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md",
+          "selection_rule": "\u00a79",
+          "source_byte_count": 46593,
+          "source_sha256": "6955973b2278e5b9549c66e6f6fb25835c53885719c1e722e53328b6f77f8b3d",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md:\u00a79"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+          "selection_rule": "\u00a74",
+          "source_byte_count": 20484,
+          "source_sha256": "2a4882c529a82adfbd586ae874fd48efe816f059422cc42be97c49976b1354b8",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a74"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+          "selection_rule": "\u00a77",
+          "source_byte_count": 20484,
+          "source_sha256": "2a4882c529a82adfbd586ae874fd48efe816f059422cc42be97c49976b1354b8",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a77"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md",
+          "selection_rule": "\u00a78",
+          "source_byte_count": 20484,
+          "source_sha256": "2a4882c529a82adfbd586ae874fd48efe816f059422cc42be97c49976b1354b8",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md:\u00a78"
+        },
+        {
+          "importing_parent_path": "governance/tools/validate_governance_state.py",
+          "kind": "import_closure",
+          "path": "governance/tools/_lib/strict_yaml.py",
+          "selection_rule": "PYTHON_IMPORT",
+          "source_byte_count": 1748,
+          "source_sha256": "b274e4e49a7981b8871491f630e5b8c877a6392823260f83a2e72946f9f8c424",
+          "subdivision": null,
+          "unit_id": "source:governance/tools/_lib/strict_yaml.py"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "source_root",
+          "path": "governance/tools/validate_governance_state.py",
+          "selection_rule": "EXACT_CLASSIFIED_PATH",
+          "source_byte_count": 28758,
+          "source_sha256": "4c94d4343e112d26e076f7c239ec0d815062f19667566207ed1ae0953487588c",
+          "subdivision": null,
+          "unit_id": "source:governance/tools/validate_governance_state.py"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "source_root",
+          "path": "governance/tools/validate_prompts.py",
+          "selection_rule": "EXACT_CLASSIFIED_PATH",
+          "source_byte_count": 10516,
+          "source_sha256": "e0a36a8b6456ca470be334353e2347de20f0a061e0e08ba7e90914ab769c0aa7",
+          "subdivision": null,
+          "unit_id": "source:governance/tools/validate_prompts.py"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "source_root",
+          "path": "governance/AGENTS.md",
+          "selection_rule": "EXACT_CLASSIFIED_PATH",
+          "source_byte_count": 6435,
+          "source_sha256": "25c33887afaec51cff3bc40fbcb3dffe0a468181e229bdccafc926a3b7cfffac",
+          "subdivision": null,
+          "unit_id": "source:governance/AGENTS.md"
+        }
+      ],
+      "operational_target": 18000,
+      "projection": "b-01-s02-projection.md",
+      "sha256": "bbf3ae4139b8501a9b9dab25d661bad4050e70de537afde7e8af575023f34c0a",
+      "shard_id": "B-01-S02",
+      "token_count": 18204
+    },
+    {
+      "capability_families": [
+        "governance-contract",
+        "option-b-physical-architecture"
+      ],
+      "cross_shard_relationships": [
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md",
+          "from_shards": [
+            "B-01-S01"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md:all",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/methodology/project-operating-contract.md",
+          "to_shards": [
+            "B-01-S03"
+          ],
+          "to_unit_id": "source:governance/methodology/project-operating-contract.md"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+          "from_shards": [
+            "B-01-S03"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/AGENTS.md",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/AGENTS.md"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+          "from_shards": [
+            "B-01-S03"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/tools/validate_governance_state.py",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/tools/validate_governance_state.py"
+        },
+        {
+          "from_path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+          "from_shards": [
+            "B-01-S03"
+          ],
+          "from_unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77",
+          "relationship": "CLASSIFIED_SEED_REFERENCE",
+          "to_path": "governance/tools/validate_prompts.py",
+          "to_shards": [
+            "B-01-S02"
+          ],
+          "to_unit_id": "source:governance/tools/validate_prompts.py"
+        }
+      ],
+      "limit": 20000,
+      "logical_layers": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7"
+      ],
+      "members": [
+        {
+          "importing_parent_path": null,
+          "kind": "source_root",
+          "path": "governance/methodology/project-operating-contract.md",
+          "selection_rule": "EXACT_CLASSIFIED_PATH",
+          "source_byte_count": 11788,
+          "source_sha256": "cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa",
+          "subdivision": null,
+          "unit_id": "source:governance/methodology/project-operating-contract.md"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+          "selection_rule": "\u00a73",
+          "source_byte_count": 22331,
+          "source_sha256": "28039b1928c81a3c14a84376ea9276be9d9270409c50d833a36d12af8e99f6d6",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a73"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+          "selection_rule": "\u00a77",
+          "source_byte_count": 22331,
+          "source_sha256": "28039b1928c81a3c14a84376ea9276be9d9270409c50d833a36d12af8e99f6d6",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a77"
+        },
+        {
+          "importing_parent_path": null,
+          "kind": "seed_fragment",
+          "path": "governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md",
+          "selection_rule": "\u00a78",
+          "source_byte_count": 22331,
+          "source_sha256": "28039b1928c81a3c14a84376ea9276be9d9270409c50d833a36d12af8e99f6d6",
+          "subdivision": null,
+          "unit_id": "seed:governance/audits/GOV-GEN-AUD-001-governance-generalization/G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md:\u00a78"
+        }
+      ],
+      "operational_target": 18000,
+      "projection": "b-01-s03-projection.md",
+      "sha256": "52063c292033cd10d516e2df6fcfb0642b9da977e1bf677697bd11f688c3bd8d",
+      "shard_id": "B-01-S03",
+      "token_count": 4887
+    }
+  ],
+  "source_roots": [
+    "governance/AGENTS.md",
+    "governance/methodology/project-operating-contract.md",
+    "governance/tools/validate_governance_state.py",
+    "governance/tools/validate_prompts.py"
+  ],
+  "status": "B-01_SHARDED_PROJECTIONS_CONSTRUCTED",
+  "tool_version": "0.2.0"
+}
