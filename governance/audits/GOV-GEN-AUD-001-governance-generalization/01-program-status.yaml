@@ -566,7 +566,7 @@ G6:
   b_01_sharded_constructor: G6/B-01/B-01-sharded-baseline-manifest.yaml
   b_01_final_baseline_manifest: G6/B-01/B-01-final-baseline-manifest.yaml
   b_01_independent_review: G6/B-01/B-01-independent-review-001.yaml
-  b_02_core_boundary: ../../core/core-boundary.yaml
+  b_02_core_boundary: G6/B-02/B-02-core-boundary.yaml
   b_02_adopter_binding: ../../adopters/hugeplanning/core-binding.yaml
   b_02_validation: G6/B-02/B-02-validation-report.yaml
   b_01_coverage: 28_of_28_ACCEPTED_CANONICAL_UNITS

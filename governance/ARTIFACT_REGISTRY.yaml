@@ -3990,7 +3990,7 @@ artifacts:
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-01/B-01-final-baseline-manifest.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-01/B-01-independent-review-001.yaml
       - governance/core/project-operating-contract.md
-      - governance/core/core-boundary.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-02/B-02-core-boundary.yaml
       - governance/adopters/hugeplanning/core-binding.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-02/B-02-validation-report.yaml
     notes:

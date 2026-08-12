@@ -44,7 +44,6 @@ def main() -> int:
     if sorted(tracked) != sorted([
         "governance/adopters/hugeplanning/core-binding.yaml",
         "governance/core/README.md",
-        "governance/core/core-boundary.yaml",
         "governance/core/project-operating-contract.md",
     ]):
         errors.append("unexpected B-02 core/adopter tracked surface")

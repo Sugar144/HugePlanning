@@ -11,7 +11,7 @@ validations:
       6fc4fa1a14a665fabfcceb00729222527cd192ba.
   core_literal_and_path_dependency:
     result: PASS
-    method: Core contract contains no HugePlanning literal; project-specific paths exist only in its adopter bindings.
+    method: Core contains no HugePlanning literal or project path; project-specific paths exist only in adopter and B-02 custody records.
   adoption_binding:
     result: PASS
     method: Compatibility and explicit adopter bindings both resolve the same core contract.
