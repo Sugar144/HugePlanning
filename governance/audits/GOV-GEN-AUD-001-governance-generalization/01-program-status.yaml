@@ -515,7 +515,7 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: G6_R2_EXTRACTION_PLAN_READY_FOR_PROJECT_OWNER_REVIEW
+  status: B-01_INPUT_PROJECTION_REFUSED_PENDING_BOUNDED_PLAN_CORRECTION
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
@@ -528,7 +528,7 @@ G6:
   acceptance_record: GOV-GEN-DECISION-020/0.1.0
   accepted_by: Project Owner
   accepted_on: '2026-08-05'
-  pending_owner_acceptance: true
+  pending_owner_acceptance: false
   independent_plan_review:
     review_deliverable: GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001/0.1.0
     review_location: G6/GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001.md
@@ -550,8 +550,15 @@ G6:
   alternative_schedule_requires_explicit_authorization: true
   option_b_empirical_proof_packets: [B-02, B-03, B-04, B-08]
   b_05_b_06_b_07_required_for_stated_option_b_empirical_proof_gate: false
-  b_01_status: NOT_STARTED_NOT_AUTHORIZED
-  next_authority_required: PROJECT_OWNER_REVIEW_AND_ACCEPTANCE_OR_BOUNDED_REVISION_OF_G6_PLAN
+  b_01_status: B-01_INPUT_PROJECTION_REFUSED
+  b_01_refusal_record: G6/B-01/B-01-input-projection-refusal.yaml
+  b_01_refusal_manifest: G6/B-01/B-01-input-projection-refusal.manifest.sha256
+  b_01_frozen_revision: 217317664e0708fe5d261661fe938e659f8cfd3e
+  b_01_failure: >-
+    R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
+    artifact has no §4.2 heading. Construction refused before semantic work,
+    source mutation, or token measurement.
+  next_authority_required: PROJECT_OWNER_BOUNDED_CORRECTION_OF_R2_SEED_SELECTOR_OR_CHANGED_EXECUTION_AUTHORITY
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial
@@ -569,11 +576,17 @@ G6:
     review returned G6_R1_PLAN_REQUIRES_BOUNDED_CORRECTION with two MATERIAL
     findings limited to B-01's circular/non-deterministically measured input
     projection and its completed-baseline recovery/custody ambiguity. R2 is
-    the unaccepted prospective correction: it defines a fixed seed,
+    the execution contract applied under the Project Owner's direct G6 phase
+    authority: it defines a fixed seed,
     deterministic closure and content-addressed projection manifest, pinned
     pre-execution token measurement/refusal, and provisional-versus-accepted
-    B-01 custody. B-02 through B-08 are materially unchanged. B-01 remains
-    NOT_STARTED_NOT_AUTHORIZED; no packet is authorized.
+    B-01 custody. B-02 through B-08 are materially unchanged. B-01's fixed
+    seed construction refused deterministically because the required G5 R1
+    §4.2 selector is absent. No semantic baseline or packet execution
+    occurred; the refusal is custodied with hashes of every seed source
+    available before failure. The R2 refusal rule prohibits a substitute
+    selector, trimming, or semantic work; B-02 through B-08 are blocked
+    pending a bounded Owner correction or changed execution authority.
 
 GR:
   status: REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
