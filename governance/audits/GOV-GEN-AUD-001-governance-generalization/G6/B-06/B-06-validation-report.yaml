@@ -1,0 +1,13 @@
+document_id: GOV-GEN-G6-B-06-VALIDATION-001
+version: 0.1.0
+status: VALID
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B06_EXECUTION
+validations:
+  authorized_local_actions: {result: PASS, method: pytest covers bounded local modification, deterministic validation, and local commit mechanics}
+  denied_actions: {result: PASS, method: pytest covers push/publication, historical rewrite, and architecture/scope expansion with zero effect invocation}
+  indeterminate_authority: {result: PASS, method: pytest verifies missing authority refuses closed with deterministic fields and zero effect invocation}
+  append_only_refusal_evidence: {result: PASS, method: pytest verifies pre-existing JSONL bytes remain a prefix after refusal evidence append}
+  enforcement_bypass: {result: PASS, method: AST test proves the injected effect has exactly one call site behind the AUTHORIZED branch}
+  reusable_core_isolation: {result: PASS, method: deterministic B-03/B-04 validators preserve configuration and L6 boundaries; B-03 validator accepts B-05's additional project-owned identity keys without relaxing its four exact core placeholders}
+result: B-06_DOA_ENFORCEMENT_VALIDATED_B07_AUTHORIZED
+next_packet: B-07

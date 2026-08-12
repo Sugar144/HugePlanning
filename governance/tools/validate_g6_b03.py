@@ -19,6 +19,12 @@ CONFIG = ROOT / "governance/adopters/hugeplanning/configuration.yaml"
 BINDING = ROOT / "governance/adopters/hugeplanning/core-binding.yaml"
 COMPATIBILITY = ROOT / "governance/methodology/project-operating-contract.md"
 INSTRUCTIONS = ("AGENTS.md", "governance/AGENTS.md", "CLAUDE.md")
+B03_CORE_KEYS = {
+    "configuration.correction_example.base_run_id",
+    "configuration.correction_example.first_correction_id",
+    "configuration.paths.formal_run_prompt_snapshots",
+    "configuration.paths.learning_readme",
+}
 
 def git(*args: str) -> str:
     return subprocess.run(["git", "-C", str(ROOT), *args], check=True, text=True, stdout=subprocess.PIPE).stdout
@@ -56,7 +62,10 @@ def main() -> int:
         configuration = {}
     core = CORE.read_text(encoding="utf-8")
     placeholders = set(re.findall(r"\{\{([^{}]+)\}\}", core))
-    if placeholders != set(required_keys):
+    # B-05 legitimately extended the project-owned schema for the L6 identity
+    # allocator.  B-03's invariant is that its four contract placeholders stay
+    # exact, while the schema may declare further project-owned L6 values.
+    if placeholders != B03_CORE_KEYS or not placeholders.issubset(set(required_keys)):
         errors.append("core placeholders do not exactly match the B-03 contract")
     resolved = core
     for placeholder in required_keys:

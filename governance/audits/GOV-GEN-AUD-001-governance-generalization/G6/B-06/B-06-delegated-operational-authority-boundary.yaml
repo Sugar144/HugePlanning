@@ -1,0 +1,21 @@
+document_id: GOV-GEN-G6-B-06-DELEGATED-OPERATIONAL-AUTHORITY-001
+version: 0.1.0
+status: B-06_DOA_ENFORCEMENT_VALIDATED
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B06_EXECUTION
+policy: ADOPT_DOA_FAIL_CLOSED_POLICY
+implementation:
+  reusable_guard: governance/core/l6/authority.py
+  contract_objects: [Authorization, Request, Decision]
+  decisions: [AUTHORIZED, DENIED, INDETERMINATE]
+  audit_evidence: append_only_canonical_jsonl
+  guarded_effect_boundary: guarded_execute
+authorization_fields: [principal, context, allowed_actions, allowed_paths, forbidden_actions, constraints, provenance, expires_at]
+invariants:
+  authority_is_explicit: true
+  authorization_is_checked_at_execution_time: true
+  denied_and_indeterminate_never_invoke_effect: true
+  refusal_evidence_is_append_only: true
+  project_values_remain_outside_reusable_core: true
+  l3_l5_ownership_and_historical_custody_preserved: true
+excluded: [general_IAM, external_side_effects, historical_evidence_rewrite, instruction_surface_changes]
+next_packet: B-07
