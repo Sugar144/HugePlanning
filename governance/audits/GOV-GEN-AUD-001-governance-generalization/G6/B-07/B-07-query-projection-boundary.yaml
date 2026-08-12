@@ -1,0 +1,7 @@
+document_id: GOV-GEN-G6-B-07-QUERY-PROJECTION-001
+version: 0.1.0
+status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B07_EXECUTION
+implementation: {builder: governance/tools/build_g6_b07_projection.py, canonical_l5_source: governance/learning/records, derived_outputs: program-scoped index.json and projection.json}
+invariants: {l5_immutable_project_owned: true, source_hash_traceability: true, deterministic_lexicographic_retrieval: true, program_state_namespaced: true, cross_project_federation_claimed: false}
+next_packet: B-08

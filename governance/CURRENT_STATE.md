@@ -424,13 +424,14 @@ GOV_GEN_AUD_001:
       note: G3 §10's incorrect "66% ... per G2 §21.2" statement is carried forward only; G3 is not corrected or reopened.
     target_architecture_selected: false
   G6:
-    status: B-06_DOA_ENFORCEMENT_VALIDATED_B07_AUTHORIZED
+    status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED_B08_AUTHORIZED
     b_04_status: B-04_REVIEWED_PASS
     b_05_status: B-05_REVIEWED_PASS
     independent_integration_review: GOV-GEN-G6-B-04-B-05-INDEPENDENT-INTEGRATION-REVIEW-001/0.1.0
     findings: {blocking: 0, material: 0, minor: 0}
     b_06_status: B-06_DOA_ENFORCEMENT_VALIDATED
-    next_authorized_packet: B-07
+    b_07_status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED
+    next_authorized_packet: B-08
     historical_evidence_rewritten: false
     g3_capability_reallocation_performed: false
     g2_capability_reclassification_performed: false

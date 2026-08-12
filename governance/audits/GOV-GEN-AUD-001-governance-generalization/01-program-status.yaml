@@ -515,7 +515,7 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: B-06_DOA_ENFORCEMENT_VALIDATED_B07_AUTHORIZED
+  status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED_B08_AUTHORIZED
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
@@ -585,6 +585,9 @@ G6:
   b_06_delegated_operational_authority_boundary: G6/B-06/B-06-delegated-operational-authority-boundary.yaml
   b_06_validation: G6/B-06/B-06-validation-report.yaml
   b_06_status: B-06_DOA_ENFORCEMENT_VALIDATED
+  b_07_query_projection_boundary: G6/B-07/B-07-query-projection-boundary.yaml
+  b_07_validation: G6/B-07/B-07-validation-report.yaml
+  b_07_status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED
   b_01_coverage: 28_of_28_ACCEPTED_CANONICAL_UNITS
   b_01_shard_token_counts: [18791, 18204, 4887]
   b_01_reconciliation_token_count: 4391
@@ -596,7 +599,7 @@ G6:
     R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
     artifact has no §4.2 heading. Construction refused before semantic work,
     source mutation, or token measurement.
-  next_authority_required: B-07_EXECUTION_CONTINUATION_ALREADY_AUTHORIZED
+  next_authority_required: B-08_EXECUTION_CONTINUATION_ALREADY_AUTHORIZED
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial

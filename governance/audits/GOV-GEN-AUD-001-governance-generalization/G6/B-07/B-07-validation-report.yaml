@@ -1,0 +1,11 @@
+document_id: GOV-GEN-G6-B-07-VALIDATION-001
+version: 0.1.0
+status: VALID
+validations:
+  reproducibility: PASS
+  source_hash_traceability: PASS
+  program_isolation: PASS
+  bounded_token_measurement: PASS
+  canonical_l5_unchanged: PASS
+  relevant_b03_b04_b06_invariants: PASS
+result: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED_B08_AUTHORIZED
