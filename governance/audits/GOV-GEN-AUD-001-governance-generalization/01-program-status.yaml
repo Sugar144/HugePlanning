@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_COMPLETED_CLOSED_OPTION_B_EMPIRICALLY_PROVEN
+  status: COMPLETED_ACCEPTED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G6_COMPLETED_CLOSED_READY_FOR_PROJECT_CLOSURE
+  current_phase: PROJECT_CLOSURE_COMPLETED_ACCEPTED
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -407,7 +407,7 @@ G5:
   recommended_candidate_recorded: true
   recommended_candidate_shape: STAGED_SEQUENCE_B_THEN_OPTIONAL_D_THEN_DEFERRED_C_WITH_A_AS_FALLBACK
   unresolved_owner_decisions_recorded: 7
-  target_architecture_selected: false
+  target_architecture_selected: true
   repository_created: false
   file_extracted_or_migrated: false
   architecture_or_requirement_implemented: false
@@ -515,7 +515,7 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: G6_COMPLETED_CLOSED_OPTION_B_EMPIRICALLY_PROVEN
+  status: COMPLETED
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
@@ -608,7 +608,9 @@ G6:
     R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
     artifact has no §4.2 heading. Construction refused before semantic work,
     source mutation, or token measurement.
-  next_authority_required: PROJECT_OWNER_PROJECT_CLOSURE_DECISION
+  project_closure_decision: GOV-GEN-DECISION-021/0.1.0
+  project_closure_status: COMPLETED_ACCEPTED
+  next_authority_required: NONE_PROJECT_CLOSED
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial
@@ -740,6 +742,9 @@ decisions:
   - id: GOV-GEN-DECISION-020
     version: 0.1.0
     subject: G6 corrected bounded extraction plan (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-021
+    version: 0.1.0
+    subject: final Project Owner project closure
 
 not_authorized_by_this_program:
   - target_architecture_selection

@@ -509,3 +509,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: `G6_EXTRACTION_PLAN_R1_ACCEPTED_B01_NOT_STARTED_NOT_AUTHORIZED`. B-01 remains `NOT_STARTED_NOT_AUTHORIZED`; B-05, B-06, and B-07 remain planned work but are not prerequisites for the stated empirical-proof gate absent another accepted dependency.
 - Authority boundary: This does not execute or authorize B-01 or any later packet, extraction, migration, AP-1–AP-6 implementation, Option D, Option C or `general-governance` repository creation, `AGENTS.md`/`CLAUDE.md` modification, repair of immutable PASS-03 evidence, push, PR, merge, tag, release, or deployment.
 - Supersedes: none (the base plan and R1 remain preserved; this records Owner acceptance only).
+
+## GOV-DEC-046 — GOV-GEN final Project Owner closure
+
+- Date: 2026-08-13
+- Status: COMPLETED_ACCEPTED
+- Statement: Close `GOV-GEN-AUD-001` successfully under `CLOSE_GOV_GEN_AUD_001_SUCCESSFULLY`.
+- Rationale: The defined generalization/extraction objective is fulfilled. G6 is complete, Option B is `OPTION_B_EMPIRICALLY_PROVEN`, and HugePlanning is the first adopter/lab.
+- Source: Project Owner final disposition; `GOV-GEN-DECISION-021/0.1.0`; `GOV-GEN-G6-CLOSURE-001/0.1.0`.
+- Consequences: Terminal state `GOV_GEN_AUD_001_COMPLETED_ACCEPTED`. `DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION` is non-blocking. Option C is deferred, not rejected, pending a real second consumer. Publication is `NOT_PERFORMED`.
+- Authority boundary: This does not authorize integration, publication, a new phase, another review, a new architecture decision, G7, further implementation, live Claude execution, push, PR, merge, tag, release, or deployment.
+- Supersedes: none (all historical GOV-GEN artifacts and accepted identities remain preserved).

@@ -354,3 +354,12 @@ not prerequisites for that gate absent another accepted dependency. B-01 is
 `NOT_STARTED_NOT_AUTHORIZED`; this acceptance authorizes no packet execution,
 extraction, migration, AP-1–AP-6 implementation, Option D, Option C or
 `general-governance` repository creation, or instruction-surface change.
+
+`GOV-GEN-DECISION-021/0.1.0` records the Project Owner final disposition
+`CLOSE_GOV_GEN_AUD_001_SUCCESSFULLY`. It closes the firewalled program as
+`COMPLETED_ACCEPTED`, records G6 as `COMPLETED`, confirms Option B as
+`OPTION_B_EMPIRICALLY_PROVEN`, and retains HugePlanning as the first
+adopter/lab. `DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION` is explicitly
+non-blocking. Option C is deferred, not rejected, pending evidence from a
+real second consumer. No integration, publication, live Claude execution,
+new phase, or further implementation is authorized.

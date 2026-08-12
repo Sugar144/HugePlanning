@@ -3910,8 +3910,8 @@ artifacts:
   - id: GOV-GEN-AUD-001
     title: HugePlanning Governance Generalization Audit Program Scaffold
     version: 1.0.0
-    status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_COMPLETED_CLOSED_OPTION_B_EMPIRICALLY_PROVEN
-    authority: program_index_with_owner_selected_option_b_direction_and_g6_planning_not_extraction_or_implementation_authority
+    status: COMPLETED_ACCEPTED
+    authority: final_project_owner_closure_decision_with_option_b_empirical_proof
     path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
     source_path: governance/prompts/orchestration/HP-PROMPT-052-gov-gen-g5a-physical-architecture-synthesis-v0.1.0.md
     source_sha256: 7dc6c6b9219a010dd0f96c46907f50071d6f5d36fa0ccb47e172bd64eb907979
@@ -3952,6 +3952,7 @@ artifacts:
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-018-g3-r2-acceptance-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-019-project-owner-architecture-decision-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-020-g6-r1-extraction-plan-acceptance-v0.1.0.yaml
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-021-project-closure-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-010-g3-acceptance-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-011-g4-contract-authorization-and-execution-v0.1.0.yaml
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G4/GOV-GEN-G4-CONTRACT-001-v0.1.0.md

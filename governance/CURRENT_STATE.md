@@ -22,7 +22,7 @@
 | Runtime/S1 context | S1 continues independently; governance has not been projected into runtime |
 | Known blockers | PASS-03 requires one independent adversarial review and Project Owner disposition; PASS-04 remains unauthorized; OD-006 and separate authority for later passes or GOV-7 design/implementation remain unresolved |
 | Phase-transition boundary | GOV-6 is closed after the Project Owner ratified exact Kernel `0.2.0`; GOV-7 remains inactive pending audit and separate design or implementation authority |
-| GOV-GEN-AUD-001 status | Firewalled generalization program (`governance/audits/GOV-GEN-AUD-001-governance-generalization/`), independent of the `GOV-n` phases above. G1A through G5 are `ACCEPTED_BY_PROJECT_OWNER`; the Project Owner selected Option B under `GOV-GEN-DECISION-019/0.1.0`, with HugePlanning as first adopter/lab. G6 is `COMPLETED / CLOSED`: B-01 through B-07 retain their validated core, configuration, L6, identity, DOA and bounded-projection evidence; B-08 now has Claude Code and OpenAI Codex L4 adapters that deterministically resolve identical configured reusable-core bytes without normative duplication or changes to active Claude instructions. The accepted Option B gate is `OPTION_B_EMPIRICALLY_PROVEN`. `DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION` is recorded honestly; no live Claude execution, external second consumer, Option C readiness, L0 distribution/versioning solution, or universal AP-1 through AP-6 completion is claimed. GOV-GEN has fulfilled its defined generalization/extraction objective and is ready for Project Owner project-closure disposition. |
+| GOV-GEN-AUD-001 status | Firewalled generalization program (`governance/audits/GOV-GEN-AUD-001-governance-generalization/`), independent of the `GOV-n` phases above, is `COMPLETED_ACCEPTED` under `GOV-GEN-DECISION-021/0.1.0`. G6 is `COMPLETED`; architecture is `OPTION_B`; empirical proof is `OPTION_B_EMPIRICALLY_PROVEN`; HugePlanning remains `FIRST_ADOPTER_LAB`. `DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION` is explicitly non-blocking. Option C is not rejected: `DEFERRED_PENDING_REAL_SECOND_CONSUMER`. Publication is `NOT_PERFORMED`. |
 | GOV-GEN G3 R2 acceptance | The Project Owner accepted `GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0` as the controlling G3 result under `GOV-GEN-DECISION-018/0.1.0` (`ACCEPT_GOV_GEN_G3_R2_CORRECTED_RESULT`). R2 corrects only base G3 §10's invalid “66% ... per G2 §21.2” wording to `49/88 = 55.7%` non-`READY`, grounded by one exact targeted lookup in accepted G2 §17.2/§23. The base and R1 remain immutable; the accepted eight-layer architecture, all allocations and dispositions, boundary/context models, and accepted G4/G5 state are unchanged. GR and G6 remain unauthorized. |
 | GOV-GEN GR review | `GOV-GEN-GR-CONTRACT-001/0.1.0` authorized one independent adversarial review of the accepted G5 recommendation. `GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001/0.1.0` executed from the expected clean starting state, made 5 targeted drill-downs, and returned `GR_SUPPORTS_OWNER_ARCHITECTURE_DECISION` with 0 `BLOCKING`, 0 `MATERIAL`, and 0 `MINOR` findings. G5's staged recommendation survives; no architecture is selected, G5 is unmodified, and G6 remains unauthorized. The next authority is the Project Owner architecture decision. |
 | GOV-GEN architecture decision and G6 | The Project Owner adopted `ADOPT_GOV_GEN_STAGED_PHYSICAL_ARCHITECTURE` under `GOV-GEN-DECISION-019/0.1.0`: Option B (reusable core separated in place) is the selected direction, with HugePlanning as first adopter/lab. `GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0` remains the prior accepted planning-only result under `GOV-GEN-DECISION-020/0.1.0`. Its independent review found no architecture or scope defect but required correction of two material B-01 execution-contract defects. Direct G6 phase authority authorized execution under R2; B-01 stopped deterministically at the non-existent mandatory G5 R1 `§4.2` selector. The R2 refusal rule makes this a bounded-plan-correction boundary, not a permissible selector substitution. No semantic baseline, extraction, repository creation, AP implementation, Option D execution, or runtime-instruction change occurred. |
@@ -224,7 +224,8 @@ GOV-8: {status: INACTIVE}
 GOV-9: {status: INACTIVE}
 
 GOV_GEN_AUD_001:
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_COMPLETED_CLOSED_OPTION_B_EMPIRICALLY_PROVEN
+  status: COMPLETED_ACCEPTED
+  terminal_state: GOV_GEN_AUD_001_COMPLETED_ACCEPTED
   firewalled_from: GOV-AUD-001
   local_custody: governance/audits/GOV-GEN-AUD-001-governance-generalization/
   G1A:
@@ -424,7 +425,7 @@ GOV_GEN_AUD_001:
       note: G3 §10's incorrect "66% ... per G2 §21.2" statement is carried forward only; G3 is not corrected or reopened.
     target_architecture_selected: false
   G6:
-    status: COMPLETED_CLOSED
+    status: COMPLETED
     b_04_status: B-04_REVIEWED_PASS
     b_05_status: B-05_REVIEWED_PASS
     independent_integration_review: GOV-GEN-G6-B-04-B-05-INDEPENDENT-INTEGRATION-REVIEW-001/0.1.0
@@ -437,13 +438,20 @@ GOV_GEN_AUD_001:
     option_b_empirical_proof: OPTION_B_EMPIRICALLY_PROVEN
     deferred_live_claude_runtime_validation: DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION
     closure_record: GOV-GEN-G6-CLOSURE-001/0.1.0
-    project_closure_ready: true
-    next_authorized_packet: PROJECT_OWNER_PROJECT_CLOSURE_DECISION
+    project_closure_decision: GOV-GEN-DECISION-021/0.1.0
+    project_closure_status: COMPLETED_ACCEPTED
+    next_authorized_packet: NONE_PROJECT_CLOSED
     historical_evidence_rewritten: false
     g3_capability_reallocation_performed: false
     g2_capability_reclassification_performed: false
     g2_gap_redisposition_performed: false
-  target_architecture_selected: false
+  target_architecture_selected: true
+  architecture: OPTION_B
+  empirical_proof: OPTION_B_EMPIRICALLY_PROVEN
+  hugeplanning: FIRST_ADOPTER_LAB
+  deferred_non_blocking: [DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION]
+  option_c: DEFERRED_PENDING_REAL_SECOND_CONSUMER
+  publication: NOT_PERFORMED
   hugeplanning_worktree_written_outside_governance_audits_dir: false
 ```
 
