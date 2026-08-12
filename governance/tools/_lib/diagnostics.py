@@ -1,18 +1,3 @@
-"""Stable diagnostics shared by governance command-line tools."""
+"""Compatibility export for reusable L6 diagnostics helpers."""
 
-from dataclasses import dataclass
-from typing import Iterable
-
-
-@dataclass(frozen=True, order=True)
-class Diagnostic:
-    code: str
-    path: str
-    message: str
-
-    def as_dict(self) -> dict[str, str]:
-        return {"code": self.code, "message": self.message, "path": self.path}
-
-
-def ordered(items: Iterable[Diagnostic]) -> list[Diagnostic]:
-    return sorted(set(items))
+from governance.core.l6.diagnostics import *  # noqa: F403

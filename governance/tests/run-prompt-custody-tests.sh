@@ -37,7 +37,7 @@ def make_root(name):
     (root / "governance/tools/_lib").mkdir(parents=True)
     (root / "governance/prompts/orchestration").mkdir(parents=True)
     shutil.copy2(repo / "governance/tools/validate_prompts.py", root / "governance/tools")
-    shutil.copy2(repo / "governance/tools/_lib/strict_yaml.py", root / "governance/tools/_lib")
+    shutil.copy2(repo / "governance/core/l6/strict_yaml.py", root / "governance/tools/_lib/strict_yaml.py")
     (root / "governance/tools/_lib/__init__.py").write_text("")
     return root
 
