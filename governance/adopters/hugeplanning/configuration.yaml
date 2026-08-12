@@ -1,0 +1,10 @@
+document_id: GOV-GEN-G6-HUGEPLANNING-CONFIGURATION-001
+version: 0.1.0
+status: ACTIVE_PROJECT_OWNED_CONFIGURATION
+configuration:
+  correction_example:
+    base_run_id: KGR-006
+    first_correction_id: KGR-006-R1
+  paths:
+    formal_run_prompt_snapshots: governance/runs/<run>/prompt/
+    learning_readme: ../learning/README.md

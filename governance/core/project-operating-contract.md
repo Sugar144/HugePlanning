@@ -60,7 +60,7 @@ repository custody before the associated change is committed.
 A correction of an immutable completed formal run uses
 `<BASE_RUN_ID>-R<N>`, where `BASE_RUN_ID` is the original run identity and
 `N` is a positive sequential integer beginning at 1. The first correction of
-`KGR-006` is therefore `KGR-006-R1`. A correction identity does not overwrite
+`{{configuration.correction_example.base_run_id}}` is therefore `{{configuration.correction_example.first_correction_id}}`. A correction identity does not overwrite
 or replace the base run, does not consume the next unrelated sequential run
 identity, and grants no execution, acceptance, risk, ratification, or phase
 authority.
@@ -93,7 +93,7 @@ Preserve the exact prompt text with its authorization scope, forbidden actions, 
 
 After interruption, recover from the repository-custodied prompt and durable worktree or result evidence, verify identity and status, record the interruption and resumption, and do not silently substitute a revised prompt. If an exact historical prompt is unavailable, record `NOT_PRESERVED`, describe the evidence limitation, and never reconstruct a plausible text as original evidence.
 
-Formal run prompt snapshots under `governance/runs/<run>/prompt/` retain authoritative custody for their runs. The prompt catalogue references those snapshots and their run evidence without unnecessary byte duplication. Prompt custody carries only the authority explicitly stated in the prompt and cannot expand, reuse, or transfer it.
+Formal run prompt snapshots under `{{configuration.paths.formal_run_prompt_snapshots}}` retain authoritative custody for their runs. The prompt catalogue references those snapshots and their run evidence without unnecessary byte duplication. Prompt custody carries only the authority explicitly stated in the prompt and cannot expand, reuse, or transfer it.
 
 Prompt custody does not itself prove that the prompt was executed correctly, that its outputs were validated, or that its authorized actions occurred.
 
@@ -109,7 +109,7 @@ Use offline scripts for exact parsing, duplicate detection, hashing, path safety
 
 ## Failure, learning, and immutability
 
-Material failures, near misses, ambiguities, owner corrections, defects, tooling gaps, and cost waste require triage under `../learning/README.md`. Never silently repair a material error. Preserve the observation, impact, cause, containment, correction, prevention, evidence limits, owner, and validation plan. Missing evidence, timestamps, tokens, and quotes remain explicitly unavailable.
+Material failures, near misses, ambiguities, owner corrections, defects, tooling gaps, and cost waste require triage under `{{configuration.paths.learning_readme}}`. Never silently repair a material error. Preserve the observation, impact, cause, containment, correction, prevention, evidence limits, owner, and validation plan. Missing evidence, timestamps, tokens, and quotes remain explicitly unavailable.
 
 Completed runs, bound artifacts, decisions, validated learning bases, and raw sources are historical evidence. Correct methodology prospectively through new versions and append-only events. Supersede; do not rewrite history to match a newer method.
 

@@ -2,6 +2,8 @@ document_id: GOV-GEN-G6-B-02-HUGEPLANNING-ADOPTER-BINDING-001
 version: 0.1.0
 status: ACTIVE_LOCAL_ADOPTER_BINDING
 core_contract: ../../core/project-operating-contract.md
+configuration_contract: ../../core/configuration-schema.yaml
+project_configuration: configuration.yaml
 compatibility_entrypoint: ../../methodology/project-operating-contract.md
 binding_mode: REFERENCE_ONLY_COMPATIBILITY_SHIM
 semantic_expectation: IDENTICAL_CORE_RULES

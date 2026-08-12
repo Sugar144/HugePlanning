@@ -1,0 +1,22 @@
+document_id: GOV-GEN-G6-B-03-CONFIGURATION-BOUNDARY-001
+version: 0.1.0
+status: B-03_CONFIG_SEAM_REVIEW_READY
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B02_REVIEW_AND_B03_CONTINUATION
+inputs:
+  b02_review: ../B-02/B-02-independent-review-001.yaml
+  b02_boundary: ../B-02/B-02-core-boundary.yaml
+  g3_boundary_model: ../../G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.md
+configuration_contract: ../../../../core/configuration-schema.yaml
+project_configuration: ../../../../adopters/hugeplanning/configuration.yaml
+compatibility_entrypoint: ../../../../methodology/project-operating-contract.md
+normalized_values:
+  - correction-example run identities
+  - formal-run prompt-snapshot path
+  - learning-triage path
+invariants:
+  b02_core_boundary_preserved: true
+  l3_content_retained_in_hugeplanning: true
+  l5_evidence_history_unchanged: true
+  active_instruction_surfaces_modified: false
+  resolved_hugeplanning_semantics_byte_equivalent_to_b01_baseline: true
+next_gate: INDEPENDENT_B03_REVIEW_REQUIRED

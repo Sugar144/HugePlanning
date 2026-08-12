@@ -569,6 +569,11 @@ G6:
   b_02_core_boundary: G6/B-02/B-02-core-boundary.yaml
   b_02_adopter_binding: ../../adopters/hugeplanning/core-binding.yaml
   b_02_validation: G6/B-02/B-02-validation-report.yaml
+  b_02_independent_review: G6/B-02/B-02-independent-review-001.yaml
+  b_02_status: B-02_REVIEW_PASS_B03_AUTHORIZED
+  b_03_configuration_boundary: G6/B-03/B-03-configuration-boundary.yaml
+  b_03_validation: G6/B-03/B-03-validation-report.yaml
+  b_03_status: B-03_CONFIG_SEAM_REVIEW_READY
   b_01_coverage: 28_of_28_ACCEPTED_CANONICAL_UNITS
   b_01_shard_token_counts: [18791, 18204, 4887]
   b_01_reconciliation_token_count: 4391
@@ -580,7 +585,7 @@ G6:
     R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
     artifact has no §4.2 heading. Construction refused before semantic work,
     source mutation, or token measurement.
-  next_authority_required: INDEPENDENT_B02_REVIEW_REQUIRED_BEFORE_B03
+  next_authority_required: INDEPENDENT_B03_REVIEW_REQUIRED
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial

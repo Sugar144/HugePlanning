@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 FROZEN_REVISION = "6fc4fa1a14a665fabfcceb00729222527cd192ba"
+BOUNDARY_REVISION = "1e828f8ba5c50e2d3d144e60facac1fdf1f65554"
 CORE = ROOT / "governance/core/project-operating-contract.md"
 BINDING = ROOT / "governance/methodology/project-operating-contract.md"
 ADOPTER = ROOT / "governance/adopters/hugeplanning/core-binding.yaml"
@@ -27,20 +28,25 @@ def main() -> int:
         ["git", "-C", str(ROOT), "show", f"{FROZEN_REVISION}:governance/methodology/project-operating-contract.md"],
         check=True, stdout=subprocess.PIPE,
     ).stdout
-    if CORE.read_bytes() != frozen:
-        errors.append("core contract differs from the B-01 frozen source")
+    boundary_core = subprocess.run(
+        ["git", "-C", str(ROOT), "show", f"{BOUNDARY_REVISION}:governance/core/project-operating-contract.md"],
+        check=True,
+        stdout=subprocess.PIPE,
+    ).stdout
+    if boundary_core != frozen:
+        errors.append("B-02 boundary core differs from the B-01 frozen source")
     binding = BINDING.read_text(encoding="utf-8")
     if "core_contract: ../core/project-operating-contract.md" not in binding:
         errors.append("compatibility binding does not resolve the core contract")
     adopter = ADOPTER.read_text(encoding="utf-8")
     if "core_contract: ../../core/project-operating-contract.md" not in adopter:
         errors.append("adopter binding does not resolve the core contract")
-    core_text = CORE.read_text(encoding="utf-8")
+    core_text = boundary_core.decode("utf-8")
     if "HugePlanning" in core_text:
         errors.append("core contains a HugePlanning literal")
-    if git("diff", "--name-only", "8889161", "--", *INSTRUCTIONS).strip():
+    if git("diff", "--name-only", "8889161", BOUNDARY_REVISION, "--", *INSTRUCTIONS).strip():
         errors.append("an active instruction surface changed during B-02")
-    tracked = git("ls-files", "governance/core", "governance/adopters/hugeplanning").splitlines()
+    tracked = git("ls-tree", "-r", "--name-only", BOUNDARY_REVISION, "--", "governance/core", "governance/adopters/hugeplanning").splitlines()
     if sorted(tracked) != sorted([
         "governance/adopters/hugeplanning/core-binding.yaml",
         "governance/core/README.md",
@@ -51,7 +57,7 @@ def main() -> int:
         print("FAIL: " + "; ".join(errors), file=sys.stderr)
         return 1
     print("PASS: semantic equivalence, literal/path isolation, adopter binding, and provenance boundary")
-    print("core_sha256=" + hashlib.sha256(frozen).hexdigest())
+    print("boundary_core_sha256=" + hashlib.sha256(frozen).hexdigest())
     return 0
 
 
