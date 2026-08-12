@@ -3910,7 +3910,7 @@ artifacts:
   - id: GOV-GEN-AUD-001
     title: HugePlanning Governance Generalization Audit Program Scaffold
     version: 1.0.0
-    status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_EXTRACTION_PLAN_R1_ACCEPTED_B01_NOT_STARTED_NOT_AUTHORIZED
+    status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_R2_READY_FOR_PROJECT_OWNER_REVIEW_B01_NOT_STARTED_NOT_AUTHORIZED
     authority: program_index_with_owner_selected_option_b_direction_and_g6_planning_not_extraction_or_implementation_authority
     path: governance/audits/GOV-GEN-AUD-001-governance-generalization/00-program-charter.md
     source_path: governance/prompts/orchestration/HP-PROMPT-052-gov-gen-g5a-physical-architecture-synthesis-v0.1.0.md
@@ -3982,6 +3982,8 @@ artifacts:
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.manifest.sha256
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001.md
       - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001.manifest.sha256
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md
+      - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.manifest.sha256
     notes:
       - Firewalled from GOV-AUD-001 per G0-08; the two programs share only this repository as evidence and neither authority unblocks the other.
       - G1A (679-row deterministic index, 13/13 validations PASS, reproducibility PASS, 7/7 baseline counts MATCH) is ACCEPTED_BY_PROJECT_OWNER under GOV-GEN-DECISION-001/0.1.0; no PENDING_OWNER_ACCEPTANCE state remains.
@@ -4012,6 +4014,7 @@ artifacts:
       - GOV-GEN-G6-CONTRACT-001/0.1.0 and GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001/0.1.0 execute the separately authorized G6 planning-only task. The base result orders eight prospective packets (B-01 through B-08), identifies B-01 as the safest no-extraction baseline/inventory packet, retains L3 and L5 as project-owned, requires independent review before packet execution, and declares no context-risk packet. GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0 preserves that base as historical evidence and clarifies only that the displayed B-01 through B-08 sequence is the recommended default serial execution order, while each packet's depends_on field is the authoritative hard dependency graph; a dependency-satisfied alternative schedule requires explicit authorization. The unchanged stated Option B empirical-proof gate comprises B-02, B-03, B-04, and B-08; B-05, B-06, and B-07 remain planned work but are not prerequisites for that gate unless another accepted dependency requires them. Neither artifact extracts, migrates, creates a repository or target directory, implements AP-1–AP-6, changes AGENTS.md/CLAUDE.md, executes Option D, or accepts the plan; the next authority is Project Owner review.
       - The Project Owner accepted GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0 as the corrected and controlling G6 plan under GOV-GEN-DECISION-020/0.1.0. The recommended default serial order, authoritative per-packet depends_on graph, Option B empirical-proof gate (B-02, B-03, B-04, B-08), packet scopes, L3/L5 ownership, and all validation/context/authority constraints are unchanged. B-01 remains NOT_STARTED_NOT_AUTHORIZED; no packet, extraction, migration, AP-1–AP-6 implementation, Option D, or instruction-surface change is authorized.
       - GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001/0.1.0 independently reviewed the accepted R1 plan and returned G6_R1_PLAN_REQUIRES_BOUNDED_CORRECTION with 0 BLOCKING, 2 MATERIAL, and 0 MINOR findings after 3 targeted drill-downs. The findings are bounded to B-01: its input projection is circular and lacks a deterministic <=20k construction/measurement contract, and its recovery language conflicts with custody of the completed independently reviewed semantic baseline. The plan remains unmodified; B-01 remains NOT_STARTED_NOT_AUTHORIZED pending Project Owner disposition on a bounded correction. No Option C/Option D, AP-1–AP-6, external-reuse, or instruction-surface claim is authorized.
+      - GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2/0.1.0 is the minimum prospective, unaccepted correction of those two findings only. It defines B-01's fixed seed set, deterministic source-root/import-closure construction, content-addressed provenance manifest, `tiktoken 0.12.0`/`cl100k_base` pre-execution <=20k measurement, and deterministic refusal if construction cannot satisfy the cap; it also confines deletion to provisional output and preserves an accepted B-01 baseline, manifest, provenance, and review record as immutable historical custody subject only to prospective authorized supersession. B-02 through B-08 are materially unchanged and B-01 remains NOT_STARTED_NOT_AUTHORIZED. The next authority is Project Owner review and acceptance or a further bounded correction.
 
   - id: HP-PROMPT-040
     title: GOV-GEN-G1A-CLOSE + G1B-SIMPLIFY

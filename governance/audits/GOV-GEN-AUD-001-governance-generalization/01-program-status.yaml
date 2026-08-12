@@ -3,9 +3,9 @@ program:
   title: HugePlanning Governance Generalization Audit
   firewalled_from: GOV-AUD-001
   firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
-  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_EXTRACTION_PLAN_R1_ACCEPTED_B01_NOT_STARTED_NOT_AUTHORIZED
+  status: G0_G1A_G1B_G2_G3_G4_G5_ACCEPTED_BY_PROJECT_OWNER_G6_R2_READY_FOR_PROJECT_OWNER_REVIEW_B01_NOT_STARTED_NOT_AUTHORIZED
   phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
-  current_phase: G6_EXTRACTION_PLAN_R1_ACCEPTED_B01_NOT_STARTED_NOT_AUTHORIZED
+  current_phase: G6_R2_EXTRACTION_PLAN_READY_FOR_PROJECT_OWNER_REVIEW_B01_NOT_STARTED_NOT_AUTHORIZED
   reference_repository: Sugar144/HugePlanning
   # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
   # together describe the frozen snapshot used to build the G1A deterministic
@@ -515,18 +515,20 @@ G5:
     G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
 
 G6:
-  status: G6_R1_INDEPENDENT_REVIEW_REQUIRES_BOUNDED_CORRECTION_B01_NOT_AUTHORIZED
+  status: G6_R2_EXTRACTION_PLAN_READY_FOR_PROJECT_OWNER_REVIEW
   contract: GOV-GEN-G6-CONTRACT-001/0.1.0
   contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
   principal_result: Bounded Extraction Plan
-  deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0
-  deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md
-  manifest_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.manifest.sha256
+  prior_accepted_controlling_deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0
+  prior_accepted_controlling_deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md
+  deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2/0.1.0
+  deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.md
+  manifest_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R2.manifest.sha256
   manifest_verified: true
   acceptance_record: GOV-GEN-DECISION-020/0.1.0
   accepted_by: Project Owner
   accepted_on: '2026-08-05'
-  pending_owner_acceptance: false
+  pending_owner_acceptance: true
   independent_plan_review:
     review_deliverable: GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001/0.1.0
     review_location: G6/GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001.md
@@ -536,6 +538,7 @@ G6:
     findings: {blocking: 0, material: 2, minor: 0}
     verdict: G6_R1_PLAN_REQUIRES_BOUNDED_CORRECTION
     plan_corrected_or_reaccepted: false
+    findings_resolved_by_candidate: [F-001, F-002]
   execution_authorized: true
   execution_authorization_basis: Project Owner direct task GOV-GEN G6 — Bounded Extraction Planning
   extraction_packets: 8
@@ -548,7 +551,7 @@ G6:
   option_b_empirical_proof_packets: [B-02, B-03, B-04, B-08]
   b_05_b_06_b_07_required_for_stated_option_b_empirical_proof_gate: false
   b_01_status: NOT_STARTED_NOT_AUTHORIZED
-  next_authority_required: PROJECT_OWNER_DISPOSITION_ON_BOUNDED_G6_PLAN_CORRECTION
+  next_authority_required: PROJECT_OWNER_REVIEW_AND_ACCEPTANCE_OR_BOUNDED_REVISION_OF_G6_PLAN
   note: >-
     R1 preserves the base plan as historical evidence and clarifies that its
     displayed B-01 through B-08 sequence is the recommended default serial
@@ -565,8 +568,12 @@ G6:
     controlling plan under GOV-GEN-DECISION-020/0.1.0. Its independent bounded
     review returned G6_R1_PLAN_REQUIRES_BOUNDED_CORRECTION with two MATERIAL
     findings limited to B-01's circular/non-deterministically measured input
-    projection and its completed-baseline recovery/custody ambiguity. B-01
-    remains NOT_STARTED_NOT_AUTHORIZED; no packet is authorized.
+    projection and its completed-baseline recovery/custody ambiguity. R2 is
+    the unaccepted prospective correction: it defines a fixed seed,
+    deterministic closure and content-addressed projection manifest, pinned
+    pre-execution token measurement/refusal, and provisional-versus-accepted
+    B-01 custody. B-02 through B-08 are materially unchanged. B-01 remains
+    NOT_STARTED_NOT_AUTHORIZED; no packet is authorized.
 
 GR:
   status: REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
