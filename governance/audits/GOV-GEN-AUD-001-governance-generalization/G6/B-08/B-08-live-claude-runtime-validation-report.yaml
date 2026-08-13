@@ -1,0 +1,111 @@
+document_id: GOV-GEN-G6-B-08-LIVE-CLAUDE-RUNTIME-VALIDATION-001
+version: 0.1.0
+status: VALID
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_POST_CLOSURE_LIVE_CLAUDE_RUNTIME_VALIDATION
+program_id: GOV-GEN-AUD-001
+phase: POST_CLOSURE_ADDENDUM
+scope: DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION_ONLY
+starting_repository: Sugar144/HugePlanning
+starting_branch: governance/kernel-designer-revision-v0.1
+starting_commit: 27f3b229ea221052a23495929cee4cf029d11b6d
+gov_gen_status_before_this_addendum: GOV_GEN_AUD_001_COMPLETED_ACCEPTED
+gov_gen_reopened: false
+g6_reopened: false
+new_phase_opened: false
+option_b_modified: false
+resolves_deferred_item: DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION
+prior_evidence_preserved_unmodified:
+  - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/GOV-GEN-G6-CLOSURE-001.yaml
+  - governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-08/B-08-two-adapter-validation-report.yaml
+  - governance/audits/GOV-GEN-AUD-001-governance-generalization/decisions/GOV-GEN-DECISION-021-project-closure-v0.1.0.yaml
+executor:
+  runtime: Claude Code
+  model_id: claude-sonnet-5
+  session_type: live_interactive_agent_session
+  execution_mode: LIVE_NOT_SIMULATED
+  note: >-
+    This report was itself authored inside the live Claude Code session that
+    performed the validation below; the session is the runtime under test.
+live_execution_performed:
+  - action: deterministic pytest baseline
+    command: python3 -m pytest governance/tests/test_g6_b07_projection.py governance/tests/test_g6_b08_codex_adapter.py governance/tests/test_g6_b08_two_adapter_conformance.py -q
+    result: 7 passed
+  - action: run existing Codex adapter validator (regression check, unchanged)
+    command: python3 governance/tools/validate_g6_b08.py
+    result: PASS
+    resolved_core_sha256: cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa
+  - action: run existing two-adapter conformance validator
+    command: python3 governance/tools/validate_g6_b08_two_adapter_conformance.py
+    result: PASS
+    note: printed DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION, the exact residual this addendum resolves
+  - action: build a bounded B-07 projection live
+    command: python3 governance/tools/build_g6_b07_projection.py --program g6-live-claude --task "Live Claude runtime validation addendum for GOV-GEN G6 B-08" --output <ephemeral>
+    result: 26/26 governance/learning/records/*.yaml sources indexed, token_measurement 9/4000 (whitespace-token-v1), bounded and within limit
+  - action: render the Claude Code L4 context live, with the B-07 projection attached
+    command: python3 governance/tools/render_g6_b08_claude_context.py --output <ephemeral> --l7-projection <ephemeral>/projection/projection.json
+    result: >-
+      claude-context.md produced; resolved_core_sha256
+      cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa,
+      byte-identical to the Codex adapter's resolved_core_sha256 in the same
+      live session
+  - action: read and consume the rendered ephemeral claude-context.md inside this live Claude Code session
+    result: >-
+      the resolved core rendered with no unresolved `{{ }}` placeholder, the
+      embedded bounded L7 projection parsed as valid JSON within its declared
+      token limit, and the content was usable governance context for this
+      session without any Claude-specific rewriting
+  - action: exercise core/l6/authority.py decide() live, in-process, against three bounded requests
+    result: >-
+      missing authority -> INDETERMINATE (retry_with_new_authority=true);
+      authority presented but action out of allowed scope -> DENIED;
+      authority presented with exact bounded actor/context/action/path match
+      -> AUTHORIZED. Fail-closed on every non-matching input, exactly the
+      accepted B-06 model; no Claude-specific branch exists in the module.
+  - action: no-push/no-publication boundary check
+    result: no git remote operation attempted or executed in this session; all commands were local read, render, or test operations
+validations:
+  claude_adapter_consumes_same_reusable_core_contract_used_by_codex_adapter: PASS
+  provider_specific_behavior_isolated_to_l4: PASS
+  project_configuration_external_to_reusable_core: PASS
+  doa_semantics_consistent_with_accepted_fail_closed_model: PASS
+  identity_semantics_common_not_claude_specific: PASS
+  bounded_b07_projection_rendered_and_consumed_by_claude: PASS
+  no_claude_specific_literal_leaks_into_reusable_l0_l2: PASS
+  active_claude_runtime_surfaces_compatible_with_adapter: PASS
+  live_claude_result_does_not_contradict_accepted_codex_evidence: PASS
+bounded_correction:
+  performed: true
+  scope: >-
+    governance/adapters/claude/binding.yaml constraint field
+    `live_runtime_validation_claimed` corrected from `false` to `true`, its
+    `status` field corrected from `ACTIVE_L4_ADAPTER_STATICALLY_VALIDATED` to
+    `ACTIVE_L4_ADAPTER_LIVE_VALIDATED`, and its `version` bumped 0.1.0 ->
+    0.1.1 (PATCH, no contract change). governance/adapters/claude/README.md's
+    closing sentence is corrected to reflect completion instead of deferral.
+  necessity: >-
+    Strictly necessary to complete this addendum's own stated output
+    ("reconcile the deferred non-blocking item as completed"); these two
+    fields exist specifically to record whether live validation has occurred
+    and were provably false before this session.
+  not_performed:
+    - no change to governance/core (reusable core contract, l6 modules)
+    - no change to governance/adopters/hugeplanning (project-owned configuration)
+    - no change to governance/learning (canonical L5 history)
+    - no change to governance/adapters/codex/binding.yaml
+    - no change to CLAUDE.md or .claude/
+    - no change to GOV-GEN-G6-CLOSURE-001.yaml
+    - no change to G6/B-08/B-08-two-adapter-validation-report.yaml
+result: LIVE_CLAUDE_RUNTIME_VALIDATION_PASS
+option_b_empirical_proof: UNCHANGED_OPTION_B_EMPIRICALLY_PROVEN
+exclusions_unchanged_from_prior_evidence:
+  - external_second_consumer_not_proven
+  - option_c_readiness_not_proven
+  - l0_distribution_or_versioning_not_solved
+  - ap_1_through_ap_6_not_universally_complete
+authority_boundary:
+  - does not reopen GOV-GEN-AUD-001 or G6
+  - does not open a new phase
+  - does not modify Option B or the accepted architecture decision
+  - does not claim external reuse with a second real project
+  - does not push, open a pull request, merge, tag, release, or publish
+next_authority: PROJECT_OWNER_REVIEW_OF_ADDENDUM

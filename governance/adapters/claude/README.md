@@ -11,4 +11,5 @@ bounded token measurement is valid. The command does not modify `CLAUDE.md`,
 `.claude/`, the reusable core, adopter configuration, or canonical L5 evidence.
 
 This is an L4 binding, not an active-instruction change. Live Claude runtime
-validation remains deferred.
+validation passed in a post-closure addendum session; see
+`../../audits/GOV-GEN-AUD-001-governance-generalization/G6/B-08/B-08-live-claude-runtime-validation-report.yaml`.

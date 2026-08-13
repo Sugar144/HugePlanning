@@ -436,7 +436,9 @@ GOV_GEN_AUD_001:
     b_08_adapters: [governance/adapters/claude/binding.yaml, governance/adapters/codex/binding.yaml]
     b_08_validation: governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-08/B-08-two-adapter-validation-report.yaml
     option_b_empirical_proof: OPTION_B_EMPIRICALLY_PROVEN
-    deferred_live_claude_runtime_validation: DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION
+    deferred_live_claude_runtime_validation: RESOLVED_LIVE_CLAUDE_RUNTIME_VALIDATION_PASS
+    live_claude_runtime_validation_report: governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-08/B-08-live-claude-runtime-validation-report.yaml
+    live_claude_runtime_validation_decision: GOV-GEN-DECISION-022/0.1.0
     closure_record: GOV-GEN-G6-CLOSURE-001/0.1.0
     project_closure_decision: GOV-GEN-DECISION-021/0.1.0
     project_closure_status: COMPLETED_ACCEPTED
@@ -449,7 +451,8 @@ GOV_GEN_AUD_001:
   architecture: OPTION_B
   empirical_proof: OPTION_B_EMPIRICALLY_PROVEN
   hugeplanning: FIRST_ADOPTER_LAB
-  deferred_non_blocking: [DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION]
+  deferred_non_blocking: []
+  resolved_post_closure: [DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION]
   option_c: DEFERRED_PENDING_REAL_SECOND_CONSUMER
   publication: NOT_PERFORMED
   hugeplanning_worktree_written_outside_governance_audits_dir: false

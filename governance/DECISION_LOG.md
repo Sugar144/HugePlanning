@@ -520,3 +520,14 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: Terminal state `GOV_GEN_AUD_001_COMPLETED_ACCEPTED`. `DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION` is non-blocking. Option C is deferred, not rejected, pending a real second consumer. Publication is `NOT_PERFORMED`.
 - Authority boundary: This does not authorize integration, publication, a new phase, another review, a new architecture decision, G7, further implementation, live Claude execution, push, PR, merge, tag, release, or deployment.
 - Supersedes: none (all historical GOV-GEN artifacts and accepted identities remain preserved).
+
+## GOV-DEC-047 — GOV-GEN post-closure live Claude runtime validation addendum
+
+- Date: 2026-08-13
+- Status: COMPLETED_ACCEPTED
+- Statement: Reconcile the single non-blocking deferred item recorded at closure, `DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION`, as completed under `RECONCILE_DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION_AS_COMPLETED`.
+- Rationale: A live Claude Code session executed the existing deterministic test/validator suite (7/7 pytest PASS, both validators PASS), built a bounded B-07 projection, rendered the Claude Code L4 adapter's ephemeral context, and consumed it in-session, confirming byte-identical resolved-core SHA-256 with the accepted Codex adapter evidence and fail-closed DOA behavior exercised live. Result: `LIVE_CLAUDE_RUNTIME_VALIDATION_PASS`.
+- Source: Project Owner direct post-closure addendum task; `GOV-GEN-DECISION-022/0.1.0`; `governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-08/B-08-live-claude-runtime-validation-report.yaml`.
+- Consequences: `DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION` is `RESOLVED_COMPLETED`. `governance/adapters/claude/binding.yaml` is bounded-corrected (`version` 0.1.0 -> 0.1.1, `status` -> `ACTIVE_L4_ADAPTER_LIVE_VALIDATED`, `constraints.live_runtime_validation_claimed` -> `true`); `governance/adapters/claude/README.md`'s closing sentence is corrected to match. `GOV-GEN-G6-CLOSURE-001/0.1.0` and `GOV-GEN-DECISION-021/0.1.0` remain preserved, unmodified. GOV-GEN remains `COMPLETED_ACCEPTED`.
+- Authority boundary: This does not reopen `GOV-GEN-AUD-001` or G6, select or modify an architecture, open a new phase, claim external reuse with a second real project, or push, PR, merge, tag, release, or deploy.
+- Supersedes: none (this is an additive post-closure addendum; all prior GOV-GEN evidence, including `GOV-GEN-G6-CLOSURE-001/0.1.0` and `G6/B-08/B-08-two-adapter-validation-report.yaml`, remains preserved unmodified).

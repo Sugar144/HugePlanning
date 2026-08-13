@@ -1,6 +1,6 @@
 document_id: GOV-GEN-G6-CLAUDE-CODE-ADAPTER-001
-version: 0.1.0
-status: ACTIVE_L4_ADAPTER_STATICALLY_VALIDATED
+version: 0.1.1
+status: ACTIVE_L4_ADAPTER_LIVE_VALIDATED
 provider_executor: Claude Code
 logical_layer: L4
 core_contract: ../../core/project-operating-contract.md
@@ -18,4 +18,5 @@ ownership:
 constraints:
   persistent_instruction_surface_modified: false
   external_consumer_claimed: false
-  live_runtime_validation_claimed: false
+  live_runtime_validation_claimed: true
+  live_runtime_validation_evidence: governance/audits/GOV-GEN-AUD-001-governance-generalization/G6/B-08/B-08-live-claude-runtime-validation-report.yaml
