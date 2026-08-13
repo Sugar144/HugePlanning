@@ -766,9 +766,13 @@ not_authorized_by_this_program:
   - option_c_repository_creation
 
 option_c:
-  status: LOCAL_RELEASE_CANDIDATE_READY_FOR_PUBLICATION
+  status: PUBLISHED_RC_0_1_0_RC_1
   decision: GOV-GEN-DECISION-023/0.1.0
   source_freeze: C1/GOV-GEN-OPTION-C-SOURCE-FREEZE-001.json
   independent_repository: /home/sugar/Proyectos/general-governance
-  publication: NOT_PERFORMED
-  hugeplanning_adoption: NOT_STARTED_C4_REQUIRES_PUBLISHED_REVISION
+  publication: DURABLY_PUBLISHED
+  framework_version: 0.1.0-rc.1
+  immutable_framework_commit: d2f84cdb933f0738003d6de9696f44226c734065
+  hugeplanning_adoption: EXTERNAL_ADOPTER_001_C4_LOCAL_CONFORMANCE_PASS
+  hugeplanning_integration: PR_6_PUBLICATION_INTEGRATION_VEHICLE
+  dopis_adoption: NOT_STARTED_ADOPTER_002

@@ -42,6 +42,16 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def ensure_clean_checkout(destination: Path, commit_sha: str) -> None:
+    """Restore the dedicated immutable cache before any framework bytes are used."""
+    run("git", "-C", str(destination), "reset", "--hard", commit_sha)
+    run("git", "-C", str(destination), "clean", "-ffdx")
+    if run(
+        "git", "-C", str(destination), "status", "--porcelain", "--untracked-files=all", "--ignored"
+    ):
+        fail("acquired framework checkout is not clean")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cache-root", type=Path, default=Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "hugeplanning" / "general-governance")
@@ -56,7 +66,7 @@ def main() -> int:
         if remote != REMOTE:
             fail("cache origin does not equal the durable GOV-GEN remote")
         run("git", "-C", str(destination), "fetch", "--no-tags", "origin", identity["commit_sha"])
-        run("git", "-C", str(destination), "checkout", "--detach", identity["commit_sha"])
+        ensure_clean_checkout(destination, identity["commit_sha"])
         if run("git", "-C", str(destination), "rev-parse", "HEAD") != identity["commit_sha"]:
             fail("acquired framework HEAD does not equal locked commit")
         if digest(destination / "release-manifest.json") != identity["release_manifest_sha256"]:
