@@ -363,3 +363,13 @@ adopter/lab. `DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION` is explicitly
 non-blocking. Option C is deferred, not rejected, pending evidence from a
 real second consumer. No integration, publication, live Claude execution,
 new phase, or further implementation is authorized.
+
+`GOV-GEN-DECISION-023/0.1.0` records the Project Owner disposition
+`PROMOTE_TO_OPTION_C`. It custodians the post-closure evolution triggered by
+the real second-consumer evidence: Option B proved the reusable boundary, but
+external distribution, immutable pinning, compatibility, controlled upgrade,
+conformance, and provenance now require an independently authoritative
+framework. C1 freezes HugePlanning source at `7e74184…`; C2/C3 create only a
+local, unpublished `Sugar144/general-governance` release candidate. Historical
+closure evidence is unchanged, Dopis is not modified or adopted, and
+HugePlanning remains unmigrated until a published immutable revision permits C4.

@@ -531,3 +531,12 @@ Only explicit, supportable decisions are recorded here. Proposed constitutional 
 - Consequences: `DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION` is `RESOLVED_COMPLETED`. `governance/adapters/claude/binding.yaml` is bounded-corrected (`version` 0.1.0 -> 0.1.1, `status` -> `ACTIVE_L4_ADAPTER_LIVE_VALIDATED`, `constraints.live_runtime_validation_claimed` -> `true`); `governance/adapters/claude/README.md`'s closing sentence is corrected to match. `GOV-GEN-G6-CLOSURE-001/0.1.0` and `GOV-GEN-DECISION-021/0.1.0` remain preserved, unmodified. GOV-GEN remains `COMPLETED_ACCEPTED`.
 - Authority boundary: This does not reopen `GOV-GEN-AUD-001` or G6, select or modify an architecture, open a new phase, claim external reuse with a second real project, or push, PR, merge, tag, release, or deploy.
 - Supersedes: none (this is an additive post-closure addendum; all prior GOV-GEN evidence, including `GOV-GEN-G6-CLOSURE-001/0.1.0` and `G6/B-08/B-08-two-adapter-validation-report.yaml`, remains preserved unmodified).
+
+## GOV-DEC-048 — GOV-GEN Option C independent framework extraction
+
+- Date: 2026-08-14
+- Status: LOCAL_RELEASE_CANDIDATE_READY_FOR_PUBLICATION
+- Statement: Record the Project Owner's `PROMOTE_TO_OPTION_C` decision under `GOV-GEN-DECISION-023/0.1.0` and custody C1's immutable source freeze at `7e74184b3efa5dfaf99a098b4733e145126c3554`.
+- Rationale: Option B successfully proved the boundary; real second-consumer evidence exposed the deferred external distribution/versioning gap; the Owner elects independent framework ownership instead of a transitional HugePlanning-hosted release layer.
+- Consequences: C2/C3 create an unpublished local `Sugar144/general-governance` release candidate with byte-level provenance, immutable consumer locks, compatibility, upgrade protocol, and deterministic conformance. L3/L5, HugePlanning values/state, and provider-specific bindings remain HugePlanning-owned. Dopis remains unmodified and unadopted. HugePlanning C4 migration is deferred until a durably addressable published revision exists.
+- Authority boundary: No remote repository, push, PR, merge, published tag/release, deployment, Dopis modification, or consumer adoption is authorized.

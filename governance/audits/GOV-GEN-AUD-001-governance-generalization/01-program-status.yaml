@@ -764,3 +764,11 @@ not_authorized_by_this_program:
   - independent_review_of_the_g5_correction_r1
   - option_d_pilot_execution
   - option_c_repository_creation
+
+option_c:
+  status: LOCAL_RELEASE_CANDIDATE_READY_FOR_PUBLICATION
+  decision: GOV-GEN-DECISION-023/0.1.0
+  source_freeze: C1/GOV-GEN-OPTION-C-SOURCE-FREEZE-001.json
+  independent_repository: /home/sugar/Proyectos/general-governance
+  publication: NOT_PERFORMED
+  hugeplanning_adoption: NOT_STARTED_C4_REQUIRES_PUBLISHED_REVISION

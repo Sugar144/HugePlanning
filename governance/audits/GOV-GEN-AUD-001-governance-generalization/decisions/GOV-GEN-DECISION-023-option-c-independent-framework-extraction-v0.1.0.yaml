@@ -1,0 +1,30 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-023
+  version: 0.1.0
+  date: '2026-08-14'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: PROMOTE_TO_OPTION_C
+  program_id: GOV-GEN-AUD-001
+  phase: POST_CLOSURE_FRAMEWORK_EVOLUTION
+  source_authority: GOV-GEN-OPT-C-001 Independent Framework Extraction
+  rationale:
+    - Option B successfully proved the reusable boundary.
+    - A real second consumer now exists.
+    - The second consumer exposed the deferred distribution/versioning gap.
+    - The Owner elects not to invest in a transitional HugePlanning-hosted external release layer.
+    - GOV-GEN becomes an independently authoritative framework repository.
+    - HugePlanning becomes an adopter/consumer rather than physical owner of reusable framework authority after publication and adoption.
+  accepted_scope: [C1 accepted-source freeze, C2 local independent repository genesis, C3 reusable external-consumer contract and local conformance validation]
+  provenance:
+    source_repository: Sugar144/HugePlanning
+    source_commit: 7e74184b3efa5dfaf99a098b4733e145126c3554
+    source_freeze: C1/GOV-GEN-OPTION-C-SOURCE-FREEZE-001.json
+    extraction_manifest_repository: Sugar144/general-governance
+    extraction_manifest_path: provenance/extraction-manifest.json
+  preserves:
+    - GOV-GEN-DECISION-021 and all closure evidence as immutable history.
+    - Option B accepted logical boundary as the extraction boundary.
+    - L3/L5 and HugePlanning-specific configuration/state/bindings as HugePlanning-owned.
+    - Dopis as external evidence only; this decision is not Dopis adoption.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}
+  next_governed_state: GOV_GEN_OPTION_C_LOCAL_RELEASE_CANDIDATE_READY_FOR_PUBLICATION

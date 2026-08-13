@@ -1,0 +1,17 @@
+{
+  "record_id": "GOV-GEN-OPTION-C-SOURCE-FREEZE-001",
+  "status": "SOURCE_FROZEN_FOR_OPTION_C_EXTRACTION",
+  "source_repository": "Sugar144/HugePlanning",
+  "source_branch_provenance_only": "governance/kernel-designer-revision-v0.1",
+  "source_commit": "7e74184b3efa5dfaf99a098b4733e145126c3554",
+  "closure_ancestor": "27f3b229ea221052a23495929cee4cf029d11b6d",
+  "decision": "GOV-GEN-DECISION-023/0.1.0",
+  "controlling_boundary_evidence": ["G3 GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0", "G4 GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0", "G5 GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0", "G6 B-02 through B-08 accepted boundary records"],
+  "external_manifest_repository": "Sugar144/general-governance",
+  "external_manifest_path": "provenance/extraction-manifest.json",
+  "external_manifest_sha256": "c009d80739340648dcb81f4de804e8c4724b04bd63f0b571da34aca08f8c4b82",
+  "classification_counts": {"EXTRACT_FRAMEWORK": 11, "REMAIN_HUGEPLANNING": 5, "REFERENCE_ONLY": 4, "REQUIRES_REBINDING": 1, "EXCLUDE_HISTORICAL_CUSTODY": 3},
+  "layer_counts_extracted": {"L0": 1, "L1": 1, "L6": 9},
+  "excluded": ["L3 project-specific projections", "L5 canonical evidence/history", "HugePlanning configuration and identity state", "HugePlanning-specific Claude/Codex bindings", "actual L7 project projections"],
+  "transformations": []
+}
