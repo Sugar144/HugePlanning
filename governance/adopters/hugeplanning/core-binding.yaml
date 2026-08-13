@@ -1,11 +1,12 @@
 document_id: GOV-GEN-G6-B-02-HUGEPLANNING-ADOPTER-BINDING-001
-version: 0.1.0
-status: ACTIVE_LOCAL_ADOPTER_BINDING
-core_contract: ../../core/project-operating-contract.md
-configuration_contract: ../../core/configuration-schema.yaml
+version: 0.2.0
+status: ACTIVE_EXTERNAL_FRAMEWORK_ADOPTER_BINDING
+framework_lock: ../../../framework-lock.json
+core_contract: framework/core/project-operating-contract.md
+configuration_contract: framework/contracts/configuration-schema.yaml
 project_configuration: configuration.yaml
 compatibility_entrypoint: ../../methodology/project-operating-contract.md
-binding_mode: REFERENCE_ONLY_COMPATIBILITY_SHIM
+binding_mode: IMMUTABLE_EXTERNAL_FRAMEWORK
 semantic_expectation: IDENTICAL_CORE_RULES
 project_owned:
   l3_values_and_projections: retained_in_hugeplanning

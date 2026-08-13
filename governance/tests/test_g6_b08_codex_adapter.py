@@ -27,4 +27,4 @@ def test_codex_renderer_emits_ephemeral_context(tmp_path: Path) -> None:
     subprocess.run(["python3", "governance/tools/render_g6_b08_codex_context.py", "--output", str(tmp_path)], cwd=ROOT, check=True)
     context = json.loads((tmp_path / "codex-context.json").read_text())
     assert context["adapter"] == "GOV-GEN-G6-CODEX-ADAPTER-001"
-    assert context["core_contract"] == "governance/core/project-operating-contract.md"
+    assert context["core_contract"] == "framework/core/project-operating-contract.md"

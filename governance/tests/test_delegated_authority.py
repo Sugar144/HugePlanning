@@ -6,7 +6,10 @@ from pathlib import Path
 
 import pytest
 
-from governance.core.l6.authority import AppendOnlyAudit, AuthorityError, Authorization, Request, guarded_execute
+from governance.framework_runtime import framework_path, l6_module
+
+authority_module = l6_module("authority")
+AppendOnlyAudit, AuthorityError, Authorization, Request, guarded_execute = (authority_module.AppendOnlyAudit, authority_module.AuthorityError, authority_module.Authorization, authority_module.Request, authority_module.guarded_execute)
 
 
 def authority() -> Authorization:
@@ -51,7 +54,7 @@ def test_scope_escape_is_denied_without_partial_effect(tmp_path: Path) -> None:
 
 
 def test_effect_callback_has_no_straightforward_unguarded_callsite() -> None:
-    source = Path("governance/core/l6/authority.py").read_text()
+    source = framework_path("framework/core/l6/authority.py").read_text()
     tree = ast.parse(source)
     calls = [node for node in ast.walk(tree) if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == "effect"]
     assert len(calls) == 1

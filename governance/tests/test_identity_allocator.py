@@ -5,7 +5,10 @@ import json
 from multiprocessing import get_context
 from pathlib import Path
 
-from governance.core.l6.identity import Allocator, parse, resolve_historical
+from governance.framework_runtime import l6_module
+
+identity_module = l6_module("identity")
+Allocator, parse, resolve_historical = identity_module.Allocator, identity_module.parse, identity_module.resolve_historical
 
 
 def _allocate(state_path: str, ledger_path: str) -> str:

@@ -1,3 +1,4 @@
 """Compatibility export for the reusable L6 atomic-write helper."""
 
-from governance.core.l6.atomic import *  # noqa: F403
+from governance.framework_runtime import l6_module
+globals().update(vars(l6_module("atomic")))

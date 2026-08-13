@@ -1,3 +1,4 @@
 """Compatibility export for the reusable L6 ZIP inspection helper."""
 
-from governance.core.l6.safe_zip import *  # noqa: F403
+from governance.framework_runtime import l6_module
+globals().update(vars(l6_module("safe_zip")))

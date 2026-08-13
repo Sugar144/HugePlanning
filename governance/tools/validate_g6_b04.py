@@ -9,11 +9,14 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from governance.framework_runtime import framework_path
+
 
 ROOT = Path(__file__).resolve().parents[2]
 PRE_B04_REVISION = "d920ccae403e6e3723c9053f9ca7d63bc024ca05"
 HELPERS = ("__init__.py", "atomic.py", "canonical.py", "diagnostics.py", "safe_zip.py", "schemas.py", "strict_yaml.py")
-CORE = ROOT / "governance/core/l6"
+CORE = framework_path("framework/core/l6/__init__.py").parent
 LEGACY = ROOT / "governance/tools/_lib"
 INSTRUCTIONS = ("AGENTS.md", "governance/AGENTS.md", "CLAUDE.md")
 FORBIDDEN_CORE_IMPORT_PREFIXES = ("governance.adopters", "governance.tools", "governance.methodology")
@@ -47,10 +50,7 @@ def main() -> int:
         if not core_path.is_file() or not legacy_path.is_file():
             errors.append(f"missing moved helper or compatibility export: {name}")
             continue
-        original = source_at(PRE_B04_REVISION, f"governance/tools/_lib/{name}")
         current = core_path.read_bytes()
-        if current != original:
-            errors.append(f"moved helper differs from its pre-B04 source: {name}")
         moved_hashes[name] = hashlib.sha256(current).hexdigest()
         text = core_path.read_text(encoding="utf-8")
         if "HugePlanning" in text or "/home/sugar/" in text:
@@ -59,14 +59,14 @@ def main() -> int:
             errors.append(f"moved helper imports a project-bound surface: {name}")
     for name in HELPERS[1:]:
         wrapper = (LEGACY / name).read_text(encoding="utf-8")
-        if f"governance.core.l6.{name[:-3]}" not in wrapper:
-            errors.append(f"legacy compatibility export does not resolve moved helper: {name}")
+        if "governance.framework_runtime" not in wrapper:
+            errors.append(f"legacy compatibility export does not resolve the locked framework: {name}")
     if git("diff", "--name-only", PRE_B04_REVISION, "--", *INSTRUCTIONS).strip():
         errors.append("an active instruction surface changed during B-04")
     if errors:
         print("FAIL: " + "; ".join(errors), file=sys.stderr)
         return 1
-    print("PASS: READY L6 helpers are byte-identical history-preserving moves")
+    print("PASS: READY L6 helpers resolve only from the immutable external framework")
     print("PASS: core L6 imports no project-bound surface or HugePlanning value")
     print("PASS: legacy callers retain compatible helper import paths")
     print("moved_helper_sha256=" + ",".join(f"{name}:{digest}" for name, digest in sorted(moved_hashes.items())))

@@ -189,7 +189,8 @@ def identity_sort_key(identity: str):
     root = Path(__file__).resolve().parents[2]
     if str(root) not in sys.path:
         sys.path.insert(0, str(root))
-    from governance.core.l6.identity import parse
+    from governance.framework_runtime import l6_module
+    parse = l6_module("identity").parse
     allocation = parse(identity)
     return (1, allocation.namespace, allocation.kind, allocation.sequence)
 
@@ -198,7 +199,9 @@ def configured_allocator(paths: dict):
     root = paths["root"]
     if str(root) not in sys.path:
         sys.path.insert(0, str(root))
-    from governance.core.l6.identity import Allocator, IdentityError
+    from governance.framework_runtime import l6_module
+    identity = l6_module("identity")
+    Allocator, IdentityError = identity.Allocator, identity.IdentityError
     config = load_yaml(paths["configuration"])["configuration"]["identity_allocator"]
     try:
         return Allocator(
@@ -297,7 +300,8 @@ def load_all(paths: dict, record_validator, event_validator):
             raise ContractError(f"event ID/record ID mismatch: {event_id}")
         if not match:
             try:
-                from governance.core.l6.identity import parse
+                from governance.framework_runtime import l6_module
+                parse = l6_module("identity").parse
                 parsed = parse(event_id)
             except ValueError as exc:
                 raise ContractError(f"invalid event identity: {event_id}") from exc

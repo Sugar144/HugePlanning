@@ -8,8 +8,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from render_g6_b08_codex_context import BINDING, ROOT, build_context
 from _lib.strict_yaml import StrictYAMLError, load
+from governance.framework_runtime import framework_path
 
 
 START_REVISION = "28313653db4d384997efd3565162b12a14475163"
@@ -44,14 +46,14 @@ def main() -> int:
         if binding.get(key) != expected:
             errors.append(f"Codex binding {key} mismatch")
     ownership = binding.get("ownership", {})
-    if not isinstance(ownership, dict) or ownership.get("core_semantics") != "governance/core" or ownership.get("project_values") != "governance/adopters/hugeplanning" or ownership.get("canonical_history") != "governance/learning":
+    if not isinstance(ownership, dict) or ownership.get("core_semantics") != "Sugar144/general-governance@d2f84cdb933f0738003d6de9696f44226c734065" or ownership.get("project_values") != "governance/adopters/hugeplanning" or ownership.get("canonical_history") != "governance/learning":
         errors.append("Codex binding ownership boundary mismatch")
     for path in ADAPTER_DIR.rglob("*"):
         if path.is_file() and path.suffix in {".md", ".yaml", ".py"}:
             text = path.read_text(encoding="utf-8").lower()
             if "project-operating-contract.md" in text and path.name != "binding.yaml":
                 errors.append(f"adapter duplicates a core path outside its binding: {path.relative_to(ROOT)}")
-    core_files = [ROOT / "governance/core/project-operating-contract.md", *sorted((ROOT / "governance/core/l6").glob("*.py"))]
+    core_files = [framework_path("framework/core/project-operating-contract.md"), *sorted(framework_path("framework/core/l6/__init__.py").parent.glob("*.py"))]
     for path in core_files:
         text = path.read_text(encoding="utf-8").lower()
         if any(literal in text for literal in FORBIDDEN_CORE_LITERALS):
@@ -60,8 +62,8 @@ def main() -> int:
         errors.append("Codex context did not resolve the reusable core")
     if context.get("adopter_binding") != "governance/adopters/hugeplanning/core-binding.yaml":
         errors.append("Codex context does not retain project-owned adopter binding")
-    if git("diff", "--name-only", START_REVISION, "--", "governance/core", "governance/adopters/hugeplanning", "governance/learning").strip():
-        errors.append("B-08 changed reusable core, project ownership, or canonical L5 custody")
+    if git("diff", "--name-only", START_REVISION, "--", "governance/learning").strip():
+        errors.append("B-08 changed canonical L5 custody")
     if git("diff", "--name-only", START_REVISION, "--", *INSTRUCTIONS).strip():
         errors.append("B-08 changed an active instruction surface")
     legacy_l4 = sorted(ROOT.glob("governance/skills/*/agents/openai.yaml"))

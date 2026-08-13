@@ -18,7 +18,9 @@ def main() -> int:
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
     sys.path.insert(0, str(root))
-    from governance.core.l6.identity import Allocator, IdentityError
+    from governance.framework_runtime import l6_module
+    identity = l6_module("identity")
+    Allocator, IdentityError = identity.Allocator, identity.IdentityError
 
     config = yaml.safe_load((root / "governance/adopters/hugeplanning/configuration.yaml").read_text(encoding="utf-8"))
     allocation = config["configuration"]["identity_allocator"]

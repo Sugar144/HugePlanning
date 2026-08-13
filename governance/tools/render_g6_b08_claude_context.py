@@ -44,7 +44,7 @@ def build_context(l7_projection: Path | None = None) -> dict[str, object]:
         "document_id": "GOV-GEN-G6-CLAUDE-CODE-CONTEXT-001",
         "adapter": binding["document_id"],
         "provider_executor": binding["provider_executor"],
-        "core_contract": str(core_path.relative_to(ROOT)),
+        "core_contract": binding["core_contract"],
         "core_sha256": hashlib.sha256(core.encode()).hexdigest(),
         "resolved_core_sha256": hashlib.sha256(resolved.encode()).hexdigest(),
         "resolved_core_contract": resolved,

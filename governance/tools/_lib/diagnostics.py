@@ -1,3 +1,4 @@
 """Compatibility export for reusable L6 diagnostics helpers."""
 
-from governance.core.l6.diagnostics import *  # noqa: F403
+from governance.framework_runtime import l6_module
+globals().update(vars(l6_module("diagnostics")))

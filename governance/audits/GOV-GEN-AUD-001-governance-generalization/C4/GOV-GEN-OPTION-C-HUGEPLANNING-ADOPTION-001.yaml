@@ -1,0 +1,50 @@
+adoption_record:
+  record_id: GOV-GEN-OPTION-C-HUGEPLANNING-ADOPTION-001
+  version: 0.1.0
+  status: LOCAL_C4_CONFORMANCE_PASS
+  authority: GOV-GEN-OPT-C-001-C4
+  adopter: Sugar144/HugePlanning
+  relationship:
+    previous: physical_host_and_incubator_of_reusable_GOV_GEN_authority
+    current: external_consumer_and_adopter_001
+  framework_identity:
+    repository: Sugar144/general-governance
+    version: 0.1.0-rc.1
+    commit_sha: d2f84cdb933f0738003d6de9696f44226c734065
+    release_manifest_sha256: 4ff7871bae53502134d2b2f20be8c1a954a75874bf0103ff66634a010e556f9f
+    extraction_manifest_sha256: c009d80739340648dcb81f4de804e8c4724b04bd63f0b571da34aca08f8c4b82
+  lock: framework-lock.json
+  acquisition:
+    mechanism: scripts/acquire-framework.py
+    transport: git_remote_cache
+    authority: framework-lock.json
+    fail_closed_checks: [origin, exact_commit, release_manifest_sha256]
+  shadow_equivalence:
+    source_freeze: governance/audits/GOV-GEN-AUD-001-governance-generalization/C1/GOV-GEN-OPTION-C-SOURCE-FREEZE-001.json
+    extraction_manifest: Sugar144/general-governance@d2f84cdb933f0738003d6de9696f44226c734065:provenance/extraction-manifest.json
+    result: PASS_11_OF_11_BYTE_IDENTICAL_ENTRIES
+  inventory:
+    - {path: governance/core/project-operating-contract.md, classification: FRAMEWORK_IMPORT, disposition: removed_after_shadow_equivalence}
+    - {path: governance/core/configuration-schema.yaml, classification: FRAMEWORK_IMPORT, disposition: removed_after_shadow_equivalence}
+    - {path: governance/core/l6, classification: FRAMEWORK_IMPORT, disposition: removed_after_shadow_equivalence}
+    - {path: governance/tools/_lib, classification: FRAMEWORK_IMPORT, disposition: external_runtime_re_exports}
+    - {path: governance/tools/{allocate_identity.py,manage_learning.py}, classification: FRAMEWORK_IMPORT, disposition: external_runtime_loader}
+    - {path: governance/tools/{validate_g6_b03.py,validate_g6_b04.py,validate_g6_b08.py,validate_g6_b08_two_adapter_conformance.py}, classification: TEST_ONLY, disposition: externally_bound_regression_validators}
+    - {path: governance/tests/{test_delegated_authority.py,test_identity_allocator.py,run-learning-tests.sh,run-prompt-custody-tests.sh}, classification: TEST_ONLY, disposition: externally_bound}
+    - {path: governance/adopters/hugeplanning/configuration.yaml, classification: PROJECT_CONFIGURATION, disposition: preserved}
+    - {path: governance/adopters/hugeplanning/core-binding.yaml, classification: PROJECT_L4_BINDING, disposition: rebound_to_lock}
+    - {path: governance/adapters/codex, classification: PROJECT_L4_BINDING, disposition: preserved_and_rebound}
+    - {path: governance/adapters/claude, classification: PROJECT_L4_BINDING, disposition: preserved_and_rebound}
+    - {path: governance/methodology/project-operating-contract.md, classification: PROJECT_L4_BINDING, disposition: compatibility_entrypoint_rebound}
+    - {path: governance/identity, classification: PROJECT_L3, disposition: preserved}
+    - {path: governance/learning, classification: PROJECT_L5, disposition: preserved}
+    - {path: governance/{audits,runs,learning/records}, classification: HISTORICAL_REFERENCE, disposition: preserved_unchanged}
+    - {path: governance/contracts, classification: OBSOLETE_AFTER_OPTION_C, disposition: absent_no_project_owned_contract_to_relocate}
+  ownership_preserved: [L3_projections_and_project_state, L5_canonical_evidence_and_history, HugePlanning_configuration, Codex_L4_binding, Claude_L4_binding]
+  active_duplicate_framework_surfaces_removed: [governance/core]
+  conformance:
+    consumer_validator: PASS
+    B03_external_configuration_binding: PASS
+    B04_external_L6_binding: PASS
+    B08_Codex_and_Claude_conformance: PASS
+  exclusions: [Dopis_unchanged, general_governance_RC_unchanged, no_push, no_PR, no_merge, no_release]

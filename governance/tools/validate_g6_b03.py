@@ -9,12 +9,13 @@ import sys
 from pathlib import Path
 
 from _lib.strict_yaml import StrictYAMLError, load
+from governance.framework_runtime import framework_path
 
 
 ROOT = Path(__file__).resolve().parents[2]
 FROZEN_REVISION = "6fc4fa1a14a665fabfcceb00729222527cd192ba"
-CORE = ROOT / "governance/core/project-operating-contract.md"
-SCHEMA = ROOT / "governance/core/configuration-schema.yaml"
+CORE = framework_path("framework/core/project-operating-contract.md")
+SCHEMA = framework_path("framework/contracts/configuration-schema.yaml")
 CONFIG = ROOT / "governance/adopters/hugeplanning/configuration.yaml"
 BINDING = ROOT / "governance/adopters/hugeplanning/core-binding.yaml"
 COMPATIBILITY = ROOT / "governance/methodology/project-operating-contract.md"
@@ -87,10 +88,10 @@ def main() -> int:
     if "HugePlanning" in core or "KGR-006" in core or "governance/runs/" in core:
         errors.append("reusable core retains a hardcoded project value")
     binding = BINDING.read_text(encoding="utf-8")
-    if "configuration_contract: ../../core/configuration-schema.yaml" not in binding or "project_configuration: configuration.yaml" not in binding:
+    if "configuration_contract: framework/contracts/configuration-schema.yaml" not in binding or "project_configuration: configuration.yaml" not in binding:
         errors.append("adopter binding does not own the explicit configuration")
     compatibility = COMPATIBILITY.read_text(encoding="utf-8")
-    if "core_contract: ../core/project-operating-contract.md" not in compatibility or "adopter_binding: ../adopters/hugeplanning/core-binding.yaml" not in compatibility:
+    if "core_contract: framework/core/project-operating-contract.md" not in compatibility or "adopter_binding: ../adopters/hugeplanning/core-binding.yaml" not in compatibility:
         errors.append("existing compatibility entrypoint does not resolve the configured core")
     if git("diff", "--name-only", "8889161", "--", *INSTRUCTIONS).strip():
         errors.append("an active instruction surface changed during B-02/B-03")

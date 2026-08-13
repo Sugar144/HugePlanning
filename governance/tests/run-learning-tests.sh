@@ -22,7 +22,7 @@ fixtures = repo / "governance/tests/fixtures/learning"
 source_tool = repo / "governance/tools/manage_learning.py"
 source_schemas = repo / "governance/schemas"
 source_configuration = repo / "governance/adopters/hugeplanning/configuration.yaml"
-source_identity = repo / "governance/core/l6/identity.py"
+source_framework_runtime = repo / "governance/framework_runtime.py"
 temporary = Path(tempfile.mkdtemp(prefix="hp-learning-tests."))
 passed = 0
 failed = 0
@@ -46,14 +46,14 @@ def make_env(name):
     (root / "governance/tools").mkdir(parents=True)
     (root / "governance/schemas").mkdir(parents=True)
     (root / "governance/adopters/hugeplanning").mkdir(parents=True)
-    (root / "governance/core/l6").mkdir(parents=True)
+    (root / "governance").mkdir(parents=True, exist_ok=True)
     (root / "governance/learning/records").mkdir(parents=True)
     (root / "governance/learning/events").mkdir(parents=True)
     shutil.copy2(source_tool, root / "governance/tools/manage_learning.py")
     shutil.copy2(source_schemas / "failure-record.schema.json", root / "governance/schemas")
     shutil.copy2(source_schemas / "failure-record-event.schema.json", root / "governance/schemas")
     shutil.copy2(source_configuration, root / "governance/adopters/hugeplanning/configuration.yaml")
-    shutil.copy2(source_identity, root / "governance/core/l6/identity.py")
+    shutil.copy2(source_framework_runtime, root / "governance/framework_runtime.py")
     return root
 
 

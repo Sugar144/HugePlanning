@@ -35,10 +35,13 @@ def check(condition, label, detail=""):
 def make_root(name):
     root = temporary / name
     (root / "governance/tools/_lib").mkdir(parents=True)
+    (root / "governance").mkdir(parents=True, exist_ok=True)
     (root / "governance/prompts/orchestration").mkdir(parents=True)
     shutil.copy2(repo / "governance/tools/validate_prompts.py", root / "governance/tools")
-    shutil.copy2(repo / "governance/core/l6/strict_yaml.py", root / "governance/tools/_lib/strict_yaml.py")
+    shutil.copy2(repo / "governance/framework_runtime.py", root / "governance/framework_runtime.py")
+    shutil.copy2(repo / "governance/tools/_lib/strict_yaml.py", root / "governance/tools/_lib/strict_yaml.py")
     (root / "governance/tools/_lib/__init__.py").write_text("")
+    (root / "governance/ARTIFACT_REGISTRY.yaml").write_text("artifacts: []\n")
     return root
 
 

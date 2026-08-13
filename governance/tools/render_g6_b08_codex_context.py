@@ -19,6 +19,8 @@ except ModuleNotFoundError:  # pragma: no cover - selected by import context.
 ROOT = Path(__file__).resolve().parents[2]
 BINDING = ROOT / "governance/adapters/codex/binding.yaml"
 
+from governance.framework_runtime import framework_path
+
 
 def nested_value(mapping: dict[str, Any], dotted_key: str) -> Any:
     value: Any = mapping
@@ -32,6 +34,8 @@ def nested_value(mapping: dict[str, Any], dotted_key: str) -> Any:
 def resolve_relative(binding_path: Path, value: object) -> Path:
     if not isinstance(value, str):
         raise ValueError("adapter binding path is not a string")
+    if value.startswith("framework/"):
+        return framework_path(value)
     path = (binding_path.parent / value).resolve()
     try:
         path.relative_to(ROOT.resolve())
@@ -70,7 +74,7 @@ def build_context(l7_projection: Path | None = None) -> dict[str, Any]:
         "document_id": "GOV-GEN-G6-CODEX-CONTEXT-001",
         "adapter": binding["document_id"],
         "provider_executor": binding["provider_executor"],
-        "core_contract": str(core_path.relative_to(ROOT)),
+        "core_contract": binding["core_contract"],
         "core_sha256": hashlib.sha256(core.encode()).hexdigest(),
         "resolved_core_sha256": hashlib.sha256(resolved.encode()).hexdigest(),
         "resolved_core_contract": resolved,
