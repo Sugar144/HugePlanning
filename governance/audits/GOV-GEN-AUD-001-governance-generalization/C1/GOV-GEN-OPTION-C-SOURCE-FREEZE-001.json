@@ -12,6 +12,13 @@
   "external_manifest_sha256": "c009d80739340648dcb81f4de804e8c4724b04bd63f0b571da34aca08f8c4b82",
   "classification_counts": {"EXTRACT_FRAMEWORK": 11, "REMAIN_HUGEPLANNING": 5, "REFERENCE_ONLY": 4, "REQUIRES_REBINDING": 1, "EXCLUDE_HISTORICAL_CUSTODY": 3},
   "layer_counts_extracted": {"L0": 1, "L1": 1, "L6": 9},
+  "candidate_surface_classification": {
+    "REMAIN_HUGEPLANNING": ["governance/adopters/hugeplanning/configuration.yaml (L1 values)", "governance/identity (project state)", "governance/tools project-bound validators", "governance/adapters/claude (L4 binding)", "governance/adapters/codex (L4 binding)"],
+    "REFERENCE_ONLY": ["G3 accepted logical architecture", "G4 accepted consumer requirements", "G5 accepted physical synthesis", "G6 accepted boundary and validation records"],
+    "REQUIRES_REBINDING": ["governance/methodology/project-operating-contract.md (HugePlanning compatibility entrypoint)"],
+    "EXCLUDE_HISTORICAL_CUSTODY": ["governance/audits", "governance/runs", "governance/learning/records"],
+    "EXTRACT_FRAMEWORK": ["governance/core/project-operating-contract.md (L0)", "governance/core/configuration-schema.yaml (L1)", "governance/core/l6/{__init__,atomic,canonical,diagnostics,safe_zip,schemas,strict_yaml,identity,authority}.py (L6)"]
+  },
   "excluded": ["L3 project-specific projections", "L5 canonical evidence/history", "HugePlanning configuration and identity state", "HugePlanning-specific Claude/Codex bindings", "actual L7 project projections"],
   "transformations": []
 }
