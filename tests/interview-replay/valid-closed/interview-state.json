@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "session": {
+    "id": "client-discovery-01",
+    "mode": "live-assisted",
+    "started_at": "2026-02-02T10:00:00+01:00",
+    "turns": 9,
+    "status": "closed",
+    "sittings": [
+      { "started_at": "2026-02-02T10:00:00+01:00", "ended_at": "2026-02-02T10:26:00+01:00", "turns": 9 }
+    ]
+  },
+  "phase": "closed",
+  "current_module": "M12",
+  "coverage": [
+    { "id": "business.identity", "module": "M1", "importance": "high", "status": "sufficient", "confidence": "high",
+      "evidence_refs": ["interview:client-discovery-01#turn-001"],
+      "notes": "Panadería de barrio; pan, bollería, encargos de tartas." },
+    { "id": "problem.trigger", "module": "M1", "importance": "high", "status": "sufficient", "confidence": "high",
+      "evidence_refs": ["interview:client-discovery-01#turn-002"],
+      "notes": "Encargos por teléfono se traspapelan; necesidad: registrar el encargo de forma fiable." },
+    { "id": "process.current", "module": "M4", "importance": "critical", "status": "sufficient", "confidence": "medium",
+      "evidence_refs": ["interview:client-discovery-01#turn-002", "interview:client-discovery-01#turn-004"],
+      "notes": "Registro en cuaderno de mostrador; excepción principal = encargo traspapelado." },
+    { "id": "data.entities", "module": "M7", "importance": "high", "status": "sufficient", "confidence": "medium",
+      "evidence_refs": ["interview:client-discovery-01#turn-006"],
+      "notes": "Encargo = nombre + teléfono + tipo de tarta." },
+    { "id": "data.sensitivity", "module": "M7", "importance": "critical", "status": "sufficient", "confidence": "medium",
+      "evidence_refs": ["interview:client-discovery-01#turn-008"],
+      "notes": "PII mínima (nombre + móvil); sin pago online (turn-7). Retención = OQ-001 (proposed_default a confirmar en G2)." },
+    { "id": "scope.mvp", "module": "M10", "importance": "critical", "status": "sufficient", "confidence": "high",
+      "evidence_refs": ["interview:client-discovery-01#turn-002", "interview:client-discovery-01#turn-005"],
+      "notes": "MVP = registro de encargos fiable; findability (turn-5) aceptada como secundaria." },
+    { "id": "resources.budget_deadline", "module": "M10", "importance": "critical", "status": "sufficient", "confidence": "medium",
+      "evidence_refs": ["interview:client-discovery-01#turn-009"],
+      "notes": "Presupuesto modesto; plazo flexible (precision low)." }
+  ],
+  "question_queue": [],
+  "registers": {
+    "contradictions": [],
+    "assumptions": [
+      { "id": "ASM-001", "text": "Las anulaciones son irrelevantes ('casi nadie anula').", "basis": "interview:client-discovery-01#turn-003", "status": "unconfirmed" }
+    ],
+    "open_questions": [
+      { "id": "OQ-001", "topic": "Retención de nombre+móvil de encargos (research-gated); default a confirmar en G2.", "owner": "desarrollador", "blocking": false }
+    ],
+    "scope_flags": [
+      { "turn": 5, "note": "Aparecer en búsquedas del móvil (findability).", "handled": "accepted_in_scope" }
+    ]
+  },
+  "budget": {
+    "elapsed_min": 26,
+    "soft_limit_min": 90,
+    "fatigue_signals": 0
+  },
+  "completion_check": {
+    "last_run_turn": 9,
+    "result": "ready",
+    "failing": []
+  },
+  "resume_hints": "Entrevista cerrada; handoff a S2. ASM-001 sin confirmar se traslada a validación; OQ-001 (retención) a perseguir antes de G1."
+}

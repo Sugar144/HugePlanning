@@ -7,6 +7,31 @@ PATCH: fixes, no contract change · MINOR: new skills/agents/knowledge,
 compatible schema additions · MAJOR: schema-breaking changes, artifact renames,
 behavioral contract changes.
 
+## [Unreleased]
+
+S1 — discovery interviewer (plan `13` S1; releases as v0.3.0 per R2-38).
+Implementation complete; **release blocked on the behavioural gate**
+(FR-019): the six scenario runs with golden scoring, plus a full live
+SPK-01 5/5 (first attempt: checks a/b passed live, c/d inconclusive —
+environment, CLI session limit; README SPK log).
+
+### Added
+
+- Ten discovery-stage knowledge files (`17` §K, status provisional) +
+  `knowledge/INDEX.md` activation table; suite T18 (front matter, INDEX,
+  policy-phrasing scan).
+- Skills: `adaptive-interview-control`, `interview-evidence-capture`,
+  `nfr-elicitation`, `process-elicitation` (04 §4–§8 contracts).
+- Production `client-discovery` agent (full `04` §1 contract, mandated
+  session-entry evidence) replacing the S0a stub; SPK-01 check (a) oracle
+  updated in the same change (TEST-class, FR-020); T12 fake-runtime cases
+  updated.
+- Templates: discovery completion report (04 §12) and M0 consent record.
+- Six behavioural scenarios + golden checklists under
+  `tests/interview-scenarios/` and `tests/golden-artifacts/` (02 §10 set:
+  clear, contradictory, non-technical, LITE, trigger-escalation,
+  PII-bearing); suite T19 pairing check. Suite: 224 → 238 checks.
+
 ## [0.2.0] - 2026-07-12
 
 S0b — discovery infrastructure (plan `13` S0b; decisions R2-36..38 in `19`

@@ -47,7 +47,7 @@ note "== T1: script syntax =="
 for s in "$REAL_METHOD"/scripts/*.sh "$SCRIPT_DIR/run-tests.sh"; do
   expect_ok "bash -n $(basename "$s")" bash -n "$s"
 done
-for p in "$REAL_METHOD"/scripts/lib/*.py; do
+for p in "$REAL_METHOD"/scripts/lib/*.py "$REAL_METHOD"/tests/lib/*.py; do
   # ast.parse, not py_compile: a syntax check must not write __pycache__
   # into the methodology tree (it would trip check-methodology-clean.sh)
   expect_ok "py-syntax $(basename "$p")" "$PYTHON" -c \
@@ -537,12 +537,12 @@ FAKE_VERSION="$(head -n1 "$FAKE/VERSION" | tr -d '[:space:]')"
 make_fake_claude() { # $1 = path, $2 = agent-reply mode
   local path="$1" mode="$2" agent_reply
   case "$mode" in
-    sentinel)
-      agent_reply='echo "SPK01-AGENT-OK"; echo "Project TEST-CLIENT, stage onboarding, profile standard, methodology __VER__."' ;;
-    semantic)
-      agent_reply='echo "The client project id is TEST-CLIENT at stage onboarding, profile standard; the locked methodology version is __VER__."; echo "Discovery is not implemented until methodology S1. This is the S0a stub."' ;;
+    ready)
+      agent_reply='echo "client-discovery ready: project TEST-CLIENT · stage onboarding · profile standard · methodology __VER__"; echo "Preconditions: G0 not passed; stage is onboarding."; echo "Discovery cannot start until the preconditions hold."' ;;
+    refusal)
+      agent_reply='echo "Session for project TEST-CLIENT, locked methodology __VER__. G0 has not been approved."; echo "Discovery cannot start until the preconditions hold."' ;;
     partial)
-      agent_reply='echo "The client project id is TEST-CLIENT at stage onboarding."; echo "Discovery is not implemented until methodology S1. This is the S0a stub."' ;;
+      agent_reply='echo "client-discovery ready: project TEST-CLIENT · stage onboarding"; echo "Discovery cannot start until the preconditions hold."' ;;
     unrelated)
       agent_reply='echo "Hello! I am a helpful assistant. How can I help you today?"' ;;
   esac
@@ -571,8 +571,12 @@ spk_case() { # $1 = mode, $2 = expected exit (0|1), $3 = expected (a) line
     t_fail "spk $mode: exit $st (wanted $want_status); output follows"; printf '%s\n' "$OUT" >&2; fi
   expect_out "  spk $mode: check (a) verdict" "$want_line"
 }
-spk_case sentinel  0 "PASS (a)"
-spk_case semantic  0 "PASS (a)"
+# 'ready' = mandated entry line (id+version+marker) · 'refusal' = no entry
+# line but id+version+mandated precondition sentence · 'partial' = marker
+# without the lock version · 'unrelated' = generic output. F4 discipline:
+# the oracle needs semantic evidence with either mandated marker.
+spk_case ready     0 "PASS (a)"
+spk_case refusal   0 "PASS (a)"
 spk_case partial   1 "FAIL (a)"
 spk_case unrelated 1 "FAIL (a)"
 ST=0
@@ -651,6 +655,123 @@ if errors:
         print(f"  - {e}", file=sys.stderr)
     sys.exit(1)
 PYEOF
+
+note "== T18: knowledge files — front matter, INDEX, authoring-policy scan (17 §B/§F/§J) =="
+expect_ok "knowledge front matter + INDEX consistency" \
+  "$PYTHON" - "$REAL_METHOD" <<'PYEOF'
+import os, re, sys
+root = os.path.join(sys.argv[1], "knowledge")
+errors = []
+required_keys = ("id:", "title:", "type:", "status:", "version:",
+                 "source_quality:", "consult_when:", "used_by:")
+index = open(os.path.join(root, "INDEX.md"), encoding="utf-8").read()
+files = []
+for dirpath, _, names in os.walk(root):
+    for name in names:
+        if name.endswith(".md") and name != "INDEX.md":
+            files.append(os.path.join(dirpath, name))
+if len(files) < 10:
+    errors.append(f"expected >= 10 knowledge files, found {len(files)}")
+for path in files:
+    rel = os.path.relpath(path, root)
+    text = open(path, encoding="utf-8").read()
+    m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+    if not m:
+        errors.append(f"{rel}: missing front matter"); continue
+    fm = m.group(1)
+    for key in required_keys:
+        if not re.search(rf"^{re.escape(key)}", fm, re.M):
+            errors.append(f"{rel}: front matter missing '{key}'")
+    kid = re.search(r"^id: (kn-[a-z0-9-]+)$", fm, re.M)
+    if not kid:
+        errors.append(f"{rel}: id missing or not kn- prefixed")
+    elif f"`{kid.group(1)}`" not in index:
+        errors.append(f"{rel}: id {kid.group(1)} not listed in INDEX.md")
+    if not re.search(r"^status: provisional$", fm, re.M):
+        errors.append(f"{rel}: status is not provisional (S1 files start provisional)")
+    # 17 §J item 6: critical policy phrasing does not live in knowledge.
+    body = text[m.end():]
+    if re.search(r"must never", body, re.I):
+        errors.append(f"{rel}: contains 'must never' policy phrasing (17 §G/§J)")
+for e in errors:
+    print(f"KNOWLEDGE-ERROR: {e}", file=sys.stderr)
+sys.exit(1 if errors else 0)
+PYEOF
+
+note "== T19: interview scenarios paired with goldens (FR-019 deterministic floor) =="
+SCEN_COUNT=0
+for sdir in "$REAL_METHOD"/tests/interview-scenarios/*/; do
+  sname="$(basename "$sdir")"
+  SCEN_COUNT=$((SCEN_COUNT + 1))
+  [[ -f "$sdir/scenario.md" ]] \
+    && t_pass "scenario $sname has scenario.md" \
+    || t_fail "scenario $sname missing scenario.md"
+  [[ -f "$REAL_METHOD/tests/golden-artifacts/$sname/golden-checklist.md" ]] \
+    && t_pass "scenario $sname has its golden checklist" \
+    || t_fail "scenario $sname missing golden-artifacts/$sname/golden-checklist.md"
+done
+[[ "$SCEN_COUNT" -ge 6 ]] \
+  && t_pass "the six 02 §10 scenarios exist ($SCEN_COUNT found)" \
+  || t_fail "expected >= 6 scenarios, found $SCEN_COUNT"
+
+note "== T20: interview replay/resume invariants (FR-015 efficiency floor, TASK-022) =="
+# Deterministic resume/replay checks over recorded (fictitious) working states:
+# anchor integrity, compact working state, bounded resume, next-action-from-
+# state, and no S2/S3 leakage. Reuses the harness Python (stdlib + PyYAML) — no
+# pytest, no Hypothesis, no new dependency.
+REPLAY="$SCRIPT_DIR/lib/interview-replay-check.py"
+for fx in "$SCRIPT_DIR"/interview-replay/valid-*/; do
+  expect_ok "replay valid $(basename "$fx")" "$PYTHON" "$REPLAY" "$fx"
+  expect_out "  reports PASS" "INTERVIEW-REPLAY: PASS"
+done
+for fx in "$SCRIPT_DIR"/interview-replay/invalid-*/; do
+  token="$(tr -d '[:space:]' < "$fx/.expect-error")"
+  if OUT="$("$PYTHON" "$REPLAY" "$fx" 2>&1)"; then
+    t_fail "replay invalid $(basename "$fx") unexpectedly passed"
+  elif grep -qF -- "$token" <<<"$OUT"; then
+    t_pass "replay invalid $(basename "$fx") fails with expected reason ($token)"
+  else
+    t_fail "replay invalid $(basename "$fx") failed for the WRONG reason (wanted '$token')"
+    printf '%s\n' "$OUT" >&2
+  fi
+done
+
+# Structural leakage guarantee: the interview-state schema cannot carry S2/S3
+# output as a first-class field (closed object; no decision/prd/architecture
+# keys) — so S1 state cannot author a technical decision even in principle.
+expect_ok "interview-state schema forbids S2/S3 output fields" \
+  "$PYTHON" - "$REAL_METHOD/schemas/interview-state.schema.json" <<'PYEOF'
+import json, sys
+schema = json.load(open(sys.argv[1], encoding="utf-8"))
+assert schema.get("additionalProperties") is False, "top-level must be closed"
+forbidden = {"decisions", "decision", "prd", "architecture", "adr", "sdd",
+             "delivery_backlog", "requirements"}
+present = set(schema.get("properties", {})) & forbidden
+assert not present, f"interview-state must not define S2/S3 fields: {sorted(present)}"
+PYEOF
+
+note "== T21: interview segment seam invariants (FR-015 context-amplification fix, TASK-023) =="
+# Deterministic seam checks over recorded (fictitious) multi-segment runs: turn
+# continuity across seams, no full-history carry, bounded re-hydration window,
+# boundary playback, anchor integrity, register/coverage continuity (proposed
+# trigger upgrade survives re-hydration), and no S2/S3 leakage. Reuses the
+# harness Python (stdlib + PyYAML) — no pytest, no new dependency.
+SEAM="$SCRIPT_DIR/lib/interview-segment-seam-check.py"
+for fx in "$SCRIPT_DIR"/interview-segment/valid-*/; do
+  expect_ok "seam valid $(basename "$fx")" "$PYTHON" "$SEAM" "$fx"
+  expect_out "  reports PASS" "INTERVIEW-SEAM: PASS"
+done
+for fx in "$SCRIPT_DIR"/interview-segment/invalid-*/; do
+  token="$(tr -d '[:space:]' < "$fx/.expect-error")"
+  if OUT="$("$PYTHON" "$SEAM" "$fx" 2>&1)"; then
+    t_fail "seam invalid $(basename "$fx") unexpectedly passed"
+  elif grep -qF -- "$token" <<<"$OUT"; then
+    t_pass "seam invalid $(basename "$fx") fails with expected reason ($token)"
+  else
+    t_fail "seam invalid $(basename "$fx") failed for the WRONG reason (wanted '$token')"
+    printf '%s\n' "$OUT" >&2
+  fi
+done
 
 note "== T13: suite leaves the real methodology unchanged =="
 REAL_AFTER="$(git -C "$REAL_METHOD" status --porcelain)"

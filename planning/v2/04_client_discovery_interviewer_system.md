@@ -126,6 +126,8 @@ Modules are a *default trajectory*, not a script: the agent follows conversation
 
 **Persistence contract (closes R-CC1/G-13):** transcript appended every turn (cheap); full state written at *every module transition, every contradiction/assumption registration, every 10 turns, and on pause*. Resume re-hydrates from `interview-state.json` + last transcript page only — never re-reads the whole transcript.
 
+**Bounded segmented execution (FR-015 realization, TASK-023):** the same re-hydration boundary is used *during* an interview, not only across sittings. The interview runs as a sequence of **bounded fresh interviewer segments** (one module or small module batch, or one sitting); at each module boundary the agent checkpoints compact state, yields to the orchestrator, and the next module runs in a fresh context re-hydrated from `interview-state.json` + the bounded last transcript window + current-module evidence + the segment objective — never carrying the previous segment's full internal history. This caps per-segment context (the state file *is* the compaction, §10) without a fixed questionnaire, without weakening adaptive selection, contradiction handling, trigger/escalation duty, monotonic turn numbering, or the operator-held closure/profile decision. Scenario 05 ran as one continuous ~14.6-minute subagent whose context grew monotonically to a ~112k-token final-turn footprint; the recorded `115,594` figure is that final-turn footprint, **not** output (measured output was `58,295`). The historical Scenario 05 `RESULT.md` is unchanged; this is a realization refinement, not a requirement or schema change.
+
 ## 7. Adaptive questioning strategy
 
 ### 7.1 Next-question selection

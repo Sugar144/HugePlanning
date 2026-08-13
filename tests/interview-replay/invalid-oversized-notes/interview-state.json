@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "session": {
+    "id": "client-discovery-01",
+    "mode": "live-assisted",
+    "started_at": "2026-02-02T10:00:00+01:00",
+    "turns": 9,
+    "status": "paused",
+    "sittings": [
+      { "started_at": "2026-02-02T10:00:00+01:00", "ended_at": "2026-02-02T10:26:00+01:00", "turns": 9 }
+    ]
+  },
+  "phase": "paused",
+  "current_module": "M7",
+  "coverage": [
+    { "id": "process.current", "module": "M4", "importance": "critical", "status": "partial", "confidence": "medium",
+      "evidence_refs": ["interview:client-discovery-01#turn-002", "interview:client-discovery-01#turn-004"],
+      "notes": "TRIGGER = la clienta llama por teléfono para pedir una tarta. ACTORES = la panadera anota, la ayudante a veces coge el teléfono. PASOS = suena el teléfono, se apunta el encargo en el cuaderno del mostrador con el nombre, el teléfono y el tipo de tarta, y se le da una hora de recogida aproximada. EXCEPCIONES = si el teléfono suena mientras está amasando no lo coge y el encargo se pierde; si dos clientas piden la misma tarta para la misma hora, reajusta a mano; si la clienta no viene a recoger, la tarta se queda hecha. RESULTADO = encargo anotado en el cuaderno de papel, que es el registro único, y cobro en tienda al recoger. Esta nota es deliberadamente larga para superar el techo de anotación de trabajo y disparar la comprobación de estado compacto del checker de replay." }
+  ],
+  "question_queue": [
+    { "qid": "q-005", "topic": "process.current", "kind": "probe", "score": 7.0, "text_hint": "qué pasa cuando el teléfono suena mientras amasa" }
+  ],
+  "registers": { "contradictions": [], "assumptions": [], "open_questions": [], "scope_flags": [] },
+  "budget": { "elapsed_min": 26, "soft_limit_min": 90, "fatigue_signals": 0 },
+  "completion_check": { "last_run_turn": 8, "result": "not_ready", "failing": ["process.current"] },
+  "resume_hints": "Pausa en M7 tras turn-9. Próxima: q-005 (excepciones del proceso actual)."
+}

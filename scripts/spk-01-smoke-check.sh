@@ -82,17 +82,21 @@ echo "  client:      $CLIENT_DIR"
 echo "  logs:        $LOG_DIR"
 echo
 
-# (a) agent resolution — the S0a client-discovery stub prints SPK01-AGENT-OK.
-# Sentinel generation is probabilistic, so the exact token is not the sole
-# oracle: complete semantic evidence (the ACTUAL client project id + the
-# ACTUAL locked methodology version + the stub's exact closing statement, all
-# read back from the client repo, never leaked into the prompt) also passes.
-# Partial or unrelated output fails.
+# (a) agent resolution — the production client-discovery agent (S1) opens
+# every session with a mandated entry line ("client-discovery ready: …") and,
+# on a client that has not passed G0 / reached stage discovery, ends its
+# precondition report with a mandated exact sentence. Exact-string generation
+# is probabilistic, so the oracle accepts either mandated marker — combined
+# with the ACTUAL client project id and ACTUAL locked methodology version,
+# both read back from the client repo, never leaked into the prompt (F4
+# lesson: two independent exact markers, semantic evidence required with
+# each). Partial or unrelated output fails.
 EXPECT_ID="$("$PYTHON" "$SCRIPT_DIR/lib/read-yaml-value.py" \
   "$CLIENT_DIR/project.yaml" project.id)" || EXPECT_ID=""
 EXPECT_VERSION="$("$PYTHON" "$SCRIPT_DIR/lib/read-yaml-value.py" \
   "$CLIENT_DIR/methodology.lock.yaml" methodology.version)" || EXPECT_VERSION=""
-STUB_STATEMENT="Discovery is not implemented until methodology S1. This is the S0a stub."
+READY_MARKER="client-discovery ready:"
+PRECONDITION_SENTENCE="Discovery cannot start until the preconditions hold."
 AGENT_STATUS=0
 AGENT_OUT="$(cd "$CLIENT_DIR" && \
   CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1 \
@@ -103,17 +107,15 @@ printf '%s\n' "$AGENT_OUT" > "$LOG_DIR/agent.log"
 if [[ "$AGENT_STATUS" -ne 0 ]]; then
   echo "FAIL (a): claude exited $AGENT_STATUS — log: $LOG_DIR/agent.log" >&2
   FAIL=$((FAIL + 1))
-elif grep -q "SPK01-AGENT-OK" <<<"$AGENT_OUT"; then
-  echo "PASS (a): found SPK01-AGENT-OK"
-  PASS=$((PASS + 1))
 elif [[ -n "$EXPECT_ID" && -n "$EXPECT_VERSION" ]] \
     && grep -qF -- "$EXPECT_ID" <<<"$AGENT_OUT" \
     && grep -qF -- "$EXPECT_VERSION" <<<"$AGENT_OUT" \
-    && grep -qF -- "$STUB_STATEMENT" <<<"$AGENT_OUT"; then
-  echo "PASS (a): semantic evidence (project id + lock version + stub statement)"
+    && { grep -qF -- "$READY_MARKER" <<<"$AGENT_OUT" \
+         || grep -qF -- "$PRECONDITION_SENTENCE" <<<"$AGENT_OUT"; }; then
+  echo "PASS (a): agent entry evidence (project id + lock version + mandated marker)"
   PASS=$((PASS + 1))
 else
-  echo "FAIL (a): neither SPK01-AGENT-OK nor complete semantic evidence in output — log: $LOG_DIR/agent.log" >&2
+  echo "FAIL (a): no complete agent entry evidence (id + version + marker) in output — log: $LOG_DIR/agent.log" >&2
   FAIL=$((FAIL + 1))
 fi
 

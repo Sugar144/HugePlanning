@@ -1,0 +1,5 @@
+{"turn": 1, "speaker": "client", "text": "Tengo una floristería, 'Floristería Aurora'; vendo ramos y hago encargos para eventos.", "ts": "2026-03-02T10:00:00+01:00", "flags": []}
+{"turn": 2, "speaker": "client", "text": "Los encargos me los piden por WhatsApp y los apunto en una libreta del mostrador.", "ts": "2026-03-02T10:03:00+01:00", "flags": []}
+{"turn": 3, "speaker": "client", "text": "Quiero que la gente pague una señal por la web al reservar el ramo del evento.", "ts": "2026-03-02T10:06:00+01:00", "flags": []}
+{"turn": 4, "speaker": "interviewer", "text": "Cobrar por la web no es lo mismo que una web solo de escaparate; lo anoto como algo que puede subir el nivel del proyecto y lo valorará el desarrollador.", "ts": "2026-03-02T10:08:00+01:00", "flags": []}
+{"turn": 5, "speaker": "interviewer", "text": "Resumen: floristería con encargos por WhatsApp en libreta, y quiere cobrar una señal online al reservar. ¿Lo he recogido bien?", "ts": "2026-03-02T10:10:00+01:00", "flags": []}
