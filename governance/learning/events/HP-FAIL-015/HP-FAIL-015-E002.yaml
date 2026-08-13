@@ -1,0 +1,26 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-015-E002
+  record_id: HP-FAIL-015
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: Repository validation and the independent evaluator confirmed all 46 pairs and all 15 corrected anchors with zero missing canonical pair.
+  rationale: The output validator returns VALID with 46 canonical pairs and the separately controlled evaluation records IE-R1-CF-003 and no new material challenge.
+  evidence_refs:
+    - type: VALIDATION_RECORD
+      locator: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml
+      anchor: subject.source_package
+      sha256: null
+      availability: PRESERVED
+      note: Controlled import validation records zero-diagnostic output validation.
+    - type: RUN_ARTIFACT
+      locator: governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml
+      anchor: IE-R1-CF-003
+      sha256: 26da06c64ec43d7872e395b05427ebbb0fa9bddd4b36867f69141abfdab0f329
+      availability: PRESERVED
+      note: Independent confirmation of exact clause-route coverage.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-017-kgr-006-r1-controlled-import-owner-review-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

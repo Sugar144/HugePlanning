@@ -1,0 +1,33 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-020-E003
+  record_id: HP-FAIL-020
+  date: '2026-07-15'
+  event_type: VALIDATION_EVIDENCE
+  status_from: null
+  status_to: null
+  summary: The HP-FAIL-020 recurrence correction passed the canonical cross-surface
+    validator and focused structured-section regressions before the GOV-5 closure-readiness
+    review was executed.
+  rationale: The corrected state returned VALID with zero diagnostics, and fourteen
+    focused tests passed, including mutations of the Durable state KGR-006-R1 status,
+    Durable GOV-5 closure-review status, CURRENT_STATE table and master-plan table
+    while final markers remained current.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_kgr_006_r1_state_consistency.py
+    anchor: structured Durable state and table regressions
+    sha256: null
+    availability: PRESERVED
+    note: Focused mutations prove the previously missed internal representations are
+      now detected.
+  - type: REPOSITORY_PATH
+    locator: governance/tools/validate_governance_state.py
+    anchor: validate
+    sha256: null
+    availability: PRESERVED
+    note: The canonical validator passed with zero diagnostics before the closure
+      review used repository state as evidence.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-019-gov-5-phase-closure-readiness-review-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

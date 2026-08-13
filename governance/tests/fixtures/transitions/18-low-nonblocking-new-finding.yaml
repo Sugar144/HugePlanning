@@ -1,0 +1,21 @@
+fixture_id: "18"
+synthetic_test_evidence: true
+input_state: TARGETED_CLOSURE_IN_PROGRESS
+source_run: KGR-005
+source_role: adversary
+source_mode: TARGETED_CLOSURE
+input_result: CLOSURE_CONFIRMED
+counters_before: {completed_targeted_closure_runs: 0, completed_designer_remediation_runs: 0}
+history: []
+blocking_findings:
+  - finding_id: KA-F-016
+    adversary_verdict: NEW_FINDING
+    severity: LOW
+    blocking: false
+expected_validity: VALID_COMPLETED_IMPORT
+expected_counters_after: {completed_targeted_closure_runs: 1, completed_designer_remediation_runs: 0}
+expected_transition: CLOSURE_CONFIRMED
+expected_next_role: null
+expected_next_mode: null
+owner_authorization_required: true
+expected_diagnostic: null

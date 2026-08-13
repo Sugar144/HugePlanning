@@ -1,0 +1,20 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: null
+  record_id: HP-FAIL-001
+  date: 2026-07-14
+  event_type: STATUS_TRANSITION
+  status_from: OPEN
+  status_to: VALIDATED
+  summary: Invalid status skip.
+  rationale: OPEN cannot transition directly to VALIDATED.
+  evidence_refs:
+    - type: OWNER_STATEMENT
+      locator: synthetic-invalid-transition
+      anchor: null
+      sha256: null
+      availability: NOT_PRESERVED
+      note: Synthetic evidence.
+  owner_decision_ref: null
+  accepted_risk: null
+  supersedes: null

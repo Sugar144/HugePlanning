@@ -1,0 +1,58 @@
+audit_program:
+  audit_id: GOV-AUD-001
+  title: HugePlanning GOV-7 Enablement, Cross-Layer Architecture and Empirical Validation Audit
+  version: 0.2.0
+  status: IN_PROGRESS_PASS_03_EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  authority: PASS_03_PROJECT_OWNER_EXECUTION_AUTHORIZATION_CONSUMED
+  root: governance/audits/GOV-AUD-001-gov7-enablement
+  methodology_protocol:
+    id: GOV-AUD-001-METHOD-001
+    version: 0.3.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+    applies_prospectively: true
+    historical_runs_modified: false
+  reasoning_principles:
+    - REPOSITORY_FIRST_GAP_DRIVEN
+    - PROMPT_ECONOMY_AND_ANTI_BLOAT
+    - AI_FIRST_EFFORT_MODEL
+    - WHOLE_WORK_UNIT_EVALUATION
+    - STRATEGY_NEUTRALITY
+    - REQUIRED_RELATIONSHIP_MODEL_TECHNOLOGY_NEUTRAL
+    - CONTROLLED_SELF_HOSTING
+    - OPEN_EVIDENCE_LED_TOOL_DISCOVERY
+    - EXPLICIT_FINDING_BASIS
+    - ROOT_CAUSE_BEFORE_INVALIDITY
+    - REVIEW_TYPE_SEPARATION
+    - BOUNDED_MATERIALITY
+    - CANONICAL_ID_RESOLUTION
+  statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+  sequence:
+    - {id: PASS-01, depends_on: [], checkpoint_before: null, status: PASS_01_ACCEPTED_COMPLETED}
+    - {id: PASS-02, depends_on: [PASS-01], checkpoint_before: null, status: ACCEPTED_COMPLETED}
+    - {id: CHECKPOINT-A, depends_on: [PASS-01, PASS-02], checkpoint_before: null, status: APPROVED_COMPLETED}
+    - {id: PASS-03, depends_on: [CHECKPOINT-A], checkpoint_before: CHECKPOINT-A, status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION}
+    - {id: PASS-04, depends_on: [PASS-03], checkpoint_before: CHECKPOINT-A, status: PLANNED_NOT_EXECUTED}
+    - {id: CHECKPOINT-B, depends_on: [PASS-04], checkpoint_before: null, status: PENDING_OWNER_DECISION}
+    - {id: PASS-05, depends_on: [CHECKPOINT-B], checkpoint_before: CHECKPOINT-B, status: PLANNED_NOT_EXECUTED}
+    - {id: PASS-06, depends_on: [PASS-05], checkpoint_before: CHECKPOINT-B, status: PLANNED_NOT_EXECUTED}
+    - {id: PASS-07, depends_on: [PASS-06], checkpoint_before: CHECKPOINT-B, status: PLANNED_NOT_EXECUTED}
+    - {id: CHECKPOINT-C, depends_on: [PASS-07], checkpoint_before: null, status: PENDING_OWNER_DECISION}
+  execution_rule: EACH_PASS_REQUIRES_SEPARATE_OWNER_AUTHORIZATION_EXACT_INSTANTIATED_PROMPT_AND_HASHED_INPUT_MANIFEST
+  passes_executed: 3
+  validation_correction_id: GOV-AUD-001-P01-R1-C1
+  substantive_correction_id: GOV-AUD-001-P01-R1-C2
+  checkpoints_approved: 1
+  completed: false
+  pass_01_accepted: true
+  gov_7_activated: false
+  recommendations_accepted: false
+  implementation_authorized: false
+  relationship_model_required: true
+  graph_technology_selected: false
+  vertical_slice_selected: false
+  audit_executed: false
+  pass_03_adversarial_review_execution_package:
+    id: GOV-AUD-P03-REVIEW-EXECUTION-PACKAGE-001
+    status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
+    review_execution_authorized: true
+    review_executed: false

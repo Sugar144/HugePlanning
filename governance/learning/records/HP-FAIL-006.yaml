@@ -1,0 +1,102 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-006
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Governance validation record schema rejects its required tool identity
+  context:
+    phase: Phase 2.3
+    run: KGR-005
+    component: Governance Validation Record Schema
+    branch: governance/kernel-designer-revision-v0.1
+    commit: 74c5ea76c5b2f6ae2fe51ea683fed55b0b5cf759
+    environment: Codex CLI governance implementation
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  - TOOLING_GAP
+  severity: MEDIUM
+  status: CONTAINED
+  expected_behavior: The governance validation record schema should accept the required
+    tool name and version fields while rejecting undeclared tool fields.
+  observed_behavior: The schema requires tool.name and tool.version but defines no
+    allowed tool properties while setting additionalProperties to false, so every
+    record containing the required fields is invalid.
+  impact: Phase 2.3 cannot honestly create and schema-validate the first GOV-VAL record,
+    and future deterministic validation evidence cannot conform to the declared contract.
+  detection_method: The Phase 2.3 targeted contract test validated GOV-VAL-001 against
+    governance-validation-record.schema.json and received an additional-properties
+    failure for name and version.
+  root_cause:
+    immediate: The tool object omitted its properties mapping while declaring required
+      fields and additionalProperties false.
+    systemic: The Phase 2 schema tests checked schema validity but did not instantiate
+      a minimal conforming governance validation record.
+    contributing_factors:
+    - No GOV-VAL record had previously been allocated to exercise the schema.
+    - The impossible conjunction is syntactically valid JSON Schema.
+  response:
+    containment: Stop Phase 2.3 publication, preserve KGR-005 as NOT_STARTED, and
+      do not represent the readiness record as schema-valid.
+    correction: Pending separately authorized prospective correction of the shared
+      schema and a minimal positive fixture.
+    prevention:
+    - Add explicit name and version properties to the tool object under a versioned
+      correction.
+    - Add positive and negative governance-validation-record fixtures to affected
+      schema tests.
+    - Re-run the shared Controller schema and package suites before resuming Phase
+      2.3.
+    accountable_owner: Project Owner
+    validation_required:
+    - Validate a minimal GOV-VAL record against the corrected schema.
+    - Run affected Controller and Phase 2.3 contract tests.
+    - Run strict JSON Schema validation and prompt-custody tests.
+  learning:
+    reusable_lesson: A syntactically valid schema still requires at least one positive
+      conforming-instance test for every durable record contract.
+    candidate_system_changes:
+    - SCHEMA
+    - TEST
+    - VALIDATION
+    applicable_future_phases:
+    - Phase 2.3 formal-run preparation
+    - All governance validation record producers
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: null
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One deterministic failed schema-validation cycle is observable; time, tokens,
+      and model-cost data are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/schemas/governance-validation-record.schema.json
+    anchor: properties.tool
+    sha256: null
+    availability: PRESERVED
+    note: Requires name and version while prohibiting them as additional properties.
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_3_contracts.py
+    anchor: test_kgr_005_readiness_record_schema_and_boundary
+    sha256: null
+    availability: PRESERVED
+    note: Positive instance validation exposed the impossible schema contract.
+  - type: VALIDATION_RECORD
+    locator: Phase 2.3 targeted pytest output
+    anchor: jsonschema.exceptions.ValidationError
+    sha256: null
+    availability: NOT_PRESERVED
+    note: Session output reported additional properties name and version were unexpected.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

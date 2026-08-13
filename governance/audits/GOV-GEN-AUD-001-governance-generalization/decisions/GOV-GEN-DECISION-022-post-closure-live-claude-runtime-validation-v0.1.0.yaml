@@ -1,0 +1,51 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-022
+  version: 0.1.0
+  date: '2026-08-13'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: RECONCILE_DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION_AS_COMPLETED
+  program_id: GOV-GEN-AUD-001
+  phase: POST_CLOSURE_ADDENDUM
+  source_authority: >-
+    Project Owner direct post-closure addendum task, bounded to the single
+    non-blocking deferred item recorded at closure
+    (DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION), performed by a live Claude Code
+    session under the same repository and branch.
+  reviewed_evidence:
+    gov_gen_status_before: GOV_GEN_AUD_001_COMPLETED_ACCEPTED
+    g6_closure_record: G6/GOV-GEN-G6-CLOSURE-001.yaml
+    prior_b_08_evidence: G6/B-08/B-08-two-adapter-validation-report.yaml
+    live_validation_report: G6/B-08/B-08-live-claude-runtime-validation-report.yaml
+    live_validation_result: LIVE_CLAUDE_RUNTIME_VALIDATION_PASS
+    pytest_baseline: 7_passed_0_failed
+    codex_validator_regression: PASS_UNCHANGED
+    two_adapter_conformance_validator: PASS_RESIDUAL_ITEM_RESOLVED
+    resolved_core_sha256_identical_both_adapters: cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa
+    bounded_b07_projection_rendered_and_consumed: true
+    doa_fail_closed_semantics_exercised_live: true
+    starting_commit: 27f3b229ea221052a23495929cee4cf029d11b6d
+    worktree_clean_before_addendum: true
+  final_status: COMPLETED_ACCEPTED
+  accepted:
+    - LIVE_CLAUDE_RUNTIME_VALIDATION_PASS as the result of the deferred item.
+    - The bounded correction to governance/adapters/claude/binding.yaml (status, version, and the live_runtime_validation_claimed constraint) and governance/adapters/claude/README.md recorded in the live validation report.
+    - DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION as RESOLVED_COMPLETED, non-blocking status having already been the case since closure.
+  not_accepted:
+    - reopening_gov_gen_aud_001_or_g6
+    - a_new_phase_or_gate
+    - modification_of_option_b_or_the_accepted_architecture_decision
+    - modification_of_gov_gen_g6_closure_001_or_the_prior_b_08_two_adapter_report
+    - external_reuse_claim_with_a_second_real_project
+    - push_pull_request_merge_tag_release_or_deployment
+  reconciliation_note: >-
+    This addendum record closes the single non-blocking deferred item named
+    at GOV-GEN's project closure (GOV-GEN-DECISION-021/0.1.0,
+    GOV-GEN-G6-CLOSURE-001/0.1.0), without reopening G6 or the GOV-GEN
+    architecture decision. GOV-GEN-G6-CLOSURE-001/0.1.0 and
+    GOV-GEN-DECISION-021/0.1.0 remain preserved, unmodified, as immutable
+    historical closure evidence, read together with this addendum. The
+    bounded correction is limited to the two adapter-binding fields whose
+    entire purpose is to record whether live validation has occurred.
+  next_governed_state: GOV_GEN_AUD_001_COMPLETED_ACCEPTED_WITH_DEFERRED_ITEM_RESOLVED
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

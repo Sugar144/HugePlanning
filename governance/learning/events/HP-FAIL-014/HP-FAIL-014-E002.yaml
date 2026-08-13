@@ -1,0 +1,32 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-014-E002
+  record_id: HP-FAIL-014
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The prospective repository-side execution-authorization gate and KGR-006-R1 preparation passed targeted and complete repository validation.
+  rationale: Twenty-nine targeted KGR-006, provenance, GOV-5, and Phase 2.4 checks and all 117 governance tests passed. The gate rejects the absent authorization while the 14-member preparation remains valid, outputs absent, GOV-5 in progress, and GOV-6 through GOV-9 inactive.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/test_kgr_006_r1_contract_preparation.py
+      anchor: test_repository_execution_authorization_gate_is_closed
+      sha256: null
+      availability: PRESERVED
+      note: Deterministic regression for missing authorization and package-bound preparation.
+    - type: VALIDATION_RECORD
+      locator: governance/reviews/kgr-006-r1-contract-preparation/kgr-006-r1-readiness-v0.1.0.yaml
+      anchor: GOV-VAL-005
+      sha256: null
+      availability: PRESERVED
+      note: Valid preparation with execution authorization explicitly absent.
+    - type: REPOSITORY_PATH
+      locator: governance/CURRENT_STATE.md
+      anchor: KGR-006-R1 correction-contract preparation
+      sha256: null
+      availability: PRESERVED
+      note: Durable closed-gate and inactive-phase state.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-015-kgr-006-provenance-reconciliation-and-correction-preparation-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

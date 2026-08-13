@@ -1,0 +1,50 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-019
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ADOPT_GOV_GEN_STAGED_PHYSICAL_ARCHITECTURE
+  program_id: GOV-GEN-AUD-001
+  phase: GR_PROJECT_OWNER_ARCHITECTURE_DECISION
+  reviewed_evidence:
+    controlling_g5_result: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+    independent_gr_review: GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001/0.1.0
+    gr_verdict: GR_SUPPORTS_OWNER_ARCHITECTURE_DECISION
+    gr_findings: {blocking: 0, material: 0, minor: 0}
+  final_status: ARCHITECTURE_DIRECTION_ADOPTED_BY_PROJECT_OWNER
+  selected_direction:
+    primary_target: OPTION_B_REUSABLE_CORE_SEPARATED_IN_PLACE
+    primary_target_scope: HugePlanning remains the first adopter and lab.
+    optional_pilot: OPTION_D_ONLY_IF_SEPARATELY_AUTHORIZED_AS_A_BOUNDED_EXTRACTION_PROVENANCE_MECHANICS_EXPERIMENT
+    deferred_candidate: OPTION_C_INDEPENDENT_GENERAL_GOVERNANCE_REPOSITORY
+    option_c_reconsideration_preconditions:
+      - OPTION_B_BOUNDARY_PROVEN
+      - REAL_SECOND_CONSUMER_EXISTS
+      - AP_1_THROUGH_AP_6_HAVE_DESIGNED_RESOLUTION_PATHS
+    fallback: OPTION_A_STATUS_QUO
+  accepted:
+    - Option B as the selected architectural direction.
+    - HugePlanning continuing as the first adopter and lab for the reusable core boundary.
+    - Option D only as a separately authorized, bounded extraction/provenance-mechanics experiment.
+    - Option C as deferred rather than rejected, subject to the stated reconsideration preconditions.
+    - Option A as the available fallback if evidence does not justify reusable separation.
+  explicitly_not_authorized:
+    - g6_definition_or_execution
+    - extraction_or_migration
+    - general_governance_repository_creation
+    - option_d_pilot_execution
+    - option_c_repository_creation
+    - implementation_of_ap_1_through_ap_6
+    - AGENTS_md_or_CLAUDE_md_modification
+    - push_pull_request_merge_tag_release_or_deployment
+  resulting_state:
+    program_status: ARCHITECTURE_DIRECTION_ADOPTED_G6_NOT_STARTED_NOT_AUTHORIZED
+    current_phase: ARCHITECTURE_DIRECTION_ADOPTED_BY_PROJECT_OWNER
+    g6: NOT_STARTED_NOT_AUTHORIZED
+  reconciliation_note: >-
+    This record selects the architectural direction only. It leaves the
+    accepted G5 synthesis and the executed GR review immutable and does not
+    convert the selected direction into implementation, extraction, pilot,
+    repository-creation, or G6 authority.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

@@ -1,0 +1,38 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-026-E001
+  record_id: HP-FAIL-026
+  date: '2026-07-17'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The formal review-output lifecycle correction passed focused and complete
+    governance-suite validation while preserving the invalid diagnostic and authority
+    state.
+  rationale: Exact registered review evidence is distinguished from empty or unauthorized
+    placeholders; the PASS-03 invalid diagnostic remains non-advancing, and all 222
+    governance tests passed.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_gov_7_audit_scaffold.py
+    anchor: review output lifecycle classification tests
+    sha256: null
+    availability: PRESERVED
+    note: Covers empty, unregistered, registered formal and invalid diagnostic output
+      classes.
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_pass_03_adversarial_review_preparation.py
+    anchor: invalid diagnostic and authority-boundary tests
+    sha256: null
+    availability: PRESERVED
+    note: Covers no state advancement, premature PASS-03 acceptance and PASS-04 authority
+      rejection.
+  - type: VALIDATION_RECORD
+    locator: governance/tests
+    anchor: 222 passed in complete governance suite
+    sha256: null
+    availability: PRESERVED
+    note: Complete governance suite passed after the bounded correction.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-038-correct-pass-03-adversarial-review-output-lifecycle-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

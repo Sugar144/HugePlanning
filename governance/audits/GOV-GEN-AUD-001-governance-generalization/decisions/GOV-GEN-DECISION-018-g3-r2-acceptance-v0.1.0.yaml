@@ -1,0 +1,78 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-018
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_GOV_GEN_G3_R2_CORRECTED_RESULT
+  program_id: GOV-GEN-AUD-001
+  phase: G3
+  subject_contract: GOV-GEN-G3-CONTRACT-001/0.1.0
+  subject_base_deliverable: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0
+  subject_prior_accepted_correction: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
+  subject_controlling_result: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0
+  source_authority: Project Owner disposition ACCEPT_GOV_GEN_G3_R2_CORRECTED_RESULT
+  reviewed_evidence:
+    base_deliverable_terminal_status_before_acceptance: G3_READY_FOR_PROJECT_OWNER_REVIEW
+    r1_status_before_r2_acceptance: G3_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
+    r2_terminal_status_before_acceptance: G3_CORRECTION_R2_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    base_deliverable_sha256: be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b
+    r1_sha256: fd0294f60fd45249c087448851712721aa8a91b21e22fff35e4d8237faba1eb6
+    r2_sha256: afbc1fff8f17dee7329bceb12524efd335ee555465ebaa35a1810d7797f37d35
+    base_manifest: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.manifest.sha256
+    r1_manifest: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.manifest.sha256
+    r2_manifest: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.manifest.sha256
+    base_r1_r2_manifests_verified: true
+    corrected_statement: 49/88 non-READY = 55.7%; replaces 66% ... per G2 §21.2
+    targeted_lookup: GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0 §17.2/§23
+    targeted_lookups_performed_by_r2: 1
+    capabilities_allocated: 88
+    gaps_allocated: 6
+    layer_counts: {L0: 3, L1: 14, L2: 4, L3: 6, L4: 4, L5: 20, L6: 29, L7: 8}
+    base_deliverable_modified: false
+    r1_modified: false
+    capability_reallocation_performed: false
+    gap_redisposition_performed: false
+    unresolved_question_disposition_changed: false
+    boundary_model_changed: false
+    context_efficiency_model_changed: false
+    g4_modified: false
+    g5_modified: false
+    gr_authorized: false
+    g6_authorized: false
+    head_before: 2420640b7792750c004f06008ee1e43b2d28f95f
+    worktree_clean_before_acceptance: true
+  final_status: ACCEPTED_BY_PROJECT_OWNER
+  acceptance_scope: BOUNDED_G3_LOGICAL_ARCHITECTURE_R2_FACTUAL_REFERENCE_CORRECTION_ONLY
+  pending_owner_acceptance_state_removed: true
+  controlling_result: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0
+  accepted:
+    - the accepted eight-layer logical architecture and all 88 capability and 6 gap allocations, unchanged
+    - the R2 correction of base G3 §10 to 49/88 non-READY (55.7%) per accepted G2 §17.2/§23
+    - the preserved authority boundaries, including no GR or G6 authorization
+  not_accepted:
+    - target_physical_repository_architecture_selection
+    - repository_ownership_decision
+    - general_governance_repository_creation
+    - repository_extraction_or_migration
+    - implementation_of_the_eight_layer_architecture
+    - AGENTS_md_or_CLAUDE_md_modification
+    - implementation_of_provider_or_executor_adapters
+    - implementation_of_delegated_operational_authority
+    - implementation_of_query_index_or_projection_tooling
+    - implementation_of_any_g1b_gap
+    - g4_or_g5_modification
+    - gr_definition_or_authorization
+    - g6_definition_or_authorization
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct acceptance of
+    GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0 as the corrected and
+    controlling G3 result. The base deliverable and accepted R1 remain
+    unmodified immutable historical evidence. R2 corrects only the factual and
+    reference defect in base §10; it does not reopen or redesign G3 and does
+    not alter accepted G4 or G5 state.
+  next_governed_state: >-
+    G3, G4, and G5 are ACCEPTED_BY_PROJECT_OWNER. GR remains the later Project
+    Owner architecture-decision gate and G6 remains NOT_REACHED; neither is
+    opened, scoped, started, defined, or authorized by this acceptance.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

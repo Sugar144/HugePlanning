@@ -1,0 +1,129 @@
+governance_baseline:
+  kernel:
+    version: 0.2.0
+    status: RATIFIED
+    implemented: false
+    enforceability_claimed: false
+    operational: false
+  gov_5:
+    status: COMPLETED_CLOSED
+  gov_6:
+    status: COMPLETED_CLOSED
+  gov_7:
+    status: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    direction: ACCEPTED_MINIMUM_GOV_7_DIRECTION_NOT_IMPLEMENTED
+  od_006:
+    status: UNRESOLVED_TRIGGER_GATED
+audit:
+  id: GOV-AUD-001
+  status: IN_PROGRESS_PASS_03_EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  authority: PASS_03_PROJECT_OWNER_EXECUTION_AUTHORIZATION_CONSUMED
+  passes_executed: 3
+  checkpoints_completed: 1
+  completed: false
+  pass_01_accepted: true
+  gov_7_activated: false
+  recommendations_accepted: false
+  implementation_authorized: false
+  audit_execution_authorized: false
+  pass_01_execution_authorized: true
+  pass_01_authorization_consumed: true
+  pass_01_status: PASS_01_ACCEPTED_COMPLETED
+  pass_02_execution_authorized: true
+  pass_02_authorization_consumed: true
+  pass_02_status: ACCEPTED_COMPLETED
+  checkpoint_a_completed: true
+  pass_03_preparation_authorized: true
+  pass_03_preparation_status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+  pass_03_execution_authorized: true
+  pass_03_authorization_consumed: true
+  pass_03_executed: true
+  pass_03_status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  graph_implemented: false
+  telemetry_implemented: false
+  interviewer_simulation_implemented: false
+  self_hosting_implemented: false
+  owner_decision_inferred: false
+  last_completed_step: PASS_03_EXECUTED_AND_DETERMINISTICALLY_VALIDATED
+  next_action: CONDUCT_ONE_INDEPENDENT_ADVERSARIAL_REVIEW_OF_PASS_03_USING_THE_PREPARED_IMMUTABLE_REVIEW_PACKAGE_DO_NOT_EXECUTE_PASS_04
+  methodology_correction:
+    protocol_id: GOV-AUD-001-METHOD-001
+    version: 0.3.0
+    status: ACCEPTED_PROSPECTIVE_AUDIT_METHODOLOGY
+    validation_record: GOV-AUD-VAL-005
+    bounded_review_result: CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION
+    acceptance_record: GOV-AUD-DECISION-002/0.1.0
+    accepted_future_audit_clarification: HP-MPROP-007
+    historical_pass_02_r1_modified: false
+    pass_02_r2_prepared: false
+    checkpoint_a_completed: true
+    pass_03_authorized_or_executed: false
+    gov_7_policy_adopted: false
+    kernel_amended: false
+  validation_lifecycle_correction:
+    correction_id: GOV-AUD-001-P01-R1-C1
+    initial_full_suite: {result: FAILED, passed_tests: 141, failed_tests: 3}
+    corrected_full_suite: {result: PASSED, passed_tests: 152, failed_tests: 0}
+    substantive_outputs_changed: false
+  substantive_output_correction:
+    correction_id: GOV-AUD-001-P01-R1-C2
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+    original_outputs_modified: false
+    prior_correction_modified: false
+    independent_evaluation_completed: true
+    independent_confirmation: GOV-AUD-001-P01-C3-IER-001
+    pass_01_accepted: true
+    pass_02_authorized_or_executed: false
+    checkpoint_a_completed: false
+    gov_7_activated: false
+  pass_02_execution:
+    run_id: GOV-AUD-001-P02-R1
+    authorization_id: GOV-AUD-AUTH-002
+    prompt_id: GOV-AUD-PROMPT-021
+    catalog_prompt_id: HP-PROMPT-029
+    status: ACCEPTED_COMPLETED
+    independent_evaluation_completed: true
+    owner_reported_independent_review: true
+    owner_report_custody: HP-PROMPT-030
+    independent_review_artifact_custody: GOV-AUD-001-P02-IER-002
+    independent_review_result: PASS_02_R1_CONFIRMED
+    independent_review_documentary_debt: RESOLVED_BY_CUSTODIED_FINAL_EVALUATION
+    pass_02_accepted: true
+    checkpoint_a_completed: true
+    pass_03_authorized_or_executed: false
+    pass_03_preparation_authorized: true
+    architecture_selected: false
+    implementation_authorized: false
+    gov_7_activated: false
+  pass_03_execution:
+    run_id: GOV-AUD-001-P03-R1
+    authorization_id: GOV-AUD-AUTH-003
+    prompt_id: GOV-AUD-PROMPT-031
+    catalog_prompt_id: HP-PROMPT-035
+    contract: GOV-AUD-001-PASS-03-CONTRACT/0.2.0
+    input_manifest: GOV-AUD-001-P03-R1-INPUT-001/0.1.0
+    status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+    output_count: 9
+    validation_record: GOV-AUD-P03-VAL-001
+    review_package: GOV-AUD-P03-REVIEW-PACKAGE-001
+    independent_adversarial_review_completed: false
+    pass_03_accepted: false
+    pass_04_authorized_or_executed: false
+    tooling_selected: false
+    learning_pipeline_implemented: false
+    gov_7_activated: false
+  pass_03_adversarial_review_execution_package:
+    package_id: GOV-AUD-P03-REVIEW-EXECUTION-PACKAGE-001
+    review_id: GOV-AUD-001-P03-AR-001
+    status: AUTHORIZED_NOT_YET_CONSUMED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_EXECUTION
+    contract: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT/0.1.0
+    prompt_id: GOV-AUD-PROMPT-032
+    catalog_prompt_id: HP-PROMPT-037
+    input_manifest: GOV-AUD-001-P03-AR-001-INPUT-001/0.1.0
+    reviewed_package: GOV-AUD-P03-REVIEW-PACKAGE-001
+    reviewed_package_sha256: d93c98535e38d952582b59e460d17ac62db8fea3ebfed794383d384a0b9f43fe
+    owner_execution_authorization: GOV-AUD-AUTH-004/0.1.0
+    review_execution_authorized: true
+    review_executed: false
+    review_opportunity_consumed: false
+    pass_03_state_advanced: false

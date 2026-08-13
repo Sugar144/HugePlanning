@@ -1,0 +1,30 @@
+document_id: GOV-GEN-G6-B-03-VALIDATION-001
+version: 0.1.0
+status: VALID
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B02_REVIEW_AND_B03_CONTINUATION
+validations:
+  configured_semantic_equivalence:
+    result: PASS
+    method: >-
+      Resolving all declared HugePlanning configuration placeholders produces
+      bytes identical to the frozen B-01 operating-contract source.
+  reusable_core_isolation:
+    result: PASS
+    method: >-
+      The reusable core contains placeholders, not HugePlanning's run identity
+      or formal-run path value.
+  configuration_ownership:
+    result: PASS
+    method: >-
+      The core schema declares every placeholder; the HugePlanning adopter
+      binding names and owns the configuration file supplying each value.
+  compatibility_entrypoint:
+    result: PASS
+    method: >-
+      The established methodology entrypoint still resolves the same core via
+      the explicit adopter binding.
+  instruction_surfaces:
+    result: PASS
+    method: AGENTS.md, governance/AGENTS.md, and CLAUDE.md remain unchanged.
+result: B-03_CONFIG_SEAM_REVIEW_READY
+next_gate: INDEPENDENT_B03_REVIEW_REQUIRED

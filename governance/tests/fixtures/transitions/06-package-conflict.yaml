@@ -1,0 +1,16 @@
+fixture_id: "06"
+synthetic_test_evidence: true
+input_state: READY_FOR_TARGETED_CLOSURE
+source_run: KGR-005
+source_role: adversary
+source_mode: TARGETED_CLOSURE
+input_result: BLOCKED_BY_PACKAGE_CONFLICT_MEMBER_HASH_MISMATCH
+counters_before: {completed_targeted_closure_runs: 0, completed_designer_remediation_runs: 0}
+history: []
+expected_validity: VALID_PRE_SUBSTANTIVE_NON_COMPLETION
+expected_counters_after: {completed_targeted_closure_runs: 0, completed_designer_remediation_runs: 0}
+expected_transition: READY_FOR_TARGETED_CLOSURE
+expected_next_role: Kernel Adversary
+expected_next_mode: TARGETED_CLOSURE
+owner_authorization_required: true
+expected_diagnostic: null

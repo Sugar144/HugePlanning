@@ -1,0 +1,25 @@
+document_id: GOV-GEN-G6-B-02-VALIDATION-001
+version: 0.1.0
+status: VALID
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B02_EXECUTION
+baseline_review: ../B-01/B-01-independent-review-001.yaml
+validations:
+  semantic_equivalence:
+    result: PASS
+    method: >-
+      The moved core contract is byte-identical to the frozen B-01 source at
+      6fc4fa1a14a665fabfcceb00729222527cd192ba.
+  core_literal_and_path_dependency:
+    result: PASS
+    method: Core contains no HugePlanning literal or project path; project-specific paths exist only in adopter and B-02 custody records.
+  adoption_binding:
+    result: PASS
+    method: Compatibility and explicit adopter bindings both resolve the same core contract.
+  provenance:
+    result: PASS
+    method: Git copy detection retains the source history and the core-boundary record preserves its former path.
+  ownership_and_instruction_surfaces:
+    result: PASS
+    method: No L3/L5 candidate entered the core and AGENTS.md, governance/AGENTS.md, and CLAUDE.md are unchanged.
+result: B-02_MINIMUM_OPTION_B_BOUNDARY_REVIEW_READY
+next_gate: INDEPENDENT_B02_REVIEW_REQUIRED_BEFORE_B03

@@ -1,0 +1,39 @@
+correction_findings:
+  schema_version: 0.1.0
+  run: KGR-006-R1
+  base_run: KGR-006
+  evaluation_result: RETURN_FOR_VERSIONED_CORRECTION
+  findings:
+    - id: IE-MC-001
+      category: AUTHORIZATION_EXECUTION_AND_CUSTODY_PROVENANCE
+      disposition: RECONCILED_WITH_EXPLICIT_HISTORICAL_LIMITATION
+      correction_output_scope: BIND_ONLY
+      evidence: [GOV-ATT-001, GOV-VAL-004, HP-FAIL-014]
+      boundary: Retrospective Project Owner attestation supports bounded import but does not create contemporaneous custody or validate the source result.
+    - id: IE-MC-002
+      category: CANONICAL_ROUTE_TO_CLAUSE_TRACEABILITY
+      disposition: CORRECTION_REQUIRED
+      correction_output_scope: Preserve all canonical applicable pairs, including the 15 omitted pairs, while retaining LLR-020 deferral to GOV-8.
+      evidence: [HP-FAIL-015, canonical-clause-route-anchors.yaml]
+    - id: IE-MC-003
+      category: SPECIALIST_DEPENDENCY_SOURCE_OF_TRUTH_CONSISTENCY
+      disposition: CORRECTION_REQUIRED
+      correction_output_scope: Canonicalize exactly four dependencies and use one ER-012 safe boundary across all seven outputs.
+      evidence: [HP-FAIL-016]
+  strictly_bounded_changes:
+    - Explicit preservation of the 15 omitted applicable clause-route anchors.
+    - Canonicalization of ER-007, ER-012, ER-015, and ER-019 specialist dependencies.
+    - One consistent ER-012 boundary.
+    - Strictly necessary cross-artifact consistency updates.
+  preserved_without_resolution:
+    routes: [LLR-001, LLR-002, LLR-003, LLR-004, LLR-005, LLR-006, LLR-007, LLR-008, LLR-009, LLR-010, LLR-011, LLR-012, LLR-013, LLR-014, LLR-015, LLR-016, LLR-017, LLR-018, LLR-019, LLR-020]
+    owner_decisions: [OD-001, OD-002, OD-003, OD-004, OD-005, OD-006]
+    unresolved_owner_decisions: [OD-002, OD-003, OD-004, OD-005, OD-006]
+    minimum_gov_7_package: RECOMMENDATION_ONLY
+    kernel_meaning_changed: false
+  canonical_specialist_dependencies:
+    - {id: SD-001, requirement_id: ER-007}
+    - {id: SD-002, requirement_id: ER-012}
+    - {id: SD-003, requirement_id: ER-015}
+    - {id: SD-004, requirement_id: ER-019}
+  er_012_safe_interim_boundary: Do not process sensitive, regulated, confidential, or actively harmful real data until the applicable boundary is established.

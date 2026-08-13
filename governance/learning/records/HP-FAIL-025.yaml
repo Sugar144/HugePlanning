@@ -1,0 +1,91 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-025
+  date: '2026-07-17'
+  recorded_on: '2026-07-17'
+  title: PASS-02 validator conflated PASS-03 preparation lifecycle with execution
+    authority
+  context:
+    phase: GOV-AUD-001 PASS-03 preparation
+    run: GOV-AUD-001-P02-R1
+    component: PASS-02 architecture validator lifecycle boundary
+    branch: governance/kernel-designer-revision-v0.1
+    commit: 245e157ea64647d8af99b9bb98ae41fac677505f
+    environment: Codex deterministic governance-suite regression repair
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  - TOOLING_GAP
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: PASS-02 validation accepts preparation-only and prepared-pending-execution
+    states while rejecting execution authority, execution, acceptance and completion
+    without their required decisions.
+  observed_behavior: The validator required only the superseded preparation-authority
+    state, so it rejected the valid prepared-pending-execution state with an execution-or-authorized
+    diagnostic.
+  impact: The complete governance suite had one deterministic false failure, obscuring
+    the preserved PASS-03 preparation-only authority boundary.
+  detection_method: The canonical PASS-02 validator test failed at HEAD 245e157 with
+    the diagnostic PASS-03 executed or authorized.
+  root_cause:
+    immediate: A literal comparison accepted only AUTHORIZED_FOR_PREPARATION_NOT_EXECUTION.
+    systemic: The validator did not model preparation lifecycle states separately
+      from execution authority and execution facts.
+    contributing_factors:
+    - The PASS-03 prepared lifecycle was added after the PASS-02 validator's original
+      terminal-state assertion.
+  response:
+    containment: Do not alter PASS-03 artifacts, PASS-02 R1 outputs or any execution
+      state.
+    correction: Allow the two explicit preparation-only lifecycle states and independently
+      require preparation authority true with execution authorization and execution
+      false.
+    prevention:
+    - Test both preparation states and negative execution-authority and premature-execution
+      cases in the PASS-02 validator suite.
+    accountable_owner: Project Owner
+    validation_required:
+    - Run focused PASS-02 tests
+    - PASS-03 lifecycle tests
+    - the full governance suite and git diff --check.
+  learning:
+    reusable_lesson: Lifecycle preparation states and execution authority must be
+      represented and validated as separate facts.
+    candidate_system_changes:
+    - VALIDATION
+    - TEST
+    applicable_future_phases:
+    - All future audit-pass lifecycle validators
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One deterministic regression and one bounded validator correction are observable;
+      time, tokens and cost are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tools/validate_pass_02.py
+    anchor: PASS_03_PREPARATION_STATES
+    sha256: null
+    availability: PRESERVED
+    note: Validator boundary corrected prospectively.
+  - type: COMMIT
+    locator: 245e157ea64647d8af99b9bb98ae41fac677505f
+    anchor: 'test(governance): support PASS-03 prepared lifecycle'
+    sha256: null
+    availability: PRESERVED
+    note: Baseline that exposed the regression.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

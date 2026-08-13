@@ -1,0 +1,20 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: null
+  record_id: HP-FAIL-001
+  date: 2026-07-14
+  event_type: STATUS_TRANSITION
+  status_from: OPEN
+  status_to: CONTAINED
+  summary: Synthetic containment.
+  rationale: The fixture exercises a valid status edge.
+  evidence_refs:
+    - type: OWNER_STATEMENT
+      locator: synthetic-status-evidence
+      anchor: null
+      sha256: null
+      availability: NOT_PRESERVED
+      note: Synthetic transition evidence.
+  owner_decision_ref: null
+  accepted_risk: null
+  supersedes: null

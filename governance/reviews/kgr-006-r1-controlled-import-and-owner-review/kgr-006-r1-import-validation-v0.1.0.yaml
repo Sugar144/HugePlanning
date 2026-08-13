@@ -1,0 +1,92 @@
+schema_version: 0.1.0
+record_id: GOV-VAL-007
+tool: {name: prepare_enforcement_correction.py plus deterministic package comparison, version: 0.2.0}
+subject:
+  run: KGR-006-R1
+  role: Enforcement Engineer
+  mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  protocol: GOV-PROTOCOL-004/0.2.0
+  authorization:
+    id: GOV-AUTH-001
+    formal_input_package_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
+    execution_count_limit: 1
+    previous_execution_count_consumed: 0
+    reconciled_execution_count_consumed: 1
+    remaining_execution_available: false
+    consumed_once_only: true
+    consumed_by_output_package_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+    open_before_execution_evidence:
+      authorization_commit: e14af3d9d36172b1db4bbaba1a7983d8b17461eb
+      authorization_commit_time: '2026-07-15T14:01:53+02:00'
+      external_output_package_observed_mtime: '2026-07-15T14:19:23.346235163+02:00'
+      source_basis_declares_authorization_opened: true
+      independent_evaluator_confirms_prospective_binding: true
+  source_package:
+    path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/output/HugePlanning-KGR-006-R1-minimum-enforcement-analysis-correction-v0.1.0.zip
+    package_sha256: 0f496b5b17feb724977f189413f485100b9a66d98b1f79dc05cf45fb60aee66b
+    member_count: 7
+    exact_members: true
+    archive_safety: PASS
+    zip_integrity: PASS
+    utf8_valid: true
+    schema_and_identity_validation: PASS
+    output_validator: VALID_ZERO_DIAGNOSTICS_46_CANONICAL_PAIRS
+    declared_result: CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION
+    canonical_import_root: governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs
+    imported_member_count: 7
+    imported_outputs_byte_identical: true
+    inventory:
+      - {member: 00-enforcement-analysis-basis.md, sha256: 3552f5c83fe1c39c6502e780f1ff926a6aace530f98639da9286279c1c2728ed, size: 5513}
+      - {member: 01-clause-implication-matrix.yaml, sha256: 16094b2afdb38f8623867a3904fd61ec71473a988d70c1be0b962485a2402d19, size: 57665}
+      - {member: 02-existing-capability-inventory.md, sha256: 698a264b261bba9c62d6867ca13af55f956bcb79311e5935a908455efc702d5b, size: 4116}
+      - {member: 03-feasibility-coverage-and-gap-assessment.md, sha256: d736c90becafdedfe053cde16a56917e0e6901be416a0a947b9eb39d5295fe8a, size: 6542}
+      - {member: 04-owner-decisions-and-residual-risks.md, sha256: 80e6fa8f89e4fabc64d085657c97356229953c98646cd4ffb88818fb48c25942, size: 5554}
+      - {member: 05-minimum-executable-package-recommendation.md, sha256: 51d751b9463909c5f0732c844fb3b4f49d9fe0c50f276bce7a846cd418a7d488, size: 5192}
+      - {member: 06-ratification-decision-handoff.md, sha256: aa9f366c68399ea25b3d2617989ba02fb06600f18d95ac66d4c69d8eeb09212b, size: 4655}
+  evaluation_package:
+    path: /home/sugar/Documents/HugePlanning-workspace/formal-runs/KGR-006-R1/evaluation/HugePlanning-KGR-006-R1-independent-evaluation-v0.1.0.zip
+    package_sha256: ab133dc6e92b0a51f9911f5dd39bf65f3b2e244f97b023d98ea06a695f5fbe62
+    member_count: 3
+    exact_members: true
+    archive_safety: PASS
+    zip_integrity: PASS
+    utf8_valid: true
+    identity_and_consistency_validation: PASS
+    declared_result: SUITABLE_FOR_CONTROLLED_REPOSITORY_IMPORT_AND_PROJECT_OWNER_DECISION_REVIEW
+    canonical_import_root: governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation
+    imported_member_count: 3
+    imported_artifacts_byte_identical: true
+    inventory:
+      - {member: 00-independent-evaluation-basis.md, sha256: 9aead33589f782a03bd149addd01a082be45d5cb28b4d75c6649269e92577c1c, size: 4903}
+      - {member: 01-independent-evaluation-findings.yaml, sha256: 26da06c64ec43d7872e395b05427ebbb0fa9bddd4b36867f69141abfdab0f329, size: 8393}
+      - {member: 02-independent-evaluation-report.md, sha256: d2866b9b053654560133bab49dd177aaee3ba50cb5aaf465d55005b253af6490, size: 5927}
+  immutable_artifact_style_exclusion_allowlist:
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/00-enforcement-analysis-basis.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/02-existing-capability-inventory.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/03-feasibility-coverage-and-gap-assessment.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/04-owner-decisions-and-residual-risks.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/05-minimum-executable-package-recommendation.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/06-ratification-decision-handoff.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/00-independent-evaluation-basis.md
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/01-independent-evaluation-findings.yaml
+    - governance/runs/KGR-006-R1-enforcement-analysis-correction/evaluation/02-independent-evaluation-report.md
+  substantive_status:
+    execution: COMPLETED
+    corrected_outputs: IMPORTED_BYTE_IDENTICAL
+    independent_evaluation: COMPLETED_IMPORTED_BYTE_IDENTICAL
+    project_owner_acceptance: NOT_STARTED
+    gov_5_completed: false
+    kernel: PROPOSED_NOT_RATIFIED
+    enforcement_implementation: NOT_PERFORMED
+    enforceable: false
+    operational: false
+    risk_accepted: false
+profile_versions:
+  output_contract: 0.1.0
+  matrix_schema: 0.2.0
+  import_validation: 0.1.0
+result: VALID
+diagnostics: []
+constitutional_authority: NONE
+authority_limit: VALIDATION_IS_NOT_ACCEPTANCE_RATIFICATION_EXECUTION_OR_OPERATION

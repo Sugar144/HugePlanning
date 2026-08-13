@@ -1,0 +1,61 @@
+pass:
+  id: PASS-05
+  title: GOV-7 Strategy Comparison and Backlog Derivation
+  status: PLANNED_NOT_EXECUTED
+  purpose: Compare implementation strategies without presupposing vertical slicing and derive a proposed ER-001 through ER-020 executable backlog.
+  authority: SEPARATE_PROJECT_OWNER_EXECUTION_AUTHORIZATION_REQUIRED
+  required_predecessors: [CHECKPOINT-B]
+  checkpoint_dependency: CHECKPOINT-B
+  governance_phase_prerequisites:
+    gov_5: COMPLETED_CLOSED
+    gov_6: COMPLETED_CLOSED
+    gov_7: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    od_006: UNRESOLVED_TRIGGER_GATED
+    checkpoint_b: EXPLICIT_OWNER_DISPOSITION_RECORDED
+  canonical_inputs: [accepted or bounded PASS-01 through PASS-04 outputs, checkpoint-A and checkpoint-B decisions, ER-001 through ER-020 and minimum GOV-7 direction]
+  read_only_repository_scope: [governance/**, planning/**, product/**, relevant methodology/runtime architecture]
+  permitted_external_research: NONE_UNLESS_CHECKPOINT_B_EXPLICITLY_REQUESTS_A_BOUNDED_MISSING_COMPARISON
+  mandatory_principles:
+    repository_first_gap_driven: strategies and backlog items must trace to accepted evidence
+    prompt_economy: propose only work needed for protection, evidence or a tested capability
+    ai_first_effort: rank execution cycles and review/validation burden rather than developer-weeks
+    whole_work_unit: backlog acceptance includes evidence, correction and independent disposition
+    strategy_neutrality: compare TOP_DOWN_LAYER_COMPLETION, BOTTOM_UP_CONTROL_FIRST, HYBRID_VERTICAL_SLICES and evidence-supported alternatives
+    relationship_model_neutrality: backlog requires the model but cannot predetermine graph technology
+    controlled_self_hosting: introduce progressively with independence and recovery boundaries
+    open_tool_discovery: checkpoint dispositions constrain candidates; no tool becomes mandatory by mention
+  required_questions:
+    - Which strategy best balances traceability, early evidence, rework, Owner burden, validation, defect discovery, layer preservation, maintenance, stopping, recovery, migration and self-hosting?
+    - If a vertical strategy wins, why, which representative first slice, what does it exercise, what cannot it prove and what triggers another strategy?
+    - How does each ER map to governance component -> epic -> task -> acceptance criteria -> test/validator -> evidence contract -> gate -> dependency?
+    - What is required before material GOV-7 work, in the first approved increment, after evidence, deferred or rejected?
+    - What evidence indicates product, requirement, task, agent, skill, procedure, control, policy, standard, methodology, governance methodology or possible Kernel defects?
+    - Which functions remain independently evaluated, which items HugePlanning may generate, and which require direct Owner decisions?
+  required_outputs:
+    - strategy comparison and evidence-backed recommendation
+    - explicit vertical-slice non-presumption analysis
+    - ER-001 through ER-020 proposed executable backlog
+    - strategy-neutral priority and horizon allocation
+    - upward-finding routing and defect-classification rules
+    - progressive self-hosting sequence and independence requirements
+    - Owner decision register and OD-006 boundary treatment
+    - defer, reject and stop-doing list
+  output_structure:
+    format: STRATEGY_DECISION_SUPPORT_AND_PROPOSED_BACKLOG
+    statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+    priority_classes: [P0_BEFORE_MATERIAL_GOV_7_WORK, P1_FIRST_APPROVED_IMPLEMENTATION_INCREMENT, P2_AFTER_INITIAL_EMPIRICAL_EVIDENCE, DEFER, REJECT]
+  required_evidence: [accepted gap/architecture/evaluation/tool IDs, ER coverage, checkpoint decisions, OD-006 triggers, explicit assumptions]
+  validation: [all required strategies compared, ER-001 through ER-020 exactly covered, backlog chain completeness, independence and OD-006 checks, no implementation artifacts, output-contract validation]
+  stopping_conditions: [checkpoint B absent, predecessor recommendation conflict unresolved, strategy outcome is predetermined, OD-006 boundary would be crossed, backlog implies activation or implementation authority]
+  prohibited_actions: [modify repository during analysis without separate authority, activate or implement GOV-7, resolve OD-006 or other Owner decisions, accept strategy/backlog, implement tools or controls, rewrite predecessor outputs, treat chat memory as durable truth]
+  prohibited_claims: [approved strategy, authorized backlog, implementation, operational readiness, enforceability, compliance, maturity, risk acceptance]
+  model_class_recommendation: STRONG_REASONING_MODEL_FOR_MULTI_CRITERIA_STRATEGY_AND_TRACEABLE_BACKLOG_SYNTHESIS
+  ai_first_effort_dimensions:
+    cycles: 4-6
+    owner_effort: HIGH
+    validation_burden: HIGH
+    novelty: NEW_BOUNDED_COMPONENT
+    correction_uncertainty: HIGH
+    maintenance_burden: MEDIUM
+  correction_protocol: Preserve the compared alternatives and evidence; correct through a versioned strategy/backlog package after explicit Owner feedback.
+  handoff_to_next_pass: Bind only accepted or explicitly bounded material into PASS-06 synthesis.

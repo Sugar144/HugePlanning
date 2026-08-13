@@ -1,0 +1,118 @@
+pass:
+  id: PASS-04
+  title: Targeted Tooling, Prompt Lifecycle and Automation Research
+  status: PLANNED_NOT_EXECUTED
+  purpose: Research only tools and methods tied to evidence-backed gaps from PASS-01 through PASS-03.
+  authority: SEPARATE_PROJECT_OWNER_EXECUTION_AUTHORIZATION_REQUIRED
+  required_predecessors: [PASS-03]
+  checkpoint_dependency: CHECKPOINT-A
+  governance_phase_prerequisites:
+    gov_5: COMPLETED_CLOSED
+    gov_6: COMPLETED_CLOSED
+    gov_7: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    pass_01_through_03: ACCEPTED_OR_EXPLICITLY_BOUNDED_EVIDENCE
+  canonical_inputs: [ranked gap register, accepted architecture bounds, measurement/evaluation design, current tool/model availability evidence]
+  read_only_repository_scope: [governance/**, planning/**, product/**, relevant methodology/runtime capability surfaces]
+  permitted_external_research: TARGETED_CURRENT_PRIMARY_SOURCE_RESEARCH_FOR_DEFINED_EVIDENCE_BACKED_GAPS
+  mandatory_principles:
+    repository_first_gap_driven: no framework may create its own use case
+    prompt_economy: research only decision-relevant dimensions and adoption triggers
+    ai_first_effort: estimate cycles, Owner effort, validation, novelty, correction, integration and maintenance
+    whole_work_unit: evaluate lifecycle and correction burden, not isolated prompt statistics
+    strategy_neutrality: tooling must not predetermine a GOV-7 strategy
+    relationship_model_neutrality: required query capability does not imply persistent graph technology
+    controlled_self_hosting: hosting choice cannot weaken trust-root or independence boundaries
+    open_tool_discovery: named candidates are non-exhaustive; every comparison includes NO_NEW_TOOL, repository-native and smallest custom options
+  required_questions:
+    - Which prompt registry, evaluation, observability and optimization capabilities solve demonstrated gaps, and under what stable-task/benchmark/regression/human-review preconditions?
+    - Which repeated work is KEEP_AS_INSTRUCTION, EXTRACT_TO_SCRIPT, WRAP_WITH_HOOK, EXTRACT_TO_SKILL, EXPOSE_AS_QUERY, EXPOSE_THROUGH_MCP_LATER, REQUIRES_HUMAN_JUDGMENT, RESEARCH_REQUIRED or REJECT_AS_UNNECESSARY?
+    - What is the smallest relationship-query progression from existing parsers through normalized models and optional persistence/MCP?
+    - Which validation rules belong in JSON Schema, Pydantic, CUE, Hypothesis, policy engines, static analysis, contract tests or custom validators, and which judgments must remain human?
+    - At what evidence thresholds would workflow platforms, services, graph stores or MCP be justified over plain Python or repository-native tasks?
+    - Which available models fit inventory, implementation, synthesis, adversarial review, evaluation, summarization, schemas, tests and research without inferring capability from names?
+  required_outputs:
+    - evidence-linked candidate comparison including PromptLayer, Langfuse, Braintrust, Agenta, Promptfoo, LangSmith, Phoenix, OpenAI Datasets/trace grading, DSPy, Opik, GEPA-class optimizers, TextGrad, repository-native Git and discovered alternatives where relevant
+    - script/hook/skill/query/MCP classification
+    - graph/query implementation option comparison including NO_PERSISTENT_GRAPH
+    - policy/validation technology comparison
+    - workflow/orchestration threshold comparison
+    - model-routing recommendation based on observed availability/descriptions and pilot evidence
+    - recommendation register with ADOPT, PILOT, DEFER, REJECT or NO_NEW_TOOL dispositions
+  initial_candidate_pools:
+    prompt_lifecycle:
+      - PromptLayer
+      - Langfuse
+      - Braintrust
+      - Agenta
+      - Promptfoo
+      - LangSmith
+      - Arize Phoenix
+      - OpenAI Datasets
+      - OpenAI trace grading
+      - DSPy
+      - Opik
+      - GEPA or supported prompt optimizers
+      - TextGrad
+      - repository-native Git-based prompt registry
+      - other evidence-supported alternatives
+    relationship_query:
+      - validated Python domain objects
+      - dictionaries
+      - sets
+      - adjacency maps
+      - NetworkX
+      - relational projections
+      - SQLite
+      - DuckDB where analytical aggregation is relevant
+      - RDF or knowledge-graph approaches
+      - property-graph approaches
+      - persistent graph databases
+      - NO_PERSISTENT_GRAPH
+    policy_and_validation:
+      - JSON Schema
+      - Pydantic
+      - CUE
+      - Hypothesis
+      - OPA/Rego
+      - Cedar
+      - static analysis
+      - contract testing
+      - provenance tooling
+      - CI gates
+      - custom deterministic validators
+      - NO_NEW_TOOL
+    workflow_and_orchestration:
+      - plain Python
+      - Make
+      - Just
+      - Task
+      - repository-native task runner
+      - Codex Hooks
+      - Codex Skills
+      - GitHub Actions
+      - MCP
+      - Snakemake
+      - Dagster
+      - Prefect
+      - Temporal
+      - existing or extended deterministic Controller
+      - no additional workflow engine
+  output_structure:
+    format: TOOL_RESEARCH_REPORT_AND_RECOMMENDATION_REGISTER
+    statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+    recommendation_fields: [repository_evidence, target_problem, current_capability, smallest_sufficient_solution, expected_benefit, ai_execution_cycles, owner_effort, validation_burden, implementation_novelty, correction_uncertainty, integration_risk, maintenance_burden, privacy_and_hosting, provider_dependence, lock_in, authority_risk, rollback, adoption_trigger, priority, disposition]
+  required_evidence: [gap IDs, current primary sources with version/date, repository-native baseline, hosting/privacy facts, unavailable markers]
+  validation: [every candidate linked to a gap, every comparison includes required minimal options, source freshness and primary-source checks, complete recommendation fields, output-contract validation]
+  stopping_conditions: [no evidence-backed gap, required current source unavailable, provider/privacy boundary unresolved, research drifts into implementation, model availability cannot be verified]
+  prohibited_actions: [modify repository during analysis without separate authority, adopt or implement tools, run prompt optimization, build graph/projection/telemetry/simulator/workflow/MCP/policy system, accept recommendations, resolve Owner decisions, rewrite predecessor outputs, treat chat memory as durable truth]
+  prohibited_claims: [adoption, implementation, provider suitability without evidence, graph requirement implies database, GOV-7 readiness, enforceability, operation, compliance, maturity]
+  model_class_recommendation: RESEARCH_CAPABLE_MODEL_WITH_PRIMARY_SOURCE_VERIFICATION_AND_LEAST_COST_ROUTING
+  ai_first_effort_dimensions:
+    cycles: 4-6
+    owner_effort: MEDIUM
+    validation_burden: HIGH
+    novelty: RESEARCH_DEPENDENT
+    correction_uncertainty: HIGH
+    maintenance_burden: MEDIUM
+  correction_protocol: Preserve source versions and research date; update through a new version when evidence or products change.
+  handoff_to_next_pass: Present recommendations to CHECKPOINT-B; no adoption or PASS-05 instantiation without explicit disposition.

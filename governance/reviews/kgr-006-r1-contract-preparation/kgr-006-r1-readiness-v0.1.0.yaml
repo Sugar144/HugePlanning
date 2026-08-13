@@ -1,0 +1,39 @@
+schema_version: 0.1.0
+record_id: GOV-VAL-005
+tool: {name: prepare_enforcement_correction.py, version: 0.1.0}
+subject:
+  run: KGR-006-R1
+  base_run: KGR-006
+  role: Enforcement Engineer
+  mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  protocol: GOV-PROTOCOL-004
+  protocol_version: 0.2.0
+  prompt: GOV-PROMPT-009
+  envelope: GOV-INPUT-004
+  package_path: /tmp/HugePlanning-KGR-006-R1-formal-input-package.zip
+  package_classification: VALIDATED_PREPARED_INPUT_PACKAGE
+  package_sha256: ad59170b931563e42ffbc65cf04b0427b414521d62efe08b0705a810ebac9fd8
+  member_count: 14
+  input_artifact_count: 13
+  canonical_applicable_pair_count: 46
+  evaluated_omitted_anchor_count: 15
+  lower_layer_route_count: 20
+  specialist_dependency_count: 4
+  owner_decision_count: 6
+  required_output_count: 7
+  execution_authorization: ABSENT
+  execution_status: NOT_STARTED
+  formal_outputs: ABSENT
+  independent_evaluation: NOT_STARTED_REQUIRED_AFTER_VALIDATED_OUTPUT
+  readiness: READY_FOR_SEPARATE_EXECUTION_AUTHORIZATION
+  exact_next_action: Project Owner separately authorizes exactly one KGR-006-R1 execution using the exact validated package; repository-side authorization custody must pass before handoff.
+profile_versions:
+  operating_contract: 0.3.0
+  envelope: 0.2.0
+  protocol: 0.2.0
+  output_contract: 0.1.0
+  validator: 0.1.0
+result: VALID
+diagnostics: []
+constitutional_authority: NONE
+authority_limit: VALIDATION_IS_NOT_ACCEPTANCE_RATIFICATION_EXECUTION_OR_OPERATION

@@ -1,0 +1,115 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-023
+  date: '2026-07-16'
+  recorded_on: '2026-07-16'
+  title: PASS-02 execution prompt initially reused the assigned HP-PROMPT-028 identity
+  context:
+    phase: GOV-7 audit PASS-02 startup
+    run: GOV-AUD-001-P02-R1
+    component: PASS-02 prompt identity and prospective custody
+    branch: governance/kernel-designer-revision-v0.1
+    commit: a4cbc500b2ca864b2eb35e9354df88c8c3d97a3e
+    environment: Codex repository startup verification before PASS-02 modification
+  primary_classification: OWNER_CORRECTION
+  classification:
+  - OWNER_CORRECTION
+  - PROCESS_DEFECT
+  - NEAR_MISS
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: A material PASS-02 execution prompt must use one unused canonical
+    HP-PROMPT identity and pass collision checks before prospective custody or execution.
+  observed_behavior: The initial execution contract required HP-PROMPT-028 to be unused,
+    but durable registry, prompt-registry and decision evidence already assigned it
+    to the accepted PASS-01 publication workflow.
+  impact: The mandatory startup gate stopped before modification, so no PASS-02 execution
+    evidence was created. Execution remained blocked until the Project Owner prospectively
+    replaced the conflicting identity with collision-free HP-PROMPT-029.
+  detection_method: Repository-wide exact-ID and path search during the required clean-start
+    verification, confirmed against the live remote HEAD and canonical prompt and
+    artifact registries.
+  root_cause:
+    immediate: The PASS-02 prompt copied HP-PROMPT-028 as an unused candidate after
+      that identity had already been consumed by PASS-01 acceptance and publication.
+    systemic: The prompt identity candidate was not rechecked against the latest canonical
+      registry before the execution contract was issued.
+    contributing_factors:
+    - PASS-01 acceptance and PASS-02 authorization occurred in adjacent audit lifecycle
+      steps.
+    - The local GOV-AUD prompt identity and canonical HP-PROMPT identity use separate
+      sequences that must both be checked.
+  response:
+    containment: Stop without modification, report the exact collision, keep PASS-02
+      unexecuted and preserve the clean worktree and expected HEAD.
+    correction: The Project Owner prospectively replaced HP-PROMPT-028 with HP-PROMPT-029;
+      startup verification confirmed the replacement unused across canonical surfaces
+      before authorization and prompt custody were created.
+    prevention:
+    - Allocate the canonical HP-PROMPT identity from a deterministic repository-wide
+      collision check immediately before material prompt custody.
+    - Bind both local and catalog prompt identities in the authorization, run manifest
+      and prompt registry.
+    - Treat a failed startup check as no execution evidence and never reuse or backfill
+      the blocked run state.
+    accountable_owner: Project Owner
+    validation_required:
+    - Validate exact prompt identity, hash and registry uniqueness.
+    - Validate the audit lifecycle records exactly two executed passes and no failed
+      startup run.
+    - Run prompt custody, PASS-02 focused tests and the complete governance suite.
+  learning:
+    reusable_lesson: Material prompt identities must be collision-checked against
+      the latest canonical registries immediately before custody; a correct startup
+      stop preserves authority and creates no execution evidence.
+    candidate_system_changes:
+    - VALIDATION
+    - TEST
+    - WORKFLOW_PATTERN
+    - DOCUMENTATION
+    applicable_future_phases:
+    - All future GOV-AUD pass authorizations
+    - All material prompt allocation and formal-run startup gates
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One startup collision, one correct mandatory stop and one prospective identity
+      correction are observable; time, tokens, cost and Owner effort are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/ARTIFACT_REGISTRY.yaml
+    anchor: HP-PROMPT-028 and HP-PROMPT-029
+    sha256: null
+    availability: PRESERVED
+    note: Canonical registry proves the prior identity assignment and corrected replacement.
+  - type: REPOSITORY_PATH
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/authorization/owner-authorization.yaml
+    anchor: prospective_amendment
+    sha256: efec5e415e9fadb25e33d6693e83b29a6df3f282d16976a3f43d99711450a376
+    availability: PRESERVED
+    note: Structured prospective authorization records the collision-free replacement
+      and that the failed startup created no execution evidence.
+  - type: REPOSITORY_PATH
+    locator: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/manifest.yaml
+    anchor: identity_collision_check
+    sha256: null
+    availability: PRESERVED
+    note: Run custody records the four identities as unused at the successful startup
+      and preserves no failed-start execution.
+  related_records:
+  - HP-FAIL-005
+  - HP-FAIL-014
+  - HP-FAIL-021
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

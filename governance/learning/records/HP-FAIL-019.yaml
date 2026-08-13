@@ -1,0 +1,74 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-019
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: KGR-006-R1 authorization validator represented only the pre-execution open state
+  context:
+    phase: GOV-5 controlled import
+    run: KGR-006-R1
+    component: Execution-authorization consumption reconciliation
+    branch: governance/kernel-designer-revision-v0.1
+    commit: e14af3d9d36172b1db4bbaba1a7983d8b17461eb
+    environment: Repository-side correction validation
+  primary_classification: TOOLING_GAP
+  classification: [TOOLING_GAP, PROCESS_DEFECT]
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: Authorization validation represents both the prospective open gate and the terminal consumed state, binds the exact output package hash, and rejects reuse or consumption beyond one.
+  observed_behavior: The existing validator required AUTHORIZED_NOT_EXECUTED, count consumed zero and no outputs, so it could not validate honest post-execution consumption or imported evaluation custody.
+  impact: Without a post-execution profile, durable reconciliation could be documented but not deterministically prove one-time consumption, no remaining execution and exact output/evaluation import identity.
+  detection_method: Pre-modification comparison of GOV-AUTH-001, the executed packages and prepare_enforcement_correction.py state assumptions.
+  root_cause:
+    immediate: The preparation tool implemented only the pre-execution authorization gate.
+    systemic: The correction workflow had no deterministic terminal import-and-consumption validation profile before results existed.
+    contributing_factors:
+      - Consumption facts depend on an exact output package that did not exist during preparation.
+      - Independent evaluation custody is a post-execution concern.
+  response:
+    containment: Keep the authorization count at zero until both exact packages and their identities pass read-only verification.
+    correction: Add a consumed-state reconciliation validator and tests binding count one, no remaining execution, one consumption event, exact package hashes and byte-identical imports.
+    prevention:
+      - Require formal-run preparation tools to define both open-gate and terminal consumption validation profiles.
+      - Bind consumption to one exact output package hash and reject duplicate events.
+      - Validate independent evaluation identity and custody before durable decision-review state.
+    accountable_owner: Project Owner
+    validation_required:
+      - Targeted tests for exact consumption and tamper rejection.
+      - Full governance suite and isolated-copy bundle validation.
+      - Exact byte comparison for all ten imported artifacts.
+  learning:
+    reusable_lesson: A one-execution authorization gate needs a deterministic terminal consumption profile; validating that authority was open does not prove that it was consumed once and cannot be reused.
+    candidate_system_changes: [SCRIPT, VALIDATION, TEST, WORKFLOW_PATTERN, DOCUMENTATION]
+    applicable_future_phases: [All future externally executed formal governance runs]
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One existing pre-execution validator, one consumed authorization and two exact external packages are observable; execution cost and time are unavailable.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tools/prepare_enforcement_correction.py
+      anchor: validate_authorization and validate_reconciliation
+      sha256: null
+      availability: PRESERVED
+      note: Pre-execution and terminal validation profiles.
+    - type: VALIDATION_RECORD
+      locator: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/kgr-006-r1-import-validation-v0.1.0.yaml
+      anchor: subject.authorization
+      sha256: null
+      availability: PRESERVED
+      note: Exact consumed state and package binding.
+  related_records: [HP-FAIL-007, HP-FAIL-014, HP-FAIL-018]
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

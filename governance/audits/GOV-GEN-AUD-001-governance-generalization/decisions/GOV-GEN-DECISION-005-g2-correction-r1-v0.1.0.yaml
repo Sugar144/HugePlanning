@@ -1,0 +1,110 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-005
+  version: 0.1.0
+  date: '2026-08-04'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_AND_RECORD_GOV_GEN_G2_BOUNDED_CORRECTION_R1
+  program_id: GOV-GEN-AUD-001
+  phase: G2
+  subject_base_deliverable: GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0
+  subject_correction: GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0
+  source_prompt: HP-PROMPT-044/0.1.0
+  authorized:
+    - correction of three confirmed cross-reference defects in the base
+      deliverable (§19 "(§20.5)" -> "(§21.5)"; §20 "(§20.3)" -> "(§21.3)";
+      GAP-006 disposition_note "(§11)" -> "(§19)")
+    - reconciliation of the current-state description of the base
+      deliverable's self-check evidence (GOV-GEN-G2-CONTRACT-001/0.1.0 §9
+      defines 8 checks, not 7; manifest verification is check 7, applicable
+      repository validators are check 8) without rewriting the historical
+      GOV-DEC-030 entry
+    - honest recording of a historical custody gap for check 8 (no durable
+      concrete execution record beyond a "recorded separately" statement),
+      and custody of Owner-review revalidation evidence for the exact
+      candidate bb9c863ea9805f53d06ddabe9040bda2eca34b42
+    - clarification (not redefinition) of `worktree_modified_by_this_program`
+      in 01-program-status.yaml
+    - correction of the stale governance/README.md paragraph describing
+      G1B as accepted-for-future-execution
+    - minimum current-state/index/reference reconciliation required by the
+      above
+    - one bounded local commit
+  g2_correction_authorized: true
+  g2_correction_authorization_basis: >-
+    HP-PROMPT-044/0.1.0 directly authorizes this bounded correction and
+    evidence reconciliation, based on findings identified during Project
+    Owner review of GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0. The
+    substantive G2 classification and gap dispositions were already
+    Owner-reviewed and are not reopened.
+  g2_correction_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - reclassification_of_any_capability
+    - redisposition_of_any_g1b_gap
+    - g2_redesign
+    - target_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - kernel_extraction_or_migration
+    - delegated_operational_authority_implementation
+    - provider_neutral_governance_implementation
+    - implementation_of_any_recorded_g1b_gap
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+    - g3_phase_authorization_or_execution
+    - owner_acceptance_of_the_g2_classification_matrix_or_its_correction
+  final_status: G2_CORRECTION_ACCEPTED_LOCALLY_COMMITTED_PENDING_OWNER_ACCEPTANCE
+  reviewed_evidence:
+    correction_terminal_status: G2_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    corrections_applied: 3
+    base_deliverable_modified: false
+    base_deliverable_sha256: f49363d896fa1d0e876ae32e2aeb0a037a45062e670395b6cb2638524148d5f4
+    correction_manifest: GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1.manifest.sha256
+    owner_review_revalidation_candidate: bb9c863ea9805f53d06ddabe9040bda2eca34b42
+    owner_review_revalidation_evidence:
+      validate_prompts: '{"lineages":38,"prompts":40,"valid":true}'
+      validate_governance_state: '{"diagnostics":[],"result":"VALID"}'
+      manifest_check: 'GOV-GEN-G2-CLASSIFICATION-MATRIX-001.md: OK'
+      evidence_class: OWNER_REVIEW_REVALIDATION_NOT_ORIGINAL_G2_EXECUTOR_EVIDENCE
+    check_8_historical_custody_gap: >-
+      No durable concrete execution record was located for a repository
+      validator run performed contemporaneously with the original G2
+      execution beyond GOV-GEN-DECISION-004/0.1.0's "recorded separately"
+      statement. Not fabricated or reconstructed here.
+  pending_owner_acceptance_of_correction: true
+  not_accepted:
+    - target_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_delegated_operational_authority
+    - implementation_of_provider_neutral_governance
+    - implementation_of_any_recorded_gap
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - g3_phase_authorization
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct authorization of a
+    bounded prospective correction to GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0
+    (HP-PROMPT-044/0.1.0), following Owner review that confirmed three
+    cross-reference defects, a validation-count description defect, an
+    evidence-custody gap for check 8, a stale worktree-semantics field, and
+    a stale governance/README.md paragraph. The base deliverable is
+    preserved unmodified as historical evidence; the correction is a new
+    versioned artifact (GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0) read
+    together with it. GOV-DEC-030 in governance/DECISION_LOG.md is not
+    rewritten; this decision and its companion GOV-DEC-031 entry supply the
+    corrected prospective description.
+  next_governed_state: >-
+    GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0 together with its correction
+    GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0 is
+    G2_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE. The next governed
+    state is Project Owner acceptance (or rejection, or a further bounded
+    correction request) of the corrected G2 result; only after such
+    acceptance may the Owner separately authorize G3. This decision does
+    not itself accept the G2 result, and does not open, scope, or authorize
+    G3.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

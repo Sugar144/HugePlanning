@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hugeplanning.local/governance/schemas/GOV-PROTOCOL-004/0.1.0/clause-implication-matrix.schema.json",
+  "title": "KGR-006 clause implication matrix",
+  "$defs": {
+    "nonemptyStrings": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "specialist": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["trigger", "affected_clause", "affected_effect_or_requirement", "why_general_analysis_is_insufficient", "required_specialist_type", "blocking_or_nonblocking", "safe_interim_boundary", "later_phase_destination"],
+      "properties": {
+        "trigger": {"enum": ["material_legal_or_privacy_dependency", "material_security_or_isolation_dependency", "provider_capability_requires_empirical_validation", "high_consequence_human_decision_usability_risk", "operational_recovery_or_continuity_dependency"]},
+        "affected_clause": {"enum": ["K-001", "K-002", "K-003", "K-004", "K-005", "K-006", "K-007"]},
+        "affected_effect_or_requirement": {"type": "string", "minLength": 1},
+        "why_general_analysis_is_insufficient": {"type": "string", "minLength": 1},
+        "required_specialist_type": {"type": "string", "minLength": 1},
+        "blocking_or_nonblocking": {"enum": ["BLOCKING", "NONBLOCKING_WITH_EXPLICIT_UNSUPPORTED_BOUNDARY"]},
+        "safe_interim_boundary": {"type": "string", "minLength": 1},
+        "later_phase_destination": {"enum": ["GOV-7", "GOV-8", "GOV-9", "PRE_RATIFICATION_OWNER_DECISION"]}
+      }
+    },
+    "requirement": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "kind", "statement", "timing", "lower_layers", "capability_status", "evidence_refs", "feasibility_limit", "cost_and_burden", "residual_risk", "reserved_human_decision", "scope_posture", "specialist_dependency"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^ER-[0-9]{3}$"},
+        "kind": {"enum": ["DERIVED_REQUIREMENT", "CANDIDATE_MECHANISM"]},
+        "statement": {"type": "string", "minLength": 1},
+        "timing": {"enum": ["MUST_BEFORE_RATIFICATION", "MUST_BEFORE_GOVERNED_PILOT", "SHOULD_LATER", "HUMAN_ONLY", "NOT_FEASIBLE"]},
+        "lower_layers": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["policy", "standard", "procedure_or_contract", "control", "evidence", "human_judgment"]}},
+        "capability_status": {"enum": ["SUPPORTED_BY_EVIDENCE", "PARTIAL", "GAP", "DEPENDENT_ON_SPECIALIST", "DEPENDENT_ON_PROVIDER_TEST", "NOT_FEASIBLE", "NOT_APPLICABLE"]},
+        "evidence_refs": {"$ref": "#/$defs/nonemptyStrings"},
+        "feasibility_limit": {"type": "string", "minLength": 1},
+        "cost_and_burden": {"type": "string", "minLength": 1},
+        "residual_risk": {"type": "string", "minLength": 1},
+        "reserved_human_decision": {"type": "string", "minLength": 1},
+        "scope_posture": {"enum": ["CURRENT_SINGLE_USER_MINIMUM", "ANALYSIS_ONLY_FUTURE_SCALABILITY_CONSTRAINT", "OUT_OF_SCOPE_FUTURE_COMMERCIAL_FUNCTIONALITY"]},
+        "specialist_dependency": {"$ref": "#/$defs/specialist"}
+      }
+    }
+  },
+  "type": "object", "additionalProperties": false, "required": ["enforcement_analysis"],
+  "properties": {
+    "enforcement_analysis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_version", "run", "role", "mode", "protocol", "status", "kernel", "clauses", "routing_coverage", "capability_summary", "specialist_dependencies", "parity"],
+      "properties": {
+        "schema_version": {"const": "0.1.0"}, "run": {"const": "KGR-006"},
+        "role": {"const": "Enforcement Engineer"}, "mode": {"const": "MINIMUM_ENFORCEMENT_ANALYSIS"},
+        "protocol": {"const": {"id": "GOV-PROTOCOL-004", "version": "0.1.0"}},
+        "status": {"const": "ANALYSIS_COMPLETE_PENDING_INDEPENDENT_EVALUATION"},
+        "kernel": {"const": {"version": "0.2.0-proposed", "status": "PROPOSED_NOT_RATIFIED", "ratified": false, "enforceable": false, "implemented": false, "operational": false}},
+        "clauses": {
+          "type": "array", "minItems": 7, "maxItems": 7,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["clause_id", "effect_families", "requirements"],
+            "properties": {
+              "clause_id": {"enum": ["K-001", "K-002", "K-003", "K-004", "K-005", "K-006", "K-007"]},
+              "effect_families": {
+                "type": "array", "minItems": 1,
+                "items": {
+                  "type": "object", "additionalProperties": false,
+                  "required": ["name", "routing_ids", "prevention_implications", "detection_implications", "evidence_requirements", "stopping_implications", "recovery_or_compensation_implications", "feasibility_limits", "cost_and_burden_implications", "residual_risks", "reserved_human_decisions"],
+                  "properties": {
+                    "name": {"type": "string", "minLength": 1},
+                    "routing_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"pattern": "^LLR-(00[1-9]|01[0-9]|020)$"}},
+                    "prevention_implications": {"$ref": "#/$defs/nonemptyStrings"}, "detection_implications": {"$ref": "#/$defs/nonemptyStrings"},
+                    "evidence_requirements": {"$ref": "#/$defs/nonemptyStrings"}, "stopping_implications": {"$ref": "#/$defs/nonemptyStrings"},
+                    "recovery_or_compensation_implications": {"$ref": "#/$defs/nonemptyStrings"}, "feasibility_limits": {"$ref": "#/$defs/nonemptyStrings"},
+                    "cost_and_burden_implications": {"$ref": "#/$defs/nonemptyStrings"}, "residual_risks": {"$ref": "#/$defs/nonemptyStrings"},
+                    "reserved_human_decisions": {"$ref": "#/$defs/nonemptyStrings"}
+                  }
+                }
+              },
+              "requirements": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/requirement"}}
+            }
+          }
+        },
+        "routing_coverage": {
+          "type": "array", "minItems": 20, "maxItems": 20,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["route_id", "applicability", "justification", "later_phase_destination"],
+            "properties": {
+              "route_id": {"pattern": "^LLR-(00[1-9]|01[0-9]|020)$"},
+              "applicability": {"enum": ["APPLICABLE_TO_GOV_5_EXECUTION", "NOT_APPLICABLE_TO_GOV_5_EXECUTION"]},
+              "justification": {"type": "string", "minLength": 1},
+              "later_phase_destination": {"type": ["string", "null"], "enum": ["GOV-7", "GOV-8", "GOV-9", null]}
+            },
+            "allOf": [{"if": {"properties": {"applicability": {"const": "NOT_APPLICABLE_TO_GOV_5_EXECUTION"}}}, "then": {"properties": {"later_phase_destination": {"type": "string"}}}}]
+          }
+        },
+        "capability_summary": {
+          "type": "object", "additionalProperties": false,
+          "required": ["SUPPORTED_BY_EVIDENCE", "PARTIAL", "GAP", "DEPENDENT_ON_SPECIALIST", "DEPENDENT_ON_PROVIDER_TEST", "NOT_FEASIBLE", "NOT_APPLICABLE"],
+          "properties": {"SUPPORTED_BY_EVIDENCE": {"type": "integer", "minimum": 0}, "PARTIAL": {"type": "integer", "minimum": 0}, "GAP": {"type": "integer", "minimum": 0}, "DEPENDENT_ON_SPECIALIST": {"type": "integer", "minimum": 0}, "DEPENDENT_ON_PROVIDER_TEST": {"type": "integer", "minimum": 0}, "NOT_FEASIBLE": {"type": "integer", "minimum": 0}, "NOT_APPLICABLE": {"type": "integer", "minimum": 0}}
+        },
+        "specialist_dependencies": {"type": "array", "items": {"$ref": "#/$defs/specialist"}},
+        "parity": {
+          "type": "object", "additionalProperties": false,
+          "required": ["markdown_outputs_materially_consistent", "capability_inventory_counts_match", "gap_inventory_counts_match", "owner_decision_counts_match", "recommendation_requirement_ids_match", "handoff_counts_match"],
+          "properties": {"markdown_outputs_materially_consistent": {"const": true}, "capability_inventory_counts_match": {"const": true}, "gap_inventory_counts_match": {"const": true}, "owner_decision_counts_match": {"const": true}, "recommendation_requirement_ids_match": {"const": true}, "handoff_counts_match": {"const": true}}
+        }
+      }
+    }
+  }
+}

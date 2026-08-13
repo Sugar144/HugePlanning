@@ -1,0 +1,22 @@
+document_id: GOV-GEN-G6-B-04-VALIDATION-001
+version: 0.1.0
+status: VALID
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B03_REVIEW_AND_B04_CONTINUATION
+validations:
+  deterministic_helper_parity:
+    result: PASS
+    method: Every moved helper is byte-identical to its pre-B04 source at d920cca.
+  import_boundary_isolation:
+    result: PASS
+    method: Moved helpers import no adopter, methodology, or project-tool surface.
+  literal_and_path_isolation:
+    result: PASS
+    method: Moved helpers contain no HugePlanning literal or local project path.
+  provenance_and_caller_compatibility:
+    result: PASS
+    method: Legacy _lib modules remain compatibility exports and existing validator entrypoints pass.
+  ownership_and_instruction_surfaces:
+    result: PASS
+    method: Project-bound validators and L3/L5 surfaces remain outside core; AGENTS.md and CLAUDE.md are unchanged.
+result: B-04_READY_L6_SUBLAYER_REVIEW_READY
+next_gate: INDEPENDENT_B04_REVIEW_REQUIRED

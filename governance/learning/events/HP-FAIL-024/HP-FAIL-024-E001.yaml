@@ -1,0 +1,30 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-024-E001
+  record_id: HP-FAIL-024
+  date: '2026-07-16'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The prospective GOV-AUD-001 finding and review methodology correction passed focused, lifecycle, prompt, learning, state, checksum and full governance validation.
+  rationale: >
+    GOV-TOOL-006 returns zero diagnostics; 32 focused tests and 183 full governance
+    tests pass; prompt custody contains 25 unique prompts and lineages; all 12
+    PASS-02 R1 files retain their pre-correction hashes; CHECKPOINT-A, PASS-03,
+    GOV-7, OD-006 and Kernel boundaries remain unchanged.
+  evidence_refs:
+    - type: VALIDATION_RECORD
+      locator: governance/audits/GOV-AUD-001-gov7-enablement/08-methodology-correction-validation.yaml
+      anchor: GOV-AUD-VAL-003
+      sha256: 2a5671e2b390c569a0ee84794cddb6b451c70ab19c48421cef0d2170971b733d
+      availability: PRESERVED
+      note: Deterministic methodology validation, not independent review or Project Owner acceptance.
+    - type: REPOSITORY_PATH
+      locator: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml
+      anchor: audit_methodology
+      sha256: null
+      availability: PRESERVED
+      note: Prospective methodology protocol validated without modifying historical PASS-02 R1 evidence.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-030-gov-aud-001-audit-methodology-correction-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

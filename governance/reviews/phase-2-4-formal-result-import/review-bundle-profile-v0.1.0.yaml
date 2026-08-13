@@ -1,0 +1,115 @@
+schema_version: 0.1.0
+repository:
+  expected_branch: governance/kernel-designer-revision-v0.1
+  base_head: a2f8caa6c3b3497e8673c256e58c41877afd098f
+  require_changes: true
+  require_empty_staging: true
+scope:
+  enforce_exact: true
+  paths:
+    - governance/ARTIFACT_REGISTRY.yaml
+    - governance/CURRENT_STATE.md
+    - governance/GOVERNANCE_MASTER_PLAN.md
+    - governance/learning/FAILURE_AND_LESSONS_INDEX.md
+    - governance/learning/events/HP-FAIL-007/HP-FAIL-007-E001.yaml
+    - governance/learning/events/HP-FAIL-008/HP-FAIL-008-E001.yaml
+    - governance/learning/events/HP-FAIL-009/HP-FAIL-009-E001.yaml
+    - governance/learning/records/HP-FAIL-007.yaml
+    - governance/learning/records/HP-FAIL-008.yaml
+    - governance/learning/records/HP-FAIL-009.yaml
+    - governance/methodology/METHODOLOGY_BACKLOG.md
+    - governance/prompts/orchestration/HP-PROMPT-009-phase-2-4-formal-result-import-and-controller-transition-v0.1.0.md
+    - governance/reviews/phase-2-4-formal-result-import/implementation-report-v0.1.0.md
+    - governance/reviews/phase-2-4-formal-result-import/kgr-005-import-validation-v0.1.0.yaml
+    - governance/reviews/phase-2-4-formal-result-import/review-bundle-profile-v0.1.0.yaml
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/README.md
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/controller-dry-run-v0.1.0.json
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/controller-transition.json
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/import-request-v0.1.0.yaml
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/00-targeted-closure-basis.md
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/01-finding-closure-verdicts.yaml
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/02-targeted-adversarial-scenarios.md
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/03-regression-and-new-findings.md
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/04-markdown-yaml-parity-review.md
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/05-residual-risk-and-routing.md
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/06-closure-result.yaml
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/07-targeted-closure-summary-and-handoff.md
+    - governance/runs/KGR-005-kernel-adversary-targeted-closure/run-manifest.yaml
+    - governance/skills/governance-result-importer/SKILL.md
+    - governance/skills/governance-result-importer/agents/openai.yaml
+    - governance/tests/test_phase_2_4_contracts.py
+    - governance/tools/apply_loop_transition.py
+    - governance/tools/validate_run_package.py
+validations:
+  - id: phase-2-4-and-controller-tests
+    argv: [/tmp/hp-phase-2-1-venv/bin/python, -m, pytest, -q, -p, no:cacheprovider, governance/tests/test_phase_2_4_contracts.py, governance/tests/controller, governance/tests/test_controller.py]
+    cwd: .
+    required: true
+    timeout_seconds: 180
+  - id: completed-output-validation
+    argv: [python3, governance/tools/validate_run_package.py, --stage, output, --role, adversary, --package, /home/sugar/Downloads/HugePlanning-KGR-005-targeted-closure-v0.2-proposed.zip, --envelope, governance/runs/KGR-005-kernel-adversary-targeted-closure/input-envelope.yaml, --prompt-snapshot, governance/runs/KGR-005-kernel-adversary-targeted-closure/prompt/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md, --loop-snapshot, governance/runs/KGR-005-kernel-adversary-targeted-closure/control/kernel-design-closure-loop-v0.1.0.yaml, --json]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: imported-output-validation
+    argv: [python3, governance/tools/validate_run_package.py, --stage, import, --role, adversary, --package, /home/sugar/Downloads/HugePlanning-KGR-005-targeted-closure-v0.2-proposed.zip, --envelope, governance/runs/KGR-005-kernel-adversary-targeted-closure/input-envelope.yaml, --prompt-snapshot, governance/runs/KGR-005-kernel-adversary-targeted-closure/prompt/05-kernel-adversary-targeted-closure-prompt-sol-high-v0.1.0.md, --loop-snapshot, governance/runs/KGR-005-kernel-adversary-targeted-closure/control/kernel-design-closure-loop-v0.1.0.yaml, --import-root, governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs, --json]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: controller-history-replay
+    argv:
+      - python3
+      - -c
+      - "from pathlib import Path; import sys; sys.path.insert(0,'governance/tools'); from apply_loop_transition import _history_records,replay; records,diags=_history_records(Path('governance/runs'),[]); assert not diags; state,counters,accepted,diags=replay(records); assert not diags; assert state=='CLOSURE_CONFIRMED'; assert counters=={'completed_targeted_closure_runs':1,'completed_designer_remediation_runs':0}; assert [x['source_run'] for x in accepted]==['KGR-005']; print('Controller replay valid')"
+    cwd: .
+    required: true
+    timeout_seconds: 60
+  - id: prompt-custody
+    argv: [governance/tests/run-prompt-custody-tests.sh]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: learning-validation
+    argv: [python3, governance/tools/manage_learning.py, validate]
+    cwd: .
+    required: true
+    timeout_seconds: 120
+  - id: skill-creator-validation
+    argv: [python3, /home/sugar/.codex/skills/.system/skill-creator/scripts/quick_validate.py, governance/skills/governance-result-importer]
+    cwd: .
+    required: true
+    timeout_seconds: 60
+  - id: strict-yaml-and-json-schema
+    argv:
+      - python3
+      - -c
+      - "from pathlib import Path; import json,jsonschema,sys; sys.path.insert(0,'governance/tools'); from _lib.strict_yaml import load; docs=[load(Path(p)) for p in ('governance/ARTIFACT_REGISTRY.yaml','governance/runs/KGR-005-kernel-adversary-targeted-closure/run-manifest.yaml','governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/import-request-v0.1.0.yaml','governance/reviews/phase-2-4-formal-result-import/kgr-005-import-validation-v0.1.0.yaml','governance/reviews/phase-2-4-formal-result-import/review-bundle-profile-v0.1.0.yaml')]; jsonschema.Draft202012Validator(json.loads(Path('governance/schemas/governance-validation-record.schema.json').read_text())).validate(docs[3]); jsonschema.Draft202012Validator(json.loads(Path('governance/schemas/review-bundle-config.schema.json').read_text())).validate(docs[4]); transition=json.loads(Path('governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/controller-transition.json').read_text()); jsonschema.Draft202012Validator(json.loads(Path('governance/schemas/controller-transition.schema.json').read_text())).validate(transition); print('strict YAML and JSON Schemas valid')"
+    cwd: .
+    required: true
+    timeout_seconds: 60
+  - id: whitespace-validation
+    argv: [git, diff, --check]
+    cwd: .
+    required: true
+    timeout_seconds: 60
+dependencies:
+  - id: python-version
+    argv: [python3, --version]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+  - id: git-version
+    argv: [git, --version]
+    cwd: .
+    required: true
+    timeout_seconds: 30
+  - id: python-package-versions
+    argv:
+      - /tmp/hp-phase-2-1-venv/bin/python
+      - -c
+      - "from importlib.metadata import version; print(f'jsonschema={version(\"jsonschema\")} pytest={version(\"pytest\")} hypothesis={version(\"hypothesis\")} PyYAML={version(\"PyYAML\")}')"
+    cwd: .
+    required: true
+    timeout_seconds: 30
+bundle:
+  root_directory: phase-2-4-review

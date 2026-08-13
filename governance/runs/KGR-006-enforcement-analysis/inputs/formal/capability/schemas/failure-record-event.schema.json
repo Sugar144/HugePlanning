@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hugeplanning.local/governance/schemas/0.1.0/failure-record-event.schema.json",
+  "title": "HugePlanning Failure Record Append-Only Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["failure_record_event"],
+  "$defs": {
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "locator", "anchor", "sha256", "availability", "note"],
+      "properties": {
+        "type": {"enum": ["REPOSITORY_PATH", "COMMIT", "RUN_ARTIFACT", "DECISION", "VALIDATION_RECORD", "OWNER_STATEMENT", "EXTERNAL"]},
+        "locator": {"type": "string", "minLength": 1}, "anchor": {"type": ["string", "null"]},
+        "sha256": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^[0-9a-f]{64}$"}]},
+        "availability": {"enum": ["PRESERVED", "NOT_PRESERVED"]}, "note": {"type": "string"}
+      }
+    }
+  },
+  "properties": {
+    "failure_record_event": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_version", "id", "record_id", "date", "event_type", "status_from", "status_to", "summary", "rationale", "evidence_refs", "owner_decision_ref", "accepted_risk", "supersedes"],
+      "properties": {
+        "schema_version": {"const": "0.1.0"},
+        "id": {"type": "string", "pattern": "^HP-FAIL-[0-9]{3}-E[0-9]{3}$"},
+        "record_id": {"type": "string", "pattern": "^HP-FAIL-[0-9]{3}$"},
+        "date": {"type": "string", "format": "date"},
+        "event_type": {"enum": ["STATUS_TRANSITION", "RECURRENCE", "CORRECTION", "NEW_EVIDENCE", "RISK_ACCEPTANCE", "RISK_EXPIRY_OR_REOPENING", "SUPERSESSION", "OWNER_DECISION", "VALIDATION_EVIDENCE"]},
+        "status_from": {"type": ["string", "null"], "enum": ["OPEN", "CONTAINED", "CORRECTED", "VALIDATED", "ACCEPTED_RISK", null]},
+        "status_to": {"type": ["string", "null"], "enum": ["OPEN", "CONTAINED", "CORRECTED", "VALIDATED", "ACCEPTED_RISK", null]},
+        "summary": {"type": "string", "minLength": 1}, "rationale": {"type": "string", "minLength": 1},
+        "evidence_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+        "owner_decision_ref": {"type": ["string", "null"]},
+        "accepted_risk": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["scope", "residual_impact", "review_on", "no_review_date_rationale", "reopening_triggers", "mandatory_controls"], "properties": {"scope": {"type": "string", "minLength": 1}, "residual_impact": {"type": "string", "minLength": 1}, "review_on": {"type": ["string", "null"], "format": "date"}, "no_review_date_rationale": {"type": ["string", "null"]}, "reopening_triggers": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}, "mandatory_controls": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}}}]},
+        "supersedes": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

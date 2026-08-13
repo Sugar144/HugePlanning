@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hugeplanning.local/governance/schemas/GOV-PROTOCOL-004/0.2.0/enforcement-analysis-correction-output-contract.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["output_contract"],
+  "properties": {
+    "output_contract": {
+      "type": "object",
+      "required": ["schema_version", "id", "version", "run", "base_run", "role", "mode", "protocol", "status", "completed_output_status", "source_of_truth", "correction_scope", "coverage", "specialist_dependencies", "owner_decisions", "minimum_gov_7_package", "outputs", "required_output_count", "independent_evaluation", "authority_limit"],
+      "properties": {
+        "schema_version": {"const": "0.2.0"},
+        "id": {"const": "GOV-OUTPUT-CONTRACT-002"},
+        "version": {"const": "0.1.0"},
+        "run": {"const": "KGR-006-R1"},
+        "base_run": {"const": "KGR-006"},
+        "role": {"const": "Enforcement Engineer"},
+        "mode": {"const": "MINIMUM_ENFORCEMENT_ANALYSIS"},
+        "protocol": {"const": {"id": "GOV-PROTOCOL-004", "version": "0.2.0"}},
+        "status": {"const": "PREPARED_NOT_EXECUTED"},
+        "completed_output_status": {"const": "CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION"},
+        "source_of_truth": {"const": "01-clause-implication-matrix.yaml"},
+        "correction_scope": {"type": "object"},
+        "coverage": {
+          "type": "object",
+          "required": ["clause_ids", "routing_ids", "canonical_applicable_pair_count", "required_omitted_anchor_count", "llr_020"],
+          "properties": {
+            "clause_ids": {"type": "array", "minItems": 7, "maxItems": 7, "uniqueItems": true},
+            "routing_ids": {"type": "array", "minItems": 20, "maxItems": 20, "uniqueItems": true},
+            "canonical_applicable_pair_count": {"const": 46},
+            "required_omitted_anchor_count": {"const": 15},
+            "llr_020": {"const": {"applicability": "NOT_APPLICABLE_TO_GOV_5_EXECUTION", "later_phase_destination": "GOV-8"}}
+          },
+          "additionalProperties": false
+        },
+        "specialist_dependencies": {"type": "object"},
+        "owner_decisions": {"type": "object"},
+        "minimum_gov_7_package": {"const": "RECOMMENDATION_ONLY"},
+        "outputs": {"type": "array", "minItems": 7, "maxItems": 7},
+        "required_output_count": {"const": 7},
+        "independent_evaluation": {"type": "object"},
+        "authority_limit": {"const": "CORRECTION_ANALYSIS_ONLY_NOT_ACCEPTANCE_RATIFICATION_IMPLEMENTATION_OPERATION_OR_RISK_ACCEPTANCE"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

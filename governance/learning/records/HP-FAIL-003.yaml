@@ -1,0 +1,98 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-003
+  date: 2026-07-14
+  recorded_on: 2026-07-14
+  title: Deterministic governance checks were repeatedly assigned to high-capability models
+  context:
+    phase: GOV-4
+    run: null
+    component: Governance Validation and Model Routing
+    branch: governance/kernel-designer-revision-v0.1
+    commit: null
+    environment: Governance design, review, and package preparation sessions
+  primary_classification: COST_WASTE
+  classification:
+    - COST_WASTE
+    - TOOLING_GAP
+    - PROCESS_DEFECT
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: Exact hashing, member counting, YAML checks, state-reference checks, package inspection, and transition review should run through offline deterministic scripts.
+  observed_behavior: High-capability model-assisted review was repeatedly used for those deterministic categories because governance-specific validators were absent.
+  impact: The process spent unmeasured model capacity on repeatable work and increased correction risk, latency, and audit difficulty.
+  detection_method: Architecture review categorized repeated GOV-4 validation and review work by whether deterministic code could settle it.
+  root_cause:
+    immediate: Exact validation work was routed to available model sessions instead of dedicated scripts.
+    systemic: Governance contracts accumulated before a script-first validation and learning foundation existed.
+    contributing_factors:
+      - Historic model and token metrics were not durably recorded.
+      - Existing repository validators did not cover governance contracts or strict duplicate keys.
+  response:
+    containment: Phase 1 routes learning validation, duplicate checks, event replay, and indexing to an offline script and records unavailable metrics explicitly.
+    correction: Repository instructions now require script-first deterministic work and cost-aware model routing; manage_learning.py implements the initial deterministic slice.
+    prevention:
+      - Add deterministic validators before repeating exact review categories.
+      - Use lower-cost capable models only for non-deterministic reasoning when model choice exists.
+      - Record actual model, reasoning, tokens, run counts, rework, and rebuild counts when preserved.
+    accountable_owner: Project Owner
+    validation_required:
+      - Pass the Phase 1 learning tooling tests twice with byte-identical index output.
+      - Measure future model-assisted cycles and deterministic rework without retrospective estimates.
+  learning:
+    reusable_lesson: Route exact governance checks to offline scripts and reserve model reasoning for judgment that code cannot settle.
+    candidate_system_changes:
+      - SCRIPT
+      - VALIDATION
+      - TEST
+      - MODEL_ROUTING
+      - AGENTS_INSTRUCTION
+      - WORKFLOW_PATTERN
+    applicable_future_phases:
+      - GOV-4
+      - Controller implementation
+      - All formal governance runs
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: null
+    deterministic_rework_count: null
+    package_rebuild_count: null
+    measurement_quality: PARTIAL
+    basis: Repetition and the deterministic categories are preserved in the approved architecture analysis, but exact model-run count, tokens, time, correction cycles, rework count, package rebuild count, and monetary cost were not preserved and are not estimated.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/reviews/phase-1-instructions-learning/architecture-report-v0.1.0.md
+      anchor: Section 10, HP-FAIL-003
+      sha256: bd4451f4407197f292b19c948ee90587cf77b9217ed86ea19c98c38ff29959e1
+      availability: PRESERVED
+      note: Repository-custodied copy of the verified original architecture source.
+    - type: REPOSITORY_PATH
+      locator: governance/tools/manage_learning.py
+      anchor: null
+      sha256: null
+      availability: PRESERVED
+      note: Initial deterministic correction for learning validation, event replay, duplicate detection, and index generation.
+  related_records:
+    - HP-FAIL-004
+  subfindings:
+    - title: Hashing repeated through model-assisted review
+      description: Cryptographic identity checks were repeatedly handled in model-led review flows instead of one reusable script.
+      evidence_refs: []
+    - title: Member counting and package inspection repeated
+      description: Exact transport inventory checks were repeatedly reviewed without a stage-aware governance package validator.
+      evidence_refs: []
+    - title: YAML and state-reference checks repeated
+      description: Parsing, duplicate-key, enum, reference, and state checks lacked one governance-local deterministic implementation.
+      evidence_refs: []
+    - title: Transition review repeated
+      description: Counter, guard, and result-matrix consistency was repeatedly reviewed in prose; Controller tooling remains outside Phase 1.
+      evidence_refs: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

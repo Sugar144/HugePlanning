@@ -1,0 +1,34 @@
+document_id: GOV-GEN-G6-B-03-INDEPENDENT-REVIEW-001
+version: 0.1.0
+status: EXECUTED
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B03_REVIEW_AND_B04_CONTINUATION
+review_scope: B-03 configuration seam and B-04 dependency readiness only
+reviewed_revision: f4c722e19ecfe367e180fee41070193e258269b8
+reviewer_relationship: INDEPENDENT_OF_B03_AUTHORING_SESSION
+verdict: B-03_REVIEW_PASS_B04_AUTHORIZED
+findings:
+  blocking: []
+  material: []
+  minor: []
+corrected_mechanical_defect:
+  id: B03-RV-001
+  classification: DETERMINISTIC_CONFIGURATION_RESOLUTION_VALIDATOR_GAP
+  correction: >-
+    The validator now strict-parses the schema and adopter configuration,
+    derives its required keys from the schema, and resolves values structurally
+    instead of duplicating adopter values in the validator.
+  semantic_scope_changed: false
+  architecture_changed: false
+  l3_l5_ownership_changed: false
+deterministic_validation:
+  reusable_core_has_no_hugeplanning_values: true
+  placeholders_equal_declared_configuration_keys: true
+  adopter_configuration_owns_every_key: true
+  resolved_contract_byte_equivalent_to_b01_baseline: true
+  b02_physical_boundary_preserved: true
+  l3_l5_remain_project_owned: true
+  active_instruction_surfaces_changed: false
+  b04_dependency_gate: SATISFIED
+continuation:
+  b04_scope: READY_INFRASTRUCTURE_PURE_L6_HELPERS_ONLY
+  forbidden: [project_bound_validators, l5_data_movement, option_d_execution, AGENTS.md_change, CLAUDE.md_change]

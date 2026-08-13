@@ -1,0 +1,104 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-009
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Controller history replay rejected its supported active-state import bridge
+  context:
+    phase: Phase 2.4
+    run: KGR-005
+    component: Controller History Replay
+    branch: governance/kernel-designer-revision-v0.1
+    commit: a2f8caa6c3b3497e8673c256e58c41877afd098f
+    environment: Codex CLI governance execution
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  - TOOLING_GAP
+  - NEAR_MISS
+  severity: HIGH
+  status: CORRECTED
+  expected_behavior: A transition created through the documented active_state_evidence
+    import path should replay from durable Controller history without a fork.
+  observed_behavior: Calculation accepted evidence that KGR-005 had entered TARGETED_CLOSURE_IN_PROGRESS,
+    but replay required the prior durable state to equal that active state and rejected
+    the applied record because no separate start-event transition existed.
+  impact: The single authorized KGR-005 transition was structurally valid but could
+    not pass post-application history validation, blocking publication and future
+    deterministic counter/state reconstruction.
+  detection_method: The Phase 2.4 applied-transition replay check returned HISTORY_FORK
+    for the only canonical Controller record.
+  root_cause:
+    immediate: calculate supported an evidenced ready-to-active bridge while replay
+      implemented only literal previous-state equality.
+    systemic: Tests covered active-state evidence during calculation and history replay
+      separately but never replayed a record produced through that evidence path.
+    contributing_factors:
+    - Phase 2.4 was the first real Controller transition.
+    - The authorization allowed exactly one result transition and did not require
+      a separate start-event transition.
+  response:
+    containment: Stop publication and do not apply another transition or alter counters
+      while preserving the canonical applied record.
+    correction: Teach replay to recognize only the existing role-specific ready-to-active
+      bridge while retaining counter equality and rejecting unrelated previous states.
+    prevention:
+    - Replay the actual KGR-005 transition in Phase 2.4 contract tests.
+    - Retain a negative unrelated-state fork assertion.
+    - Require post-application history replay before durable state publication.
+    accountable_owner: Project Owner
+    validation_required:
+    - Replay the canonical history to CLOSURE_CONFIRMED with counters 1 and 0.
+    - Run all affected Controller pytest and Hypothesis tests.
+    - Validate the Phase 2.4 review bundle with the replay command required.
+  learning:
+    reusable_lesson: Every Controller state-entry shortcut accepted during calculation
+      must be replayable from the exact durable record shape it produces.
+    candidate_system_changes:
+    - SCRIPT
+    - TEST
+    - VALIDATION
+    - WORKFLOW_PATTERN
+    applicable_future_phases:
+    - Phase 2.4 Controller validation
+    - All future Controller history consumers
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One failed replay and one bounded correction are observable; time, tokens,
+      and model usage are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tools/apply_loop_transition.py
+    anchor: replay
+    sha256: null
+    availability: PRESERVED
+    note: Correction recognizes the already-supported role-specific active bridge.
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_4_contracts.py
+    anchor: test_replay_accepts_supported_active_state_evidence_bridge
+    sha256: null
+    availability: PRESERVED
+    note: Positive canonical replay and negative unrelated-state assertions preserve
+      the behavior.
+  - type: VALIDATION_RECORD
+    locator: Phase 2.4 applied-transition replay output
+    anchor: HISTORY_FORK
+    sha256: null
+    availability: NOT_PRESERVED
+    note: Session validation exposed the calculate/replay contradiction.
+  related_records:
+  - HP-FAIL-008
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

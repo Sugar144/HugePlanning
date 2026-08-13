@@ -1,0 +1,56 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-020
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_GOV_GEN_G6_BOUNDED_EXTRACTION_PLAN_001_R1
+  program_id: GOV-GEN-AUD-001
+  phase: G6
+  subject_contract: GOV-GEN-G6-CONTRACT-001/0.1.0
+  subject_base_deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001/0.1.0
+  subject_controlling_result: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0
+  source_authority: Project Owner disposition ACCEPT_GOV_GEN_G6_BOUNDED_EXTRACTION_PLAN_001_R1
+  reviewed_evidence:
+    r1_terminal_status_before_acceptance: G6_R1_EXTRACTION_PLAN_READY_FOR_PROJECT_OWNER_REVIEW
+    r1_sha256: 9aa9ea026dc87ea50e02fd57150628fc1e51e60bf8f46aaba33c448b711f7f72
+    r1_manifest: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.manifest.sha256
+    r1_manifest_verified: true
+    default_serial_execution_order: [B-01, B-02, B-03, B-04, B-05, B-06, B-07, B-08]
+    authoritative_hard_dependency_graph: per_packet_depends_on_fields_in_base_plan
+    alternative_schedule_requires_explicit_authorization: true
+    option_b_empirical_proof_packets: [B-02, B-03, B-04, B-08]
+    b_05_b_06_b_07_required_for_stated_option_b_empirical_proof_gate: false
+    l3_l5_project_ownership_preserved: true
+    extraction_executed: false
+    ap_1_through_ap_6_implemented: false
+    active_instruction_surfaces_modified: false
+    head_before: acfa1ac462b72d21b82e007ef92386dfc87b7eee
+    worktree_clean_before_acceptance: true
+  final_status: ACCEPTED_BY_PROJECT_OWNER
+  acceptance_scope: BOUNDED_G6_R1_EXTRACTION_PLAN_ACCEPTANCE_ONLY
+  pending_owner_acceptance_state_removed: true
+  controlling_result: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0
+  accepted:
+    - the corrected R1 plan as the controlling G6 result, read together with its immutable base plan
+    - B-01 through B-08 as the recommended default serial execution order
+    - per-packet depends_on fields as the authoritative hard dependency graph
+    - the unchanged Option B empirical-proof gate of B-02, B-03, B-04, and B-08
+    - continued L3 and L5 project ownership and all unchanged packet scope, authority, validation, and context constraints
+  not_accepted:
+    - b_01_or_later_packet_execution
+    - extraction_or_migration
+    - implementation_of_ap_1_through_ap_6
+    - option_d_execution
+    - option_c_or_general_governance_repository_creation
+    - AGENTS_md_or_CLAUDE_md_modification
+    - repair_of_immutable_pass_03_evidence_or_pre_existing_scaffold_validator_condition
+    - push_pull_request_merge_tag_release_or_deployment
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct acceptance of
+    GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0 as the corrected and
+    controlling G6 plan. The base plan and its manifest remain immutable
+    historical planning evidence. Acceptance does not execute or authorize
+    B-01, any later packet, or an alternative schedule.
+  next_governed_state: G6_EXTRACTION_PLAN_R1_ACCEPTED_B01_NOT_STARTED_NOT_AUTHORIZED
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

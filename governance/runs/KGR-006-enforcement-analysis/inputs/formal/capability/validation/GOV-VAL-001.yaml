@@ -1,0 +1,37 @@
+schema_version: 0.1.0
+record_id: GOV-VAL-001
+tool:
+  name: validate_run_package.py
+  version: 0.1.0
+subject:
+  run: KGR-005
+  role: Kernel Adversary
+  mode: TARGETED_CLOSURE
+  protocol: GOV-PROTOCOL-002
+  protocol_version: 0.1.0
+  loop: GOV-LOOP-001
+  loop_version: 0.1.0
+  prompt: GOV-PROMPT-007
+  envelope: GOV-INPUT-002
+  package_path: /home/sugar/Downloads/KGR-005-formal-input-package.zip
+  package_classification: VALIDATED_PACKAGE
+  package_sha256: 26291b32594f2b73e12107bec9572b528e4ec3e32e4ca08f9746c5aba1adf9cf
+  member_count: 19
+  execution_status: NOT_STARTED
+  formal_outputs: ABSENT
+  completed_output_package: ABSENT
+  execution_evidence: ABSENT
+  controller_transition: ABSENT
+  preparation_validation: COMPLETED
+  readiness: READY_FOR_EXPLICIT_FORMAL_EXECUTION_AUTHORIZATION
+  readiness_semantics: PREPARATION_VALIDATED_NOT_EXECUTED_ACCEPTED_IMPORTED_RATIFIED_OR_OPERATIONAL
+  exact_next_action: Request explicit Project Owner authorization before executing KGR-005.
+profile_versions:
+  envelope: 0.1.0
+  protocol: 0.1.0
+  loop: 0.1.0
+  skill: 0.1.0
+result: VALID
+diagnostics: []
+constitutional_authority: NONE
+authority_limit: VALIDATION_IS_NOT_ACCEPTANCE_RATIFICATION_EXECUTION_OR_OPERATION

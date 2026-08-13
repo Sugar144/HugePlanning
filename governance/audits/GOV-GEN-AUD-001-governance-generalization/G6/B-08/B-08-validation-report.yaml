@@ -1,0 +1,81 @@
+document_id: GOV-GEN-G6-B-08-VALIDATION-001
+version: 0.1.0
+status: VALID
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B08_EXECUTION
+adapter:
+  provider_executor: OpenAI Codex
+  binding: governance/adapters/codex/binding.yaml
+  renderer: governance/tools/render_g6_b08_codex_context.py
+  persistent_instruction_surface_modified: false
+validations:
+  live_codex_execution:
+    result: PASS
+    method: >-
+      An OpenAI Codex session executed the renderer and consumed its emitted
+      configured-core and B-07 bounded-projection context while performing the
+      authorized B-08 repository work.
+  configured_core_conformance:
+    result: PASS
+    method: >-
+      Deterministic renderer resolves the same B-03 configured core contract;
+      the B-08 validator verifies no unresolved placeholder remains.
+  configuration_and_ownership:
+    result: PASS
+    method: >-
+      The adapter references the HugePlanning-owned binding and configuration;
+      B-08 changes neither L3 nor canonical L5 custody.
+  doa_and_identity_semantics:
+    result: PASS
+    method: >-
+      Existing B-05/B-06 regression tests pass unchanged; the adapter neither
+      implements nor overrides allocator or authority logic.
+  bounded_l7_projection:
+    result: PASS
+    method: B-07 projection is accepted only with its valid bounded token measurement.
+  no_normative_l4_duplication:
+    result: PASS
+    method: Binding declares normative_content NONE and the validator rejects duplicated core-path content outside the binding.
+  reusable_core_provider_isolation:
+    result: PASS
+    method: Validator scans L0-L2/L6 core sources for Codex, OpenAI, Claude, and adapter literals.
+  first_provider_reference_evidence:
+    result: STATIC_DETERMINISTIC_ONLY
+    method: >-
+      The B-08 validator enumerates the four existing agents/openai.yaml L4
+      bindings and verifies that neither a governance/adapters/claude binding
+      nor a CLAUDE.md core reference exists. No fresh Claude invocation or live
+      equivalence evidence was produced.
+deferred_live_first_provider_validation:
+  status: DEFERRED_LIVE_FIRST_PROVIDER_VALIDATION
+  unverified_claim: Fresh live Claude execution of the same generated core context.
+  reason: Claude execution was expressly excluded from this B-08 environment.
+  effect_on_option_b_gate: BLOCKING_UNTIL_A_FIRST_PROVIDER_CORE_ADAPTER_EXISTS_AND_CONFORMS
+first_provider_reference_assessment:
+  result: FIRST_PROVIDER_CORE_ADAPTER_NOT_EVIDENCED
+  static_evidence: >-
+    The repository's existing agents/openai.yaml files are the only L4 binding
+    artifacts found. CLAUDE.md and .claude/ are explicitly outside the
+    governance L0-L7 model and do not reference the reusable core or adopter
+    binding. They cannot be represented as a first-provider core adapter.
+  consequence: >-
+    This B-08 Codex adapter is valid, but same-core conformance across two
+    provider adapters is not established from the repository evidence.
+option_b_empirical_proof:
+  verdict: OPTION_B_EMPIRICAL_PROOF_RESIDUAL_FIRST_PROVIDER_CORE_CONFORMANCE
+  basis:
+    B-02: independently reviewed core/adopter boundary
+    B-03: independently reviewed project-owned configuration seam
+    B-04: independently reviewed actual READY L6 semantic-preserving move
+    B-08: Codex L4 adapter deterministically resolves the same configured core without normative duplication
+  residual_condition: >-
+    A distinct first-provider L4 adapter bound to the reusable core is absent
+    from the available repository evidence; fresh live Claude validation alone
+    cannot satisfy the two-adapter gate until that adapter exists.
+  exclusions:
+    - external_second_consumer_not_proven
+    - option_c_readiness_not_proven
+    - l0_distribution_or_versioning_not_solved
+    - ap_1_through_ap_6_not_universally_complete
+    - live_claude_codex_equivalence_not_claimed
+result: B-08_CODEX_ADAPTER_VALIDATED_OPTION_B_PROOF_RESIDUAL
+next_state: PROJECT_OWNER_DECISION_REQUIRED_ON_FIRST_PROVIDER_CORE_ADAPTER

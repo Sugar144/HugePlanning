@@ -1,0 +1,152 @@
+validation_report:
+  record_id: GOV-AUD-VAL-003
+  version: 0.1.0
+  audit_id: GOV-AUD-001
+  methodology_protocol: GOV-AUD-001-METHOD-001/0.1.0
+  evidence_class: DETERMINISTIC_METHODOLOGY_VALIDATION_NOT_INDEPENDENT_REVIEW_OR_PROJECT_OWNER_ACCEPTANCE
+  status: VALIDATED
+  result: VALID
+  repository:
+    root: /home/sugar/Documents/HugePlanning-governance
+    identity: Sugar144/HugePlanning
+    branch: governance/kernel-designer-revision-v0.1
+    committed_head: a4cbc500b2ca864b2eb35e9354df88c8c3d97a3e
+    remote_branch_head_at_start: a4cbc500b2ca864b2eb35e9354df88c8c3d97a3e
+    staging_at_start: EMPTY
+    worktree_at_start: VALIDATED_UNCOMMITTED_PASS_02_R1_CANDIDATE_PRESENT
+  canonical_identity_resolution:
+    rule: NEVER_ASSIGN_FROM_CHAT_MEMORY_RESOLVE_FROM_CANONICAL_REGISTRY_VERIFY_UNUSED_RECORD_EVIDENCE_BEFORE_BINDING
+    evidence_commands:
+      - rg repository-wide exact identity searches
+      - canonical prompt and audit prompt registry inspection
+      - canonical artifact and methodology backlog inspection
+      - python3 governance/tools/manage_learning.py record --input /tmp/hp-fail-allocation-probe.yaml
+    resolved:
+      - identity: HP-PROMPT-030
+        allocation_source: governance/prompts/README.md plus canonical prompt/artifact registries
+        prior_highest_compatible: HP-PROMPT-029
+        repository_wide_unused_check: PASSED
+        allocation_mechanism_gap: false
+      - identity: HP-FAIL-024
+        allocation_source: governance/tools/manage_learning.py deterministic dry-run
+        prior_highest_compatible: HP-FAIL-023
+        repository_wide_unused_check: PASSED
+        allocation_result: governance/learning/records/HP-FAIL-024.yaml
+        allocation_mechanism_gap: false
+      - identity: HP-FAIL-024-E001
+        allocation_source: governance/tools/manage_learning.py append-only event sequence
+        prior_highest_compatible: NONE_FOR_HP_FAIL_024
+        repository_wide_unused_check: PASSED
+        allocation_mechanism_gap: false
+      - identity: GOV-AUD-VAL-003
+        allocation_source: GOV-AUD-001 validation-record sequence in prompt and artifact registries
+        prior_highest_compatible: GOV-AUD-VAL-002
+        repository_wide_unused_check: PASSED
+        allocation_mechanism_gap: false
+      - identity: GOV-TOOL-006
+        allocation_source: governance/ARTIFACT_REGISTRY.yaml deterministic tool sequence
+        prior_highest_compatible: GOV-TOOL-005
+        repository_wide_unused_check: PASSED
+        allocation_mechanism_gap: false
+      - identity: HP-MPROP-006
+        allocation_source: governance/methodology/METHODOLOGY_BACKLOG.md
+        prior_highest_compatible: HP-MPROP-005
+        repository_wide_unused_check: PASSED
+        allocation_mechanism_gap: false
+      - identity: GOV-AUD-001-METHOD-001
+        allocation_source: audit-scoped document identity conventions and global artifact registry
+        prior_highest_compatible: NONE
+        repository_wide_unused_check: PASSED
+        allocation_mechanism_gap: NO_DETERMINISTIC_AUDIT_METHODOLOGY_ID_ALLOCATOR
+        smallest_existing_compatible_mechanism: GOV_AUD_PROGRAM_SCOPED_STABLE_DOCUMENT_ID_PLUS_GLOBAL_ARTIFACT_REGISTRATION
+    retained_versioned_identities:
+      - GOV-AUD-PROMPT-020/0.2.0 supersedes GOV-AUD-PROMPT-020/0.1.0
+      - GOV-AUD-PROMPT-070/0.2.0 supersedes GOV-AUD-PROMPT-070/0.1.0
+    new_run_identity_created: false
+  immutable_pass_02_r1:
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1
+    independent_review_artifact_present: false
+    owner_reported_review: true
+    exact_review_reconstructed: false
+    files:
+      authorization/owner-authorization.yaml: efec5e415e9fadb25e33d6693e83b29a6df3f282d16976a3f43d99711450a376
+      evaluation/pass-02-validation-report.yaml: ecc2bf4d4d6c5b3d07af34ea79b716e3c1c2c6063f39cc9e8b79d85584d69e8e
+      input/input-manifest.yaml: bc5c9764ab0a30a2c96665e09c4d3e720d20be35631e4ad06aa7c10dd656f239
+      manifest.yaml: 03b5a19764d424268bcd5285a410fabaf5109e88eaa4a6c402d5eaefe1a4ee87
+      output/01-bounded-context-and-ownership-model.yaml: 8ee03f87ca792fc41c366f0150abebc9a3d718441fe7669955baf0d827132742
+      output/02-cross-layer-interface-and-contract-assessment.md: ac92b827e6a8ffc3245a792a8ac12de1a6beba3297e0dd65a5b31709232e5415
+      output/03-typed-relationship-and-query-model.yaml: 71122a28793a24f3debfbf586ce5b17357ab397a11b0dda2454bcaaf8b3e8e14
+      output/04-version-migration-and-impact-model.md: 52e155f1a3f2817f5ae9f5113eba6c73dbe6ed239cd0376b76b987f0ea2ac0d0
+      output/05-controlled-self-hosting-and-trust-boundaries.md: 4858fd98661ae274ef382a51e1de4a0e5c5d919db763db0a6ef8591b5fbdbed0
+      output/06-architecture-style-comparison.yaml: f00845265751fce8bb22e082abc0547312469043bc01f923c2af551d4a50bd67
+      output/07-pass-02-findings-and-checkpoint-a-handoff.md: 459e339b6849f32a3d2fed205247af33880f69059e08059998ba49521a6e1f6e
+      prompt/GOV-AUD-PROMPT-021-pass-02-execution-v0.1.0.md: b41cafb36922839781a334b4d851c00c80a253bc5ab7ecf96dd84955501e669c
+  methodology_controls:
+    finding_basis: IMPLEMENTED
+    model_inference_only_marking_and_follow_up: IMPLEMENTED
+    root_cause_before_invalidity: IMPLEMENTED
+    review_type_separation: IMPLEMENTED
+    adversarial_attempted_refutation: IMPLEMENTED
+    bounded_materiality: IMPLEMENTED
+    temporary_instruction_conflict_rule: IMPLEMENTED
+    canonical_id_resolution_rule: IMPLEMENTED
+    correction_traceability: IMPLEMENTED
+    future_gov_7_route: HP-MPROP-006
+  validation_execution:
+    focused_methodology_validator:
+      command: python3 governance/tools/validate_audit_methodology.py
+      result: VALID
+      diagnostics: 0
+    focused_methodology_tests:
+      command: UV_CACHE_DIR=/tmp/uv-cache uv run --with pytest --with pyyaml python -m pytest governance/tests/test_audit_methodology_protocol.py -q
+      result: PASSED
+      passed: 11
+      failed: 0
+    focused_audit_tests:
+      command: UV_CACHE_DIR=/tmp/uv-cache uv run --with pytest --with hypothesis --with pyyaml python -m pytest governance/tests/test_audit_methodology_protocol.py governance/tests/test_gov_7_audit_scaffold.py -q
+      result: PASSED
+      passed: 32
+      failed: 0
+    audit_lifecycle_validator:
+      command: python3 governance/tools/validate_audit_scaffold.py
+      result: VALID
+      diagnostics: 0
+    prompt_validator:
+      command: python3 governance/tools/validate_prompts.py --root .
+      result: VALID
+      prompt_count: 25
+      lineage_count: 25
+    learning_validator_and_index:
+      command: python3 governance/tools/manage_learning.py index --apply && python3 governance/tools/manage_learning.py validate
+      result: VALID
+      records: 24
+      events_after_validation_event: 30
+    governance_state_validator:
+      command: python3 governance/tools/validate_governance_state.py
+      result: VALID
+      diagnostics: 0
+    source_checksum_validator:
+      command: sha256sum -c governance/SOURCE_CHECKSUMS.sha256
+      result: PASSED
+    full_governance_suite:
+      command: UV_CACHE_DIR=/tmp/uv-cache uv run --with pytest --with hypothesis --with jsonschema --with pyyaml python -m pytest governance/tests -q
+      result: PASSED
+      passed: 183
+      failed: 0
+    git_diff_check:
+      command: git diff --check
+      result: PASSED
+    final_repository_status:
+      command: git status --short
+      result: UNCOMMITTED_PASS_02_R1_CANDIDATE_PLUS_VALIDATED_METHODOLOGY_CORRECTION
+  authority_boundary:
+    pass_02_r2_prepared: false
+    checkpoint_a_executed: false
+    pass_03_executed: false
+    gov_7_policy_adopted: false
+    gov_7_activated: false
+    od_006_resolved: false
+    kernel_amended: false
+    recommendations_or_risk_accepted: false
+    commit_performed: false
+    push_performed: false

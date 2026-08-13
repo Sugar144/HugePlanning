@@ -1,0 +1,19 @@
+independent_confirmation:
+  confirmation_id: GOV-AUD-001-P01-C3-IER-001
+  reviewed_candidate: GOV-AUD-001-P01-R1-C3
+  result: CONFIRMED_SUITABLE_FOR_PROJECT_OWNER_DISPOSITION
+  source: PROJECT_OWNER_SUPPLIED_EXACT_INDEPENDENT_CONFIRMATION
+  execution_origin: SEPARATELY_CONTROLLED_INDEPENDENT_REVIEW
+  import_status: PRESERVED_IN_REPOSITORY_CUSTODY_NOT_REEXECUTED
+  exact_result_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/GOV-AUD-001-P01-C3-IER-001/output/independent-confirmation.md
+  exact_result_sha256: e6528c323e09df48bb889d86140decaa7905f78f7354f97c9efef0be55dda27f
+  validation_scope: EXACT_TEXT_CUSTODY_AND_HASH_BINDING_ONLY
+  independently_revalidated: false
+  authority_boundary:
+    pass_01_accepted: false
+    pass_02_authorized_or_executed: false
+    checkpoint_a_completed: false
+    gov_7_activated: false
+    od_006_resolved: false
+    recommendations_accepted: false
+    implementation_authorized: false

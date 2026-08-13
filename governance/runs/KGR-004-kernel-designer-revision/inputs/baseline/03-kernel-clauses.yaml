@@ -1,0 +1,507 @@
+kernel:
+  id: hugeplanning-meta-kernel
+  project: HugePlanning
+  version: 0.1.0-proposed
+  status: PROPOSED
+  authority: pending_human_ratification
+  scope: HugePlanning level 3
+  date: '2026-07-13'
+  language: English
+  ratified: false
+  enforceable: false
+  operational: false
+  constitutional_authority: competent_human_ratification_owner
+  non_scope:
+    - Freelancer Project level 2 unless explicitly adopted
+    - client projects level 1 unless explicitly adopted
+    - delivered products level 0 unless explicitly adopted
+  authority_hierarchy_upon_ratification:
+    - ratified_kernel
+    - explicit_current_human_decisions_within_constitutional_authority
+    - current_policies
+    - stage_and_task_contracts
+    - canonical_repository_documentation
+    - agent_and_skill_instructions
+    - local_execution_interpretation
+  interpretation:
+    lower_layer_rule: Lower layers may refine but must not contradict or silently weaken higher authority.
+    ordinary_instruction_rule: An ordinary instruction cannot amend the Kernel.
+    technology_independence: Constitutional meaning is independent of named providers, models, tools, commands, prompts, and repository layouts.
+    functional_scope: Obligations apply by function and effect, not by actor name or implementation form.
+    honest_states:
+      - BLOCKED
+      - PAUSED
+      - INCONCLUSIVE
+      - READY_FOR_EVALUATION
+      - ACCEPTED_WITH_LIMITATIONS
+      - ABRUPT_TERMINATION
+    state_rules:
+      - READY_FOR_EVALUATION is not ACCEPTED.
+      - INCONCLUSIVE is not PASS.
+      - Absence of a detected problem is not proof of compliance, authorization, or acceptance.
+    materiality_rule: Materiality is assessed over cumulative related effect, not only individual files, tasks, commits, or executions.
+  general_violation_rule: >-
+    A suspected constitutional violation blocks any dependent state-changing transition
+    that relies on the disputed authority, evidence, or result. Relevant state and
+    evidence must be preserved, the issue escalated to competent authority, and
+    acceptance or release must not be inferred. Containment may proceed under K-007.
+
+clauses:
+  - id: K-001
+    title: Constitutional Sovereignty and Governed Amendment
+    normative_statement: >-
+      Only competent human constitutional authority MAY ratify or amend this Kernel,
+      transfer ratification authority, change the authority hierarchy, redefine
+      HugePlanning's fundamental purpose or scope, increase maximum autonomy or
+      permissions, reduce constitutional validation or security protections, or
+      accept serious, critical, or constitutional residual risk where human judgment
+      is required. The system MAY analyze and propose such changes, but it MUST NOT
+      authorize, ratify, conceal, or enact them through ordinary policy, contracts,
+      implementation, emergency action, or its own outputs. Every amendment MUST be
+      explicit, versioned, impact-assessed, independently challenged, considered for
+      enforceability and migration, and humanly ratified before it acquires
+      constitutional authority.
+    rationale: >-
+      Constitutional legitimacy fails if the governed system can enlarge its own
+      authority, weaken the standards applied to it, or convert an emergency or
+      ordinary instruction into an amendment.
+    scope:
+      - kernel ratification amendment and supersession
+      - authority hierarchy and transfer of constitutional authority
+      - fundamental purpose scope architecture maximum autonomy and permissions
+      - constitutional protections and high-consequence residual-risk acceptance
+      - emergency actions with possible permanent governance effects
+    protects:
+      - human sovereignty
+      - constitutional legitimacy
+      - controlled evolution
+      - non-self-amendment
+      - meaningful human control
+    addresses_hazards:
+      - HZ-002
+      - HZ-008
+      - HZ-012
+      - HZ-018
+    related_clauses:
+      - K-002
+      - K-003
+      - K-004
+      - K-005
+      - K-006
+      - K-007
+    violation:
+      severity: CONSTITUTIONAL
+      default_effect: >-
+        The unratified constitutional change has no constitutional authority.
+        Dependent execution, acceptance, delegation, or release is BLOCKED and the
+        prior valid constitutional state remains controlling.
+    exceptions:
+      allowed: false
+      authority: formal_human_amendment_only
+      posture: >-
+        Emergency containment may suspend or reduce effects but cannot amend the
+        Kernel, permanently weaken protections, delete evidence, or create indefinite
+        risk acceptance.
+    review_triggers:
+      - proposed kernel amendment or supersession
+      - transfer of ratification authority
+      - fundamental purpose scope or architecture change
+      - increase in maximum autonomy permissions or external-effect capacity
+      - reduction of constitutional validation or security protections
+      - acceptance of serious critical or constitutional residual risk
+
+  - id: K-002
+    title: Bounded Authority and Effects
+    normative_statement: >-
+      Every state-changing action MUST be covered by explicit, current, and competent
+      authorization that bounds its objective, target, scope, permissions, permitted
+      effects, conditions, criticality, validation obligations, and stop or escalation
+      boundary. An actor MUST NOT expand, reinterpret, transfer, or reuse authorization
+      after a material basis has changed, and MUST NOT increase its own permissions or
+      lower its own criticality. Silence, missing controls, technical capability, prior
+      success, or possession of credentials MUST NOT be treated as authorization. An
+      unknown, unclassified, or unauthorized state change MUST remain BLOCKED while
+      safe read-only investigation MAY continue when permitted.
+    rationale: >-
+      Capability is not authority. Without constitutional boundaries, local
+      instructions, standing access, or technical affordances can silently expand into
+      systemic or external effects.
+    scope:
+      - all state-changing work and authorization-bearing functions
+      - canonical artifacts code configuration schemas evaluators workflows permissions and releases
+      - external systems sensitive data and resource commitments
+      - standing and delegated authorization
+      - material scope changes and unknown action classes
+    protects:
+      - bounded authority
+      - least necessary privilege and effect
+      - explicit delegation
+      - controlled externality
+      - safe escalation
+    addresses_hazards:
+      - HZ-008
+      - HZ-011
+      - HZ-012
+      - HZ-016
+    related_clauses:
+      - K-001
+      - K-003
+      - K-006
+      - K-007
+    violation:
+      severity: CRITICAL_OR_CONSTITUTIONAL_BY_EFFECT
+      default_effect: >-
+        The affected action and dependent state transitions are unauthorized and
+        BLOCKED. Produced effects must be contained, preserved for review, and
+        recovered or dispositioned by competent authority before acceptance.
+    exceptions:
+      allowed: true
+      authority: competent_owner_of_the_governing_rule
+      posture: >-
+        A temporary deviation requires explicit scope, rationale, risk, compensating
+        controls, expiry or review condition, and actual-effect record. It cannot waive
+        K-001, permit interested self-approval under K-003, or convert silence into
+        consent.
+    review_triggers:
+      - new actor capability permission autonomy level or external-effect class
+      - material scope or authorization change
+      - standing authorization reused under changed conditions
+      - unclassified action or disputed criticality
+      - unauthorized effect credential exposure or repeated exception request
+
+  - id: K-003
+    title: Functional Independence and Non-Self-Certification
+    normative_statement: >-
+      The functions of proposal, decision, authorization, execution, validation,
+      exception approval, acceptance, and ratification MUST remain distinguishable and
+      MUST be separated to the degree required by criticality, conflict of interest,
+      and consequence. A benefiting or materially interested executor MUST NOT
+      unilaterally define or weaken blocking criteria, lower criticality, approve an
+      exception, provide the decisive independent evaluation, accept its own critical
+      work, or ratify its own constitutional proposal. Claims of independence MUST
+      consider shared context, criteria, evidence, methods, tools, incentives, and
+      authority; nominal separation alone is insufficient.
+    rationale: >-
+      Meaningful functional independence prevents circular approval and correlated
+      evaluation without requiring a permanent organization or a different person for
+      every low-risk task.
+    scope:
+      - criterion ownership and modification
+      - criticality classification and reduction
+      - validation evaluation exception approval acceptance release and ratification
+      - critical implementation and constitutional design
+      - independence claims across humans models tools sessions and methods
+    protects:
+      - evaluation legitimacy
+      - conflict-of-interest control
+      - non-self-certification
+      - independent risk acceptance
+      - separation of constitutional functions
+    addresses_hazards:
+      - HZ-002
+      - HZ-003
+      - HZ-007
+      - HZ-008
+    related_clauses:
+      - K-001
+      - K-004
+      - K-005
+      - K-006
+    violation:
+      severity: CONSTITUTIONAL_WHEN_DECISIVE_FOR_CRITICAL_ACCEPTANCE
+      default_effect: >-
+        The affected validation, exception, acceptance, release, or ratification
+        outcome cannot be relied upon. The result returns to an honest non-accepted
+        state and requires review under criteria and authority not controlled by the
+        benefiting executor.
+    exceptions:
+      allowed: true
+      authority: policy_with_competent_acceptance_authority
+      posture: >-
+        Functions may be consolidated for low-criticality work when no material
+        conflict exists and required objective gates remain outside the benefiting
+        executor's unilateral control. Self-ratification, self-approved critical
+        exceptions, and unilateral acceptance of high-consequence risk are forbidden.
+    review_triggers:
+      - criterion or rubric change after validation failure
+      - same function fixes evaluates and accepts a critical result
+      - evaluators share a material oracle context source or incentive
+      - criticality reduction proposed by the executor
+      - exception requested by its beneficiary
+      - new delegation of acceptance or release authority
+
+  - id: K-004
+    title: Canonical Intent, Provenance, and Epistemic Integrity
+    normative_statement: >-
+      Governed intent, decisions, requirements, criteria, evidence, assumptions, and
+      state MUST have identifiable canonical authority and traceable provenance.
+      Facts, human decisions, proposals, assumptions, inferences, open questions,
+      evidence gaps, and validation results MUST remain distinguishable and MUST NOT be
+      silently promoted, merged, rewritten, or represented as one another. Competing
+      authoritative sources MUST be reconciled through applicability, version, and
+      explicit supersession; unresolved equal-authority conflict MUST remain visible
+      and BLOCKED. Historical evidence and compliance MUST NOT be fabricated
+      retroactively, and source evidence MUST be preserved when summaries, migrations,
+      or learning artifacts are created.
+    rationale: >-
+      Inferred intent, stale summaries, or reconstructed history can silently redirect
+      the whole system. Canonical and epistemic integrity protects every downstream
+      decision.
+    scope:
+      - requirements decisions assumptions evidence criteria states hazards defects and learning
+      - canonical artifacts and derived summaries or views
+      - versioning supersession migration and historical regularization
+      - conversations and temporary working material used as supporting evidence
+    protects:
+      - intent preservation
+      - canonical truth
+      - provenance and traceability
+      - assumption integrity
+      - historical honesty
+    addresses_hazards:
+      - HZ-001
+      - HZ-006
+      - HZ-015
+      - HZ-018
+    related_clauses:
+      - K-001
+      - K-002
+      - K-005
+      - K-007
+    violation:
+      severity: SERIOUS_TO_CONSTITUTIONAL
+      default_effect: >-
+        Dependent decisions, implementation, evaluation, and acceptance are BLOCKED
+        while a material canonical conflict, provenance failure, or epistemic
+        misclassification remains unresolved. Disputed material is marked, preserved,
+        and escalated without invented reconciliation.
+    exceptions:
+      allowed: true
+      authority: canonical_artifact_policy_within_kernel_bounds
+      posture: >-
+        Temporary copies, summaries, caches, or working views are permitted only when
+        their noncanonical status and canonical reference are clear. Fabricated
+        evidence, silent supersession, deletion of material source evidence, and
+        promotion of assumptions into human decisions are forbidden.
+    review_triggers:
+      - conflicting or duplicated authoritative sources
+      - missing provenance for a material decision criterion or result
+      - assumption expiry refutation or stage transition
+      - migration or retrospective regularization
+      - summary or generated artifact used as canonical authority
+      - evidence deletion replacement or unexplained history change
+
+  - id: K-005
+    title: Evidence-Grounded State and Acceptance
+    normative_statement: >-
+      Every material claim, validation outcome, completion state, acceptance decision,
+      release decision, and declaration of compliance MUST be supported by evidence
+      sufficient for the specific claim, criticality, uncertainty, and decision
+      authority involved. Artifact existence, creator assertion, structural validity
+      alone, or absence of detected failure MUST NOT establish purpose satisfaction.
+      READY_FOR_EVALUATION MUST precede acceptance where evaluation is required;
+      INCONCLUSIVE MUST NOT be treated as PASS; missing or contradictory essential
+      evidence MUST remain explicit and MUST block the affected gate. Acceptance MUST
+      be made only by competent authority and MUST preserve known limitations and
+      residual risk.
+    rationale: >-
+      Claim-specific evidence and honest states prevent generated artifacts and
+      superficial checks from becoming false proof that propagates through the roadmap.
+    scope:
+      - validation evaluation acceptance release compliance and operational-status claims
+      - completion and state transitions
+      - retrospective evidence and migration status
+      - qualified acceptance and residual-risk records
+    protects:
+      - evidence integrity
+      - honest completion state
+      - claim-specific validation
+      - acceptance legitimacy
+      - non-fabricated compliance
+    addresses_hazards:
+      - HZ-002
+      - HZ-003
+      - HZ-007
+      - HZ-014
+      - HZ-018
+    related_clauses:
+      - K-003
+      - K-004
+      - K-006
+      - K-007
+    violation:
+      severity: SERIOUS_TO_CONSTITUTIONAL
+      default_effect: >-
+        The affected result cannot cross its gate or retain an unsupported accepted
+        state. It returns to READY_FOR_EVALUATION, INCONCLUSIVE, BLOCKED, FAILED, or
+        another honest non-accepted state until competent review establishes a
+        justified outcome.
+    exceptions:
+      allowed: true
+      authority: competent_acceptance_authority
+      posture: >-
+        ACCEPTED_WITH_LIMITATIONS requires explicit limitations, scope, residual risk,
+        owner, and review condition, and cannot violate a mandatory constitutional
+        control or core purpose. Missing essential evidence, unacceptable serious risk,
+        core-purpose failure, invalid downstream dependence, and fatigue cannot be
+        converted into qualified acceptance.
+    review_triggers:
+      - gate crossing based on file existence or creator assertion
+      - contradictory or insufficient evidence
+      - INCONCLUSIVE result or qualified acceptance proposal
+      - change to mandatory criteria test rubric or evidence source
+      - retrospective compliance or reversibility claim
+      - declaration of RATIFIED ENFORCEABLE OPERATIONAL or MATURE
+
+  - id: K-006
+    title: Proportional Governance and Justified Complexity
+    normative_statement: >-
+      Governance, authorization, validation, independence, observability, stopping,
+      recovery, and human review MUST be proportional to the actual, cumulative,
+      uncertain, and potentially external effects of the governed work. Related actions
+      MUST be classified and controlled by their combined intent, capability, release,
+      affected system, and propagation, and MUST NOT be fragmented to evade stronger
+      controls. Material uncertainty MUST use the higher reasonable provisional level
+      until evidence supports reduction. Every added governance component or burden
+      MUST demonstrate protective value over a simpler adequate alternative and SHOULD
+      be reduced, lowered, or removed when it adds cost without preserving necessary
+      protection.
+    rationale: >-
+      Uniform maximum control makes a solo system unusable, while local classification
+      enables critical effects to hide inside small tasks. Proportionality protects both
+      safety and delivery.
+    scope:
+      - criticality aggregation uncertainty and control selection
+      - validation depth independence human gates and recovery requirements
+      - governance artifacts agents skills workflows reviews and permanent components
+      - calibration and simplification of lower-layer controls
+    protects:
+      - proportional control
+      - anti-fragmentation
+      - honest uncertainty
+      - solo maintainability
+      - justified complexity and anti-overplanning
+    addresses_hazards:
+      - HZ-004
+      - HZ-005
+      - HZ-008
+      - HZ-010
+      - HZ-016
+    related_clauses:
+      - K-001
+      - K-002
+      - K-003
+      - K-005
+      - K-007
+    violation:
+      severity: SERIOUS_TO_CONSTITUTIONAL_BY_EFFECT
+      default_effect: >-
+        Work suspected of under-classification, fragmentation, or materially uncertain
+        effect is provisionally governed at the higher reasonable level and cannot
+        cross the affected gate until reviewed. Unjustifiably burdensome governance is
+        simplified at the appropriate lower layer without weakening required protection.
+    exceptions:
+      allowed: true
+      authority: lower_layer_calibration_within_constitutional_floors
+      posture: >-
+        Levels, thresholds, examples, and mechanisms may be calibrated. Cumulative
+        effect and material uncertainty cannot be hidden, and cost alone cannot waive
+        essential protections in other clauses. Emergency response may temporarily
+        apply stronger controls without amending the Kernel.
+    review_triggers:
+      - new effect class actor capability autonomy level or external dependency
+      - related low-risk changes with a larger cumulative outcome
+      - criticality dispute or repeated reclassification
+      - controls repeatedly bypassed ineffective or more costly than their protective value
+      - proposal for a permanent agent workflow document class or governance platform
+      - serious incident repeated defect or material INCONCLUSIVE result
+
+  - id: K-007
+    title: Safe Stopping, Observability, Continuity, and Recovery
+    normative_statement: >-
+      State-changing work MUST stop, pause, or remain BLOCKED before further effect when
+      required authority, canonical input, classification, context, essential evidence,
+      control capacity, or recovery basis is absent, conflicting, exhausted, corrupted,
+      or materially uncertain, or when continuation would require violating a higher
+      rule. Safe read-only investigation MAY continue when authorized and when it does
+      not increase the disputed effect. Significant work MUST externalize sufficient
+      state and evidence to reconstruct its objective, authority, inputs, changes,
+      validations, current status, limitations, and exact continuation or recovery
+      boundary. Recovery and reversibility claims MUST be evidence-based and
+      proportional to risk. Abrupt termination, ambiguous residual state, or failed
+      recovery MUST NOT imply acceptance and MUST trigger preservation, classification,
+      containment, and authorized resumption, compensation, or reversion.
+    rationale: >-
+      A system that cannot stop safely, reconstruct what happened, or recover from
+      interruption cannot maintain bounded authority or trustworthy evidence under
+      finite context, time, cost, and human attention.
+    scope:
+      - stop pause block interruption checkpoint resumption containment and recovery
+      - significant state-changing external-effect long-running and resource-bounded work
+      - reconstruction of authorization changes validation and final state
+      - abrupt termination and failed rollback or compensation
+    protects:
+      - safe stopping
+      - continuity and resumability
+      - observability and reconstructability
+      - evidence-preserving containment
+      - proportional recovery
+    addresses_hazards:
+      - HZ-001
+      - HZ-005
+      - HZ-008
+      - HZ-012
+      - HZ-013
+      - HZ-014
+    related_clauses:
+      - K-001
+      - K-002
+      - K-004
+      - K-005
+      - K-006
+    violation:
+      severity: SERIOUS_TO_CRITICAL
+      default_effect: >-
+        Further dependent state change ceases. Written or external effects remain
+        unvalidated until reconstructed and reviewed; relevant evidence is preserved;
+        containment and recovery proceed under competent authority. Failed recovery is
+        treated as an incident rather than hidden or relabeled as success.
+    exceptions:
+      allowed: true
+      authority: emergency_containment_authority_with_mandatory_review
+      posture: >-
+        Immediate containment may precede normal workflow authorization only to stop
+        active harm, using the least reasonable effect, preserving evidence where
+        possible, and requiring record and review. It cannot authorize constitutional
+        amendment, permanent control weakening, evidence deletion, or indefinite risk
+        acceptance.
+    review_triggers:
+      - abrupt termination or missing terminal state
+      - exhausted or unreliable context time cost compute or execution budget
+      - missing checkpoint or inability to reconstruct significant work
+      - failed rollback recovery compensation or restoration claim
+      - new sensitive or external action class
+      - incident unexplained state or repeated pause or block without progress
+
+amendment_relationship:
+  requires_before_ratification:
+    - independent adversarial review
+    - enforcement analysis
+    - ambiguity bypass cost and migration review
+    - competent human ratification
+  amendment_record_must_include:
+    - affected clauses
+    - alternatives
+    - hazards and impact
+    - compatibility effects
+    - lower-layer consequences
+    - migration needs
+    - evidence used
+  supersession_rule: Only the explicitly ratified version acquires constitutional authority; prior versions and amendment records remain traceable.
+
+adoption_states:
+  RATIFIED: competent human constitutional approval
+  ENFORCEABLE: minimum prevention detection evidence stopping or recovery mechanisms exist
+  OPERATIONAL: successful use in a real governed flow plus competent human declaration based on independent evidence
+  MATURE: accumulated evidence supports stability effectiveness and reasonable cost
+current_declaration: PROPOSED_NOT_RATIFIED

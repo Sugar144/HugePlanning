@@ -1,0 +1,34 @@
+gov_7_direction_decision_record:
+  schema_version: 0.1.0
+  document_id: GOV-DECISION-RECORD-003
+  version: 0.1.0
+  date: '2026-07-15'
+  owner_role: Project Owner
+  status: RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION
+  decision:
+    id: OD-005
+    selection: ACCEPT_MINIMUM_GOV_7_DIRECTION
+    status: RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION
+  accepted:
+    - seven-component capability direction
+    - one bounded governed transition as the initial target
+    - reuse of existing deterministic custody and validation primitives
+    - read-only tooling and methodology audit
+    - GOV-7 design preparation
+  authority_exclusions:
+    - GOV_7_IMPLEMENTATION
+    - GOV_7_REPOSITORY_MODIFICATIONS_BEYOND_THIS_DECISION_CUSTODY
+    - TECHNOLOGY_OR_FRAMEWORK_ADOPTION
+    - PROVIDER_USE
+    - REAL_DATA_PROCESSING
+    - PILOT_EXECUTION
+    - RESIDUAL_RISK_ACCEPTANCE
+    - OD_006_RESOLUTION
+  resulting_state:
+    OD-005: RESOLVED_ACCEPT_MINIMUM_GOV_7_DIRECTION
+    GOV-7: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    OD-006: UNRESOLVED_TRIGGER_GATED
+    minimum-GOV-7-package: DIRECTION_ACCEPTED_NOT_IMPLEMENTED
+    residual-risk-accepted: false
+    enforcement-implementation: NOT_PERFORMED
+  constitutional_authority: PROJECT_OWNER_DIRECTION_DECISION_ONLY

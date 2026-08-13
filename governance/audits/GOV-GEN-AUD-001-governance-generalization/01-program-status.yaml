@@ -1,0 +1,778 @@
+program:
+  id: GOV-GEN-AUD-001
+  title: HugePlanning Governance Generalization Audit
+  firewalled_from: GOV-AUD-001
+  firewall_basis: G0-08, HugePlanning-Governance-Generalization-G0.md
+  status: COMPLETED_ACCEPTED
+  phase_plan: [G0, G1A, G1B, G2, G3, G4, G5, GR, G6]
+  current_phase: PROJECT_CLOSURE_COMPLETED_ACCEPTED
+  reference_repository: Sugar144/HugePlanning
+  # reference_worktree/reference_branch/reference_head/worktree_modified_by_this_program
+  # together describe the frozen snapshot used to build the G1A deterministic
+  # 679-row source index. reference_worktree is a distinct clone/path from the
+  # active worktree this program otherwise runs in; it is not "the current
+  # HugePlanning governance worktree" in general.
+  reference_worktree: /home/sugar/Documents/HugePlanning-governance
+  reference_branch: governance/kernel-designer-revision-v0.1
+  reference_head: 1899a3e7b41e9b4930a5d0f7f0b7e9d542fcb8dc
+  # Scoped to the G1A indexing step only: the reference_worktree above was not
+  # mutated while constructing the deterministic source index. It does NOT
+  # mean GOV-GEN has never modified the active HugePlanning governance
+  # worktree in general — G1B and G2 execution wrote and committed files
+  # under governance/audits/GOV-GEN-AUD-001-governance-generalization/ in
+  # this active worktree, on commits after reference_head. Clarified per G2
+  # correction R1 (GOV-GEN-DECISION-005/0.1.0, finding 7); value unchanged.
+  worktree_modified_by_this_program: false
+
+G0:
+  status: ACCEPTED
+  canonical_source: EXTERNAL_NOT_YET_MOVED
+  external_location: ~/Downloads/HugePlanning-Governance-Generalization-G0.md, ~/Downloads/HugePlanning-Governance-Generalization-Compact-Conceptual-Baseline-ACCEPTED.md
+
+G1A:
+  status: ACCEPTED_BY_PROJECT_OWNER
+  contract: GOV-GEN-G1A-CONTRACT-001/0.1.0
+  report: GOV-GEN-G1A-REPORT-001
+  report_terminal_status_at_execution: G1A_READY_FOR_OWNER_REVIEW
+  rows_indexed: 679
+  path_families: 14
+  deterministic_validations: 13/13 PASS
+  reproducibility: PASS
+  baseline_counts: 7/7 MATCH
+  acceptance_record: GOV-GEN-DECISION-001/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-02'
+  pending_owner_acceptance: false
+  full_index_and_report_location: ~/Downloads/GOV-GEN-G1A-001/
+  full_index_moved_into_repository: false
+
+G1B:
+  status: CAPABILITY_MAP_ACCEPTED_BY_PROJECT_OWNER
+  contract: GOV-GEN-G1B-CONTRACT-001/0.1.0
+  contract_location: G1B/GOV-GEN-G1B-CONTRACT-001-v0.1.0.md
+  supersedes: GOV-GEN-G1B-P-CONTRACT-001/0.1.0
+  execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
+  multi_packet_topology_replaced: true
+  principal_result: Governance Capability Map
+  principal_results_count: 1
+  deliverable: GOV-GEN-G1B-CAPABILITY-MAP-001/0.1.0
+  deliverable_location: G1B/GOV-GEN-G1B-CAPABILITY-MAP-001.md
+  manifest_location: G1B/GOV-GEN-G1B-CAPABILITY-MAP-001.manifest.sha256
+  manifest_verified: true
+  evidence_family_partition_preserved: true
+  capability_gap_schema_preserved: true
+  domain_coverage_checklist_preserved: true
+  capability_records_populated: 88
+  gap_records_populated: 6
+  path_families_represented: '14/14'
+  cross_cutting_domains_resolved: '12/12'
+  nav_steps_walked: 13
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-002/0.1.0
+  execution_authorization_basis: HP-PROMPT-040/0.1.0 objective 3 (G1B recorded as the next authorized governance-generalization phase); corrected into this status by HP-PROMPT-041/0.1.0
+  execution_started: true
+  execution_self_check: PASS
+  split_triggered: false
+  pending_owner_acceptance: false
+  acceptance_record: GOV-GEN-DECISION-003/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-02'
+  split_condition: >-
+    Split into another governed session only if execution discovers a
+    genuinely independent decision, authority, validation, acceptance, or
+    material-risk boundary. Evidence-family partitioning remains internal
+    navigation and does not by itself justify a split.
+
+G2:
+  status: CLASSIFICATION_MATRIX_R1_ACCEPTED_BY_PROJECT_OWNER
+  contract: GOV-GEN-G2-CONTRACT-001/0.1.0
+  contract_location: G2/GOV-GEN-G2-CONTRACT-001-v0.1.0.md
+  execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
+  principal_result: Governance Generalization Assessment / Classification Matrix
+  principal_results_count: 1
+  deliverable: GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0
+  deliverable_location: G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.md
+  manifest_location: G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.manifest.sha256
+  manifest_verified: true
+  capabilities_classified: 88
+  gaps_dispositioned: 6
+  generality_counts:
+    UNIVERSAL: 54
+    CROSS_PROJECT_CONFIGURABLE: 16
+    PROJECT_SPECIFIC: 13
+    EXECUTOR_SPECIFIC: 5
+    UNRESOLVED: 0
+  reuse_readiness_counts:
+    READY: 39
+    NEEDS_NORMALIZATION: 27
+    NEEDS_MODEL_CHANGE: 10
+    NOT_REUSABLE_AS_IS: 12
+  delegated_operational_authority_evaluated: true
+  delegated_operational_authority_implemented: false
+  provider_neutral_governance_evaluated: true
+  provider_neutral_governance_implemented: false
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-004/0.1.0
+  execution_authorization_basis: HP-PROMPT-043/0.1.0 (Project Owner, direct single-unit authorization of definition, execution, and one bounded commit)
+  execution_started: true
+  execution_self_check: PASS
+  split_triggered: false
+  pending_owner_acceptance: false
+  acceptance_record: GOV-GEN-DECISION-006/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-04'
+  controlling_result: GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0
+  note: >-
+    Contract definition and execution were authorized and performed in one
+    governed unit per the Project Owner's explicit instruction
+    (HP-PROMPT-043/0.1.0), unlike G1B where contract authorization and
+    execution authorization were reconciled separately. The base deliverable
+    (GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0) is preserved unmodified as
+    historical execution evidence; the Project Owner accepted its corrected
+    R1 result as the controlling G2 result under GOV-GEN-DECISION-006/0.1.0.
+    No PENDING_OWNER_ACCEPTANCE state remains for G2.
+  correction:
+    status: G2_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
+    correction_index: 1
+    id: GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0
+    location: G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1.md
+    manifest_location: G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1.manifest.sha256
+    manifest_verified: true
+    base_deliverable_modified: false
+    corrections_applied: 3
+    correction_authorization_record: GOV-GEN-DECISION-005/0.1.0
+    correction_authorization_basis: HP-PROMPT-044/0.1.0 (Project Owner, bounded correction and evidence reconciliation following Owner review)
+    reclassification_performed: false
+    gap_redisposition_performed: false
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-006/0.1.0
+    note: >-
+      Corrects three cross-reference defects in the base deliverable's §19,
+      §20, and §16/GAP-006; reconciles the current-state description of the
+      contract §9 check count (8, not 7); records an honest historical
+      custody gap for check 8 and Owner-review revalidation evidence for
+      candidate bb9c863ea9805f53d06ddabe9040bda2eca34b42; clarifies (does not
+      redefine) worktree_modified_by_this_program above. Does not reclassify,
+      redispose, or redesign G2. The Project Owner accepted this correction as
+      the controlling G2 result under GOV-GEN-DECISION-006/0.1.0
+      (HP-PROMPT-045/0.1.0, disposition ACCEPT_GOV_GEN_G2_CORRECTED_RESULT).
+  post_baseline_delta:
+    status: G2_POST_BASELINE_DELTA_CUSTODIED
+    id: GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0
+    location: G2/GOV-GEN-G2-POST-BASELINE-DELTA-001.md
+    manifest_location: G2/GOV-GEN-G2-POST-BASELINE-DELTA-001.manifest.sha256
+    manifest_verified: true
+    custody_authorization_record: GOV-GEN-DECISION-007/0.1.0
+    custody_authorization_basis: HP-PROMPT-046/0.1.0 (Project Owner, bounded custody of an already-completed instruction-delta assessment)
+    comparison_range: [1899a3e7b41e9b4930a5d0f7f0b7e9d542fcb8dc, 284ca3eab1965b1feef33fc9ba72f97ab8ac8dfe]
+    pr_reviewed: '#5'
+    pr_changed_files: [AGENTS.md, governance/AGENTS.md]
+    reconciliation_merge_commit: 7e15377cdccbbafb0be94becceb6f5d09dd9c7dc
+    verdict: G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD
+    g2_capability_reclassification_required: false
+    g2_gap_redisposition_required: false
+    unresolved_question_findings:
+      UQ2: {disposition: NEW_EVIDENCE_NARROWS_DECISION_SPACE, resolution_status: STILL_REQUIRES_ARCHITECTURE_DECISION}
+      UQ5: {disposition: NEW_EVIDENCE_NARROWS_DECISION_SPACE, resolution_status: STILL_REQUIRES_ARCHITECTURE_DECISION}
+      UQ7_next_phase_only_contracting_direction: {disposition: NEW_EVIDENCE_NARROWS_DECISION_SPACE}
+      UQ7_enforcement: {resolution_status: STILL_REQUIRES_ARCHITECTURE_DECISION}
+      UQ7_gap_006_defect_vs_convenience_classification: {disposition: UNCHANGED}
+    new_architectural_evidence_areas:
+      - provider_neutral_repository_instructions
+      - scoped_governance_instructions
+      - relationship_with_project_operating_contract_md
+      - separation_between_repository_governance_and_client_facing_methodology_runtime
+    note: >-
+      Informational post-baseline evidence only. Does not correct or
+      reclassify GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0 or its
+      controlling correction GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0,
+      does not constitute a new G2 acceptance, and does not open, scope,
+      define, or authorize G3. G2 remains ACCEPTED_BY_PROJECT_OWNER; G3
+      remains NOT_STARTED_NOT_AUTHORIZED.
+
+G3:
+  status: LOGICAL_ARCHITECTURE_R2_ACCEPTED_BY_PROJECT_OWNER
+  contract: GOV-GEN-G3-CONTRACT-001/0.1.0
+  contract_location: G3/GOV-GEN-G3-CONTRACT-001-v0.1.0.md
+  execution_topology: SINGLE_COHERENT_TASK_WITH_PROGRESSIVE_EVIDENCE_NAVIGATION
+  principal_result: Logical Architecture and Layering Assessment
+  principal_results_count: 1
+  deliverable: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0
+  deliverable_location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md
+  manifest_location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.manifest.sha256
+  manifest_verified: true
+  capabilities_allocated: 88
+  gaps_allocated: 6
+  layer_counts: {L0: 3, L1: 14, L2: 4, L3: 6, L4: 4, L5: 20, L6: 29, L7: 8}
+  cross_layer_items_named: 7
+  unresolved_question_dispositions:
+    UQ1: DEFER_TO_PHYSICAL_ARCHITECTURE
+    UQ2: LOGICALLY_RESOLVED_BY_G3
+    UQ3: NARROWED_BUT_OWNER_DECISION_REQUIRED
+    UQ4: LOGICALLY_RESOLVED_BY_G3
+    UQ5: NARROWED_BUT_OWNER_DECISION_REQUIRED
+    UQ6: NARROWED_BUT_OWNER_DECISION_REQUIRED
+    UQ7: NARROWED_BUT_OWNER_DECISION_REQUIRED
+  # UQ4/UQ7 corrected to the G3 contract's closed five-value enum by G3
+  # correction R1 (GOV-GEN-DECISION-009/0.1.0, finding 1); the base
+  # deliverable's own §12 originally recorded non-enum composite values
+  # here. Per-subcomponent distinctions are preserved in the base
+  # deliverable's §8 body text and restated in the R1 correction §2.
+  candidate_architecture_recommended: true
+  alternatives_recorded: 2
+  targeted_lookups_performed: 1
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-008/0.1.0
+  execution_authorization_basis: HP-PROMPT-047/0.1.0 (Project Owner, direct single-unit authorization of definition, execution, and one bounded commit, mirroring the G2 pattern)
+  execution_started: true
+  execution_self_check: PASS
+  split_triggered: false
+  pending_owner_acceptance: false
+  acceptance_record: GOV-GEN-DECISION-018/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-05'
+  controlling_result: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0
+  note: >-
+    Contract definition and execution were authorized and performed in one
+    governed unit per the Project Owner's explicit instruction
+    (HP-PROMPT-047/0.1.0), mirroring G2 rather than G1B's two-gate pattern.
+    G3 does not reclassify any G2 capability or redispose any G2 gap; it
+    organizes the accepted G2 classification into a proposed eight-layer
+    logical model and dispositions G2 §21 unresolved questions 1-7 against
+    that model without resolving any of them into an implemented decision.
+    The base deliverable (GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0) is
+    preserved unmodified as historical execution evidence; the Project Owner
+    accepted its corrected R1 result as the controlling G3 result under
+    GOV-GEN-DECISION-010/0.1.0. The Project Owner subsequently accepted the
+    one minimal prospective factual/reference correction R2 as the
+    controlling G3 result under GOV-GEN-DECISION-018/0.1.0. No
+    PENDING_OWNER_ACCEPTANCE state remains for G3.
+  correction_r1:
+    status: G3_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
+    correction_index: 1
+    id: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
+    location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.md
+    manifest_location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.manifest.sha256
+    manifest_verified: true
+    base_deliverable_modified: false
+    corrections_applied: 6
+    correction_authorization_record: GOV-GEN-DECISION-009/0.1.0
+    correction_authorization_basis: HP-PROMPT-048/0.1.0 (Project Owner, bounded Owner-review correction)
+    layer_reallocation_performed: false
+    capability_reclassification_performed: false
+    gap_redisposition_performed: false
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-010/0.1.0
+    note: >-
+      Reconciles UQ4/UQ7 to the G3 contract's closed enum; clarifies the §7
+      context-efficiency model as a target logical model that does not
+      override current governance/AGENTS.md instructions; disambiguates
+      governance/AGENTS.md (CAP-NAV01-011) from root AGENTS.md; corrects a
+      quantitative statement (33/88/38% -> 29/88/~33%) and a schema-count
+      statement (9 schemas -> 8 schema capabilities); and honestly records a
+      historical check-8 evidence-custody gap plus fresh Owner-review
+      revalidation evidence for candidate d9cc0e74584e1c8c7aa83894621f3d9ede77bdea.
+      Does not reallocate any capability, reclassify any G2 capability,
+      redispose any G2 gap, or reopen G2. The Project Owner accepted this
+      correction as the controlling G3 result under GOV-GEN-DECISION-010/0.1.0
+      (HP-PROMPT-049/0.1.0, disposition ACCEPT_GOV_GEN_G3_CORRECTED_RESULT).
+  correction_r2:
+    status: G3_CORRECTION_R2_ACCEPTED_BY_PROJECT_OWNER
+    correction_index: 2
+    id: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2/0.1.0
+    location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.md
+    manifest_location: G3/GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R2.manifest.sha256
+    manifest_verified: true
+    base_deliverable_modified: false
+    prior_controlling_correction_modified: false
+    corrections_applied: 1
+    correction_authorization_basis: Project Owner direct task GOV-GEN — Bounded G3 Factual Correction
+    targeted_lookups_performed: 1
+    target_lookup: GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0 §17.2/§23
+    corrected_statement: 49/88 non-READY = 55.7%; replaces 66% ... per G2 §21.2
+    layer_reallocation_performed: false
+    capability_reclassification_performed: false
+    gap_redisposition_performed: false
+    unresolved_question_disposition_changed: false
+    boundary_model_changed: false
+    context_efficiency_model_changed: false
+    g4_modified: false
+    g5_modified: false
+    gr_authorized: false
+    g6_authorized: false
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-018/0.1.0
+    accepted_by: Project Owner
+    accepted_on: '2026-08-05'
+
+G4:
+  status: CONSUMER_REQUIREMENTS_DELTA_R1_ACCEPTED_BY_PROJECT_OWNER
+  contract: GOV-GEN-G4-CONTRACT-001/0.1.0
+  contract_location: G4/GOV-GEN-G4-CONTRACT-001-v0.1.0.md
+  execution_topology: SINGLE_COHERENT_TASK_WITH_THREE_PROFILE_STRESS_TEST_AND_IN_UNIT_INDEPENDENT_REVIEW
+  principal_result: Consumer Requirements Delta
+  principal_results_count: 1
+  deliverable: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0
+  deliverable_location: G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.md
+  manifest_location: G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001.manifest.sha256
+  manifest_verified: true
+  profiles_defined: 3
+  profile_names: [ALPHA, BETA, GAMMA]
+  profiles_merged_as_redundant: 0
+  requirements_delta_entries_base: 15
+  requirements_delta_entries_corrected: 16
+  severity_counts_corrected: {BLOCKS_REUSE: 6, REQUIRES_PARAMETERIZATION: 6, REQUIRES_IMPLEMENTATION_SUPPORT: 4, OPTIONAL_PROFILE_REQUIREMENT: 0}
+  architecture_pressures_recorded: 6
+  g3_capability_reallocation_performed: false
+  g2_capability_reclassification_performed: false
+  g2_gap_redisposition_performed: false
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-011/0.1.0
+  execution_authorization_basis: HP-PROMPT-050/0.1.0 (Project Owner, direct single-unit authorization of definition, execution, in-unit independent review, any triggered correction, and one bounded commit)
+  execution_started: true
+  execution_self_check: PASS
+  split_triggered: false
+  independent_review:
+    performed: true
+    mode: CLEAN_SESSION_WITHIN_SAME_GOVERNED_UNIT
+    verdict: MATERIAL_FINDINGS_PRESENT
+    material_findings: 3
+    bounded_observations: 3
+    disposition: CORRECTED_IN_R1
+  correction:
+    status: G4_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
+    correction_index: 1
+    id: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+    location: G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.md
+    manifest_location: G4/GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1.manifest.sha256
+    manifest_verified: true
+    correction_authorization_record: GOV-GEN-DECISION-012/0.1.0
+    base_deliverable_modified: false
+    material_findings_corrected: 3
+    new_register_entry: RD-C9
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-013/0.1.0
+    note: >-
+      The Project Owner accepted this correction as the controlling G4
+      result under GOV-GEN-DECISION-013/0.1.0 (HP-PROMPT-051/0.1.0,
+      disposition ACCEPT_GOV_GEN_G4_CORRECTED_RESULT).
+  pending_owner_acceptance: false
+  acceptance_record: GOV-GEN-DECISION-013/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-05'
+  controlling_result: GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+  note: >-
+    Contract definition, execution, in-unit independent review, and its
+    triggered correction were authorized and performed in one governed unit
+    per the Project Owner's explicit instruction (HP-PROMPT-050/0.1.0),
+    mirroring the G2/G3 pattern. G4 does not select a target physical
+    architecture, decide kernel repository ownership, create any repository,
+    extract or migrate any file, or implement Delegated Operational
+    Authority, Provider-Neutral Governance, any adapter, or any
+    query/projection tooling. The base deliverable
+    (GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001/0.1.0) is preserved,
+    unmodified beyond completion of its own designated independent-review
+    placeholders, as historical execution evidence; the Project Owner
+    accepted its corrected R1 result as the controlling G4 result under
+    GOV-GEN-DECISION-013/0.1.0. No PENDING_OWNER_ACCEPTANCE state remains for
+    G4, and G5 remains unopened, unscoped, and unauthorized.
+
+G5:
+  status: ACCEPTED_BY_PROJECT_OWNER
+  contract: GOV-GEN-G5-CONTRACT-001/0.1.0
+  contract_location: G5/GOV-GEN-G5-CONTRACT-001-v0.1.0.md
+  execution_topology: SINGLE_COHERENT_TASK_PRIMARY_SYNTHESIS_ONLY_NO_IN_UNIT_INDEPENDENT_REVIEW
+  sub_gate: G5-ACCEPTANCE
+  sub_gate_note: >-
+    The Project Owner split G5 into sub-gates rather than authorizing it as
+    one governed unit the way G2/G3/G4 were. G5-A covers canonical
+    definition and primary-synthesis execution only; independent/adversarial
+    review, any triggered correction, and Owner acceptance are each reserved
+    to a separate, later, explicit Owner authorization, and GR (the Owner
+    architecture-decision gate) and G6 remain further downstream and
+    unauthorized.
+  principal_result: Physical Architecture Synthesis
+  principal_results_count: 1
+  deliverable: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0
+  deliverable_location: G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001.md
+  manifest_location: G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001.manifest.sha256
+  manifest_verified: true
+  physical_architecture_options_evaluated: 4
+  option_names: [A_STATUS_QUO, B_REUSABLE_CORE_SEPARATED_IN_PLACE, C_INDEPENDENT_GENERAL_GOVERNANCE_REPOSITORY, D_MINIMAL_BOUNDED_EXTRACTION]
+  options_retained_as_credible: 4
+  additional_options_manufactured: 0
+  invariant_layers_identified: [L3, L5]
+  requirements_delta_entries_tested: 16
+  blocks_reuse_entries_individually_reasoned: 6
+  recommended_candidate_recorded: true
+  recommended_candidate_shape: STAGED_SEQUENCE_B_THEN_OPTIONAL_D_THEN_DEFERRED_C_WITH_A_AS_FALLBACK
+  unresolved_owner_decisions_recorded: 7
+  target_architecture_selected: true
+  repository_created: false
+  file_extracted_or_migrated: false
+  architecture_or_requirement_implemented: false
+  g3_capability_reallocation_performed: false
+  g2_capability_reclassification_performed: false
+  g2_gap_redisposition_performed: false
+  execution_authorized: true
+  execution_authorization_record: GOV-GEN-DECISION-014/0.1.0
+  execution_authorization_basis: HP-PROMPT-052/0.1.0 (Project Owner, direct single-unit authorization of definition, primary-synthesis execution, and one bounded commit -- explicitly excluding independent review, correction, and acceptance)
+  execution_started: true
+  execution_self_check: PASS
+  split_triggered: false
+  independent_review:
+    performed: true
+    authorized: true
+    review_deliverable: GOV-GEN-G5-INDEPENDENT-REVIEW-001/0.1.0
+    review_deliverable_location: G5/GOV-GEN-G5-INDEPENDENT-REVIEW-001.md
+    review_manifest_location: G5/GOV-GEN-G5-INDEPENDENT-REVIEW-001.manifest.sha256
+    review_manifest_verified: true
+    review_authorization_record: GOV-GEN-DECISION-015/0.1.0
+    review_authorization_basis: HP-PROMPT-053/0.1.0 (Project Owner, direct authorization of one independent, clean-session review, performed by a session that did not author the reviewed candidate)
+    reviewer_relationship_to_candidate: NOT_THE_AUTHORING_SESSION
+    verdict: G5_REQUIRES_BOUNDED_CORRECTION
+    targeted_lookups_performed: 3
+    findings_blocking: 0
+    findings_material: 3
+    findings_minor: 1
+    material_finding_ids: [GOV-GEN-G5-IR-001-F1, GOV-GEN-G5-IR-001-F2, GOV-GEN-G5-IR-001-F3]
+    minor_finding_ids: [GOV-GEN-G5-IR-001-F4]
+    recommendation_remains_supportable: true
+    reviewed_candidate_modified: false
+    note: performed as one separate governed unit, per GOV-GEN-G5-CONTRACT-001/0.1.0 §9
+  correction:
+    status: G5_CORRECTION_ACCEPTED_BY_PROJECT_OWNER
+    correction_index: 1
+    id: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+    location: G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.md
+    manifest_location: G5/GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.manifest.sha256
+    manifest_verified: true
+    base_deliverable_modified: false
+    correction_authorization_record: GOV-GEN-DECISION-016/0.1.0
+    correction_authorization_basis: HP-PROMPT-054/0.1.0 (Project Owner, bounded correction of the four G5-B independent-review findings)
+    findings_corrected: 4
+    finding_ids: [GOV-GEN-G5-IR-001-F1, GOV-GEN-G5-IR-001-F2, GOV-GEN-G5-IR-001-F3, GOV-GEN-G5-IR-001-F4]
+    targeted_lookups_performed_by_this_correction: 1
+    requirements_compliance_cells_changed: 1
+    requirements_compliance_cell_changed_id: RD-C5
+    requirements_compliance_cell_change: STRUCTURALLY_ENABLED_to_NOT_ADDRESSED
+    option_reallocation_performed: false
+    g3_capability_reallocation_performed: false
+    g2_capability_reclassification_performed: false
+    g2_gap_redisposition_performed: false
+    recommendation_shape_unchanged: true
+    pending_owner_acceptance: false
+    acceptance_record: GOV-GEN-DECISION-017/0.1.0
+    note: >-
+      Corrects an unsupported G2 reuse-readiness figure provenance
+      (39/27/10/12, re-grounded in G2 §17.2/§23 by one targeted lookup
+      performed during this correction, targeted_lookups_performed 0 -> 1);
+      two wrong "G3 §21 UQ4" citations (corrected to "G3 §8 UQ4"); one
+      requirements-compliance cell (RD-C5 x Option C, STRUCTURALLY_ENABLED ->
+      NOT_ADDRESSED); and one overstated "premature-generalization"
+      attribution to G2's text. Does not reallocate any G3 capability,
+      reclassify any G2 capability, redispose any G2 gap, redo G5-A, or
+      select a target physical architecture. Pending Project Owner
+      acceptance.
+  pending_owner_acceptance: false
+  pending_owner_correction_disposition: false
+  acceptance_record: GOV-GEN-DECISION-017/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-05'
+  controlling_result: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+  carried_forward_issue:
+    id: G3-REFERENCE-DEFECT-001
+    status: CARRIED_FORWARD_NOT_CORRECTED_OR_REOPENED
+    note: >-
+      G3 §10's incorrect "66% ... per G2 §21.2" aggregate statement is a
+      known pre-existing factual/reference defect. It is carried forward only;
+      G3 is neither corrected nor reopened by G5 acceptance.
+  note: >-
+    Contract definition and primary-synthesis execution were authorized and
+    performed in one governed unit per the Project Owner's explicit
+    instruction (HP-PROMPT-052/0.1.0), mirroring the G2/G3/G4 pattern but
+    explicitly narrower in scope: unlike G2/G3/G4, independent review,
+    correction, and Owner acceptance are each reserved to a separate, later
+    governed unit rather than bundled into this one. No G3 capability is
+    reallocated, no G2 capability is reclassified, no G2 gap is redisposed,
+    no target physical architecture is selected, no repository is created,
+    and no file is extracted or migrated. The independent review authorized
+    by HP-PROMPT-053/0.1.0 (GOV-GEN-DECISION-015/0.1.0) has since run as
+    its own separate governed unit and returned verdict
+    G5_REQUIRES_BOUNDED_CORRECTION with three material findings (a G2-
+    evidence citation/provenance defect; a repeated wrong-section citation;
+    one compliance-matrix cell crediting Option C with progress it does
+    not make on RD-C5's own observed evidence) and one minor observation,
+    none blocking and none altering the recommended staged sequence's
+    substance. The Project Owner then issued disposition
+    REQUEST_BOUNDED_G5_CORRECTION (HP-PROMPT-054/0.1.0). The resulting
+    correction, GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+    (GOV-GEN-DECISION-016/0.1.0), corrects exactly those four findings
+    without redoing G5-A, reallocating any G3 capability, reclassifying any
+    G2 capability, redisposing any G2 gap, or selecting a target physical
+    architecture; the recommended staged sequence is unchanged in substance.
+    The Project Owner accepted the corrected result under GOV-GEN-DECISION-017/0.1.0.
+    G5 is ACCEPTED_BY_PROJECT_OWNER; GR and G6 remain unopened and unauthorized.
+
+G6:
+  status: COMPLETED
+  contract: GOV-GEN-G6-CONTRACT-001/0.1.0
+  contract_location: G6/GOV-GEN-G6-CONTRACT-001-v0.1.0.md
+  principal_result: Bounded Extraction Plan
+  prior_accepted_controlling_deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1/0.1.0
+  prior_accepted_controlling_deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R1.md
+  deliverable: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R5/0.1.0
+  deliverable_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R5.md
+  manifest_location: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R5.manifest.sha256
+  manifest_verified: true
+  acceptance_record: GOV-GEN-DECISION-020/0.1.0
+  accepted_by: Project Owner
+  accepted_on: '2026-08-05'
+  pending_owner_acceptance: false
+  independent_plan_review:
+    review_deliverable: GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001/0.1.0
+    review_location: G6/GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001.md
+    review_manifest_location: G6/GOV-GEN-G6-INDEPENDENT-BOUNDED-PLAN-REVIEW-001.manifest.sha256
+    reviewer_relationship_to_reviewed_plan: SESSION_DID_NOT_AUTHOR_OR_CORRECT_G6_PLAN
+    targeted_drill_downs_performed: 3
+    findings: {blocking: 0, material: 2, minor: 0}
+    verdict: G6_R1_PLAN_REQUIRES_BOUNDED_CORRECTION
+    plan_corrected_or_reaccepted: false
+    findings_resolved_by_candidate: [F-001, F-002]
+  execution_authorized: true
+  execution_authorization_basis: Project Owner direct task GOV-GEN G6 — Bounded Extraction Planning
+  extraction_packets: 8
+  extraction_executed: true
+  independent_review_required_before_packet_execution: true
+  context_risk_packets: []
+  default_serial_execution_order: [B-01, B-02, B-03, B-04, B-05, B-06, B-07, B-08]
+  authoritative_hard_dependency_graph: per_packet_depends_on_fields_in_base_plan
+  alternative_schedule_requires_explicit_authorization: true
+  option_b_empirical_proof_packets: [B-02, B-03, B-04, B-08]
+  b_05_b_06_b_07_required_for_stated_option_b_empirical_proof_gate: false
+  b_01_status: B-01_BOUNDARY_BASELINE_REVIEW_READY
+  b_01_refusal_record: G6/B-01/B-01-input-projection-refusal.yaml
+  b_01_refusal_manifest: G6/B-01/B-01-input-projection-refusal.manifest.sha256
+  b_01_frozen_revision: 6fc4fa1a14a665fabfcceb00729222527cd192ba
+  b_01_selector_correction: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R3.md
+  b_01_path_resolution_correction: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R4.md
+  b_01_context_scaling_correction: G6/GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R5.md
+  b_01_second_refusal_record: G6/B-01/B-01-input-projection-refusal-002.yaml
+  b_01_second_refusal_manifest: G6/B-01/B-01-input-projection-refusal-002.manifest.sha256
+  b_01_third_refusal_record: G6/B-01/B-01-input-projection-refusal-003.yaml
+  b_01_third_refusal_manifest: G6/B-01/B-01-input-projection-refusal-003.manifest.sha256
+  b_01_projection_manifest: G6/B-01/B-01-input-projection-manifest.yaml
+  b_01_projection: G6/B-01/B-01-input-projection.md
+  b_01_sharded_constructor: G6/B-01/B-01-sharded-baseline-manifest.yaml
+  b_01_final_baseline_manifest: G6/B-01/B-01-final-baseline-manifest.yaml
+  b_01_independent_review: G6/B-01/B-01-independent-review-001.yaml
+  b_02_core_boundary: G6/B-02/B-02-core-boundary.yaml
+  b_02_adopter_binding: ../../adopters/hugeplanning/core-binding.yaml
+  b_02_validation: G6/B-02/B-02-validation-report.yaml
+  b_02_independent_review: G6/B-02/B-02-independent-review-001.yaml
+  b_02_status: B-02_REVIEW_PASS_B03_AUTHORIZED
+  b_03_configuration_boundary: G6/B-03/B-03-configuration-boundary.yaml
+  b_03_validation: G6/B-03/B-03-validation-report.yaml
+  b_03_independent_review: G6/B-03/B-03-independent-review-001.yaml
+  b_03_status: B-03_REVIEW_PASS_B04_AUTHORIZED
+  b_04_l6_sublayer_boundary: G6/B-04/B-04-l6-sublayer-boundary.yaml
+  b_04_validation: G6/B-04/B-04-validation-report.yaml
+  b_04_status: B-04_REVIEWED_PASS
+  b_05_identity_boundary: G6/B-05/B-05-identity-boundary.yaml
+  b_05_validation: G6/B-05/B-05-validation-report.yaml
+  b_05_independent_integration_review: G6/B-05/B-04-B-05-independent-integration-review-001.yaml
+  b_05_status: B-05_REVIEWED_PASS
+  b_06_delegated_operational_authority_boundary: G6/B-06/B-06-delegated-operational-authority-boundary.yaml
+  b_06_validation: G6/B-06/B-06-validation-report.yaml
+  b_06_status: B-06_DOA_ENFORCEMENT_VALIDATED
+  b_07_query_projection_boundary: G6/B-07/B-07-query-projection-boundary.yaml
+  b_07_validation: G6/B-07/B-07-validation-report.yaml
+  b_07_status: B-07_QUERY_AND_PROGRAM_PROJECTIONS_VALIDATED
+  b_08_adapters: [../../adapters/claude/binding.yaml, ../../adapters/codex/binding.yaml]
+  b_08_validation: G6/B-08/B-08-two-adapter-validation-report.yaml
+  b_08_prior_codex_validation: G6/B-08/B-08-validation-report.yaml
+  b_08_status: B-08_TWO_ADAPTER_CONFORMANCE_VALIDATED
+  b_08_independent_review: NOT_REQUIRED_DETERMINISTIC_CONFORMANCE_ADEQUATE
+  option_b_empirical_proof: OPTION_B_EMPIRICALLY_PROVEN
+  deferred_live_claude_runtime_validation: DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION
+  closure_record: G6/GOV-GEN-G6-CLOSURE-001.yaml
+  g6_defined_generalization_extraction_objective: FULFILLED
+  b_01_coverage: 28_of_28_ACCEPTED_CANONICAL_UNITS
+  b_01_shard_token_counts: [18791, 18204, 4887]
+  b_01_reconciliation_token_count: 4391
+  b_01_second_failure: >-
+    After R3 corrected the sole invalid G5 selector, R2 §1.2 literal-path
+    extraction found 32 bare or context-relative candidates absent at the
+    repository root, including the required future B-01 manifest itself.
+  b_01_failure: >-
+    R2 §1.1 fixes G5 R1 §4.2 as a required seed fragment, but that physical
+    artifact has no §4.2 heading. Construction refused before semantic work,
+    source mutation, or token measurement.
+  project_closure_decision: GOV-GEN-DECISION-021/0.1.0
+  project_closure_status: COMPLETED_ACCEPTED
+  next_authority_required: NONE_PROJECT_CLOSED
+  note: >-
+    R1 preserves the base plan as historical evidence and clarifies that its
+    displayed B-01 through B-08 sequence is the recommended default serial
+    execution order, while each packet's depends_on field is the authoritative
+    hard dependency graph. A different dependency-satisfied schedule requires
+    explicit authorization. The unchanged Option B empirical-proof gate is
+    B-02, B-03, B-04, and B-08; B-05, B-06, and B-07 remain planned work but
+    are not prerequisites for that stated gate unless another accepted
+    dependency requires them. This G6 result plans only the adopted Option B
+    boundary. It neither
+    extracts nor migrates any artifact, creates a repository or target
+    directory, implements AP-1 through AP-6, modifies active instruction
+    surfaces, or executes Option D. The Project Owner accepted R1 as the
+    controlling plan under GOV-GEN-DECISION-020/0.1.0. Its independent bounded
+    review returned G6_R1_PLAN_REQUIRES_BOUNDED_CORRECTION with two MATERIAL
+    findings limited to B-01's circular/non-deterministically measured input
+    projection and its completed-baseline recovery/custody ambiguity. R2 is
+    the execution contract applied under the Project Owner's direct G6 phase
+    authority: it defines a fixed seed,
+    deterministic closure and content-addressed projection manifest, pinned
+    pre-execution token measurement/refusal, and provisional-versus-accepted
+    B-01 custody. B-02 through B-08 are materially unchanged. B-01's fixed
+    seed construction refused deterministically because the required G5 R1
+    §4.2 selector is absent; R3 prospectively corrected it to R1 §3 after
+    deterministic equivalence validation. Restart then refused under R2 §1.2:
+    literal-path extraction yields 32 missing bare/context-relative paths,
+    including the output manifest not yet created. No semantic baseline or
+    packet execution occurred; both refusals are custodied with hashes of
+    every seed source available before failure. The R2 refusal rule prohibits
+    a substitute path-normalization rule, trimming, or semantic work. The
+    later R4/R5 corrections and direct Project Owner G6 authority enabled
+    execution through B-08. B-08 first validated the OpenAI Codex L4 binding.
+    The Project Owner then authorized a distinct Claude Code L4 binding, which
+    resolves exactly the same configured core bytes, preserves project-owned
+    configuration, and renders B-07 bounded projections into ephemeral Claude
+    Markdown without changing CLAUDE.md or .claude/. The deterministic
+    two-adapter comparison proves the accepted Option B gate. Live Claude Code
+    execution remains explicitly DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION and
+    is not claimed. All eight G6 packets are complete; G6 is closed and the
+    defined generalization/extraction objective is fulfilled.
+
+GR:
+  status: REVIEW_EXECUTED_READY_FOR_PROJECT_OWNER_ARCHITECTURE_DECISION
+  contract: GOV-GEN-GR-CONTRACT-001/0.1.0
+  contract_location: G5/GOV-GEN-GR-CONTRACT-001-v0.1.0.md
+  review_deliverable: GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001/0.1.0
+  review_location: G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.md
+  review_manifest_location: G5/GOV-GEN-GR-INDEPENDENT-ARCHITECTURE-REVIEW-001.manifest.sha256
+  execution_authorized: true
+  execution_authorization_basis: Project Owner direct task GOV-GEN GR — Independent Adversarial Architecture Review
+  execution_started: true
+  reviewer_relationship_to_reviewed_synthesis: CLEAN_SESSION_NOT_THE_G5_AUTHORING_OR_CORRECTION_SESSION
+  targeted_drill_downs_performed: 5
+  findings_blocking: 0
+  findings_material: 0
+  findings_minor: 0
+  verdict: GR_SUPPORTS_OWNER_ARCHITECTURE_DECISION
+  g5_recommendation_survives: true
+  architecture_selected: true
+  architecture_decision_record: GOV-GEN-DECISION-019/0.1.0
+  selected_direction: OPTION_B_REUSABLE_CORE_SEPARATED_IN_PLACE
+  g5_modified: false
+  g6_started_or_authorized: false
+  next_authority_required: SEPARATE_PROJECT_OWNER_AUTHORIZATION_FOR_ANY_G6_OR_IMPLEMENTATION_WORK
+  note: >-
+    GR independently tested the accepted G5 staged recommendation against the
+    accepted G3 and G4 results. The Project Owner subsequently adopted Option
+    B as the architectural direction under GOV-GEN-DECISION-019/0.1.0. GR did
+    not itself select the architecture, correct G5, or authorize G6.
+
+decisions:
+  - id: GOV-GEN-DECISION-001
+    version: 0.1.0
+    subject: G1A acceptance
+  - id: GOV-GEN-DECISION-002
+    version: 0.1.0
+    subject: canonical reconciliation and G1B simplification authorization
+  - id: GOV-GEN-DECISION-003
+    version: 0.1.0
+    subject: G1B Governance Capability Map acceptance
+  - id: GOV-GEN-DECISION-004
+    version: 0.1.0
+    subject: G2 contract authorization and execution
+  - id: GOV-GEN-DECISION-005
+    version: 0.1.0
+    subject: G2 bounded correction R1 and evidence reconciliation
+  - id: GOV-GEN-DECISION-006
+    version: 0.1.0
+    subject: G2 corrected result (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-007
+    version: 0.1.0
+    subject: G2 post-baseline instruction delta evidence custody
+  - id: GOV-GEN-DECISION-008
+    version: 0.1.0
+    subject: G3 contract authorization and execution
+  - id: GOV-GEN-DECISION-009
+    version: 0.1.0
+    subject: G3 bounded correction R1 (Owner-review findings)
+  - id: GOV-GEN-DECISION-010
+    version: 0.1.0
+    subject: G3 corrected result (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-011
+    version: 0.1.0
+    subject: G4 contract authorization and execution
+  - id: GOV-GEN-DECISION-012
+    version: 0.1.0
+    subject: G4 bounded independent-review correction R1
+  - id: GOV-GEN-DECISION-013
+    version: 0.1.0
+    subject: G4 corrected result (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-014
+    version: 0.1.0
+    subject: G5-A contract authorization and primary-synthesis execution
+  - id: GOV-GEN-DECISION-015
+    version: 0.1.0
+    subject: G5-B independent review authorization and execution
+  - id: GOV-GEN-DECISION-016
+    version: 0.1.0
+    subject: G5 bounded independent-review correction R1
+  - id: GOV-GEN-DECISION-017
+    version: 0.1.0
+    subject: G5 corrected result (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-018
+    version: 0.1.0
+    subject: G3 corrected result (R2) Project Owner acceptance
+  - id: GOV-GEN-DECISION-019
+    version: 0.1.0
+    subject: Project Owner architecture decision — staged physical architecture adoption
+  - id: GOV-GEN-DECISION-020
+    version: 0.1.0
+    subject: G6 corrected bounded extraction plan (R1) Project Owner acceptance
+  - id: GOV-GEN-DECISION-021
+    version: 0.1.0
+    subject: final Project Owner project closure
+
+not_authorized_by_this_program:
+  - target_architecture_selection
+  - kernel_repository_ownership_decision
+  - new_repository_creation
+  - kernel_extraction_or_migration
+  - delegated_operational_authority_implementation
+  - provider_neutral_governance_implementation
+  - implementation_of_recorded_g1b_gaps
+  - AGENTS_md_or_CLAUDE_md_modification
+  - AET_CWG_or_SVP_modification
+  - reclassification_of_any_capability
+  - redisposition_of_any_g1b_gap
+  - resolution_of_any_g2_section_21_unresolved_question
+  - reallocation_of_any_g3_capability_beyond_rd_c9
+  - implementation_of_any_g4_requirement_or_architecture_pressure
+  - independent_review_of_the_g5_correction_r1
+  - option_d_pilot_execution
+  - option_c_repository_creation
+
+option_c:
+  status: PUBLISHED_RC_0_1_0_RC_1
+  decision: GOV-GEN-DECISION-023/0.1.0
+  source_freeze: C1/GOV-GEN-OPTION-C-SOURCE-FREEZE-001.json
+  independent_repository: /home/sugar/Proyectos/general-governance
+  publication: DURABLY_PUBLISHED
+  framework_version: 0.1.0-rc.1
+  immutable_framework_commit: d2f84cdb933f0738003d6de9696f44226c734065
+  hugeplanning_adoption: EXTERNAL_ADOPTER_001_C4_LOCAL_CONFORMANCE_PASS
+  hugeplanning_integration: PR_6_PUBLICATION_INTEGRATION_VEHICLE
+  dopis_adoption: NOT_STARTED_ADOPTER_002

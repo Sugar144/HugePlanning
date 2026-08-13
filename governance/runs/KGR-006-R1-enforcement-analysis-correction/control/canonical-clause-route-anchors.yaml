@@ -1,0 +1,55 @@
+canonical_clause_route_anchors:
+  schema_version: 0.1.0
+  status: IMMUTABLE_SOURCE_DERIVATION_FOR_CORRECTION
+  source:
+    path: governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md
+    artifact_id: KD-R05
+    interpretation: Clause anchors are transcribed from the 20 source-table rows; LLR IDs follow source row order.
+  applicable_pair_count: 46
+  applicable_pairs:
+    LLR-001: [K-002, K-006, K-007]
+    LLR-002: [K-001, K-002]
+    LLR-003: [K-001, K-006]
+    LLR-004: [K-003, K-005]
+    LLR-005: [K-004, K-005]
+    LLR-006: [K-005, K-006]
+    LLR-007: [K-004, K-005]
+    LLR-008: [K-004, K-005, K-007]
+    LLR-009: [K-004, K-007]
+    LLR-010: [K-001, K-002, K-006]
+    LLR-011: [K-001, K-004, K-007]
+    LLR-012: [K-005, K-007]
+    LLR-013: [K-002, K-006]
+    LLR-014: [K-006]
+    LLR-015: [K-001, K-003, K-005]
+    LLR-016: [K-005, K-007]
+    LLR-017: [K-002, K-003, K-004, K-005, K-006, K-007]
+    LLR-018: [K-002, K-003, K-004, K-007]
+    LLR-019: []
+  deferred_pair_count: 2
+  deferred_pairs:
+    LLR-020: [K-004, K-005]
+  llr_020_disposition:
+    applicability: NOT_APPLICABLE_TO_GOV_5_EXECUTION
+    later_phase_destination: GOV-8
+    reason: GOV-5 analyzes enforcement implications and derived requirements; it does not perform historical S0a-S1 audit or regularization.
+  evaluation_omissions_requiring_explicit_preservation:
+    - K-002/LLR-017
+    - K-003/LLR-017
+    - K-003/LLR-018
+    - K-004/LLR-011
+    - K-004/LLR-017
+    - K-004/LLR-018
+    - K-005/LLR-004
+    - K-005/LLR-007
+    - K-005/LLR-008
+    - K-005/LLR-016
+    - K-005/LLR-017
+    - K-006/LLR-017
+    - K-007/LLR-001
+    - K-007/LLR-008
+    - K-007/LLR-009
+  additional_source_output_mappings_not_canonical_anchors:
+    - K-003/LLR-005
+    - K-004/LLR-019
+  authority_limit: This crosswalk preserves source routing for validation; it does not change Kernel meaning or authorize a control.

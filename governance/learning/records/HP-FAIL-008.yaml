@@ -1,0 +1,104 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-008
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Controller apply path ignored canonical suffixed run directory
+  context:
+    phase: Phase 2.4
+    run: KGR-005
+    component: Controller Transition Custody
+    branch: governance/kernel-designer-revision-v0.1
+    commit: a2f8caa6c3b3497e8673c256e58c41877afd098f
+    environment: Codex CLI governance execution
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  - TOOLING_GAP
+  - NEAR_MISS
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: Applying a validated Controller transition should write the immutable
+    record inside the existing canonical run directory.
+  observed_behavior: apply_loop_transition.py concatenated history-root and source_run,
+    creating governance/runs/KGR-005 instead of using governance/runs/KGR-005-kernel-adversary-targeted-closure.
+  impact: The valid transition bytes were initially placed outside the canonical KGR-005
+    run tree and would not satisfy run custody or affected-state reconciliation without
+    correction.
+  detection_method: The applied tool result reported created_path governance/runs/KGR-005/controller/controller-transition.json,
+    which differed from the canonical run manifest location.
+  root_cause:
+    immediate: The apply target used Path(history_root) / source_run even though repository
+      run directories include descriptive suffixes.
+    systemic: Synthetic apply tests modeled bare KGR-005 directories and did not exercise
+      the repository naming convention.
+    contributing_factors:
+    - Read-side history discovery already used a wildcard and therefore masked the
+      write-side mismatch.
+    - No prior real Controller transition existed to exercise canonical custody.
+  response:
+    containment: Do not invoke a second transition; preserve the valid record bytes
+      and stop state reconciliation until canonical custody is corrected.
+    correction: Add deterministic unique suffixed-run resolution, relocate the already-created
+      record byte-identically into the canonical KGR-005 controller directory, and
+      remove the empty accidental directory.
+    prevention:
+    - Test canonical suffixed run-directory resolution.
+    - Keep transition application idempotence and immutable-target tests.
+    - Verify created_path against the run manifest location before claiming application
+      complete.
+    accountable_owner: Project Owner
+    validation_required:
+    - Verify the relocated transition SHA-256 is unchanged.
+    - Replay Controller history from governance/runs with zero diagnostics.
+    - Run affected Controller tests and Phase 2.4 contracts.
+  learning:
+    reusable_lesson: A Controller record is not durably imported until its write target
+      resolves the repository's canonical run-directory convention, not merely the
+      short run ID.
+    candidate_system_changes:
+    - SCRIPT
+    - TEST
+    - VALIDATION
+    - WORKFLOW_PATTERN
+    applicable_future_phases:
+    - Phase 2.4 Controller transition
+    - All future formal run transitions
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One applied-path correction and byte-identical relocation are observable;
+      time, tokens, and model usage are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tools/apply_loop_transition.py
+    anchor: run_directory
+    sha256: null
+    availability: PRESERVED
+    note: Prospective correction resolves one canonical suffixed directory.
+  - type: REPOSITORY_PATH
+    locator: governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/controller-transition.json
+    anchor: null
+    sha256: 025c9a070f220505ca7724907ec0be7cec8bf914f9f71f47c0f2ae4978136952
+    availability: PRESERVED
+    note: Relocated applied transition retains the original created bytes.
+  - type: VALIDATION_RECORD
+    locator: Phase 2.4 Controller apply output
+    anchor: created_path
+    sha256: null
+    availability: NOT_PRESERVED
+    note: Session output exposed the incorrect short-directory target.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

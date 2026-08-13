@@ -1,0 +1,54 @@
+correction:
+  correction_id: GOV-AUD-001-P01-R1-C1
+  version: 0.1.0
+  audit_id: GOV-AUD-001
+  source_run_id: GOV-AUD-001-P01-R1
+  status: VALIDATED
+  source_published_commit: f4329d011e6006877b9a620fbd646f1c64815c30
+  role: Audit Validation Lifecycle Corrector
+  mode: BOUNDED_VERSIONED_VALIDATION_CORRECTION
+  prompt:
+    prompt_id: GOV-AUD-PROMPT-012
+    catalog_prompt_id: HP-PROMPT-025
+    version: 0.1.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md
+    sha256: 7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea569119f5c4edc5d
+  authorization:
+    authorization_id: GOV-AUD-CORR-AUTH-001
+    version: 0.1.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/authorization/GOV-AUD-CORR-AUTH-001-v0.1.0.yaml
+    execution_count_limit: 1
+    execution_count_consumed: 1
+    remaining_execution: NONE
+    prior_authorization_reused: false
+  initial_validation:
+    targeted_checks: PASSED
+    full_governance_suite: FAILED
+    passed_tests: 141
+    failed_tests: 3
+    result: INCOMPLETE_VALIDATION
+    cause: PLANNING_ONLY_VALIDATOR_LIFECYCLE_DEFECT
+  corrected_validation:
+    focused_validator_tests: PASSED
+    lifecycle_regression_tests: PASSED
+    planning_only_state: VALID
+    one_pass_executed_state: VALID
+    full_governance_suite: PASSED
+    passed_tests: 152
+    failed_tests: 0
+    final_validation_result: VALID
+  substantive_outputs:
+    changed: false
+    hashes:
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/01-verified-capability-inventory.yaml, sha256: 0e1ae26cfd8201e781768eec81045c056b1bc1cd557b0ab1f9fbcae1d47cb124}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/02-repetition-waste-and-burden-analysis.md, sha256: 57cbd6fc8d151d6c338a14c9c6f51e702f9a8519136d5dde5b2d20b2327f900f}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/03-ranked-gap-register.yaml, sha256: 8a485a3df850d6f9b37c4490435980715ddd84c689567ad3a94be89dca674cde}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/04-pass-01-findings-and-handoff.md, sha256: fd3e035812150b61f1dc54ad33412d5d8c09dcb31abe5a8ddaebd34e8323d2ff}
+  authority_boundary:
+    pass_01_accepted: false
+    checkpoint_a_completed: false
+    pass_02_authorized_or_executed: false
+    gov_7_activated: false
+    recommendations_accepted: false
+    implementation_authorized: false
+    od_006_status: UNRESOLVED_TRIGGER_GATED

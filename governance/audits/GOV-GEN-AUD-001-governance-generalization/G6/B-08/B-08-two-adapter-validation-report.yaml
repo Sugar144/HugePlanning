@@ -1,0 +1,44 @@
+document_id: GOV-GEN-G6-B-08-TWO-ADAPTER-VALIDATION-001
+version: 0.1.0
+status: VALID
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B08_FIRST_PROVIDER_ADAPTER
+adapters:
+  claude_code:
+    binding: governance/adapters/claude/binding.yaml
+    renderer: governance/tools/render_g6_b08_claude_context.py
+    runtime_execution: NOT_PERFORMED
+  openai_codex:
+    binding: governance/adapters/codex/binding.yaml
+    renderer: governance/tools/render_g6_b08_codex_context.py
+    runtime_execution: PASS_RETAINED_FROM_GOV_GEN_G6_B_08_VALIDATION_001
+validations:
+  common_reusable_core_contract: PASS
+  identical_configured_core_resolution: PASS
+  provider_specific_mechanics_isolated_to_l4: PASS
+  no_normative_l0_l1_duplication: PASS
+  project_owned_configuration_preserved: PASS
+  common_identity_semantics: PASS
+  common_doa_semantics: PASS
+  bounded_b07_projection_rendering: PASS
+  adapter_removal_does_not_mutate_or_redefine_core: PASS
+  active_claude_instruction_surfaces_unchanged: PASS
+deferred_live_claude_runtime_validation:
+  status: DEFERRED_LIVE_CLAUDE_RUNTIME_VALIDATION
+  reason: Claude execution was expressly excluded from this Codex session.
+  exact_residual: >-
+    A future live Claude Code execution may validate provider-runtime behavior
+    only; it is not evidence fabricated by this deterministic conformance run.
+option_b_empirical_proof:
+  verdict: OPTION_B_EMPIRICALLY_PROVEN
+  basis:
+    B-02: reusable physical core/adopter boundary independently reviewed
+    B-03: project-owned configuration seam independently reviewed
+    B-04: READY L6 extraction preserving semantics independently reviewed
+    B-08: two distinct L4 adapters deterministically bind the same configured reusable core
+  exclusions:
+    - external_second_consumer_not_proven
+    - option_c_readiness_not_proven
+    - l0_distribution_or_versioning_not_solved
+    - ap_1_through_ap_6_not_universally_complete
+    - live_claude_execution_not_claimed
+result: B-08_TWO_ADAPTER_CONFORMANCE_VALIDATED_OPTION_B_EMPIRICALLY_PROVEN

@@ -1,0 +1,150 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-014
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_AND_RECORD_GOV_GEN_G5A_CONTRACT_DEFINITION_PRIMARY_SYNTHESIS_AND_LOCAL_COMMIT
+  program_id: GOV-GEN-AUD-001
+  phase: G5-A
+  subject_contract: GOV-GEN-G5-CONTRACT-001/0.1.0
+  subject_deliverable: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0
+  source_prompt: HP-PROMPT-052/0.1.0
+  authorized:
+    - canonical definition of G5-A (Physical Architecture Synthesis) as one
+      contract, GOV-GEN-G5-CONTRACT-001/0.1.0, explicitly scoped narrower
+      than the G2/G3/G4 pattern -- primary synthesis only, with independent
+      review, correction, and acceptance each reserved to a separate, later,
+      explicit Owner authorization
+    - execution of that contract within the same governed unit, with no
+      further Owner authorization gate for the primary-synthesis candidate
+      itself
+    - comparison of four materially distinct candidate physical
+      architectures (A status quo, B reusable core separated in-place, C
+      independent general-governance repository, D minimal/bounded
+      extraction), none manufactured beyond the evidence base
+    - mapping of the accepted G3 R1 eight-layer model to physical ownership
+      under each candidate
+    - testing of all sixteen accepted G4 R1 requirements-delta entries, with
+      individually reasoned per-option disposition for all six BLOCKS_REUSE
+      entries, against each candidate
+    - recording of tradeoffs, failure modes, migration/provenance
+      implications, a recommended candidate, unresolved Owner decisions, and
+      explicit non-decisions
+    - creation of the minimum decision/state/index reconciliation artifacts
+      required by existing GOV-GEN conventions
+    - one bounded local commit
+  g5a_execution_authorized: true
+  g5a_execution_authorization_basis: >-
+    HP-PROMPT-052/0.1.0 itself grants canonical definition, primary-synthesis
+    execution, and one bounded local commit directly, in a single governed
+    unit, mirroring the G2/G3/G4 pattern (HP-PROMPT-043/0.1.0,
+    GOV-GEN-DECISION-004/0.1.0; HP-PROMPT-047/0.1.0, GOV-GEN-DECISION-008/0.1.0;
+    HP-PROMPT-050/0.1.0, GOV-GEN-DECISION-011/0.1.0) but explicitly narrower:
+    unlike G2/G3/G4, this authorization does not extend to independent
+    review, correction, or Owner acceptance of the resulting candidate, all
+    of which the authorizing prompt itself reserves to a separate, later,
+    explicit Owner authorization (HP-PROMPT-052/0.1.0 "Boundaries": "perform
+    the independent/adversarial G5 review", "correct the resulting G5
+    candidate", "accept G5" are each listed as forbidden here). This decision
+    reconciles that already-granted, narrower authorization into durable
+    GOV-GEN custody; it does not itself add a new gate, and it does not
+    extend authority beyond what the prompt granted.
+  g5a_execution_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - filesystem_or_package_topology_selection
+    - kernel_extraction_or_migration
+    - delegated_operational_authority_implementation
+    - provider_neutral_governance_implementation
+    - provider_or_executor_adapter_implementation
+    - query_or_projection_tooling_implementation
+    - storage_or_query_technology_selection
+    - implementation_of_any_g4_requirement_or_architecture_pressure
+    - reclassification_of_any_g2_capability
+    - redisposition_of_any_g2_gap
+    - reallocation_of_any_g3_capability_or_redesign_of_the_eight_layer_model
+    - manufacture_of_physical_architecture_options_not_materially_distinct
+    - independent_or_adversarial_g5_review_of_this_candidate
+    - correction_of_this_candidate
+    - owner_acceptance_of_this_candidate
+    - gr_authorization
+    - g6_authorization
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+  execution_topology_rule: >-
+    Single L1_CLEAN_SESSION, four-option comparison across eight layers and
+    sixteen requirements-delta entries (GOV-GEN-G5-CONTRACT-001/0.1.0 §3).
+    Evidence volume is explicitly not a session-split trigger; a split is
+    warranted only by a genuinely independent decision, authority,
+    validation, acceptance, or material-risk boundary (unchanged from the
+    G2/G3/G4 contracts' own navigation-load rule). Unlike G2/G3/G4, this
+    contract's execution model terminates before any independent review,
+    which is deferred to a separate governed unit.
+  final_status: G5A_CONTRACT_ACCEPTED_EXECUTED_AND_LOCALLY_COMMITTED_PENDING_SEPARATE_INDEPENDENT_REVIEW_AUTHORIZATION
+  reviewed_evidence:
+    deliverable_terminal_status: G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW
+    controlling_result: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0
+    physical_architecture_options_evaluated: 4
+    options_retained_as_credible: 4
+    additional_options_manufactured: 0
+    invariant_layers_identified: [L3, L5]
+    requirements_delta_entries_tested: 16
+    blocks_reuse_entries_individually_reasoned: 6
+    recommended_candidate_shape: STAGED_SEQUENCE_B_THEN_OPTIONAL_D_THEN_DEFERRED_C_WITH_A_AS_FALLBACK
+    unresolved_owner_decisions_recorded: 7
+    targeted_lookups_performed: 0
+    self_check_result: 'PASS (G5 contract §6, checks 1-10)'
+    worktree_clean_outside_g5_and_reconciliation_surfaces: true
+    head_before: e62040b3c137204f105e8b5f23686d5d190a2c93
+    manifest: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001.manifest.sha256
+    manifest_verified: true
+  pending_owner_acceptance_of_g5a_result: true
+  pending_independent_review_authorization: true
+  not_accepted:
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_delegated_operational_authority
+    - implementation_of_provider_neutral_governance
+    - implementation_of_any_g4_requirement_or_architecture_pressure
+    - reallocation_of_any_g3_capability
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - gr_or_g6_authorization
+    - the_recommended_staged_sequence_as_a_binding_selection
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct, single-prompt
+    authorization of G5-A's canonical definition, primary-synthesis
+    execution, and one bounded local commit (HP-PROMPT-052/0.1.0) into
+    durable GOV-GEN-AUD-001 custody, mirroring the G2/G3/G4 pattern under
+    GOV-GEN-DECISION-004/0.1.0, GOV-GEN-DECISION-008/0.1.0, and
+    GOV-GEN-DECISION-011/0.1.0, but explicitly narrower in scope: this
+    authorization does not extend to independent review, correction, or
+    Owner acceptance, each of which the authorizing prompt itself reserves
+    to a separate, later governed unit. G5-A compares four materially
+    distinct candidate physical architectures against the accepted G3 R1
+    eight-layer model and the accepted G4 R1 sixteen-entry requirements-delta
+    register, without reallocating any G3 capability or
+    reclassifying/redisposing any G2 capability or gap, and without
+    selecting, implementing, or extracting anything. No independent review
+    of this candidate has been performed; none is authorized by this
+    decision.
+  next_governed_state: >-
+    GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0 is
+    G5A_PRIMARY_SYNTHESIS_READY_FOR_INDEPENDENT_REVIEW. The next governed
+    state is a separate, explicit Project Owner authorization of an
+    independent/adversarial review of this candidate; only after that review
+    (and any correction it triggers) may the Project Owner review and accept,
+    reject, or request further correction of a G5 result, and only after
+    such acceptance may the Owner separately authorize GR (the
+    architecture-decision gate) or G6. This decision does not itself
+    authorize that review, does not accept the G5-A candidate, and does not
+    open, scope, or authorize GR or G6.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

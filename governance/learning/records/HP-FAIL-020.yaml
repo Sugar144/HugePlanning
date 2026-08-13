@@ -1,0 +1,82 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-020
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Material governance completion left status-bearing surfaces divergent
+  context:
+    phase: GOV-5
+    run: KGR-006-R1
+    component: Durable cross-surface governance state
+    branch: governance/kernel-designer-revision-v0.1
+    commit: 16e0959eccc3c413da5d2ad11f7a881c92c25411
+    environment: Repository governance custody and validation
+  primary_classification: PROCESS_DEFECT
+  classification: [PROCESS_DEFECT, TOOLING_GAP]
+  severity: HIGH
+  status: CORRECTED
+  expected_behavior: Completion of material governance work reconciles every affected durable status surface and validates their shared state before publication.
+  observed_behavior: KGR-006-R1 execution and import facts were current in the run and authorization records while GOV-DEC-019 still described the authorization as open, governance/README.md still described KGR-005 and GOV-4 as pending, and no canonical validator compared all affected surfaces.
+  impact: Readers and automation could select an obsolete phase or authority state, incorrectly infer remaining execution authority, or miss required Owner-decision and phase boundaries.
+  detection_method: Project Owner-directed comparison of the run, authorization, decision log, registry, plan, current state and README after KGR-006-R1 controlled import.
+  root_cause:
+    immediate: The prior task validated its local import and authorization mutation but did not reconcile or compare every status-bearing surface.
+    systemic: Governance completion instructions and tooling lacked a mandatory canonical cross-surface state-consistency gate.
+    contributing_factors:
+      - Historical decision evidence and terminal reconciliation were not represented as separate append-only entries.
+      - README was treated as orientation prose rather than a status-bearing generated view.
+      - Task-local tests covered package custody without asserting repository-wide durable-state parity.
+      - The first preventive-test pass exposed and corrected a CLI-only module import path before validation.
+  response:
+    containment: Preserve all historical evidence and block further phase transition or execution-authority claims until the durable surfaces agree.
+    correction: Record terminal authorization reconciliation and OD-002/OD-003, reconcile every affected surface, and add stable structured state markers.
+    prevention:
+      - Require material governance completion to reconcile every affected status-bearing surface.
+      - Run the canonical cross-surface validator in targeted, full-suite and isolated-copy validation.
+      - Reject task-local tests as a substitute for durable state reconciliation.
+    accountable_owner: Project Owner
+    validation_required:
+      - Regression tests for stale authority, decisions, README phase, later-phase activation, ratification and package hash state.
+      - Full governance suite and isolated-copy review-bundle validation.
+      - Byte-identity verification for the ten immutable imported artifacts.
+  learning:
+    reusable_lesson: A locally correct governance artifact can still leave the repository operationally false; material completion requires one canonical comparison of every affected durable status surface.
+    candidate_system_changes: [AGENTS_INSTRUCTION, SCRIPT, VALIDATION, TEST, WORKFLOW_PATTERN, DOCUMENTATION]
+    applicable_future_phases: [GOV-5, GOV-6, GOV-7, GOV-8, GOV-9, All material governance work]
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: Seven affected durable surface classes, one authorization conflict and one obsolete README phase are directly observable; historical execution time and cost are unavailable.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/README.md
+      anchor: Authority and status before HP-PROMPT-018 reconciliation
+      sha256: null
+      availability: PRESERVED
+      note: Commit 16e0959 preserves the obsolete KGR-005/GOV-4 current-state view.
+    - type: DECISION
+      locator: governance/DECISION_LOG.md
+      anchor: GOV-DEC-019 and GOV-DEC-020
+      sha256: null
+      availability: PRESERVED
+      note: Append-only open-state history and terminal reconciliation.
+    - type: REPOSITORY_PATH
+      locator: governance/tools/validate_governance_state.py
+      anchor: validate
+      sha256: null
+      availability: PRESERVED
+      note: Canonical preventive cross-surface control.
+  related_records: [HP-FAIL-017, HP-FAIL-019]
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

@@ -1,0 +1,48 @@
+review_package:
+  package_id: GOV-AUD-P03-REVIEW-PACKAGE-001
+  version: 0.1.0
+  audit_id: GOV-AUD-001
+  pass_id: PASS-03
+  source_run_id: GOV-AUD-001-P03-R1
+  status: PREPARED_IMMUTABLE_NOT_REVIEWED
+  purpose: Exact source package for one subsequent independent adversarial review.
+  hash_algorithm: SHA-256
+  package_hash_method: SHA256_OF_LEXICOGRAPHICALLY_PATH_SORTED_SHA256SUM_LINES
+  member_count: 16
+  package_sha256: d93c98535e38d952582b59e460d17ac62db8fea3ebfed794383d384a0b9f43fe
+  members:
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/adversarial-review-plan.yaml, sha256: 93439871f3cf6dec210b1eb0407587457e71feaa3674f74e5cc23ed69461bb00, role: ATTACK_PLAN}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/contract.yaml, sha256: a08e83c5f4a7342b8b2ee2893ddf70be809614cc8ef3b167a83b3b6275be6f65, role: SOURCE_CONTRACT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-030-pass-03-observable-learning-requirements-v0.2.0.md, sha256: 0608eb4eeaf49e9351a77bd376704296e450ed79859cd1cf6cdcf25b78115f9f, role: SOURCE_PROMPT_TEMPLATE}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/authorization/owner-authorization.yaml, sha256: cfc2a3e3684c56d64c6e9ccd90c46a224717bf7fb474afc561549e250360c789, role: EXECUTION_AUTHORIZATION}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/evaluation/pass-03-validation-report.yaml, sha256: f976e9761d82f9c01482f4e466f290082f049629300731e4cec5d4e3eae7838f, role: SOURCE_DETERMINISTIC_VALIDATION_EVIDENCE}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/input/input-manifest.yaml, sha256: 10d4530c2e2ddbab2791f1090d65511977d187feec18cf14b1eb6f29acab4a7f, role: EXECUTION_INPUT_MANIFEST}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/01-observable-event-requirements.yaml, sha256: 6f70027f8611a3398e13216c96a69a97990ec8d818d7ea95552e84b009b23f10, role: SOURCE_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/02-evidence-and-authority-model.yaml, sha256: a7095a69a056ec8cf3ec8cc12b5a192f28e9bd0ed2929a62c3b8a323eee17ff9, role: SOURCE_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/03-learning-lifecycle-and-state-machine.yaml, sha256: 03405a70e2b36680ea7781a7e20a117274eda636a58019eb34ac1ff3d1a6a506, role: SOURCE_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/04-candidate-routing-and-promotion-model.yaml, sha256: 3d207693a464154952d5d229555639d997bc28b30f6641f542a09ab355d6de79, role: SOURCE_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/05-selective-retrieval-requirements.yaml, sha256: 532513a3295b2b1967c428c8b122c987a7254d849be95e842261431867ca3d39, role: SOURCE_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/06-effectiveness-and-burden-metrics.yaml, sha256: d1b10ac3235099dfa1ea4b538046ce480b299cb501ea1535af4c63784b8c0b4e, role: SOURCE_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/07-privacy-retention-and-rollback-requirements.yaml, sha256: fc1579bdd6f68d979efa16ead1c9b1313908788e09508167f6ac8a7265b635c2, role: SOURCE_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/08-tooling-neutral-capability-model.yaml, sha256: 791e95d53b09482b774f25d7ae9fa69aab19e85ed3aeb6695fa246549e8775f5, role: SOURCE_OUTPUT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/output/09-risks-open-questions-and-pass-04-handoff.md, sha256: 70d23e50cfbd1488002c7adaf47f8ad70241b5b39e4f0f7d4007854d697abf65, role: SOURCE_OUTPUT_AND_HANDOFF}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/prompt/GOV-AUD-PROMPT-031-pass-03-execution-v0.1.0.md, sha256: 70dd312e123d438d78c7e5947764cfeddb4b6c383cad76e8e6b4aacdcab2c543, role: EXACT_EXECUTION_PROMPT}
+  attack_dimensions:
+    - false_learning
+    - unsupported_promotion
+    - authority_escalation
+    - privacy_leak
+    - telemetry_overcollection
+    - irrelevant_context
+    - stale_learning
+    - contradiction
+    - metric_gaming
+    - bureaucracy_owner_burden
+    - vendor_lock_in_or_premature_tool_selection
+    - rollback_deletion_failure
+    - unavailable_observability
+  review_requirements:
+    independence: Attacker and decisive criteria must be outside the source author's unilateral control.
+    per_attack_record: [falsifiable_target, attack_method, evidence_examined, counterexample_or_failure_scenario, result, impact]
+    prohibited: [source_self_review_as_independent, mutation_of_source_package, Project_Owner_acceptance, PASS_04_execution]
+  next_action: Conduct one independent adversarial review of PASS-03 using this package. Do not execute PASS-04.

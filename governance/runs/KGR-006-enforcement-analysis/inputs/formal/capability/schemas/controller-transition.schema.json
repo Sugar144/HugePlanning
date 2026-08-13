@@ -1,0 +1,31 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://hugeplanning.local/governance/schemas/controller-transition.schema.json",
+  "title":"GOV-LOOP-001 Controller transition record 0.1.0",
+  "type":"object",
+  "required":["schema_version","loop","source_run","source_role","source_mode","previous_state","input","package_validation_reference","counters_before","counters_after","guards","resulting_state","next_role","next_mode","next_run_to_prepare","authorization_reference","applied","constitutional_authority","evidence_semantics","human_reviewed_repository_updates_required"],
+  "properties":{
+    "schema_version":{"const":"0.1.0"},
+    "loop":{"type":"object","required":["id","version","sha256"],"properties":{"id":{"const":"GOV-LOOP-001"},"version":{"const":"0.1.0"},"sha256":{"pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "source_run":{"pattern":"^KGR-[0-9]{3}$"},
+    "source_role":{"enum":["Kernel Adversary","Kernel Designer","Loop Controller"]},
+    "source_mode":{"enum":["TARGETED_CLOSURE","CLOSURE_REMEDIATION","CONTROLLER_EVENT","CONTROLLER_REENTRY"]},
+    "previous_state":{"type":"string"},
+    "input":{"type":"object","oneOf":[{"required":["declared_role_result"]},{"required":["typed_event"]}]},
+    "package_validation_reference":{"type":["string","null"]},
+    "counters_before":{"$ref":"#/$defs/counters"},
+    "counters_after":{"$ref":"#/$defs/counters"},
+    "guards":{"type":"object","required":["blocking_finding_signature","previous_blocking_finding_signature","same_signature","net_blocking_finding_reduction","repeated_finding_ids","exhausted"],"properties":{"blocking_finding_signature":{"type":["string","null"]},"previous_blocking_finding_signature":{"type":["string","null"]},"same_signature":{"type":"boolean"},"net_blocking_finding_reduction":{"type":["integer","null"]},"repeated_finding_ids":{"type":"array","items":{"type":"string"}},"exhausted":{"type":"array","items":{"type":"string"}},"blocking_finding_count":{"type":"integer","minimum":0},"reopened_finding_ids":{"type":"array","items":{"type":"string"}}},"additionalProperties":false},
+    "resulting_state":{"type":"string"},
+    "next_role":{"type":["string","null"]},
+    "next_mode":{"type":["string","null"]},
+    "next_run_to_prepare":{"type":["string","null"]},
+    "authorization_reference":{"type":["string","null"]},
+    "applied":{"type":"boolean"},
+    "constitutional_authority":{"const":"NONE"},
+    "evidence_semantics":{"const":"VALIDATED_TRANSITION_RECORD_NOT_RATIFICATION_OR_ROLE_EXECUTION_EVIDENCE"},
+    "human_reviewed_repository_updates_required":{"type":"array","items":{"type":"string"},"uniqueItems":true}
+  },
+  "$defs":{"counters":{"type":"object","required":["completed_targeted_closure_runs","completed_designer_remediation_runs"],"properties":{"completed_targeted_closure_runs":{"type":"integer","minimum":0,"maximum":3},"completed_designer_remediation_runs":{"type":"integer","minimum":0,"maximum":2}},"additionalProperties":false}},
+  "additionalProperties":false
+}

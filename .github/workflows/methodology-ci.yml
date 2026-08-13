@@ -1,5 +1,6 @@
 # Methodology CI (02 §10, S0b): the deterministic suite on every push/PR.
-# No secrets, no client data, no live CLI — the suite is fully offline.
+# No secrets or client data. Controller tests acquire the immutable, lock-driven,
+# hash-verified GOV-GEN framework revision before execution.
 name: methodology-ci
 
 on:
@@ -17,7 +18,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install suite dependencies
-        run: python3 -m pip install pyyaml jsonschema
+        run: python3 -m pip install pyyaml jsonschema pytest hypothesis
 
       - name: Configure git identity for scratch repos
         run: |
@@ -26,3 +27,11 @@ jobs:
 
       - name: Run deterministic test suite
         run: tests/run-tests.sh
+
+      - name: Acquire locked GOV-GEN framework
+        run: |
+          FRAMEWORK_ROOT="$(python3 scripts/acquire-framework.py)"
+          echo "GOV_GEN_FRAMEWORK_ROOT=$FRAMEWORK_ROOT" >> "$GITHUB_ENV"
+
+      - name: Run Controller test suite
+        run: governance/tests/run-controller-tests.sh

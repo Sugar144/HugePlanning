@@ -1,0 +1,38 @@
+schema_version: 0.1.0
+record_id: GOV-VAL-009
+tool:
+  name: validate_governance_state.py
+  version: 0.2.0
+subject:
+  phase: GOV-5
+  source_run: KGR-006-R1
+  review: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.2.0.yaml
+  historical_review_preserved: governance/reviews/kgr-006-r1-controlled-import-and-owner-review/gov-5-phase-closure-readiness-v0.1.0.yaml
+  phase_a_pre_review_state_validation:
+    result: VALID_ZERO_DIAGNOSTICS
+    focused_regressions: 14_PASSED
+    recurrence_events: [HP-FAIL-020-E002, HP-FAIL-020-E003]
+  review_validation:
+    exact_allowed_result_count: 1
+    result: READY_FOR_PROJECT_OWNER_GOV_5_CLOSURE_DECISION
+    item_count: 56
+    required_item_fields_complete: true
+    residual_risk_count: 15
+    specialist_dependency_count: 4
+    owner_decision_count: 6
+    completion_gate_satisfied: true
+    owner_acceptance_pending: true
+    gov_5_closed: false
+    gov_6_activated: false
+    risk_accepted: false
+    kernel_ratified: false
+  immutable_imported_artifact_count: 10
+profile_versions:
+  cross_surface_state_consistency: 0.2.0
+  phase_closure_readiness_review: 0.2.0
+  owner_decision_record: 0.1.0
+  immutable_import_validation: GOV-VAL-007/0.1.0
+result: VALID
+diagnostics: []
+constitutional_authority: NONE
+authority_limit: VALIDATION_IS_NOT_ACCEPTANCE_RATIFICATION_EXECUTION_OR_OPERATION

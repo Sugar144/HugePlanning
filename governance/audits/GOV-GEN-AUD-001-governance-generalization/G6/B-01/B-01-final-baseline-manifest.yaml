@@ -1,0 +1,48 @@
+document_id: GOV-GEN-G6-B-01-FINAL-BASELINE-MANIFEST-001
+status: B-01_BOUNDARY_BASELINE_REVIEW_READY
+authority: GOV-GEN-G6-BOUNDED-EXTRACTION-PLAN-001-R5/0.1.0
+frozen_revision: 6fc4fa1a14a665fabfcceb00729222527cd192ba
+tokenizer:
+  package: tiktoken
+  version: 0.12.0
+  encoding: cl100k_base
+  hard_limit: 20000
+sharded_constructor:
+  manifest: B-01-sharded-baseline-manifest.yaml
+  sha256: 7aa5cfecb9acde1e947b5b1e6c9a406cde8e1fd297c29343f53634e69682ed96
+  result: B-01_SHARDED_PROJECTIONS_CONSTRUCTED
+shard_semantic_baselines:
+  - shard_id: B-01-S01
+    projection: b-01-s01-projection.md
+    token_count: 18791
+    baseline: B-01-semantic-baseline-S01.yaml
+    baseline_sha256: e13b942bb79122a42783270793f139972314c83efb69a433eef195115fac9798
+  - shard_id: B-01-S02
+    projection: b-01-s02-projection.md
+    token_count: 18204
+    baseline: B-01-semantic-baseline-S02.yaml
+    baseline_sha256: 1e21013b8eaa94ff642d02d8c3d7d98e2c037a425567924eab8b700bc4c62a36
+  - shard_id: B-01-S03
+    projection: b-01-s03-projection.md
+    token_count: 4887
+    baseline: B-01-semantic-baseline-S03.yaml
+    baseline_sha256: d3d9a591a80c9bded3b7b6552d059863769cf05916384602f9adca1039204c83
+cross_shard_reconciliation:
+  projection: B-01-cross-shard-reconciliation-projection.md
+  sha256: c537935f6d84b0cd72e297b902c6b02629687114a1cf45a13bd3f77077b304fb
+  token_count: 4391
+  relationship_count: 9
+  result: RECONCILED_WITHOUT_FULL_SOURCE_RELOAD
+coverage_proof:
+  accepted_canonical_b01_unit_count: 28
+  covered_canonical_b01_unit_count: 28
+  uncovered_unit_ids: []
+  equality: covered_canonical_b01_sources == accepted_canonical_b01_source_set
+  result: PASS
+scope_preservation:
+  option_b_changed: false
+  b02_through_b08_materially_changed: false
+  l3_l5_ownership_changed: false
+  extraction_started: false
+  historical_evidence_rewritten: false
+next_gate: INDEPENDENT_B01_REVIEW_REQUIRED_BEFORE_B02

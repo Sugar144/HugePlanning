@@ -1,0 +1,176 @@
+prompt_registry:
+  audit_id: GOV-AUD-001
+  version: 0.10.0
+  lifecycle_states: [TEMPLATE, INSTANTIATED_NOT_EXECUTED, EXECUTED, EVALUATED, SUPERSEDED]
+  custody_rule: FINAL_INSTANTIATED_PROMPT_MUST_BE_PRESERVED_AND_HASH_BOUND_BEFORE_EXECUTION
+  methodology_protocol: GOV-AUD-001-METHOD-001/0.3.0
+  methodology_correction_prompt: HP-PROMPT-030/0.3.0
+  methodology_correction_prompt_path: governance/prompts/orchestration/HP-PROMPT-030-gov-aud-001-audit-methodology-correction-v0.3.0.md
+  methodology_correction_prompt_sha256: b47cce4e96daf09657cedfd918a3b47f9ab461ecdc3c55b559fffa1b9fdaad81
+  methodology_correction_history:
+    - HP-PROMPT-030/0.1.0
+    - HP-PROMPT-030/0.2.0
+    - HP-PROMPT-030/0.3.0
+  identity_resolution_rule: RESOLVE_FROM_CANONICAL_REGISTRIES_VERIFY_UNUSED_AND_RECORD_EVIDENCE_BEFORE_BINDING
+  pass_contracts:
+    PASS-03:
+      contract_id: GOV-AUD-001-PASS-03-CONTRACT
+      version: 0.2.0
+      status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+      path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/contract.yaml
+      sha256: a08e83c5f4a7342b8b2ee2893ddf70be809614cc8ef3b167a83b3b6275be6f65
+      predecessor_sha256: a41aef15eeb22f0ce779356f92abd761dfaf52db5082247ca75e7b4b3bcea00c
+    PASS-02:
+      contract_id: GOV-AUD-001-PASS-02-CONTRACT
+      version: 0.2.0
+      status: ACTIVE_FOR_FUTURE_INSTANTIATION
+      path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-02/contract.yaml
+      sha256: 07c6dce2eebe2e8d56fccaae6a600edcbd374d2e3ec1653e92c45b5a7656f276
+      historical_run_binding_preserved:
+        run_id: GOV-AUD-001-P02-R1
+        predecessor_sha256: 9fa786dfad87b4612671928fc9985e07fcb31aafc366487550fed2a262d3a496
+    PASS-07:
+      contract_id: GOV-AUD-001-PASS-07-CONTRACT
+      version: 0.2.0
+      status: ACTIVE_FOR_FUTURE_INSTANTIATION
+      path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-07/contract.yaml
+      sha256: 998550fb2fb4ae517c83f001880eae50a6411275442fd26bdb973a7db73ecfac
+      predecessor_sha256: e2caa6f2ba67261e3c76e53342d848856642b5793fd4e49ede172d63825f50bb
+  prompts:
+    - prompt_id: GOV-AUD-PROMPT-000
+      catalog_prompt_id: HP-PROMPT-023
+      version: 0.2.0
+      lifecycle: EXECUTED
+      purpose: AUDIT_PROGRAM_SCAFFOLD
+      path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/GOV-AUD-PROMPT-000-audit-program-scaffold-v0.2.0.md
+      exact_text_sha256: 7ea731bb822d88328c26bfe69b5280a84a37153bc525f963d051fb74b6033b07
+      audit_pass_executed: false
+    - {prompt_id: GOV-AUD-PROMPT-010, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-01, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-010-pass-01-capability-gap-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-020, version: 0.1.0, lifecycle: SUPERSEDED, pass_id: PASS-02, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.1.0.md, superseded_by: GOV-AUD-PROMPT-020/0.2.0}
+    - {prompt_id: GOV-AUD-PROMPT-020, version: 0.2.0, lifecycle: TEMPLATE, pass_id: PASS-02, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-020-pass-02-cross-layer-self-hosting-v0.2.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-030, version: 0.1.0, lifecycle: SUPERSEDED, pass_id: PASS-03, superseded_by: GOV-AUD-PROMPT-030/0.2.0, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-030-pass-03-measurement-interviewer-evaluation-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-030, version: 0.2.0, lifecycle: TEMPLATE, pass_id: PASS-03, contract_id: GOV-AUD-001-PASS-03-CONTRACT, contract_version: 0.2.0, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-030-pass-03-observable-learning-requirements-v0.2.0.md, exact_text_sha256: 0608eb4eeaf49e9351a77bd376704296e450ed79859cd1cf6cdcf25b78115f9f}
+    - {prompt_id: GOV-AUD-PROMPT-040, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-04, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-040-pass-04-targeted-tooling-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-050, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-05, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-050-pass-05-gov7-strategy-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-060, version: 0.1.0, lifecycle: TEMPLATE, pass_id: PASS-06, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-060-pass-06-synthesis-v0.1.0.md}
+    - {prompt_id: GOV-AUD-PROMPT-070, version: 0.1.0, lifecycle: SUPERSEDED, pass_id: PASS-07, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-070-pass-07-independent-evaluation-v0.1.0.md, superseded_by: GOV-AUD-PROMPT-070/0.2.0}
+    - {prompt_id: GOV-AUD-PROMPT-070, version: 0.2.0, lifecycle: TEMPLATE, pass_id: PASS-07, path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-070-pass-07-independent-evaluation-v0.2.0.md}
+    - prompt_id: GOV-AUD-PROMPT-011
+      catalog_prompt_id: HP-PROMPT-024
+      version: 0.2.0
+      lifecycle: EXECUTED
+      pass_id: PASS-01
+      run_id: GOV-AUD-001-P01-R1
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/prompt/GOV-AUD-PROMPT-011-pass-01-repository-capability-gap-audit-v0.2.0.md
+      exact_text_sha256: 03c436d9610d45ce9d434abe36f3bd8438778be6cd1f76107ff6ecf1fa5fe9b6
+      audit_pass_executed: true
+      recommendations_accepted: false
+      pass_02_authorized_or_executed: false
+    - prompt_id: GOV-AUD-PROMPT-012
+      catalog_prompt_id: HP-PROMPT-025
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_01_VALIDATION_LIFECYCLE_CORRECTION
+      run_id: GOV-AUD-001-P01-R1
+      correction_id: GOV-AUD-001-P01-R1-C1
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md
+      exact_text_sha256: 7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea569119f5c4edc5d
+      audit_pass_reexecuted: false
+      substantive_outputs_changed: false
+      recommendations_accepted: false
+      pass_02_authorized_or_executed: false
+    - prompt_id: GOV-AUD-PROMPT-013
+      catalog_prompt_id: HP-PROMPT-026
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_01_BOUNDED_SUBSTANTIVE_OUTPUT_CORRECTION
+      run_id: GOV-AUD-001-P01-R1
+      correction_id: GOV-AUD-001-P01-R1-C2
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/prompt/GOV-AUD-PROMPT-013-correct-pass-01-substantive-outputs-v0.1.0.md
+      exact_text_sha256: 0075610713cf0ce9dbb530693bdb518a509098e3bfd6b4c0af3694f12d78d1a0
+      original_outputs_modified: false
+      prior_correction_modified: false
+      independent_evaluation_completed: false
+      recommendations_accepted: false
+      pass_02_authorized_or_executed: false
+    - prompt_id: GOV-AUD-PROMPT-015
+      catalog_prompt_id: HP-PROMPT-027
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_01_C2_CLASSIFICATION_AND_TEMPORAL_SEMANTICS_CORRECTION
+      run_id: GOV-AUD-001-P01-R1
+      correction_id: GOV-AUD-001-P01-R1-C3
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/prompt/GOV-AUD-PROMPT-015-correct-pass-01-c2-classification-and-temporal-semantics-v0.1.0.md
+      exact_text_sha256: 51db9c0f18b94b4cc806898077de8d7fbb8033272d21161669757ccac314b547
+      pass_01_accepted: false
+      pass_02_authorized_or_executed: false
+    - prompt_id: GOV-AUD-PROMPT-016
+      catalog_prompt_id: HP-PROMPT-028
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_01_PROJECT_OWNER_ACCEPTANCE_AND_PUBLICATION
+      path: governance/prompts/orchestration/HP-PROMPT-028-accept-gov-aud-001-pass-01-v0.1.0.md
+      exact_text_sha256: 1192572a14204307c5bcb63b50f29479df7ba3930f7e55b9aed8c6fdda43447a
+      pass_01_accepted: true
+      pass_02_authorized_or_executed: false
+    - prompt_id: GOV-AUD-PROMPT-021
+      catalog_prompt_id: HP-PROMPT-029
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_02_CROSS_LAYER_ARCHITECTURE_EXECUTION
+      pass_id: PASS-02
+      run_id: GOV-AUD-001-P02-R1
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/prompt/GOV-AUD-PROMPT-021-pass-02-execution-v0.1.0.md
+      exact_text_sha256: b41cafb36922839781a334b4d851c00c80a253bc5ab7ecf96dd84955501e669c
+      prospective_catalog_identity_amendment:
+        conflicting_candidate: HP-PROMPT-028
+        bound_replacement: HP-PROMPT-029
+      pass_01_accepted: true
+      pass_02_executed: true
+      pass_02_accepted: false
+      checkpoint_a_completed: false
+      pass_03_authorized_or_executed: false
+    - prompt_id: HP-PROMPT-033
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_02_ACCEPTANCE_AND_CHECKPOINT_A_APPROVAL
+      path: governance/prompts/orchestration/HP-PROMPT-033-approve-checkpoint-a-pass-02-v0.1.0.md
+      exact_text_sha256: 142c16a70079013591a0b010df0fbe93410f650302a7f673fe8f91d1552f1496
+      pass_02_accepted: true
+      checkpoint_a_completed: true
+      pass_03_preparation_authorized: true
+      pass_03_execution_authorized: false
+    - prompt_id: GOV-AUD-PROMPT-031
+      catalog_prompt_id: HP-PROMPT-035
+      version: 0.1.0
+      lifecycle: EXECUTED
+      purpose: PASS_03_OBSERVABLE_LEARNING_REQUIREMENTS_EXECUTION
+      pass_id: PASS-03
+      run_id: GOV-AUD-001-P03-R1
+      contract_id: GOV-AUD-001-PASS-03-CONTRACT
+      contract_version: 0.2.0
+      path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P03-R1/prompt/GOV-AUD-PROMPT-031-pass-03-execution-v0.1.0.md
+      exact_text_sha256: 70dd312e123d438d78c7e5947764cfeddb4b6c383cad76e8e6b4aacdcab2c543
+      authorization_id: GOV-AUD-AUTH-003
+      pass_03_executed: true
+      pass_03_accepted: false
+      independent_adversarial_review_completed: false
+      pass_04_authorized_or_executed: false
+    - prompt_id: GOV-AUD-PROMPT-032
+      catalog_prompt_id: HP-PROMPT-037
+      version: 0.1.0
+      lifecycle: INSTANTIATED_NOT_EXECUTED
+      purpose: PASS_03_INDEPENDENT_ADVERSARIAL_REVIEW
+      pass_id: PASS-03
+      review_id: GOV-AUD-001-P03-AR-001
+      reviewed_run: GOV-AUD-001-P03-R1
+      contract_id: GOV-AUD-001-PASS-03-ADVERSARIAL-REVIEW-CONTRACT
+      contract_version: 0.1.0
+      path: governance/prompts/reviews/HP-PROMPT-037-gov-aud-001-pass-03-adversarial-review-v0.1.0.md
+      exact_text_sha256: babbf21a06fe6fde08be087bd2985c3e51869756a8835526d2fd20e8f172c9e9
+      review_execution_authorization_id: GOV-AUD-AUTH-004
+      review_execution_authorization_path: governance/audits/GOV-AUD-001-gov7-enablement/review-executions/GOV-AUD-001-P03-AR-001/authorization/owner-authorization.yaml
+      review_execution_authorized: true
+      review_executed: false
+      pass_03_accepted: false
+      pass_04_authorized_or_executed: false

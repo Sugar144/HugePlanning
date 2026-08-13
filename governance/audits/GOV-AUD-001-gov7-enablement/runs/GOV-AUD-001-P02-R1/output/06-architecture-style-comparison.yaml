@@ -1,0 +1,306 @@
+architecture_style_comparison:
+  audit_id: GOV-AUD-001
+  run_id: GOV-AUD-001-P02-R1
+  pass_id: PASS-02
+  version: 0.1.0
+  status: PROPOSED_COMPARISON_NO_SELECTION
+  statement_label: PROPOSAL
+  style_count: 8
+  selected_option: null
+  winner_selected: false
+  technology_selected: false
+  graph_technology_selected: false
+  distribution_authorized: false
+  evidence_basis:
+    statement_label: VERIFIED_FACT
+    facts:
+      - Existing demonstrated capabilities are predominantly repository-native artifacts, scripts, schemas, validators, version locks and one narrow Controller.
+      - Cross-layer governance application, relationship projection, general workflow orchestration, services, microservices and self-hosting are not implemented.
+      - Demonstrated failures concern custody, canonical paths, replay, provenance, duplicated meaning and status reconciliation.
+      - Current scale, concurrency, availability and distributed-load evidence is unavailable.
+  comparison_scale:
+    fit_to_demonstrated_gaps: [LOW, MEDIUM, HIGH, UNKNOWN]
+    authority_clarity: [LOW, MEDIUM, HIGH, UNKNOWN]
+    auditability: [LOW, MEDIUM, HIGH, UNKNOWN]
+    failure_isolation: [LOW, MEDIUM, HIGH, UNKNOWN]
+    migration_burden: [LOW, MEDIUM, HIGH, UNKNOWN]
+    deterministic_validation: [LOW, MEDIUM, HIGH, UNKNOWN]
+    ai_execution_cycles: [LOW, MEDIUM, HIGH, UNKNOWN]
+    owner_burden: [LOW, MEDIUM, HIGH, UNKNOWN]
+    integration_complexity: [LOW, MEDIUM, HIGH, UNKNOWN]
+    maintenance_burden: [LOW, MEDIUM, HIGH, UNKNOWN]
+    rollback: [LOW, MEDIUM, HIGH, UNKNOWN]
+    premature_distribution_risk: [LOW, MEDIUM, HIGH, UNKNOWN]
+  styles:
+    - style_id: STYLE-01
+      name: REPOSITORY_NATIVE_MODULAR_ARTIFACT_DRIVEN
+      statement_label: PROPOSAL
+      description: Canonical versioned artifacts and deterministic scripts remain the integration medium; modules are separated by contracts and ownership.
+      assessment:
+        fit_to_demonstrated_gaps: HIGH
+        authority_clarity: HIGH
+        auditability: HIGH
+        failure_isolation: MEDIUM
+        migration_burden: LOW
+        deterministic_validation: HIGH
+        ai_execution_cycles: LOW
+        owner_burden: MEDIUM
+        integration_complexity: LOW
+        maintenance_burden: LOW
+        rollback: HIGH
+        premature_distribution_risk: LOW
+      evidence_based_strengths:
+        - Reuses existing prompt, hash, schema, lock, validation, learning and immutable-history capabilities.
+        - Makes provenance and manual inspection straightforward.
+        - Supports regeneration of non-authoritative projections.
+      evidence_based_weaknesses:
+        - Cross-file consistency requires explicit lifecycle validation.
+        - Concurrency, event latency and high-volume query performance are unmeasured.
+        - Repository permissions are not a complete OS or service isolation boundary.
+      adoption_preconditions:
+        - accepted ownership and interface contracts
+        - generic validation for the selected governed transition
+      rejection_or_exit_trigger:
+        - measured scale, availability or isolation need that repository workflows cannot satisfy proportionally
+
+    - style_id: STYLE-02
+      name: LAYERED
+      statement_label: PROPOSAL
+      description: Constitutional, governance-derivation, methodology, project/runtime and projection layers communicate through downward contracts and upward findings.
+      assessment:
+        fit_to_demonstrated_gaps: HIGH
+        authority_clarity: HIGH
+        auditability: HIGH
+        failure_isolation: MEDIUM
+        migration_burden: MEDIUM
+        deterministic_validation: HIGH
+        ai_execution_cycles: MEDIUM
+        owner_burden: MEDIUM
+        integration_complexity: MEDIUM
+        maintenance_burden: MEDIUM
+        rollback: MEDIUM
+        premature_distribution_risk: LOW
+      evidence_based_strengths:
+        - Mirrors the documented authority hierarchy and information layers.
+        - Separates higher authority from lower-layer application.
+        - Provides a clear route for feedback without automatic upward mutation.
+      evidence_based_weaknesses:
+        - Can become ceremonial or duplicate meaning across layers.
+        - Cross-layer changes may require broad migration if contracts are not minimal.
+      adoption_preconditions:
+        - canonical source for every meaning-bearing boundary
+        - explicit rules for when a layer may be omitted
+      rejection_or_exit_trigger:
+        - repeated pass-through layers with no protective or ownership value
+
+    - style_id: STYLE-03
+      name: EVENT_DRIVEN
+      statement_label: PROPOSAL
+      description: Append-only events communicate state changes and findings; consumers derive their own validated projections.
+      assessment:
+        fit_to_demonstrated_gaps: MEDIUM
+        authority_clarity: MEDIUM
+        auditability: HIGH
+        failure_isolation: HIGH
+        migration_burden: HIGH
+        deterministic_validation: MEDIUM
+        ai_execution_cycles: HIGH
+        owner_burden: HIGH
+        integration_complexity: HIGH
+        maintenance_burden: HIGH
+        rollback: MEDIUM
+        premature_distribution_risk: HIGH
+      evidence_based_strengths:
+        - Append-only history aligns with learning, decisions and immutable evidence.
+        - Consumers can remain decoupled and projections regenerable.
+        - Explicit event identities can improve replay.
+      evidence_based_weaknesses:
+        - HP-FAIL-009 shows replay semantics are easy to get wrong even in one narrow Controller.
+        - Event schemas, ordering, idempotency, consumers and recovery add material burden.
+        - No concurrency or latency evidence demonstrates a current event-bus need.
+      adoption_preconditions:
+        - at least two independent consumers of the same event family
+        - deterministic ordering, idempotency, replay and dead-letter recovery
+        - measured benefit over direct artifact contracts
+      rejection_or_exit_trigger:
+        - event plumbing exceeds the protective value or obscures authority
+
+    - style_id: STYLE-04
+      name: CONTROLLER_LED
+      statement_label: PROPOSAL
+      description: Deterministic Controllers replay declared state and route only allowed transitions; substantive roles and humans retain judgment.
+      assessment:
+        fit_to_demonstrated_gaps: MEDIUM
+        authority_clarity: HIGH
+        auditability: HIGH
+        failure_isolation: MEDIUM
+        migration_burden: MEDIUM
+        deterministic_validation: HIGH
+        ai_execution_cycles: MEDIUM
+        owner_burden: MEDIUM
+        integration_complexity: MEDIUM
+        maintenance_burden: MEDIUM
+        rollback: MEDIUM
+        premature_distribution_risk: MEDIUM
+      evidence_based_strengths:
+        - One narrow Controller demonstrates deterministic counters, guards and transition custody.
+        - Makes state transitions explicit and denies constitutional judgment to automation.
+      evidence_based_weaknesses:
+        - The demonstrated Controller is not a general project or audit workflow engine.
+        - Canonical path and replay defects required correction.
+        - Centralizing unrelated workflows may concentrate authority and complexity.
+      adoption_preconditions:
+        - a selected transition with closed deterministic state semantics
+        - clear non-recordable attempts, failure states and manual escape
+        - evidence that direct contracts are insufficient
+      rejection_or_exit_trigger:
+        - Controller must interpret substance, invent authority or coordinate unrelated domains
+
+    - style_id: STYLE-05
+      name: SERVICE_ORIENTED
+      statement_label: PROPOSAL
+      description: Stable business capabilities are exposed through explicit service contracts while canonical ownership remains separated.
+      assessment:
+        fit_to_demonstrated_gaps: LOW
+        authority_clarity: MEDIUM
+        auditability: MEDIUM
+        failure_isolation: HIGH
+        migration_burden: HIGH
+        deterministic_validation: MEDIUM
+        ai_execution_cycles: HIGH
+        owner_burden: HIGH
+        integration_complexity: HIGH
+        maintenance_burden: HIGH
+        rollback: MEDIUM
+        premature_distribution_risk: HIGH
+      evidence_based_strengths:
+        - Could isolate mature capabilities and independent release cycles.
+        - Explicit APIs can clarify ownership if service boundaries already exist.
+      evidence_based_weaknesses:
+        - Current boundaries are analytical proposals, not stable operational services.
+        - Adds deployment, availability, authentication, observability and data-consistency burdens.
+        - No measured scale or team independence requires service boundaries.
+      adoption_preconditions:
+        - stable bounded context with repeated independent demand
+        - service-level ownership, security, telemetry, backup and disaster recovery
+        - migration and fallback from repository-native operation
+      rejection_or_exit_trigger:
+        - service boundary mainly mirrors a folder or creates pass-through calls
+
+    - style_id: STYLE-06
+      name: MICROSERVICES
+      statement_label: PROPOSAL
+      description: Fine-grained independently deployable services own separate runtime state and communicate over network contracts.
+      assessment:
+        fit_to_demonstrated_gaps: LOW
+        authority_clarity: LOW
+        auditability: MEDIUM
+        failure_isolation: HIGH
+        migration_burden: HIGH
+        deterministic_validation: LOW
+        ai_execution_cycles: HIGH
+        owner_burden: HIGH
+        integration_complexity: HIGH
+        maintenance_burden: HIGH
+        rollback: LOW
+        premature_distribution_risk: HIGH
+      evidence_based_strengths:
+        - Can isolate independently scaling or security-separated workloads when such workloads exist.
+        - Independent deployment can reduce coupling for mature multi-owner capabilities.
+      evidence_based_weaknesses:
+        - No current multi-team, load, availability or scaling evidence supports the burden.
+        - Distributed consistency complicates canonical truth, impact analysis and rollback.
+        - Secrets, telemetry, deployment, version skew and disaster recovery would become mandatory.
+      adoption_preconditions:
+        - every distributed-architecture criterion below is satisfied
+        - service-oriented precursor has demonstrated insufficient isolation or scale
+      rejection_or_exit_trigger:
+        - any missing operational owner, canonical-state strategy, recovery evidence or measured need
+
+    - style_id: STYLE-07
+      name: HYBRID_MODULAR_WITH_DERIVED_EVENTS_OR_SERVICES
+      statement_label: PROPOSAL
+      description: Keep canonical repository-native modules and add only selected event or service boundaries for independently demonstrated needs.
+      assessment:
+        fit_to_demonstrated_gaps: MEDIUM
+        authority_clarity: MEDIUM
+        auditability: HIGH
+        failure_isolation: HIGH
+        migration_burden: MEDIUM
+        deterministic_validation: MEDIUM
+        ai_execution_cycles: HIGH
+        owner_burden: HIGH
+        integration_complexity: MEDIUM
+        maintenance_burden: MEDIUM
+        rollback: MEDIUM
+        premature_distribution_risk: MEDIUM
+      evidence_based_strengths:
+        - Allows repository-native truth while isolating a later proven bottleneck.
+        - Supports incremental distribution and fallback.
+      evidence_based_weaknesses:
+        - Two integration models increase conceptual and validation burden.
+        - Boundary creep can create distributed architecture without an explicit decision.
+      adoption_preconditions:
+        - default remains canonical repository-native operation
+        - each added boundary independently satisfies distribution criteria
+        - regeneration, fallback and ownership remain explicit
+      rejection_or_exit_trigger:
+        - hybrid becomes an ungoverned accumulation of exceptions
+
+    - style_id: STYLE-08
+      name: NO_DISTRIBUTION_YET
+      statement_label: RECOMMENDATION
+      description: Preserve technology and topology neutrality; validate contracts and evidence needs before introducing services or distributed infrastructure.
+      assessment:
+        fit_to_demonstrated_gaps: HIGH
+        authority_clarity: HIGH
+        auditability: HIGH
+        failure_isolation: MEDIUM
+        migration_burden: LOW
+        deterministic_validation: HIGH
+        ai_execution_cycles: LOW
+        owner_burden: LOW
+        integration_complexity: LOW
+        maintenance_burden: LOW
+        rollback: HIGH
+        premature_distribution_risk: LOW
+      evidence_based_strengths:
+        - Avoids treating absent products or services as capability gaps.
+        - Preserves later choice while relationship and compatibility contracts are reviewed.
+        - Matches the absence of scale, concurrency, availability and multi-owner service evidence.
+      evidence_based_weaknesses:
+        - Does not itself solve future measured latency, availability or isolation needs.
+        - Requires discipline to maintain modular ownership inside one repository.
+      adoption_preconditions:
+        - none for continued analysis; implementation still requires separate authority
+      rejection_or_exit_trigger:
+        - all distribution criteria are met for a named capability and a bounded adoption decision is made
+  distributed_architecture_criteria:
+    statement_label: PROPOSAL
+    all_required_before_services_or_distribution:
+      - criterion_id: DIST-001
+        requirement: A named capability has measured scale, availability, latency, isolation or independent-release needs that repository-native modular operation cannot satisfy proportionally.
+      - criterion_id: DIST-002
+        requirement: The bounded context and canonical owner are stable across at least one real governed workflow.
+      - criterion_id: DIST-003
+        requirement: Service or event contracts, versioning, compatibility and migration responsibilities are explicit.
+      - criterion_id: DIST-004
+        requirement: Authentication, authorization, secrets, privacy and data-boundary ownership are designed and independently reviewed.
+      - criterion_id: DIST-005
+        requirement: Observability, failure detection, idempotency, replay or reconciliation and manual escape are demonstrated.
+      - criterion_id: DIST-006
+        requirement: Backup, restore, rollback, disaster recovery and irreversible-effect compensation are tested.
+      - criterion_id: DIST-007
+        requirement: Distributed canonical-state and consistency semantics preserve source authority and historical evidence.
+      - criterion_id: DIST-008
+        requirement: The operator and Owner burden is measured and justified against a simpler adequate alternative.
+      - criterion_id: DIST-009
+        requirement: A repository-native fallback or bounded exit path exists.
+      - criterion_id: DIST-010
+        requirement: Project Owner explicitly authorizes the selected distributed scope after independent evaluation.
+  comparison_result:
+    statement_label: DEFERRED
+    conclusion: No architecture winner is selected. The comparison is a CHECKPOINT-A decision aid only.
+  owner_decisions:
+    - {decision_id: OD-P02-016, statement_label: OWNER_DECISION_REQUIRED, question: "Whether CHECKPOINT-A should adopt NO_DISTRIBUTION_YET as a temporary constraint rather than an architecture selection."}
+    - {decision_id: OD-P02-017, statement_label: OWNER_DECISION_REQUIRED, question: "Whether the distribution criteria are sufficient and proportional for later tool and architecture research."}

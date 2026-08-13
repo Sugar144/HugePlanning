@@ -1,0 +1,10 @@
+manifest:
+  manifest_id: GOV-AUD-001-P01-R1-C3-INPUT-001
+  correction_id: GOV-AUD-001-P01-R1-C3
+  source_run_id: GOV-AUD-001-P01-R1
+  prior_correction_id: GOV-AUD-001-P01-R1-C2
+  reviewed_finding: GOV-AUD-001-P01-C2-IER-F001
+  inputs:
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/manifest.yaml, sha256: d4fcc4a808f1dcca90a6bbdde93c1427c39ed48c37a9fbf08953a8f44c7e8f0f, role: IMMUTABLE_C2_MANIFEST}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/GOV-AUD-001-P01-C2-IER-001/output/independent-review-result.md, sha256: 03e9374f604a3d398e42b05d6040f4b66a598a5090b827ceb459f5742df3f7aa, role: INDEPENDENT_REVIEW_RESULT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/prompt/GOV-AUD-PROMPT-015-correct-pass-01-c2-classification-and-temporal-semantics-v0.1.0.md, sha256: 51db9c0f18b94b4cc806898077de8d7fbb8033272d21161669757ccac314b547, role: EXACT_C3_PROMPT}

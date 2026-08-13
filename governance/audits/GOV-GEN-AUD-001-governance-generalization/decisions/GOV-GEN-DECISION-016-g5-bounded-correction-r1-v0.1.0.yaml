@@ -1,0 +1,126 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-016
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_AND_RECORD_GOV_GEN_G5_BOUNDED_INDEPENDENT_REVIEW_CORRECTION_R1
+  program_id: GOV-GEN-AUD-001
+  phase: G5-C
+  subject_base_deliverable: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0
+  subject_review: GOV-GEN-G5-INDEPENDENT-REVIEW-001/0.1.0
+  subject_correction: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0
+  source_prompt: HP-PROMPT-054/0.1.0
+  authorized:
+    - correction of finding F1 (unsupported provenance of the G2
+      reuse-readiness figures 39/27/10/12, base §2, repeated at §3 and §6):
+      one targeted lookup into GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0
+      §17.2/§23 performed during this correction, re-grounding the figures
+      directly in G2 rather than in G3 §10's own separate, unreconciled "66%
+      ... per G2 §21.2" citation (a pre-existing G3-baseline defect this
+      correction flags, not corrects); targeted_lookups_performed corrected
+      from 0 to 1
+    - correction of finding F2 (two wrong "G3 §21 UQ4" citations, base §4.2
+      and §8): both corrected to "G3 §8 UQ4", the section where G3 actually
+      defines and dispositions UQ4
+    - correction of finding F3 (base §5.1/§5.2 compliance-matrix cell RD-C5 x
+      Option C): verdict corrected from STRUCTURALLY_ENABLED to
+      NOT_ADDRESSED, since RD-C5's own observed evidence (HugePlanning's
+      internal CURRENT_STATE.md interleaving GOV-n and GOV-GEN-AUD-001 state)
+      is untouched by extracting L0-L2 into a separate repository
+    - correction of finding F4 (base §8 overstated attribution of a
+      "premature-generalization" warning to G2's text): rephrased as this
+      document's own inference from G2's reuse-readiness counts, not a
+      warning G2 itself issues
+    - minimum current-state/index/reference reconciliation required by the
+      above
+    - one bounded local commit
+  g5_correction_authorized: true
+  g5_correction_authorization_basis: >-
+    This task's own instruction directly authorizes, following
+    GOV-GEN-G5-INDEPENDENT-REVIEW-001/0.1.0's verdict
+    G5_REQUIRES_BOUNDED_CORRECTION and the Project Owner's explicit
+    disposition REQUEST_BOUNDED_G5_CORRECTION, a bounded prospective
+    correction of exactly the four findings (F1-F4) that review recorded --
+    three MATERIAL (F1, F2, F3) and one MINOR (F4) -- following the same
+    prospective-correction convention already established by
+    GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0 (GOV-GEN-DECISION-005/0.1.0),
+    GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0 (GOV-GEN-DECISION-009/0.1.0),
+    and GOV-GEN-G4-CONSUMER-REQUIREMENTS-DELTA-001-R1/0.1.0
+    (GOV-GEN-DECISION-012/0.1.0). Unlike G4's in-unit correction, and like
+    G2/G3's, this correction follows a later, separate independent-review
+    governed unit (G5-B, GOV-GEN-DECISION-015/0.1.0) rather than a review
+    performed within the same session that authored the base deliverable.
+  g5_correction_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - g5a_redo_or_reexecution
+    - option_addition_removal_or_redefinition
+    - l0_l7_mapping_change_beyond_the_named_citation_fix
+    - reallocation_of_any_g3_capability
+    - reclassification_of_any_g2_capability
+    - redisposition_of_any_g2_gap
+    - g2_g3_or_g4_reopening
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - kernel_extraction_or_migration
+    - implementation_of_any_g4_requirement_or_architecture_pressure
+    - delegated_operational_authority_implementation
+    - provider_neutral_governance_implementation
+    - provider_or_executor_adapter_implementation
+    - query_or_projection_tooling_implementation
+    - storage_or_query_technology_selection
+    - independent_review_of_this_correction
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+    - g6_or_gr_phase_definition_or_authorization
+    - owner_acceptance_of_the_g5_corrected_result
+  final_status: G5_CORRECTION_ACCEPTED_LOCALLY_COMMITTED_PENDING_OWNER_ACCEPTANCE
+  reviewed_evidence:
+    correction_terminal_status: G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    findings_corrected: 4
+    finding_ids: [GOV-GEN-G5-IR-001-F1, GOV-GEN-G5-IR-001-F2, GOV-GEN-G5-IR-001-F3, GOV-GEN-G5-IR-001-F4]
+    base_deliverable_modified: false
+    base_deliverable_sha256: a57d34c73e64495214db96278f9d9176898ca68a14263db63bf77b10cd806e2e
+    correction_manifest: GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1.manifest.sha256
+    targeted_lookups_performed_by_this_correction: 1
+    requirements_compliance_cells_changed: 1
+    recommendation_shape_unchanged: true
+    recommended_candidate_shape: STAGED_SEQUENCE_B_THEN_OPTIONAL_D_THEN_DEFERRED_C_WITH_A_AS_FALLBACK
+  pending_owner_acceptance_of_correction: true
+  not_accepted:
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_delegated_operational_authority
+    - implementation_of_provider_neutral_governance
+    - implementation_of_any_g4_requirement_or_architecture_pressure
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - gr_or_g6_phase_authorization
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes authorization of a bounded prospective
+    correction to GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0
+    (HP-PROMPT-054/0.1.0), following GOV-GEN-G5-INDEPENDENT-REVIEW-001/0.1.0's
+    verdict G5_REQUIRES_BOUNDED_CORRECTION. The base deliverable is preserved
+    unmodified as historical evidence; the correction is a new versioned
+    artifact (GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0) read
+    together with the base. GOV-GEN-DECISION-014/0.1.0 (G5-A's own execution
+    record, including its recorded targeted_lookups_performed: 0) is likewise
+    preserved unmodified as an append-only historical record; this decision's
+    own reviewed_evidence above carries the corrected count for this
+    correction session specifically.
+  next_governed_state: >-
+    GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001/0.1.0 together with its
+    correction GOV-GEN-G5-PHYSICAL-ARCHITECTURE-SYNTHESIS-001-R1/0.1.0 is
+    G5_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE. The next governed state
+    is Project Owner acceptance (or rejection, or a further bounded
+    correction request) of the corrected G5 result; only after such
+    acceptance may the Owner separately authorize GR (the architecture-
+    decision gate) or G6. This decision does not itself accept the G5
+    result, and does not open, scope, or authorize GR or G6.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

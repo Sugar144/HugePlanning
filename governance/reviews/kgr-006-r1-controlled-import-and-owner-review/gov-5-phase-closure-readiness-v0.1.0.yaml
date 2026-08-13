@@ -1,0 +1,115 @@
+phase_closure_readiness_review:
+  schema_version: 0.1.0
+  document_id: GOV-REVIEW-012
+  version: 0.1.0
+  phase: GOV-5
+  status: PREPARED_FOR_PROJECT_OWNER_REVIEW_NOT_EXECUTED
+  authority: NONE
+  authoritative_to_close_phase: false
+  creates_new_governance_layer: false
+  phase_transition_requested: false
+  allowed_classifications:
+    - IMPLEMENTED_AND_VALIDATED
+    - CORRECTED_NOT_YET_VALIDATED
+    - DOCUMENTED_ONLY
+    - DEFER_WITH_DESTINATION
+    - NOT_APPLICABLE
+    - RESEARCH_REQUIRED
+    - OWNER_DECISION_REQUIRED
+    - MUST_RESOLVE_BEFORE_GOV_6
+  inventory:
+    open_learning_records_applicable_to_gov_5_or_gov_6:
+      - id: HP-FAIL-005
+        item: Prompt-custody publication-authorization recursion is corrected but its base record has no VALIDATED event.
+        classification: CORRECTED_NOT_YET_VALIDATED
+        destination: Future prompt-custody control validation; not a GOV-6 constitutional judgment.
+        trigger: Next material publication-authorization workflow that exercises the bounded exception.
+    owner_corrections:
+      - id: IE-MC-001
+        item: KGR-006 contemporaneous execution-authorization custody limitation; corrected prospectively through GOV-AUTH-001 for KGR-006-R1.
+        classification: IMPLEMENTED_AND_VALIDATED
+        evidence: GOV-AUTH-001, HP-FAIL-014 and independent evaluation.
+      - id: IE-MC-002
+        item: Preserve 15 omitted applicable clause-route anchors.
+        classification: IMPLEMENTED_AND_VALIDATED
+        evidence: Corrected matrix, validator and independent evaluation.
+      - id: IE-MC-003
+        item: Canonicalize four specialist dependencies and one exact ER-012 boundary.
+        classification: IMPLEMENTED_AND_VALIDATED
+        evidence: Corrected matrix, validator and independent evaluation.
+    material_findings:
+      - id: IE-R1-CF-001_THROUGH_IE-R1-CF-013
+        item: Thirteen independent confirmed findings establish bounded import suitability and preserve non-acceptance boundaries.
+        classification: IMPLEMENTED_AND_VALIDATED
+        evidence: evaluation/01-independent-evaluation-findings.yaml
+      - id: CAPABILITY-EVIDENCE-001
+        item: Zero of 20 enforcement requirements is fully supported; seven are partial, nine gaps, three specialist-dependent and one provider-test-dependent.
+        classification: DEFER_WITH_DESTINATION
+        destination: Owner-scoped future GOV-7 work after ratification and separate authorization.
+        trigger: OD-005 acceptance plus bounded implementation authorization.
+    unresolved_assumptions:
+      - id: UA-001
+        item: Source-executor identity and model/tool correlation evidence were not supplied for the independent evaluation.
+        classification: DOCUMENTED_ONLY
+        destination: Owner consideration in OD-003/OD-004; no retrospective proof may be invented.
+      - id: UA-002
+        item: Provider behavior and effect-class equivalence are empirically untested.
+        classification: RESEARCH_REQUIRED
+        destination: SD-001 in a separately authorized future GOV-7 scope.
+      - id: UA-003
+        item: Actual data, purpose, jurisdiction, provider and threat context are not fixed.
+        classification: DEFER_WITH_DESTINATION
+        destination: OD-006 and SD-002 before relevant real-world data use.
+      - id: UA-004
+        item: Recovery, burden, protective value and decision-usability effectiveness are not operationally evidenced.
+        classification: RESEARCH_REQUIRED
+        destination: SD-003 before GOV-6 if triggered; SD-004 and later operational sampling after authorized implementation.
+    open_methodology_proposals:
+      - {id: HP-MPROP-001, item: Controller testing hardening follow-up evaluations, classification: DEFER_WITH_DESTINATION, destination: Methodology backlog triggers; not GOV-5 closure scope.}
+      - {id: HP-MPROP-002, item: Further reusable governance workflow extraction, classification: DEFER_WITH_DESTINATION, destination: Methodology backlog extraction rule.}
+      - {id: HP-MPROP-003, item: Deterministic review-bundle generation, classification: IMPLEMENTED_AND_VALIDATED, destination: Existing review-bundle tool and suite.}
+      - {id: HP-MPROP-004, item: Agent session supervision and workflow mining, classification: DOCUMENTED_ONLY, destination: Separate future acceptance/operationalization decision.}
+      - {id: HP-MPROP-005, item: Ten phase-transition methodology candidates, classification: DOCUMENTED_ONLY, destination: Methodology backlog candidate register; each requires separate research and authorization.}
+    strategic_ideas_relevant_to_phase_transition:
+      - {id: HP-MCAND-001, item: Durable Owner Idea Ledger, classification: RESEARCH_REQUIRED, destination: External Owner Idea Ledger design; personal ideas only, never canonical requirements.}
+      - {id: HP-MCAND-002, item: Project strategic-idea capture, classification: RESEARCH_REQUIRED, destination: Future project-methodology proposal review.}
+      - {id: HP-MCAND-003, item: Governance hypothesis-to-evidence lifecycle, classification: RESEARCH_REQUIRED, destination: Future project-methodology proposal review.}
+      - {id: HP-MCAND-004, item: Improved Governance Intake Interviewer, classification: RESEARCH_REQUIRED, destination: Future KGR-001 protocol revision research.}
+      - {id: HP-MCAND-005, item: Governance Discovery Core plus Domain Packs, classification: RESEARCH_REQUIRED, destination: Future methodology architecture research.}
+      - {id: HP-MCAND-006, item: Prompt evaluation and optimization, classification: RESEARCH_REQUIRED, destination: Future prompt-methodology research.}
+      - {id: HP-MCAND-007, item: Runtime distribution boundary, classification: RESEARCH_REQUIRED, destination: Future adoption/runtime-boundary research; no runtime change authorized.}
+      - {id: HP-MCAND-008, item: Third-party documentation, classification: RESEARCH_REQUIRED, destination: Future documentation-methodology research.}
+      - {id: HP-MCAND-009, item: Formal-run automation, classification: RESEARCH_REQUIRED, destination: Future deterministic tooling proposal; authority gates must remain human-controlled.}
+      - {id: HP-MCAND-010, item: Phase learning-promotion review, classification: RESEARCH_REQUIRED, destination: Future phase-transition methodology proposal.}
+    unresolved_owner_decisions:
+      - {id: OD-002, item: Exact Kernel version and scope, classification: MUST_RESOLVE_BEFORE_GOV_6, destination: Project Owner decision dossier.}
+      - {id: OD-003, item: Decision-packet comprehensibility or ER-015 review, classification: MUST_RESOLVE_BEFORE_GOV_6, destination: Project Owner decision dossier.}
+      - {id: OD-004, item: Return, reject or separately ratify the exact Kernel, classification: OWNER_DECISION_REQUIRED, destination: Separately authorized GOV-6 constitutional decision.}
+      - {id: OD-005, item: Later minimum GOV-7 package disposition and separate implementation authority, classification: OWNER_DECISION_REQUIRED, destination: After any ratification and before GOV-7 work.}
+      - {id: OD-006, item: Later pilot/provider/data/effect/budget/specialist boundary, classification: OWNER_DECISION_REQUIRED, destination: Before affected GOV-7 work or real-world use.}
+    residual_risks:
+      - id: RR-001_THROUGH_RR-015
+        item: All 15 routed residual risks remain unaccepted, including authority, effects, independence, lineage, real data, deviation, state, implementation evidence, parity, burden, usability, assumptions, architecture classification, transition state and provider equivalence.
+        classification: DEFER_WITH_DESTINATION
+        destination: OD-003/OD-004 disclosure and later exact-scope evidence or competent risk decisions; no risk is accepted here.
+    specialist_dependencies:
+      - {id: SD-001, item: ER-007 provider capability testing, classification: DEFER_WITH_DESTINATION, destination: Before affected GOV-7 provider use or pilot.}
+      - {id: SD-002, item: ER-012 legal/privacy/security boundary, classification: DEFER_WITH_DESTINATION, destination: Before relevant real-data use.}
+      - {id: SD-003, item: ER-015 decision-usability review, classification: DEFER_WITH_DESTINATION, destination: Before GOV-6 if OD-003 finds the packet materially complex.}
+      - {id: SD-004, item: ER-019 recovery/continuity testing, classification: DEFER_WITH_DESTINATION, destination: Before affected GOV-7 work or pilot.}
+  record_class_boundaries:
+    personal_idea: Belongs only in an external Owner Idea Ledger; it is not a canonical project requirement.
+    project_methodology_proposal: Non-authoritative candidate in METHODOLOGY_BACKLOG.md requiring separate review and implementation authorization.
+    learning_record: Evidence-based failure or lesson under governance/learning with controlled status transitions.
+    owner_decision: Explicit competent human choice; no recommendation or review record substitutes for it.
+    active_scope_requirement: Requirement already authorized by the current bounded task or formal contract; candidate ideas do not enter this class silently.
+  personal_tfg_boundary:
+    canonical_project_requirement_created: false
+    treatment: Personal TFG ideas may be captured only in the external Owner Idea Ledger and are not enumerated or adopted here.
+  readiness_summary:
+    technically_validated_import: true
+    owner_decisions_before_gov_6: [OD-002, OD-003]
+    gov_5_close_ready: false
+    gov_5_closed: false
+    gov_6_activated: false
+    exact_next_action: Project Owner reviews OD-002 and OD-003; a later separately authorized closure review decides whether GOV-5 completion criteria are met.

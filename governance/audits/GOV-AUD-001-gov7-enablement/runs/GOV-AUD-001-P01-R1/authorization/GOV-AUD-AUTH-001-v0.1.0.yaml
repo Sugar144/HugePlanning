@@ -1,0 +1,44 @@
+authorization:
+  authorization_id: GOV-AUD-AUTH-001
+  version: 0.1.0
+  evidence_class: CONTEMPORANEOUS_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+  authority: PROJECT_OWNER
+  status: AUTHORIZED_NOT_YET_CONSUMED
+  authorized_run: GOV-AUD-001-P01-R1
+  authorized_pass: PASS-01
+  role: Repository Capability and Gap Auditor
+  mode: REPOSITORY_FIRST_CAPABILITY_GAP_AUDIT
+  execution_count_limit: 1
+  execution_count_consumed: 0
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_head: 2af090ccf00f2cf8fb6d49972f4dacf5e3ddea38
+  prompt_identity: GOV-AUD-PROMPT-011/0.2.0
+  catalog_prompt_identity: HP-PROMPT-024/0.2.0
+  authorized_actions:
+    - inspect the declared read-only scope
+    - execute PASS-01
+    - create the four required outputs
+    - validate them
+    - register the run
+    - create one bounded commit
+    - push without force
+  authorized_write_scope:
+    - governance/audits/GOV-AUD-001-gov7-enablement/**
+    - governance/prompts/orchestration/**
+    - governance/ARTIFACT_REGISTRY.yaml
+    - existing audit indexes or status surfaces only when required to register this exact run
+  not_authorized:
+    - execute later audit passes
+    - perform broad external research
+    - activate or implement GOV-7
+    - select architecture, graph technology or GOV-7 strategy
+    - resolve OD-006
+    - accept recommendations or risk
+    - modify planning, product or runtime artifacts
+    - open a pull request
+    - merge
+    - tag
+    - release
+    - deploy
+  authority_limit: ONE_BOUNDED_PASS_01_EXECUTION_AND_NAMED_PUBLICATION_ACTIONS_ONLY

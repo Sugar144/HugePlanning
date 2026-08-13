@@ -1,0 +1,86 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-013
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Stateful Controller model replaced accepted records with non-recordable attempts
+  context:
+    phase: Bounded Controller test-model correction
+    run: null
+    component: Hypothesis Controller state-machine model
+    branch: governance/kernel-designer-revision-v0.1
+    commit: c330b729462ee578c02e8b717c1e0076a9b42c2f
+    environment: Isolated deterministic review-bundle validation copy
+  primary_classification: PROCESS_DEFECT
+  classification: [PROCESS_DEFECT, TOOLING_GAP]
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: The stateful model retains the latest recordable accepted transition for replay and terminal invariants; non-recordable attempts do not replace it or mutate persistent model state.
+  observed_behavior: ControllerModel._calculate assigned every calculated record to last_record before checking recordable, so a non-completion after CLOSURE_CONFIRMED replaced the accepted terminal record with an unaccepted attempt carrying a next role.
+  impact: Hypothesis falsified the terminal invariant in an isolated bundle copy, blocking valid review-bundle publication. Production Controller state and durable history were not affected.
+  detection_method: The isolated full governance suite generated a sequence ending in CLOSURE_CONFIRMED followed by BLOCKED_BY_PACKAGE_CONFLICT and reported the falsifying example.
+  root_cause:
+    immediate: The model conflated the latest attempted calculation with the latest accepted record.
+    systemic: The property model did not encode the production recordable gate at the point where it maintained accepted-record state.
+    contributing_factors:
+      - Direct worktree execution did not sample the same Hypothesis sequence.
+      - Existing non-completion assertions checked state, counters, and history but not accepted last-record identity.
+  response:
+    containment: Reject the obsolete bundle and stop the KGR-006 second commit.
+    correction: Update last_record only when calculate returns recordable true and add a deterministic terminal regression across every declared non-completion outcome.
+    prevention:
+      - Model accepted durable records separately from attempted calculations.
+      - Assert accepted-record identity after non-recordable attempts.
+      - Require isolated Hypothesis validation before review-bundle publication.
+    accountable_owner: Project Owner
+    validation_required:
+      - Run targeted state-machine and Controller property tests.
+      - Run the full governance suite in worktree and isolated bundle copy.
+      - Validate learning, prompt custody, and git whitespace.
+  learning:
+    reusable_lesson: Property models must preserve the same acceptance gate as production persistence; calculated candidates are not durable transition records.
+    candidate_system_changes: [TEST, VALIDATION]
+    applicable_future_phases: [All Controller and formal transition testing]
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 1
+    measurement_quality: PARTIAL
+    basis: One falsifying Hypothesis example, one bounded model correction, and one obsolete bundle are observable; time, token, and model-use values are unavailable.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/controller/test_state_machine.py
+      anchor: ControllerModel._calculate and test_nonrecordable_attempts_preserve_terminal_accepted_record
+      sha256: null
+      availability: PRESERVED
+      note: Correction and regression preserve accepted-record semantics.
+    - type: REPOSITORY_PATH
+      locator: governance/tools/apply_loop_transition.py
+      anchor: recordable gate in calculate and apply
+      sha256: null
+      availability: PRESERVED
+      note: Production writes only recordable transitions.
+    - type: REPOSITORY_PATH
+      locator: governance/methodology/loops/kernel-design-closure/kernel-design-closure-loop-v0.1.0.yaml
+      anchor: non_completion_events_may_not_mutate_persistent_state
+      sha256: null
+      availability: PRESERVED
+      note: Canonical loop distinguishes attempts/non-completions from persistent transitions.
+    - type: REPOSITORY_PATH
+      locator: governance/prompts/orchestration/HP-PROMPT-014-controller-model-recordable-gate-v0.1.0.md
+      anchor: Exact executed text
+      sha256: null
+      availability: PRESERVED
+      note: Project Owner correction authority.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

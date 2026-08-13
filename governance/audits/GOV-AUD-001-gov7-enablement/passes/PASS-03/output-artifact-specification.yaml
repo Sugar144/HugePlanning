@@ -1,0 +1,15 @@
+output_specification:
+  id: GOV-AUD-001-PASS-03-OUTPUT-SPEC-001
+  version: 0.1.0
+  execution_status_on_success: EXECUTED_VALIDATED_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  artifacts:
+    - {id: GOV-AUD-P03-OUT-001, name: observable-event-requirements, format: YAML, required_fields: [event_classes, observable_fields, unavailable_data_markers, exclusions]}
+    - {id: GOV-AUD-P03-OUT-002, name: evidence-and-authority-model, format: YAML, required_fields: [evidence_classes, authority_matrix, canonicality_rules, prohibited_conflations]}
+    - {id: GOV-AUD-P03-OUT-003, name: learning-lifecycle-and-state-machine, format: YAML, required_fields: [states, valid_transitions, invalid_transitions, verification_evidence]}
+    - {id: GOV-AUD-P03-OUT-004, name: candidate-routing-and-promotion-model, format: YAML, required_fields: [destinations, triage_rules, promotion_targets, promotion_states]}
+    - {id: GOV-AUD-P03-OUT-005, name: selective-retrieval-requirements, format: YAML, required_fields: [dimensions, compact_package_rules, relevance_justification, stale_conflict_fallback_controls]}
+    - {id: GOV-AUD-P03-OUT-006, name: effectiveness-and-burden-metrics, format: YAML, required_fields: [metrics, definitions, unavailable_data_rules, anti_gaming_controls]}
+    - {id: GOV-AUD-P03-OUT-007, name: privacy-retention-and-rollback-requirements, format: YAML, required_fields: [minimization, redaction, retention, deletion, rollback, disablement, manual_fallback, failure_safe_behavior]}
+    - {id: GOV-AUD-P03-OUT-008, name: tooling-neutral-capability-model, format: YAML, required_fields: [separated_capabilities, interfaces, prohibited_selections]}
+    - {id: GOV-AUD-P03-OUT-009, name: risks-open-questions-and-pass-04-handoff, format: Markdown, required_fields: [risks, open_questions, evidence_backed_gaps_only, no_tool_selection]}
+  common_requirements: [statement_labels, evidence_links, authority_boundary, unavailable_data_marker_when_applicable, no_execution_claim_beyond_actual_evidence]

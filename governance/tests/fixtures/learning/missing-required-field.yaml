@@ -1,0 +1,6 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-901
+  date: 2026-07-14
+  recorded_on: 2026-07-14
+  title: Missing context fixture

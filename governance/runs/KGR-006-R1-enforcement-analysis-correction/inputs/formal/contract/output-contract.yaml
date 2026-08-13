@@ -1,0 +1,68 @@
+output_contract:
+  schema_version: 0.2.0
+  id: GOV-OUTPUT-CONTRACT-002
+  version: 0.1.0
+  run: KGR-006-R1
+  base_run: KGR-006
+  role: Enforcement Engineer
+  mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  protocol: {id: GOV-PROTOCOL-004, version: 0.2.0}
+  status: PREPARED_NOT_EXECUTED
+  completed_output_status: CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION
+  source_of_truth: 01-clause-implication-matrix.yaml
+  correction_scope:
+    material_challenges: [IE-MC-001, IE-MC-002, IE-MC-003]
+    permitted_changes:
+      - Preserve explicitly the 15 applicable canonical clause-route anchors omitted by KGR-006.
+      - Canonicalize the four specialist dependencies and reference them by ID.
+      - Use one exact ER-012 safe interim boundary in every occurrence.
+      - Make only strictly necessary cross-artifact consistency updates.
+    forbidden_changes:
+      - Modify any original KGR-006 source or evaluation artifact.
+      - Change Kernel meaning or claim acceptance, ratification, enforceability, implementation, operation, or risk acceptance.
+      - Resolve OD-002 through OD-006 or implement the minimum GOV-7 recommendation.
+      - Activate GOV-6, GOV-7, GOV-8, or GOV-9.
+  coverage:
+    clause_ids: [K-001, K-002, K-003, K-004, K-005, K-006, K-007]
+    routing_ids: [LLR-001, LLR-002, LLR-003, LLR-004, LLR-005, LLR-006, LLR-007, LLR-008, LLR-009, LLR-010, LLR-011, LLR-012, LLR-013, LLR-014, LLR-015, LLR-016, LLR-017, LLR-018, LLR-019, LLR-020]
+    canonical_applicable_pair_count: 46
+    required_omitted_anchor_count: 15
+    llr_020: {applicability: NOT_APPLICABLE_TO_GOV_5_EXECUTION, later_phase_destination: GOV-8}
+  specialist_dependencies:
+    canonical_count: 4
+    ids: [SD-001, SD-002, SD-003, SD-004]
+    requirement_ids: [ER-007, ER-012, ER-015, ER-019]
+    reference_model: CANONICAL_TOP_LEVEL_RECORD_REFERENCED_BY_ID
+    er_012_safe_interim_boundary: Do not process sensitive, regulated, confidential, or actively harmful real data until the applicable boundary is established.
+  owner_decisions:
+    required_ids: [OD-001, OD-002, OD-003, OD-004, OD-005, OD-006]
+    unresolved_ids: [OD-002, OD-003, OD-004, OD-005, OD-006]
+  minimum_gov_7_package: RECOMMENDATION_ONLY
+  outputs:
+    - filename: 00-enforcement-analysis-basis.md
+      format: MARKDOWN
+      required_headings: [Correction identity and bound evidence, Authority and correction boundary, Correction method, Preserved meanings and limitations]
+    - filename: 01-clause-implication-matrix.yaml
+      format: YAML
+      required_headings: []
+    - filename: 02-existing-capability-inventory.md
+      format: MARKDOWN
+      required_headings: [Inventory method, Supported capabilities, Partial capabilities, Gaps and dependencies, Capability count parity]
+    - filename: 03-feasibility-coverage-and-gap-assessment.md
+      format: MARKDOWN
+      required_headings: [Coverage summary, Canonical clause-route preservation, Feasibility limits, Gaps and unsupported scope, Canonical specialist dependencies]
+    - filename: 04-owner-decisions-and-residual-risks.md
+      format: MARKDOWN
+      required_headings: [Reserved human decisions, Decisions required before ratification, Decisions deferred with blocked boundary, Residual risks, Risk acceptance boundary]
+    - filename: 05-minimum-executable-package-recommendation.md
+      format: MARKDOWN
+      required_headings: [Recommendation-only boundary, Minimum GOV-7 package, Requirement traceability, Acceptance evidence for later implementation, Explicit exclusions]
+    - filename: 06-ratification-decision-handoff.md
+      format: MARKDOWN
+      required_headings: [Decision scope, Corrected evidence available, Material limitations and blocked claims, New independent evaluation handoff, Human options, Exact next action]
+  required_output_count: 7
+  independent_evaluation:
+    required: true
+    source_role_may_not_select_or_control_evaluator: true
+    status_before_execution: NOT_STARTED
+  authority_limit: CORRECTION_ANALYSIS_ONLY_NOT_ACCEPTANCE_RATIFICATION_IMPLEMENTATION_OPERATION_OR_RISK_ACCEPTANCE

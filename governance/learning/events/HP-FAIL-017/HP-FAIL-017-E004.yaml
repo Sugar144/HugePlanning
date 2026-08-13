@@ -1,0 +1,32 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-017-E004
+  record_id: HP-FAIL-017
+  date: '2026-07-15'
+  event_type: RECURRENCE
+  status_from: null
+  status_to: null
+  summary: The Phase 2.4 regression also froze the pre-ratification Kernel status in the current-state document after GOV-6 ratification.
+  rationale: After the current-phase wording assertion was corrected, the same full-suite test still required PROPOSED_NOT_RATIFIED to appear in CURRENT_STATE. The bounded correction verifies that status in the immutable KGR-005 run manifest, where it is historically true, while allowing CURRENT_STATE to truthfully follow the later Project Owner ratification.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/test_phase_2_4_contracts.py
+      anchor: test_phase_2_4_registry_and_durable_state_are_consistent
+      sha256: null
+      availability: PRESERVED
+      note: The regression now reads the immutable KGR-005 target status rather than freezing current Kernel status.
+    - type: RUN_ARTIFACT
+      locator: governance/runs/KGR-005-kernel-adversary-targeted-closure/run-manifest.yaml
+      anchor: target.kernel_status
+      sha256: null
+      availability: PRESERVED
+      note: KGR-005 correctly preserves 0.2.0-proposed as not ratified within that historical run.
+    - type: REPOSITORY_PATH
+      locator: governance/CURRENT_STATE.md
+      anchor: Current Kernel
+      sha256: null
+      availability: PRESERVED
+      note: Current state correctly records later Kernel 0.2.0 ratification.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-023-gov-7-audit-program-scaffold-v0.2.0.md
+  accepted_risk: null
+  supersedes: null

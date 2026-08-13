@@ -1,0 +1,70 @@
+manifest:
+  manifest_id: GOV-AUD-001-P03-R1-INPUT-001
+  version: 0.1.0
+  status: BOUND_BEFORE_SUBSTANTIVE_ANALYSIS
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_local_head: e5bdeeafdc2278a2baef67c659eef4a8eab5d867
+  starting_remote_head: e5bdeeafdc2278a2baef67c659eef4a8eab5d867
+  contract_identity: GOV-AUD-001-PASS-03-CONTRACT/0.2.0
+  contract_sha256: a08e83c5f4a7342b8b2ee2893ddf70be809614cc8ef3b167a83b3b6275be6f65
+  template_identity: GOV-AUD-PROMPT-030/0.2.0
+  template_sha256: 0608eb4eeaf49e9351a77bd376704296e450ed79859cd1cf6cdcf25b78115f9f
+  execution_prompt_identity: GOV-AUD-PROMPT-031/0.1.0
+  execution_prompt_sha256: 70dd312e123d438d78c7e5947764cfeddb4b6c383cad76e8e6b4aacdcab2c543
+  catalog_prompt_identity: HP-PROMPT-035/0.1.0
+  catalog_prompt_sha256: 131b9e3b2fe8bdb27214ebbae7965d79d8394e5b7e8b5ede606a85545b883eb3
+  authorization_identity: GOV-AUD-AUTH-003/0.1.0
+  authorization_sha256: cfc2a3e3684c56d64c6e9ccd90c46a224717bf7fb474afc561549e250360c789
+  hash_algorithm: SHA-256
+  path_base: REPOSITORY_ROOT
+  member_count: 33
+  package_hash_method: SHA256_OF_LEXICOGRAPHICALLY_PATH_SORTED_SHA256SUM_LINES
+  input_package_sha256: d8ad0556bf9ece26f3bbe7d42629da26c493744b8ca5661d2111a2c213950ab5
+  baseline_hash_semantics: ALL_EVIDENCE_MEMBERS_HASHED_AT_STARTING_HEAD; PROSPECTIVE_AUTHORIZATION_AND_PROMPTS_BOUND_SEPARATELY
+  inputs:
+    - {path: AGENTS.md, sha256: 33a3b204a52f7911d6db5bb18fd80f27b9ef4590de02e8356b9798e384c8623b, role: REPOSITORY_INSTRUCTIONS}
+    - {path: governance/AGENTS.md, sha256: e9a11a5e896555b0a9d3d95e3d94a8597fb42ce73bae3e8682251894b37a8b16, role: GOVERNANCE_SCOPED_INSTRUCTIONS}
+    - {path: governance/ARTIFACT_REGISTRY.yaml, sha256: 6e0ad230e75504204d26e03007d94b536bc9053690aa2735e6ae715011fa21d6, role: STARTING_CANONICAL_IDENTITY_REGISTRY}
+    - {path: governance/CURRENT_STATE.md, sha256: f46b00b2233c53f2b95abfb60862283f72fa13168146d44e42d5a11b283b6c5e, role: STARTING_GOVERNANCE_STATE}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/01-audit-plan.yaml, sha256: 1da56d456a3a732bf153226e083adbc822dba504fcb9908c3bf4c774e978af1a, role: STARTING_AUDIT_PLAN}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/02-audit-status.yaml, sha256: 3130f87422a44f9e585cbbab1cd2ab3b58188565bbb9de8e3ad066c166a4c799, role: STARTING_AUDIT_STATUS}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml, sha256: d917e2e00bf26f0f8fbb2b6cb77f19e7aac70834ab589391ab19ec21e3f0e60c, role: ACCEPTED_AUDIT_METHODOLOGY}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/decisions/GOV-AUD-DECISION-001-pass-01-acceptance-v0.1.0.yaml, sha256: 334ac85ab175655a41d946b5ac1e060332ecf09c5c2013de7591f458f196faa5, role: PASS_01_ACCEPTANCE}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/decisions/GOV-AUD-DECISION-003-pass-02-checkpoint-a-approval-v0.1.0.yaml, sha256: c8c9997248ed11718500dce74fc4cc53321dad155941c46bd9e97bf0d1953330, role: PASS_02_ACCEPTANCE_AND_CHECKPOINT_A_DECISION}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/adversarial-review-plan.yaml, sha256: 93439871f3cf6dec210b1eb0407587457e71feaa3674f74e5cc23ed69461bb00, role: PREPARED_ADVERSARIAL_REVIEW_PLAN}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/contract.yaml, sha256: a08e83c5f4a7342b8b2ee2893ddf70be809614cc8ef3b167a83b3b6275be6f65, role: PASS_03_CONTRACT}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/output-artifact-specification.yaml, sha256: ffc2567ed96f8341ffe71d85d63f7acada663e847d1be77f0a847896ceb233c6, role: PASS_03_OUTPUT_SPECIFICATION}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/preparation-input-manifest.yaml, sha256: 8661561e4fd02d07ea336b19941dbd4c94b10e1d74ec58c64f39341abaf069c2, role: PREPARATION_CUSTODY}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/passes/PASS-03/validation-plan.yaml, sha256: eecc052a00792a16020bb67c1c95f60e8b765e4c0776f4a07110149743b48041, role: PREPARED_VALIDATION_PLAN}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/prompts/templates/GOV-AUD-PROMPT-030-pass-03-observable-learning-requirements-v0.2.0.md, sha256: 0608eb4eeaf49e9351a77bd376704296e450ed79859cd1cf6cdcf25b78115f9f, role: CANONICAL_PROMPT_TEMPLATE}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/01-corrected-verified-capability-inventory.yaml, sha256: d099e9bcbec6b5fc27e405759360909b9c29c982b6faed3465d75148bc0047b9, role: ACCEPTED_PASS_01_CAPABILITY_EVIDENCE}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/02-corrected-repetition-waste-and-burden-analysis.md, sha256: df5f310afc64b666eea32385f14163fcee75d4871676e0759b893e7c951c5a00, role: ACCEPTED_PASS_01_BURDEN_EVIDENCE}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/output/03-corrected-ranked-gap-register.yaml, sha256: 0c6563dc94edbb3bdf9ec490665b7a97012e56cb68c669ecabe7adf3cf523a2a, role: ACCEPTED_PASS_01_GAP_EVIDENCE}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C3/output/04-corrected-pass-01-findings-and-handoff.md, sha256: 4f2abd592a9813a25b9e68edbe70d4364fba03f9f4f251ea735dc957f9a35fde, role: ACCEPTED_PASS_01_HANDOFF}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/GOV-AUD-001-P01-C3-IER-001/output/independent-confirmation.md, sha256: e6528c323e09df48bb889d86140decaa7905f78f7354f97c9efef0be55dda27f, role: PASS_01_INDEPENDENT_CONFIRMATION}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/manifest.yaml, sha256: 8551e92201a4cc7fd69c4645da1dab611dfc138f8d3283f3b6b6e6383405474b, role: ACCEPTED_PASS_01_RUN}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/evaluation/GOV-AUD-001-P02-IER-002-final-independent-substantive-evaluation.md, sha256: 88979463951f8171feff17388bd6dadd82cd64959bf37b5b3028a4efd2024dd1, role: PASS_02_INDEPENDENT_EVALUATION}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/manifest.yaml, sha256: f787316566c717ecda62bfc2a7bd449d830228507d0fcc57b1c0943583ecce28, role: ACCEPTED_PASS_02_RUN}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/01-bounded-context-and-ownership-model.yaml, sha256: 8ee03f87ca792fc41c366f0150abebc9a3d718441fe7669955baf0d827132742, role: ACCEPTED_PASS_02_OWNERSHIP_MODEL}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/02-cross-layer-interface-and-contract-assessment.md, sha256: ac92b827e6a8ffc3245a792a8ac12de1a6beba3297e0dd65a5b31709232e5415, role: ACCEPTED_PASS_02_INTERFACE_MODEL}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/03-typed-relationship-and-query-model.yaml, sha256: 71122a28793a24f3debfbf586ce5b17357ab397a11b0dda2454bcaaf8b3e8e14, role: ACCEPTED_PASS_02_RELATIONSHIP_MODEL}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/04-version-migration-and-impact-model.md, sha256: 52e155f1a3f2817f5ae9f5113eba6c73dbe6ed239cd0376b76b987f0ea2ac0d0, role: ACCEPTED_PASS_02_MIGRATION_MODEL}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/05-controlled-self-hosting-and-trust-boundaries.md, sha256: 4858fd98661ae274ef382a51e1de4a0e5c5d919db763db0a6ef8591b5fbdbed0, role: ACCEPTED_PASS_02_TRUST_BOUNDARIES}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/06-architecture-style-comparison.yaml, sha256: f00845265751fce8bb22e082abc0547312469043bc01f923c2af551d4a50bd67, role: ACCEPTED_PASS_02_NEUTRAL_COMPARISON}
+    - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/07-pass-02-findings-and-checkpoint-a-handoff.md, sha256: 459e339b6849f32a3d2fed205247af33880f69059e08059998ba49521a6e1f6e, role: ACCEPTED_PASS_02_HANDOFF}
+    - {path: governance/learning/README.md, sha256: c272ab694a6cb3c3064c09c54d3db6c878c670d7626f3b8abc878949af58a531, role: LEARNING_ROUTING_CONTRACT}
+    - {path: governance/methodology/METHODOLOGY_BACKLOG.md, sha256: 422790a448ae7d16ae442539010aa50832b2c86f33ab26a3c3cc7c483703e7d0, role: HP_MPROP_007}
+    - {path: governance/methodology/project-operating-contract.md, sha256: cb994961eb5ea40321442f7760721749e62b511389e0f0fdac15de2652eb12fa, role: CANONICAL_OPERATING_SEMANTICS}
+  explicit_exclusions:
+    - chat memory as evidence
+    - hidden chain-of-thought
+    - unrecorded operational telemetry
+    - external research and product claims
+    - PASS-04 materials or tooling comparisons
+    - product, planning and runtime-facing files
+  missing_or_unavailable_evidence:
+    - {field: historical_tokens_cost_duration_and_owner_minutes, status: UNAVAILABLE_NOT_CAPTURED_RELIABLY}
+    - {field: operational_learning_pipeline_telemetry, status: UNAVAILABLE_NOT_IMPLEMENTED}
+    - {field: independently_demonstrated_learning_effectiveness, status: UNAVAILABLE_NOT_IMPLEMENTED_OR_MEASURED}
+    - {field: implementation_privacy_and_retention_evidence, status: UNAVAILABLE_NO_IMPLEMENTATION_SELECTED}

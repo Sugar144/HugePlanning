@@ -1,0 +1,49 @@
+input_inventory:
+  schema_version: 0.1.0
+  run: KGR-006
+  baseline_head: 8e761801fb9bfd8a8e5e817d5c332a11456f77d8
+  package_name: HugePlanning-KGR-006-formal-input-package.zip
+  entries:
+    - {group: state, source: governance/CURRENT_STATE.md, member: state/CURRENT_STATE.md}
+    - {group: state, source: governance/GOVERNANCE_MASTER_PLAN.md, member: state/GOVERNANCE_MASTER_PLAN.md}
+    - {group: state, source: governance/ARTIFACT_REGISTRY.yaml, member: state/ARTIFACT_REGISTRY.yaml}
+    - {group: operating_contract, source: governance/methodology/project-operating-contract.md, member: methodology/project-operating-contract.md}
+    - {group: kernel, source: governance/runs/KGR-004-kernel-designer-revision/outputs/02-kernel-v0.2-draft.md, member: kernel/02-kernel-v0.2-draft.md}
+    - {group: kernel, source: governance/runs/KGR-004-kernel-designer-revision/outputs/03-kernel-clauses-v0.2.yaml, member: kernel/03-kernel-clauses-v0.2.yaml}
+    - {group: intake, source: governance/runs/KGR-001-intake/outputs/02-known-hazards.md, member: intake/02-known-hazards.md}
+    - {group: intake, source: governance/runs/KGR-001-intake/outputs/03-authority-and-effects.yaml, member: intake/03-authority-and-effects.yaml}
+    - {group: intake, source: governance/runs/KGR-001-intake/outputs/04-criticality-model.md, member: intake/04-criticality-model.md}
+    - {group: intake, source: governance/runs/KGR-001-intake/outputs/05-reference-scenarios.md, member: intake/05-reference-scenarios.md}
+    - {group: intake, source: governance/runs/KGR-001-intake/outputs/06-open-questions.md, member: intake/06-open-questions.md}
+    - {group: intake, source: governance/runs/KGR-001-intake/outputs/07-intake-summary.md, member: intake/07-intake-summary.md}
+    - {group: adversarial, source: governance/runs/KGR-003-kernel-adversary/outputs/01-adversarial-findings.md, member: adversarial/01-adversarial-findings.md}
+    - {group: adversarial, source: governance/runs/KGR-003-kernel-adversary/outputs/05-enforcement-concerns.md, member: adversarial/05-enforcement-concerns.md}
+    - {group: revision, source: governance/runs/KGR-004-kernel-designer-revision/outputs/04-designer-open-questions-v0.2.md, member: revision/04-designer-open-questions-v0.2.md}
+    - {group: revision, source: governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md, member: revision/05-lower-layer-routing-v0.2.md}
+    - {group: revision, source: governance/runs/KGR-004-kernel-designer-revision/outputs/07-finding-disposition-register.yaml, member: revision/07-finding-disposition-register.yaml}
+    - {group: closure, source: governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/05-residual-risk-and-routing.md, member: closure/05-residual-risk-and-routing.md}
+    - {group: closure, source: governance/runs/KGR-005-kernel-adversary-targeted-closure/outputs/06-closure-result.yaml, member: closure/06-closure-result.yaml}
+    - {group: roadmap, source: planning/v2/13_mvp_scope_and_implementation_roadmap.md, member: roadmap/13_mvp_scope_and_implementation_roadmap.md}
+    - {group: owner_decisions, source: governance/prompts/orchestration/HP-PROMPT-011-gov-5-contract-preparation-v0.1.0.md, member: owner/HP-PROMPT-011.md}
+    - {group: owner_decisions, source: governance/prompts/orchestration/HP-PROMPT-012-gov-5-routing-disposition-v0.1.0.md, member: owner/HP-PROMPT-012.md}
+    - {group: scope_review, source: /home/sugar/Downloads/HugePlanning-GOV-5-scope-review-v0.1.0.md, member: scope/HugePlanning-GOV-5-scope-review-v0.1.0.md, repository_snapshot: false}
+    - {group: capability, source: governance/tools/validate_run_package.py, member: capability/tools/validate_run_package.py}
+    - {group: capability, source: governance/tools/validate_closure_loop.py, member: capability/tools/validate_closure_loop.py}
+    - {group: capability, source: governance/tools/apply_loop_transition.py, member: capability/tools/apply_loop_transition.py}
+    - {group: capability, source: governance/tools/validate_prompts.py, member: capability/tools/validate_prompts.py}
+    - {group: capability, source: governance/tools/manage_learning.py, member: capability/tools/manage_learning.py}
+    - {group: capability, source: governance/tools/build_review_bundle.py, member: capability/tools/build_review_bundle.py}
+    - {group: capability, source: governance/schemas/controller-transition.schema.json, member: capability/schemas/controller-transition.schema.json}
+    - {group: capability, source: governance/schemas/failure-record-event.schema.json, member: capability/schemas/failure-record-event.schema.json}
+    - {group: capability, source: governance/schemas/failure-record.schema.json, member: capability/schemas/failure-record.schema.json}
+    - {group: capability, source: governance/schemas/governance-validation-record.schema.json, member: capability/schemas/governance-validation-record.schema.json}
+    - {group: capability, source: governance/schemas/kernel-design-closure-loop.schema.json, member: capability/schemas/kernel-design-closure-loop.schema.json}
+    - {group: capability, source: governance/schemas/review-bundle-config.schema.json, member: capability/schemas/review-bundle-config.schema.json}
+    - {group: capability, source: governance/skills/agent-session-reviewer/SKILL.md, member: capability/skills/agent-session-reviewer.md}
+    - {group: capability, source: governance/skills/formal-governance-run-preparer/SKILL.md, member: capability/skills/formal-governance-run-preparer.md}
+    - {group: capability, source: governance/skills/governance-result-importer/SKILL.md, member: capability/skills/governance-result-importer.md}
+    - {group: capability, source: governance/skills/governance-review-packager/SKILL.md, member: capability/skills/governance-review-packager.md}
+    - {group: capability, source: governance/learning/README.md, member: capability/learning/README.md}
+    - {group: capability, source: governance/learning/FAILURE_AND_LESSONS_INDEX.md, member: capability/learning/FAILURE_AND_LESSONS_INDEX.md}
+    - {group: capability, source: governance/reviews/phase-2-3-formal-run-preparation/kgr-005-readiness-v0.1.0.yaml, member: capability/validation/GOV-VAL-001.yaml}
+    - {group: capability, source: governance/reviews/phase-2-4-formal-result-import/kgr-005-import-validation-v0.1.0.yaml, member: capability/validation/GOV-VAL-002.yaml}

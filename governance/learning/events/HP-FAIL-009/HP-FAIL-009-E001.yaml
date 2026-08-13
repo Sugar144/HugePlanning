@@ -1,0 +1,29 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-009-E001
+  record_id: HP-FAIL-009
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The supported active-state import bridge now replays the canonical Controller
+    history without weakening counter or unrelated-state fork checks.
+  rationale: The canonical history replays to CLOSURE_CONFIRMED with counters 1 and
+    0 and exactly one accepted transition; 79 affected pytest and Hypothesis tests
+    pass, including a negative unrelated-state assertion.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_4_contracts.py
+    anchor: test_replay_accepts_supported_active_state_evidence_bridge
+    sha256: null
+    availability: PRESERVED
+    note: Positive canonical replay and negative fork regression passed.
+  - type: REPOSITORY_PATH
+    locator: governance/runs/KGR-005-kernel-adversary-targeted-closure/controller/controller-transition.json
+    anchor: null
+    sha256: 025c9a070f220505ca7724907ec0be7cec8bf914f9f71f47c0f2ae4978136952
+    availability: PRESERVED
+    note: One canonical applied transition replays successfully.
+  owner_decision_ref: null
+  accepted_risk: null
+  supersedes: null

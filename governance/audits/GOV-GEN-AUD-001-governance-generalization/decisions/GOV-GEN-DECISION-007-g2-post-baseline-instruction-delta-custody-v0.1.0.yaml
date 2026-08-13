@@ -1,0 +1,94 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-007
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: CUSTODY_G2_POST_BASELINE_INSTRUCTION_DELTA_EVIDENCE
+  program_id: GOV-GEN-AUD-001
+  phase: G2
+  subject_controlling_result: GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0
+  subject_evidence_record: GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0
+  source_prompt: HP-PROMPT-046/0.1.0
+  assessment_identity:
+    comparison_range: [1899a3e7b41e9b4930a5d0f7f0b7e9d542fcb8dc, 284ca3eab1965b1feef33fc9ba72f97ab8ac8dfe]
+    pr: '#5'
+    pr_title: 'governance: normalize HugePlanning instruction architecture (#5)'
+    pr_changed_files: [AGENTS.md, governance/AGENTS.md]
+    reconciliation_merge_commit: 7e15377cdccbbafb0be94becceb6f5d09dd9c7dc
+    reconciliation_method: bounded_local_merge_no_rebase_no_rewrite_no_cherry_pick
+  reviewed_evidence:
+    base_deliverable_sha256: f49363d896fa1d0e876ae32e2aeb0a037a45062e670395b6cb2638524148d5f4
+    correction_sha256: 1192ccead07c5279ec131d0efb9eda0da3f4ccc1309252beee15821c4652e13f
+    base_manifest_verified: true
+    correction_manifest_verified: true
+    evidence_record_sha256: 6107dd9f544bc06602db193f559571c92d2f7d444b4d08e72b04035dcdbe90fa
+    evidence_manifest: GOV-GEN-G2-POST-BASELINE-DELTA-001.manifest.sha256
+    validate_prompts: '{"lineages":40,"prompts":42,"valid":true}'
+    validate_governance_state: '{"diagnostics":[],"result":"VALID"}'
+    head_before: 7e15377cdccbbafb0be94becceb6f5d09dd9c7dc
+    worktree_clean_before_custody: true
+  final_status: G2_POST_BASELINE_DELTA_CUSTODIED
+  verdict: G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD
+  g2_capability_reclassification_required: false
+  g2_gap_redisposition_required: false
+  carried_forward_findings:
+    - item: G2 §21 unresolved question 2 (collapse AGENTS.md/project-operating-contract.md, or formalize a stable two-layer model)
+      disposition: NEW_EVIDENCE_NARROWS_DECISION_SPACE
+      resolution_status: STILL_REQUIRES_ARCHITECTURE_DECISION
+    - item: G2 §21 unresolved question 5 (mechanism, if any, to formalize Delegated Operational Authority as an enforced boundary)
+      disposition: NEW_EVIDENCE_NARROWS_DECISION_SPACE
+      resolution_status: STILL_REQUIRES_ARCHITECTURE_DECISION
+    - item: G2 §21 unresolved question 7 — next-phase-only contracting direction
+      disposition: NEW_EVIDENCE_NARROWS_DECISION_SPACE
+    - item: G2 §21 unresolved question 7 — enforcement
+      resolution_status: STILL_REQUIRES_ARCHITECTURE_DECISION
+    - item: G2 §21 unresolved question 7 — retrospective GAP-006 defect-vs-convenience classification
+      disposition: UNCHANGED
+  new_architectural_evidence_areas:
+    - provider_neutral_repository_instructions
+    - scoped_governance_instructions
+    - relationship_with_project_operating_contract_md
+    - separation_between_repository_governance_and_client_facing_methodology_runtime
+  accepted:
+    - custody of GOV-GEN-G2-POST-BASELINE-DELTA-001/0.1.0 as the durable record of the already-completed, bounded, read-only Post-G2 Instruction Delta Assessment
+    - the final verdict G2_REMAINS_VALID_WITH_POST_BASELINE_EVIDENCE_TO_CARRY_FORWARD
+    - the five carried-forward findings against G2 §21 unresolved questions 2, 5, and 7 listed above
+    - the four new-architectural-evidence areas listed above, recorded for future governed work only
+    - the fact that both 804d6d77ca35a1c64022d34ad7eeb0b509bd2cb2 and 284ca3eab1965b1feef33fc9ba72f97ab8ac8dfe are ancestors of reconciliation merge commit 7e15377cdccbbafb0be94becceb6f5d09dd9c7dc
+  not_accepted:
+    - g2_correction
+    - g2_reacceptance
+    - g3_definition
+    - g3_authorization
+    - target_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration_authorization
+    - implementation_of_delegated_operational_authority
+    - implementation_of_provider_neutral_governance
+    - implementation_of_any_recorded_g1b_gap
+    - resolution_of_any_g2_section_21_unresolved_question
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_SVP_or_other_repository_modification
+    - residual_risk_acceptance
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes custody of an already-completed, bounded,
+    read-only comparison of the accepted G2 baseline against the merged
+    remote PR #5 (`AGENTS.md`, `governance/AGENTS.md` only). It does not
+    itself perform or repeat that assessment; it preserves its verdict and
+    findings as durable evidence and reconciles only the minimum
+    status-bearing GOV-GEN-AUD-001 surfaces to reference it. Neither
+    `GOV-GEN-G2-CLASSIFICATION-MATRIX-001/0.1.0` nor
+    `GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0` is modified,
+    reclassified, or redisposed by this record.
+  next_governed_state: >-
+    G3 is the next phase in the GOV-GEN-AUD-001 phase plan
+    (G0 -> G1A -> G1B -> G2 -> G3 -> G4 -> G5 -> GR -> G6). G3 has no
+    contract, scaffold, or Owner authorization, is not defined, and is not
+    opened, scoped, or authorized by this decision. A separate, explicit
+    Project Owner authorization is required before any G3 work, including
+    resolution of any G2 §21 unresolved question and evaluation of the new
+    architectural evidence recorded here.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

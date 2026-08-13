@@ -1,0 +1,92 @@
+correction:
+  correction_id: GOV-AUD-001-P01-R1-C2
+  version: 0.1.0
+  audit_id: GOV-AUD-001
+  pass_id: PASS-01
+  source_run_id: GOV-AUD-001-P01-R1
+  prior_correction_id: GOV-AUD-001-P01-R1-C1
+  status: EXECUTED_VALIDATED_PENDING_INDEPENDENT_EVALUATION_AND_PROJECT_OWNER_DISPOSITION
+  lifecycle: EXECUTED
+  role: Repository Capability and Gap Audit Corrector
+  mode: BOUNDED_SUBSTANTIVE_OUTPUT_CORRECTION
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_local_head: 22b66c97851316b4c461077f057fc3f1bc2de851
+  starting_remote_head: 22b66c97851316b4c461077f057fc3f1bc2de851
+  local_remote_aligned_at_start: true
+  clean_worktree_at_start: true
+  empty_staging_at_start: true
+  execution_count_limit: 1
+  execution_count_consumed: 1
+  prompt:
+    prompt_id: GOV-AUD-PROMPT-013
+    catalog_prompt_id: HP-PROMPT-026
+    version: 0.1.0
+    lifecycle: EXECUTED
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/prompt/GOV-AUD-PROMPT-013-correct-pass-01-substantive-outputs-v0.1.0.md
+    sha256: 0075610713cf0ce9dbb530693bdb518a509098e3bfd6b4c0af3694f12d78d1a0
+  authorization:
+    authorization_id: GOV-AUD-CORR-AUTH-002
+    version: 0.1.0
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/authorization/GOV-AUD-CORR-AUTH-002-v0.1.0.yaml
+    sha256: 9fcc990418e4ae9f0f65ab25bda0cf811a83e1247dc5b2cf5999d3f9d24b9a41
+    evidence_review_disposition: RETURN_PASS_01_FOR_BOUNDED_SUBSTANTIVE_CORRECTION
+    execution_count_limit: 1
+    execution_count_consumed: 1
+    remaining_execution: NONE
+    prior_authorizations_reused: false
+  input:
+    manifest_id: GOV-AUD-001-P01-R1-C2-INPUT-001
+    path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/input/input-manifest.yaml
+    sha256: c804b3309126cc2aba7bf9f6cf42f24f49a8e2ad6fe4d83eaa9b9d0441effb4a
+    member_count: 92
+    member_hashes_bound: true
+  source_links:
+    source_run_manifest: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/manifest.yaml
+    prior_correction_manifest: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/manifest.yaml
+    original_validation_report: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/evaluation/pass-01-validation-report.yaml
+    current_repository_head: 22b66c97851316b4c461077f057fc3f1bc2de851
+    owner_evidence_review_disposition: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/authorization/GOV-AUD-CORR-AUTH-002-v0.1.0.yaml
+  immutable_evidence:
+    original_outputs_modified: false
+    original_outputs:
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/01-verified-capability-inventory.yaml, sha256: 0e1ae26cfd8201e781768eec81045c056b1bc1cd557b0ab1f9fbcae1d47cb124}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/02-repetition-waste-and-burden-analysis.md, sha256: 57cbd6fc8d151d6c338a14c9c6f51e702f9a8519136d5dde5b2d20b2327f900f}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/03-ranked-gap-register.yaml, sha256: 8a485a3df850d6f9b37c4490435980715ddd84c689567ad3a94be89dca674cde}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/output/04-pass-01-findings-and-handoff.md, sha256: fd3e035812150b61f1dc54ad33412d5d8c09dcb31abe5a8ddaebd34e8323d2ff}
+    prior_correction_artifacts_modified: false
+    prior_correction_artifacts:
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/authorization/GOV-AUD-CORR-AUTH-001-v0.1.0.yaml, sha256: 0aac29d22a7eb4556869a8c2b6bc2cb19f2baf6b69da7e470bf52f5d2af1a269}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/manifest.yaml, sha256: f1b5c2c5b60761907999ea86bfb10da4d505aae71bacebb7583a15bdaa0ce857}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C1/prompt/GOV-AUD-PROMPT-012-correct-pass-01-audit-validation-lifecycle-v0.1.0.md, sha256: 7b180f5c96a75ab2203efe2de3c10e31d985c4f9d17b26aea569119f5c4edc5d}
+  output_contract:
+    corrected_output_count: 4
+    outputs:
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/01-corrected-verified-capability-inventory.yaml, format: YAML, sha256: d099e9bcbec6b5fc27e405759360909b9c29c982b6faed3465d75148bc0047b9}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/02-corrected-repetition-waste-and-burden-analysis.md, format: MARKDOWN, sha256: df5f310afc64b666eea32385f14163fcee75d4871676e0759b893e7c951c5a00}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/03-corrected-ranked-gap-register.yaml, format: YAML, sha256: d79018cb99728edac9095698e2a91f3b5d9d49ab62229f371d0482408927f5f0}
+      - {path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/04-corrected-pass-01-findings-and-handoff.md, format: MARKDOWN, sha256: 401c313f96bf705b39a66e389d1028161df3e73e73b4619ac94e4af19638cb42}
+  validation:
+    report_path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/evaluation/correction-validation-report.yaml
+    evidence_class: SOURCE_CORRECTION_DETERMINISTIC_VALIDATION_NOT_INDEPENDENT_EVALUATION
+    independent_evaluation_completed: false
+    separate_controlled_evidence_review_required: true
+  execution_environment:
+    model: Codex agent based on GPT-5
+    reasoning_mode: NOT_EXPOSED
+    external_research: NONE_PERFORMED
+  authority_boundary:
+    pass_01_accepted: false
+    independent_evaluation_completed: false
+    checkpoint_a_completed: false
+    pass_02_authorized_or_executed: false
+    gov_7_activated: false
+    recommendations_accepted: false
+    implementation_authorized: false
+    risk_accepted: false
+    od_006_status: UNRESOLVED_TRIGGER_GATED
+    architecture_or_technology_selected: false
+    kernel_substance_modified: false
+    planning_product_or_runtime_modified: false
+    publication_performed: false
+  exact_next_action: A separately controlled evidence review evaluates C2 before Project Owner disposition; PASS-02 requires separate later acceptance and execution authority.

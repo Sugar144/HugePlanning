@@ -1,0 +1,26 @@
+document_id: GOV-GEN-G6-B-04-L6-SUBLAYER-BOUNDARY-001
+version: 0.1.0
+status: B-04_READY_L6_SUBLAYER_REVIEW_READY
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B03_REVIEW_AND_B04_CONTINUATION
+inputs:
+  b01_review: ../B-01/B-01-independent-review-001.yaml
+  b02_boundary: ../B-02/B-02-core-boundary.yaml
+  b03_review: ../B-03/B-03-independent-review-001.yaml
+  g2_evidence: ../../G2/GOV-GEN-G2-CLASSIFICATION-MATRIX-001.md#CAP-NAV13-001
+selected_ready_l6_helpers:
+  source_path_before_move: governance/tools/_lib
+  core_path: governance/core/l6
+  members: [__init__.py, atomic.py, canonical.py, diagnostics.py, safe_zip.py, schemas.py, strict_yaml.py]
+move_kind: HISTORY_PRESERVING_MOVE_WITH_LEGACY_COMPATIBILITY_EXPORTS
+excluded:
+  - project-bound validators
+  - query/index implementation
+  - L5 data or history
+  - Option D execution
+invariants:
+  caller_semantics_preserved: true
+  provenance_history_preserved: true
+  no_hugeplanning_literals_or_project_paths_in_core_helpers: true
+  l3_l5_project_ownership_preserved: true
+  active_instruction_surfaces_modified: false
+next_gate: INDEPENDENT_B04_REVIEW_REQUIRED

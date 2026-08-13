@@ -1,0 +1,4 @@
+interface:
+  display_name: "Formal Governance Run Preparer"
+  short_description: "Validate formal-run custody before execution"
+  default_prompt: "Use $formal-governance-run-preparer to prepare or validate a formal governance run without executing it."

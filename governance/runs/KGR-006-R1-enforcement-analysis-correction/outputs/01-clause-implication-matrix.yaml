@@ -1,0 +1,1285 @@
+enforcement_analysis:
+  schema_version: 0.2.0
+  run: KGR-006-R1
+  role: Enforcement Engineer
+  mode: MINIMUM_ENFORCEMENT_ANALYSIS
+  protocol:
+    id: GOV-PROTOCOL-004
+    version: 0.2.0
+  status: CORRECTION_COMPLETE_PENDING_INDEPENDENT_EVALUATION
+  kernel:
+    version: 0.2.0-proposed
+    status: PROPOSED_NOT_RATIFIED
+    ratified: false
+    enforceable: false
+    implemented: false
+    operational: false
+  clauses:
+  - clause_id: K-001
+    effect_families:
+    - name: Reserved constitutional authority and competent human decisions
+      routing_ids:
+      - LLR-002
+      - LLR-015
+      prevention_implications:
+      - Prevent lower-layer or non-human exercise of reserved authority and prevent ambiguous delegation.
+      detection_implications:
+      - Detect missing competence
+      - expiry
+      - revocation
+      - delegation
+      - scope
+      - or attributable human decision evidence.
+      evidence_requirements:
+      - Record authority identity
+      - competence basis
+      - delegation lineage
+      - decision scope
+      - evidence
+      - limitations
+      - dissent
+      - and residual risk.
+      stopping_implications:
+      - Block ratification
+      - amendment
+      - C3/C4 acceptance
+      - or serious/critical/constitutional risk disposition when competent authority or decision evidence is absent.
+      recovery_or_compensation_implications:
+      - Restore the prior valid constitutional state and disposition dependent effects; do not treat later records as retroactive
+        authority.
+      feasibility_limits:
+      - Repository prompt and decision provenance can support attribution but cannot establish human competence or comprehension
+        by itself.
+      cost_and_burden_implications:
+      - Human preparation and review burden rises with consequence; a compact decision packet is needed for the single-user
+        context.
+      residual_risks:
+      - A formally attributable decision may still be uninformed
+      - fatigued
+      - pressured
+      - or outside competence.
+      reserved_human_decisions:
+      - A competent human decides ratification
+      - amendment
+      - C3/C4 final acceptance
+      - and serious/critical/constitutional residual-risk acceptance.
+    - name: Fundamental architecture and constitutional-change boundary
+      routing_ids:
+      - LLR-003
+      - LLR-010
+      - LLR-011
+      prevention_implications:
+      - Prevent ordinary architecture
+      - deviation
+      - or emergency paths from creating a de facto amendment.
+      detection_implications:
+      - Detect material changes to authority concentration
+      - autonomy
+      - permissions
+      - governed-effect pathways
+      - topology
+      - guarantees
+      - or cumulative exception effect.
+      evidence_requirements:
+      - Preserve architecture-impact analysis
+      - exception and emergency lineage
+      - cumulative effect
+      - and competent disposition.
+      stopping_implications:
+      - Keep disputed fundamental changes and dependent work blocked pending constitutional disposition.
+      recovery_or_compensation_implications:
+      - Return to the last valid constitutional basis or route an explicit amendment; contain any already-produced effects.
+      feasibility_limits:
+      - Borderline architecture classification requires contextual human judgment and cannot be settled by filenames or change
+        size.
+      cost_and_burden_implications:
+      - Impact assessment is material work but should be limited to changes plausibly affecting protected dimensions.
+      residual_risks:
+      - Strategic framing may present a fundamental change as ordinary or temporary.
+      reserved_human_decisions:
+      - A competent constitutional authority decides disputed fundamental classification and any amendment.
+    requirements:
+    - id: ER-001
+      kind: DERIVED_REQUIREMENT
+      statement: Define evidence requirements for current competent authority, delegation, expiry, revocation, reserved-category
+        routing, and attributable human decisions without delegating constitutional authority.
+      timing: MUST_BEFORE_RATIFICATION
+      lower_layers:
+      - policy
+      - standard
+      - evidence
+      - human_judgment
+      capability_status: PARTIAL
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-001
+      - revision/05-lower-layer-routing-v0.2.md#authority-identity
+      - closure/05-residual-risk-and-routing.md#RR-001
+      - methodology/project-operating-contract.md
+      feasibility_limit: Bound prompts and authority fields show provenance patterns but do not establish a complete competence,
+        delegation, expiry, or revocation registry.
+      cost_and_burden: Requires a compact authority and decision record for each reserved decision; human comprehension remains
+        irreducible.
+      residual_risk: Formal identity evidence can coexist with misunderstanding, pressure, or incompetence.
+      reserved_human_decision: The Project Owner must identify the competent ratification owner and the exact proposed scope
+        presented for decision.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+    - id: ER-002
+      kind: DERIVED_REQUIREMENT
+      statement: Require an impact basis that distinguishes ordinary architecture work from changes to authority, autonomy,
+        governed-effect pathways, canonical/evaluation topology, or constitutional guarantees.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - policy
+      - evidence
+      - human_judgment
+      capability_status: GAP
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-001
+      - revision/05-lower-layer-routing-v0.2.md#fundamental-architecture-effect-classifier
+      - closure/05-residual-risk-and-routing.md#RR-013
+      feasibility_limit: No bound artifact supplies tested borderline examples or a current architecture-effect classifier.
+      cost_and_burden: Apply only to plausibly material architecture changes; routine changes should not carry bespoke constitutional
+        review.
+      residual_risk: A beneficiary may frame a fundamental change as routine.
+      reserved_human_decision: Competent constitutional authority decides disputed fundamental changes.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+    - id: ER-003
+      kind: DERIVED_REQUIREMENT
+      statement: Require a comprehensible human decision packet binding exact scope, canonical evidence, limitations, contradictions
+        or dissent, and residual risks.
+      timing: MUST_BEFORE_RATIFICATION
+      lower_layers:
+      - standard
+      - evidence
+      - human_judgment
+      capability_status: PARTIAL
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-001
+      - adversarial/05-enforcement-concerns.md#human-decision-packet
+      - closure/05-residual-risk-and-routing.md#RR-011
+      feasibility_limit: Existing governance artifacts preserve provenance and limitations but do not demonstrate decision-packet
+        usability under realistic attention constraints.
+      cost_and_burden: The packet should be one bounded decision basis, not a new document suite.
+      residual_risk: Completeness does not guarantee comprehension.
+      reserved_human_decision: The competent human chooses return, rejection, or separate ratification after independent evaluation.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+  - clause_id: K-002
+    effect_families:
+    - name: Governed-effect classification and bounded authorization
+      routing_ids:
+      - LLR-001
+      - LLR-002
+      prevention_implications:
+      - Require current authorization before sensitive access
+      - transmission
+      - cost
+      - external exposure
+      - authoritative output
+      - or state change.
+      detection_implications:
+      - Detect unknown effect classes
+      - stale authorization
+      - scope change
+      - permission expansion
+      - and disputed criticality.
+      evidence_requirements:
+      - Record objective
+      - target
+      - permissions
+      - data/resources
+      - effects
+      - conditions
+      - criticality
+      - validation
+      - stop boundary
+      - authority
+      - and actual effects.
+      stopping_implications:
+      - Block unknown
+      - unclassified
+      - unauthorized
+      - expired
+      - revoked
+      - or materially changed governed effects.
+      recovery_or_compensation_implications:
+      - Contain and record unauthorized effects and route restoration
+      - compensation
+      - or explicit competent disposition.
+      feasibility_limits:
+      - The bound package has no complete real data flow
+      - credential
+      - external destination
+      - or runtime-effect inventory.
+      cost_and_burden_implications:
+      - Pre-effect classification adds friction; harmless bounded local investigation needs a lightweight path.
+      residual_risks:
+      - Syntactic read-only operations can still create sensitive
+      - cost
+      - disclosure
+      - or authoritative-output effects.
+      reserved_human_decisions:
+      - A human resolves disputed criticality
+      - effect scope
+      - and reserved risk decisions.
+    - name: Deviations, aggregation, and provider capability
+      routing_ids:
+      - LLR-010
+      - LLR-013
+      - LLR-017
+      - LLR-018
+      prevention_implications:
+      - Prevent subdivision
+      - renewed deviations
+      - or provider substitution from expanding authority or resetting cumulative effect.
+      detection_implications:
+      - Aggregate related effects across actors
+      - branches
+      - stages
+      - releases
+      - and time; detect provider capability loss.
+      evidence_requirements:
+      - Preserve deviation lineage
+      - cumulative duration/effect
+      - actual effects
+      - and provider-specific capability evidence by effect class.
+      stopping_implications:
+      - Block unsupported provider/effect combinations and deviations lacking competent
+      - bounded
+      - cumulative disposition.
+      recovery_or_compensation_implications:
+      - Contain unsupported effects and reconcile external or irreversible consequences rather than claiming repository rollback
+        is complete recovery.
+      feasibility_limits:
+      - Provider stop
+      - audit
+      - export
+      - retention
+      - deletion
+      - isolation
+      - permission
+      - and recovery behavior requires empirical validation.
+      cost_and_burden_implications:
+      - Cross-time aggregation and provider tests are potentially costly and should be limited to the pilot's actual effect
+        classes.
+      residual_risks:
+      - Provider behavior may change after testing and relatedness can be strategically obscured.
+      reserved_human_decisions:
+      - The Project Owner defines the bounded pilot effect classes and authorizes any deviation within competence.
+    requirements:
+    - id: ER-004
+      kind: DERIVED_REQUIREMENT
+      statement: Establish a governed-effect taxonomy and authorization record capable of distinguishing harmless local investigation
+        from state, sensitive-data, cost, exposure, transmission, and authoritative-output effects.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - policy
+      - standard
+      - procedure_or_contract
+      - control
+      - evidence
+      - human_judgment
+      capability_status: GAP
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-002
+      - intake/03-authority-and-effects.yaml
+      - revision/05-lower-layer-routing-v0.2.md#governed-effect-taxonomy
+      - closure/05-residual-risk-and-routing.md#RR-002
+      feasibility_limit: No bound capability implements pre-effect classification across the real workspace, providers, data,
+        cost, or external destinations.
+      cost_and_burden: A single bounded transition can use a narrow enumerated effect inventory; a universal taxonomy is not
+        required now.
+      residual_risk: Unknown effects and ambiguous authoritative outputs remain possible.
+      reserved_human_decision: The Project Owner defines the initial governed-transition scope and resolves disputed classifications.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+    - id: ER-005
+      kind: DERIVED_REQUIREMENT
+      statement: Preserve temporary-deviation authority, beneficiaries, rationale, compensating conditions, termination, renewals,
+        actual effects, and cumulative disposition.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - policy
+      - standard
+      - evidence
+      - human_judgment
+      capability_status: GAP
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-002
+      - revision/05-lower-layer-routing-v0.2.md#temporary-deviation-lineage
+      - closure/05-residual-risk-and-routing.md#RR-006
+      feasibility_limit: No bound artifact demonstrates an active cumulative deviation register or renewal test.
+      cost_and_burden: The pilot may prohibit deviations unless a minimal record and competent owner exist.
+      residual_risk: Repeated exceptions may normalize an unsafe state.
+      reserved_human_decision: A competent rule owner decides each permitted deviation; no deviation can waive K-001 or K-003
+        floors.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+    - id: ER-006
+      kind: DERIVED_REQUIREMENT
+      statement: Require cumulative related-effect accounting across actors, branches, stages, releases, and time before applying
+        criticality or authorization.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - standard
+      - control
+      - evidence
+      capability_status: GAP
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-002
+      - revision/05-lower-layer-routing-v0.2.md#cross-actor-aggregation
+      - closure/05-residual-risk-and-routing.md#RR-006
+      feasibility_limit: Existing run/controller records cover specific governance transitions, not general cross-workstream
+        relatedness or effect aggregation.
+      cost_and_burden: Limit aggregation to the bounded transition and explicit related identifiers initially.
+      residual_risk: Undeclared relationships can evade aggregation.
+      reserved_human_decision: A human resolves materially disputed relatedness and criticality.
+      scope_posture: ANALYSIS_ONLY_FUTURE_SCALABILITY_CONSTRAINT
+      specialist_dependency_id: null
+    - id: ER-007
+      kind: DERIVED_REQUIREMENT
+      statement: Require provider capability evidence for each authorized effect class before treating a provider or substitution
+        as control-equivalent.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - standard
+      - procedure_or_contract
+      - control
+      - evidence
+      capability_status: DEPENDENT_ON_PROVIDER_TEST
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#technology-independence
+      - revision/05-lower-layer-routing-v0.2.md#provider-capability-profiles
+      - closure/05-residual-risk-and-routing.md#RR-015
+      feasibility_limit: The package contains no empirical provider evidence for stop, audit, export, retention, deletion,
+        isolation, permissions, or recovery.
+      cost_and_burden: Test only the selected pilot provider and actual effect classes; broader portability remains analysis-only.
+      residual_risk: Provider behavior may be undocumented, nondeterministic, or change after validation.
+      reserved_human_decision: The Project Owner selects any later pilot provider and decides whether the evidenced limitations
+        keep that scope blocked.
+      scope_posture: ANALYSIS_ONLY_FUTURE_SCALABILITY_CONSTRAINT
+      specialist_dependency_id: SD-001
+  - clause_id: K-003
+    effect_families:
+    - name: Decisive evaluation-chain independence
+      routing_ids:
+      - LLR-004
+      - LLR-005
+      - LLR-015
+      - LLR-017
+      - LLR-018
+      prevention_implications:
+      - Prevent a materially interested executor from unilaterally controlling evaluator appointment
+      - claims
+      - criteria
+      - fixtures
+      - evidence
+      - context
+      - method
+      - interpretation
+      - exceptions
+      - or acceptance.
+      detection_implications:
+      - Detect correlated control
+      - shared oracles
+      - post-failure criterion changes
+      - undisclosed conflicts
+      - and beneficiary-selected decisive evidence.
+      evidence_requirements:
+      - Record functional assignments
+      - conflicts
+      - appointment authority
+      - criteria/evidence hashes or identities
+      - context
+      - methods
+      - interpretation
+      - and final authority.
+      stopping_implications:
+      - Return critical or materially conflicted outcomes with prohibited control to a non-accepted state and independent
+        review.
+      recovery_or_compensation_implications:
+      - Repeat the decisive review through a chain outside the beneficiary's unilateral control and preserve the invalidated
+        outcome as evidence.
+      feasibility_limits:
+      - Separate identities or tools do not prove independence; hidden shared assumptions and incentives cannot be fully eliminated.
+      cost_and_burden_implications:
+      - Independent evaluation is a material cost and should be applied proportionally while preserving the critical floor.
+      residual_risks:
+      - Correlated reviewers may reach the same blind spot even with formal separation.
+      reserved_human_decisions:
+      - A competent human appoints the independent evaluator outside the Engineer's unilateral control and decides critical
+        acceptance.
+    requirements:
+    - id: ER-008
+      kind: DERIVED_REQUIREMENT
+      statement: Require an evaluation-control record that exposes appointment, claim/rubric ownership, criteria, evidence
+        selection, context, method, interpretation, exception, and acceptance authority.
+      timing: MUST_BEFORE_RATIFICATION
+      lower_layers:
+      - policy
+      - standard
+      - procedure_or_contract
+      - evidence
+      - human_judgment
+      capability_status: PARTIAL
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-003
+      - adversarial/05-enforcement-concerns.md#evaluation-control-provenance
+      - closure/05-residual-risk-and-routing.md#RR-003
+      feasibility_limit: The prepared handoff defines independence boundaries but no evaluator is appointed and no substantive
+        evaluation evidence exists.
+      cost_and_burden: One bounded independent evaluation of the seven-output package is proportionate.
+      residual_risk: The evaluator may still share material assumptions, tools, context, or incentives.
+      reserved_human_decision: The Project Owner or competent human appoints the evaluator and decides the response to findings.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+    - id: ER-009
+      kind: DERIVED_REQUIREMENT
+      statement: Bind decisive claims and gates to canonical objectives, mandatory criteria, dependencies, evidence, evaluator,
+        limitations, and accepted scope.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - standard
+      - procedure_or_contract
+      - evidence
+      capability_status: PARTIAL
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-003
+      - revision/05-lower-layer-routing-v0.2.md#claim-lineage
+      - capability/schemas/governance-validation-record.schema.json
+      feasibility_limit: Existing validation records are scoped and structured but do not supply a general objective-to-acceptance
+        claim-lineage model.
+      cost_and_burden: Use one traceability chain for the bounded transition rather than a general platform.
+      residual_risk: Structurally complete lineage can still encode an underscoped or misleading claim.
+      reserved_human_decision: A competent human determines whether the final claimed scope is acceptable.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+  - clause_id: K-004
+    effect_families:
+    - name: Canonical authority, provenance, assumptions, and representation fidelity
+      routing_ids:
+      - LLR-005
+      - LLR-007
+      - LLR-008
+      - LLR-019
+      - LLR-020
+      prevention_implications:
+      - Prevent silent supersession
+      - promotion of assumptions or reconstructions
+      - lossy canonical migration
+      - stale dependency use
+      - and machine use of materially divergent representations.
+      detection_implications:
+      - Detect equal-authority conflict
+      - missing provenance
+      - stale assumptions
+      - representation divergence
+      - and retrospective labeling.
+      evidence_requirements:
+      - Preserve primary-source lineage
+      - applicability/version
+      - fidelity evidence
+      - supersession
+      - assumption owner/validity/dependencies
+      - parity evidence
+      - and retrospective status.
+      stopping_implications:
+      - Block dependent gates on material conflict
+      - stale assumptions
+      - missing provenance
+      - or material representation divergence.
+      recovery_or_compensation_implications:
+      - Restore the safest valid canonical basis
+      - preserve disputed history
+      - and prospectively correct without fabricating prior compliance.
+      feasibility_limits:
+      - Deterministic equality can validate hashes and fields but semantic fidelity still needs appropriate judgment.
+      cost_and_burden_implications:
+      - Canonical records and deterministic checks are low incremental cost; historical S0a-S1 audit is excluded and routed
+        to GOV-8.
+      residual_risks:
+      - Traceable summaries may remain semantically lossy and historical evidence may be incomplete.
+      reserved_human_decisions:
+      - A competent owner resolves material canonical conflict and separately authorizes any later historical regularization.
+    - name: Safe evidence lifecycle
+      routing_ids:
+      - LLR-009
+      - LLR-011
+      - LLR-017
+      - LLR-018
+      prevention_implications:
+      - Prevent unlawful
+      - unsafe
+      - excessive
+      - or untraceable retention
+      - disclosure
+      - cleanup
+      - redaction
+      - isolation
+      - or deletion.
+      detection_implications:
+      - Detect sensitive or regulated data
+      - evidence loss
+      - unauthorized handling
+      - and confidence impact.
+      evidence_requirements:
+      - Record authority
+      - necessity
+      - reason
+      - scope
+      - timing
+      - method
+      - integrity attestation
+      - confidence impact
+      - and safest available substitute.
+      stopping_implications:
+      - Block affected real-data processing until competent domain requirements and safe handling boundaries are known.
+      recovery_or_compensation_implications:
+      - Use least-loss handling and preserve the safest decision/provenance record; deletion cannot be reversed by later documentation.
+      feasibility_limits:
+      - Applicable duties depend on jurisdiction
+      - data category
+      - provider behavior
+      - security context
+      - and active-harm facts absent from the package.
+      cost_and_burden_implications:
+      - Specialist review and secure handling can be costly; no real-data processing belongs in the bounded analysis.
+      residual_risks:
+      - Retention can create legal/security harm while deletion can reduce auditability and confidence.
+      reserved_human_decisions:
+      - Competent legal
+      - privacy
+      - security
+      - or active-harm authority decides material least-loss handling.
+    requirements:
+    - id: ER-010
+      kind: DERIVED_REQUIREMENT
+      statement: Require explicit canonical boundaries, provenance, applicability/version, fidelity evidence, and supersession
+        for primary and derived governance artifacts.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - standard
+      - procedure_or_contract
+      - control
+      - evidence
+      capability_status: PARTIAL
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-004
+      - state/ARTIFACT_REGISTRY.yaml
+      - methodology/project-operating-contract.md
+      - revision/05-lower-layer-routing-v0.2.md#canonical-composition
+      feasibility_limit: The repository demonstrates hashes, registry custody, append-only correction principles, and package
+        identity, but not complete semantic-fidelity evaluation for all derived artifacts.
+      cost_and_burden: Extend existing custody patterns only for the bounded transition.
+      residual_risk: A hash-identical artifact may still be based on a misunderstood or stale canonical objective.
+      reserved_human_decision: The accountable artifact owner resolves material canonical conflict.
+      scope_posture: ANALYSIS_ONLY_FUTURE_SCALABILITY_CONSTRAINT
+      specialist_dependency_id: null
+    - id: ER-011
+      kind: DERIVED_REQUIREMENT
+      statement: Require each material assumption to have provenance, an owner, affected dependencies, and a validity or revalidation
+        condition that blocks stale use.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - policy
+      - standard
+      - control
+      - evidence
+      capability_status: GAP
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-004
+      - revision/05-lower-layer-routing-v0.2.md#material-assumption-registry
+      - closure/05-residual-risk-and-routing.md#RR-012
+      feasibility_limit: The input package identifies assumptions and open questions but no active dependency-aware assumption
+        registry.
+      cost_and_burden: Register only assumptions material to the bounded transition and its gates.
+      residual_risk: Hidden assumptions may evade registration.
+      reserved_human_decision: An accountable owner decides whether contradictory evidence invalidates the affected basis.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+    - id: ER-012
+      kind: DERIVED_REQUIREMENT
+      statement: Establish the competent legal/privacy/security boundary for retention, minimization, redaction, isolation,
+        deletion, and integrity attestation before affected real-data processing.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - policy
+      - procedure_or_contract
+      - control
+      - evidence
+      - human_judgment
+      capability_status: DEPENDENT_ON_SPECIALIST
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-004
+      - revision/05-lower-layer-routing-v0.2.md#evidence-lifecycle
+      - closure/05-residual-risk-and-routing.md#RR-005
+      feasibility_limit: Jurisdiction, real data classes, duties, threats, and provider behavior are not fixed by the bound
+        package.
+      cost_and_burden: Specialist work is triggered only before processing affected sensitive, regulated, confidential, or
+        actively harmful data.
+      residual_risk: Both retention and deletion may create irreversible harm or evidence loss.
+      reserved_human_decision: Competent domain authority decides least-loss handling; the Project Owner decides the later
+        data scope within that boundary.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: SD-002
+    - id: ER-013
+      kind: DERIVED_REQUIREMENT
+      statement: Require material Markdown/YAML parity validation before a machine-oriented representation can drive a governed
+        transition.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - standard
+      - control
+      - evidence
+      capability_status: PARTIAL
+      evidence_refs:
+      - revision/05-lower-layer-routing-v0.2.md#markdown-yaml-parity
+      - capability/tools/validate_run_package.py
+      - capability/tools/validate_closure_loop.py
+      - capability/validation/GOV-VAL-002.yaml
+      feasibility_limit: Existing validators demonstrate structural and selected cross-file parity, not universal semantic
+        equality.
+      cost_and_burden: Deterministic parity checks are low-cost when limited to declared material fields.
+      residual_risk: Unchecked prose meaning may diverge despite schema-valid structured data.
+      reserved_human_decision: Material semantic disputes remain with an accountable human or independent evaluator.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+  - clause_id: K-005
+    effect_families:
+    - name: Claim-scoped evidence, honest states, and qualified acceptance
+      routing_ids:
+      - LLR-004
+      - LLR-005
+      - LLR-006
+      - LLR-007
+      - LLR-008
+      - LLR-012
+      - LLR-016
+      - LLR-017
+      prevention_implications:
+      - Prevent file existence
+      - creator assertion
+      - narrow PASS
+      - or absence of detected failure from becoming broad acceptance or completion.
+      detection_implications:
+      - Detect missing mandatory dependencies
+      - contradictory evidence
+      - scope inflation
+      - repeated limitations
+      - false success
+      - and unmanaged non-success states.
+      evidence_requirements:
+      - Bind objective
+      - gate
+      - exact claim
+      - criteria
+      - evidence
+      - uncertainty
+      - limitations
+      - dissent
+      - residual risk
+      - state owner
+      - and disposition.
+      stopping_implications:
+      - Return unsupported or contradicted results to an honest non-accepted state and block the affected gate.
+      recovery_or_compensation_implications:
+      - Re-evaluate with sufficient evidence or disposition terminally; preserve limitations rather than rewriting the prior
+        state.
+      feasibility_limits:
+      - Evidence sufficiency and claim scope require judgment; deterministic validation establishes only declared structure.
+      cost_and_burden_implications:
+      - Evidence depth should track consequence; repeated limitations need aggregation rather than repeated ceremony.
+      residual_risks:
+      - A well-formed evidence packet can still omit an unknown material dependency.
+      reserved_human_decisions:
+      - Competent authority makes acceptance and any reserved risk decision.
+    - name: Human decision comprehension
+      routing_ids:
+      - LLR-015
+      prevention_implications:
+      - Prevent ceremonial or uninformed high-consequence approval.
+      detection_implications:
+      - Detect missing scope
+      - limitations
+      - contradiction
+      - dissent
+      - or residual-risk presentation and assess usability under realistic attention limits.
+      evidence_requirements:
+      - Preserve the exact decision packet
+      - presentation/usability evidence
+      - decision identity
+      - scope
+      - rationale
+      - and limitations.
+      stopping_implications:
+      - Do not treat an incomplete or materially incomprehensible packet as an informed decision basis.
+      recovery_or_compensation_implications:
+      - Return the decision for clarified presentation without changing the underlying evidence or implying acceptance.
+      feasibility_limits:
+      - Comprehension and fatigue cannot be inferred from record presence.
+      cost_and_burden_implications:
+      - A targeted usability check is warranted only for high-consequence decisions.
+      residual_risks:
+      - A human may approve under fatigue
+      - pressure
+      - or misunderstanding.
+      reserved_human_decisions:
+      - The competent human makes the decision; a usability specialist may assess presentation
+      - not decide substance.
+    requirements:
+    - id: ER-014
+      kind: DERIVED_REQUIREMENT
+      statement: Require claim-scoped evidence and explicit non-success/qualified states, including aggregation of recurring
+        limitations, before any acceptance or release gate.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - policy
+      - standard
+      - control
+      - evidence
+      - human_judgment
+      capability_status: GAP
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-005
+      - revision/05-lower-layer-routing-v0.2.md#qualified-acceptance
+      - closure/05-residual-risk-and-routing.md#RR-004
+      feasibility_limit: Existing governance run states are bounded examples, not a complete acceptance model for product
+        or runtime effects.
+      cost_and_burden: One pilot gate should use a narrow claim and explicit dependencies rather than a universal compliance
+        framework.
+      residual_risk: Unknown dependencies and repeated narrow claims can conceal core failure.
+      reserved_human_decision: Competent authority decides any acceptance; serious/critical/constitutional residual risk remains
+        human-only.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+    - id: ER-015
+      kind: DERIVED_REQUIREMENT
+      statement: Validate that the high-consequence human decision packet is understandable at realistic attention limits
+        before relying on it as an informed decision basis.
+      timing: MUST_BEFORE_RATIFICATION
+      lower_layers:
+      - standard
+      - evidence
+      - human_judgment
+      capability_status: DEPENDENT_ON_SPECIALIST
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-005
+      - adversarial/05-enforcement-concerns.md#human-decision-packet
+      - closure/05-residual-risk-and-routing.md#RR-011
+      feasibility_limit: The package provides content requirements but no usability evidence for the eventual ratification
+        owner.
+      cost_and_burden: Use one bounded usability review only if the packet remains materially complex after independent evaluation.
+      residual_risk: Usability evidence cannot ensure unpressured or competent judgment.
+      reserved_human_decision: The ratification owner decides; the specialist does not ratify or accept risk.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: SD-003
+    - id: ER-016
+      kind: DERIVED_REQUIREMENT
+      statement: Require managed BLOCKED, PAUSED, INCONCLUSIVE, FAILED, and abrupt-termination states with owner, reason,
+        dependency, age, review condition, and terminal disposition.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - standard
+      - procedure_or_contract
+      - control
+      - evidence
+      capability_status: PARTIAL
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-005
+      - revision/05-lower-layer-routing-v0.2.md#managed-state-machine
+      - capability/schemas/kernel-design-closure-loop.schema.json
+      - capability/tools/apply_loop_transition.py
+      feasibility_limit: The bound Controller supports a narrow governance loop and does not establish a general managed state
+        machine for runtime work.
+      cost_and_burden: Reuse the state principles for one bounded transition; do not extend the Controller into a platform.
+      residual_risk: Ownership records can become stale or ceremonial.
+      reserved_human_decision: An accountable human owns terminal disposition where automation lacks authority.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+  - clause_id: K-006
+    effect_families:
+    - name: Cumulative proportionality and anti-fragmentation
+      routing_ids:
+      - LLR-001
+      - LLR-003
+      - LLR-006
+      - LLR-010
+      - LLR-013
+      - LLR-017
+      prevention_implications:
+      - Prevent underclassification
+      - fragmentation
+      - claim narrowing
+      - or repeated exceptions from evading stronger controls.
+      detection_implications:
+      - Detect related cumulative effects
+      - material uncertainty
+      - repeated limitation
+      - and classification changes across time and work boundaries.
+      evidence_requirements:
+      - Record classification basis
+      - relatedness
+      - uncertainty
+      - cumulative effects
+      - protective floors
+      - and reclassification decisions.
+      stopping_implications:
+      - Use the higher reasonable provisional level and block affected gates until material uncertainty is resolved.
+      recovery_or_compensation_implications:
+      - Reclassify and reassess dependent effects cumulatively; contain effects produced under an inadequate level.
+      feasibility_limits:
+      - Complete relatedness detection is not feasible from explicit repository records alone.
+      cost_and_burden_implications:
+      - Stronger governance must focus on material cumulative effects and preserve a lightweight path for minor work.
+      residual_risks:
+      - Distributed or strategically framed work may evade relatedness signals.
+      reserved_human_decisions:
+      - A human resolves contested materiality
+      - criticality
+      - and proposals to weaken protections.
+    - name: Governance burden and justified complexity
+      routing_ids:
+      - LLR-014
+      prevention_implications:
+      - Prevent permanent or recurring governance burden without demonstrated protective value over a simpler adequate alternative.
+      detection_implications:
+      - Detect recurring cost
+      - bypass
+      - low-value ceremony
+      - contested burden
+      - and evidence that simplification would weaken a floor.
+      evidence_requirements:
+      - Collect sampled effort
+      - protective value
+      - failure/bypass evidence
+      - and simplification outcomes after operation.
+      stopping_implications:
+      - Do not add a permanent governance platform or recursive proof obligation without material rationale.
+      recovery_or_compensation_implications:
+      - Prospectively simplify burdensome lower-layer mechanisms while preserving constitutional floors and history.
+      feasibility_limits:
+      - Operational burden and effectiveness cannot be measured before use.
+      cost_and_burden_implications:
+      - GOV-5 can identify likely burden but must not invent numeric ROI or build measurement infrastructure.
+      residual_risks:
+      - Early estimates may mispredict actual solo-owner burden.
+      reserved_human_decisions:
+      - The Project Owner decides whether later burden is acceptable and authorizes simplification without floor weakening.
+    requirements:
+    - id: ER-017
+      kind: DERIVED_REQUIREMENT
+      statement: Require sampled operational evidence and a protective-value rationale before retaining a material, recurring,
+        permanent, or contested governance burden or weakening a protection.
+      timing: SHOULD_LATER
+      lower_layers:
+      - policy
+      - evidence
+      - human_judgment
+      capability_status: GAP
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-006
+      - revision/05-lower-layer-routing-v0.2.md#material-governance-burden
+      - closure/05-residual-risk-and-routing.md#RR-010
+      feasibility_limit: No operational pilot evidence exists, so current monetary or effectiveness claims would be speculative.
+      cost_and_burden: Evidence collection itself must remain sampled and proportional; minor controls need no bespoke recursive
+        proof.
+      residual_risk: A minimum bootstrap may still be too burdensome or too weak in practice.
+      reserved_human_decision: The Project Owner decides later simplification or retention; constitutional floors cannot be
+        waived for cost alone.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+  - clause_id: K-007
+    effect_families:
+    - name: Safe stopping, containment, and managed continuity
+      routing_ids:
+      - LLR-001
+      - LLR-008
+      - LLR-009
+      - LLR-011
+      - LLR-012
+      prevention_implications:
+      - Prevent further governed effects when authority
+      - canonical input
+      - context
+      - evidence
+      - capacity
+      - or recovery basis is absent
+      - conflicting
+      - exhausted
+      - corrupted
+      - or materially uncertain.
+      detection_implications:
+      - Detect abrupt termination
+      - stale or unowned states
+      - exhausted budgets/context
+      - ambiguous residual effects
+      - and continuing emergency governance.
+      evidence_requirements:
+      - Externalize objective
+      - authority
+      - inputs
+      - effects
+      - validations
+      - status
+      - limitations
+      - owner
+      - review condition
+      - and exact resumption or terminal boundary.
+      stopping_implications:
+      - Stop
+      - pause
+      - or block before further effect; permit only bounded harmless investigation and least-effect containment.
+      recovery_or_compensation_implications:
+      - Resume
+      - revert
+      - restore
+      - compensate
+      - or terminate under competent authority while preserving safe evidence and cumulative emergency lineage.
+      feasibility_limits:
+      - Reliable stopping and residual-effect detection depend on actual provider
+      - process
+      - and external-system capabilities.
+      cost_and_burden_implications:
+      - Checkpoints and state ownership add overhead; apply them to significant work and actual pilot effects.
+      residual_risks:
+      - Stop signals may arrive late
+      - and external effects may continue after local termination.
+      reserved_human_decisions:
+      - A competent human decides continuing emergency governance
+      - terminal disposition
+      - and authorized resumption.
+    - name: Recovery, compensation, and scoped coverage
+      routing_ids:
+      - LLR-016
+      - LLR-017
+      - LLR-018
+      prevention_implications:
+      - Prevent claims that repository rollback reverses disclosure
+      - communication
+      - cost
+      - external decisions
+      - or other irreversible effects.
+      detection_implications:
+      - Detect incomplete restoration
+      - residual effects
+      - unsupported provider capabilities
+      - and missing prevention/detection/evidence/stop/recovery coverage.
+      evidence_requirements:
+      - Preserve restoration tests
+      - compensation/reconciliation evidence
+      - irreversibility classification
+      - provider evidence
+      - and clause/effect coverage.
+      stopping_implications:
+      - Block governed-pilot and any enforceability-equivalence claim for unsupported effect classes.
+      recovery_or_compensation_implications:
+      - Distinguish reversion
+      - restoration
+      - reconciliation
+      - compensation
+      - and terminal disposition by actual effect.
+      feasibility_limits:
+      - Full recovery of disclosure
+      - communication
+      - spent cost
+      - or external reliance is not feasible.
+      cost_and_burden_implications:
+      - Recovery rehearsals and coverage validation should target the one bounded transition
+      - not all providers or effects.
+      residual_risks:
+      - Compensation may be incomplete and independently verified coverage may still miss unknown failures.
+      reserved_human_decisions:
+      - A human decides whether residual unsupported scope remains blocked and later accepts only risk within competent authority.
+    requirements:
+    - id: ER-018
+      kind: DERIVED_REQUIREMENT
+      statement: Require an owned containment and emergency path that uses the least effect, preserves maximum safe evidence,
+        aggregates duration/effect, and transitions to normal authority or terminal disposition.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - procedure_or_contract
+      - control
+      - evidence
+      - human_judgment
+      capability_status: GAP
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-007
+      - revision/05-lower-layer-routing-v0.2.md#emergency-containment
+      - closure/05-residual-risk-and-routing.md#RR-006
+      feasibility_limit: The package describes the boundary but demonstrates no exercised containment procedure for real effects.
+      cost_and_burden: The pilot needs one bounded stop/contain/resume path and rehearsal, not a general incident platform.
+      residual_risk: Active harm or provider limitations may prevent clean containment.
+      reserved_human_decision: A competent operator decides continuation, resumption, or terminal disposition within authority;
+        enduring constitutional effect requires K-001 process.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+    - id: ER-019
+      kind: DERIVED_REQUIREMENT
+      statement: Establish evidence for restoration, residual-effect detection, reconciliation, compensation, and irreversibility
+        for the bounded transition's actual effect classes.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - policy
+      - procedure_or_contract
+      - control
+      - evidence
+      - human_judgment
+      capability_status: DEPENDENT_ON_SPECIALIST
+      evidence_refs:
+      - kernel/03-kernel-clauses-v0.2.yaml#K-007
+      - revision/05-lower-layer-routing-v0.2.md#recovery-restoration-compensation
+      - closure/05-residual-risk-and-routing.md#RR-002
+      feasibility_limit: The actual transition, provider, external systems, and irreversible effects are not selected; complete
+        reversal of external effects is impossible.
+      cost_and_burden: Test only the selected transition's realistic failure and recovery boundaries.
+      residual_risk: Restoration can succeed locally while disclosure, cost, communication, or external reliance remains.
+      reserved_human_decision: The Project Owner decides the later transition scope and competent disposition of irreversible
+        residual effects.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: SD-004
+    - id: ER-020
+      kind: DERIVED_REQUIREMENT
+      statement: Require a clause-by-effect coverage assessment for applicable prevention, detection, evidence, stopping,
+        and recovery/compensation before any later scoped capability declaration.
+      timing: MUST_BEFORE_GOVERNED_PILOT
+      lower_layers:
+      - control
+      - evidence
+      - human_judgment
+      capability_status: GAP
+      evidence_refs:
+      - revision/05-lower-layer-routing-v0.2.md#scoped-enforceable-coverage-matrix
+      - closure/05-residual-risk-and-routing.md#RR-008
+      - adversarial/05-enforcement-concerns.md#capability-evidence-gaps
+      feasibility_limit: GOV-5 provides requirements and gaps only; independent implementation evidence does not yet exist.
+      cost_and_burden: Limit later coverage evidence to the exact governed-pilot scope and effect classes.
+      residual_risk: A scoped matrix can omit unknown effects or overstate weak evidence.
+      reserved_human_decision: A competent human determines later adoption decisions after independent evidence; this analysis
+        makes no such declaration.
+      scope_posture: CURRENT_SINGLE_USER_MINIMUM
+      specialist_dependency_id: null
+  routing_coverage:
+  - route_id: LLR-001
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed governed-effect taxonomy and harmless-read boundary in K-002 and K-006 implications.
+    later_phase_destination: GOV-7
+  - route_id: LLR-002
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed authority identity competence delegation expiry revocation and reserved routing.
+    later_phase_destination: GOV-7
+  - route_id: LLR-003
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed fundamental architecture-effect classification and its human boundary.
+    later_phase_destination: GOV-7
+  - route_id: LLR-004
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed decisive evaluation-chain independence and assignment evidence.
+    later_phase_destination: GOV-7
+  - route_id: LLR-005
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed objective-to-gate claim lineage and scope propagation.
+    later_phase_destination: GOV-7
+  - route_id: LLR-006
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed qualified acceptance and recurring-limitation aggregation.
+    later_phase_destination: GOV-7
+  - route_id: LLR-007
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed canonical composition summary/migration fidelity and supersession.
+    later_phase_destination: GOV-7
+  - route_id: LLR-008
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed material-assumption ownership validity dependencies and revalidation.
+    later_phase_destination: GOV-7
+  - route_id: LLR-009
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed evidence lifecycle as a specialist-dependent blocked real-data boundary.
+    later_phase_destination: GOV-7
+  - route_id: LLR-010
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed deviation lineage cumulative renewal and constitutional boundary.
+    later_phase_destination: GOV-7
+  - route_id: LLR-011
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed least-effect emergency containment and return to normal authority.
+    later_phase_destination: GOV-7
+  - route_id: LLR-012
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed managed non-success states ownership review and terminal disposition.
+    later_phase_destination: GOV-7
+  - route_id: LLR-013
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed cumulative cross-actor branch stage release and time aggregation.
+    later_phase_destination: GOV-7
+  - route_id: LLR-014
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed later sampled burden and protective-value evidence without inventing current metrics.
+    later_phase_destination: GOV-9
+  - route_id: LLR-015
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed attributable comprehensible human decision packets and usability dependency.
+    later_phase_destination: GOV-7
+  - route_id: LLR-016
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed restoration compensation irreversibility and residual-effect evidence.
+    later_phase_destination: GOV-7
+  - route_id: LLR-017
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed scoped clause/effect coverage as a later evidence requirement without making a capability claim.
+    later_phase_destination: GOV-7
+  - route_id: LLR-018
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed provider profiles and substitution tests as empirically unsupported before pilot.
+    later_phase_destination: GOV-7
+  - route_id: LLR-019
+    applicability: APPLICABLE_TO_GOV_5_EXECUTION
+    justification: Analyzed material Markdown/YAML parity and existing partial deterministic support.
+    later_phase_destination: GOV-7
+  - route_id: LLR-020
+    applicability: NOT_APPLICABLE_TO_GOV_5_EXECUTION
+    justification: 'K-004/LLR-020 and K-005/LLR-020 remain deferred: GOV-5 analyzes enforcement implications and derived requirements;
+      it does not perform historical S0a-S1 audit or regularization.'
+    later_phase_destination: GOV-8
+  capability_summary:
+    SUPPORTED_BY_EVIDENCE: 0
+    PARTIAL: 7
+    GAP: 9
+    DEPENDENT_ON_SPECIALIST: 3
+    DEPENDENT_ON_PROVIDER_TEST: 1
+    NOT_FEASIBLE: 0
+    NOT_APPLICABLE: 0
+  specialist_dependencies:
+  - trigger: provider_capability_requires_empirical_validation
+    affected_clause: K-002
+    affected_effect_or_requirement: ER-007 provider capability evidence for authorized effect classes
+    why_general_analysis_is_insufficient: Bound documents identify required capabilities but contain no empirical provider
+      behavior evidence.
+    required_specialist_type: Provider capability test engineer
+    blocking_or_nonblocking: NONBLOCKING_WITH_EXPLICIT_UNSUPPORTED_BOUNDARY
+    safe_interim_boundary: No provider-dependent governed pilot or equivalence claim may proceed for an untested effect class.
+    later_phase_destination: GOV-7
+    id: SD-001
+    requirement_id: ER-007
+  - trigger: material_legal_or_privacy_dependency
+    affected_clause: K-004
+    affected_effect_or_requirement: ER-012 evidence retention minimization redaction isolation and deletion boundary
+    why_general_analysis_is_insufficient: Applicable obligations depend on jurisdiction data category purpose provider and
+      active-harm context absent from the package.
+    required_specialist_type: Qualified legal/privacy specialist with security-owner coordination
+    blocking_or_nonblocking: NONBLOCKING_WITH_EXPLICIT_UNSUPPORTED_BOUNDARY
+    safe_interim_boundary: Do not process sensitive, regulated, confidential, or actively harmful real data until the applicable
+      boundary is established.
+    later_phase_destination: GOV-7
+    id: SD-002
+    requirement_id: ER-012
+  - trigger: high_consequence_human_decision_usability_risk
+    affected_clause: K-005
+    affected_effect_or_requirement: ER-015 comprehensibility of the ratification decision packet
+    why_general_analysis_is_insufficient: Artifact completeness does not establish comprehension under realistic attention
+      fatigue or pressure.
+    required_specialist_type: Human-factors or decision-usability reviewer
+    blocking_or_nonblocking: NONBLOCKING_WITH_EXPLICIT_UNSUPPORTED_BOUNDARY
+    safe_interim_boundary: Do not rely on a materially complex untested packet as the sole ratification basis; simplify or
+      obtain bounded review.
+    later_phase_destination: PRE_RATIFICATION_OWNER_DECISION
+    id: SD-003
+    requirement_id: ER-015
+  - trigger: operational_recovery_or_continuity_dependency
+    affected_clause: K-007
+    affected_effect_or_requirement: ER-019 restoration residual-effect detection compensation and continuity evidence
+    why_general_analysis_is_insufficient: Recovery feasibility depends on a selected transition provider external systems
+      and effect classes not fixed by the package.
+    required_specialist_type: Operational recovery and continuity test specialist
+    blocking_or_nonblocking: NONBLOCKING_WITH_EXPLICIT_UNSUPPORTED_BOUNDARY
+    safe_interim_boundary: No governed pilot may proceed until the selected transition has a tested stop residual-state restoration
+      and compensation boundary.
+    later_phase_destination: GOV-7
+    id: SD-004
+    requirement_id: ER-019
+  parity:
+    markdown_outputs_materially_consistent: true
+    capability_inventory_counts_match: true
+    gap_inventory_counts_match: true
+    owner_decision_counts_match: true
+    recommendation_requirement_ids_match: true
+    handoff_counts_match: true
+    canonical_applicable_pair_count_matches: true
+    explicitly_preserved_omitted_anchor_count_matches: true
+    routing_coverage_count_matches: true
+    specialist_dependency_count_matches: true
+    owner_decision_count_matches: true
+    minimum_gov_7_package_posture_matches: true
+  base_run: KGR-006
+  correction:
+    base_input_package_sha256: d7a92ed0d617bc61d01868e020a4ea9b5237aef6bb8bd569202f0eed2dd6a5d7
+    base_output_package_sha256: 10f41f15cb8d76eb91d625b47f200d114efca746ad6a28b26555e8f5b26de07a
+    evaluation_package_sha256: 1c2167a093ec5d7bf636fe2ab25202e714e5375389ec4464653b0eefd45ed39e
+    evaluation_result: RETURN_FOR_VERSIONED_CORRECTION
+    material_challenges:
+    - IE-MC-001
+    - IE-MC-002
+    - IE-MC-003
+    canonical_anchor_source: control/canonical-clause-route-anchors.yaml; immutable KD-R05 source transcription
+  owner_decisions:
+  - id: OD-001
+    status: SATISFIED_FOR_ORIGINAL_KGR_006_EVALUATION_NEW_KGR_006_R1_APPOINTMENT_REQUIRED
+    decision: Appoint an evaluator outside the Engineer's unilateral control and address disclosed conflicts.
+    timing: Before the new independent evaluation
+    authority: Project Owner or competent appointing human
+  - id: OD-002
+    status: UNRESOLVED
+    decision: Confirm the exact Kernel version and scope presented for decision without broadening the single-user minimum
+      analysis into later functionality.
+    timing: Before ratification decision
+    authority: Competent ratification owner
+  - id: OD-003
+    status: UNRESOLVED
+    decision: Decide whether the final decision packet is sufficiently comprehensible or must be simplified or reviewed under
+      ER-015.
+    timing: Before ratification decision
+    authority: Competent ratification owner
+  - id: OD-004
+    status: UNRESOLVED
+    decision: Return, reject, or separately ratify the exact proposed Kernel after independent evaluation.
+    timing: GOV-6 decision
+    authority: Competent human constitutional authority
+  - id: OD-005
+    status: UNRESOLVED
+    decision: If later ratification occurs, accept, reject, or return the recommended minimum GOV-7 package and separately
+      authorize any implementation.
+    timing: After ratification and before GOV-7 work
+    authority: Project Owner within competence
+  - id: OD-006
+    status: UNRESOLVED
+    decision: Define any later pilot transition, provider, data or jurisdiction, effect classes, budget, and competent specialist
+      or operational owners.
+    timing: Before affected GOV-7 work or governed pilot
+    authority: Project Owner with applicable competent authorities
+  minimum_gov_7_package:
+    posture: RECOMMENDATION_ONLY
+    component_count: 7
+    requirement_ids:
+    - ER-001
+    - ER-002
+    - ER-003
+    - ER-004
+    - ER-005
+    - ER-006
+    - ER-007
+    - ER-008
+    - ER-009
+    - ER-010
+    - ER-011
+    - ER-012
+    - ER-013
+    - ER-014
+    - ER-015
+    - ER-016
+    - ER-017
+    - ER-018
+    - ER-019
+    - ER-020
+    implementation_authorized: false
+    later_phase_activated: false

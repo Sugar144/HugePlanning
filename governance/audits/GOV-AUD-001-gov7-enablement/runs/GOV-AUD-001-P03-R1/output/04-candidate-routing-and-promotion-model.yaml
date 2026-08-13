@@ -1,0 +1,68 @@
+candidate_routing_and_promotion_model:
+  artifact_id: GOV-AUD-P03-OUT-004
+  version: 0.1.0
+  status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  statement_label: REQUIREMENT
+  evidence_links:
+    - governance/learning/README.md
+    - governance/methodology/project-operating-contract.md
+    - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/01-bounded-context-and-ownership-model.yaml
+  candidate_minimum_fields: [candidate_id, statement_label, source_class, source_references, verification_state, scope, authority_boundary, privacy_class, duplicate_links, proposed_route, rationale, unresolved_limits]
+  destinations:
+    - {destination: OPERATIONAL_OBSERVATION, criteria: transient_non_authoritative_chronology_or_measurement, required_evidence: trace_reference_and_limitations, authority_limit: cannot_change_durable_state}
+    - {destination: FORMAL_RUN_EVIDENCE, criteria: material_bound_role_output_or_run_event, required_evidence: authorization_prompt_manifest_and_hashes, authority_limit: source_role_cannot_self_accept}
+    - {destination: FAILURE_OR_LESSON_RECORD, criteria: material_failure_near_miss_owner_correction_defect_or_waste, required_evidence: observed_event_impact_cause_or_unknown_and_validation_plan, authority_limit: follow_learning_contract_and_incident_precedence}
+    - {destination: METHODOLOGY_PROPOSAL, criteria: prospective_method_improvement_without_claim_of_adoption, required_evidence: problem_or_opportunity_scope_and_evidence_limits, authority_limit: proposal_not_policy}
+    - {destination: OWNER_DECISION_CANDIDATE, criteria: reserved_scope_authority_risk_ratification_phase_or_adoption_question, required_evidence: immutable_decision_packet_options_consequences_and_unknowns, authority_limit: candidate_never_decides}
+    - {destination: TOOLING_CANDIDATE, criteria: demonstrated_capability_gap_requires_later_comparison, required_evidence: gap_and_evaluation_criteria, authority_limit: no_selection_or_procurement}
+    - {destination: PROMPT_CANDIDATE, criteria: repeated_or_material_prompt_contract_defect, required_evidence: defect_examples_and_expected_guard, authority_limit: versioned_authoring_and_separate_execution}
+    - {destination: SKILL_CANDIDATE, criteria: reusable_bounded_procedure_with_stable_inputs_outputs_and_stops, required_evidence: multiple_use_or_material_reuse_case_and_validation_need, authority_limit: no_standing_authority}
+    - {destination: VALIDATOR_CANDIDATE, criteria: deterministic_machine_settleable_invariant, required_evidence: invariant_counterexample_and_false_result_risk, authority_limit: no_semantic_or_owner_judgment}
+    - {destination: REGRESSION_TEST_CANDIDATE, criteria: corrected_defect_has_reproducible_failure_or_guard, required_evidence: failing_case_and_expected_behavior, authority_limit: test_does_not_prove_unrelated_quality}
+    - {destination: PROCEDURAL_CONTROL_CANDIDATE, criteria: accepted_learning_may_require_repeatable_guard_or_action, required_evidence: accepted_learning_target_owner_risk_and_proportionality, authority_limit: separate_implementation_authority}
+    - {destination: RESEARCH_REQUIRED, criteria: material_unknown_blocks_verification_or_comparison, required_evidence: falsifiable_question_and_needed_evidence, authority_limit: research_cannot_decide_adoption}
+    - {destination: DUPLICATE_OR_LINKED_EXISTING_RECORD, criteria: same_causal_chain_claim_or_control_already_exists, required_evidence: canonical_link_and_delta_analysis, authority_limit: no_silent_merge}
+    - {destination: DISCARD, criteria: noise_non_material_unsupported_out_of_scope_or_no_actionable_delta, required_evidence: reason_code_and_source_reference, authority_limit: preserve_auditability_when_material}
+  triage_rules:
+    - Incident classification and containment take precedence for credible security, privacy, authority or integrity breaches.
+    - Verification state, evidence class and destination authority must be evaluated independently.
+    - Duplicate detection proposes links; semantic merge and causal equivalence require responsible-owner review.
+    - Low frequency does not erase high consequence; high frequency does not create authority.
+    - Unavailable evidence routes to RESEARCH_REQUIRED or DISCARD, never silent confirmation.
+    - A candidate may route to multiple linked destinations only when each has a distinct purpose and canonical owner.
+  prohibited_triage_decisions: [scope, constitutional_matter, risk_acceptance, ratification, phase_transition, implementation_approval, release, adoption]
+  promotion_targets:
+    - REPOSITORY_INSTRUCTIONS
+    - PROMPT_CONTRACTS
+    - SCHEMAS
+    - VALIDATORS
+    - REGRESSION_TESTS
+    - SCRIPTS
+    - HOOKS
+    - SKILLS
+    - ROUTING_RULES
+    - DETERMINISTIC_QUERIES
+    - MODEL_SELECTION_RULES
+    - FORMAL_RUN_PROTOCOLS
+    - ADVERSARIAL_ATTACK_CASES
+    - OWNER_CHECKLISTS
+  promotion_states:
+    - {state: CAPTURED, evidence: candidate_and_source_refs, authority: none, meaning: recorded_not_accepted}
+    - {state: ACCEPTED, evidence: verification_and_competent_bounded_disposition, authority: destination_owner_or_project_owner_as_applicable, meaning: durable_learning_accepted_not_implemented}
+    - {state: IMPLEMENTED, evidence: authorized_change_and_artifact_identity, authority: authorized_implementer_with_target_owner, meaning: control_exists_not_validated}
+    - {state: VALIDATED, evidence: declared_tests_and_independent_or_deterministic_result_appropriate_to_claim, authority: validator_or_independent_evaluator, meaning: conformance_shown_not_effectiveness}
+    - {state: SHOWN_EFFECTIVE, evidence: comparative_outcome_and_burden_measurement_with_limitations, authority: competent_evaluator_and_owner_disposition_where_required, meaning: bounded_effectiveness_demonstrated}
+  promotion_transitions:
+    - {from: CAPTURED, to: ACCEPTED, guard: confirmed_or_supported_partial_only_plus_competent_disposition, prohibited_basis: capture_or_frequency_alone}
+    - {from: ACCEPTED, to: IMPLEMENTED, guard: separate_change_authority_target_contract_privacy_and_rollback_plan}
+    - {from: IMPLEMENTED, to: VALIDATED, guard: immutable_subject_declared_criteria_and_non_self_asserted_result}
+    - {from: VALIDATED, to: SHOWN_EFFECTIVE, guard: real_or_valid_comparative_exposure_outcomes_denominators_and_burden}
+  invalid_promotions:
+    - CAPTURED_TO_IMPLEMENTED
+    - CAPTURED_TO_VALIDATED
+    - ACCEPTED_TO_SHOWN_EFFECTIVE
+    - IMPLEMENTED_TO_SHOWN_EFFECTIVE
+    - REFUTED_OR_UNRESOLVED_TO_ACCEPTED
+  rollback:
+    trigger_examples: [contradictory_evidence, regression, privacy_breach, excessive_burden, invalid_authority, staleness, demonstrated_harm]
+    requirements: [disable_future_use, preserve_history, restore_last_valid_state_or_manual_fallback, record_scope_and_reason, revalidate_dependents, notify_competent_owner]

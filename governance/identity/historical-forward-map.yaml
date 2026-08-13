@@ -1,0 +1,3 @@
+schema_version: 0.1.0
+mapping_direction: HISTORICAL_TO_NAMESPACED_FORWARD_ONLY
+mapping: {}

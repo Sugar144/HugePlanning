@@ -1,0 +1,45 @@
+document_id: GOV-GEN-G6-B-01-INDEPENDENT-REVIEW-001
+version: 0.1.0
+status: EXECUTED
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_INDEPENDENT_B01_REVIEW_AND_CONTINUE
+review_scope: B-01 baseline, boundary, shard, and reconciliation evidence only
+reviewed_revision: bdf6cdf
+baseline_frozen_revision: 6fc4fa1a14a665fabfcceb00729222527cd192ba
+reviewer_relationship: INDEPENDENT_OF_B01_AUTHORING_SESSION
+verdict: B-01_REVIEW_PASS_B02_AUTHORIZED
+findings:
+  blocking: []
+  material: []
+  minor: []
+corrected_mechanical_defect:
+  id: B01-RV-001
+  classification: CORRECTED_MECHANICAL_PROVENANCE_INTEGRITY_DEFECT
+  scope: >-
+    Three non-root reference hashes in the sharded manifest were measured at
+    the later rendering revision rather than at the declared frozen revision.
+    This also made the final-baseline manifest's recorded constructor hash
+    fail to match the rendered constructor.
+  correction: >-
+    Recomputed those three hashes from frozen revision 6fc4fa1 and restored
+    the constructor manifest to the deterministic R5 rendering.
+  semantic_scope_changed: false
+  l3_l5_ownership_changed: false
+  b02_candidate_set_changed: false
+deterministic_validation:
+  reproduced_at_frozen_revision: true
+  reproduced_constructor_sha256: 7aa5cfecb9acde1e947b5b1e6c9a406cde8e1fd297c29343f53634e69682ed96
+  canonical_coverage: 28_of_28
+  shard_token_counts: [18791, 18204, 4887]
+  hard_limit: 20000
+  reconciliation_token_count: 4391
+  cross_shard_relationships: 9
+  inventory_and_shard_membership_equal: true
+  source_and_projection_hashes_match_frozen_revision: true
+  unresolved_or_ambiguous_candidate_inputs: []
+  l3_candidates: []
+  l5_candidates: []
+  implementation_or_runtime_mutation_in_b01: false
+continuation:
+  b02_input_gate: SATISFIED
+  b02_excluded_layers: [L3, L5]
+  b02_unresolved_literal_or_path_dependencies: []

@@ -1,0 +1,61 @@
+pass:
+  id: PASS-06
+  title: Final Synthesis and Owner Decision Pack
+  status: PLANNED_NOT_EXECUTED
+  purpose: Synthesize accepted predecessor evidence into a concise decision pack without repeating all research or creating implementation authority.
+  authority: SEPARATE_PROJECT_OWNER_EXECUTION_AUTHORIZATION_REQUIRED
+  required_predecessors: [PASS-05]
+  checkpoint_dependency: CHECKPOINT-B
+  governance_phase_prerequisites:
+    gov_5: COMPLETED_CLOSED
+    gov_6: COMPLETED_CLOSED
+    gov_7: INACTIVE_PENDING_AUDIT_AND_SEPARATE_DESIGN_OR_IMPLEMENTATION_AUTHORITY
+    predecessor_evidence: ACCEPTED_OR_EXPLICITLY_BOUNDED
+  canonical_inputs: [accepted or bounded PASS-01 through PASS-05 outputs, checkpoint decisions, correction records, immutable evidence inventories]
+  read_only_repository_scope: [governance/** and referenced read-only S0a-S9 architecture]
+  permitted_external_research: NONE
+  mandatory_principles:
+    repository_first_gap_driven: every synthesis claim traces to predecessor evidence
+    prompt_economy: summarize decisions and rationale; do not repeat research bodies
+    ai_first_effort: sequence work by cycles, Owner effort, validation, uncertainty and maintenance
+    whole_work_unit: success criteria cover execution through independent disposition
+    strategy_neutrality: record compared alternatives and recommendation without rewriting history
+    relationship_model_neutrality: require relationship capability while preserving technology options
+    controlled_self_hosting: preserve trust-root, independence, migration, rollback and manual escape paths
+    open_tool_discovery: distinguish accepted, deferred, rejected and no-new-tool outcomes
+  required_questions:
+    - What baseline, gaps, capability map, architecture, relationship model, versioning, migration, self-hosting and feedback conclusions are supported?
+    - What historical metrics, telemetry, prompt/agent and interviewer evaluation architecture are supportable?
+    - What tooling, model routing and strategy conclusions survived checkpoints?
+    - What is the recommended approach, backlog, minimum enablement, defer/reject list and AI-first sequence?
+    - What success, stop, escalation and explicit Owner decisions remain?
+    - What bounded first implementation-contract outline could be considered later without granting authority now?
+  required_outputs:
+    - concise final audit synthesis
+    - Project Owner decision pack
+    - accepted current capability and ranked-gap map
+    - cross-layer relationship, version/migration, self-hosting and feedback summaries
+    - evaluation/interviewer/prompt lifecycle/tool/model-routing summaries
+    - strategy comparison, recommendation and proposed backlog
+    - minimum enablement, defer/reject list and strategy-neutral horizons
+    - success, stop, escalation and Owner-decision requirements
+    - bounded first implementation-contract outline
+  output_structure:
+    format: FINAL_SYNTHESIS_AND_OWNER_DECISION_PACK
+    statement_labels: [VERIFIED_FACT, INFERENCE, PROPOSAL, RECOMMENDATION, OWNER_DECISION_REQUIRED, DEFERRED, REJECTED]
+    horizons: [BEFORE_MATERIAL_GOV_7_WORK, FIRST_APPROVED_IMPLEMENTATION_INCREMENT, AFTER_INITIAL_EMPIRICAL_EVIDENCE, DEFERRED, REJECTED]
+  required_evidence: [predecessor artifact IDs and hashes, checkpoint records, correction history, unresolved decision list]
+  validation: [claim-to-evidence traceability, no unsupported new research, decision completeness, horizon completeness, authority-boundary check, output-contract validation]
+  stopping_conditions: [predecessor conflict, missing checkpoint evidence, synthesis requires new research, recommendation cannot be separated from Owner decision, authority boundary unclear]
+  prohibited_actions: [modify repository during analysis without separate authority, conduct new research, implement recommendations, accept its synthesis, resolve Owner decisions, activate GOV-7, rewrite predecessor outputs, treat chat memory as durable truth]
+  prohibited_claims: [audit acceptance, implementation authority, GOV-7 activation, readiness without evidence, enforceability, operation, compliance, maturity, risk acceptance]
+  model_class_recommendation: CAPABLE_SYNTHESIS_MODEL_WITH_STRICT_EVIDENCE_BINDING
+  ai_first_effort_dimensions:
+    cycles: 2-3
+    owner_effort: HIGH
+    validation_burden: HIGH
+    novelty: SMALL_EXTENSION
+    correction_uncertainty: MEDIUM
+    maintenance_burden: LOW
+  correction_protocol: Preserve the synthesis and review findings; create a bounded new version rather than editing completed outputs.
+  handoff_to_next_pass: Provide immutable synthesis package to an evaluator outside the author's unilateral control for PASS-07.

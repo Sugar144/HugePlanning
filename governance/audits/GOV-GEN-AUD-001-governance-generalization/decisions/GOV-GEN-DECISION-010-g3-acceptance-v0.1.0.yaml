@@ -1,0 +1,97 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-010
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: ACCEPT_GOV_GEN_G3_CORRECTED_RESULT
+  program_id: GOV-GEN-AUD-001
+  phase: G3
+  subject_contract: GOV-GEN-G3-CONTRACT-001/0.1.0
+  subject_base_deliverable: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0
+  subject_controlling_result: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
+  source_prompt: HP-PROMPT-049/0.1.0
+  reviewed_evidence:
+    base_deliverable_terminal_status_before_acceptance: G3_READY_FOR_PROJECT_OWNER_REVIEW
+    correction_terminal_status_before_acceptance: G3_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    base_deliverable_sha256: be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b
+    correction_sha256: fd0294f60fd45249c087448851712721aa8a91b21e22fff35e4d8237faba1eb6
+    base_manifest: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.manifest.sha256
+    correction_manifest: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.manifest.sha256
+    base_manifest_verified: true
+    correction_manifest_verified: true
+    capabilities_allocated: 88
+    gaps_allocated: 6
+    layer_counts: {L0: 3, L1: 14, L2: 4, L3: 6, L4: 4, L5: 20, L6: 29, L7: 8}
+    cross_layer_items_named: 7
+    unresolved_question_dispositions:
+      UQ1: DEFER_TO_PHYSICAL_ARCHITECTURE
+      UQ2: LOGICALLY_RESOLVED_BY_G3
+      UQ3: NARROWED_BUT_OWNER_DECISION_REQUIRED
+      UQ4: LOGICALLY_RESOLVED_BY_G3
+      UQ5: NARROWED_BUT_OWNER_DECISION_REQUIRED
+      UQ6: NARROWED_BUT_OWNER_DECISION_REQUIRED
+      UQ7: NARROWED_BUT_OWNER_DECISION_REQUIRED
+    candidate_architecture_recommended: true
+    alternatives_recorded: 2
+    corrections_applied: 6
+    base_deliverable_modified: false
+    reallocation_performed: false
+    g2_capability_reclassification_performed: false
+    g2_gap_redisposition_performed: false
+    head_before: 44dd31e669a9c0530be13d5b3a3f9e4005d4908c
+    worktree_clean_before_acceptance: true
+  final_status: ACCEPTED_BY_PROJECT_OWNER
+  acceptance_scope: BOUNDED_G3_LOGICAL_ARCHITECTURE_AND_CORRECTED_R1_RESULT_ONLY
+  pending_owner_acceptance_state_removed: true
+  controlling_result: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
+  accepted:
+    - the eight-layer logical architecture (L0 canonical governance semantics/core, L1 configurable cross-project policy, L2 optional governance modules, L3 project-specific projections, L4 provider/executor adapters, L5 canonical evidence and historical custody, L6 deterministic validation/query tooling, L7 bounded model/agent context projections)
+    - allocation of all 88 accepted G2 capabilities to that eight-layer model (L0=3, L1=14, L2=4, L3=6, L4=4, L5=20, L6=29, L7=8), including the 7 items named cross-layer/ambiguous rather than forced
+    - allocation of all 6 accepted G2 gaps to that eight-layer model
+    - the boundary model across the six named boundary pairs
+    - the target context-efficiency model (MODEL_ENTRYPOINT/QUERY_ON_DEMAND/CANONICAL_MACHINE_SOURCE/HISTORICAL_EVIDENCE_ONLY), as a recommended target logical consumption model that does not override current governance/AGENTS.md instructions
+    - the distinction between canonical storage completeness and bounded model-facing context projections (the canonical-storage -> deterministic-query/index -> bounded-projection -> model-consumption pipeline)
+    - the corrected disposition of G2 §21 unresolved questions 1-7 (UQ1 DEFER_TO_PHYSICAL_ARCHITECTURE; UQ2 LOGICALLY_RESOLVED_BY_G3; UQ3/UQ5/UQ6 NARROWED_BUT_OWNER_DECISION_REQUIRED; UQ4 LOGICALLY_RESOLVED_BY_G3; UQ7 NARROWED_BUT_OWNER_DECISION_REQUIRED)
+    - the recommended candidate logical architecture (the eight-layer model itself) as the controlling G3 result, with its two rejected alternatives preserved as evidence
+    - the future physical-architecture inputs G3 carries forward without itself deciding them
+    - the six R1 corrections (UQ4/UQ7 closed-enum reconciliation, §7 current-vs-target context-efficiency clarification, governance/AGENTS.md-vs-root-AGENTS.md disambiguation, the 29/88/~33% quantitative correction, the 8-schema-capability correction, and the honest check-8 evidence-custody note plus Owner-review revalidation evidence) in GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
+  not_accepted:
+    - target_physical_repository_architecture_selection
+    - repository_ownership_decision
+    - general_governance_repository_creation
+    - repository_extraction_or_migration
+    - implementation_of_the_eight_layer_architecture
+    - AGENTS_md_or_CLAUDE_md_modification
+    - implementation_of_provider_or_executor_adapters
+    - implementation_of_delegated_operational_authority
+    - implementation_of_query_index_or_projection_tooling
+    - implementation_of_any_g1b_gap
+    - CWG_AET_or_SVP_integration
+    - g4_authorization
+    - g4_definition
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct acceptance
+    (`HP-PROMPT-049/0.1.0`, disposition `ACCEPT_GOV_GEN_G3_CORRECTED_RESULT`)
+    of `GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0` as the corrected and
+    controlling G3 result. The original
+    `GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0` remains preserved, unmodified,
+    as immutable historical execution evidence; it is not itself superseded,
+    deprecated, or rewritten — R1 is read together with it as the controlling
+    description of G3's outcome. This acceptance does not re-review the
+    679-row G1A corpus, the 88-capability G1B map, or the G2
+    classification/gap-disposition content; it relies on the base
+    deliverable's and R1's own disclosed self-check and completion
+    disposition by reference, and on the manifest verification independently
+    reproduced during this reconciliation.
+  next_governed_state: >-
+    G4 is the next phase in the GOV-GEN-AUD-001 phase plan
+    (G0 -> G1A -> G1B -> G2 -> G3 -> G4 -> G5 -> GR -> G6). G4 has no
+    contract, scaffold, or Owner authorization, is not defined, and is not
+    opened, scoped, or authorized by this decision. A separate, explicit
+    Project Owner authorization is required before any G4 work, including its
+    definition, and before any target physical architecture selection,
+    repository ownership decision, or extraction/migration.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

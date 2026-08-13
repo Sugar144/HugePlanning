@@ -1,0 +1,26 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-020-E001
+  record_id: HP-FAIL-020
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The canonical validator and focused regressions validate consistent durable GOV-5, authorization and Owner-decision state across every affected surface.
+  rationale: Direct, full-suite and isolated-copy validation pass; regression mutations reject stale authority, missing terminal reconciliation, inconsistent decisions, obsolete README phase, premature phase closure or activation, ratification and output-hash drift.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/test_kgr_006_r1_state_consistency.py
+      anchor: focused cross-surface regressions
+      sha256: null
+      availability: PRESERVED
+      note: Required positive and negative state-consistency coverage.
+    - type: VALIDATION_RECORD
+      locator: governance/reviews/kgr-006-r1-owner-decisions-state-reconciliation/cross-surface-state-validation-v0.1.0.yaml
+      anchor: GOV-VAL-008
+      sha256: null
+      availability: PRESERVED
+      note: Canonical validation result and authority boundary.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-018-kgr-006-r1-owner-decisions-state-reconciliation-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

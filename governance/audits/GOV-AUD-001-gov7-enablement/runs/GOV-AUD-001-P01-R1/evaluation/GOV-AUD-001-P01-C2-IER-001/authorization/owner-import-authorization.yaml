@@ -1,0 +1,11 @@
+authorization:
+  authorization_id: GOV-AUD-001-P01-C2-IER-001-IMPORT-AUTH-001
+  version: 0.1.0
+  authority: PROJECT_OWNER_EXPLICIT
+  authorized_operation: EXACT_CUSTODY_IMPORT_OF_ALREADY_COMPLETED_INDEPENDENT_REVIEW_AND_RESUMPTION_OF_AUTHORIZED_C3
+  review_id: GOV-AUD-001-P01-C2-IER-001
+  reviewed_candidate: GOV-AUD-001-P01-R1-C2
+  source: PROJECT_OWNER_SUPPLIED_EXACT_REVIEW_OUTPUT
+  execution_origin: SEPARATELY_CONTROLLED_READ_ONLY_SESSION
+  import_status: IMPORTED_NOT_REEXECUTED
+  prohibited_actions: [repeat_or_change_independent_review, accept_pass_01, authorize_pass_02, activate_gov_7, commit, push]

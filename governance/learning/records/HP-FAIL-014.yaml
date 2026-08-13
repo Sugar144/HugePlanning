@@ -1,0 +1,122 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-014
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: KGR-006 execution authorization lacked contemporaneous repository custody
+  context:
+    phase: GOV-5 provenance reconciliation
+    run: KGR-006
+    component: Formal execution authorization custody
+    branch: governance/kernel-designer-revision-v0.1
+    commit: d865de74bdae3d9ac26e26663b243be7b9df9e8c
+    environment: External formal execution followed by repository reconciliation
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  - FAILURE
+  severity: HIGH
+  status: CONTAINED
+  expected_behavior: One exact KGR-006 execution begins only after the Project Owner
+    authorization is preserved in repository-side prompt custody and bound to the
+    run, package, role, mode, protocol, and authority limits.
+  observed_behavior: KGR-006 executed externally after chat authorization, but no
+    contemporaneous repository-side authorization record was preserved; the later
+    Project Owner attestation is necessarily retrospective.
+  impact: Durable state could not initially establish execution authority or safely
+    import the output and evaluation packages without a new Owner attestation and
+    explicit historical limitation. The missing contemporaneous record cannot be recreated
+    after the fact.
+  detection_method: Independent evaluation compared the external output package with
+    the KGR-006 manifest and found execution.authorized false, outputs absent, and
+    no execution-authorization prompt in validated prompt custody.
+  root_cause:
+    immediate: The external execution was launched after chat authorization without
+      first materializing the authorization in repository custody.
+    systemic: Formal-run preparation had a readiness gate but no deterministic repository-side
+      execution-authorization gate required before handoff to an external executor.
+    contributing_factors:
+    - The prepared prompt and package were complete enough to execute outside the
+      repository.
+    - Conversation authorization was treated operationally as sufficient even though
+      durable custody was separately required.
+    - Import validation was performed only after the independent evaluator exposed
+      the custody conflict.
+  response:
+    containment: Preserve the Project Owner statement as RETROSPECTIVE_PROJECT_OWNER_ATTESTATION,
+      keep the original absence explicit, import evidence without acceptance, and
+      hold GOV-5 in progress pending correction.
+    correction: Record the external execution and its limits through GOV-ATT-001 and
+      prepare a prospective repository-side authorization gate for future formal runs;
+      never label the attestation contemporaneous.
+    prevention:
+    - Require a repository-custodied execution-authorization record before any future
+      formal package is released for execution.
+    - Validate run, role, mode, protocol, package hash, execution count, and forbidden
+      actions in that authorization record.
+    - Make missing execution authorization a deterministic pre-execution stop condition.
+    - Preserve NOT_PRESERVED evidence limitations rather than reconstructing historical
+      prompt text.
+    accountable_owner: Project Owner
+    validation_required:
+    - Validate prompt custody and the structured retrospective attestation.
+    - Test that correction preparation and future formal-run readiness reject missing
+      repository-side execution authorization.
+    - Confirm KGR-006 state remains unaccepted and GOV-6 through GOV-9 inactive.
+  learning:
+    reusable_lesson: Formal execution authority must enter repository custody before
+      external execution; retrospective Owner attestation can reconcile evidence but
+      cannot recreate contemporaneous provenance.
+    candidate_system_changes:
+    - VALIDATION
+    - PROTOCOL
+    - WORKFLOW_PATTERN
+    - DOCUMENTATION
+    applicable_future_phases:
+    - All future formal governance executions
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: The missing prompt-custody record, two exact external packages, one independent
+      evaluation, and one retrospective attestation are observable; time, tokens,
+      and source execution details are unavailable.
+  evidence_refs:
+  - type: OWNER_STATEMENT
+    locator: governance/prompts/orchestration/HP-PROMPT-015-kgr-006-provenance-reconciliation-and-correction-preparation-v0.1.0.md
+    anchor: Decision 1 — Retrospective execution-authorization attestation
+    sha256: null
+    availability: PRESERVED
+    note: Exact Project Owner attestation and limits.
+  - type: REPOSITORY_PATH
+    locator: governance/runs/KGR-006-enforcement-analysis/provenance/retrospective-execution-authorization-attestation-v0.1.0.yaml
+    anchor: GOV-ATT-001
+    sha256: null
+    availability: PRESERVED
+    note: Structured retrospective evidence with contemporaneous custody false.
+  - type: EXTERNAL
+    locator: Original KGR-006 chat execution authorization
+    anchor: null
+    sha256: null
+    availability: NOT_PRESERVED
+    note: The Project Owner attests that authorization occurred; exact contemporaneous
+      text is unavailable and is not reconstructed.
+  - type: RUN_ARTIFACT
+    locator: governance/runs/KGR-006-enforcement-analysis/evaluation/01-independent-evaluation-findings.yaml
+    anchor: IE-MC-001
+    sha256: ed6a78059500c00a966d8ca29c5535547a87a88d0b76b5f1f781a7c03bc21383
+    availability: PRESERVED
+    note: Independent finding that durable authorization and custody were not established.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

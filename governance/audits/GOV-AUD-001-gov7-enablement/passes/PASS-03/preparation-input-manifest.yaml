@@ -1,0 +1,20 @@
+manifest:
+  manifest_id: GOV-AUD-001-PASS-03-PREP-INPUT-001
+  version: 0.1.0
+  status: PREPARED_VALIDATED
+  purpose: Canonical preparation inputs only; not an execution input manifest.
+  repository: Sugar144/HugePlanning
+  branch: governance/kernel-designer-revision-v0.1
+  starting_head: 6b29a7a23595a576f6e47b4ba523bc7cc95cac66
+  inputs:
+    - {id: GOV-AUD-001-PLAN, path: governance/audits/GOV-AUD-001-gov7-enablement/01-audit-plan.yaml, sha256: ab1f81da23dc619ffa0c72281049628b70bbef476023473aad3928e78577dcee, role: CANONICAL_AUDIT_PLAN}
+    - {id: GOV-AUD-001-STATUS, path: governance/audits/GOV-AUD-001-gov7-enablement/02-audit-status.yaml, sha256: 337b1db7db0c42fbfb0b41c74739bd7cc5dab88fd31bfc89dccad0448ce16194, role: CURRENT_AUDIT_STATE}
+    - {id: GOV-AUD-DECISION-003, path: governance/audits/GOV-AUD-001-gov7-enablement/decisions/GOV-AUD-DECISION-003-pass-02-checkpoint-a-approval-v0.1.0.yaml, sha256: c8c9997248ed11718500dce74fc4cc53321dad155941c46bd9e97bf0d1953330, role: CHECKPOINT_A_DECISION}
+    - {id: GOV-AUD-001-METHOD-001, path: governance/audits/GOV-AUD-001-gov7-enablement/07-audit-methodology-and-review-protocol.yaml, sha256: d917e2e00bf26f0f8fbb2b6cb77f19e7aac70834ab589391ab19ec21e3f0e60c, role: AUDIT_METHODOLOGY_AND_ADVERSARIAL_REQUIREMENTS}
+    - {id: HP-MPROP-007, path: governance/methodology/METHODOLOGY_BACKLOG.md, sha256: 422790a448ae7d16ae442539010aa50832b2c86f33ab26a3c3cc7c483703e7d0, role: ACCEPTED_FUTURE_AUDIT_CLARIFICATION}
+    - {id: GOV-AUD-001-P01-R1, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/manifest.yaml, sha256: 8551e92201a4cc7fd69c4645da1dab611dfc138f8d3283f3b6b6e6383405474b, role: PASS_01_ACCEPTED_RUN}
+    - {id: GOV-AUD-001-P02-R1, path: governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/manifest.yaml, sha256: f787316566c717ecda62bfc2a7bd449d830228507d0fcc57b1c0943583ecce28, role: PASS_02_ACCEPTED_RUN}
+    - {id: CURRENT-GOVERNANCE-STATE, path: governance/CURRENT_STATE.md, sha256: 7c4c73bd4b4292bfe401e3d8278908ce8e4c0adbc1b0bd76967f9b3d4067befc, role: CURRENT_GOVERNANCE_STATE}
+    - {id: ARTIFACT-REGISTRY, path: governance/ARTIFACT_REGISTRY.yaml, sha256: 86e47a2c969de89e0fc795a4c9f1cd72fcb43e7131df9405063a2f4018a32153, role: CANONICAL_IDENTITY_REGISTRY}
+    - {id: GOVERNANCE-LEARNING-README, path: governance/learning/README.md, sha256: c272ab694a6cb3c3064c09c54d3db6c878c670d7626f3b8abc878949af58a531, role: LEARNING_ROUTING_REQUIREMENTS}
+  exclusions: [chat_memory, hidden_chain_of_thought, unrecorded_telemetry, PASS-04 materials]

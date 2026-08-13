@@ -1,0 +1,99 @@
+tooling_neutral_capability_model:
+  artifact_id: GOV-AUD-P03-OUT-008
+  version: 0.1.0
+  status: EXECUTED_SOURCE_OUTPUT_PENDING_INDEPENDENT_ADVERSARIAL_REVIEW_AND_PROJECT_OWNER_DISPOSITION
+  statement_label: REQUIREMENT
+  evidence_links:
+    - governance/methodology/METHODOLOGY_BACKLOG.md#hp-mprop-007--execution-insight-capture-and-learning-promotion-pipeline
+    - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P01-R1/corrections/GOV-AUD-001-P01-R1-C2/output/01-corrected-verified-capability-inventory.yaml
+    - governance/audits/GOV-AUD-001-gov7-enablement/runs/GOV-AUD-001-P02-R1/output/06-architecture-style-comparison.yaml
+  separation_invariant: TRACE_CAPTURE_NOT_EQUAL_INSIGHT_EXTRACTION_NOT_EQUAL_EVIDENCE_VERIFICATION_NOT_EQUAL_CANDIDATE_TRIAGE_NOT_EQUAL_PROCEDURAL_PROMOTION_NOT_EQUAL_SELECTIVE_RETRIEVAL_NOT_EQUAL_EFFECTIVENESS_EVALUATION
+  separated_capabilities:
+    - capability: TRACE_CAPTURE
+      input: observable_execution_events
+      output: schema_versioned_non_authoritative_trace_with_unavailable_markers
+      must_not: [infer_causality, verify_claims, change_repository_authority]
+      evaluation: [field_coverage, loss_and_duplicate_detection, redaction, disablement, overhead, exportability]
+    - capability: INSIGHT_EXTRACTION
+      input: authorized_trace_subset_and_repository_context
+      output: visible_insights_with_source_class_and_limitations
+      must_not: [capture_hidden_chain_of_thought, relabel_inference_as_fact, accept_learning]
+      evaluation: [precision_recall_sample, provenance_fidelity, false_claim_rate, burden]
+    - capability: EVIDENCE_VERIFICATION
+      input: bounded_hypothesis_method_evidence_and_verifier
+      output: confirmed_refuted_partially_confirmed_or_unresolved_result
+      must_not: [self_accept_material_result, invent_missing_evidence, grant_owner_authority]
+      evaluation: [reproducibility, contradiction_handling, independence, limitation_accuracy]
+    - capability: CANDIDATE_TRIAGE
+      input: verification_result_and_candidate_metadata
+      output: evidence_aware_route_or_discard_with_reason
+      must_not: [decide_scope_risk_ratification_phase_implementation_release_or_adoption, silently_merge]
+      evaluation: [routing_accuracy, duplicate_handling, false_discard_sample, owner_burden]
+    - capability: PROCEDURAL_PROMOTION
+      input: accepted_learning_separate_authorization_and_target_contract
+      output: versioned_implemented_control_with_rollback_path
+      must_not: [promote_on_frequency_alone, bypass_target_owner, claim_validation_or_effectiveness]
+      evaluation: [authority_fidelity, change_traceability, validation_readiness, rollback]
+    - capability: SELECTIVE_RETRIEVAL
+      input: scoped_task_query_authority_and_context_budget
+      output: compact_justified_package_or_explicit_empty_result
+      must_not: [inject_all_learning, expand_access, resolve_contradictions_silently]
+      evaluation: [relevance, irrelevant_context, staleness, conflicts, latency_and_token_burden]
+    - capability: EFFECTIVENESS_EVALUATION
+      input: validated_controls_exposures_outcomes_baseline_and_burden
+      output: bounded_effectiveness_result_with_uncertainty
+      must_not: [use_volume_as_success, overclaim_counterfactual, accept_risk]
+      evaluation: [metric_integrity, causal_adequacy, anti_gaming, burden_completeness, portability]
+  interfaces:
+    - {interface: EVENT_ENVELOPE, required: [schema_version, event_id, source, availability, privacy_class, payload_reference_or_minimum_fields]}
+    - {interface: INSIGHT_ENVELOPE, required: [insight_id, source_event_refs, evidence_class, statement_label, text_or_structured_claim, limitations]}
+    - {interface: VERIFICATION_CONTRACT, required: [hypothesis, method, evidence_refs, verifier, result_state, contradictions, limitations]}
+    - {interface: CANDIDATE_ENVELOPE, required: [candidate_id, verification_state, authority_boundary, route_options, duplicate_links, privacy_class]}
+    - {interface: PROMOTION_CONTRACT, required: [accepted_learning, target, change_authority, validation_plan, rollback_plan, owner]}
+    - {interface: RETRIEVAL_REQUEST_AND_PACKAGE, required: [task_scope, dimensions, budget, access_scope, members, relevance_reasons, conflicts, unavailable]}
+    - {interface: EFFECTIVENESS_DATASET, required: [cohort, exposure, outcomes, denominators, burden, exclusions, measurement_quality, provenance]}
+  cross_cutting_capabilities:
+    - canonical_identifier_and_hash_support
+    - schema_versioning_and_migration
+    - access_control_redaction_and_minimization
+    - append_only_audit_and_correction
+    - disablement_manual_fallback_and_rollback
+    - export_import_and_portability_validation
+    - explicit_unavailable_data
+    - cost_token_time_and_owner_burden_measurement
+  pass_04_evaluation_criteria:
+    - functional_coverage_without_conflating_capabilities
+    - authority_and_canonicality_fidelity
+    - privacy_minimization_access_retention_deletion_and_disablement
+    - provenance_integrity_and_contradiction_handling
+    - selective_retrieval_quality_and_context_burden
+    - validation_independence_and_anti_self_certification
+    - rollback_manual_fallback_and_failure_isolation
+    - interoperability_exportability_portability_and_exit_cost
+    - integration_burden_with_existing_repository_capabilities
+    - implementation_operations_security_and_owner_burden
+    - measured_need_fit_and_proportionality
+    - evidence_quality_not_popularity_or_feature_count
+  candidate_categories_for_later_comparison:
+    - REPOSITORY_NATIVE_MVP
+    - PILOT_EXTERNAL_FRAMEWORK
+    - HYBRID_REPOSITORY_AND_FRAMEWORK
+    - NO_ACTION
+    - DEFER_PENDING_RUNTIME_CONTROL
+    - OTHER_EVIDENCE_SUPPORTED_CATEGORY
+  prohibited_selections:
+    - repository_native_implementation
+    - external_observability_platform
+    - tracing_framework
+    - vector_store
+    - database
+    - agent_framework
+    - hosted_service
+    - model_provider
+    - retrieval_architecture
+  present_disposition:
+    selected_solution: NONE
+    adopted_capability: NONE
+    implemented_pipeline: false
+    pass_04_authorized_or_executed: false
+    no_action_and_deferred_options_preserved: true

@@ -1,0 +1,20 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-016-E001
+  record_id: HP-FAIL-016
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CONTAINED
+  status_to: CORRECTED
+  summary: KGR-006-R1 uses one canonical set of four specialist dependencies and one exact ER-012 boundary.
+  rationale: Requirements reference SD-001 through SD-004 by ID instead of duplicating records, and the corrected boundary blocks all affected real-data processing rather than only a governed pilot.
+  evidence_refs:
+    - type: RUN_ARTIFACT
+      locator: governance/runs/KGR-006-R1-enforcement-analysis-correction/outputs/01-clause-implication-matrix.yaml
+      anchor: enforcement_analysis.specialist_dependencies
+      sha256: 16094b2afdb38f8623867a3904fd61ec71473a988d70c1be0b962485a2402d19
+      availability: PRESERVED
+      note: Immutable corrected canonical dependency records and references.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-017-kgr-006-r1-controlled-import-owner-review-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

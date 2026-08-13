@@ -1,0 +1,23 @@
+document_id: GOV-GEN-G6-B-02-CORE-BOUNDARY-001
+version: 0.1.0
+status: B-02_MINIMUM_OPTION_B_BOUNDARY_REVIEW_READY
+authority: PROJECT_OWNER_DIRECT_TASK_GOV_GEN_G6_B02_EXECUTION
+source_baseline:
+  review: ../audits/GOV-GEN-AUD-001-governance-generalization/G6/B-01/B-01-independent-review-001.yaml
+  frozen_revision: 6fc4fa1a14a665fabfcceb00729222527cd192ba
+approved_candidates:
+  - logical_layer: L0
+    source_path_before_move: governance/methodology/project-operating-contract.md
+    core_path: governance/core/project-operating-contract.md
+    move_kind: HISTORY_PRESERVING_EXTRACTION_WITH_COMPATIBILITY_SHIM
+deferred_layers:
+  L1: B-03_CONFIGURATION_SEAM_REQUIRED
+  L2: NO_B01_APPROVED_PHYSICAL_CANDIDATE
+excluded_project_owned_layers:
+  L3: NO_CANDIDATE
+  L5: NO_CANDIDATE_IMMUTABLE_HISTORY
+core_invariants:
+  no_hugeplanning_binding_or_values: true
+  no_project_literal_or_path_dependency: true
+  no_l3_or_l5_content: true
+  active_instruction_surfaces_modified: false

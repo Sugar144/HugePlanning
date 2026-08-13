@@ -1,0 +1,26 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-013-E001
+  record_id: HP-FAIL-013
+  date: '2026-07-15'
+  event_type: STATUS_TRANSITION
+  status_from: CORRECTED
+  status_to: VALIDATED
+  summary: The recordable-gated Controller model and its terminal regression passed targeted, full-worktree, and isolated-copy validation.
+  rationale: Targeted Controller model and property tests passed 10 tests, while both complete governance-suite executions passed 104 tests. The isolated copy no longer permits a non-recordable attempt to replace the accepted terminal record.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/tests/controller/test_state_machine.py
+      anchor: ControllerModel._calculate and test_nonrecordable_attempts_preserve_terminal_accepted_record
+      sha256: null
+      availability: PRESERVED
+      note: The model updates last_record only for recordable results and tests every declared non-completion outcome after closure.
+    - type: REPOSITORY_PATH
+      locator: governance/tools/apply_loop_transition.py
+      anchor: recordable gate in calculate and apply
+      sha256: null
+      availability: PRESERVED
+      note: Production persistence semantics remain unchanged and accept only recordable transitions.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-014-controller-model-recordable-gate-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

@@ -1,0 +1,80 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-011
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: GOV-5 scope review undercounted the canonical lower-layer routing register
+  context:
+    phase: GOV-5 contract preparation
+    run: KGR-006
+    component: Scope-review deterministic inventory
+    branch: governance/kernel-designer-revision-v0.1
+    commit: 7cfc92ed63fbba06232ceba8e4c9b5e10f0258dc
+    environment: Codex CLI contract preparation
+  primary_classification: PROCESS_DEFECT
+  classification: [PROCESS_DEFECT, TOOLING_GAP]
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: A formal-run scope recommendation derives the complete routing count from the canonical KGR-004 table and preserves every entry or an explicit applicability disposition.
+  observed_behavior: The historical GOV-5 scope-review report stated that the canonical register contained 19 routes, while deterministic inspection found 20 data rows including Historical repository audit and S1 regularization.
+  impact: The initial KGR-006 draft encoded only LLR-001 through LLR-019 and could have omitted an authoritative route from formal coverage. Preparation stopped before validation, commit, push, or execution.
+  detection_method: A deterministic row inventory compared the scope-review count with the complete KGR-004 lower-layer routing table during contract preparation.
+  root_cause:
+    immediate: The scope-review count was recorded without a deterministic table-row inventory bound to the recommendation.
+    systemic: The review used an unvalidated prose aggregate for a machine-settleable coverage fact.
+    contributing_factors:
+      - The final route is intentionally deferred to GOV-8 and was easy to mistake for outside the canonical register.
+      - The initial output schema copied the prose count before verifying the source table.
+  response:
+    containment: Stop preparation and publication, report the conflict, and leave GOV-5 unexecuted.
+    correction: Preserve all 20 canonical routes; classify LLR-020 as NOT_APPLICABLE_TO_GOV_5_EXECUTION with explicit justification and GOV-8 destination under Project Owner disposition.
+    prevention:
+      - Derive canonical table inventories deterministically before encoding counts in schemas or prompts.
+      - Require explicit justification and later-phase destination for every not-applicable route.
+      - Test the exact LLR-001 through LLR-020 inventory and the LLR-020 disposition.
+    accountable_owner: Project Owner
+    validation_required:
+      - Run KGR-006 contract and schema tests.
+      - Validate exact 20-route coverage and LLR-020 disposition.
+      - Run learning and prompt-custody validation.
+  learning:
+    reusable_lesson: Formal coverage counts must be derived from canonical structured or deterministically parsed inventories, never copied from prose summaries.
+    candidate_system_changes: [TEST, VALIDATION]
+    applicable_future_phases: [GOV-5, GOV-7, GOV-8]
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One stopped preparation and one corrected route inventory are observable; time, token, and model-use values are unavailable.
+  evidence_refs:
+    - type: REPOSITORY_PATH
+      locator: governance/runs/KGR-004-kernel-designer-revision/outputs/05-lower-layer-routing-v0.2.md
+      anchor: Complete revised routing register
+      sha256: null
+      availability: PRESERVED
+      note: Canonical source contains 20 data rows.
+    - type: EXTERNAL
+      locator: /home/sugar/Downloads/HugePlanning-GOV-5-scope-review-v0.1.0.md
+      anchor: Executive recommendation and repository-settled facts
+      sha256: null
+      availability: PRESERVED
+      note: Historical report states 19 and remains unchanged.
+    - type: REPOSITORY_PATH
+      locator: governance/prompts/orchestration/HP-PROMPT-012-gov-5-routing-disposition-v0.1.0.md
+      anchor: Exact executed text
+      sha256: null
+      availability: PRESERVED
+      note: Project Owner supplies the prospective 20-route disposition.
+  related_records: []
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

@@ -1,0 +1,8 @@
+adversarial_review_plan:
+  id: GOV-AUD-001-PASS-03-ADVERSARIAL-PLAN-001
+  version: 0.1.0
+  timing: AFTER_EXECUTION_BEFORE_PROJECT_OWNER_DISPOSITION
+  independence: Attacker and decisive criteria must be outside the source author's unilateral control.
+  attacks: [false_learning, unsupported_promotion, authority_escalation, privacy_leak, telemetry_overcollection, irrelevant_context, stale_learning, contradiction, metric_gaming, bureaucracy_owner_burden, vendor_lock_in_or_premature_tool_selection, rollback_deletion_failure, unavailable_observability]
+  required_record_per_attack: [falsifiable_target, attack_method, evidence_examined, counterexample_or_failure_scenario, result, impact]
+  self_critique: Bounded source self-critique is required but cannot validate, accept or independently review its own output.

@@ -1,0 +1,88 @@
+failure_record:
+  schema_version: 0.1.0
+  id: HP-FAIL-017
+  date: '2026-07-15'
+  recorded_on: '2026-07-15'
+  title: Phase 2.4 state test froze the pre-execution Enforcement gate wording
+  context:
+    phase: GOV-5 provenance reconciliation
+    run: KGR-006
+    component: Phase 2.4 durable-state regression
+    branch: governance/kernel-designer-revision-v0.1
+    commit: d865de74bdae3d9ac26e26663b243be7b9df9e8c
+    environment: Full governance pytest suite
+  primary_classification: PROCESS_DEFECT
+  classification:
+  - PROCESS_DEFECT
+  severity: MEDIUM
+  status: CORRECTED
+  expected_behavior: Historical Phase 2.4 tests preserve GOV-4 completion and require
+    the standing Enforcement Engineering gate to remain closed without freezing an
+    obsolete pre-execution status phrase.
+  observed_behavior: The test required the exact string Enforcement Engineering gate
+    CLOSED and failed when reconciliation truthfully changed it to CLOSED_TO_FURTHER_EXECUTION_PENDING_VERSIONED_CORRECTION.
+  impact: The full governance suite failed and blocked the provenance reconciliation
+    commit despite no opening of Enforcement Engineering or later phase.
+  detection_method: Full governance pytest execution after KGR-006 state reconciliation.
+  root_cause:
+    immediate: A historical-phase test asserted one exact current-state presentation
+      string.
+    systemic: The regression mixed a durable Phase 2.4 invariant with mutable later-phase
+      state vocabulary.
+    contributing_factors:
+    - The original assertion predated any GOV-5 execution evidence.
+    - No later KGR-006 test owned the refined closed-pending-correction state.
+  response:
+    containment: Stop the first commit and preserve the failing full-suite diagnostic.
+    correction: Require the exact reconciled closed-to-further-execution state while
+      retaining separate tests that GOV-6 through GOV-9 are inactive.
+    prevention:
+    - Keep historical-phase invariants separate from later-phase state wording.
+    - Update current-state assertions only with the same commit that changes durable
+      state.
+    - Run the full suite before every provenance or phase-state commit.
+    accountable_owner: Project Owner
+    validation_required:
+    - Run the targeted Phase 2.4 and KGR-006 provenance tests.
+    - Run the full governance suite.
+  learning:
+    reusable_lesson: Historical-phase tests should preserve enduring gate invariants
+      without freezing mutable later-phase status wording.
+    candidate_system_changes:
+    - TEST
+    - VALIDATION
+    applicable_future_phases:
+    - All governance state transitions
+  metrics:
+    exact_token_usage: null
+    model_runs: null
+    model_and_reasoning: []
+    human_time_minutes: null
+    correction_cycles: 1
+    deterministic_rework_count: 1
+    package_rebuild_count: 0
+    measurement_quality: PARTIAL
+    basis: One failing assertion and one bounded semantic update are observable; time
+      and token use are unavailable.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/tests/test_phase_2_4_contracts.py
+    anchor: test_phase_2_4_registry_and_durable_state_are_consistent
+    sha256: null
+    availability: PRESERVED
+    note: Updated gate-state assertion.
+  - type: REPOSITORY_PATH
+    locator: governance/CURRENT_STATE.md
+    anchor: Enforcement Engineering gate
+    sha256: null
+    availability: PRESERVED
+    note: Current reconciled state remains closed to further execution.
+  related_records:
+  - HP-FAIL-012
+  subfindings: []
+  owner_decision_required: false
+  accepted_risk: null
+  validation:
+    validated_by: null
+    validated_on: null
+    validation_refs: []

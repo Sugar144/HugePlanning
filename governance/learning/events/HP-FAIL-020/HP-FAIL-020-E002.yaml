@@ -1,0 +1,33 @@
+failure_record_event:
+  schema_version: 0.1.0
+  id: HP-FAIL-020-E002
+  record_id: HP-FAIL-020
+  date: '2026-07-15'
+  event_type: RECURRENCE
+  status_from: null
+  status_to: null
+  summary: A stale KGR-006-R1 status and omitted GOV-5 closure-review status remained
+    inside the CURRENT_STATE Durable state block after the earlier cross-surface reconciliation.
+  rationale: The canonical validator checked only the final GOVERNANCE_STATE_V1 marker
+    in each Markdown surface, so the internally structured Durable state block could
+    remain divergent while GOV-VAL-008 and focused tests passed. The recurrence was
+    contained before the phase-closure review by reconciling the block and extending
+    the validator to inspect all status-bearing structured sections.
+  evidence_refs:
+  - type: REPOSITORY_PATH
+    locator: governance/CURRENT_STATE.md
+    anchor: Durable state
+    sha256: null
+    availability: PRESERVED
+    note: The prospectively corrected structured state now matches the run manifest
+      and Owner decision record.
+  - type: REPOSITORY_PATH
+    locator: governance/tools/validate_governance_state.py
+    anchor: markdown_yaml_section and structured-section validation
+    sha256: null
+    availability: PRESERVED
+    note: The canonical control now parses the Durable state block and status tables
+      in addition to final markers.
+  owner_decision_ref: governance/prompts/orchestration/HP-PROMPT-019-gov-5-phase-closure-readiness-review-v0.1.0.md
+  accepted_risk: null
+  supersedes: null

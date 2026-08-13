@@ -1,0 +1,138 @@
+project_owner_decision:
+  decision_id: GOV-GEN-DECISION-009
+  version: 0.1.0
+  date: '2026-08-05'
+  authority: PROJECT_OWNER_EXPLICIT
+  decision: AUTHORIZE_AND_RECORD_GOV_GEN_G3_BOUNDED_CORRECTION_R1
+  program_id: GOV-GEN-AUD-001
+  phase: G3
+  subject_base_deliverable: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0
+  subject_correction: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0
+  source_prompt: HP-PROMPT-048/0.1.0
+  authorized:
+    - reconciliation of the base deliverable's §12 completion-disposition
+      summary for UQ4 and UQ7, which used non-enum composite values, to the
+      G3 contract's closed five-value taxonomy (UQ4 -> LOGICALLY_RESOLVED_BY_G3;
+      UQ7 -> NARROWED_BUT_OWNER_DECISION_REQUIRED), preserving the already-
+      valid per-subcomponent distinctions recorded in the base deliverable's
+      §8 body text
+    - clarification that the base deliverable's §7 context-efficiency model
+      is a recommended target logical consumption model, that current
+      governance/AGENTS.md instructions (including the unconditional
+      GOVERNANCE_MASTER_PLAN.md read requirement) remain controlling until
+      separately changed, that any mismatch is an implementation/
+      normalization gap for later work, and that G3 acceptance alone does
+      not modify current instruction behavior
+    - disambiguation of governance/AGENTS.md (CAP-NAV01-011) from root
+      AGENTS.md throughout the base deliverable's ambiguous bare "AGENTS.md"
+      references, and refinement of L0's wording to distinguish semantic
+      responsibility from realization/binding surfaces, without changing the
+      eight-layer architecture or any capability allocation
+    - correction of the base deliverable's §9 quantitative statement ("33 of
+      88 (38%)") to the accepted G2 generality counts (16
+      CROSS_PROJECT_CONFIGURABLE + 13 PROJECT_SPECIFIC = 29 of 88,
+      approximately 33%), preserving the architectural argument the figure
+      supports
+    - correction of the base deliverable's §4 L6 schema-count wording ("all
+      9 schemas") to the factual count (8 schema capabilities,
+      CAP-NAV09-001..008), with CAP-NAV09-009 unchanged as the L7 orientation
+      README
+    - honest recording of a historical check-8 evidence-custody gap (no
+      durable concrete execution-time validator record beyond
+      GOV-GEN-DECISION-008/0.1.0's summary self_check_result), and custody
+      of fresh Owner-review revalidation evidence for candidate
+      d9cc0e74584e1c8c7aa83894621f3d9ede77bdea
+    - minimum current-state/index/reference reconciliation required by the
+      above
+    - one bounded local commit
+  g3_correction_authorized: true
+  g3_correction_authorization_basis: >-
+    HP-PROMPT-048/0.1.0 directly authorizes this bounded correction, based on
+    six findings identified during Project Owner review of
+    GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0, following the prospective-
+    correction convention already established by
+    GOV-GEN-G2-CLASSIFICATION-MATRIX-001-R1/0.1.0 (GOV-GEN-DECISION-005/0.1.0).
+    The substantive G3 layer model, capability allocation, gap allocation,
+    boundary model, and candidate-architecture recommendation were already
+    Owner-reviewed and are not reopened.
+  g3_correction_performed_by_this_decision: false
+  not_authorized:
+    - push
+    - g3_redo_or_reexecution
+    - eight_layer_architecture_change
+    - reallocation_of_any_capability_not_strictly_required_by_an_identified_contradiction
+    - reclassification_of_any_g2_capability
+    - redisposition_of_any_g2_gap
+    - g2_reopening
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - new_repository_creation
+    - kernel_extraction_or_migration
+    - delegated_operational_authority_implementation
+    - provider_neutral_governance_implementation
+    - provider_or_executor_adapter_implementation
+    - query_or_projection_tooling_implementation
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - GOV-AUD-001_advancement_or_modification
+    - g4_phase_definition_or_authorization
+    - owner_acceptance_of_the_g3_logical_architecture_or_its_correction
+  final_status: G3_CORRECTION_ACCEPTED_LOCALLY_COMMITTED_PENDING_OWNER_ACCEPTANCE
+  reviewed_evidence:
+    correction_terminal_status: G3_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE
+    corrections_applied: 6
+    base_deliverable_modified: false
+    base_deliverable_sha256: be5c8ceb008e38579419b38f8813c9ac737f7c1842f2f5bd170667a6f1c5582b
+    correction_manifest: GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1.manifest.sha256
+    corrected_unresolved_question_dispositions:
+      UQ4: LOGICALLY_RESOLVED_BY_G3
+      UQ7: NARROWED_BUT_OWNER_DECISION_REQUIRED
+    owner_review_revalidation_candidate: d9cc0e74584e1c8c7aa83894621f3d9ede77bdea
+    owner_review_revalidation_evidence:
+      validate_prompts: '{"lineages":42,"prompts":44,"valid":true}'
+      validate_governance_state: '{"diagnostics":[],"result":"VALID"}'
+      manifest_check: 'GOV-GEN-G3-LOGICAL-ARCHITECTURE-001.md: OK'
+      evidence_class: OWNER_REVIEW_REVALIDATION_NOT_ORIGINAL_G3_EXECUTOR_EVIDENCE
+    check_8_historical_custody_gap: >-
+      No durable concrete execution-time record (command text and output)
+      was located for a repository validator run performed contemporaneously
+      with the original G3 execution, beyond GOV-GEN-DECISION-008/0.1.0's
+      summary self_check_result 'PASS (G3 contract §6, checks 1-8)'. Not
+      fabricated or reconstructed here.
+  pending_owner_acceptance_of_correction: true
+  not_accepted:
+    - target_physical_architecture_selection
+    - kernel_repository_ownership_decision
+    - repository_extraction_or_migration
+    - implementation_of_delegated_operational_authority
+    - implementation_of_provider_neutral_governance
+    - implementation_of_any_recorded_gap
+    - AGENTS_md_or_CLAUDE_md_modification
+    - AET_CWG_or_SVP_modification
+    - g4_phase_authorization
+  external_source_record: null
+  reconciliation_note: >-
+    This record canonicalizes the Project Owner's direct authorization of a
+    bounded prospective correction to GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0
+    (HP-PROMPT-048/0.1.0), following Owner review that confirmed a closed-
+    enum violation for UQ4/UQ7, an unclarified current-vs-target relationship
+    for the context-efficiency model, an ambiguous governance/AGENTS.md-vs-
+    root-AGENTS.md reference, a quantitative mis-statement, a schema-count
+    mis-statement, and an incomplete check-8 evidence pointer. The base
+    deliverable is preserved unmodified as historical evidence; the
+    correction is a new versioned artifact
+    (GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0) read together with it.
+    GOV-DEC-034 in governance/DECISION_LOG.md is not rewritten; this decision
+    and its companion GOV-DEC-035 entry supply the corrected prospective
+    description.
+  next_governed_state: >-
+    GOV-GEN-G3-LOGICAL-ARCHITECTURE-001/0.1.0 together with its correction
+    GOV-GEN-G3-LOGICAL-ARCHITECTURE-001-R1/0.1.0 is
+    G3_CORRECTION_READY_FOR_PROJECT_OWNER_ACCEPTANCE. The next governed state
+    is Project Owner acceptance (or rejection, or a further bounded
+    correction request) of the corrected G3 result; only after such
+    acceptance may the Owner separately authorize G4. This decision does not
+    itself accept the G3 result, and does not open, scope, or authorize G4.
+  firewall_preserved: GOV-AUD-001 and its internal GOV-n state are unaffected
+    by this decision.
+  publication: {commit_authorized: true, push_authorized: false, pull_request_authorized: false, merge_authorized: false, tag_authorized: false, release_authorized: false, deployment_authorized: false}

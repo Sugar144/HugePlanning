@@ -1,0 +1,38 @@
+pass:
+  id: PASS-03
+  title: Observable Execution, Evidence-Aware Learning and Retrieval Requirements
+  status: PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION
+  contract_identity:
+    contract_id: GOV-AUD-001-PASS-03-CONTRACT
+    version: 0.2.0
+    supersedes: GOV-AUD-001-PASS-03-CONTRACT/0.1.0
+    predecessor_sha256: a41aef15eeb22f0ce779356f92abd761dfaf52db5082247ca75e7b4b3bcea00c
+  purpose: Define technology-neutral requirements and evaluation criteria for observable execution data, evidence-aware learning, controlled promotion, selective retrieval and effectiveness measurement.
+  authority: PREPARATION_ONLY_NO_PASS_03_EXECUTION_OR_IMPLEMENTATION_AUTHORITY
+  required_predecessors: [CHECKPOINT-A]
+  checkpoint_dependency: CHECKPOINT-A
+  canonical_inputs: [PASS-01 accepted outputs, PASS-02 accepted outputs, CHECKPOINT-A decision, GOV-AUD-001-METHOD-001/0.3.0, HP-MPROP-007, current audit state, accepted lessons and applicable repository instructions]
+  required_outputs: [observable-event-requirements, evidence-and-authority-model, learning-lifecycle-and-state-machine, candidate-routing-and-promotion-model, selective-retrieval-requirements, effectiveness-and-burden-metrics, privacy-retention-and-rollback-requirements, tooling-neutral-capability-model, risks-open-questions-and-pass-04-handoff]
+  exclusions: [PASS-03 execution, tool or architecture selection, implementation, telemetry collection, hidden chain-of-thought collection, PASS-04 preparation or execution, GOV-7 activation, Kernel amendment, risk acceptance]
+  authority_boundaries:
+    repository_evidence_canonical: true
+    operational_traces_and_executor_assertions_non_authoritative: true
+    candidate_extraction_must_not_decide: [scope, authority, risk_acceptance, ratification, phase_transition, implementation_approval, release_or_adoption]
+    independent_adversarial_review_required_after_execution: true
+  required_questions_to_evidence:
+    - {question: observable data without hidden reasoning, artifact: observable-event-requirements, method: field and unavailable-marker validation, completion: all required observable categories and explicit exclusions present}
+    - {question: evidence class and authority per assertion, artifact: evidence-and-authority-model, method: class-distinction review, completion: repository evidence remains canonical and non-authoritative classes are explicit}
+    - {question: durable learning transition, artifact: learning-lifecycle-and-state-machine, method: transition validation, completion: valid and invalid transitions plus verification states are explicit}
+    - {question: candidate routing and promotion, artifact: candidate-routing-and-promotion-model, method: routing and promotion-boundary review, completion: all destinations and captured/accepted/implemented/validated/shown-effective states are explicit}
+    - {question: relevant learning retrieval without context bloat, artifact: selective-retrieval-requirements, method: retrieval-control review, completion: dimensions justification compactness stale conflict and no-result controls are explicit}
+    - {question: benefit and burden measurement, artifact: effectiveness-and-burden-metrics, method: metric coverage review, completion: required metrics and volume-is-not-success rule are explicit}
+    - {question: privacy and lifecycle controls, artifact: privacy-retention-and-rollback-requirements, method: privacy-control review, completion: minimization through failure-safe handling are explicit}
+    - {question: capabilities without solution selection, artifact: tooling-neutral-capability-model, method: neutrality review, completion: seven functions separated and prohibited selections absent}
+  verification_states: [HYPOTHESIS_PENDING_VERIFICATION, CONFIRMED, REFUTED, PARTIALLY_CONFIRMED, UNRESOLVED]
+  lifecycle: [observable_execution_event, visible_execution_insight, hypothesis, planned_verification, conclusion, learning_candidate, evidence_aware_triage, durable_destination, procedural_promotion, selective_retrieval, effectiveness_measurement]
+  validation_rules: [required artifact and field presence, exact input hash verification, schema/reference checks, state-transition checks, authority assertions, no hidden chain-of-thought, tooling neutrality, metrics/privacy coverage, registry/custody consistency, no execution-or-implementation claims, no PASS-04 work]
+  adversarial_requirements: [false_learning, unsupported_promotion, authority_escalation, privacy_leak, telemetry_overcollection, irrelevant_context, stale_learning, contradiction, metric_gaming, bureaucracy_owner_burden, vendor_lock_in_or_premature_tool_selection, rollback_deletion_failure, unavailable_observability]
+  completion_states: [PASS_03_PREPARED_VALIDATED_PENDING_PROJECT_OWNER_EXECUTION_AUTHORIZATION, PASS_03_PREPARATION_RETURNED_FOR_CORRECTION, PASS_03_PREPARATION_INVALID]
+  correction_and_r2_semantics: Preparation defects are corrected prospectively within this unexecuted preparation lineage; execution-output corrections require a separately authorized versioned R2 and never rewrite executed evidence.
+  checkpoint_relationship: CHECKPOINT-A authorizes preparation only; a separate Project Owner authorization bound to an instantiated prompt and hashed execution input manifest is required before execution.
+  custody_and_publication: Exact material prompts, manifests, package specifications, validation evidence, reviews and registry/state changes require repository custody; this preparation may be committed and pushed but does not authorize execution.
