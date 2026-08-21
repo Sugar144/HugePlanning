@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "hugeplanning",
+  "state_paths": [
+    "PROJECT_STATE.yaml"
+  ],
+  "roadmap_paths": [
+    "planning/v2/13_mvp_scope_and_implementation_roadmap.md"
+  ]
+}
