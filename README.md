@@ -4,7 +4,7 @@
 
 For a plain-language explanation of what this repository can do, the problem each capability solves, practical examples, limits, and technical references, see [`CAPABILITIES.md`](CAPABILITIES.md).
 
-`CAPABILITIES.md` is the standard capability guide for this repository. Exact current runtime/release status remains controlled by `VERSION`, `CHANGELOG.md` and the canonical methodology/planning surfaces.
+`CAPABILITIES.md` is the standard capability guide for this repository. Exact current status, authority and roadmap remain controlled by the canonical project surfaces.
 
 The versioned methodology repository for the AI-assisted freelance web
 development operating system, plus the planning corpus that specifies it.
