@@ -1,5 +1,11 @@
 # freelance-methodology (HugePlanning)
 
+## Capabilities
+
+For a plain-language explanation of what this repository can do, the problem each capability solves, practical examples, limits, and technical references, see [`CAPABILITIES.md`](CAPABILITIES.md).
+
+`CAPABILITIES.md` is the standard capability guide for this repository. Exact current runtime/release status remains controlled by `VERSION`, `CHANGELOG.md` and the canonical methodology/planning surfaces.
+
 The versioned methodology repository for the AI-assisted freelance web
 development operating system, plus the planning corpus that specifies it.
 
@@ -54,8 +60,7 @@ placeholders (project id, methodology path, date), writes
 `methodology.lock.yaml` from the current checkout (full 40-char commit SHA),
 **validates the generated client before the initial commit**, then git-inits,
 commits, and moves it into place — a failure at any step leaves no partial
-target behind. It never overwrites a non-empty directory and **refuses a
-dirty methodology checkout** (the lock must record what is actually on disk).
+target behind. It never overwrites a non-empty directory and **refuses a dirty methodology checkout** (the lock must record what is actually on disk).
 If no git identity is configured, the initial commit uses the command-local
 fallback identity `Methodology Bootstrap <bootstrap@local.invalid>` (your git
 config is never modified). Finally it prints the G0 checklist (`03` §7).
