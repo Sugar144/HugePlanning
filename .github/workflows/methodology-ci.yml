@@ -9,16 +9,26 @@ on:
 
 jobs:
   deterministic-suite:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, factory-ci]
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Verify preprovisioned Python baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          command -v python3.12 >/dev/null
+          python3.12 -c 'import sys; assert sys.version_info[:2] == (3, 12), sys.version'
+
+      - name: Create isolated test environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3.12 -m venv "$RUNNER_TEMP/hugeplanning-ci"
+          echo "$RUNNER_TEMP/hugeplanning-ci/bin" >> "$GITHUB_PATH"
 
       - name: Install suite dependencies
-        run: python3 -m pip install pyyaml jsonschema pytest hypothesis
+        run: python -m pip install pyyaml jsonschema pytest hypothesis
 
       - name: Configure git identity for scratch repos
         run: |
