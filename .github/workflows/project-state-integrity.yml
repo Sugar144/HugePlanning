@@ -9,11 +9,18 @@ permissions:
 
 jobs:
   project-state-integrity:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, factory-ci]
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Verify preprovisioned Python baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          command -v python3.12 >/dev/null
+          python3.12 -c 'import sys; assert sys.version_info[:2] == (3, 12), sys.version'
 
       - name: Collect pull request inputs
         shell: bash
@@ -28,7 +35,7 @@ jobs:
 
       - name: Validate project state impact
         run: |
-          python scripts/project_state_integrity.py \
+          python3.12 scripts/project_state_integrity.py \
             --config project-state-integrity.json \
             --pr-body-file "${RUNNER_TEMP}/psi-pr-body.txt" \
             --changed-files-file "${RUNNER_TEMP}/psi-changed-files.txt"
