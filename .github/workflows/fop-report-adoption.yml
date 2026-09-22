@@ -1,0 +1,23 @@
+name: FOP Report Adoption
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  fop-report-adoption:
+    runs-on: [self-hosted, linux, x64, factory-ci]
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Verify preprovisioned Python baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          command -v python3.12 >/dev/null
+          python3.12 -c 'import sys; assert sys.version_info[:2] == (3, 12), sys.version'
+
+      - name: Verify partial REPORT-only FOP adoption
+        run: python3.12 governance/tests/test_fop_report_adoption.py
