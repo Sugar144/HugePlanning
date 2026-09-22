@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "0.1.0",
+  "kind": "factory.observation-adoption",
+  "repository": "Sugar144/HugePlanning",
+  "policy": {
+    "id": "factory.observation-policy/0.1.0",
+    "sha256": "94f9272972a21e2769c6d6a2ec4ada891c1ad624f79dc7a20fd2cfa006f73b21"
+  },
+  "rolloutMode": "REPORT",
+  "executionClasses": {
+    "DETERMINISTIC_AUTOMATION": {
+      "profile": "OBS-0"
+    }
+  }
+}
